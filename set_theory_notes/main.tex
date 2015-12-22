@@ -17,7 +17,7 @@
 
 \section{Elementary Embeddings}
 
-For the next several lemmas, Let $j:M \map N$ be an elementary embedding with $\crit(j)=\kappa$, where $M$ and $N$ are transitive models of a sufficient amount of $\ZFC$.
+Throughout this section let $j:M \map N$ be an elementary embedding with $\crit(j)=\kappa$, where $M$ and $N$ are transitive models of a sufficient amount of $\ZFC$.
 
 \begin{lemma}
 \label{inductiveLemma}
@@ -123,13 +123,66 @@ Let $x \in V^{M}_{\alpha} = V^{N}_{\alpha}$. Then $x\in A$ iff $x = j(x) \in j(A
 (c) $\Implies$ (d). Immediate.
 
 (d) $\Implies$ (a). Assume (d) and suppose $2^\alpha >= \kappa$ in $M$ for some
-$\alpha < \kappa$. Let $f:A \bijection \kappa$ with $A\subseteq\Powerset(\alpha)$,
-$f \in M$. Now $j(\Powerset^{M}(\alpha)) = \Powerset^{M}(\alpha)$ and
-$j\restr \Powerset^{M}(\alpha) = id$ by Lemma \ref{subsetLemma}, so by
-Lemma \ref{inductiveLemma} $j(A) = A$ and since $j \restr A = id$, $j(f) = j \circ f$
+$\alpha < \kappa$ and let $f:\Powerset^{M}(\alpha) \surjection \kappa$. By (d)
+$j(\Powerset^{M}(\alpha)) = (\Powerset^{M}(\alpha)$ and by Lemma \ref{subsetLemma},
+$j\restr \Powerset^{M}(\alpha) = id$  so $j(f) = j \circ f$
 by Lemma \ref{lemma1}. But this is a contradiciton because $j(f)$ is onto $j(k)$
 whereas $\kappa \not\in\ran(j)$.
 \end{proof}
+
+The conditions (a) - (d) in the previous lemma all follow in particular from the
+hypotheses $\Powerset^{M}(\kappa) = \Powerset^{N}(\kappa)$.
+
+\begin{question}
+Is there an example of a $j$ which satisfies conditions (a) - (d) of the
+previous lemma but for which $\Powerset^{M}(\kappa) \not= \Powerset^{N}(\kappa)$?
+\end{question}
+
+\section{Ultrapowers}
+
+\begin{definition}
+Let $M$ be a transitive model of a sufficient amount of $\ZFC$ and let $\kappa$ be
+a cardinal of $M$. An $M$-ultrafilter $U$ is \em{weakly amenable} to $M$ iff whenever
+$\sequence{X_{\alpha}}{\alpha<\kappa} \in M$ wtih each $X_{\alpha} \subseteq \kappa$,
+then $\setof{\alpha < \kappa}{X_{\alpha} \in U} \in M$.
+\end{definition}
+
+Of course if $U\in M$ then $U$ is weakly amenable to $M$.
+
+\begin{lemma}
+Let $j:M \map N$ be an elementary embedding with $\crit(j)=\kappa$, where $M$ and $N$ are transitive models of a sufficient amount of $\ZFC$.
+Let $U = \setof{X \subseteq \kappa}{\kappa \in j(X)}$. If
+$\Powerset^{M}(\kappa) = \Powerset^{N}(\kappa)$ then $U$ is weakly amenable to $M$.
+\end{lemma}
+\begin{proof}
+$$\setof{\alpha < \kappa}{X_{\alpha} \in U} =
+\setof{\alpha < \kappa}{\kappa\in j(X_{\alpha})} =
+S \intersect \kappa $$
+where S = $\setof{\alpha < j(\kappa)}{\kappa\in Y_{\alpha}}$
+where $\sequence{Y_{\alpha}}{\alpha<j(\kappa)} = j(\sequence{X{\alpha}}{\alpha<\kappa})$.
+Since $S\in N$, $S \intersect \kappa \in M$.
+\end{proof}
+
+\begin{lemma}
+Let $M$ be a transitive model of a sufficient amount of $\ZFC$, let $\kappa$ be
+a cardinal of $M$, and let $U$ be a normal, non-principal, $\kappa$-complete
+ $M$-ultrafilter over $\kappa$. Suppose
+$N = \Ult(M, U)$ is wellfounded. Then the following are equivalent:
+\begin{itemize}
+\item[(a)] $\Powerset^{M}(\kappa) = \Powerset^{N}(\kappa)$
+
+\item[(b)] $U$ is weakly amenable to $M$.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+(a) $\Implies$ (b) follows from the previous lemmma.
+
+(b) $\Implies$ (a). Let $A\in\Powerset^{N}(\kappa)$  and let $f\in M$ represent
+$A$, with $f(\beta) \subseteq \beta$ for all $\beta < \kappa$. For each $\alpha<\kappa$
+let $X_{\alpha} = \setof{\beta < \kappa}{\alpha \in f(\beta)}$. Then
+$A = \setof{\alpha<\kappa}{X_{\alpha} \in U}$. So $A\in M$ by weak amenability.
+\end{proof}
+
 
 \bibliographystyle{amsalpha}
 
