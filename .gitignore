@@ -6,3 +6,7 @@
 *.texlipse
 *.settings
 *.dvi
+*.toc
+*.bbl
+*.blg
+*.ps

@@ -9,7 +9,7 @@
 
 \begin{document}
 
-\title{Notes}
+\title{Set Theory Notes}
 
 \maketitle
 
@@ -17,14 +17,60 @@
 
 \section{Elementary Embeddings}
 
-For the next several lemmas, Let $j:M \map N$ be an elementary embedding with $\crit(j)=\kappa$, where $M$ and $N$ are models of a sufficient amount of $\ZFC$.
+For the next several lemmas, Let $j:M \map N$ be an elementary embedding with $\crit(j)=\kappa$, where $M$ and $N$ are transitive models of a sufficient amount of $\ZFC$.
+
+\begin{lemma}
+\label{inductiveLemma}
+If $j(A) = A$ and $j\restr A = id$ then $j\restr \Powerset(A) = id$.
+\end{lemma}
+\begin{proof}
+Let $S\subseteq A$. Then $j(S) \subseteq j(A) = A$ and for all $x\in A$,
+$x \in S$ iff $j(x) \in j(S)$ iff $x\in j(S)$. So $S = j(S)$.
+\end{proof}
+
+
+\begin{corollary}
+\label{subsetLemma}
+$j(A) = A$ whenever $A\subseteq \nu < \kappa$.
+\end{corollary}
+\begin{proof}
+This follows from Lemma \ref{inductiveLemma} since $j(\nu) = \nu$ and
+$j \restr \nu = id$.
+\end{proof}
+
+\begin{lemma}
+\label{crossProductLemma}
+$j(A) = A$ whenever $A\subseteq \nu \times \nu $ and $\nu < \kappa$.
+\end{lemma}
+\begin{proof}
+This follows from Lemma \ref{inductiveLemma} since $j(\nu \times \nu) = \nu \times \nu$ and
+$j \restr \nu \times \nu = id$.
+\end{proof}
+
+\begin{lemma}
+$j\restr H^{M}_{\kappa} = id$ and $H^{M}_{\kappa}\subseteq H^{N}_{\kappa}$.
+\end{lemma}
+\begin{proof}
+Let $f:\nu\bijection A$, $f\in M$, $A$ transitive, $\nu<\kappa$. Let
+$B=\setof{\angles{\alpha, \beta}}{f(\alpha) \in f(\beta)}$. Then $j(B) = B$
+and $j(f):\nu\bijection j(A)$ so $j(A)$ is a transitive set isomorphic to $A$
+so $j(A)=A$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma0}
+$\Powerset^{M}(\kappa) \subseteq N$.
+\end{lemma}
+\begin{proof}
+$A=j(A)\intersect\kappa$.
+\end{proof}
 
 \begin{lemma}
 \label{lemma1}
-Suppose $\nu<\kappa$ and $f\in M$ is a function with $\dom(f) = \nu$. Then $j(f) = j \circ f$.
+Suppose $j(A) = A$ and $j\restr A = id$ and $f\in M$ is a function with $\dom(f) = A$. Then $j(f) = j \circ f$.
 \end{lemma}
 \begin{proof}
-For  $\alpha < \nu$ if $\beta = f(\alpha)$ then $j(\beta) = j(f)(\alpha)$ and $\dom(j(f)) = \nu$.
+$\dom(j(f)) = A$ and for  $x \in A$, if $y = f(x)$ then $j(y) = j(f)(x)$.
 \end{proof}
 
 \begin{lemma}
@@ -46,10 +92,15 @@ But by \ref{lemma2} $j(f) = f$ is not cofinal in $j(\kappa) > \kappa$.
 
 \begin{lemma}
 The following are equivalent:
+\begin{itemize}
+\item[(a)] $M\models$ ``$\kappa$ is an inaccessible cardinal.''
 
-(a) $M\models$ ``$\kappa$ is an inaccessible cardinal.''
+\item[(b)] $j\restr V^{M}_{\kappa} = id$.
 
-(b) $j\restr V^{M}_{\kappa} = id$.
+\item[(c)] $V^{M}_{\kappa} = V^{N}_{\kappa}$.
+
+\item[(d)] $\Powerset^{M}(\alpha) = \Powerset^{N}(\alpha)$ for all $\alpha < \kappa$.
+\end{itemize}
 \end{lemma}
 \begin{proof}
 (a) $\Implies$ (b). By induction on $\alpha < \kappa$ we show that $j\restr V^{M}_{\alpha} = id$.
@@ -61,6 +112,23 @@ $f\in M$. By lemma \ref{lemma2} and induction, $j(f) = f$ so $j(A) = A$.
 (b) $\Implies$ (a). Suppose $A\in V^{M}_{\kappa}$ and $f\in M$, $f:A \cofmap \kappa$. Then
 by (b) and lemma \ref{lemma2}, $j(f) = f$. But this contradicts the fact that $j(f)$
 is cofinal in $j(\kappa) > \kappa$.
+
+(b) $\Implies$ (c). For $\alpha < \kappa$,  $V^{N}_{\alpha} = j(V^{M}_{\alpha}) = V^{M}_{\alpha}$.
+
+(c) $\Implies$ (b). By induction on $\alpha < \kappa$ we show that $j\restr V^{M}_{\alpha} = id$.
+The limit step is trivial so suppose $j\restr V^{M}_{\alpha} = id$ and we will show
+$j\restr V^{M}_{\alpha + 1} = id$. Let $A\subseteq V^{M}_{\alpha}$ with $A\in M$.
+Let $x \in V^{M}_{\alpha} = V^{N}_{\alpha}$. Then $x\in A$ iff $x = j(x) \in j(A)$.
+
+(c) $\Implies$ (d). Immediate.
+
+(d) $\Implies$ (a). Assume (d) and suppose $2^\alpha >= \kappa$ in $M$ for some
+$\alpha < \kappa$. Let $f:A \bijection \kappa$ with $A\subseteq\Powerset(\alpha)$,
+$f \in M$. Now $j(\Powerset^{M}(\alpha)) = \Powerset^{M}(\alpha)$ and
+$j\restr \Powerset^{M}(\alpha) = id$ by Lemma \ref{subsetLemma}, so by
+Lemma \ref{inductiveLemma} $j(A) = A$ and since $j \restr A = id$, $j(f) = j \circ f$
+by Lemma \ref{lemma1}. But this is a contradiciton because $j(f)$ is onto $j(k)$
+whereas $\kappa \not\in\ran(j)$.
 \end{proof}
 
 \bibliographystyle{amsalpha}
