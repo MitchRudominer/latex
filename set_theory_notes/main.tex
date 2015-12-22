@@ -1,0 +1,70 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Notes}
+
+\maketitle
+
+\tableofcontents
+
+\section{Elementary Embeddings}
+
+For the next several lemmas, Let $j:M \map N$ be an elementary embedding with $\crit(j)=\kappa$, where $M$ and $N$ are models of a sufficient amount of $\ZFC$.
+
+\begin{lemma}
+\label{lemma1}
+Suppose $\nu<\kappa$ and $f\in M$ is a function with $\dom(f) = \nu$. Then $j(f) = j \circ f$.
+\end{lemma}
+\begin{proof}
+For  $\alpha < \nu$ if $\beta = f(\alpha)$ then $j(\beta) = j(f)(\alpha)$ and $\dom(j(f)) = \nu$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma2}
+Suppose $\nu<\kappa$ and $f\in M$, $f:\nu \map A$ where $A\in M$ is such that $f\restr A = id$.
+Then $j(f) = f$.
+\end{lemma}
+\begin{proof}
+Follows from \ref{lemma1}.
+\end{proof}
+
+\begin{lemma}
+$M\models$ ``$\kappa$ is a regular cardinal.''
+\end{lemma}
+\begin{proof}
+Suppose $f:\nu\cofmap\kappa$, $\nu < \kappa$, $f\in M$. Then $j(f) : \nu \cofmap j(\kappa)$.
+But by \ref{lemma2} $j(f) = f$ is not cofinal in $j(\kappa) > \kappa$.
+\end{proof}
+
+\begin{lemma}
+The following are equivalent:
+
+(a) $M\models$ ``$\kappa$ is an inaccessible cardinal.''
+
+(b) $j\restr V^{M}_{\kappa} = id$.
+\end{lemma}
+\begin{proof}
+(a) $\Implies$ (b). By induction on $\alpha < \kappa$ we show that $j\restr V^{M}_{\alpha} = id$.
+The limit step is trivial so suppose $j\restr V^{M}_{\alpha} = id$ and we will show
+$j\restr V^{M}_{\alpha + 1} = id$. Let $A\subseteq V^{M}_{\alpha}$ with $A\in M$.
+Since $\kappa$ is inaccessible in $M$ let $f:\nu\bijection A$, with $\nu < \kappa$ and
+$f\in M$. By lemma \ref{lemma2} and induction, $j(f) = f$ so $j(A) = A$.
+
+(b) $\Implies$ (a). Suppose $A\in V^{M}_{\kappa}$ and $f\in M$, $f:A \cofmap \kappa$. Then
+by (b) and lemma \ref{lemma2}, $j(f) = f$. But this contradicts the fact that $j(f)$
+is cofinal in $j(\kappa) > \kappa$.
+\end{proof}
+
+\bibliographystyle{amsalpha}
+
+\bibliography{math}
+
+\end{document}

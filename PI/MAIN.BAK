@@ -1,0 +1,775 @@
+\documentclass[twoside,twocolumn,12pt]{amsart}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is the main Latex file for the Paper
+%%   "The Circumference and Area of a Circle"
+%% by Mitch Rudominer. Last Change date:
+%% Format: Latex 2e
+%%
+%% There are  other files which are needed to compile the
+%% paper. They are:
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% The following line is included to make WinEDT's Log-File-Search   %%%
+%%% work correctly. It should be removed before this file is          %%%
+%%% distributed.  Also, all occurrences of "INPUT" below should be    %%%
+%%% replaced by "input".                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\INPUT#1{\typeout{:<+ #1.tex}\input{#1}\typeout{:<-}}
+
+\typeout{:?1011}
+%% ^^ This tells WinEDT which types of errors to process.}%%
+
+\INPUT{mathdefs}
+%\INPUT{specdefs}
+
+\theoremstyle{plain}
+
+\newtheorem{Theorem}{Theorem}
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Corollary}[Theorem]{Corollary}
+
+\theoremstyle{definition}
+
+\newtheorem{Definition}[Theorem]{Definition}
+
+\newcommand{\skipsmall}{\vspace{1em}}
+\newcommand{\skipmed}{\vspace{2em}}
+\newcommand{\skipbig}{\vspace{3em}}
+\newcommand{\skipsmallminus}{\vspace{-1em}}
+
+%\renewcommand{\baselinestretch}{1.5}
+\setlength{\voffset}{-0.25in}
+\setlength{\hoffset}{-0.4in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\footskip}{0.5125in}
+\setlength{\textwidth}{9.8in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{6.75in}
+\setlength{\topmargin}{0.125in}
+\setlength{\columnsep}{1in}
+\pagestyle{empty}
+\thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\title{The Area and Circumference of a Circle}
+
+\author{Mitch Rudominer}
+
+%\address{Department of Mathematics\\
+%         Florida International University\\
+%         Miami, FL 33199}
+%
+%\email{rudomine@fiu.edu}
+
+\maketitle
+
+\thispagestyle{empty}
+
+In grade school we were all given the formulas for the area and
+circumference of a circle:
+$$A=\pi r^2 \text{ and } C = 2\pi r$$
+where $\pi\approx 3.14159$.
+Most likely these formulas were given with no justification, or even
+an intuitive explanation as to why they are true.  In this article
+I will discuss the two formulas above, I will give elementary proofs
+of them, and I will discuss their history.
+
+To begin with, how should one interpret the formulas $A=\pi r^2$ and
+$C=2\pi r$? It is tempting to take the point of view that first
+there was this number $\pi$ ``out there,'' and subsequently
+ it was discovered
+that $\pi$ is useful for
+calculating the area and circumference of a circle. This of course would be
+misleading.
+ The formulas $A=\pi r^2$ and $C=2\pi r$ should be interpreted
+as both a \emph{theorem} in geometry, and the \emph{definition} of $\pi$.
+The
+theorem says that \emph{there is some constant} $k$, such that
+for all circles, the area and circumference of the circle are given
+by:  $A=k r^2$ and $C=2 k r$. The definition says,
+let us agree to use the symbol $\pi$ to refer to this constant.
+To be more precise, as I see it, there are at least seven important ideas
+associated with the area and circumference formulas given above.
+I describe these seven ideas below.
+(In order to understand what follows, it would be helpful to
+pretend
+for a moment that you have never heard of the number $\pi$. Then I will
+\emph{define} $\pi$ for you below.)
+
+\vspace{0.1in}
+
+\noindent
+\textbf{Idea 1.}
+The circumference of a circle is directly proportional to
+the radius of the circle. That is, there is some constant $k$ such
+that for all circles,  $C=k r$. This implies for instance that if you
+double the radius of a circle, then you double its circumference.
+
+\vspace{0.1in}
+
+\noindent
+\textbf{Idea 2.} The area of a circle is directly proportional to the square
+of the radius of the circle. That is, there is some constant $h$ such
+that for all circles,
+$A=h r^2$.  This implies for instance that if you double the radius
+of a circle, then you quadruple its area.
+
+\vspace{0.1in}
+
+\noindent
+\textbf{Idea 3.} The two constants of proportionality mentioned above
+are related to each other by the equation  $k=2 h$.
+
+\vspace{0.1in}
+
+\noindent
+\textbf{Notation.}
+Given Idea 3 above,
+let us agree to use the
+symbol $\pi$ to refer to the constant $h$. Then Idea 1 says that
+$C=2\pi r$ and Idea 2 says that $A=\pi r^2$.
+
+\vspace{0.1in}
+
+\noindent
+\textbf{Idea 4.} The number $\pi$ is approximately equal to 3. To be
+more precise, $3\frac{1}{8}<\pi<3\frac{1}{7}$.
+
+\vspace{0.1in}
+
+\noindent
+\textbf{Idea 5.} $\pi\approx 3.14159265358979323846$. (I think of this as a
+separate idea beyond Idea 4 because Idea 4
+can actually be discovered by physical experiment, whereas Idea 5 must be
+discovered by mathematical analysis.)
+
+\vspace{0.1in}
+
+\noindent
+\textbf{Idea 6.} $\pi$ is an irrational number. That is $\pi$ cannot
+be expressed exactly
+with any finite number of decimal places, or any fraction
+of whole numbers.
+
+\vspace{0.1in}
+
+\noindent
+\textbf{Idea 7.} Not only is $\pi$ an irrational number, $\pi$ is actually
+a \emph{transcendental} number. (I will explain this later.)
+
+\newpage
+
+\noindent
+\textbf{\large Some History}
+
+\skipsmall
+
+Ideas 1 through 7 above are listed approximately in the order in
+which they occurred historically. I will give a short description of some
+of this history.\footnote{All of the historical information in this
+article is taken directly from
+the two books listed in the references. I will not give any further
+references for the various historical claims I make in the article.}
+
+ Ideas 1 and 4 were likely known by prehistoric man, more than
+5000 years ago. The reason is that these ideas are fairly easy to discover
+experimentally. For example, suppose you are at the beach and you are
+sitting on the wet sand. Suppose also that you have some rope with you.
+Using a short piece of rope you draw a circle in the wet sand. You do this
+by holding one end of the rope down with one hand, or a stick. Then you
+pull the rope taught and revolve it around the center point, while drawing
+in the wet sand with your finger. If your  piece of rope had length
+$r$, then you have drawn a circle of radius $r$. Now you take a second
+longer piece of
+rope and you lay the rope down in the circular groove in the sand. You
+cut the second piece of rope so that it exactly fits once around the
+circle. Then you compare your short first piece of rope with your longer
+second piece of rope. By laying off the short piece against the longer
+piece, you discover that the long piece is a little more than six times
+as long as the short piece.  That is, you discover that the circumference
+of your circle is a little more than $6r$.
+If you repeat this experiment several times,
+you will discover that it always comes out the same way, no matter how big
+or how small you draw the circle. You have thus discovered that the
+circumference of a circle is directly proportional to the radius of the
+circle, with a constant of proportionality a little more than 6. If you
+measure very carefully you can probably determine that the constant of
+proportionality is between $6\frac{1}{4}$ and $6\frac{2}{7}$.
+
+It is a little bit more difficult to discover in this manner the
+relationship between the radius of a circle and its \emph{area}. For
+this reason, perhaps Idea 2 did not occur as early in history as Idea 1.
+Nevertheless, it is not very difficult to imagine some simple physical
+experiments which would allow you to discover the fact that if you
+double the radius of a circle, you quadruple its area. By carefully
+estimating  the area of a circle (by counting the number of small squares
+which can be drawn in the circle) it can be discovered that the area of
+a circle is proportional to the square of the radius, with the constant
+of proportionality being a little more than three. With very careful
+measurement it may be discovered that the constant of proportionality
+is between $3\frac{1}{8}$ and $3\frac{1}{7}$.
+
+At any rate, it is known that Ideas 1, 2, 3, and 4 were known by certain
+ancient civilizations by about 2000 B.C.  In one ancient Egyptian
+mathematical document called the Rhind Papyrus, the author's process
+for finding the area of a circle with radius $r$ was to use the
+formula $A=4(8/9)^2 r^2$. This amounts to using the value
+$$\pi=4\left(\frac{8}{9}\right)^2\approx 3.1605.$$ A Babylonian cuneiform
+tablet discovered at Susa by a French archeological expedition in 1936
+asserts that the area of a circle is equal to $2/25$ times the square
+of the circumference. This amounts to using a value of
+$$\pi=\frac{25}{8}=3\frac{1}{8}=3.125.$$
+
+How did these ancient peoples arrive at their values for $\pi$? Nobody
+knows the answer for certain. From the fact that their values for
+$\pi$ are only accurate to the first decimal place, we might guess
+that some sort of physical estimation was involved, rather than any
+mathematical analysis. This brings us to the history of Idea 5.
+Namely, the idea of estimating $\pi$ accurately to many decimal places.
+Obviously this kind of accurate estimation can not be done by measuring
+the relative lengths of two pieces of rope. There are many different
+ways in which mathematical analysis can be used to estimate the value
+of $\pi$. I will discuss this a bit later. At this time I would like
+to focus on history. Historians of science have devoted considerable
+attention to the attempts throughout history to calculate $\pi$ with
+further and further accuracy. (Of course, most of the people who worked
+on this problem did not use the symbol $\pi$. The first use of the
+symbol $\pi$ to stand for the ratio of a circle's circumference to
+its diameter was in 1706 by an obscure English writer, William Jones, in
+his \emph{Synopsis Palmariorum Matheseos}, or \emph{A New Introduction
+to the Mathematics.} The reason for the use of $\pi$ may be that it is
+the first letter of the Greek word \emph{perimetros} meaning perimeter.
+In 1748 Leonhard Euler used the symbol $\pi$ in his
+famous \emph{Introductio in Analysin Infinitorum.} From this point on
+the use of the symbol $\pi$ became universal.)
+
+Without any attempt at completeness, let me just
+list a few historical records concerning computations of the digits
+of $\pi$. In the third century B.C. the Greek mathematician Archimedes,
+in his treatise \emph{The Measurement of a Circle}, proved that
+$$3\frac{10}{71}<\pi<3\frac{1}{7}.$$
+In his work, Archimedes \emph{proved}
+the validity of Ideas 1, 2, 3 and 4 above. Note that this is
+different than the ancient Egyptians and Babylonians who probably
+``knew'' of Ideas 1 through 4, but did not prove them. I will talk
+more about proofs later.
+
+In the first millennium A.D., it was
+the Chinese who led the way in the approximation of $\pi$. In the third
+century, Liu Hui derived the bounds
+$$3.141024<\pi<3.142704.$$
+And in the fifth century Tsu Chung-Chi obtained
+$$3.1415926<\pi<3.1415927.$$
+
+Jumping ahead to the sixteenth century, in 1593 Francois Viete set a
+new record by calculating that
+$$3.1415926535<\pi<3.1415926537.$$
+
+By the end of the 16th century, $\pi$ was known to 30 decimal places,
+by the end of the 18th century it was known to 140 decimal places,
+and by the end of the 19th century it was known to 526 decimal places.
+Today, with the use of computers, $\pi$ can be calculated to many
+more decimal places. One programmer has found $\pi$  to
+$500,000$ decimal places!
+
+But is the programmer who found $\pi$ to 500,000 places any closer to
+capturing all of $\pi$ than the ancient Babylonians who knew that
+$\pi$ was a little more than 3? In one sense, the answer is no. This
+is because $\pi$ is an irrational number. Its decimal expansion
+is infinite, and non-repeating. This brings us to the history of Idea 6.
+Throughout history people were able to find more and more digits
+of $\pi$. Maybe if someone were \emph{very} ambitious and \emph{very}
+patient, they could find all of the digits of $\pi$, or at least find
+a long pattern of digits which repeated over and over again. Any hope
+along these lines was dashed in 1767, when the Swiss mathematician
+Johann Heinrich Lambert proved the irrationality of $\pi$. In his
+treatise \emph{Preliminary Knowledge for Those Who Seek the Quadrature
+and Rectification of the Circle}, Lambert proved the following theorem:
+\emph{If $x$ is a rational number other than zero, then $\tan x$ cannot
+be rational.} Since $\tan(\pi/4)=1$ is rational, $\pi/4$ must be irrational,
+and so $\pi$ must be irrational. Some credit for this result must also
+be given to Adrien-Marie Legendre. In his \emph{Elements of Geometry} (1794)
+Legendre gave a more rigorous proof of a lemma which Lambert had used
+in his proof.
+
+Finally, we come to the history of Idea 7, the idea that $\pi$ is a
+transcendental number.  Look back at the title of Lambert's treatise
+mentioned in the last paragraph. Lambert refers to the \emph{quadrature}
+of the circle? What does this mean? This phrase refers to a very old
+problem in mathematics,
+ the problem of ``squaring the circle.'' In brief the idea is as
+follows. Suppose you are given a circle drawn on a piece of paper. Can
+you draw a square whose area is equal to the area of the given circle?
+But wait, there are some rules! You are allowed to use a writing
+utensil,
+a straight edge to draw straight lines, and a compass to draw circles.
+And that's it. You are not allowed to use a ruler, or a protractor,
+or any other tools. Furthermore you are not allowed to use the given
+tools in any way other than the prescribed way. In particular you are
+not allowed to make any marks on the straight edge in order to record
+a distance, and you are not allowed to use the legs of the compass in
+order to transfer a length from one place to another.  People worked
+on the problem of squaring the circle for over two thousand years, from
+prior to 500 B.C., all the way up until 1882. In 1882 it was shown
+that the problem of squaring the circle \emph{cannot be solved.}
+
+But what does this have to do with $\pi$? It turns out that the squaring
+the circle problem can be solved if and only if it is possible, using
+only straight edge and compass, to draw a line segment of length $\pi$.
+But it is not  difficult to show that we can draw a line segment of
+length $L$, only if $L$ is an algebraic number.  An \emph{algebraic}
+number is a number $x$ such that there exists integers $a_0,\dots,a_n$,
+with $a_n\not=0$, such that
+$$a_n x^n+a_{n-1}x^{n-1}+\dots+a_1x+a_0=0.$$
+That is, an algebraic number is one that is the root of a non-trivial
+polynomial
+with integer coefficients. If a number is not algebraic, then we say
+that it is transcendental. So to put these ideas together we have
+the following: \emph{If $\pi$ is a transcendental number, then the
+circle cannot be squared.}
+
+In 1873, Charles Hermite proved that the number $e$ is transcendental.
+In 1882 F. Lindemann extended this result to show that if $r$ and $s$
+are distinct \emph{complex} algebraic numbers, then the expression
+$e^r+e^s$
+cannot be equal to zero. But Euler had already proven his famous equation:
+$e^{i\pi}+1=0.$
+Letting $r=i\pi$ and $s=0$, we can write $e^r+e^s=0$. Since
+$s=0$ is an algebraic number, the only possibility is that $r=i\pi$ is
+a transcendental number. But $i$ is an algebraic number. We are forced
+to conclude that $\pi$ is a transcendental number.
+
+\skipbig
+
+\noindent
+\textbf{\large Proofs}
+
+\skipsmall
+
+So much for history. The rest of this article is devoted to giving
+some simple, elementary proofs of Ideas 1 through 5 above.
+
+
+\vspace{0.1in}
+
+
+\noindent
+\textbf{Ideas 1 and 2.} I claim that Ideas 1 and 2 are actually quite
+obvious, once you think about them for a moment.
+(I do \emph{not} claim this about Idea 3 though.)
+I will give an informal proof of Ideas 1 and 2. My informal proof can
+be turned into a formal proof in a number of different ways.
+Let us fix some circle $\Omega$. Let $C$ be the circumference of $\Omega$,
+$A$ the area of $\Omega$, and $r$ the radius of $\Omega$.
+Let $k=C/r$ and let $h=A/r^2$. Now let $\Omegaprime$ be any other
+circle, let $\Aprime$ be its area, $\Cprime$  its circumference,
+and $\rprime$ its radius. We want to see that $\Cprime/\rprime=k$
+and $\Aprime/\rprime=h$. But I claim that
+this is obvious, because $\Omegaprime$ can
+be obtained by simply \emph{expanding} or \emph{contracting} $\Omega$.
+
+Let me be a bit more rigorous. Let us introduce a coordinate system
+to aid in the discussion. The coordinate system is not essential to
+my proof, but it will simplify the discussion.
+In order to exhibit how elementary
+and intuitive my proof is,  I will make as little use of
+analytic geometry as possible.
+Since both area and arc length are
+intuitively preserved
+by ``rigid motions,'' we may as well assume that both of our circles
+are centered at the origin. Also, to be concrete, let us assume that
+$\Omegaprime$ is a bigger circle than $\Omega$, i.e. that $\rprime>r$.
+Let $\alpha=\rprime/r$.
+By the term ``circle''
+we mean the set of all points a given distance from a center point.
+Thus $\Omega$ is the set of all points located a distance $r$ from the
+origin, and $\Omegaprime$ is the set of all points located a distance
+$\rprime$ from the origin.
+Consider the transformation $T$ of the coordinate
+plane which sends a point $(x,y)$ to the point $(\alpha x, \alpha y)$.
+$T$ is an ``expansion'' by a factor of $\alpha$. Suppose that $(x,y)$ is
+a point on the circle $\Omega$. Then the distance from $(x,y)$ to
+the origin is $r$. $T$ sends the point $(x,y)$ to the point
+$(\alpha x, \alpha y)$. Using some simple facts about similar triangles,
+  we see that the distance from $(\alpha x, \alpha y)$ to the
+origin is $\alpha r =\rprime$. Thus $(\alpha x, \alpha y)$ lies on
+the circle $\Omegaprime$. Thus the transformation $T$ maps
+$\Omega$ onto $\Omegaprime$. Let us see what $T$ does to area and
+arc length.  Again using some simple facts about similar triangles,
+it is easy to see that if $(x_1,y_1)$ and $(x_2,y_2)$ are any two
+points in the plane and the distance between them is $d$, then the distance
+between $(\alpha x_1, \alpha y_1)$ and $(\alpha x_2, \alpha y_2)$
+is $\alpha d$. That is, $T$ increases all distances by a factor of $\alpha$.
+It follows that $T$ increases the length of any polygonal path by a
+factor of $\alpha$. Since our intuitive notion of  arc length corresponds
+to the limit of the lengths of approximating polygonal paths, it follows
+that $T$ increasing all arc lengths by a factor of $\alpha$. As $T$ sends
+$\Omega$ onto $\Omegaprime$ it follows that $\Cprime=\alpha C$.
+Thus
+$$\frac{\Cprime}{\rprime}=\frac{\alpha C}{\alpha r}=\frac{C}{r}=k.$$
+Also, since $T$ increases all distances by a factor of $\alpha$, $T$
+increases the area of any square by a factor of $\alpha^2$. Since our
+intuitive notion of area corresponds to the limit of the areas of
+approximating collections of squares, $T$ increases all areas by a factor
+of $\alpha^2$. As $T$ sends $\Omega$ onto $\Omegaprime$ it follows that
+$\Aprime=\alpha^2 A$. Thus
+$$\frac{\Aprime}{(\rprime)^2}=
+\frac{\alpha^2 A}{(\alpha r)^2}=\frac{A}{r^2}=h.$$
+In summary, Ideas 1 and 2 follow immediately from the fact that expansions
+and contractions act linearly on the distance between two points. The
+fact that this is so is an integral part of our geometric intuition. It
+is the reason why two similar triangles have the same ratios  of side
+lengths.
+
+
+
+\vspace{0.2in}
+
+\noindent
+\textbf{Idea 3.} Unlike Ideas 1 and 2, I do not claim that Idea 3 is
+obvious.
+ The proof of Idea 3 requires a more
+detailed analysis. Below I will give some arguments which will reprove
+Ideas 1 and 2, and also yield a proof of Idea 3.
+
+  My goal is
+to derive Ideas 1, 2, and 3 using  ``geometrically intuitive''
+reasoning. At several points I will even appeal to a diagram to make my
+argument.
+It is well known that such appeals to diagrams are dangerous, as diagrams
+can often be misleading. To give a completely rigorous geometric proof,
+I would have to give a list of geometric \emph{axioms}, and derive all
+of my results from these axioms. I will not do this here, because I would
+like to keep this article short and simple. The interested reader
+is invited to try to translate my proof into a completely rigorous proof
+based on a set of axioms.
+
+\begin{Definition}
+Let $A(r)= $ the area of the circle of radius $r$.
+\end{Definition}
+
+To understand my proof, pretend again
+that you have never heard of the number
+$\pi$. Now I will \emph{define} $\pi$ for you.
+
+\begin{Definition}
+Let $\pi=A(1)$.
+\end{Definition}
+
+In the proof below I will mention the trigonometric functions $\sin$,
+$\cos$ and $\tan$. Since I intend to use only ``geometrically intuitive''
+reasoning, I would like to point out that these trigonometric functions
+can be defined on acute angles, with no other assumptions besides
+the fact that similar triangles have the same ratio of
+side-lengths.
+
+For convenience,
+I will use radians to measure angles. In so doing, I must be careful
+to avoid ``begging the question.'' When we first encounter radians in
+a mathematics class
+there are two important facts we learn: (i) There are $2\pi$ radians of
+angle measure in a full circle, and (ii) An angle of one radian inscribed
+in a circle of radius $r$ cuts off a circular arc of length $r$.
+ From these
+two properties of radian measure
+we could conclude immediately that
+the
+circumference of a circle is given by $C=2\pi r$.
+This of course would be a ``circular argument.'' That is to say, it would
+be cheating. The reason is the following:
+Fact (ii) is usually taken as the \emph{definition} of radian measure.
+Then, the
+formula $C=2\pi r$ is used to see
+that
+fact (i) is true. So it would be cheating
+to use facts (i) and (ii) in order to prove that
+$C=2\pi r$.
+To avoid this problem I will \emph{not assume}
+fact (ii) above. Instead I will \emph{define} radian measure so that fact
+(i) above holds. That is, let us define  one \emph{radian}
+to be the same angle measure as $[360\div(2\pi)]^{\circ}.$ Later,  when we
+have proven the formulas $A=\pi r^2$ and  $C=2\pi r$, then fact (ii) above
+will follow.
+
+
+\begin{Lemma}
+\label{Lemma0}
+For any real number $r>0$ and any real number $\theta$ with
+$0<\theta<\pi/2$, we have the following:
+$$\pi r^2 \frac{\sin\theta}{\theta}\leq A(r)\leq
+\pi r^2 \frac{\tan\theta}{\theta}.$$
+\end{Lemma}
+\begin{proof}
+Consider the  following diagram, in which $o$ is the center
+of the circle, and $\angle oac$ is a right angle.
+
+\mbox{\input{fig1.pic}}
+Notice that the area of the triangle $oab$ is less than the area of
+the circular segment $oab$ which is less than the area of the
+triangle $oac$.
+Since $\overline{bd}=r\sin\theta$,
+the area of triangle $oab$ is $\frac{1}{2}r^2\sin\theta$.
+The area of the circular
+segment $oab$ is $\frac{\theta}{2\pi}A(r)$. The area of triangle $oac$ is
+$\frac{1}{2}\tan\theta$.
+Thus we have:
+$$\frac{1}{2}r^2\sin\theta\leq\frac{\theta}{2\pi}A(r)\leq
+\frac{1}{2}r^2\tan\theta.$$
+Multiplying through by $\frac{2\pi}{\theta}$ we have
+$$\pi r^2 \frac{\sin\theta}{\theta}\leq A(r)\leq
+\pi r^2 \frac{\tan\theta}{\theta}$$
+which is what we were trying to prove.
+\end{proof}
+%
+From the above lemma we can immediately derive  a famous limit theorem.
+%
+\begin{Corollary}
+\label{Cor1}
+If $\theta$ is measured in radians, then
+$$\lim_{\theta\to 0^{+}}\frac{\sin\theta}{\theta}=1.$$
+\end{Corollary}
+\begin{proof}
+Recall that we have defined $\pi=A(1)$. Setting $r=1$ in the previous
+lemma we get:
+$$\pi \frac{\sin\theta}{\theta}\leq\pi\leq
+\pi \frac{\tan\theta}{\theta}.$$
+Canceling the term  $\pi$ we get
+$$\frac{\sin\theta}{\theta}\leq 1 \leq
+\frac{\sin\theta}{\theta}\frac{1}{\cos\theta}.$$
+Multiplying through by $\frac{\theta}{\sin\theta}$ yields
+$$1\leq\frac{\theta}{\sin\theta}\leq\frac{1}{\cos\theta}.$$
+Inverting the fractions and reversing the inequalities yields:
+\begin{equation}
+\label{x:1}
+\cos\theta\leq\frac{\sin\theta}{\theta}\leq 1.
+\end{equation}
+Just by thinking about right triangles, it is easy to see that
+as $\theta$ gets closer and closer to 0, $\cos\theta$ gets closer and
+closer to the value $1$. In symbols we write this as
+\begin{equation}
+\label{x:2}
+\lim_{\theta\to 0^{+}}\cos\theta=1.
+\end{equation}
+From formulas \ref{x:1} and \ref{x:2} it follows that
+$$\lim_{\theta\to 0^{+}}\frac{\sin\theta}{\theta}=1$$
+which is what we were trying to prove.
+\end{proof}
+%
+From the previous two results we can derive the formula for the area
+of a circle.
+%
+\begin{Theorem}
+\label{AreaTheorem}
+For all $r>0$, $A(r)=\pi r^2$.
+\end{Theorem}
+\begin{proof}
+By taking the limit as $\theta$ goes to 0 in Lemma \ref{Lemma0} and
+then applying Corollary \ref{Cor1} we get:
+$$\pi r^2\leq A(r) \leq \pi r^2.$$
+\end{proof}
+
+Now we turn to the circumference of a circle.
+\begin{Definition}
+Let $C(r)= $ the circumference of the circle of radius $r$.
+\end{Definition}
+
+%\begin{Lemma}
+%For any $r>0$ and any $\theta$ with $0<\theta<\frac{\pi}{2}$,
+%we have the following:
+%$$2\pi r\frac{\sin\theta}{\theta}\leq C(r)
+%\leq 2\pi r\frac{\sin\theta}{\theta}\frac{1}{\cos\theta}. $$
+%\end{Lemma}
+%\begin{proof}
+%Consider the  following diagram, in which $o$ is the center
+%of the circle, $\angle oac$ is a right angle, and the point $e$ is chosen
+%so that $\angle bce = \angle cbe$.
+%
+%\vspace{0.05in}
+%
+%\mbox{\input{fig2.pic}}
+%Notice that
+%$$r\sin\theta=\overline{bd}<\overline{ba}<\overset{\frown}{ba}<
+%(\overline{be}+\overline{ea})=\overline{ca}.$$
+%Most of these steps are self explanatory.
+%The second inequality is justified by the fact that the shortest distance
+%between two points is a straight line. What about the third inequality?
+%Why is it true that the circular arc from $b$ to $a$ has shorter
+%length than the polygonal path from $b$ to $a$ through the point $e$?
+%This is justified intuitively by the fact that while the two paths start
+%and end at the same points, the polygonal path goes
+%``further out of the way'' than the circular arc.\footnote{I do not see any
+%way of deriving this third inequality from any more intuitive facts. If we
+%were being completely formal and basing this proof on geometric axioms,
+%I believe that we might need to take the third inequality above as an
+%axiom.} The last equality is justified by the fact that
+%$\overline{be}=\overline{ce}$ (by definition of the point $e$.)
+%I have only included the segment $\overline{be}$ in the diagram
+%in order to justify the fact the circular arc from $b$ to $a$ has shorter
+%length than $\overline{ca}$.
+%Now $\overset{\frown}{ba}=\frac{\theta}{2\pi}C(r)$, and
+%$\overline{ca}=r\tan\theta$. Thus
+%$$r\sin\theta\leq\frac{\theta}{2\pi}C(r)\leq r\tan\theta.$$
+%Multiplying through by $2\pi/\theta$ we get
+%$$
+%2\pi r\frac{\sin\theta}{\theta}\leq C(r)
+%\leq 2\pi r\frac{\sin\theta}{\theta}\frac{1}{\cos\theta}.
+%$$
+%which is what we were trying to prove.
+%\end{proof}
+ %
+The next theorem will complete the proof of Ideas 1, 2, and 3.
+%
+\begin{Theorem}
+ For all $r>0$, $C(r)=2\pi r$.
+\end{Theorem}
+\begin{proof}
+The circumference of a circle is equal to the limit as $n$ goes to infinity
+of the perimeter of an inscribed regular $n$-gon. Let us calculate this
+perimter. The following figure illustrates the situation in the case $n=6$.
+
+\mbox{\input{fig4.pic}}
+
+Let $\theta_n=\pi/n$. In the figure, we have
+$\sin\theta_n= (\frac{1}{2}\overline{AB})/r$.
+So $\frac{1}{2}\overline{AB}=r\sin\theta_n$.
+So $\overline{AB}=2r\sin\theta_n$.
+So the perimter of an inscribed regular $n$-gon is
+$n2r\sin\theta_n=2\pi r(\sin\theta_n)/\theta_n$. So
+$$C(r)=\lim_{n\to\infty}2\pi r\frac{\sin\theta_n}{\theta_n}
+=\lim_{\theta\to 0}2\pi r\frac{\sin\theta}{\theta}=2\pi r.$$
+\end{proof}
+
+\vspace{0.2in}
+
+\noindent
+\textbf{Ideas 4 and 5.} Finally,
+we will discuss one elementary way to calculate
+approximations to the number $\pi$. In Lemma \ref{Lemma0} above, let
+$r=1$ and let $\theta=\pi/n$. The result is the following inequality:
+\begin{equation}
+\label{PiBounds}
+ n\sin\left(\frac{\pi}{n}\right)\leq\pi\leq
+n\tan\left(\frac{\pi}{n}\right).
+\end{equation}
+If we let $n=6$ we get
+$$6\times\frac{1}{2}\leq\pi\leq 6\times\frac{1}{\sqrt{3}}.$$
+If we then use the approximation $1.73\leq\sqrt{3}$, we arrive at the rough
+approximation
+$$3\leq\pi\leq 3.5.$$
+This approximation is rough, but at least we have \emph{proved} it,
+and using very elementary techniques.
+
+The inequalities in \ref{PiBounds} can in principle be used to estimate
+$\pi$ with as much accuracy as we desire. If we make the integer $n$ larger
+and larger, we will get more and more accurate estimates. Of course this
+still leaves us with the problem of estimating $\sin(\pi/n)$ and
+$\tan(\pi/n)$. Notice that the solution ``use a calculator to estimate
+$\sin(\pi/n)$ and $\tan(\pi/n)$'' is of no help at all. We could of course
+use our calculator to immediately
+find an estimation of $\pi$ to 8 decimal places. But
+then we wouldn't understand how the calculator is arriving at this estimate.
+The whole point is to prove
+ our estimate of $\pi$ using elementary techniques.
+The \emph{half-angle} formulas from trigonometry will come to our
+rescue:
+$$
+\sin\frac{\theta}{2}=\sqrt{\frac{1-\cos\theta}{2}}
+\quad\text{ and }\quad
+\cos\frac{\theta}{2}=\sqrt{\frac{1+\cos\theta}{2}}
+$$
+Since we know $\sin(\pi/6)$ and $\cos(\pi/6)$, using the half-angle
+formulas repeatedly will allow us to calculate $\sin(\pi/n)$,
+$\cos(\pi/n)$, and $\tan(\pi/n)$, for $n=6,12,24,48,96,\cdots$.
+With $n=12$ we get the estimate
+$$12\times\frac{\sqrt{2-\sqrt{3}}}{2}\leq\pi\leq 12\times(2-\sqrt{3})$$
+and by approximating the square roots we get $3.1\leq\pi\leq 3.22$.
+With $n=24$ we get the estimate
+$$24\times\frac{\sqrt{2-\sqrt{2+\sqrt{3}}}}{2}\leq\pi
+\leq 24\times\left(2\sqrt{2+\sqrt{3}}-2-\sqrt{3}\right)$$
+and by approximating the square roots we get
+$3.13\leq\pi\leq 3.16$. As you can see, our method of approximating
+$\pi$ is not very \emph{efficient}. There are far more efficient
+algorithms for estimating $\pi$, but we will not go into them here.
+
+\skipsmall
+
+\noindent
+\textbf{\large A Different Point of View}
+
+\skipsmall
+
+In the previous section I took the point of view that it is desirable to
+prove
+the formulas $A=\pi r^2$ and $C=2\pi r$ using geometrically intuitive
+reasoning, and using as little abstract analysis as possible. It is
+also possible to take the opposite point of view, namely that it is
+desirable to prove the two formulas using \emph{no} geometric reasoning,
+and using only abstract analysis. I conclude this article with a quick
+sketch of how one might do this.
+
+To begin with, one can \emph{define} the circle of radius $r$ to be the
+graph of the equation $x^2+y^2=r^2$. Then, letting $f(x)=\sqrt{r^2-x^2}$,
+one can \emph{define} the area and circumference
+of this circle with the formulas
+$$A(r)=4\int_0^r f(x)dx\quad\text{ and }\quad
+C(r)=4\int_0^r \sqrt{1+ \big(\fprime(x)\big)^2}dx.$$
+Then one can \emph{define} the sine and cosine functions by the
+familiar power series:
+$$
+\sin x =x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\cdots
+\quad\text{ and}\quad
+\cos x =1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\cdots
+$$
+With these definitions alone, and without appealing to geometry at all,
+one can prove all of the familiar properties of the trigonometric functions.
+In particular one can prove that for all $x$, $\sin^2 x + \cos^2 x$=1,
+that $\sin$ and $\cos$ are \emph{periodic} functions, and that
+the derivative of the function $\sin x$ is $\cos x$, and the derivative
+of the function $\cos x$ is $-\sin x$. Then one can \emph{define} the number
+$\pi$ as half the period of the $\sin$ function. Then one can
+prove that $\sin(\frac{\pi}{2})=1$, that $\sin(-\frac{\pi}{2})=-1$ and
+that $\sin x$ is a one-to-one function on the interval $[-\pi/2,\pi/2]$.
+Now let $\sin^{-1} x$ be the inverse of the function $\sin x$ over the
+interval $[-\pi/2, \pi/2]$. So $\sin^{-1}(1)=\pi/2$, and $\sin^{-1}(0)=0$.
+Letting
+$F(x)=\frac{r^2}{2}\sin^{-1}\left(\frac{x}{r}\right)+
+\frac{x}{2}\sqrt{r^2-x^2}$
+and letting $G(x)=r\sin^{-1}(x/r)$
+one can prove that $\Fprime(x)=\sqrt{r^2-x^2}=f(x)$
+and $\Gprime(x)=r\big(r^2-x^2\big)^{-1/2}=\sqrt{1+ \big(\fprime(x)\big)^2}$.
+Finally, one can conclude that
+\begin{multline*}
+$$A(r)=4\int_0^{r}f(x)dx=4\big[F(x)\big]_0^r=
+4\big[\frac{r^2}{2}\sin^{-1}(1)\big]=\\
+4\big[\frac{r^2}{2}\frac{\pi}{2}\big]
+=\pi r^2
+\end{multline*}
+and that
+\begin{multline*}
+C(r)=4\int_0^r \sqrt{1+ \big(\fprime(x)\big)^2}dx=4\big[G(x)\big]_0^r=
+4r\big[\sin^{-1}(1)\big]=\\
+4r\big[\frac{\pi}{2}\big]=2\pi r.
+\end{multline*}
+
+\begin{thebibliography}{1}
+\bibitem{one}Petr Beckmann. \emph{A History of Pi}, fourth edition.
+The Golem Press, Boulder, CO, 1977.
+\bibitem{two}David M.~Burton. \emph{Burton's History of Mathematics: An
+Introduction}, third edition. Wm.~C. Brown Publishers, Dubuque, IA, 1995.
+\end{thebibliography}
+
+\end{document}

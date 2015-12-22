@@ -1,0 +1,37 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Theorem-Like Declarations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+
+\theoremstyle{definition}
+
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remarks}[theorem]{Remarks}
+\newtheorem{notation}[theorem]{Notation}
+
+\theoremstyle{remark}
+
+%\newtheorem*{note}{Note}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem*{fact}{Fact}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{ch}{The Continuum Hypothesis}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+ 
+ \newenvironment*{case}[1]
+{\textbf{Case #1.  }\itshape }
+
+\newenvironment*{claim}[1][Claim]
+{\textbf{#1.  }\itshape }
+

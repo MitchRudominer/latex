@@ -1,0 +1,299 @@
+% This is the file intro.tex
+
+\skipbig
+
+\section{Introduction}
+
+\label{section:intro}
+
+ This paper is best understood as being part of
+a certain programme in set theory---a
+programme whose goal is to explore the connections between descriptive
+set theory and inner model theory. We begin by describing some
+of the other contributions to this programme. The following several
+results are all of a common theme:  From descriptive set theory one
+takes a countable, definable set of reals, $A$. It is then shown that
+$A=\R\intersect\cM$, where $\cM$ is some canonical model from inner
+model theory. In technical terms, $\cM$ is a mouse. Consequently we
+say that $A$ is a \emph{mouse set.}
+
+We begin with some results due to D. A. Martin, J. R. Steel, and
+H. Woodin. First a definition.
+If $\xi$ is a countable ordinal and $x\in\R$  and $n\geq2$, then  we say
+that
+$x\in\Delta^1_n(\xi)$ if for every real $w\in\WO$ such that $|w|=\xi$,
+$x\in\Delta^1_n(w)$. Set
+$$A_n = \setof{x\in\R}{(\exists\xi<\omega_1)\; x\in\Delta^1_n(\xi)}.$$
+In short, $A_n$ is the set of reals which are $\Delta^1_n$
+in a countable ordinal.
+Under the hypothesis of Projective Determinacy ($\PD$),
+the sets $A_n$ are of
+much interest to descriptive set theorists.
+If $n\geq2$ is even then $A_n = C_n$, the largest
+countable $\Sigma^1_n$ set. If $n\geq3$ is odd then
+$A_n=Q_n$, the largest countable $\Pi^1_n$ set which is closed downward
+under
+$\Delta^1_n$ degrees. The sets $A_n$ have been studied extensively by
+descriptive set theorists. See for example \cite{Kechris1} and
+\cite{Q_Theory}.
+
+The work of Martin, Steel, and Woodin shows that there is a connection
+between the sets $A_n$, and certain inner models of the form
+$L[\vec{E}]$, where $\vec{E}$ is a sequence of extenders.
+In the paper ``Projectively Wellordered Inner Models''
+\cite{Proj_WO_In_Mod}, Martin,
+Steel, and Woodin
+prove the following theorem:
+
+\begin{theorem}[Martin, Steel, Woodin]
+\label{FirstThm}
+Let $n\geq1$ and suppose that there are $n$ Woodin
+cardinals with a measurable cardinal above them. Let
+$\cM_n$ be the canonical $L[\vec{E}]$ model with $n$ Woodin cardinals. Then
+$$\R\intersect\cM_n=A_{n+2}.$$
+\end{theorem}
+
+The above theorem is also true with $n=0$. The ``canonical $L[\vec{E}]$
+model with $0$ Woodin cardinals'' is just the model $L$. If there is
+a measurable cardinal, then $A_2=C_2=\R\intersect L$. Actually, this result
+is true under the weaker hypothesis that $\R\intersect L$ is countable.
+
+Now let $A^*$ be the collection of reals which are ordinal definable in
+$\LofR$.
+To emphasize the parallel with the sets $A_n$ above, note that assuming
+that every game in $L(\R)$ is determined ($\AD^{\LofR}$), we have:
+$$A^*=\setof{x\in\R}{(\exists\xi<\omega_1)\;
+x\in(\Delta^2_1)^{\LofR}(\xi)},$$
+and $A^*$ is the largest countable $(\Sigma^2_1)^{\LofR}$ set of reals.
+
+In the paper ``Inner Models with Many Woodin Cardinals''
+\cite{Many_Woodins}, Steel
+and Woodin prove
+the following theorem:
+
+\begin{theorem}[Steel, Woodin]
+\label{SecondThm}
+ Suppose that there are $\omega$ Woodin
+cardinals with a measurable cardinal above them. Let
+$\cM_{\omega}$ be the canonical $L[\vec{E}]$ model with $\omega$ Woodin
+cardinals. Then
+$$\R\intersect\cM_{\omega}=A^*.$$
+\end{theorem}
+
+Theorems \ref{FirstThm} and \ref{SecondThm} are obviously similar to
+each other. Let us establish some terminology which will allow us to
+describe this similarity.
+Given a pointclass $\Delta$ let us set:
+$$A_{\Delta}=\setof{x\in\R}{(\exists\xi<\omega_1)\; x\in\Delta(\xi)}.$$
+Theorems  \ref{FirstThm} and \ref{SecondThm} both establish
+results of the form:
+$A_{\Delta}$ is a mouse set. Theorem \ref{FirstThm} does this for
+$\Delta=\Delta^1_n$. Theorem \ref{SecondThm} does this for
+$\Delta=(\Delta^2_1)^{\LofR}$. Furthermore, the two theorems do
+not merely show that there \emph{exists some} mouse $\cM$ such
+that $A_{\Delta}=\R\intersect\cM$. The theorems actually describe
+$\cM$ in terms of the large cardinal axioms that it satisfies.
+
+There is quite a bit of
+ room between theorems \ref{FirstThm} and \ref{SecondThm}.
+One  way to describe this room is in terms of the levels of the model
+$\LofR$. For convenience, we will use the Jensen $J$-hierarchy for
+$\LofR$. We define $J_1(\R)$ to be $\R\union\HF$. For
+$\lambda$ a limit ordinal we set
+$\JofR{\lambda}=\Union{\alpha<\lambda}\JalphaR$. For $\alpha\geq 1$
+we set $\JofR{\alpha+1}$ to be the rudimentary closure of
+$\JalphaR\union\singleton{\JalphaR}$. Then $\LofR=\Union{\alpha}\JalphaR$.
+See \cite{Scales_In_LofR} or \cite{Mouse_Sets} for a more detailed
+discussion. Now let $\delta=(\delta^2_1)^{\LofR}$
+be the least ordinal such that
+$\JofR{\delta}$ is a $\Sigma_1$ elementary submodel of $\LofR$.
+Then we can characterize the room between theorems \ref{FirstThm}
+and \ref{SecondThm} by pointing out that the first theorem is
+concerned  with the pointclasses $\Delta_n(\JofR{1})$, and the
+second theorem is concerned with the pointclass $\Delta_1(\JofR{\delta})$.
+Assuming $\AD^{\LofR}$, $\delta$ is a large cardinal in $\LofR$ (for
+example it is an inaccessible limit of inaccessibles.)
+From this point of view there is quite a bit of
+ room between
+theorems \ref{FirstThm} and \ref{SecondThm}.
+
+Given the above discussion,
+it is natural to conjecture that $A_{\Delta}$ is a mouse set for
+$\Delta=\Delta_n(\JalphaR)$, for \emph{all} $\alpha$ and \emph{all}
+$n$. In \cite{Mouse_Sets} we do make such a conjecture (in a slightly
+more precise formulation.) In that paper we are not able to fully
+prove the conjecture, but we are able to prove the conjecture for
+\emph{some} $\alpha$ and \emph{some} $n$.
+Our main theorem in \cite{Mouse_Sets} is
+similar to theorems \ref{FirstThm} and \ref{SecondThm} above in that
+we not only show that there \emph{exists some} mouse $\cM$ such that
+$A_{\Delta}=\R\intersect\cM$, we actually describe $\cM$ in terms of
+the large cardinal axioms which it satisfies.  Independently,
+and using entirely different techniques, Woodin
+has shown that $A_{\Delta}$ is
+a mouse set for $\Delta=\Delta_1(\JofR{\lambda})$, for all limit
+ordinals $\lambda$. See \cite{Woodins_Mouse_Sets}.
+Woodin's proof shows only that there
+\emph{exists some} mouse $\cM$ such that
+$A_{\Delta}=\R\intersect\cM$. The mouse $\cM$ is not described in terms
+of the large cardinal axioms which it satisfies.
+
+Now we turn to the topic of the current paper. In this paper we will show
+that $A_{\Delta}$ is a mouse set, for $\Delta =$ the pointclass of
+\emph{hyperprojective} sets. (See below for the definition of
+hyperprojective.)
+ Assuming determinacy, $A_{\Delta}$ is
+the largest countable inductive set. Thus there are obvious parallels
+between our result, and the results of theorems \ref{FirstThm} and
+\ref{SecondThm} above. We may also compare our result with those of
+theorems \ref{FirstThm} and \ref{SecondThm} by looking at  levels
+of $\LofR$. Another way of describing the main result of this paper
+is to say that we will show that $A_{\Delta}$ is a mouse set, for
+$\Delta=\Delta_1(\JofR{\kappa})$, where $\kappa=\kappa^{\R}$ is the
+least ordinal such that $\JofR{\kappa}$ is admissible. Since
+$1<\kappa^{\R}<(\delta^2_1)^{\LofR}$, the result of this paper is
+strictly \emph{between} those of theorem \ref{FirstThm} and
+and theorem \ref{SecondThm} above.
+
+We will feel free to use terms and concepts from inner model theory.
+In particular, we will expect the reader to have some familiarity
+with the papers \cite{FSIT} and \cite{Many_Woodins}.
+
+Some of the research for this paper was done while I was a
+graduate student at UCLA, although the results do not appear in my
+ PhD thesis. I would like to thank my thesis advisor,
+Professor John Steel.
+
+\skipmed
+
+\noindent
+\textbf{The Pointclass of Inductive Sets}
+
+\skipsmall
+
+The pointclass of inductive sets has several different equivalent
+descriptions. (Throughout this paper we shall only be using the
+term ``inductive'' in the \emph{lightface} sense. This is what is
+called ``absolutely inductive'' in \cite{DST}.)  In section 7C of
+\cite{DST} the inductive sets are defined as the \emph{positive
+analytical inductive sets on $\R$.} It is shown there that the class
+of all inductive sets is the smallest Spector pointclass which is closed
+under both $\forall^{\R}$ and $\exists^{\R}$. The compliment of an
+inductive set is called \emph{co-inductive.} If $X$ is both inductive
+and co-inductive then we say that $X$ is \emph{hyperprojective}. As we
+shall not have any need for the concept of
+``positive analytical inductive,'' we shall not go into any more detail
+about it here. Instead we give two other equivalent  characterizations
+of the inductive sets.
+
+\begin{definition}
+$\kappa^{\R}$ is the least ordinal $\kappa$ so that
+$\JofR{\kappa}$ is admissible.
+\end{definition}
+
+For convenience we  make the following convention.
+
+\begin{notation}
+For the rest of the paper  $\kappa$ will refer exclusively
+to $\kappa^{\R}$.
+\end{notation}
+
+ A set $X\subset\R$ is inductive iff
+$X$ is $\Sigma_1$ definable over the model $\JofR{\kappa}$, with
+the point $\R$ as a parameter. As we shall always allow the point
+$\R$ as a parameter in definitions over the models $\JalphaR$, we suppress
+mention of it in our notation. Thus we write that $X$ is inductive
+iff $X$ is $\Sigma_1(\JofR{\kappa})$. (See \cite{Scales_In_LofR} or
+\cite{Mouse_Sets} for a more detailed discussion of definability over
+the models $\JalphaR$.) Similarly, $X$ is co-inductive iff $X$ is
+$\Pi_1(\JofR{\kappa})$ and $X$ is hyperprojective iff $X$ is
+$\Delta_1(\JofR{\kappa})$.
+
+\begin{definition}
+$\Ahyp = $ the set of all $x\in\R$ such that
+$(\exists\alpha<\kappa^{\R})$ so that $x$ is  definable over
+$\JalphaR$ from ordinal parameters.
+\end{definition}
+
+It is not difficult to see that $x\in \Ahyp$ iff
+ $\singleton{x}$ is $\Sigma_1(\JofR{\kappa},\singleton{\xi})$, for some
+ordinal $\xi$, iff
+ $\singleton{x}$
+is $\Delta_1(\JofR{\kappa},\singleton{\xi})$.
+ Assuming determinacy  $\Ahyp$ is countable,
+and so we may take $\xi$ to be a countable ordinal. Thus
+$\Ahyp$ is what we were above calling $A_{\Delta}$, for
+$\Delta = $ the pointclass of hyperprojective sets. Also assuming
+determinacy, it is not difficult to see that $\Ahyp$ is the
+largest countable inductive set.
+
+In this paper we will show that $\Ahyp$ is a mouse set, that is that
+$\Ahyp=\R\intersect\cM$ for some mouse $\cM$. There are
+two halves to this proof. In section \ref{section:comparison} we use
+a comparison argument to show that $\R\intersect\cM\subseteq\Ahyp$,
+and in section \ref{section:correctness} we prove a correctness
+theorem which implies that $\Ahyp\subseteq\R\intersect\cM$.
+
+Let $\Sigma^*_0 =$ the class of all sets $X\subseteq\R$ such that
+$X=X_1\union X_2$ where $X_1$ is inductive and $X_2$ is coinductive.
+ Let $\Pi^*_n$ be the class of complements of $\Sigma^*_n$ sets
+and let $\Sigma^*_{n+1}$ be the class of projections of $\Pi^*_n$ sets.
+Equivalently,  $\Sigma^*_n=\Sigma_{n+1}(\JofR{\kappa})$, for $n\geq 1$.
+(To see this use the fact that $\JofR{\kappa}$ projects to $\R$.
+See \cite{Scales_In_LofR}.) In \cite{Largest_This_That}, Martin
+shows that $\Ahyp$ is equal to the set of reals which are
+$\Sigma^*_n$ for some $n$. In section \ref{section:Martin_Theorem}
+we reprove one direction of Martin's theorem using
+purely inner-model-theoretic techniques. Using our characterization
+of $\Ahyp$ as $\R\intersect\cM$ for some premouse $\cM$, we show that
+every $\Sigma^*_n$ real $x$ is in $\Ahyp$ by showing that $x\in\cM$.
+
+We shall need one other characterization of the inductive sets: A set
+$A\subseteq\R$ is inductive iff $A$ is $\Game^{\R}$-open.  That is
+iff there is a function $x\mapsto G_x$ such that for all reals $x$,
+$x\in A \leftrightarrow $ player $I$ wins $G_x$, where $G_x$ is
+an open game on $\R$ which is continuously associated to  $x$.
+More precisely, $A$ is inductive
+iff there is some arithmetic set
+$P\subseteq \omega^{<\omega}\times(\omega^{<\omega})^{<\omega}$ such
+that $x\in A$ iff
+$$(\exists y_1\in\R) (\forall y_2\in\R) (\exists y_3\in\R)
+\cdots (\exists n\in\omega) \;
+P(x\restr n, y_1\restr n, y_2\restr n,\dots, y_n\restr n).$$
+Similarly, $A$ is co-inductive iff $A$ is $\Game^{\R}$-closed.
+
+\skipmed
+
+\noindent
+\textbf{Fairly Small Premice}
+
+\skipsmall
+
+In this paper we will show that $\Ahyp$ is a mouse set.
+We shall not only show that there exists some mouse $\cM$ such that
+$\Ahyp=\R\intersect\cM$, we shall describe $\cM$ in terms
+of the large cardinal axioms which it satisfies. By examining
+theorems \ref{FirstThm} and \ref{SecondThm} above, we can see that
+$\cM$ must satisfy a large cardinal axiom which is stronger than
+$\ZFC + $ ``there exists $n$ Woodin cardinals'', for each $n$, but weaker
+than $\ZFC + $ ``there exists $\omega$ Woodin cardinals''. To obtain
+the large cardinal axiom which $\cM$ will satisfy, we start with the
+hypothesis $\ZFC + $ ``there exists $\omega$ Woodin cardinals'', and
+we remove the assumption that there are any ordinals above the
+supremum of the $\omega$ Woodin cardinals.
+
+The mice used in section 4 of \cite{Many_Woodins} are called $\omega$-small.
+The mice used in \cite{Proj_WO_In_Mod} are called $n$-small.
+We need a notion which fits between these two notions. Without any
+thought as to its use beyond this paper, we will adopt the term
+\emph{fairly small.}
+
+\begin{definition}
+Let $\cM$ be a premouse. Then we will say that $\cM$ is
+\emph{fairly big} iff there is an initial segment
+$\cN\initseg\cM$ such that there is an increasing
+$\omega$-sequence of ordinals
+$\delta_1< \delta_2< \delta_3,\dots$ such that each $\delta_i$
+is a Woodin cardinal of $\cN$. If $\cM$ is not fairly big then
+we will say the $\cM$ is \emph{fairly small}.
+\end{definition}

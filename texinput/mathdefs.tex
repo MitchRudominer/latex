@@ -1,0 +1,338 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Common Set Theory Constructs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\setof}[2]{\left\{ \, #1 \, \left| \, #2 \, \right.\right\}}
+\newcommand{\lsetof}[2]{\left\{\left. \, #1 \, \right| \, #2 \,  \right\}}
+\newcommand{\bigsetof}[2]{\bigl\{ \, #1 \, \bigm | \, #2 \,\bigr\}}
+\newcommand{\Bigsetof}[2]{\Bigl\{ \, #1 \, \Bigm | \, #2 \,\Bigr\}}
+\newcommand{\biggsetof}[2]{\biggl\{ \, #1 \, \biggm | \, #2 \,\biggr\}}
+\newcommand{\Biggsetof}[2]{\Biggl\{ \, #1 \, \Biggm | \, #2 \,\Biggr\}}
+\newcommand{\dotsetof}[2]{\left\{ \, #1 \, : \, #2 \, \right\}}
+\newcommand{\bigdotsetof}[2]{\bigl\{ \, #1 \, : \, #2 \,\bigr\}}
+\newcommand{\Bigdotsetof}[2]{\Bigl\{ \, #1 \, \Bigm : \, #2 \,\Bigr\}}
+\newcommand{\biggdotsetof}[2]{\biggl\{ \, #1 \, \biggm : \, #2 \,\biggr\}}
+\newcommand{\Biggdotsetof}[2]{\Biggl\{ \, #1 \, \Biggm : \, #2 \,\Biggr\}}
+\newcommand{\sequence}[2]{\left\langle \, #1 \,\left| \, #2 \, \right. \right\rangle}
+\newcommand{\lsequence}[2]{\left\langle\left. \, #1 \, \right| \,#2 \,  \right\rangle}
+\newcommand{\bigsequence}[2]{\bigl\langle \,#1 \, \bigm | \, #2 \, \bigr\rangle}
+\newcommand{\Bigsequence}[2]{\Bigl\langle \,#1 \, \Bigm | \, #2 \, \Bigr\rangle}
+\newcommand{\biggsequence}[2]{\biggl\langle \,#1 \, \biggm | \, #2 \, \biggr\rangle}
+\newcommand{\Biggsequence}[2]{\Biggl\langle \,#1 \, \Biggm | \, #2 \, \Biggr\rangle}
+\newcommand{\singleton}[1]{\left\{#1\right\}}
+\newcommand{\angles}[1]{\left\langle #1 \right\rangle}
+\newcommand{\bigangles}[1]{\bigl\langle #1 \bigr\rangle}
+\newcommand{\Bigangles}[1]{\Bigl\langle #1 \Bigr\rangle}
+\newcommand{\biggangles}[1]{\biggl\langle #1 \biggr\rangle}
+\newcommand{\Biggangles}[1]{\Biggl\langle #1 \Biggr\rangle}
+
+\newcommand{\force}[1]{\Vert\!\underset{\!\!\!\!\!#1}{\!\!\!\relbar\!\!\!%
+\relbar\!\!\relbar\!\!\relbar\!\!\!\relbar\!\!\relbar\!\!\relbar\!\!\!%
+\relbar\!\!\relbar\!\!\relbar}}
+\newcommand{\nforce}[1]{\Vert\!\underset{\!\!\!\!\!#1}{\!\!\!\relbar\!\!\!%
+\relbar\!\!\relbar\!\!\relbar\!\!\!\relbar\!\!\relbar\!\!\relbar\!\!\!%
+\relbar\!\!\not\relbar\!\!\relbar}}
+\newcommand{\forcein}[2]{\overset{#2}{\Vert\underset{\!\!\!\!\!#1}%
+{\!\!\!\relbar\!\!\!\relbar\!\!\relbar\!\!\relbar\!\!\!\relbar\!\!\relbar\!%
+\!\relbar\!\!\!\relbar\!\!\relbar\!\!\relbar\!\!\relbar\!\!\!\relbar\!\!%
+\relbar\!\!\relbar}}}
+
+\newcommand{\pre}[2]{{}^{#2}\!{#1}}
+
+\newcommand{\restr}{\!\!\upharpoonright\!}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set-Theoretic Connectives
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\intersect}{\cap}
+\newcommand{\union}{\cup}
+\newcommand{\Intersection}[1]{\bigcap\limits_{#1}}
+\newcommand{\Union}[1]{\bigcup\limits_{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Miscellaneous
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\defeq}{=_{\text{def}}}
+\newcommand{\Turingleq}{\leq_{\text{T}}}
+\newcommand{\Turingless}{<_{\text{T}}}
+\newcommand{\lexleq}{\leq_{\text{lex}}}
+\newcommand{\lexless}{<_{\text{lex}}}
+\newcommand{\Turingequiv}{\equiv_{\text{T}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Constants
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\LofR}{L(\R)}
+\newcommand{\JofR}[1]{J_{#1}(\R)}
+\newcommand{\SofR}[1]{S_{#1}(\R)}
+\newcommand{\JalphaR}{\JofR{\alpha}}
+\newcommand{\JbetaR}{\JofR{\beta}}
+\newcommand{\JlambdaR}{\JofR{\lambda}}
+\newcommand{\SalphaR}{\SofR{\alpha}}
+\newcommand{\SbetaR}{\SofR{\beta}}
+\DeclareMathOperator{\ORD}{OR}
+\DeclareMathOperator{\Ord}{OR}
+\DeclareMathOperator{\WO}{WO}
+\DeclareMathOperator{\OD}{OD}
+\DeclareMathOperator{\HOD}{HOD}
+\DeclareMathOperator{\HC}{HC}
+\DeclareMathOperator{\WF}{WF}
+\DeclareMathOperator{\HF}{HF}
+\newcommand{\One}{I}
+\newcommand{\ONE}{I}
+\newcommand{\Two}{II}
+\newcommand{\TWO}{II}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theories
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareMathOperator{\ZFC}{ZFC}
+\DeclareMathOperator{\ZF}{ZF}
+\DeclareMathOperator{\AD}{AD}
+\DeclareMathOperator{\KP}{KP}
+\DeclareMathOperator{\PD}{PD}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Iteration Trees
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\pred}{\text{-pred}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Operator Names
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareMathOperator{\Det}{Det}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\range}{ran}
+\DeclareMathOperator{\crit}{crit}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\cof}{cof}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\ot}{o.t.}
+\DeclareMathOperator{\ro}{r.o.}
+\DeclareMathOperator{\rud}{rud}
+\DeclareMathOperator{\Powerset}{\mathcal{P}}
+\DeclareMathOperator{\length}{lh}
+\DeclareMathOperator{\lh}{lh}
+\DeclareMathOperator{\fld}{fld}
+\DeclareMathOperator{\projection}{p}
+\DeclareMathOperator{\Ult}{Ult}
+\DeclareMathOperator{\ULT}{Ult}
+\DeclareMathOperator{\Coll}{Coll}
+\DeclareMathOperator{\Col}{Coll}
+\DeclareMathOperator{\Hull}{Hull}
+\DeclareMathOperator*{\dirlim}{dir lim}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\trancl}{tran.cl.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Logical Connectives
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\IImplies}{\Longrightarrow}
+\newcommand{\Ifff}{\Longleftrightarrow}
+\newcommand{\iimplies}{\longrightarrow}
+\newcommand{\ifff}{\longleftrightarrow}
+\newcommand{\Implies}{\Rightarrow}
+\newcommand{\Iff}{\Leftrightarrow}
+\renewcommand{\implies}{\rightarrow}
+\renewcommand{\iff}{\leftrightarrow}
+\newcommand{\AND}{\wedge}
+\newcommand{\OR}{\vee}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Function Arrows
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\injection}{\xrightarrow{\text{1-1}}}
+\newcommand{\surjection}{\xrightarrow{\text{onto}}}
+\newcommand{\bijection}{\xrightarrow[\text{onto}]{\text{1-1}}}
+\newcommand{\cofmap}{\xrightarrow{\text{cof}}}
+\newcommand{\map}{\rightarrow}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mouse Comparison Operators
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\initseg}{\trianglelefteq}
+\newcommand{\properseg}{\lhd}
+\newcommand{\notinitseg}{\ntrianglelefteq}
+\newcommand{\notproperseg}{\ntriangleleft}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           calligraphic letters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          Primed Letters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\aprime}{a^{\prime}}
+\newcommand{\bprime}{b^{\prime}}
+\newcommand{\cprime}{c^{\prime}}
+\newcommand{\dprime}{d^{\prime}}
+\newcommand{\eprime}{e^{\prime}}
+\newcommand{\fprime}{f^{\prime}}
+\newcommand{\gprime}{g^{\prime}}
+\newcommand{\hprime}{h^{\prime}}
+\newcommand{\iprime}{i^{\prime}}
+\newcommand{\jprime}{j^{\prime}}
+\newcommand{\kprime}{k^{\prime}}
+\newcommand{\lprime}{l^{\prime}}
+\newcommand{\mprime}{m^{\prime}}
+\newcommand{\nprime}{n^{\prime}}
+\newcommand{\oprime}{o^{\prime}}
+\newcommand{\pprime}{p^{\prime}}
+\newcommand{\qprime}{q^{\prime}}
+\newcommand{\rprime}{r^{\prime}}
+\newcommand{\sprime}{s^{\prime}}
+\newcommand{\tprime}{t^{\prime}}
+\newcommand{\uprime}{u^{\prime}}
+\newcommand{\vprime}{v^{\prime}}
+\newcommand{\wprime}{w^{\prime}}
+\newcommand{\xprime}{x^{\prime}}
+\newcommand{\yprime}{y^{\prime}}
+\newcommand{\zprime}{z^{\prime}}
+\newcommand{\Aprime}{A^{\prime}}
+\newcommand{\Bprime}{B^{\prime}}
+\newcommand{\Cprime}{C^{\prime}}
+\newcommand{\Dprime}{D^{\prime}}
+\newcommand{\Eprime}{E^{\prime}}
+\newcommand{\Fprime}{F^{\prime}}
+\newcommand{\Gprime}{G^{\prime}}
+\newcommand{\Hprime}{H^{\prime}}
+\newcommand{\Iprime}{I^{\prime}}
+\newcommand{\Jprime}{J^{\prime}}
+\newcommand{\Kprime}{K^{\prime}}
+\newcommand{\Lprime}{L^{\prime}}
+\newcommand{\Mprime}{M^{\prime}}
+\newcommand{\Nprime}{N^{\prime}}
+\newcommand{\Oprime}{O^{\prime}}
+\newcommand{\Pprime}{P^{\prime}}
+\newcommand{\Qprime}{Q^{\prime}}
+\newcommand{\Rprime}{R^{\prime}}
+\newcommand{\Sprime}{S^{\prime}}
+\newcommand{\Tprime}{T^{\prime}}
+\newcommand{\Uprime}{U^{\prime}}
+\newcommand{\Vprime}{V^{\prime}}
+\newcommand{\Wprime}{W^{\prime}}
+\newcommand{\Xprime}{X^{\prime}}
+\newcommand{\Yprime}{Y^{\prime}}
+\newcommand{\Zprime}{Z^{\prime}}
+\newcommand{\alphaprime}{\alpha^{\prime}}
+\newcommand{\betaprime}{\beta^{\prime}}
+\newcommand{\gammaprime}{\gamma^{\prime}}
+\newcommand{\Gammaprime}{\Gamma^{\prime}}
+\newcommand{\deltaprime}{\delta^{\prime}}
+\newcommand{\epsilonprime}{\epsilon^{\prime}}
+\newcommand{\kappaprime}{\kappa^{\prime}}
+\newcommand{\lambdaprime}{\lambda^{\prime}}
+\newcommand{\rhoprime}{\rho^{\prime}}
+\newcommand{\Sigmaprime}{\Sigma^{\prime}}
+\newcommand{\tauprime}{\tau^{\prime}}
+\newcommand{\xiprime}{\xi^{\prime}}
+\newcommand{\thetaprime}{\theta^{\prime}}
+\newcommand{\Omegaprime}{\Omega^{\prime}}
+\newcommand{\cMprime}{\cM^{\prime}}
+\newcommand{\cNprime}{\cN^{\prime}}
+\newcommand{\cPprime}{\cP^{\prime}}
+\newcommand{\cQprime}{\cQ^{\prime}}
+\newcommand{\cRprime}{\cR^{\prime}}
+\newcommand{\cSprime}{\cS^{\prime}}
+\newcommand{\cTprime}{\cT^{\prime}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          bar Letters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\abar}{\bar{a}}
+\newcommand{\bbar}{\bar{b}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          Formulas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\formulaphi}{\text{\large $\varphi$}}
+\newcommand{\Formulaphi}{\text{\Large $\varphi$}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          Fraktur Letters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\fA}{\mathfrak{A}}
+\newcommand{\fB}{\mathfrak{B}}
+\newcommand{\fC}{\mathfrak{C}}
+\newcommand{\fD}{\mathfrak{D}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          Bold Letters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\bd}{\mathbf{d}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Projective-Like Pointclasses
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\Sa}[2][\alpha]{\Sigma_{(#1,#2)}}
+\newcommand{\Pa}[2][\alpha]{\Pi_{(#1,#2)}}
+\newcommand{\Da}[2][\alpha]{\Delta_{(#1,#2)}}
+\newcommand{\Aa}[2][\alpha]{A_{(#1,#2)}}
+\newcommand{\Ca}[2][\alpha]{C_{(#1,#2)}}
+\newcommand{\Qa}[2][\alpha]{Q_{(#1,#2)}}
+\newcommand{\da}[2][\alpha]{\delta_{(#1,#2)}}
+\newcommand{\leqa}[2][\alpha]{\leq_{(#1,#2)}}
+\newcommand{\lessa}[2][\alpha]{<_{(#1,#2)}}
+\newcommand{\equiva}[2][\alpha]{\equiv_{(#1,#2)}}
+
+
+\newcommand{\Sl}[1]{\Sa[\lambda]{#1}}
+\newcommand{\Pl}[1]{\Pa[\lambda]{#1}}
+\newcommand{\Dl}[1]{\Da[\lambda]{#1}}
+\newcommand{\Al}[1]{\Aa[\lambda]{#1}}
+\newcommand{\Cl}[1]{\Ca[\lambda]{#1}}
+\newcommand{\Ql}[1]{\Qa[\lambda]{#1}}
+
+\newcommand{\San}{\Sa{n}}
+\newcommand{\Pan}{\Pa{n}}
+\newcommand{\Dan}{\Da{n}}
+\newcommand{\Can}{\Ca{n}}
+\newcommand{\Qan}{\Qa{n}}
+\newcommand{\Aan}{\Aa{n}}
+\newcommand{\dan}{\da{n}}
+\newcommand{\leqan}{\leqa{n}}
+\newcommand{\lessan}{\lessa{n}}
+\newcommand{\equivan}{\equiva{n}}

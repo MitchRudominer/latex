@@ -1,0 +1,246 @@
+% This is the file compare.tex
+
+\skipbig
+
+\section{Comparison Lemma for
+$\protect{\Game^{\R}}$-Closed Iterable Mice}
+
+\label{section:comparison}
+
+In this section we will give half of the proof that $\Ahyp$ is
+a mouse set. We will show that if $x\in\R\intersect\cM$, where
+$\cM$ is a fairly small, iterable premouse, then $x\in\Ahyp$. This
+is true because, essentially, $\cN\in\Ahyp$, where $\cN\initseg\cM$ is
+the $\initseg$-least initial segment of $\cM$ containing $x$.
+The reason that $\cN$ is simply
+definable is that $\cN$ is the unique premouse
+of its ordinal height which is sound, projects to $\omega$, and
+is iterable. This would be enough to see that (the real coding)
+$\cN$ was in $\Ahyp$, if we could see that the property of being
+iterable was sufficiently simply definable. As in section 4 of
+\cite{Many_Woodins} and in \cite{Proj_WO_In_Mod}, we will define
+a weakening of the notion of full iterability which is simply
+definable, and yet is strong enough to compare fairly small premice.
+Our weakened notion of iterability is best described using
+the notion of an \emph{iteration game.}
+
+In section 1 of \cite{Many_Woodins}, Steel defines
+$W\cG_{n}(\cM,\theta)$, the $n$-maximal, weak iteration game on $\cM$, of
+length $\theta$.
+For our purposes here, we will need
+a slight modification of the game $W\cG_{0}(\cM,\omega)$.
+The set $\setof{\cM}{\text{ II wins $W\cG_{0}(\cM,\omega)$ }}$
+is $\Game^{\R}$-$\Pi^1_1$. We need a notion of iterability which is
+$\Game^{\R}$-closed. Below we define an iteration game called the
+\emph{closed iteration game on $\cM$.}
+
+Let $\cM$ be a countable, premouse. The \emph{closed iteration game on
+$\cM$}  is identical to $W\cG_{0}(\cM,\omega)$,
+except that if neither player loses during  the first
+$\omega$ rounds of play, then we automatically
+declare that player $II$ has won.
+That is, we do not demand that the direct limit model be defined
+and wellfounded
+in order for player $II$ to win. Thus the game is essentially a
+game on $\R$ with closed payoff for player $II$. Here are the
+rules of the closed iteration game in more detail: The game is played
+in $\omega$ rounds. Before beginning round $n<\omega$ we have a premouse
+$\cM_n$, and an integer $k_n$ such that $\cM_n$ is $k_n$-sound.
+We get started by setting $\cM_0=\cM$ and $k_0=0$. Round $n$ is played
+as follows. Player $I$ begins by playing a countable, putative
+$k_n$-maximal iteration tree $\cT$ on $\cM_n$. Player $II$ can then either
+accept $\cT$ or play a maximal well-founded branch $b$ of $\cT$, with
+the proviso that he cannot accept $\cT$ if it has a last, ill-founded
+model. If it is impossible for $II$ to play then he loses at
+round $n$. Suppose that $II$ does not lose at round $n$.
+If $II$ acceptss $\cT$, then we let $\cM_{n+1}$ be the last model
+of $\cT$. If $II$  picks a maximal wellfounded branch $b$ of  $\cT$,
+then we set $\cM_{n+1}=\cM^{\cT}_{b}$. In either case we let
+$k_{n+1}$ be the degree of $\cM_{n+1}$ in $\cT$. If $II$ does not
+lose at any round $n<\omega$ then $II$ wins.
+
+\begin{definition}
+Let $\cM$ be a countable premouse. Then $\cM$ is \emph{$\Game^{\R}$-closed
+iterable} iff player $II$ wins the closed iteration game on
+$\cM$.
+\end{definition}
+
+\begin{remark}
+The set of (reals coding) premice $\cM$ such that player $II$ wins the
+closed iteration game on $\cM$ is a a $\Game^{\R}$-closed set.
+In other words the set is coinductive.
+In other words the set is $\Pi_1(\JofR{\kappa})$.
+\end{remark}
+
+Let $\cM$ and $\cN$ be countable premice. We say that $\cM$ and
+$\cN$ \emph{can be compared} iff there is a countable iteration
+tree $\cT$ on $\cM$ of length $\theta+1$
+ and a countable iteration tree $\cU$ on $\cN$ of length $\mu+1$
+such that either
+\begin{itemize}
+\item[(1)] $\cM^{\cT}_{\theta}$ is an initial segment of $\cM^{\cU}_{\mu}$,
+and $D^{\cT}\intersect[0,\theta]_{\cT}=\emptyset$, or
+\item[(2)] $\cN^{\cU}_{\mu}$ is an initial segment of $\cN^{\cT}_{\theta}$,
+and $D^{\cU}\intersect[0,\mu]_{\cU}=\emptyset$.
+\end{itemize}
+
+The main result in this section says that if $\cM$ is fully iterable
+and fairly small, and $\cN$ is $\Game^{\R}$-closed iterable, then $\cM$
+and $\cN$ can be compared. To see that our comparison process terminates,
+we will need a certain amount of \emph{generic absoluteness.}
+We will get the generic absoluteness we need by assuming that there exists
+infinitely many Woodin cardinals in $V$, and  then using the machinery of
+Woodin's
+\emph{stationary tower forcing.}
+  See Chapter 9 of \cite{Martin_Book} for a thorough
+treatment of this machinery. Below we simply quote one
+fact from the theory
+of stationary tower forcing.
+
+\begin{proposition}[Woodin]
+\label{firstprop}
+Let $\angles{\delta_n \mid n\in\omega}$ be a strictly increasing sequence
+of Woodin cardinals. Let $\lambda = \sup_{n} \delta_n$. Let
+$\gamma > \lambda$ be any ordinal. Then there is a generic extension
+of the universe, $V[G]$, such that in $V[G]$ there is an elementary
+embedding $j:V\map \ULT$ such that
+\begin{itemize}
+\item[(i)] $\gamma$ is in the wellfounded part of $\ULT$,
+\item[(ii)] $\crit(j)=\omega_1^V$, and $j(\omega_1^V)=\lambda$, and
+\item[(iii)] letting $\R^*$ be the reals of $\ULT$, we have that $\R^*$
+is also the set of reals in a symmetric collapse of $V$ up to $\lambda$.
+\end{itemize}
+\end{proposition}
+
+See section 9.5 of \cite{Martin_Book} for a proof of this proposition.
+Now we turn to the main result in this section.
+
+\begin{remark}
+Below we will use the notion of \emph{realizability}.
+A mouse $\cM$ is \emph{realizable} if, roughly speaking, $\cM$ can be
+embedded into a mouse $\bar{\cM}$, where $\bar{\cM}$ has the property
+that the extenders on the $\bar{\cM}$ sequence all come from full
+extenders in $V$. See \cite{Many_Woodins} for the precise definition
+of realizable. In \cite{Many_Woodins} it is shown that if $\cM$ is
+realizable, then $\cM$ is ``sufficiently iterable.'' In particular
+we will use the fact that if $\cM$ is realizable then $\cM$ is
+$\Game^{\R}$-closed iterable.
+\end{remark}
+
+\begin{lemma}[Comparison Lemma]
+\label{ComparisonLemma}
+Assume that there exists $\omega$ Woodin cardinals.
+Let $\cM$ be countable, fairly small, realizable premouse. Let $\cN$ be a
+countable, $\Game^{\R}$-closed iterable premouse.
+Then $\cM$ and $\cN$ can be compared.
+\end{lemma}
+\begin{proof}
+The proof of Theorem 1.10 from \cite{Many_Woodins} shows this.
+We will give a sketch of the details.
+In the language of that proof, when comparing $\cM$ with $\cN$,
+when more than one cofinal realizable branch appears on the $\cM$-side,
+or more than one cofinal $\Game^{\R}$-closed iterable branch appears
+on the $\cN$-side, we dovetail in a new comparison which guarantees that a
+certain ordinal $\delta$ is Woodin in the common ``lined up part'' of
+the family of models we are comparing. Thus every time we dovetail
+in a new comparison, we get another Woodin cardinal. Suppose we
+had to dovetail in a new comparison infinitely many times. Since
+$\cM$ is realizable, on the $\cM$ side we have a wellfounded direct
+limit model $\cM^{\prime}$. Because we had to dovetail in a new
+comparison infinitely many times, in $\cM^{\prime}$ there are
+infinitely many ordinals $\delta$ which are Woodin. Thus $\cM^{\prime}$
+is not fairly small. But this contradicts our assumption that
+$\cM$ is fairly small. Thus we did not have to dovetail in a new
+comparison infinitely many times.
+
+In the proof of Theorem 1.10 from \cite{Many_Woodins}, we would
+then be in Case 2 of the proof of the Claim. That is, we still need
+to see that our comparison does not last for $\omega_1$ stages.
+Suppose that our comparison does last for $\omega_1$ stages.
+Since we may have had to dovetail in a new comparison some finite number of
+times, the construction gives us a finite number of trees on $\cM$ with
+length $\omega_1$. Let $\cT$ be one of these trees. Similarly, the
+construction gives us a finite number of trees on $\cN$ with length
+$\omega_1$. Let $\cU$ be one of these trees.
+We can derive the usual
+ contradiction if
+we can show that there is a cofinal branch $b$ of $\cT$ and a cofinal
+branch $c$ of $\cU$. Since $\cM$ is realizable, the proof of
+Theorem 1.10 shows that there is a cofinal branch $b$ of $\cT$.
+To see that there is a cofinal branch $c$ of $\cU$, we will need
+to use our hypothesis that there exists $\omega$ Woodin cardinals
+in $V$. Let $\lambda$ be the supremum of the $\omega$ Woodin cardinals.
+
+Let $\R^{\prime}$ be the set of reals in some symmetric collapse of $V$
+up to $\lambda$. Then there is some ordinal $\alpha$ such that
+$J_{\alpha}(\R^{\prime})$ is admissible. Let $\alpha_0$ be the least
+such ordinal. Since the collapse forcing is homogeneous, $\alpha_0$
+does not depend on our particular choice of $\R^{\prime}$.
+
+Let $\gamma>\alpha_0$ be any ordinal. Recall that we
+have set $\kappa=\kappa^{\R}$.
+Let $j:V\map \Ult$ be as in Proposition \ref{firstprop} above.
+ Let $\R^*$ be the reals of $\Ult$.
+By  Proposition \ref{firstprop}, $\R^*$ is also the set of reals in a
+symmetric
+collapse of $V$ up to $\lambda$. Thus $\alpha_0$ is the least
+$\alpha$ such that $J_{\alpha}(\R^*)$ is admissible.
+ Now $\alpha_0$ is in the wellfounded part of $\Ult$.
+So $\Ult\models$``$\alpha_0$ is the least
+$\alpha$ such that $\JalphaR$ is admissible.'' Thus $j(\kappa)=\alpha_0$.
+
+Now $j(\cU)$ is an iteration tree on $\cN$ which properly extends
+$\cU$. By case hypothesis, there is some ordinal $\beta<\omega_1$
+such that for all $\eta$ with $\beta<\eta<\omega_1^V$,
+$\cU\restr\eta$ has a unique, cofinal, $\Game^{\R}$-closed iterable
+branch.
+ (Otherwise we would have had to dovetail in a new comparison
+$\omega_1$ times.)
+Since $\Game^{\R}$-closed $= \Pi_1(\JofR{\kappa})$ and
+$j:\JofR{\kappa}\map J_{\alpha_0}(\R^*)$ is fully elementary, we have
+that for all $\eta$ with $\beta<\eta<\omega_1^{J_{\alpha_0}(\R^*)}$,
+$j(\cU)\restr\eta$ has a unique, cofinal branch that is
+$\Game^{\R}$-closed iterable in $J_{\alpha_0}(\R^*)$.
+ Since $j(\cU)\restr\omega_1^{V}=\cU$,
+ there is
+a cofinal branch $c$ of $\cU$ which is definable in $L(\R^*)$ from
+$\cU$ and $\alpha_0$. As the collapse forcing is homogeneous, $c\in V$.
+\end{proof}
+
+\begin{corollary}
+\label{Every_Real_Is_Definable}
+Assume that there exists $\omega$ Woodin cardinals. Let $\cM$ be
+a countable, realizable, fairly small premouse. Then every
+real in $\cM$ is ordinal definable over $\JbetaR$, for some
+$\beta<\kappa^{\R}$.
+\end{corollary}
+\begin{proof}
+Fix a real $x$ in $\cM$. Let $\gamma$ be the rank of $x$ in the order
+of construction of $\cM$. We will show that $x$ is definable from
+$\gamma$. Notice that $x$ is the unique real $\xprime$ such that:
+\begin{quote}
+there exists a countable, fairly small, $\Game^{\R}$-closed iterable
+premouse $\cN$ such that $\xprime\in\cN$ and $\xprime$ is
+the $\gamma$th real in
+the order of construction of $\cN$.
+\end{quote}
+(proof:
+$\cM$ witnesses that the statement above is true of the real $x$. Suppose
+that $\cN$ witnessed that the statement above was true of some other
+real $\xprime$. By our Comparison Lemma, $\cM$ and $\cN$ can be compared.
+This implies that $\xprime=x$.) Since $\Pi_1(\JofR{\kappa})$ is
+closed under real quantification, we have that
+$\singleton{x}$ is $\Pi_1(\JofR{\kappa},\gamma)$. Fix a
+$\Sigma_1$ formula
+$\formulaphi$ such that $x$ is the unique real $\xprime$ so that
+$\JofR{\kappa}\models\neg\formulaphi[\xprime,\gamma,\R]$.
+Let $f:\R\map\kappa^{\R}$ be defined by: $f(x)=0$, and for $y\not= x$,
+$f(y) = $ the least $\alpha<\kappa^{\R}$ such that
+$\JalphaR\models\formulaphi[y,\gamma,\R]$. Notice that $f$ is
+$\Sigma_1(\JofR{\kappa},\singleton{\gamma,x})$. Thus the range of $f$ is
+not
+cofinal in $\kappa^{\R}$. Let $\beta=\sup(\range(f))$. Then $x$ is the
+unique real $\xprime$ such that
+$\JbetaR\models\neg\formulaphi[\xprime,\gamma,\R]$. Thus $x$ is ordinal
+definable over $\JbetaR$.
+\end{proof}

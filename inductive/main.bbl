@@ -1,0 +1,63 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{KMS83}
+
+\bibitem[Jec78]{Jech_Book}
+Thomas Jech, \emph{Set theory}, Academic Press, Inc., San Diego, California,
+  1978.
+
+\bibitem[Kec75]{Kechris1}
+A.~S. Kechris, \emph{The theory of countable analytical sets}, Transactions of
+  the American Mathematical Society \textbf{202} (1975), 259--297.
+
+\bibitem[KMS83]{Q_Theory}
+A.~S. Kechris, D.~A. Martin, and R.~M. Solovay, \emph{Introduction to
+  {$Q$}-theory}, Cabal Seminar 79-81, Lecture Notes in Mathematics, vol. 1019,
+  Springer-Verlag, 1983, pp.~199--281.
+
+\bibitem[Kun80]{Kunen_Book}
+Kenneth Kunen, \emph{Set theory: An introduction to independence proofs},
+  Studies in Logic and the Foundations of Mathematics, vol. 102, North Holland,
+  New York, N.Y., 1980.
+
+\bibitem[Mar]{Martin_Book}
+D.~A. Martin, \emph{untitled book on large cardinals and determinacy}, In
+  preparation.
+
+\bibitem[Mar83]{Largest_This_That}
+\bysame, \emph{The largest countable this, that, and the other}, Cabal Seminar
+  79-81, Lecture Notes in Mathematics, vol. 1019, Springer-Verlag, 1983,
+  pp.~97--106.
+
+\bibitem[Mos80]{DST}
+Y.~N. Moschovakis, \emph{Descriptive set theory}, North Holland, 1980.
+
+\bibitem[MS94]{FSIT}
+W.~J. Mitchell and J.~R. Steel, \emph{Fine structure and iteration trees},
+  Lecture Notes in Logic, vol.~3, Springer-Verlag, 1994.
+
+\bibitem[Rud97]{Mouse_Sets}
+M.~Rudominer, \emph{Mouse sets}, Annals of Pure and Applied Logic \textbf{65}
+  (1997), 185--209.
+
+\bibitem[Ste83]{Scales_In_LofR}
+J.~R. Steel, \emph{Scales in {$\LofR$}}, Cabal Seminar 79-81, Lecture Notes in
+  Mathematics, vol. 1019, Springer-Verlag, 1983, pp.~10--156.
+
+\bibitem[Ste93]{Many_Woodins}
+\bysame, \emph{Inner models with many woodin cardinals}, Annals of Pure and
+  Applied Logic \textbf{65} (1993), 185--209.
+
+\bibitem[Ste95]{Proj_WO_In_Mod}
+\bysame, \emph{Projectively wellordered inner models}, Annals of Pure and
+  Applied Logic \textbf{74} (1995), no.~1, 77--104.
+
+\bibitem[Ste96]{Woodins_Mouse_Sets}
+\bysame, \emph{A theorem of woodin's on mouse sets}, Unpublished notes, 1996.
+
+\end{thebibliography}

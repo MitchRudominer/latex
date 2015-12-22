@@ -1,0 +1,266 @@
+% This is the file martin.tex
+
+\skipbig
+
+\section{$\protect{\Sigma^*_n}$ Correctness:  A Proof of Martin's Theorem}
+
+\label{section:Martin_Theorem}
+
+In the previous section we showed that $\Ahyp=\R\intersect\cM$,
+where $\cM$ is the canonical, minimal inner model for the theory
+$\ZFC -$ Replacement $+$ ``There are $\omega$ Woodin cardinals
+cofinal in the ordinals.'' In this section we give one application
+of this characterization of $\Ahyp$. We show that every real
+$x$ which is definable over $\JofR{\kappa}$ is in $\Ahyp$.
+We do this by showing that $x\in\cM$. Thus we are giving a purely
+inner-model-theoretic proof of Martin's theorem that
+every $\Sigma^*_n$ real is in the largest countable inductive set.
+The reason that the real $x$ is in $\cM$ is that for each $n\in\omega$,
+ $\cM$ can compute
+$\Sigma_n(\JofR{\kappa})$ truth. This correctness result
+for $\cM$ is
+the main content of this section.
+
+
+
+Let $\cM$ be a countable, realizable premouse such that $\cM$ is
+fairly big, but every proper initial segment of $\cM$ is fairly
+small. Corollary \ref{Is_Correct} tells us that
+ there is an ordinal $\alpha$ in $\cM$ so that
+$(\JalphaR)^{\cM}$ agrees with $\JofR{\kappa}$ on $\Sigma_1$
+facts about reals in $\cM$. Consider the following question.
+Is it possible to identify $\alpha$ while working in $\cM$? The
+next lemma tells us that the answer is yes.
+
+The statement of the following lemma mentions the term cutpoint. Let $\cM$
+be a premouse and $\delta\in\ORD^{\cM}$. We say that $\delta$ is a
+\emph{cutpoint} of $\cM$ iff for no extender $E$ on the $\cM$ sequence do
+we have that $\crit(E)<\delta\leq\length(E)$.
+
+\begin{lemma}
+\label{lemmaA}
+Assume that there exists $\omega$ Woodin cardinals in $V$.
+Let $\cM$ be a countable, realizable premouse such that $\cM$ is
+fairly big, but every proper initial segment of $\cM$ is fairly
+small.  Let $\delta$ be a  cardinal of $\cM$ and a cutpoint of $\cM$.
+Suppose that
+ $G$ is $\cM$-generic over $\Col(\omega,\delta)$, with $G\in V$.
+Let $\R^*=\R\intersect\cM[G]$.
+Suppose that $\alpha_0\in\cM$ is an ordinal
+such that whenever $x\in\R^*$ and $\formulaphi$ is a $\Sigma_1$ formula
+then $\JofR{\kappa}\models\formulaphi[x,\R]$ iff
+ $J_{\alpha_0}(\R^*)\models\formulaphi[x,\R^*]$.  Then $\alpha_0$ is
+the least $\alpha\in\cM$ such that there is a wellorder of $\R^*$ which
+is definable over $J_{\alpha}(\R^*)$.
+\end{lemma}
+\begin{proof}
+First let us see that there is a wellorder of $\R^*$ which is definable
+over $J_{\alpha_0}(\R^*)$.
+Notice that for any $\gamma<(\delta^+)^{\cM}$,
+ $\cJ_{\gamma}^{\cM}$  is
+in $J_{\alpha_0}(\R^*)$ as it is coded by an element of $\R^*$.
+Similarly, $G$ is in $J_{\alpha_0}(\R^*)$.
+Also notice that every element of $\R^*$ has a $G$-name
+in $\cM$ which is essentially a subset of $\delta$.
+So it suffices to see that there is a wellorder of
+$\cP(\delta)\intersect\cM$
+which is definable over $J_{\alpha_0}(\R^*)$.
+Let $<_{\cM}$ be the order
+of construction in $\cM$. We claim that
+ $<_{\cM}\;\restr \cP(\delta)$ is
+definable over $J_{\alpha_0}(\R^*)$ with $J_{\delta}^{\cM}$ as
+a parameter.
+
+
+Let $S(X,Y)$ be the binary relation on
+$\cP(\delta)\intersect J_{\alpha_0}(\R^*)$ defined by the following:
+$S(X,Y)$ holds iff
+\begin{quote}
+there exists a fairly small
+premouse $\cN$ in $J_{\alpha_0}(\R^*)$ which is countable
+in $J_{\alpha_0}(\R^*)$ such that $J^{\cN}_{\delta}=J^{\cM}_{\delta}$,
+and $\delta$ is a cutpoint of $\cN$, and $\cN$ is $\Game^{\R}$-closed
+iterable, and $X,Y\in\cN$ and $X$ is less than $Y$ in the order of
+construction of $\cN$.
+\end{quote}
+Clearly $S$ is definable over
+$J_{\alpha_0}(\R^*)$ with $J_{\delta}^{\cM}$ as
+a parameter.  We claim that $S(X,Y)$ iff $X<_{\cM}Y$. First suppose that
+$X<_{\cM}Y$. Let $\cN$ be the $\initseg$-least initial segment of $\cM$
+such that $X,Y\in\cN$. Then clearly $\cN$ witnesses that $S(X,Y)$.
+
+Converesly, suppose that $S(X,Y)$, and let $\cN$ be a premouse that
+witnesses this. Let $\gamma=(\delta^+)^{\cM}$. By our comparison theorem,
+$\cN$ and $J^{\cM}_{\gamma}$ can be compared. Furthermore, since
+$\cN$ and $\cM$ agree through $\delta$ and $\delta$ is a cutpoint of
+$\cN$ and $\cM$, the iteration maps resulting from the comparison have
+critical points $\geq \delta$. If $X,Y\in\cM$, it follows that
+$X<_{\cM}Y$ and we are done. It takes a short argument to see that
+it must be true that $X,Y\in\cM$: Let $\bar{\cN}$ and $\bar{\cM}$ be
+the mice which result from the comparison of $\cN$ with $J^{\cM}_{\gamma}$.
+Suppose for example that $X\notin\cM$. Then it must be the case that
+$\bar{\cM}\properseg\bar{\cN}$ and that $X\in\bar{\cN}-\bar{\cM}$. But this
+implies that $\card(\gamma)^{\bar{\cN}}\leq\delta$. Thus there is a
+set $Z\subseteq\delta$ in $\bar{\cN}$ such that $Z$ codes a wellorder of
+order type $\gamma$. But then $Z\in\cN$ and so $Z\in J_{\alpha_0}(\R^*)$.
+But this is impossible as $\gamma=(\omega_1)^{J_{\alpha_0}(\R^*)}$.
+This contradiction shows that $X,Y\in\cM$, and so $X<_{\cM}Y$.
+So we have shown that there is a wellorder of $\R^*$ which is definable
+over $J_{\alpha_0}(\R^*)$.
+
+To see that $\alpha_0$ is least with this property,
+we must show that there is no
+wellorder of $\R^*$ which is \emph{in} $J_{\alpha_0}(\R^*)$. By
+$\Sigma_1$-correctness, it suffices to see that there is no
+wellorder of $\R$ in $\JofR{\kappa}$. But this follows from our
+assumption that there are $\omega$ Woodin cardinals in $V$. In fact
+our large cardinal hypothesis implies that every game in
+$\JofR{\kappa}$ (and more) is determined. [proof: Using Woodin's
+stationary tower forcing as in the end of the
+proof of our comparison lemma, Lemma \ref{ComparisonLemma}, we get
+a fully elementary generic embedding
+$j:\JofR{\kappa}\map J_{\lambda}(\R^{\prime})$, where $\lambda$ is
+some ordinal, and where $\R^{\prime}$ is the set of reals in a symmetric
+collapse of $V$ up to the sup of the $\omega$ Woodin cardinals. Also
+using stationary tower forcing, Woodin has shown that
+$L(\R^{\prime})\models\AD$. (See chapter 9 of \cite{Martin_Book}.)
+In particular $J_{\lambda}(\R^{\prime})\models\AD$, and so
+$\JofR{\kappa}\models\AD$.]
+\end{proof}
+
+In an earlier draft of this paper the statement of the above lemma did
+not include the hypothesis that $\delta$ is a cutpoint of $\cM$.
+We would like to thank the referee for catching a serious blunder
+in our proof and providing the necessary correction.
+
+The following is the main technical result of this section. The
+lemma says that if $\cM$ has $\omega$ Woodin cardinals cofinal in its
+ordinals, then $\cM$ can
+compute $\Sigma_n(\JofR{\kappa})$ truth, for every $n$.
+Our proof is by induction on $n$. In order to carry out this inductive
+proof we need to make the inductive hypothesis \emph{uniform}
+in $\cM$. Unfortunately, this slightly complicates the
+statement of the lemma.
+
+\begin{lemma}
+\label{MoreCorrectness}
+ Assume that there exists $\omega$ Woodin cardinals in $V$.
+Let $n\geq 1$, and let $\formulaphi$ be a $\Sigma_n$ formula.
+Then there is another formula $\psi=\psi_{\varphi}$ such that
+whenever $\cM$ is a countable, realizable premouse, and $\cM$ is
+fairly big but every proper initial segment of $\cM$ is fairly
+small, and $\gamma$ is a cardinal of $\cM$, and
+ $G$ is $\cM$-generic over $\Col(\omega,\gamma)$, with $G\in V$,
+and $\delta_0, \delta_1, \dots \delta_n$ are Woodin cardinals of
+$\cM$ with $\gamma<\delta_0<\delta_1<\cdots<\delta_n$, and
+$x\in\R\intersect\cM[G]$,  then
+$\JofR{\kappa}\models\formulaphi[x,\R]$ iff
+$J^{\cM}_{\delta_n}[G]\models\psi[x,\delta_0,\dots,\delta_{n-1}]$.
+\end{lemma}
+\begin{proof}
+By induction on $n$. First let $n=1$ and let $\formulaphi$ be a
+$\Sigma_1$ formula. Our hypotheses on $\cM$  imply that $\cM$ is tame,
+and thus  $\delta_0$ is a cutpoint of $\cM$. This will allow us to apply
+the previous lemma with $\delta=\delta_0$.
+We can take $\psi=\psi_{\varphi}$ to be a
+formula such that, given any $\cM$, $\gamma$,  $G$ and
+$\delta_0<\delta_1$ as above, and
+letting $x\in\R\intersect\cM[G]$,  we have
+that $J_{\delta_1}^{\cM}[G]\models\psi[x,\delta_0]$ iff
+it is forced over $J_{\delta_1}^{\cM}[G]$ that in a generic extension
+via $\Col(\omega,\delta_0)$ the following is true:
+\begin{quote}
+$J_{\alpha_0}(\R)\models\formulaphi[x]$, where $\alpha_0$ is the least
+$\alpha$ such that there is a wellorder of $\R$ definable
+over $J_{\alpha}(\R)$.
+\end{quote}
+Clearly there is such a formula $\psi$.
+Furthermore
+such a $\psi$ works by  Corollary
+\ref{Is_Correct} and Lemma \ref{lemmaA}.
+
+
+Next let $n>1$ and let $\formulaphi$ be a $\Sigma_n$ formula. Let $\theta$
+be a $\Sigma_{n-1}$ formula  so that
+$\formulaphi(v_1,v_2) \leftrightarrow (\exists v_0)
+\neg\theta(v_0,v_1,v_2)$. Let $\psi^{\prime}=\psi_{\theta}$.
+($\psi_{\theta}$ exists by induction.)
+Then we can
+take $\psi=\psi_{\varphi}$ to be a formula such that, given any
+$\cM$, $\gamma$, $G$ and $\delta_0, \dots \delta_n$
+ as above, and letting $x\in\R\intersect\cM[G]$,
+we have that
+$J_{\delta_n}^{\cM}[G]\models\psi[x,\delta_0,\dots\delta_{n-1}]$
+iff it is forced over $J_{\delta_n}^{\cM}[G]$ that in a generic
+extension via $\Col(\omega,\delta_0)$, there is a real $y$ such
+that $\neg\psi^{\prime}[y,x,\delta_1,\dots,\delta_{n-1}]$. Clearly
+ there is such a formula $\psi$. Let us see that such
+a $\psi$ works.
+
+Fix $\cM$, $\gamma$, $G$ and $\delta_0,\dots,\delta_n$ as above.
+Let $x\in\R\intersect\cM[G]$. First suppose
+that $J_{\delta_n}^{\cM}[G]\models
+\psi[x,\delta_0,\dots\delta_{n-1}]$. Let $H$ be $\cM[G]$-generic
+over $\Col(\omega,\delta_0)$, and let
+$\R^{*}=\R\intersect\cM[G][H]$. By definition of $\psi$, there is
+a $y\in\R^{*}$ such that
+$J_{\delta_n}^{\cM}[G][H]\models
+\neg\psi^{\prime}[x,y,\delta_1,\dots,\delta_{n-1}]$. Since
+$\psi^{\prime}=\psi_{\theta}$, we have by induction that
+$\JofR{\kappa}\models\neg\theta[y,x,\R]$.
+Thus $\JofR{\kappa}\models\formulaphi[x,\R]$.
+
+Conversely, suppose that $\JofR{\kappa}\models\formulaphi[x,\R]$.
+Then there is a real $y$ such that
+$\JofR{\kappa}\models\neg\theta[y,x,\R]$. Fix such a $y$.
+By Lemma \ref{MakeRealGeneric}, there is
+is a partial order $\Q\subseteq J^{\cM}_{\delta_0}$, with
+$\Q\in \cM$, and there is an
+iteration tree $\cT$ on $\cM$ of countable length $\mu+1$ such that
+\begin{itemize}
+\item[(a)] $\cM^{\cT}_{\mu}$ is realizable, and
+\item[(b)] $D^{\cT}=\emptyset$ so that $i^{\cT}_{0,\mu}$ is defined,
+and
+\item[(c)] $\crit(E^{\cT}_{\xi}) > \gamma$ for all $\xi<\mu$
+(so $G$ is $\cM^{\cT}_{\mu}$-generic over $\Col(\omega,\gamma)$), and
+\item[(d)] $y$ is $\cM^{\cT}_{\mu}[G]$-generic over
+$i^{\cT}_{0,\mu}(\Q)$.
+\end{itemize}
+Let $\cM^{\prime}=\cM^{\cT}_{\mu}$, let $i=i^{\cT}_{0,\mu}$, and
+let $\delta_k^{\prime}=i(\delta_k)$ for $k\geq 0$.
+Let $H$ be $\cM^{\prime}[G]$-generic
+over $\Col(\omega,\delta_1^{\prime})$ with $y\in\cM^{\prime}[G][H]$.
+By induction, since $\psi^{\prime}=\psi_{\theta}$,
+$J_{\delta_n^{\prime}}^{\cM^{\prime}}[G][H]\models
+\neg\psi^{\prime}[y,x,\delta_1^{\prime},\dots,\delta^{\prime}_{n-1}]$.
+Since the collapse forcing is homogeneous, it is forced over
+$J_{\delta_n^{\prime}}^{\cM^{\prime}}[G]$
+that in a generic
+extension via $\Col(\omega,\delta_0^{\prime})$, there is a real $y$ such
+that $\neg\psi^{\prime}[y,x,\delta_2^{\prime},\dots,\delta_{n-1}^{\prime}]$.
+Thus $J_{\delta_n^{\prime}}^{\cM^{\prime}}[G]\models
+\psi[x,\delta_0^{\prime},\dots,\delta_{n-1}^{\prime}]$.
+Since $\crit(i)>\gamma$, it follows that
+$J_{\delta_n}^{\cM}[G]\models
+\psi[x,\delta_0,\dots,\delta_{n-1}]$.
+\end{proof}
+
+\begin{theorem}
+Assume there exists $\omega$ Woodin cardinals in $V$. Let $\cM$ be
+a countable, realizable premouse such that $\cM$ is fairly big,
+but every proper initial segment of $\cM$ is fairly small.
+Let $x$ be a real which is definable over $\JofR{\kappa}$.
+Then $x\in\cM$.
+\end{theorem}
+\begin{proof}
+Let $n\geq1$ be such that, as a subset of $\omega$,
+ $x$ is $\Sigma_n$ definable over
+$\JofR{\kappa}$. Then by the previous lemma, $x$ is definable
+over $J_{\delta_n}^{\cM}$ from $\delta_0,\dots,\delta_{n-1}$,
+where $\delta_0,\cdots,\delta_n$ are the first $n+1$ Woodin cardinals
+of $\cM$.
+\end{proof}
+
+\begin{corollary}
+Every $\Sigma^*_n$ real is in the largest countable inductive set.
+\end{corollary}

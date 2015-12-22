@@ -1,0 +1,516 @@
+% This is the file correct.tex
+
+\skipbig
+
+\section{Inductive Correctness}
+
+\label{section:correctness}
+
+In this section we will complete the proof that $\Ahyp$ is a mouse
+set. We will show that if $\cM$ is iterable and fairly big,
+then $\Ahyp\subseteq\R\intersect\cM$.
+We will need to use Woodin's stationary tower forcing. See chapter 9  of
+\cite{Martin_Book} for a thorough treatment of stationary tower forcing.
+
+\begin{definition}
+Let $\delta$ be a limit ordinal. Then $\Q_{\delta}$ is the
+``$\Q$-version''  of the stationary
+tower forcing up to $\delta$.  More specifically, $x\in\Q_{\delta}$ iff
+$x\in V_{\delta}$ and  $x$ is a stationary set and every element of $x$
+is countable. The ordering on $\Q_{\delta}$ is  described in chapter 9
+of \cite{Martin_Book}.
+\end{definition}
+
+We will need to use the following technical fact about the
+$\Q_{\delta}$.
+
+\begin{lemma}[Woodin]
+\label{TechFact}
+Let $\delta$ be a Woodin cardinal, and let $\rho>\delta$ be a
+limit ordinal. There is a condition $\hat{S}\in\Q_{\rho}$ such that
+for all $T\in\Q_{\delta}$, $\hat{S}$ is compatible with $T$ in
+$\Q_{\rho}$. Furthermore, if $G$ is $V$-generic over $\Q_{\rho}$ with
+$\hat{S}\in G$, then $G\intersect\Q_{\delta}$ is $V$-generic
+over $\Q_{\delta}$.
+\end{lemma}
+\begin{proof}
+(Sketch.) We will assume that the reader is familiar with the technical
+details of chapter 9 of \cite{Martin_Book}. Let $\hat{S}$ be the set of all
+$X\in\cP_{\aleph_1}(V_{\delta+1})$ such that $X$ captures every
+$\mathbf{A}\in X$ that is predense in $\Q_{\delta}$. It is shown in
+\cite{Martin_Book} that if $G$ is $V$-generic over $\Q_{\rho}$ with
+$\hat{S}\in G$, then $G\intersect\Q_{\delta}$ is $V$-generic
+over $\Q_{\delta}$. So it only remains to show that for all
+$T\in\Q_{\delta}$, $\hat{S}$ is compatible with $T$ in
+$\Q_{\rho}$.  Fix $T\in\Q_{\delta}$. Let $T^*$ be the set of
+$X\in\cP_{\aleph_1}(V_{\delta+1})$ such that $X\intersect\bigcup T\in T$
+and such that $X$ captures every $\mathbf{A}\in X$ that is predense in
+$\Q_{\delta}$. It is shown in \cite{Martin_Book} that $T^*$ is stationary
+in $\cP_{\aleph_1}(V_{\delta+1})$. Thus $T^*\in\Q_{\rho}$.
+Clearly $T^*$ is below both $\hat{S}$
+and $T$. Thus $\hat{S}$ is compatible with $T$ in
+$\Q_{\rho}$.
+\end{proof}
+
+Using the above-mentioned fact, we will now prove another
+ technical lemma about the $\Q_{\delta}$. Suppose that
+$\delta_1<\delta_2$ are Woodin cardinals. The next lemma says, roughly,
+that a $\Q_{\delta_1}$-generic object can be extended to a
+$\Q_{\delta_2}$-generic object in such a way as to absorb some other
+given generic object.
+
+\begin{lemma}
+\label{Extend_Stat_Tower_Filter}
+Let $M$ be a transitive inner model of some sufficiently large fragment
+of $\ZFC$. Let $\delta_1<\delta_2$ be countable ordinals such that
+in $M$,  $\delta_1$ and $\delta_2$ are both Woodin cardinals.
+Let $\Q_1=\Q_{\delta_1}^{M}$ and  $\Q_2=\Q_{\delta_2}^{M}$.
+Let $\P\in M$  be any partial order such that $\card(\P)^{\cM}<\delta_2$.
+Let $G_1$ and $H$ be sets such that $G_1$ is $M$-generic over $\Q_1$
+and $H$ is $M[G_1]$-generic over $\P$. Then there exists a $G_2$ such that
+\begin{itemize}
+\item $G_2$ is $M$-generic over $\Q_2$.
+\item $G_2\intersect\Q_1=G_1$.
+\item $H\in M[G_2]$.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+By Lemma \ref{TechFact} above, there is a condition
+$\hat{S}\in\Q_2$ such that
+for all $T\in\Q_1$, $\hat{S}$ is compatible with $T$ in
+$\Q_2$. Furthermore, if $G$ is $M$-generic over $\Q_2$ with
+$\hat{S}\in G$, then
+$G\intersect\Q_1$ is $M$-generic
+over $\Q_1$. Fix such a condition $\hat{S}$. Let $\Q_2^{\prime}$ be the
+collection of elements $T\in\Q_2$ such that $T$ is compatible
+with $\hat{S}$. So we have that $\Q_1\subset\Q_2^{\prime}\subset\Q_2$.
+Below we
+will use the notion of a \emph{complete} embedding from one partial
+order into another. (See Definition 7.1 on page 218 of \cite{Kunen_Book}.)
+
+\begin{claim}[Claim 1]
+$\Q_1$ is a complete suborder of $\Q_2^{\prime}$.
+\end{claim}
+\begin{subproof}[Proof of Claim 1]
+Let $G$ be $M$-generic over $\Q_2^{\prime}$. Then $G$ is $M$-generic
+over $\Q_2$, and $\hat{S}\in G$. So $G\intersect\Q_1$ is $M$-generic
+over $\Q_1$.  In summary we have that whenever $G$ is generic over
+$\Q_2^{\prime}$, $G\intersect\Q_1$ is generic over $\Q_1$. It is an easy
+exercise to see that this condition is equivalent to the fact that
+$\Q_1$  is a complete suborder of $\Q_2^{\prime}$.
+\end{subproof}
+
+Now fix $G_1$ and $H$ so that $G_1$ is $M$-generic over $\Q_1$
+and $H$ is $M[G_1]$-generic over $\P$. We must find a $G_2$ as in
+the statement of the lemma. Working in $M[G_1]$, set
+$$\Q=\setof{p\in\Q_2^{\prime}}{p \text{ is compatible with every element
+of } G_1}.$$
+
+\begin{claim}[Claim 2]
+In $M[G_1]$,  $\ro(\P)$ can be completely embedded into $\ro(\Q)$.
+\end{claim}
+\begin{subproof}[Proof of Claim 2]
+Work in $\cM[G_1]$. Let $\gamma=\card\bigl(\cP(\ro(\P))\bigr)$.
+As $\delta_2$ is inaccessible in $M[G_1]$,
+ $\gamma<\delta_2$. We claim that $\Q$ collapses $\gamma$ to
+be countable. For let $G$ be $\cM[G_1]$-generic over $\Q$.
+By exercise (D4) on page 244 of \cite{Kunen_Book}, $G$ is
+$M$-generic over $\Q_2^{\prime}$, and $M[G_1][G]=M[G]$. It then
+follows that $G$ is $M$-generic over $\Q_2$. By chapter 9 of
+\cite{Martin_Book}, $\delta_2=(\omega_1)^{\cM[G]}$. So $\gamma$ is
+countable in $M[G]=M[G_1][G]$. In other words,  $\Q$ collapses $\gamma$ to
+be countable. Our conclusion easily follows from this.
+For let $\dot{H}$ be a $\Q$-name for a generic for $\ro(\P)$. If
+$b\in\ro(\P)$, let $\pi(b)$ be the boolean value in $\ro(\Q)$
+that $\check{b}\in\dot{H}$. As in the proof of Lemma 25.5 from
+\cite{Jech_Book}, it is easy to see that $\pi$ is a complete embedding.
+\end{subproof}
+
+It follows  that there
+is a $G_2$ such that $G_2$ is $M[G_1]$-generic over $\Q$, with
+$H\in M[G_1][G_2]$. Fix such a $G_2$. By exercise (D4) on page
+244 of \cite{Kunen_Book}, $G_2$ is $M$-generic over $\Q_2^{\prime}$
+and $M[G_2]=M[G_1][G_2]$. It follows that $G_2$ is $M$-generic
+over $\Q_2$ and $\hat{S}\in G_2$. Thus $G_2\intersect\Q_1=G_1$ and
+our lemma is proved.
+\end{proof}
+
+
+We shall use heavily a result due to H. Woodin concerning genericity over
+$L[\vec{E}]$ models. This result is often referred  to as ``iterating
+to make a real generic.'' We state the result here in the form in which
+we shall need it. The following is also Theorem 4.3 from
+\cite{Many_Woodins}.
+
+\begin{lemma}[Woodin]
+\label{MakeRealGeneric}
+Let $\cM$ be a countable, realizable,  tame premouse.  Suppose
+$\gamma<\delta<\ORD^{\cM}$. Suppose
+$\cM\models\text{``}\delta$ is a Woodin cardinal.''
+Let $\P\subseteq J^{\cM}_{\gamma}$ be a partial
+order in $\cM$ and let $G$ be $\cM$-generic over $\P$. Then there
+is a partial order $\Q\subseteq J^{\cM}_{\delta}$, with
+$\Q\in \cM$, such that for any real $w$, there is an
+iteration tree $\cT$ on $\cM$ of countable length $\theta+1$ such that
+\begin{itemize}
+\item[(a)] $\cM^{\cT}_{\theta}$ is realizable, and
+\item[(b)] $D^{\cT}=\emptyset$ so that $i^{\cT}_{0,\theta}$ is defined,
+and
+\item[(c)] $\crit(E^{\cT}_{\xi}) > \gamma$ for all $\xi<\theta$
+(so $G$ is $\cM^{\cT}_{\theta}$-generic over $\P$), and
+\item[(d)] $w$ is $\cM^{\cT}_{\theta}[G]$-generic over
+$i^{\cT}_{0,\theta}(\Q)$.
+\end{itemize}
+\end{lemma}
+
+For an idea of how to prove this lemma, see the exercises at the
+end of chapters 6 and 7 in \cite{Martin_Book}.
+
+Our next two results will say that if
+a premouse $\cM$ has $\omega$ Woodin cardinals cofinal in its ordinals,
+then $\cM$ is, in
+a certain sense, $\Sigma_1(\JofR{\kappa})$-correct.
+The  following is the main technical lemma in this section. Our
+proof of this lemma is very similar to, and owes its main idea to
+Steel's proof of Corollary 4.7 in \cite{Many_Woodins}. In that proof,
+steel iterates a premouse $\cM$, yielding a premouse $\cM^{\prime}$,
+with the property that every real in $V$ is generic over $\cM^{\prime}$.
+Steel then takes a generic ultrapower of $\cM^{\prime}$ yielding an
+embedding $j:\cM^{\prime}\map\Ult$, with the property that
+$\R^{\Ult}=\R^{V}$.
+Now $\Ult$ will in general not
+be wellfounded, but because of the large cardinals in $\cM^{\prime}$
+Steel can arrange that the ordinal height of the wellfounded part
+of $\Ult$ is as large as he wants.
+(Steel assumes that $\cM$ has $\omega$ Woodin cardinals, \emph{plus}
+another extender above the $\omega$ Woodin cardinals.) This allows
+Steel to reflect any $\Sigma_1$ truth in $\LofR$ down to $\cM^{\prime}$,
+and hence down to $\cM$. In our setting, we are only assuming that
+$\cM$ has $\omega$ Woodin cardinals cofinal in its ordinals. We will
+therefore not be able to arrange that the ordinal height of
+the wellfounded part of $\Ult$ is as large as we want. Instead, we
+will only be able to quote abstract admissibility theory to conclude
+that the ordinal height of the wellfounded part of $\Ult$ is at
+least $\kappa^{\R}$. This will allow us to reflect $\Sigma_1$ truth
+from $\JofR{\kappa}$ down to $\cM^{\prime}$, and hence down to $\cM$.
+
+\begin{lemma}
+Let $\cM$ be a countable, realizable, tame premouse. Suppose that
+$\delta_1<\delta_2<\delta_3<\cdots$ is an increasing $\omega$-sequence of
+ordinals such that each $\delta_i$ is a Woodin cardinal of $\cM$,
+and the $\delta_i$ are cofinal in the ordinals of $\cM$.
+Let $\P$ be any partial order in $J^{\cM}_{\delta_1}$ and suppose that
+ $H$ is $\cM$-generic over $\P$, with $H\in V$.
+Let $\R^*=\R\intersect\cM[H]$.
+Then there is an ordinal $\alpha<\delta_1$
+such that whenever $x\in\R^*$ and $\formulaphi$ is a $\Sigma_1$ formula
+and $\JofR{\kappa}\models\formulaphi[x,\R]$, then
+ $J_{\alpha}(\R^*)\models\formulaphi[x,\R^*]$.
+\end{lemma}
+\begin{proof}
+ Fix an ordinal $\mu<\delta_1$
+such that $\P\in J^{\cM}_{\mu}$.
+Let $\Col(\omega,2^{\aleph_0})$ be the partial order which collapses
+$2^{\aleph_0}$ to be countable. For the rest of the proof we work
+in a generic extension of $V$ via this partial order.
+ Let $x_1,x_2,x_3,\dots$ be an
+$\omega$-enumeration  of the reals of $V$.
+
+We are going to iterate $\cM$ to yield a new premouse $\cM^{\prime}$
+with the property that every real of $V$ is generic over $\cM^{\prime}[H]$.
+More specifically, we are going to define
+a sequence of mice: $\cM_0, \cM_1, \cM_2, \dots$ with $\cM_0=\cM$,
+and a commutative system of embeddings $j_{n,m}:\cM_n\map\cM_m$,
+with the property that $\crit(j_{0,n})>\mu$ so that $H$ is $\cM_n$-generic
+over $\P$, and
+a sequence of partial orders $\Q_1,\Q_2,\Q_3,\dots$ such that
+for each  $n\geq1$, $\Q_n\in\cM_n[H]$, and a sequence of generic objects
+$G_1,G_2,G_3,\dots$ such that for each $n\geq1$, $G_n$ is
+$\cM_n[H]$-generic over $\Q_n$.  We will arrange that for each $n\geq 1$,
+$x_n\in\cM_n[H][G_n]$.  We will maintain
+inductively that every finite initial segment of  our construction lives in
+$V$. The whole construction will not live in $V$.  Then we will define
+$\cM^{\prime}$ to be the direct limit of the $\cM_n$.
+
+Given such a construction, let $\bar{\delta}_{2n}=j_{0,n}(\delta_{2n})$.
+We will also arrange that:
+\begin{itemize}
+\item $\Q_n\subseteq V_{\bar{\delta}_{2n}}^{\cM_n[H]}$, and
+\item $\crit(j_{n,m})>\bar{\delta}_{2n}$.
+\end{itemize}
+Thus if $m>n$ then we will have that $G_n$ is $\cM_m[H]$-generic
+over $\Q_n$. Finally, we will arrange that if $m>n$ then
+$G_m\intersect \Q_n = G_n$.
+
+We begin by setting $\cM_0=\cM$. Now, working  in $V$ and
+using Lemma \ref{MakeRealGeneric} above, we can find a partial order
+$\hat{\P}\subseteq J^{\cM_0}_{\delta_1}$, with $\hat{\P}\in \cM_0$, and an
+iteration tree $\cT$ on $\cM_0$ of countable length $\theta+1$ such that
+\begin{itemize}
+\item[(a)] $\cM^{\cT}_{\theta}$ is realizable, and
+\item[(b)] $D^{\cT}=\emptyset$ so that $i^{\cT}_{0,\theta}$ is defined,
+and
+\item[(c)] $\crit(E^{\cT}_{\xi}) > \mu$ for all $\xi<\theta$
+(so $H$ is $\cM^{\cT}_{\theta}$-generic over $\P$), and
+\item[(d)] $x_1$ is $\cM^{\cT}_{\theta}[H]$-generic over
+$i^{\cT}_{0,\theta}(\hat{\P})$.
+\end{itemize}
+Set $\cM_1=\cM^{\cT}_{\theta}$ and set $j_{0,1}=i^{\cT}_{0,\theta}$. Now
+let $\bar{\delta}_2=j_{0,1}(\delta_2)$, and let
+$\Q_1=\Q_{\bar{\delta}_2}^{\cM_1[H]}$.
+Finally, again working in $V$ and using (part of the statement of)
+Lemma \ref{Extend_Stat_Tower_Filter}, let $G_1$ be an $\cM_1[H]$-generic
+filter over $\Q_1$ such that $x_1\in\cM_1[H][G_1]$.
+
+Now we describe the second step of our construction. Working in $V$ again,
+and using  Lemma \ref{MakeRealGeneric}, we can find a partial order
+$\hat{\P}\subseteq J^{\cM_1}_{j_{0,1}(\delta_3)}$, with $\hat{\P}\in
+\cM_1$, and an iteration tree $\cT$ on $\cM_1$ of countable length
+$\theta+1$ such that
+\begin{itemize}
+\item[(a)] $\cM^{\cT}_{\theta}$ is realizable, and
+\item[(b)] $D^{\cT}=\emptyset$ so that $i^{\cT}_{0,\theta}$ is defined,
+and
+\item[(c)] $\crit(E^{\cT}_{\xi}) > \bar{\delta_2}$ for all $\xi<\theta$
+(so $H$ is $\cM^{\cT}_{\theta}$-generic over $\P$ and $G_1$ is
+$\cM^{\cT}_{\theta}[H]$-generic over $\Q_1$), and
+\item[(d)] $x_2$ is $\cM^{\cT}_{\theta}[H][G_1]$-generic over
+$i^{\cT}_{0,\theta}(\hat{\P})$.
+\end{itemize}
+ Set $\cM_2=\cM^{\cT}_{\theta}$ and set
+$j_{1,2}=i^{\cT}_{0,\theta}$ and set $j_{0,2}=j_{0,1}\circ j_{1,2}$. Now
+let $\bar{\delta}_4=i_{0,2}(\delta_4)$, and let
+$\Q_2=\Q_{\bar{\delta}_4}^{\cM_2[H]}$.
+Finally, again working in $V$ and using
+Lemma \ref{Extend_Stat_Tower_Filter}, let $G_2$ be an $\cM_2[H]$-generic
+filter over $\Q_2$ such that $x_2\in\cM_2[H][G_2]$, and
+$G_2\intersect\Q_1=G_1$.
+
+The $n$th step of the construction for $n>2$ is similar to the
+second step of the construction. It is easy to see how to continue the
+construction so as to obtain a sequence of mice
+$\cM_0, \cM_1, \cM_2, \dots$,  a commutative system of embeddings
+$j_{n,m}:\cM_n\map\cM_m$, a sequence of partial orders
+$\Q_1, \Q_2, \Q_3, \dots$, and a sequence of generic filters
+$G_1, G_2, G_3, \dots$ as described above. Letting
+$\bar{\delta}_{2n}=j_{0,n}(\delta_{2n})$ we have, in summary, the following:
+\begin{itemize}
+\item[(1)] $\crit(j_{0,n})>\mu$ so $H$ is $\cM_n$-generic over $\P$.
+\item[(2)] $\Q_n = \Q_{\bar{\delta}_{2n}}^{\cM_n[H]}$ for $n\geq 1$.
+\item[(3)] $G_n$ is $\cM_n[H]$-generic over $\Q_n$, for $n\geq 1$.
+\item[(4)] $x_n\in\cM_n[H][G_n]$, for $n\geq 1$.
+\item[(5)] For $1\leq n < m$, $\crit(j_{n,m})>\bar{\delta}_{2n}$ so
+           $G_n$ is $\cM_m[H]$-generic over $\Q_n$.
+\item[(6)] For $1\leq n < m$, $G_m\intersect \Q_n= G_n$.
+\item[(7)] For $n\geq 0$, $\cM_n[H][G_n]\in V$.
+\end{itemize}
+
+Let $\cM^{\prime}$ be the direct limit of the $\cM_n$ under the
+$j_{n,m}$. It is obvious that $\cM^{\prime}$ is wellfounded, because
+every thread in the direct limit system is eventually constant.
+Let $j:\cM\map\cM^{\prime}$ be the direct limit map.
+The
+following facts follow easily from (1) through (7) above:
+\begin{itemize}
+\item[(a)] $\bar{\delta}_{2n} = j(\delta_{2n})$.
+\item[(b)] $H$ is $\cM^\prime$-generic over $\P$.
+\item[(c)] $\Q_n=\Q_{\bar{\delta}_{2n}}^{\cM^{\prime}[H]}$.
+\item[(d)] $G_n$ is $\cM^{\prime}[H]$-generic over $\Q_n$.
+\item[(e)] $x_n\in\cM^{\prime}[H][G_n]$.
+\item[(f)] $\R\intersect\cM^{\prime}[H][G_n]=
+            \R\intersect\cM_n[H][G_n]\in V$, for $n\geq 1$.
+\end{itemize}
+It follows from (e) and (f) above that
+$\Union{n}\R\intersect\cM^{\prime}[H][G_n]=\R^{V}$.
+
+Our next step is to form the generic ultrapower of $\cM^{\prime}[H]$ via
+the $G_n$s.
+Let $\cP_n=\Ult(\cM^{\prime}[H],G_n)$. Since $\bar{\delta}_{2n}$ is a Woodin
+cardinal of $\cM^{\prime}[H]$, by Chapter 9 of \cite{Martin_Book},
+$\cP_n$ is wellfounded.
+(While $\cM^{\prime}[H]$ is not a model of ZFC, and so the results of
+Chapter 9 of \cite{Martin_Book} do no literally apply to $\cM^{\prime}[H]$,
+cofinally many of the rank initial segment of $\cM^{\prime}[H]$ are models
+of ZFC. Thus cofinally many of the rank initial segments of the ultrapower
+are wellfounded, and so the ultrapower is wellfounded.)
+Also, by by Chapter 9 from \cite{Martin_Book},
+$\R\intersect\cP_n=\R\intersect\cM^{\prime}[H][G_n]$.
+Let \mbox{$i_n:\cM^{\prime}[H]\map\cP_n$} be the ultrapower embedding. Then
+$i_n$ is a cofinal, $\Sigma_0$-embedding.
+ For $1\leq n<m$, let $k_{n,m}:\cP_n\map\cP_m$
+be the canonical embedding. That is:
+$$k_{n,m}\left([f]_{G_n}\right)=[f]_{G_m}.$$
+Then the $k_{n,m}$ form a commutative system of embeddings.
+Also, for each $n<m$, $i_m=k_{n,m}\circ i_n$.
+Let $\cP$ be the direct limit of the $\cP_n$ under the $k_{n,m}$ embeddings.
+Let $k_n:\cP_n\map\cP$ be the direct limit map.
+Also let $i:\cM^{\prime}[H]\map\cP$ be the induced map.
+We may think of $\cP$ as
+being the ultrapower of $\cM^{\prime}[H]$ via $\Union{n} G_n$, and we may
+think of $i$ as the ultrapower embedding.
+
+Now $\cP$ will, in general, not be wellfounded. Let us identify the
+wellfounded part of $\cP$ with the transitive set to which it is
+isomorphic. It is easy to see that $\R^{\cP}=\Union{n}\R\intersect\cP_n
+=\R^{V}$.
+It follows from general admissibility
+theory that the rank of the
+wellfounded part of $\cP$ is at least $\kappa^{\R}$.
+
+Now fix a real $x\in\R^*$, and fix a $\Sigma_1$ formula $\formulaphi$
+such that $\JofR{\kappa}\models\formulaphi[x,\R]$. Then there is
+a $\gamma<\kappa^{\R}$ such that $\JofR{\gamma}\models\formulaphi[x,\R]$.
+Since $\gamma$ is in the wellfounded part of $\cP$, $\cP$ satisfies the
+following $\Sigma_1$ sentence:
+\begin{quote}
+There is an ordinal $\gamma$ such that
+$\JofR{\gamma}\models\formulaphi[x,\R]$ and for all $\eta\leq\gamma$,
+$\JofR{\eta}$ is not admissible.
+\end{quote}
+Since $i$ is a cofinal $\Sigma_0$ embedding, $\cM^{\prime}[H]$ also
+satisfies this sentence. Fix a name $\dot{x}$ in $\cM^{\prime}$ such that
+$x=\dot{x}_{H}$. Since $\crit(j)>\mu$ we may pick $\dot{x}$ so that it
+is fixed by $j$. Let $p\in H$ be such that in $\cM^{\prime}$,
+$p$ forces the statement:
+\begin{quote}
+There is an ordinal $\gamma$ such that
+$\JofR{\gamma}\models\formulaphi[\dot{x},\R]$ and for all $\eta\leq\gamma$,
+$\JofR{\eta}$ is not admissible.
+\end{quote}
+Again, since  $\crit(j)>\mu$, we have that $j(p)=p$. Thus $p$ forces the
+same statement over $\cM$. So in $\cM[H]$ we have that
+\begin{quote}
+There is an ordinal $\gamma$ such that
+$\JofR{\gamma}\models\formulaphi[x,\R]$ and for all $\eta\leq\gamma$,
+$\JofR{\eta}$ is not admissible.
+\end{quote}
+Fix such an ordinal $\gamma$ in $\cM[H]$. Since $\R\intersect\cM[H]=\R^*$,
+we have that $J_{\gamma}(\R^*)\models\formulaphi[x,\R^*]$. Since
+$J_{\eta}(\R^*)$ is not admissible for all $\eta\leq\gamma$, we have that
+$\gamma$ is less than, for instance,
+$\bigl((2^{\aleph_0})^+\bigr)^{\cM[H]}$.
+This completes the proof of the lemma. For the ordinal $\alpha$ mentioned
+in the statement of the lemma we can take, say,
+$\alpha=(\mu^{++})^{\cM}$
+\end{proof}
+
+The previous Lemma gave us an $\alpha$ such that
+ $\Sigma_1(\JofR{\kappa})$ goes down to $J_{\alpha}(\R^*)$.
+The next corollary says that $\alpha$ can be chosen so that
+ $\Sigma_1(\JofR{\kappa})$ also goes up.
+
+\begin{corollary}
+\label{Is_Correct}
+Under the hypotheses of the previous Lemma,
+there is an ordinal $\alpha<\delta_1$
+such that whenever $x\in\R^*$ and $\formulaphi$ is a $\Sigma_1$ formula
+then $\JofR{\kappa}\models\formulaphi[x,\R]$ iff
+ $J_{\alpha}(\R^*)\models\formulaphi[x,\R^*]$.
+\end{corollary}
+\begin{proof}
+Let $\alpha_0$ be given by the previous lemma. If $\alpha_0$ does not
+satisfy our corollary, then there is some $\Sigma_1$ formula $\formulaphi$,
+and some $x\in\R^*$ such that
+$J_{\alpha_0}(\R^*)\models\formulaphi[x,\R^*]$, and
+$\JofR{\kappa}\not\models\formulaphi[x,\R]$. Let
+$\gamma\leq\alpha_0$ be least such that there is some $\Sigma_1$ formula
+$\formulaphi$, and some $x\in\R^*$ such that
+$J_{\gamma}(\R^*)\models\formulaphi[x,\R^*]$, and
+$\JofR{\kappa}\not\models\formulaphi[x,\R]$. Then $\gamma$ is a
+successor ordinal. Let $\alpha_1$ be such that $\gamma=\alpha_1+1$.
+We claim that $\alpha_1$ witnesses that our corollary is true. So let
+$\formulaphi$ by any $\Sigma_1$ formula and let $x\in\R^*$. If
+$J_{\alpha_1}(\R^*)\models\formulaphi[x,\R^*]$, then by definition of
+$\gamma$, $\JofR{\kappa}\models\formulaphi[x,\R]$. Conversely,
+suppose that $\JofR{\kappa}\models\formulaphi[x,\R]$. Fix
+$y\in\R^*$, and fix a $\Sigma_1$ formula $\psi$ so that
+$J_{\gamma}(\R^*)\models\psi[y,\R^*]$ but
+$\JofR{\kappa}\not\models\psi[y,\R]$. Then $\JofR{\kappa}$ satisfies
+the following $\Sigma_1$ statement about $\angles{x,y}$:
+\begin{quote}
+There is an ordinal $\beta$ such that $\JbetaR\models\formulaphi[x,\R]$
+and $\JbetaR\not\models\psi[y,\R]$.
+\end{quote}
+Thus $J_{\alpha_0}(\R^*)$ satisfies the same statement about $\angles{x,y}$.
+ So there is an
+ordinal $\beta<\alpha_0$ such that
+$J_{\beta}(\R^*)\models\formulaphi[x,\R^*]$, and
+$J_{\beta}(\R^*)\not\models\psi[y,\R^*]$. Since
+$J_{\gamma}(\R^*)\models\psi[y,\R^*]$, we have that $\beta\leq\alpha_1$.
+Thus
+$J_{\alpha_1}(\R^*)\models\formulaphi[x,\R^*]$.
+\end{proof}
+
+\begin{corollary}
+\label{Every_Definable_Real_Is_In}
+Let $\cM$ be a countable, realizable, tame premouse. Suppose that
+$\delta_1<\delta_2<\delta_3<\cdots$ is an increasing $\omega$-sequence of
+ordinals such that each $\delta_i$ is a Woodin cardinal of $\cM$,
+and the $\delta_i$ are cofinal in the ordinals of $\cM$.
+Let $x$ be a real and suppose that for some
+$\beta<\kappa^{\R}$, $x$ is
+ordinal definable over $\JbetaR$.  Then
+$x\in\cM$.
+\end{corollary}
+\begin{proof}
+By Lemma \ref{MakeRealGeneric} there
+is a partial order $\Q\subseteq J^{\cM}_{\delta_1}$, with
+$\Q\in \cM$ and there is an
+iteration tree $\cT$ on $\cM$ of countable length $\theta+1$ such that
+\begin{itemize}
+\item[(a)] $\cM^{\cT}_{\theta}$ is realizable, and
+\item[(b)] $D^{\cT}=\emptyset$ so that $i^{\cT}_{0,\theta}$ is defined,
+and
+\item[(c)] $x$ is $\cM^{\cT}_{\theta}$-generic over
+$i^{\cT}_{0,\theta}(\Q)$.
+\end{itemize}
+Let $\cM^{\prime}=\cM^{\cT}_{\theta}$ and let
+$\delta_1^{\prime}=i^{\cT}_{0,\theta}(\delta_1)$. It suffices to show that
+$x\in\cM^{\prime}$. Let $\P$ be be the partial order in $\cM^{\prime}$ for
+collapsing $\delta_1^{\prime}$ to be countable. Then there is a filter $H$
+which is $\cM^{\prime}$-generic over $\P$ with $x\in\cM^{\prime}[H]$.
+Let $\R^*=\R\intersect\cM^{\prime}[H]$.
+Let us apply the previous corollary to $\cM^{\prime}$ and $H$. This gives
+us an ordinal $\alpha\in\cM^{\prime}$ such that $J_{\alpha}(\R^*)$ satisfies
+the following $\Sigma_1$ statement about $x$:
+\begin{quote}
+There is a $\beta$ such that $x$ is ordinal definable over
+$\JbetaR$.
+\end{quote}
+Thus there is a $\beta$ in $\cM^{\prime}$ so that $x$ is ordinal definable
+over $J_{\beta}(\R^*)$. This means that $x$ is ordinal definable
+in $\cM^{\prime}[H]$. As $\P$ is a homogeneous forcing, $x\in\cM^{\prime}$.
+(Actually, since $\cM^{\prime}$ is not a model of $\ZFC$, we are really using
+that $x$ is ordinal definable in $J_{\gamma}^{\cM^{\prime}}[H]$, for
+some $\gamma$ such that $J_{\gamma}^{\cM^{\prime}}\models\ZFC$.)
+\end{proof}
+
+
+\begin{theorem}
+Assume that there are $\omega$ Woodin cardinals. Let $\cM$ be a countable,
+realizable premouse, such that $\cM$ is not fairly small, but every
+proper initial segment of $\cM$ is fairly small. Then the reals of
+$\cM$ are exactly equal to the set of reals $x$ such that $x$ is ordinal
+definable over $\JbetaR$, for some $\beta<\kappa^{\R}$.
+\end{theorem}
+\begin{proof}
+This follows immediately from Theorem \ref{Every_Real_Is_Definable}
+on page \pageref{Every_Real_Is_Definable}, and
+Corollary \ref{Every_Definable_Real_Is_In} above.
+\end{proof}
+
+\begin{remark}
+Assume that there are $\omega$ Woodin cardinals. It is shown in
+\cite{Many_Woodins} that this implies that there is a proper class
+premouse $L[\vec{E}]$
+which satisfies $\ZFC +$``There are $\omega$ Woodin cardinals.''
+Let $\cM$ be the $\initseg$-least initial segment of $L[\vec{E}]$ which is
+fairly big. It is easy to see that $\rho_{\omega}(\cM)=\omega$. $\cM$ is
+thus the unique fully iterable premouse which is sound, projects to
+$\omega$, has $\omega$ Woodin cardinals cofinal in its ordinals, and has
+the property that every proper initial segment is fairly small.
+We may think of $\cM$ as the canonical, minimal inner model for the
+theory: $\ZFC - $ Replacement $+$ ``There exists $\omega$ Woodin cardinals
+cofinal in the ordinals.'' The previous theorem says that
+$\Ahyp=\R\intersect\cM$.
+\end{remark}

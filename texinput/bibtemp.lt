@@ -1,0 +1,62 @@
+@article{<key>,
+  AUTHOR  = {},
+  TITLE   = {},
+  YEAR    = {},
+  JOURNAL = {},
+    VOLUME = {},
+    NUMBER = {},
+    MONTH  = {},
+    PAGES  = {}
+}
+
+NOTE: Below only one of AUTHOR or EDITOR is requried
+
+
+@book{<key>,
+  AUTHOR    = {},
+  EDITOR    = {},
+  TITLE     = {},
+  YEAR      = {},
+  PUBLISHER = {},
+    VOLUME  = {},
+    NUMBER  = {},
+    SERIES  = {},
+    ADDRESS = {},
+    EDITION = {},
+    MONTH   = {}
+}
+
+
+@inproceedings{<key>,
+  AUTHOR    = {},
+  TITLE     = {},
+  BOOKTITLE = {},
+  YEAR      = {},
+    PUBLISHER    = {},
+    EDITOR       = {},
+    VOLUME       = {},
+    NUMBER       = {},
+    SERIES       = {},
+    ADDRESS      = {},
+    PAGES        = {},
+    ORGANIZATION = {}
+    MONTH        = {}
+}
+
+@phdthesis{<key>,
+  AUTHOR = {},
+  TITLE  = {},
+  SCHOOL = {},
+  YEAR   = {},
+   TYPE    = {},
+   ADDRESS = {},
+   MONTH   = {}
+}
+
+@unpublished{<key>,
+  AUTHOR =  {},
+  TITLE  =  {},
+  NOTE   =  {},
+   MONTH = {},
+   YEAR  = {}
+}

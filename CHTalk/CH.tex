@@ -1,0 +1,1176 @@
+%%Prosper slide presentation template
+%%Build using latex+dvipdf
+%%Note that the prosper package must be separately installed
+%%See http://prosper.sourceforge.net/
+\documentclass[pdf,final]{prosper}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+\include{MathDefs}
+\include{TheoremStyles}
+
+\newcommand{\skipsmall}{\vspace{1em}}
+\newcommand{\skipmed}{\vspace{2em}}
+\newcommand{\skipbig}{\vspace{3em}}
+\newcommand{\skipsmallminus}{\vspace{-1em}}
+
+%\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+%\usepackage{moreverb}
+%\usepackage{graphicx}
+
+\title{The Continuum Hypothesis}
+\subtitle{Search/Pathways Friday Colloquium}
+
+\author{Mitch Rudominer}
+\institution{BEA}
+\email{Mitch.Rudominer@bea.com}
+
+% You can use this macro to put a caption at the bottom of each slide.
+%\slideCaption{}
+% \Logo This allows you to place a logo on each slide at a specified position.
+
+% This defines the type of transition that should occur between slides.
+% \DefaultTransition
+
+\begin{document}
+
+\maketitle
+
+\begin{slide}{Abstract}
+If $A$ and $B$ are sets then $|A|=|B|$ means that $A$ and $B$ have the same
+size, i.e. the same number of elements. We say that $A$ and $B$ have the same \emph{cardinality}.
+$|A|< |B|$ means that $A$ has fewer elements than $B$.
+
+\skipmed
+We will give a precise definition of cardinality in this talk.
+
+\skipmed
+
+We will see that there are infinite sets
+$A$ and $B$ such that $|A| \neq |B|$. For example, we will see that $|\N| <
+|\R|$.
+
+\end{slide}
+\begin{slide}{Abstract (2)}
+The Continuum Hypothesis, abbreviated \CH, is the statement
+that there is no cardinality between $|\N|$ and $|\R|$. That is, \CH says: There
+is no set $A$ such that $|\N| < |A| < |\R|$.
+
+\skipmed
+
+Is \CH true or false? It turns out this is a difficult question to
+answer because \CH is \emph{independent} of the axioms of mathematics.
+That is, it can neither be proved nor disproved.
+
+\skipmed
+
+In this talk we will explain fairly precisely what is meant by the indepence of
+\CH and we will give a rough sketch of the proof.
+
+\end{slide}
+\begin{slide}{Abstract (3)}
+
+\skipmed
+
+In the talk we we also cover the concept of cardinal and ordinal numbers.
+
+\end{slide}
+
+\begin{slide}{Cross Products}
+
+\begin{definition}
+$\angles{a,b}\defeq$ the \textbf{ordered pair} whose first element is $a$ and
+whose second element is $b$.
+\end{definition}
+
+\skipmed
+
+\begin{definition}
+If $A$ and $B$ are sets then 
+$ A \times B \defeq\setof{\angles{a,b}}{a\in A, b \in B}$
+\end{definition}
+
+\skipmed
+
+\begin{example}
+Let $A = \singleton{1,2,3}$ and $B = \singleton{x,y}$. Then
+$A \times B = \singleton{ \angles{1,x},\angles{1,y},\angles{2,x},\angles{2,y}, \angles{3,x},\angles{3,y}}$
+\end{example}
+
+\end{slide}
+
+\begin{slide}{Functions}
+
+\begin{definition}
+If $A$ and $B$ are sets then $f:A \map B$ means that $f$ is a \textbf{function} from A to
+B. Intuitively, $f$ is a mapping that, given an element $a\in A$ assigns an
+element $f(a) \in B$. Formally, $f\subset A\times B$ such that for all $a \in
+A$ there is exactly one element $b \in B$ s.t. $\angles{a,b}\in f$. We write $b =
+f(a)$.
+\end{definition}
+
+\skipmed
+
+\begin{definition}
+If $f:A\map B$ then $A$ is called the \textbf{domain} of $f$. We write $A=\dom (f)$. The
+\textbf{range} of $f$ is a subset of $B$ given by $\ran(f)=\setof{f(a)}{a\in A}$.
+\end{definition}
+
+\skipmed
+
+\end{slide}
+
+\begin{slide}{Functions (2)}
+
+\begin{definition}
+If $f:A\map B$ then $f$ is called \textbf{one-to-one} or an \textbf{injection},
+and we write
+$f:A\injection B$, if $f(a_1)\neq f(a_2)$ whenever $a_1\neq a_2$. $f$ is called
+\textbf{onto} $B$ or a \textbf{surjection}, and we write $f:A\surjection B$, if $B =
+\ran(f)$. If $f$ is
+both one-to-one and onto then it is called a \textbf{bijection} or a
+\textbf{one-to-one-correspondence} and we write $f:A\bijection B$.
+\end{definition}
+
+
+\end{slide}
+
+\begin{slide}{Equipotency}
+Notice that if $A$ and $B$ are finite sets and $f:A \bijection B$ then $A$ and
+$B$ must have the same number of elements. We use this idea to \textbf{define}
+what it means for two infinite sets to have the same number of elements.
+
+\skipmed
+
+\begin{definition}
+Let $A$ and $B$ by two (possibly infinite) sets. We write $A\cong B$ and say the
+$A$ is \textbf{equipotent} with $B$ if there is some function $f:A \bijection B$.
+\end{definition}
+\end{slide}
+
+
+\begin{slide}{Equipotency (2)}
+We think of $A\cong B$ as meaning that $A$ and $B$ have the same size, the same
+``number'' of elements.
+
+\skipmed
+
+\begin{remark}
+We really want to write $|A| = |B|$ instead of $A\cong B$. But this is awkward
+because we haven't defined $|A|$. If $A$ is \emph{finite} then $|A|$ means the
+number of elements of $A$. But how can we make sense of this if $A$ is infinite?
+We need a generalization of the notion of ``number'' to the infinite. We will
+use ordinals and cardinals.
+\end{remark}
+
+\end{slide}
+
+\begin{slide}{Using injections to compare cardinality}
+\begin{definition}
+We write $A\preceq B$ if there is an injection from $A$ to $B$.
+$A\prec B$ means $A\preceq B$ and  not $A\not\cong B$
+\end{definition}
+
+\skipsmall
+
+We think of $A\preceq B$ as meaning that the size of $A$ is less than or equal
+to the size of $B$, and $A\prec B$ as meaning that the size of $A$ is strictly less than the
+size of $B$. After we have defined cardinality, we will be able to
+write $|A|\leq|B|$ and $|A|<|B|$ instead.
+
+\skipsmall
+
+\begin{theorem}{Cantor-Bernstein}
+If $A\preceq B$ and $B\preceq A$ then $A\cong B$.
+\end{theorem}
+
+\skipsmall
+
+The proof is surprisingly tricky and we omit it.
+
+\skipsmall
+
+\begin{exercise}
+Show that if $A\subseteq B$ then $A\preceq B$.
+\end{exercise}
+
+
+
+\end{slide}
+
+\begin{slide}{Some Properties of Equipotence}
+\begin{exercise}
+$\cong$ is an equivalence relation. This means it is
+\begin{enumerate}
+  \item reflexive: $A\cong A$.
+  \item symmetric: $A\cong B\implies B\cong A$.
+  \item transitive: $A\cong B \AND B\cong C \implies A\cong C$.
+\end{enumerate}
+\end{exercise}
+
+\skipmed
+
+\begin{exercise}
+$\prec$, $\preceq$, and $\cong$ satisfy the following properties:
+\begin{enumerate}
+  \item transitive: $A\prec B \AND B\prec C \implies A\prec C$ and similarly with
+  $\preceq$.
+  \item $A\cong B \implies A\preceq B$.
+\end{enumerate}
+\end{exercise}
+\end{slide}
+
+\begin{slide}{The Axiom Of Choice}
+In this talk we will not pay particular attention to the axioms we are using.
+However there is one axiom that I want to call our attention to.
+
+\skipmed
+
+The Axiom of Choice, abbreviated \AC, is the following statement:
+
+\skipsmall
+
+Suppose that $A$ is an infinite set and $f$ is a function with $A=\dom(f)$.
+Suppose that for all $a\in A$, $f(a)$ is a non-empty set. Then there is a
+function $g$ with $\dom(g)=A$ such that for all $a \in A$,  $g(a)\in f(a)$.
+\end{slide}
+
+\begin{slide}{Using surjections to compare cardinality}
+\begin{lemma}
+Let $A$ and $B$ be non-empty sets. Then the following two things are equivalent:
+\begin{enumerate}
+\item There is a function $f:A \injection B$ (i.e. $A\preceq B$)
+\item There is a function $g:B \surjection A$
+\end{enumerate}
+\end{lemma}
+
+\skipsmall
+
+\begin{proof}
+(1) $\implies$ (2): Suppose $f:A \injection B$. Let $a_0$ be any element of $A$.
+Define $g:B\surjection A$ by $g(b)\defeq f^{-1}(b)$ if $b\in\ran(f)$ or
+$g(b)=a_0$ otherwise.
+
+(2) $\implies$ (1): Suppose $g:B \surjection A$. By \AC, there
+is a function $f$ such that for all $a\in A$, $f(a)\in g^{-1}[\singleton{a}]$.
+Then $f:A \injection B$.
+\end{proof}
+\end{slide}
+
+\begin{slide}{Powersets}
+\begin{definition}
+Let $A$ be a set. Then the \textbf{powerset} of $A$, written $\Powerset(A)$, is the set
+of all subsets of $A$.
+\end{definition}
+
+\skipmed
+
+\begin{example}
+
+
+\begin{enumerate}
+  \item Let $A=\singleton{a,b}$. Then 
+  $\Powerset(A)=\singleton{\emptyset,\singleton{a},\singleton{b},\singleton{a,b}}$ 
+  \item $\Powerset(\emptyset)=\singleton{\emptyset}$
+  \item 
+  $\Powerset(\singleton{\emptyset})=\singleton{\emptyset,\singleton{\emptyset}}$
+  \item $\Powerset(\R) = $ the set consisting of every set of real numbers
+\end{enumerate}
+
+
+\end{example}
+
+
+\end{slide}
+
+\begin{slide}{The Cantor Diagonal Argument}
+\begin{theorem}
+For any set $A$, $A\prec \Powerset(A)$.
+\end{theorem}
+
+\skipsmall
+
+\begin{proof}
+To see that $A\preceq \Powerset(A)$, let $f:A\injection \Powerset(A)$ be defined
+by $f(a)=\singleton{a}$ for each $a\in A$. To see that $\Powerset(A)\not\cong A$, suppose
+that $g:A\bijection \Powerset(A)$ and we will derive a contradiction. Let
+$X\defeq \setof{a\in A}{a \not\in g(a)}$. Notice that $X\subseteq A$, so
+$X\in\Powerset(A)$, so $X\in\ran(g)$. So fix some element $a_0\in A$ such that
+$g(a_0)=X$. Now we ask the question, is $a_0\in X$? If $a_0\in X=g(a_0)$ then
+$a_0\not\in X$ by definition of $X$. Conversely, if $a_0\not\in X = g(a_0)$
+then $a_0 \in X$ by definition of $X$. In either case we get a contradiction. So
+it must not be true that $\Powerset(A)\not\cong A$. Thus $A\prec \Powerset(A)$.
+\end{proof}
+
+
+\end{slide}
+
+\begin{slide}{Real and Natural Numbers}
+Let $\N=\singleton{0,1,2,3,\dots}$  be the \textbf{natural numbers}  and let
+$\R$ be the \textbf{real numbers}. Notice that $\N\subset\R$ and so $\N\preceq
+\R$. In fact $\N\prec\R$.
+
+\skipsmall
+
+\begin{exercise}
+Show $\N\prec\R$.
+Hint:
+\begin{enumerate}
+  \item $\R\cong (0,1)$.
+  \item $(0,1) \cong \setof{s}{s\text{ is an infinite sequence of bits}}$
+  \item $\setof{s}{s\text{ is an infinite sequence of bits}} \cong \Powerset(\N)$
+\end{enumerate}
+So $\N\prec\Powerset(\N)\cong\R$
+\end{exercise}
+
+\end{slide}
+
+\begin{slide}{Infinite and Countable}
+
+\begin{definition}
+A set $A$ is \textbf{finite} if there is some natural number $n$ such that
+$\singleton{0,1,2,\dots,n-1} \cong A$. In this case we write $|A|=n$. If $A$ is
+not finite then it is \textbf{infinite}.
+\end{definition}
+
+\skipsmall
+
+\begin{definition}
+$A$ is  \textbf{countably infinite} if $A\cong\N$. $A$ is \textbf{countable}
+if it is either finite or countably infinite. Otherwise $A$ is \textbf{uncountable}.
+\end{definition}
+
+\skipmed
+
+So the exercise on the previous slide showed that the set of real numbers is uncountable.
+
+\skipsmall
+
+\begin{exercise}
+Show that the set of rational numbers, $\Q$, is countable.
+\end{exercise}
+
+\skipsmall
+
+So $\N\subset\Q\subset\R$ and $\N\cong\Q\prec\R$.
+
+\end{slide}
+
+\begin{slide}{The Continuum Hypothesis: Take 1}
+One way to state the \CH is the following:
+\skipmed
+\begin{ch}
+If $A$ is an uncountable set of real numbers, then $A\cong\R$.
+\end{ch}
+
+\skipsmall
+
+For a different way to state \CH, we need to talk about cardinality and define
+$|A|$ for infinite sets $A$.
+
+\end{slide}
+
+\begin{slide}{Cardinality: Informal Approach}
+
+We want to define $|A|$ for an arbitry set $A$. $|A|$ should be some object that
+represents the size of $A$. For finite sets we use natural numbers as
+cardinalities. What should we use for infinite sets?
+
+\skipsmall
+
+Based on our experience with finite sets, the main property we want from
+cardinality is the following:
+\begin{equation}
+|A|=|B| \Ifff A\cong B
+\end{equation}
+
+\skipsmall
+
+Given any set $A$, let $[[A]]=\setof{B}{B\text{ is a set and } B\cong A}$. So
+$[[A]]$ is the \textbf{equivalence class} of all sets that are equipotent with
+$A$. 
+
+\end{slide}
+
+\begin{slide}{Cardinality: Informal Approach, 2}
+
+We have to elect some object to be $|A|$.  Let's call this object $\kappa$. We
+know that we also want $|B|=\kappa$ for each $B\in[[A]]$.
+
+\skipsmall
+
+A first idea is to define $|A| = [[A]]$. Unfortunately there are some technical
+problems with this becuase $[[A]]$  is not itself a set. (It is a proper class
+because it has too many elments.)
+
+\skipsmall
+A solution to this problem is to instead define $|A|$ to be some
+\textbf{canonical} element of $[[A]]$. That is $|A|$ will be some distinguished
+member of the equivalence class $[[A]]$.
+
+\skipsmall
+
+So what is a good way of picking this distinguished element? We will use an \textbf{ordinal}.
+
+\end{slide}
+
+\begin{slide}{Ordinals, an informal approach}
+Informally, the \textbf{ordinals} are what you get if you keep counting past
+infinity. 
+
+\skipsmall
+
+$0,1,2,3,\dots\omega,\omega+1,\omega+2,\omega+3,\dots 2
+\omega,2\omega+1,2\omega+2, 2\omega+3,\dots$
+
+
+\skipsmall
+There are two different kinds of ordinals: \textbf{successor ordinals} and
+\textbf{limit ordinals}. (And zero, which is neither a limit nor a successor.)
+
+\skipsmall
+
+The successor ordinals are just like the integers: each one is just one more
+than the previous one. The limit ordinals are a new kind of thing. They are
+points in the ordering that sit above all of the points that are less than them,
+but they have no immediate predecessor. In the picture above, the limit ordinals
+are $\omega$ and $2\omega$.
+\end{slide}
+
+\begin{slide}{Linear Orders}
+\begin{definition}
+A \textbf{linearly ordered set} is a pair $\angles{X,<}$, where $X$ is a set and
+$<$ is a binary relation on $X$ (i.e a subset of $X\times X$) such that $<$ is:
+\begin{enumerate}
+  \item transitive: $x<y<z\Implies x<z$
+  \item asymmetric: $x\not<x$
+  \item connected: For all $x\not= y$ in $X$, $x<y$ or $y<x$.
+\end{enumerate}
+If $x<y$ and there is no $z$ such that $x<z<y$ then $x$ is the
+\textbf{predecessor} of $y$	 and $y$ is the \textbf{successor} of $x$. If every
+element except possibly the greatest one has a successor and every element
+except possibly the least one has a predecessor then $\angles{X,<}$ is said to be a
+\textbf{discrete} linear order. At the other end of the spectrum, if for
+all $x$ and $y$ there is a $z$
+such that $x<y<z$ then $\angles{X,<}$ is said to be a \textbf{dense} linear order.
+\end{definition}
+\end{slide}
+
+\begin{slide}{Linear Orders (2)}
+\begin{example}
+Let $\Z=\singleton{\dots,-3,-2,-1,0,1,2,3,\dots}$ be the integers. Then
+$\angles{\Z,<}$ and $\angles{\N,<}$ are discrete linear orders.
+\end{example}
+
+\skipsmall
+
+\begin{example}
+$\angles{\R,<}$ and $\angles{\Q,<}$ are dense linear orders.
+\end{example}
+
+\skipsmall
+
+Notice that if $X$ is an infinite set and $<$ is a linear order on $X$ then the
+notions of the cardinality of $X$ and the type of ordering of $<$ are distinct.
+For example $\N\cong \Q$ even though $\angles{\N,<}$ is discrete and
+$\angles{\Q,<}$ is dense. And $\Q\prec\R$ even though $\angles{\R,<}$ is also
+dense. 
+
+\end{slide}
+
+\begin{slide}{Well-orderings}
+\begin{definition}
+A \textbf{well-ordering} is a linear ordering in which there are no infinite
+descending chains of elements.
+\end{definition}
+
+\skipmed
+
+\begin{example}
+$\angles{\N,<}$ is a well-ordering, but $\angles{\Z,<}$ and $\angles{\Q,<}$ are not.
+\end{example}
+
+\begin{example}
+$\N\union\singleton{\omega}=\singleton{0<1<2<3<\dots<\omega}$ is a well-ordering.
+\end{example}
+
+\end{slide}
+
+\begin{slide}{Alternate Def of Well-orderings}
+
+\begin{lemma}
+Suppose $\angles{X,<}$ is a linear ordering. Then it is a well-ordering if and
+only if it satisfies the following property: Every subset of $X$ contains a
+\emph{least} element.
+\end{lemma}
+\begin{proof}
+If there is an infinite descending chain of elements, then that chain consists
+of a set of elements that does not have a least element. Conversely, suppose
+there is some $A\subseteq X$ such that $A$ does not have a least element. Let
+$a_0\in A$. This is not the least element of $A$ so there is some $a_1<a_0$ in
+$A$. This is also not the least element of $A$ so there is some $a_2<a_1$ in
+$A$. Continuing in this way we get an infinite descending chain.
+\end{proof}
+
+\skipsmall
+
+Note that this proof uses the Axiom of Choice.
+
+\end{slide}
+
+\begin{slide}{Some Properties of Well-orderings}
+\begin{lemma}
+Let $\angles{X,<}$ be a well-ordering. Then
+\begin{enumerate}
+  \item There is a least element of $X$.
+  \item There may or may not be a greatest element of $X$.
+  \item If $x$ is any element of $X$ other than the greatest, then $x$ has a
+  unique successor, which we will write as $\suc(x)$.
+  \item If $x$ is any element other than the least, then $x$ may or may not have
+  a predecessor. If it has a predecessor, $x$ is called a successor element. If
+  it does not have a predecessor, $x$  is called a \textbf{limit} element.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+1. Every subset of $X$ has a least element, so $X$ itself does.
+2. $\N\union\singleton{\omega}$ has a greatest element, but $\N$ doesn't.
+3. Let $A=\setof{y\in X}{x<y}$. $A$ has a least element, which is $\suc(x)$.
+4. Every element of $\N$ other than 0 is a successor element, but $\omega$ does
+not have a predecessor, so it is a limit element.
+\end{proof}
+\end{slide}
+
+\begin{slide}{Principle of Induction}
+\begin{lemma}
+Suppose $\angles{X,<}$ is a well-ordering. Suppose $P$ is some property that you
+wish to show is true of every element of $X$. Let $x_0$ be the least element of
+$\angles{X,<}$. If
+\begin{enumerate}
+  \item $P(x_0)$ holds; and
+  \item $(\forall y<x)P(y)\Implies P(x)$.
+\end{enumerate}
+Then $P(x)$ holds for every $x\in X$.
+\end{lemma}
+\begin{proof}
+Let $A=\setof{x\in X}{\neg P(x)}$. We want to show that $A=\emptyset$. Suppose
+not and let $x_1$ be the least element of $A$. Then for all $y<x_1$, $P(y)$
+holds. Then by our assumption $P(x_1)$ holds. Contradiction.
+\end{proof}
+\end{slide}
+
+\begin{slide}{Comparing Well-Orderings}
+
+\begin{definition}
+Suppose  $\angles{X,<_X}$ and $\angles{Y,<_Y}$ are well-orderings. An
+\textbf{isomorphism} from $\angles{X,<_X}$ to $\angles{Y,<_Y}$ is
+an order-preserving bijection: $f:X\bijection Y$ such that $x_1<x_2 \Iff
+f(x_1)<f(x_2)$. We say that $\angles{X,<_X}$ and $\angles{Y,<_Y}$ are \textbf{isomorphic}.
+\end{definition}
+
+\skipsmall
+
+\begin{lemma}
+If $\angles{X,<_X}$ and $\angles{Y,<_Y}$ are isomorphic then there is a
+\textbf{unique} isomorphism from $\angles{X,<_X}$ to $\angles{Y,<_Y}$.
+\end{lemma}
+\begin{proof}
+Suppose $f$ and $g$	are two different isomorphisms. Let $x$ be least such that
+$f(x)\not=g(x)$. Let $B=\setof{f(z)}{z<x}=\setof{g(z)}{z<x}$. Let $y$ be the
+least element of $Y$ that is not in $B$. Then we must have $f(x)=y$ and
+$g(x)=y$. Contradiction.
+\end{proof}
+
+\end{slide}
+
+\begin{slide}{Initial Segments}
+\begin{definition}
+An \textbf{initial segment} of a well-ordering $\angles{X,<_X}$ is a subset
+$Y\subseteq X$ such that if $y\in Y$ and $x\in X$ and $x<y$ then $x\in Y$.
+A \textbf{proper} initial segment is an initial segment that is not all of $X$.
+\end{definition}
+
+\skipsmall
+
+\begin{remark}
+Every proper initial segment is of the form 
+$I_{<x}=\setof{y\in X}{y<x}$ and possibly of the form $I_x=\setof{y\in X}{y<=x}$.
+\end{remark}
+
+\skipsmall
+
+\begin{definition}
+The \textbf{order type} of a wellordering $\angles{X,<}$ is the class of all
+well-orderings that are isomorphic to $\angles{X,<}$.
+\end{definition}
+\end{slide}
+
+\begin{slide}{The Order Types are Well-Ordered}
+\begin{theorem}
+Let $\angles{X,<_X}$ and $\angles{Y,<_Y}$ be two well-orderings. Then either they
+are isomorphic, or one of them is isomorphic to a proper initial segment of the other.
+\end{theorem}
+\begin{proof}[proof sketch]
+Suppose that there is no isomorphism from $\angles{Y,<_Y}$ to a proper initial
+segment of $\angles{X,<_X}$. We will show that there is an isomorphism from 
+$\angles{X,<_X}$ to an initial segment of $\angles{Y,<_Y}$. Let
+$A=\setof{x\in X}{I_x \text{ is isomorphic to an initial segment of } Y}$. We
+claim that $A=X$.
+If not, let $x_0$ be least not in $A$. For every $x<x_0$ there is a unique
+isomorphism from $I_x$ onto an initial segment of $Y$. The union of all of these
+functions is a an isomorphism $f:I_{<x_0}\map {I_{<y_0}}$ for some $y_0\in Y$.
+Extend $f$ one more point by setting $f(x_0)=y_0$. This shows that $A=X$.
+Now take the union of all of the isomorphisms for all of the initial segments of
+$\angles{X,<_X}$. This gives an isomorphism from all of $\angles{X,<_X}$ into an
+initial segment of $\angles{Y,<_Y}$.
+\end{proof}
+\end{slide}
+
+\begin{slide}{How to define the ordinals?}
+
+Our immediate goal is to give a precise definition of the ordinals.
+
+\skipsmall
+
+The order-types of the well-orderings are arranged just like our intuitive
+picture of the ordinals.
+
+\skipsmall
+
+\textbf{Idea:} For each well-ordering type, pick some canonical representative
+to be an ordinal.
+
+\skipsmall
+
+But do it in a such a way that there is also some global $<$ relation on the ordinals.
+
+
+\end{slide}
+
+\begin{slide}{Von Neumann Ordinals}
+
+\textbf{Idea:} An ordinal is equal to the set of smaller ordinals.
+
+
+\begin{itemize}
+  \item $0 = \emptyset$
+  \item $1 = \singleton{0}$
+  \item $2 = \singleton{0,1}$
+  \item $3= \singleton{0,1,2}$
+  \item $\omega = \singleton{0,1,2,3,4,5,\dots}$
+  \item $\omega+1 = \singleton{0,1,2,3,4,5,\dots,\omega}=\omega\union\singleton{\omega}$
+\end{itemize}
+
+Notice that $\in$ is playing the role of $<$. The ordinals are well-ordered by
+\textbf{membership}.  Also notice that each ordinal is closed under $\in$.
+
+
+
+\end{slide}
+
+\begin{slide}{The Ordinals}
+
+\begin{definition}
+A set $X$ is \textbf{transitive} if every member of $X$ is also a subset of $X$.
+That is, if $y\in x\in X$ then $y\in X$.
+\end{definition}
+
+\skipsmall
+
+\begin{definition}
+An \textbf{ordinal} is a set that is transitive and well-ordered by $\in$.
+\end{definition}
+
+\skipsmall
+
+\begin{definition}
+If $\alpha$ and $\beta$ are ordinals we write $\alpha<\beta$ for
+$\alpha\in\beta$. Also $\alpha+1\defeq\alpha\union\singleton{\alpha}$. Notice
+that $\alpha+1$ is the least ordinal greater than $\alpha$.
+\end{definition}
+
+\skipsmall
+
+\begin{definition}
+An ordinal $\beta$ is called a \textbf{successor} ordinal if $\beta=\alpha+1$
+for some $\alpha$. If $\beta\neq 0$ is not a successor ordinal then it is
+called a \textbf{limit} ordinal.
+\end{definition}
+
+\skipsmall
+
+\begin{definition}
+$\omega$ is the least limit ordinal.
+\end{definition}
+
+
+\end{slide}
+
+\begin{slide}{Properties of the Ordinals}
+\begin{remark}
+Every element of an ordinal is also an ordinal. Every set of ordinals is
+well-ordered by
+$\in$. So an ordinal is the same thing as a transitive set of ordinals.
+\end{remark}
+
+\skipsmall
+
+\begin{lemma}
+There is no largest ordinal. Every set of ordinals $X$ has a least upper bound,
+which we write as $\lambda=\sup(X)$.
+\end{lemma}
+\begin{proof}
+There is no largest ordinal because $\alpha<\alpha+1$. Let $X$
+be any set of ordinals. If $X$ has a largest element we are done, so suppose it doesn't.
+Let $\lambda=\bigcup X = \setof{\alpha}{(\exists\beta\in X)\alpha\in\beta}$.
+$\lambda$ is a set of ordinals and $\lambda$ is transitive, so $\lambda$ is an
+ordinal. Every member of $X$ is a member of $\lambda$, so $\lambda$ is an
+ordinal greater than every member of $X$. Every member of $\lambda$ is a member
+of some member of $X$, so $\lambda$ is the least upper bound of $X$.
+\end{proof}
+
+
+\end{slide}
+
+\begin{slide}{The Ordinals are Universal}
+\begin{theorem}
+Let $\angles{X,<_X}$	be any well-ordering. Then there is a unique ordinal
+$\alpha$ such that $\angles{\alpha,\in}$  is isomorphic to $\angles{X,<_X}$.
+We will say for short that $\alpha$ is isomorphic to $\angles{X,<_X}$.
+\end{theorem}
+\begin{proof}
+Let $A$ be the set of ordinals that are isomorphic to some initial segment of
+$\angles{X,<_X}$, and for each $\gamma\in A$ let $f_{\gamma}$ be the unique
+isomorphism from $\angles{\gamma,\in}$ to an initial segment of
+$\angles{X,<_X}$. Let $\alpha=\sup(A)$. Let $f$ be the union of all of the
+$f_{\gamma}$. Then $f$ is an isomorphism from $\alpha$ to an initial segment of
+$\angles{X,<_X}$. (Which means that $\alpha$ must have been the greatest
+element of $A$.) $f$ must be onto all of $X$ becuase otherwise $\alpha+1$ would
+be in $A$.
+\end{proof}
+\end{slide}
+
+\begin{slide}{Every Set is Well-orderable}
+\begin{theorem}
+Let $X$ be any set. Then $X$ is bijectable with an ordinal. Equivalently, there
+is some relation $<_X$ on $X$ such that $\angles{X,<_X}$ is a well-ordering.
+\end{theorem}
+
+
+\begin{remark}
+The proof of this theorem requires the Axiom of Choice. In fact, the statement
+of the theorem is equivalent to \AC.
+\end{remark}
+
+
+\begin{proof}[sketch of proof]
+By \AC there is a function $F$ such that for every non-empty subset $a\subseteq
+X$, $F(a)\in a$.
+Now, by induction on ordinals $\alpha$, we define a sequence of injections
+$f_{\alpha}:\alpha\injection X$, so that $\alpha<\beta\Implies f_{\alpha}\subset
+f_{\beta}$. At successor ordinals $\alpha+1$, if $f_{\alpha}$ is not already
+onto $X$, we let
+$f_{\alpha+1}(\alpha)=F(X-\setof{f(\beta)}{\beta<\alpha})$. At limit ordinals $\lambda$,
+we set $f_{\lambda}=\Union{\alpha<\lambda}f_{\alpha}$. Eventually we will use up
+all of the elements of $X$, so must reach some $\alpha$ s.t.
+$f_{\alpha}$ is onto $X$. 
+\end{proof}
+\end{slide}
+
+\begin{slide}{The Cardinals}
+\begin{definition}
+A \textbf{cardinal} is an ordinal $\kappa$ with the property that for all
+ordinals $\alpha<\kappa$, $\alpha\not\cong\kappa$. That is, there is no
+surjection $f:\alpha\surjection\kappa$.
+\end{definition}
+
+\skipmed
+
+\begin{remark}
+Each of the finite ordinals are cardinals. $\omega$ is a cardinal---it
+is the least infinite cardinal. $\omega+1$ is not a cardinal. $\omega+\omega$ is
+not a cardinal.
+\end{remark}
+
+
+\end{slide}
+
+\begin{slide}{Cardinality}
+\begin{definition}
+For any set $X$, the \textbf{cardinality} of $X$, written $|X|$, is the least
+ordinal $\kappa$ such that $\kappa\cong X$. Notice that $\kappa$ must in fact be
+a cardinal.
+\end{definition}
+
+\skipsmall
+
+\begin{remark}
+Recall that $[[X]]$ is the equivalence class of all sets that are
+equipotent with $X$. We said we were going to define $|X|$ to be
+some canonical element of $[[X]]$. We
+have finally done this. The canonical element we have chosen is the
+least ordinal in $[[X]]$.
+\end{remark}
+
+\skipsmall
+Notice that if $\kappa$ is a cardinal then $|\kappa|=\kappa$.
+
+\skipsmall
+
+\begin{definition}
+If $\kappa$ is a cardinal then we define $2^{\kappa}$ to be the cardinality of $\Powerset(\kappa)$.
+\end{definition}
+
+\skipsmall
+
+\begin{remark} 
+$2^{\kappa}>\kappa$.
+\end{remark}
+
+\end{slide}
+
+\begin{slide}{Properties of Cardinals}
+\begin{lemma}
+There is no largest cardinal, and if $X$ is a set of cardinals, then $\sup(X)$
+is also a cardinal.
+\end{lemma}
+\begin{proof}
+There is no largest cardinal because $k<2^{\kappa}$. Suppose $X$ is a set of
+cardinals and let $\lambda=\sup(X)$. If $X$ has a greatest element, then it is
+$\lambda$, and so $\lambda$ is a cardinal and we are done. So suppose $X$ does
+not have a greatest element. We want to show that $\lambda$ is a cardinal.
+Suppose towards a contradiction that it is not. Let $\alpha<\lambda$ and let
+$f:\alpha\surjection\lambda$. Since $\lambda=\sup(X)$ and $X$ doesn't have a
+greatest element, there is a $\mu\in X$ such that $\alpha<\mu$. But
+$\mu\subset\lambda$ and $f:\alpha\surjection\lambda$, so $|\mu|\leq\alpha$,
+which contradicts the fact that $\mu$ is a cardinal.
+\end{proof}
+
+\end{slide}
+
+\begin{slide}{The Alephs}
+
+\begin{definition}
+If $\kappa$ is a cardinal then $\kappa^{+}$	is the next largest cardinal. If
+$\mu=\kappa^{+}$ then $\mu$ is called a \textbf{successor cardinal}. If $\mu$ is
+not zero and not a successor cardinal, then it is called a \textbf{limit}
+cardinal.
+\end{definition}
+
+\skipsmall
+
+Each of the positive finite cardinals are successor cardinals. $\omega$ is the
+least limit cardinal, as well as the least limit ordinal.
+
+\skipsmall
+
+\begin{definition}
+If $\alpha$ is an ordinal then $\aleph_{\alpha}$ is the $\alpha^{\text{th}}$
+infinite cardinal. So $\aleph_0 = \omega$ is the least infinite cardinal.
+$\aleph_1 = \aleph_0^{+}$ is the least uncountable cardinal. $\aleph_{\omega}$
+is the second limit cardinal.
+\end{definition}
+
+\end{slide}
+
+\begin{slide}{The Generalized Continuum Hypothesis}
+
+We can finally give the official version of the Continuum Hypothesis. \CH is the
+following statment: 
+
+\skipsmall
+
+$2^{\aleph_0} = \aleph_1$
+
+
+\skipsmall
+
+The Generalized Continuum Hypothesis, or \textbf{GCH} is the following statment:
+
+\skipsmall
+
+For all infinite cardinals $\kappa$, $2^{\kappa}=\kappa^+$
+
+\end{slide}
+
+\begin{slide}{Meta-Mathematics}
+Our next goal is to develop enough theory to be able to precisely state the fact
+that \CH is independent. In order to do that, we need to turn to a new topic:
+meta-mathematics. 
+
+\skipsmall
+
+In ordinary mathematics, like we have been doing on earlier slides, theorems and
+proofs are the language we use to speak to each other, and the objects of our
+study are things like sets and functions. 
+
+\skipsmall
+
+In meta-mathematics, theorems and
+proofs become the objects of our study. Of course we will still need to use
+theorems and proofs in order to talk to each other about these new objects of
+our study.
+
+\end{slide}
+
+\begin{slide}{Language and Meta-Language}
+
+In order to be able to use theorems and proofs to study theorems and
+proofs, we need to seperate our language into a \textbf{formal} language, which
+will be the object of our study, and an informal \textbf{meta-language} which we will use to
+talk about the formal language.
+
+\skipmed
+
+Our meta-language will be the language we have been using all along in this
+talk:  English with some mathematical symbols.
+
+\end{slide}
+
+\begin{slide}{The Language of Set Theory}
+Our formal language is called \textbf{LST}, for ``the language of set theory.''
+
+\skipsmall
+
+\textbf{LST} uses the following symbols: $\in, =,\forall, \exists, \AND,\OR,\neg, \implies,\iff
+(, )$, and variables $v_0,v_1,v_2,\dots$.
+
+\skipsmall
+
+A \textbf{well-formed formula} or just formula for short, in LST is a
+sequence of
+the above symbols that obey certain syntactic rules. Here are some examples:
+
+\begin{enumerate}
+  \item $\forall v_0(\neg(v_0\in v_1))$ is a formula that means that
+  $v_1=\emptyset$. 
+  \item $\forall v_0 \exists v_1 \forall v_2 (v_2\in v_1 \iff (\forall
+  v_3(v_3\in v_2\implies v_3\in v_0)))$ is a formula that means the powerset of
+  every set exists.
+  \item $))\forall\implies v_0\neg()$ is not a formula.
+\end{enumerate}
+
+\end{slide}
+
+\begin{slide}{Sentences, Theories and Deductions}
+A \textbf{sentence} of LST is a formula with no free variables. On the previous
+slide, the second formula is a sentence, but the first formula is not because it
+contains the free variable $v_1$.
+
+\skipsmall
+
+A \textbf{theory} is a set of sentences.
+
+\skipsmall
+
+If $\sigma$ is a sentence and and $\Sigma$ is a theory then we say that $\sigma$
+is provable from $\Sigma$, written $\Sigma\vdash\sigma$, just in case there is a
+sequence of formulas $\angles{\varphi_0,\varphi_1,\dots,\varphi_n}$ such that
+$\varphi_n=\sigma$ and each $\varphi_i$ is either
+\begin{enumerate}
+  \item in $\Sigma$ or
+  \item is a \textbf{logical axiom} or
+  \item can be obtained from earlier $\varphi_j$ by use of one of the \textbf{rules
+  of inference}
+\end{enumerate}
+
+\end{slide}
+
+\begin{slide}{ZFC}
+The standard set of axioms used in set theory is known as \textbf{ZFC}. This
+stands for Zermelo-Frankel set theory with the Axiom of Choice.
+
+\skipsmall
+
+ZFC is a formal theory in the sense described on the previous slide: it is a set
+of sentences in LST.
+
+\skipsmall
+
+For example two of the axioms that are included in ZFC are:
+
+\begin{enumerate}
+  \item The emptyset axiom: $\exists v_1\forall v_0(\neg(v_0\in v_1))$
+  \item The powerset axiom: $\forall v_0 \exists v_1 \forall v_2 (v_2\in v_1 \iff (\forall
+  v_3(v_3\in v_2\implies v_3\in v_0)))$
+\end{enumerate}
+
+Earlier in this talk we discussed the Axiom of Choice in the meta-language. This
+axiom, translated into a sentence of LST, is the ``C'' in ZFC.
+\end{slide}
+
+\begin{slide}{Formalizing the Meta-Theory}
+It is generally agreed that all of the theorems in standard mathematics can be
+formalized into LST and derived from ZFC. In particular,
+all of the definitions we gave and theorems we proved earlier in the talk in our
+informal meta-language can be formalized and translated into formal sentences
+in LST and formal deductions from ZFC.
+
+\skipsmall
+
+For example, there is a sentence $\sigma$ in LST that is the formal version of
+the English sentence ``Evey well-ordering is isomorphic to an ordinal.'' The
+proof we gave earlier can be formalized into a deduction from ZFC, and so we
+know that $\ZFC\vdash\sigma$.
+
+\skipsmall
+
+Also, there is a sentence in LST that is the formal version of \CH. Let
+us refer to this sentence as $\CHformal$. 
+
+
+\end{slide}
+
+\begin{slide}{Consistency}
+\begin{definition}
+A theory $T$ is said to be \textbf{inconsistent} if
+$T\vdash\sigma\AND\neg\sigma$ for some sentence $\sigma$. Otherwise $T$ is \textbf{consistent}.
+\end{definition}
+
+\skipsmall
+
+\begin{remark}
+The following are equivalent:
+\begin{enumerate}
+  \item $T$ is inconsistent.
+  \item $T\vdash\sigma$ for all sentences $\sigma$.
+  \item $T\vdash\sigma_0$ where $\sigma_0$ is the
+following sentence: $\exists x(x\neq x)$.
+\end{enumerate}
+
+\end{remark}
+
+\skipsmall
+
+\begin{remark}
+Let $T$ be a theory and $\sigma$ a sentence. Then the following are equivalent:
+\begin{enumerate}
+  \item $T\vdash\sigma$
+  \item $T\union\singleton{\neg\sigma}$ is inconsistent.
+\end{enumerate}
+\end{remark}
+\end{slide}
+
+\begin{slide}{G\"odel's Second Incompleteness}
+Is ZFC consistent? According to G\"odel's Second Incompleteness Theorem, we may never
+know. 
+
+\skipsmall
+
+\begin{theorem}
+If ZFC is consistent, then $\ZFC\not\vdash\sigma_{\text{CON}}$, where $\sigma_{\text{CON}}$ is the
+sentence in LST that asserts that ZFC is consistent.
+\end{theorem}
+
+\skipsmall
+
+It follows that if ZFC is consistent, there is probably no way for us to ever
+know for certain that it is consistent. At least we probably will never be able
+to give a proof that it is consistent, because if we could give such a proof we
+would probably be able to formalize this proof into a deduction from ZFC,
+and so we would get $\ZFC\vdash\sigma_{\text{CON}}$, contradicting
+G\"odel's Second Incompleteness Theorem.
+
+
+\end{slide}
+
+\begin{slide}{Independence of \CH}
+
+Now we can state the precise version of our earlier claim that $\CH$ is
+independent of the axioms of mathematics. That precise version is the following:
+
+\skipsmall
+
+ $\ZFC\not\vdash\CHformal$ and $\ZFC\not\vdash\neg\CHformal$.
+
+\skipsmall
+Notice that the above statements
+are equivalent to the following statements: 
+
+\skipsmall
+
+$ZFC+\neg\CHformal$ is consistent
+and $\ZFC+\CHformal$ is consistent.
+
+\skipsmall
+
+Unfortunately we can't prove this. By G\"odel's Second Incompleteness Theorem,
+if $\ZFC$ is
+consistent, then it is not possible for us to prove either of the above two claims.
+
+\end{slide}
+
+\begin{slide}{Relative Consistency}
+
+Since G\"odel's Second Incompleteness Theorem rules out the possibility that we
+will be able to prove outright that \CH is independent of ZFC, the best we
+can do is to prove that it is independent \textbf{if} ZFC is consistent.
+
+\skipsmall
+
+The following two theorems have been proved. They are known as \textbf{relative
+consistency} results.
+
+\skipsmall
+
+\begin{theorem}[G\"odel, 1936]
+c.
+\end{theorem}
+
+\skipsmall
+
+\begin{theorem}[Paul Cohen, 1963]
+If ZFC is consistent, then so is ZFC+$\neg\CHformal$.
+\end{theorem}
+
+\end{slide}
+
+\begin{slide}{Models of Set Theory}
+
+The technique for proving a relative consistency result of the form: If ZFC is
+consistent then so is ZFC+$\sigma$, is to use \textbf{models}.
+
+\skipsmall
+
+According to G\"odel's Completeness Theorem, a theory $T$ is consistent if and
+only if there exists a model $M$ of $T$. We write this as $M\models T$. This
+means
+roughly that $M$ is a set and if we think of $(M,\in)$ as being the universe of
+all sets, then in this universe all of the sentences of $T$ are true.
+
+\skipsmall
+
+To prove the relative consistency result we do the following: Start with some
+model $M\models\ZFC$. From $M$ produce another model $N$ such that $N\models\ZFC+\sigma$.
+
+\end{slide}
+
+\begin{slide}{The Constructible Universe}
+In 1936 Kurt G\"odel proved that \textbf{GCH} is consistent relative to ZFC. In order to
+do this he invented the Constructible Universe, $L$.
+
+\skipsmall
+
+\begin{enumerate}
+  \item $L\models\ZFC+\text{GCH}$
+  \item $L$ is an inner model
+  \item $L$ is the minimal inner model
+\end{enumerate}
+
+\end{slide}
+
+\begin{slide}{Forcing}
+In 1963 Paul Cohen proved that $\neg\CH$ is consistent relative to ZFC. In order
+to do this he invented a technique called \textbf{forcing.}
+
+\skipsmall
+
+Given a model $M\models\ZFC$ forcing produces another model $M[G]$ such that
+\begin{enumerate}
+  \item $M[G]\models\ZFC+\neg\CHformal$
+  \item $M\subset M[G]$
+\end{enumerate}
+
+\end{slide}
+
+
+\end{document}

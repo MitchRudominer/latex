@@ -1,0 +1,677 @@
+%%Prosper slide presentation template
+%%Build using latex+dvipdf
+%%Note that the prosper package must be separately installed
+%%See http://prosper.sourceforge.net/
+\documentclass[pdf,final]{prosper}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+\include{MathDefs}
+\include{TheoremStyles}
+
+\newcommand{\skipsmall}{\vspace{1em}}
+\newcommand{\skipmed}{\vspace{2em}}
+\newcommand{\skipbig}{\vspace{3em}}
+\newcommand{\skipsmallminus}{\vspace{-1em}}
+
+%\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+%\usepackage{moreverb}
+%\usepackage{graphicx}
+
+\title{The Determinacy of Infinitely Long Two-Player Games}
+\subtitle{Search/Pathways Friday Colloquium}
+
+\author{Mitch Rudominer}
+\institution{BEA}
+\email{Mitch.Rudominer@bea.com}
+
+% You can use this macro to put a caption at the bottom of each slide.
+%\slideCaption{}
+% \Logo This allows you to place a logo on each slide at a specified position.
+
+% This defines the type of transition that should occur between slides.
+% \DefaultTransition
+
+\begin{document}
+
+\maketitle
+
+\begin{slide}{Abstract}
+We discuss games in which two players, 
+called $\ONE$ and  $\TWO$, alternately pick an integer at each move, and the
+play of the game lasts for infinitely many moves. 
+$\ONE$ wins the game if the infinite sequence of integers produced by the play of the game is an element of a given set, 
+called the payoff set. Otherwise $\TWO$ wins. 
+
+\skipsmall
+
+We will define what it means for the players to have a winning strategy. 
+The game is called determined if one of the two players has a winning strategy. 
+
+\skipsmall
+
+Whether or not the game is determined is related to the complexity of the payoff set. 
+If the payoff set is Borel, then the game is determined. For more complex sets, the determinacy of the game is closely related to the 
+existence of large cardinals.
+\end{slide}
+
+\begin{slide}{Baire Space}
+\begin{definition}
+$\omega=\singleton{0,1,2,3,\dots}$ is the set of non-negative integers.
+\newline
+$\pre{\omega}{\omega}$ is the set of infinite sequences of integers.
+\newline
+$\pre{\omega}{\omega}$ is known as \emph{Baire Space}.
+\newline
+If $x\in\BaireSpace$ and $n\in\omega$ then $x(n)$ means the integer at position
+$n$ in $x$. Thus $x=\angles{x(0),x(1),x(2),\dots}$.
+\end{definition}
+
+\skipsmall
+
+\begin{example}
+Let $x=\angles{1,0,1,0,1,0,\dots}$.
+\newline
+Let $y=\angles{1,0,2,0,0,3,0,0,0,4,0,0,0,0,5,\dots}$.
+\newline
+Let $z$ be the sequence consiting of the digits of $\pi$.
+\newline
+Then $x$, $y$, and $z$ are all elements of Baire Space.
+\end{example}
+
+\skipsmall
+
+\begin{example}
+Let $A=\setof{s\in\BaireSpace}{s\text{ starts with a 1}}$.
+\newline
+Let $B=\setof{s\in\BaireSpace}{s\text{ has infinitely many 1's}}$.
+\newline
+Then $A\subset\BaireSpace$ and $B\subset\BaireSpace$ and $x\in A$ and $x\in B$
+and $y\in A$ but $y\notin B$.
+\end{example}
+
+
+\end{slide}
+
+\begin{slide}{Trees}
+\begin{definition}
+$\FiniteSeq$ is the set of \textbf{finite} sequences from $\omega$.
+\newline
+$\emptyset$ is the unique element of $\FiniteSeq$ of length zero.
+\newline
+If $s$ and $t$ are elements of $\FiniteSeq$ then we write $s\subset t$ to mean
+that $s$ is a subsequence $t$.
+\end{definition}
+
+\skipsmall
+
+\begin{example}
+Let $s=\angles{128,256}$, $t=\angles{128,256,512,1024}$, then $s\in\FiniteSeq$
+and $t\in\FiniteSeq$ and $\emptyset\subset s\subset t$.
+\end{example}
+
+\skipsmall
+
+\begin{definition}
+A \textbf{tree} is a set $T\subseteq\FiniteSeq$ such that $T$ is closed under
+subsequence. That is, if $s\in T$ and $t\subset s$ then $t\in T$.
+\end{definition}
+
+\skipsmall
+
+\begin{example}
+Let
+$T=\singleton{\emptyset,\angles{0},\angles{0,0},\angles{0,1},\angles{0,1,0},\angles{0,1,2},\angles{0,1,3}}$. 
+Then $T$ is a tree.
+\end{example}
+\end{slide}
+
+\begin{slide}{Branches of Trees}
+\begin{definition}
+If $s\in\FiniteSeq$ then $T_s=\setof{t\in\FiniteSeq}{t\subseteq s \text{ or }
+s\subseteq t}$. $T_s$ is the \textbf{tree through $s$}.
+\end{definition}
+
+\skipsmall
+
+\begin{definition}
+If $x\in\BaireSpace$ and $n\in\omega$ then $x\restr n =
+\angles{x(0),x(1),\dots,x(n-1)}$.
+\newline$x\restr 0=\emptyset$.
+\end{definition}
+
+\skipsmall
+
+\begin{definition}
+If $T$ is a tree then a \textbf{branch} of $T$ is an $x\in\BaireSpace$ such that
+$x\restr n \in T$ for each $n\in\omega$.
+\newline
+$[T]$ is the set of all branches of $T$.
+\end{definition}
+
+\skipsmall
+
+So $[T_s]$ is the set of all $x\in\BaireSpace$ that extend $s$.
+
+
+\end{slide}
+
+
+\begin{slide}{Games}
+\begin{definition}
+Let $A\subseteq\BaireSpace$. The \textbf{game} $G(A)$ is defined as
+follows.
+
+\skipsmall
+
+There are two players named $\ONE$ and $\TWO$. The game has $\omega$
+rounds. 
+
+\skipsmall
+
+At round $n$, if $n$ is even, then $\ONE$ must play some integer
+$x(n)\in\omega$, if $n$ is odd then $\TWO$ must play $x(n)$. 
+
+\skipsmall
+
+\begin{tabular}{lccccccr}
+$\ONE$: & $x(0)$ & & $x(2)$ & & $x(4)$ & \dots &\\
+$\TWO$: & & $x(1)$ & &$x(3)$ & &$x(5)$ & \dots
+\end{tabular}
+
+\skipsmall
+
+After $\omega$ rounds, the
+play of the game has produced an element $x\in\BaireSpace$ given by
+$x=\angles{x(0),x(1),x(2),x(3),\dots}$. 
+
+\skipsmall
+
+If $x\in A$ then $\ONE$ wins this play
+of the game. Otherwise $\TWO$ wins.
+\end{definition}
+
+
+\end{slide}
+
+\begin{slide}{Strategies}
+
+\begin{definition}
+A \textbf{strategy} is a function $\sigma:\FiniteSeq\map\omega$. 
+\end{definition}
+
+\skipsmall
+
+The players may use a given strategy during a play of the game. Suppose $\sigma$
+is a strategy. Player $\ONE$ uses $\sigma$ while playing $G(A)$ as follows.
+
+\skipsmall
+
+\begin{tabular}{lccccr}
+$\ONE$: & $\sigma(\emptyset)$ & & $\sigma\bigl(\angles{x(0),x(1)}\bigr)$ &   \dots &\\
+$\TWO$: & & $x(1)$ & &$x(3)$  & \dots
+\end{tabular}
+
+\skipsmall
+
+Similarly player $\TWO$ uses $\sigma$ while
+playing $G(A)$ as follows.
+
+\skipsmall
+
+\begin{tabular}{lccccr}
+$\ONE$: & $x(0)$ & & $x(2)$ &   \dots &\\
+$\TWO$: & & $\sigma\bigl(\angles{x(0)}\bigr)$ & &$\sigma\bigl(\angles{x(0),x(1),x(2)}\bigr)$  & \dots
+\end{tabular}
+
+\end{slide}
+
+\begin{slide}{Winning Strategies}
+
+\begin{definition}
+If $\sigma$ is a strategy and $y\in\BaireSpace$ then $\sigma*y$ is the element $z$
+of $\BaireSpace$ that results when $\ONE$ plays $\sigma$ and $\TWO$ plays $y$:
+
+\skipsmall
+
+$z(0)=\sigma(\emptyset)$, $z(1)=y(0)$,  $z(2)=\sigma(\angles{z(0),z(1)})$.
+$z(3)=y(1)$. etc. 
+
+\skipsmall
+
+Similarly, $y*\sigma$ is the element
+of $\BaireSpace$ that results when $\ONE$ plays $y$ and $\TWO$ plays
+$\sigma$.
+
+\end{definition}
+
+\skipsmall
+
+\begin{definition}
+Given a set $A$, a strategy $\sigma$ is \textbf{winning} for $\ONE$ in $G(A)$
+if, by using $\sigma$ $\ONE$ will win $G(A)$ regardless of how $\TWO$ plays. 
+
+\skipsmall
+More preciesely, $\sigma$ is winning for $\ONE$ if for
+all $y\in\BaireSpace$, $\sigma*y\in A$.
+
+\skipsmall
+
+Similary, $\sigma$ is winning for $\TWO$ in $G(A)$ if for all $y\in\BaireSpace$,
+$y*\sigma\notin A$.
+\end{definition}
+
+\end{slide}
+
+\begin{slide}{Winning Strategies (2)}
+
+Notice that it is not possible for both players to have a winning strategy in
+the same game $G(A)$. For if they did, we could play them against each other.
+Suppose $\sigma$ was winning for $\ONE$ and $\tau$ was winning for $\TWO$:
+
+\skipsmall
+
+\begin{tabular}{lccc}
+$\ONE$: & $x(0)=\sigma(\emptyset)$ & & $\sigma\bigl(\angles{x(0),x(1)}\bigr)\dots$\\
+$\TWO$: & & $x(1)=\tau\bigl(\angles{x(0)}\bigr)$ &\dots
+\end{tabular}
+
+\skipsmall
+
+Since $\sigma$ is winning for $\ONE$, $x\in A$. Since $\tau$ is winning for
+$\TWO$, $x\notin A$. Contradiction!
+
+\end{slide}
+
+\begin{slide}{Determinacy}
+\begin{definition}
+Let $A\subseteq\BaireSpace$. We say that $G(A)$ is \textbf{determined}, or
+sometimes just that $A$ is determined, and we
+write $\Det(A)$, if either player $\ONE$ or player $\TWO$ has a winning strategy
+in $G(A)$.
+\end{definition}
+
+\skipsmall
+
+\begin{example}
+Let $A=\BaireSpace$. Then every strategy is winning for $\ONE$ in $G(A)$. So $\Det(A)$.
+
+
+\skipsmall
+
+Let $A=\emptyset$. Then every strategy is winning for $\TWO$ in $G(A)$. So
+$\Det(A)$.
+
+
+\skipsmall
+
+Let $A=\setof{x\in\BaireSpace}{x\text{ has infinitely many 1's}}$. Then $\ONE$
+has a winning strategy in $G(A)$, so $\Det(A)$.
+
+
+\skipsmall
+
+Let $A$ be any countable subset of $\BaireSpace$. Then $\TWO$ has a winning
+strategy in $G(A)$, so $\Det(A)$. (proof: In round $2n+1$ player $\TWO$ plays any
+integer that is not in position $2n+1$ in the $n^{\text{th}}$ element of $A$.)
+\end{example}
+
+\end{slide}
+
+\begin{slide}{An Undetermined Game}
+
+\begin{theorem}
+There is a set $A\subset\BaireSpace$ such that $G(A)$ is not determined.
+\end{theorem}
+
+\begin{proof}[proof sketch]
+Using the axiom of choice we can enumerate all strategies: $\sequence{\sigma_{\alpha}}{\alpha<2^{\aleph_0}}$.
+There are $2^{\aleph_0}$ strategies, and also $|\BaireSpace|=2^{\aleph_0}$.
+By induction on ordinals
+$\alpha<2^{\aleph_0}$, we build a payoff set $A$ that avoids every strategy. At
+stage $\alpha$ we ensure that $\sigma_{\alpha}$ is not winning for $\ONE$ by
+throwing some appropriate $x\in\BaireSpace$ into the complement of $A$, and we
+ensure $\sigma_{\alpha}$ is not winning for $\TWO$ by
+throwing some appropriate $x\in\BaireSpace$ into $A$.
+\end{proof}
+
+\skipsmall
+
+Notice that the proof was not constructive---we did not give an explicit
+definition for the non-determined set $A$.  There is no known proof that does.
+
+\end{slide}
+
+\begin{slide}{A Metric on Baire Space}
+Baire Space is a metric space under the metric:
+
+\skipsmall
+
+$d(x,y) = \frac{1}{n+1}$ where $n$ is greatest such that $x\restr n = y\restr n$.
+
+\skipsmall
+
+This gives us a notion of a convergent sequence in Baire Space:
+
+\skipsmall
+Suppose that $\sequence{x_n}{n\in\omega}$ is a sequence of elments of
+$\BaireSpace$ and $x\in\BaireSpace$. We say that $x_n\implies x$ if for all $k\in\omega$
+there is an $N\in\omega$ such that for all $n>N$, $x_n\restr k = x\restr k$.
+
+
+\end{slide}
+
+\begin{slide}{Topology on Baire Space}
+\begin{definition}
+The \textbf{basic open sets} in Baire Space are the sets of the form $[T_s]$ for
+$s\in\FiniteSeq$. 
+
+\skipsmall
+
+If $A\subseteq\BaireSpace$, $A$ is \textbf{open} if $A$ is the union of a
+collection of basic open sets. 
+
+\skipsmall
+
+Equivalently, $A$ is open if, whenever $x\in A$
+there is an $s\in\FiniteSeq$ such that $s\subset x$  and
+$x\in[T_s]\subseteq A$.
+
+\skipsmall
+ $A$ is
+\textbf{closed} if $\neg A$ is open, where $\neg A = \BaireSpace - A$.
+\end{definition}
+
+\skipsmall
+
+\begin{enumerate}
+  \item $\BaireSpace$ and $\emptyset$ are both open and closed.
+  \item The union of a collection of open sets is open.
+  \item The intersection of a collection of closed sets is closed.
+\end{enumerate}
+
+\end{slide}
+
+
+\begin{slide}{Closed Sets in Any Metric Space}
+
+\begin{lemma}
+The following are equivalent:
+\begin{enumerate}
+  \item $A$ is closed
+  \item Whenever $x_n\implies x$ and each $x_n\in A$ then $x\in A$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+First assume (1).
+Let $x_n\implies x$ with each $x_n\in A$. Suppose towards a
+contradiction that $x\in\neg A$. Then there is an $s\subseteq x$ such that
+$[T_s]\subseteq \neg A$. Now $s=x\restr k$ for some $k$. There is an $N$ such
+that for
+all $n>N$ $x_n\restr k = x\restr k = s$. But then $x_n\in [T_s]$  so $x_n\in
+\neg A$. Contradiction.
+
+\skipsmall
+
+Conversely suppose (2) holds and we will show that $A$ is closed, by showing
+that $\neg A$ is open. Let $x\in\neg A$. We want to see that there is some $n$
+such that, letting $s=x\restr n$, we have that $[T_s]\subseteq \neg A$. Suppose
+not. Then for each $n$, there is some $x_n\in[T_s]$ where $s=x\restr n$ such
+that $x_n\in A$. So $x_n\implies x$. By (2), $x\in A$. Contradiction.
+\end{proof}
+\end{slide}
+
+\begin{slide}{Closed Sets in Baire Space}
+\begin{lemma}
+$A$ is closed $\Ifff$ $\exists$ a tree $T$ such that $A=[T]$.
+\end{lemma}
+\begin{proof}
+First suppose that $A=[T]$. We will show that $\neg A$ is
+open. Let $x\in \neg A=\neg[T]$. There is some $n$ such that
+$x\restr
+n\notin T$. Let $s=x\restr n$. Then $x\in[T_s]\subseteq\neg A$. So $\neg A$ is
+open, so $A$ is closed. 
+
+\skipsmall
+
+Now suppose $A$ is closed. Let $T=\setof{x\restr n}{x\in A,
+n\in\omega}$. $T$ is a tree. We will show that $A=[T]$. 
+
+\skipsmall
+$A\subseteq[T]$ is
+obvious and doesn't require $A$ to be closed. 
+
+\skipsmall
+
+So we must see that $[T]\subseteq
+A$. Let $x\in[T]$. This means that $x\restr n \in T$ for each $n$. This means
+that for each $n$ there is some $x_n\in A$ such that $x\restr n = x_n \restr n$.
+This means that $x_n\implies x$. So $x\in A$.
+\end{proof}
+\end{slide}
+
+\begin{slide}{Open Games}
+\begin{theorem}[Gale,Stewart 1953]
+Let $A\subseteq\BaireSpace$ be open or closed. Then $G(A)$ is determined.
+\end{theorem}
+
+
+\skipsmall
+
+We will prove this theorem over the next few slides.
+
+\skipmed
+
+\begin{definition}
+If $s\in\FiniteSeq$ and $x\in\BaireSpace$ or $x\in\FiniteSeq$, then $s\frown x$
+is $s$ concatenated with $x$. 
+\newline
+$s\frown x = \angles{s(0),\dots,s(n),x(0),x(1),\dots}$ 
+\newline
+where $s=\angles{s(0),\dots,s(n)}$.
+\end{definition}
+
+\skipsmall
+
+
+
+\end{slide}
+
+\begin{slide}{Winning Strategies Relative to $s$}
+
+\begin{definition}
+Let $s\in\FiniteSeq$. We say that $\sigma$ is a winning strategy for a player
+($\ONE$ or $\TWO$) in $G(A)$ \textbf{relative to $s$}
+if, whenever the player uses $\sigma$ in a play of $G(A)$ that starts with $s$,
+then he will win. More precisely:
+
+\skipsmall
+
+First suppose the length of $s$ is even. 
+
+\skipsmall
+
+ $\sigma$ is winning for $\ONE$ in
+$G(A)$ relative to $s$ if for all $y\in\BaireSpace$, $s\frown\sigma*y\in A$.
+
+\skipsmall
+
+ $\sigma$ is winning for $\TWO$ in
+$G(A)$ relative to $s$ if for  $y\in\BaireSpace$,
+$s\frown y*\sigma\in \neg A$.
+
+\skipsmall
+
+Now suppose the length of $s$ is odd.
+
+\skipsmall
+
+ $\sigma$ is winning for $\ONE$ in
+$G(A)$ relative to $s$ if for all $a\in\omega$ and all $y\in\BaireSpace$,
+$s\frown\angles{a}\frown\sigma*y\in A$.
+
+\skipsmall
+
+ $\sigma$ is winning for $\TWO$ in
+$G(A)$ relative to $s$ if there exists $a\in\omega$ such that for all
+$y\in\BaireSpace$, $s\frown\angles{a}\frown y*\sigma\in \neg A$.
+
+\end{definition}
+
+\end{slide}
+
+\begin{slide}{Winning Positions}
+
+\begin{definition}
+We say that $s$ is a \textbf{winning position} for player $\ONE$ in $G(A)$ if
+there exists a strategy $\sigma$ such that $\sigma$ is winning in $G(A)$
+relative to $s$. Similarly for player $\TWO$.
+\end{definition}
+
+\skipsmall
+
+\begin{lemma}
+Suppose $s$ has even length and $s$ is not a winning position for
+player $\TWO$ in $G(A)$. Then there exists an $a\in\omega$ such that for all
+$b\in\omega$,
+$s\frown\angles{a}\frown\angles{b}$ is also not a winning position for $\TWO$.
+\end{lemma}
+\begin{proof}
+If for all $a\in\omega$ there exists a $b\in\omega$ such that
+$s\frown\angles{a}\frown\angles{b}$ is a winning position for $\TWO$, we could
+put all the strategies for the different $a$'s together to get a winning
+strategy for $\TWO$ relative to $s$.
+\end{proof}
+
+\skipsmall
+
+\begin{lemma}
+Suppose $s$ has odd length and $s$ is not a winning position for
+player $\ONE$ in $G(A)$. Then there exists an $a\in\omega$ such that for all
+$b\in\omega$,
+$s\frown\angles{a}\frown\angles{b}$ is also not a winning position for $\ONE$.
+\end{lemma}
+\end{slide}
+
+\begin{slide}{Keep Not Losing}
+\begin{definition}
+Suppose that player $\TWO$ does not have a winning strategy in $G(A)$. A
+\textbf{keep-not-losing} strategy for player $\ONE$ is the following. Given any
+position in the game $s$ of even length that is not winning for $\TWO$, play
+some integer $a$ such that for all integers $b$,
+$s\frown\angles{a}\frown\angles{b}$ is still not a winning position for $\TWO$.
+
+\skipsmall
+
+In a game in which $\ONE$ does not have a winning strategy, a keep-not-losing
+strategy for player $\TWO$ is defined similarly.
+\end{definition}
+
+\end{slide}
+
+\begin{slide}{Proof of Open and Closed Determinacy}
+
+\begin{proof}
+Suppose $A$ is closed and $\TWO$ does not have a winning strategy. Let $\sigma$
+by a keep-not-losing strategy for $\ONE$. Then $\sigma$ is actually a winning
+strategy for $\ONE$. For let $y$ be $\TWO$'s play and let $x=\sigma*y$ be the
+outcome of the game. We want to see that $x\in A$. Suppose towards a
+contradiction tht $x\in\neg A$. Then
+there is an $s\in\FiniteSeq$ such that $x\in[T_s]\subseteq\neg A$. Since every
+$z\in\BaireSpace$ such that $s\subset z$ is in $\neg A$,  $s$ is a winning
+position for $\TWO$ in $G(A)$. But this contradicts the fact that $\ONE$ was
+using a keep-not-losing strategy. Thus $x\in A$. So $\sigma$ is a winning
+strategy for $\ONE$. So $G(A)$ is determined. This proves the determinacy of all
+closed games.
+
+\skipsmall
+
+The determinacy of all open games is proved similarly with the roles of $\ONE$
+and $\TWO$ reversed.
+\end{proof}
+\end{slide}
+
+\begin{slide}{More Complicated Sets}
+\begin{definition}
+A set $A\subseteq\BaireSpace$ is called $\mathbf{\Sigma^0_2}$ if
+$A=\Union{k\in\omega}F_k$ where each $F_k$ is closed.
+
+\skipsmall
+
+A set $A\subseteq\BaireSpace$ is called $\mathbf{\Pi^0_2}$ if
+$A=\Intersection{k\in\omega}G_k$ where each $G_k$ is open.
+\end{definition}
+
+\skipsmall
+
+\begin{definition}
+Let us use $\mathbf{\Sigma^0_1}$ as a synonym for open and $\mathbf{\Pi^0_1}$ as
+a synonym for closed.
+
+\skipsmall
+
+ A set $A\subseteq\BaireSpace$ is called $\mathbf{\Sigma^0_{n+1}}$
+if $A=\Union{k\in\omega}B_k$ where each $B_k$ is $\mathbf{\Pi^0_{n}}$
+
+\skipsmall
+
+A set $A\subseteq\BaireSpace$ is called $\mathbf{\Pi^0_{n+1}}$ if
+$A=\Intersection{k\in\omega}B_k$ where each $B_k$ is $\mathbf{\Sigma^0_{n}}$.
+\end{definition}
+
+\end{slide}
+
+\begin{slide}{Logical Complexity}
+A different point of view is to consider the \textbf{formula} that defines the
+set $A$.
+
+\skipsmall
+
+$A$ is  $\mathbf{\Sigma^0_4}$ just in case 
+$A=\setof{x\in\BaireSpace}{\exists a\in\omega\forall b\in\omega\exists c\in\omega}R(a,b,c,x)$,
+where $R(a,b,c,x)$ means that $x\in F_{(a,b,c)}$, where each $F_{(a,b,c)}$ is closed.
+
+\skipsmall
+
+So a $\mathbf{\Sigma^0_{n+1}}$ set is more complex than a
+$\mathbf{\Sigma^0_{n}}$ set
+in the sense that the formula used to define it it more complex---it has more quantifiers.
+
+\end{slide}
+
+\begin{slide}{More Determinacy}
+
+\begin{theorem}[Wolfe 1955]
+All $\mathbf{\Sigma^0_2}$ and $\mathbf{\Pi^0_2}$ games are determined.
+\end{theorem}
+
+\skipmed
+
+\begin{theorem}[Davis 1964]
+All $\mathbf{\Sigma^0_3}$ and $\mathbf{\Pi^0_3}$ games are determined.
+\end{theorem}
+
+\end{slide}
+
+\begin{slide}{Borel Determinacy}
+\begin{definition}
+The \textbf{Borel} $\Sigma$-algebra is the smallest subset of
+$\Powerset(\BaireSpace)$ that contains the open sets and is closed under
+compliment and countable intersection.
+
+\skipsmall
+
+A set $A\subseteq \BaireSpace$ is called Borel if it is in the Borel $\Sigma$-algebra.
+\end{definition}
+
+\skipmed
+
+\begin{theorem}[Martin 1975]
+All Borel games are determined.
+\end{theorem}
+
+\end{slide}
+
+
+
+\end{document}

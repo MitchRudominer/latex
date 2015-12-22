@@ -1,0 +1,96 @@
+\documentclass[oneside,12pt]{amsart}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is the main Latex file for the Paper ``The Largest Countable
+%%  Inductive Set is a Mouse Set''
+%% by Mitch Rudominer. Last Change date: Jan. 13, 1998
+%% Format: Latex 2e
+%%
+%% There are  other files which are needed to compile the
+%% paper. They are: compare.tex, intro.tex, martin.tex, specdefs.tex
+%%                  mathdefs.tex, main.bbl, correct.tex
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+
+
+\input{mathdefs}
+\input{specdefs}
+\input{theoremstyles}
+
+\newcommand{\skipsmall}{\vspace{1em}}
+\newcommand{\skipmed}{\vspace{2em}}
+\newcommand{\skipbig}{\vspace{3em}}
+\newcommand{\skipsmallminus}{\vspace{-1em}}
+
+\renewcommand{\baselinestretch}{1.5}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\footskip}{0.5125in}
+\setlength{\textwidth}{6.25in}
+\setlength{\oddsidemargin}{0.125in}
+\setlength{\evensidemargin}{0.125in}
+\setlength{\textheight}{8.5in}
+\setlength{\topmargin}{0.25in}
+\pagestyle{plain}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\title{The Largest Countable Inductive Set is a Mouse Set}
+
+\author{Mitch Rudominer}
+
+\address{Department of Mathematics\\
+         Florida International University\\
+         Miami, FL 33199}
+
+\email{rudomine@fiu.edu}
+
+\keywords{large cardinals, descriptive set theory, inner model theory}
+
+\begin{abstract}
+ Let $\kappa^{\R}$ be the least ordinal $\kappa$ such that
+$L_{\kappa}(\R)$ is admissible. Let $A = \{x\in\R\;|\;
+(\exists\alpha<\kappa^{\R})$ s.t. $x$ is
+ordinal definable in $L_{\alpha}(\R)\;\}$. It is well known
+that (assuming determinacy) $A$ is the largest countable inductive set
+of reals.  Let $T$ be the theory:
+$\ZFC$ $-$ Replacement $+$ ``There exists $\omega$ Woodin cardinals which
+are cofinal in the ordinals.''  $T$ has consistency strength weaker than
+that of
+the theory $\ZFC$ $+$ ``There exists $\omega$ Woodin cardinals'', but
+stronger than that of
+the theory $\ZFC$ $+$ ``There exists $n$ Woodin Cardinals",
+for each $n\in\omega$. Let $\cM$ be the canonical, minimal
+inner model for the theory  $T$.
+In this paper we show that $A=\R\intersect\cM$. Since $\cM$ is
+a \emph{mouse}, we say that $A$ is a \emph{mouse set.}
+As an application,
+we use our characterization of $A$ to give an inner-model-theoretic proof
+of a theorem of Martin which states that for all  $n$, every
+$\Sigma^*_n$ real is in $A$.
+\end{abstract}
+
+\maketitle
+
+\tableofcontents
+
+\setcounter{section}{-1}
+
+\input{intro}
+
+\input{compare}
+
+\input{correct}
+
+\input{martin}
+
+\bibliographystyle{amsalpha}
+
+\bibliography{math}
+
+\end{document}

@@ -1,0 +1,237 @@
+%%This is a very basic article template.
+%%There is just one section and two subsections.
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+\include{MathDefs}
+\include{TheoremStyles}
+
+\newcommand{\skipsmall}{\vspace{1em}}
+\newcommand{\skipmed}{\vspace{2em}}
+\newcommand{\skipbig}{\vspace{3em}}
+\newcommand{\skipsmallminus}{\vspace{-1em}}
+
+\begin{document}
+
+\title{Some Notes on Combining a Query-Independent Ranking with a
+Term-Frequency-Based Ranking on Search Results}
+\author{Mitch Rudominer}
+
+\maketitle
+
+\section{Introduction}
+These are some notes on the question of how to combine Pathways Activity Rank
+with a term-frequency-based scoring in the search server.
+
+\section{Rank Combination Functions}
+
+Let $X = \singleton{x_1,\dots,x_n}$ be a set of objects to be ranked. For example,
+$X$ might consist of the set of results of a search query, which need to be
+ranked by a search engine before being returned to the user. Let $\Rplus$ denote
+the set of positive real numbers.
+
+\begin{definition}
+A \textbf{rank function} is a function $f:X\map\Rplus$. A rank function $f$ induces an ordering $<_f$ on $X$ given by 
+$x_i<_fx_j$ iff $f(x_i)<f(x_j)$. It also induces two \textbf{measurement functions} $\sigma_f$ and $\mu_f$ defined 
+by $\sigma_f(x_i,x_j)=|f(x_i)-f(x_j)|$ and $\mu_f(x_i,x_j)=f(x_i)/(x_j)$ if
+$x_j<_f x_i$  or $\mu_f(x_i,x_j)=f(x_j)/f(x_i)$ otherwise.
+\end{definition}
+
+The intuition behind a measurement function $m$ is that if $x>y$ with respect to some ordering then $m(x,y)$ gives us some kind of measure of how much greater $x$ is
+ than $y$. If the ordering is on search results, then $m(x,y)$ gives us a
+ measure of how much better the document $x$ is (in general or for a given
+ query) than the document $y$. If we were considering a single ranking function
+ $f$ in isolation, we would care only about $<_f$ and not about any measurement functions.
+ We care about the measurement funcionts in the context of \emph{combining} more than one
+ rank funtion.
+
+\begin{definition}
+Let $f:X\map\Rplus$ be a rank function. A \textbf{re-scaling} of $f$ is another
+rank function $\fbar:X\map\Rplus$ such that there is some increasing function
+$\phi:\Rplus\map\Rplus$ such that $\fbar(x)=\phi(f(x))$.
+\end{definition}
+
+So a rescaling of $f$ induces the same ordering as $f$ but does not induce the
+same measurement functions.  In other
+words, $f(x_i)<f(x_j)$ iff $\fbar(x_i)<\fbar(x_j)$ and $f(x_i)=f(x_j)$ iff
+$\fbar(x_i)=\fbar(x_j)$, 
+but $|f(x_i)-f(x_j)| \neq |\fbar(x_i)-\fbar(x_j)|$.
+
+In these notes we are interested in how to combine two rank functions to get a third
+rank function. 
+We will take the point of view that one of our two rank functions is the \emph{dominant} one. 
+If one were to think of a rank function as providing one party's votes on the relative merits of the elements of the set 
+$X$, then the dominant rank function is the one whose votes we wish to give more weight to. We will often use $f$ and $g$ 
+for the names of our two rank functions. We use the convention that $f$ is the more dominant one.
+
+\begin{definition}
+A \textbf{rank combination function} is a function $H:\Rplus\times\Rplus\map\Rplus$ such that $H$ is non-decreasing in each argument. 
+Given two rank functions $f$ and $g$ and a rank combination function $H$, we
+get a new rank function $h$ given by $h(x_i) = H(f(x_i),g(x_i))$. 
+We call $h$ the $H$-combination of $f$ and $g$.
+\end{definition}
+
+\begin{example}
+We give some examples of rank combination functions.
+\begin{enumerate}
+\item Let $0\leq\alpha,\beta\leq 1$. Then $H(x,y) = \alpha x + \beta y$ is a
+rank
+combination function. Given two rank functions $f$ and $g$ this yields a third
+rank function $h$ given by $h(x_i) = \alpha f(x_i) + \beta g(x_i)$.
+\item Let $0\leq\alpha,\beta\leq 1$. $H(x,y) = x^{\alpha}y^{\beta}$ is rank combination function.
+Given two rank functions $f$ and $g$, this yields a third rank function $h$ given by $h(x_i) = f(x_i)^{\alpha}g(x_i)^{\beta}$.
+\end{enumerate}
+\end{example}
+
+\begin{remark}
+The two examples given above are related by the equation
+\begin{equation}
+\log(x^{\alpha}y^{\beta}) = \alpha \log(x) + \beta \log(y)
+\end{equation}
+Since $\log(x)$ is an increasing function, the ordering induced by 
+$f(x)^{\alpha}g(x)^{\beta}$ is the same as the ordering induced by
+$\alpha \log(f(x)) + \beta \log(g(x))$. In other words, as regards the induced
+ordering, \textbf{considering multiplying two rank functions is equivalent to
+considering adding their logs.}
+\end{remark}
+
+The next lemma indicates that combining two rank functions to give a third one in the manner described above, always yields a 
+ranking that satisfies, what has been called in other discussions, \emph{the obvious axiom}.
+\begin{lemma}
+Suppose $h$ is the $H$-combination of $f$ and $g$, for some $f$,$g$, and $H$. Then
+$x_i \leq_f x_j \text{ and } x_i \leq_g x_j \Implies x_i \leq_h x_j$.
+\end{lemma}
+\begin{proof}
+This follows trivially from the fact that $H$ is non-decreasing in each argument.
+\end{proof}
+
+The only property of the resultant combined rank function the we care about is
+the ordering it induces. Given the previous lemma, the only thing we need to
+focus on is how the combination of the two rank functions behaves when the
+individual rank functions \textbf{disagree}. In other words, if  $h$ is the $H$-combination of $f$ and $g$
+and if $x_i <_f x_j$ but $x_j <_g x_j$, the question we need to focus on is,
+what determines whether or not $x_i <_h x_j$?
+In the case in which $f$ is the dominant rank function, we might phrase the question:
+When will the combined ranking put two elements in a different order than
+the dominant ranking did? 
+The following two lemmas give the answer for the two rank combination functions
+in the example above.  
+
+\begin{lemma}
+Let $H(x,y) = \alpha x + \beta y$ for some $0<\alpha,\beta<1$ and let $h$ be the $H$-combination of $f$ and $g$. Fix $i$ and $j$ and 
+suppose $x_i <_f x_j$ but $x_i \geq_g x_j$. Let $\sigma_f = f(x_j) - f(x_i)$ and
+$\sigma_g = g(x_i) - g(x_j)$. Then:
+\begin{enumerate}
+\item $\sigma_g > \frac{\alpha}{\beta} \sigma_f \Ifff x_i >_h x_j$
+\item $\sigma_g < \frac{\alpha}{\beta} \sigma_f \Ifff x_i <_h x_j$
+\item $\sigma_g = \frac{\alpha}{\beta} \sigma_f \Ifff x_i \equiv_h x_j$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{equation}
+\begin{split}
+h(x_j)-h(x_i) &= (\alpha f(x_j) + \beta g(x_j)) - (\alpha f(x_i) + \beta g(x_i)
+) \\ &= \alpha(f(x_j) - f(x_i)) + \beta(g(x_j) - g(x_i) \\
+              &= \alpha\sigma_f - \beta\sigma_g
+\end{split}
+\end{equation}
+Thus
+\begin{enumerate}
+\item $\beta\sigma_g > \alpha\sigma_f \Ifff  x_i >_h x_j $
+\item $\beta\sigma_g < \alpha\sigma_f \Ifff  x_i <_h x_j $
+\item $\beta\sigma_g = \alpha\sigma_f \Ifff  x_i =_h x_j $
+\end{enumerate}
+\end{proof}
+
+\begin{lemma}
+Let $H(x,y) = x^{\alpha}y^{\beta}$ for some $0<\alpha,\beta<1$ and let $h$ be
+the $H$-combination of $f$ and $g$. Fix $i$ and $j$ and suppose $x_i <_f x_j$ but 
+$x_i \geq_g x_j$. Let $\mu_f = f(x_j) /f(x_i)$ and $\mu_g = g(x_i) /g(x_j)$. Then:
+\begin{enumerate}
+\item $\mu_g^{\beta} > \mu_f^{\alpha} \Implies x_i >_h x_j$
+\item $\mu_g^{\beta} < \mu_f^{\alpha} \Implies x_i <_h x_j$
+\item $\mu_g ^{\beta}= \mu_f^{\alpha} \Implies x_i \equiv_h x_j$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\begin{equation}
+\begin{split}
+h(x_j)/h(x_i) &= \frac{f(x_j)^{\alpha}g(x_j)^{\beta}}{f(x_i)^{\alpha}g(x_i)^{\beta}} \\
+              &= \frac{f(x_j)^{\alpha}/f(x_i)^{\alpha}}{g(x_i)^{\beta}/g(x_j)^{\beta}} \\
+              &= \mu_f^{\alpha} / \mu_g^{\beta}
+\end{split}
+\end{equation}
+\end{proof}
+
+
+\section{Application To Search Result Ranking}
+In this section let $X = \singleton{x_1,\dots,x_n}$ be a collection of documents
+indexed by a search server. Let $Q$ be the set of all queries issued to the
+search server. 
+
+For each $q\in Q$, let $X_q\subseteq X$
+be the subset of $X$ consisting of those documents that
+match the query $q$. Let us suppose that for each $q\in Q$, there is some
+``correct'' order
+$<_q$ of $X_q$. The idea here is that if $x_i<_q x_j$, then document $x_j$ is a
+``better'' document, in some absolute sense, given the query $q$. This is of
+course not an accurate model of reality. But it simplifies our model.
+
+Ideally we would like for our search server to return results to a given query
+$q$ in exactly the order $<_q$. But this is not possible because we do not know
+how to compute this order.
+
+Instead we use other rankings of $X_q$ that we can compute, hoping to come close
+to the elusive $<_q$. In particular, we might have multiple rankings that each
+approximate $<_q$ in different ways. The topic of this section is: Can we combine
+two such approximations to get a better approximation?
+
+Let $g:X\map\Rplus$ be a \textbf{query-independent}
+ranking, such as Pathways activity rank, and for each $q\in Q$, let $f_q:
+X_q\map\Rplus$ be a \textbf{query-dependent} ranking, such as LOG(TF) or BM25.
+We think of $<_{f_q}$ and $<_g$ as each being approximations to the true $<_q$.
+Since $<_{f_q}$ depends on $q$ and $<_g$ does not, we think of $<_{f_q}$ as
+being the dominant ranking, the one that comes closer to the true $<_q$. But we
+recognize that $<_{f_q}$ does not perfectly match $<_q$ and we hope that by
+combining it with $<_g$ we can get a better approximation of $<_q$. We will
+refer to a ranking that more closely approximates the true ranking $<_q$ as a
+\textbf{better} ranking.
+
+
+Our goal is to find a rank combination function
+$H:\Rplus\times\Rplus\map\Rplus$ such that, letting $h_q$ be the
+$H$-combination
+of $f_q$ and $g$, $<_{h_q}$ is a better ranking than $<_g$ or $<_{f_q}$.
+Notice that $H$ must not depend on $q$. That is, we need
+to find a way of combining $f_q$ and $g$ that does not depend on $q$.
+
+We are only going to consider linear combinations of re-scalings of $f_q$ and
+$g$. Thas is we are going to consider rank functions of the form $h_q(x)\defeq\alpha
+\fbar_q(x)+\beta \gbar(x)$, where $\gbar$ is a re-scaling of $g$ and $\fbar_q$ is
+a re-scaling of $f_q$. As mentioned in the previous section, this encompasses
+combinations of the form products of powers of $f$ and $g$ also.
+ 
+ Let us slightly change our notation and write $\AR:X\map\Rplus$ for the
+ Pathways Activity
+rank function, as calculated by the Rank Engine.
+ 
+\begin{problem}
+Do the following:
+\begin{enumerate}
+  \item Pick a family of term-frequency based ranking functions
+  $f_q:X_q\map\Rplus$, for $q\in Q$, that approximates
+  $<_q$ well, and that is appropriate for use in a linear combination in step 3
+  below. This will probably be a re-scaling of LOG(TF) or BM25 or something
+  closely related.
+  \item Pick a re-scaling of $\AR$, $g:X\map\Rplus$, that is appropriate for use
+  in a linear combination in step 3 below.
+  \item Find numbers $\alpha$ and $\beta$ so that for all $q$, letting
+  $h_q(x)=\alpha
+  f_q(x)+\beta g(x)$, $<_{h_q}$ is a better ranking than $<_{f_q}$.
+\end{enumerate}
+\end{problem}
+
+
+
+\end{document}

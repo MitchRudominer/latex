@@ -1,0 +1,120 @@
+% dviscr 1.6e  27-Sep-1997  16:11
+%
+% Invocation: dviscr @lj /fl=-1 /ocr=1 +landscape main -pj:c:\tmp\dv2.mfj
+% Input file: main.dvi
+%
++first-page:*
++last-page:*
++double-sided:-
++skip-sides:0
++number-of-sides:65535
++backward:off
++left-margin:0in
++top-margin:0in
++height:11in
++width:8.5in
++transformation:1
++page-width:8.5in
++page-height:11in
++page-left-margin:1in
++page-top-margin:1in
++backside-offset-x:0in
++backside-offset-y:0in
++columns:1
++rows:1
++section-count:0
++section-size:0
++full-last-section:off
++fold-other:off
++page-shift:0in
++blank-pages:0
++batch-mode
++call-mfjob:on
++ask-mfjob:on
++font-load-limit:-1
++metafont-mode:laserjet
++omit-graphics:off
++font-scaling:1
++max-drift:2
++font-size-tolerance:0.2
++use-tfm-files:off
++font-sizes::0,:h,:1,:2,:3,:4,:5,:6,:7,:8,:9
++magnification:
++resolution:300
++font-resolution:300
++graphics-resolution:0
++dvi-file:{,$DVIDRVINPUT:}@i
++font-files:$DVIDRVFONTS:pixel.lj\@Rrdpi\@f{.pk,.pxl}
++graphics-files:{,$DVIDRVGRAPH:}{@Rrdpi\,}@PBf{@Ef,.msp,.pcx,.bmp}
++mfjob-file:c:\tmp\dv2.mfj
++font-libraries:$DVIDRVFONTS:lj_{base,more}
++page-list-file:
++response-files:{,$EMTEX:data\}@f
++font-subst-files:
++transcript-file:@d.dlg
++virtual-fonts:
++fontlib-file:
++verbosity:2
++unit:in
++use-ems:on
++use-xms:on
++home-x:1in
++home-y:1in
++zoom:1
++adapter:0
++color:p2 +color:r1 +color:s2
++inverse:off
++ruler:off
++status-line:on
++ruler-unit:pt
++scaling:1
+@
+
+' TeX output 1997.09.27:1610'
+Loading font cmti10 scaled 1000  (c:\tex\texfonts\lj_base.fli [cmti10])
+Loading font cmcsc10 scaled 1200  (c:\tex\texfonts\lj_base.fli [cmcsc10])
+Loading font cmbx12 scaled 1200  (c:\tex\texfonts\pixel.lj\360dpi\cmbx12.pk)
+Loading font cmti12 scaled 1000  (c:\tex\texfonts\lj_base.fli [cmti12])
+Loading font msam10 scaled 1200  (c:\tex\texfonts\pixel.lj\360dpi\msam10.pk)
+Loading font cmex10 scaled 1200  (c:\tex\texfonts\pixel.lj\360dpi\cmex10.pk)
+Loading font cmsy8 scaled 1000  (c:\tex\texfonts\lj_base.fli [cmsy8])
+Loading font cmsy10 scaled 1200  (c:\tex\texfonts\lj_base.fli [cmsy10])
+Loading font cmmi6 scaled 1000  (c:\tex\texfonts\lj_base.fli [cmmi6])
+Loading font cmmi8 scaled 1000  (c:\tex\texfonts\lj_base.fli [cmmi8])
+Loading font cmmi12 scaled 1000  (c:\tex\texfonts\lj_base.fli [cmmi12])
+Loading font cmr6 scaled 1000  (c:\tex\texfonts\lj_base.fli [cmr6])
+Loading font cmr8 scaled 1000  (c:\tex\texfonts\lj_base.fli [cmr8])
+Loading font cmbx12 scaled 1000  (c:\tex\texfonts\lj_base.fli [cmbx12])
+Loading font cmr12 scaled 1000  (c:\tex\texfonts\lj_base.fli [cmr12])
+Loading font cmr10 scaled 1000  (c:\tex\texfonts\lj_base.fli [cmr10])
+Loading font cmr7 scaled 1000  (c:\tex\texfonts\lj_base.fli [cmr7])
+Loading font lcircle10 scaled 1000  (c:\tex\texfonts\lj_base.fli [lcircle10])
+Loading font line10 scaled 1000  (c:\tex\texfonts\lj_base.fli [line10])
+Loading page pointers... 8 input pages, 8 output sheets.
+ [1] [8]
+
+Memory usage:
+Strings                          40       1024
+Page buffers                      3      30720
+Sorted page buffers               3      30720
+Sorted page index              3300      26400
+Position stack                   18        504
+Font table                       19       1368
+Font indices                     19        114
+Page table                        8        400
+Characters                     1792      57344
+Raster data                     240      23838
+VF characters                     0          0
+VF macros                         0          0
+Graphics                          0          0
+Lines                             0          0
+Font library directories          0          0
+Band buffer                       0          0
+TOTAL                                   172432
+
+Number of deallocations:      0
+Temporary file size:          0
+EMS bytes used:               0
+XMS bytes used:               0
+External memory reads:        0
+External memory writes:       0

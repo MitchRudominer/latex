@@ -1,0 +1,594 @@
+%%This is a very basic article template.
+%%There is just one section and two subsections.
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+\include{MathDefs}
+\include{TheoremStyles}
+
+\newcommand{\skipsmall}{\vspace{1em}}
+\newcommand{\skipmed}{\vspace{2em}}
+\newcommand{\skipbig}{\vspace{3em}}
+\newcommand{\skipsmallminus}{\vspace{-1em}}
+
+\begin{document}
+
+\title{Some Notes on Collaborative Filtering}
+\author{Mitch Rudominer}
+
+\maketitle
+
+\section{Introduction}
+These are some notes on similarity score and affinity score calculations for
+collaborative filtering in the enterprise.
+
+\skipsmall
+Given two items in an enterprise, say two documents $D_1$ and $D_2$,
+we wish to define a measure of how similar $D_1$ and $D_2$ are to each other. We
+wish to define a \textbf{similarity score} $\Sim(D_1,D_2)$ that gives us a
+numerical measure of their similarity. We can use such a similarity score to
+give context-based item recommendations. If the user navigates to $D_0$, we can
+recommend the five, say, other items $D_1,\dots D_5$ that are most similar to
+$D_0$, perhaps filtering out those items that we know that the user is already 
+aware of. 
+
+There are many ways we might define the similarity between two items. In
+Collaborative Filtering we use the \textbf{actions of users} as the data on
+which we base our similarity score. Let $\singleton{U_1,\dots U_n}$ be the set
+of all users. Each user performs actions on the items in an enterprise; actions
+such as viewing, editing, tagging, etc. We may model a single item $D$ as a
+numerical vector $\xvec=\angles{x_1,\dots x_n}$ where the number $x_i$
+represents the actions of user $U_i$ on $D$. There are many free parameters in
+this model such as which actions to use and how to represent the actions
+numerically. One simple example is that $x_i$ might represent the number of
+times that $U_i$ has viewed $D$.
+
+Given this notion of similarity our recommendation application might be
+described compactly via the slogan ``Users who have worked with this item have
+also worked with these other items\ldots''.
+
+These notes are concerned with the decision of how to calculate a
+collaborative-filtering similarity score. There are at least two distinct parts
+to this question. The first part is how do we represent an item as a numeric
+vector? Which actions do we use and how do we model these actions numerically.
+The second part of the question is, given two numeric vectors, how do we measure
+how similar they are to each other. We begin with this second question.
+
+\section{Similarity Functions}
+
+
+\begin{definition}
+A \textbf{similarity function} is a function which takes pairs of
+vectors of reals of the same length and gives reals
+\begin{equation}
+f\vdots\bigcup\limits_{n=1}^{\infty}\R^{n}\times\R^{n}\map\R
+\end{equation} 
+such that
+\begin{enumerate}
+  \item $-1\leq f(\xvec,\yvec)\leq f(\xvec,\xvec) = 1$
+  \item $f(\vec{x},\vec{y})=f(\vec{y},\vec{x})$
+  \item $f$ is invariant under simultaneously permuting the two input vectors.
+  That is if $\vec{x} = \angles{x_1,\dots x_i,\dots x_j,\dots x_n} $
+  and $\vec{y}=\angles{y_1,\dots y_i,\dots y_j,\dots y_n}$
+  and $\vec{x}^{\prime}=\angles{x_1,\dots x_j,\dots x_i,\dots x_n}$
+  and $\vec{y}^{\prime}=\angles{y_1,\dots y_j,\dots y_i,\dots y_n}$ then
+  $f(\vec{x}^{\prime},\vec{y}^{\prime})=f(\vec{x},\vec{y})$.
+  \item $f$ depends on every coordinate as long as the other coordinates are not
+  all zero: Fix $n$ and fix $\xvec,\yvec,\zvec$ in $\R^{n}$ with
+  $\xvec\not=\vec{0}$.
+  Suppose that $\yvec$ and $\zvec$ agree on all coordinates except one. That is
+  suppose there is an $i_0<n$ such that $y[i_0] \not = z[i_0]$, $y[i]=z[i]$ for
+  $i\not=i_0$. Suppose further that there is some $i\not=i_0$ such that $y[i]\not=0$.
+  Then $f(\xvec,\yvec)\not=f(\xvec,\zvec)$.
+\end{enumerate}
+\end{definition}
+
+Intuitively $f$ yields a measure of how
+similar the two input vectors $\vec{x}$ and $\vec{y}$ are, with a maximum
+similarity of 1 which is always attained when the two input vectors are the
+same, and a minumum similarity of $-1$. (The definition does not force
+the minimum value of -1 to be attained. We will look at examples of similarity
+functions in which the minum value is 0.) Property 2 says that similarity is
+symmetric. Property 3 says that the indexing of the components of the input
+vectors is arbitrary and doesn't affect the similarity. Property 4 just rules
+out some degenerate examples and is included so that some of our theoretical
+results may be stated more cleanly.
+
+\skipsmall
+
+The notation in the definition implies that $f$ may not be defined on all pairs 
+vectors but only on some.  $f$ is
+\textbf{total} if it takes all pairs of vectors. We will also be interested in
+the case where $f$ takes only \textbf{non-negative} vectors $\xvec$, $\yvec$. Also $f$
+is \textbf{binary} if it takes only vectors consisting of zeroes and ones.
+
+\skipsmall
+
+$f$ is \textbf{non-negative} if
+$f(\xvec,\yvec)\geq 0$ and \textbf{positive} if $f(\xvec,\yvec)> 0$. 
+
+\skipsmall
+
+The \textbf{dot product} of two vectors of length $n$ is defined by
+\begin{equation}
+\xvec\centerdot\yvec=\sum\limits_{i=1}^{n}x_i y_i
+\end{equation}
+
+\skipsmall
+
+The \textbf{Euclidean norm} of a vector $\xvec$ of length $n$ is defined by
+\begin{equation}
+\norm{\xvec} = \sqrt{\sum\limits_{i=1}^n (x_i)^2}
+\end{equation}
+
+\section{Examples of Similarity Functions}
+In this section we give some examples of  similarity functions. We will study the
+properties of each of these examples later in the paper.
+
+\begin{example}
+The \textbf{Euclidean} distance between two vectors $\xvec$ and $\yvec$ is given by
+$d(\xvec,\yvec)=\norm{\xvec-\yvec}$. The \textbf{inverse Eculidean
+distance} similarity function is the total, positive similarity function defined
+by 
+\begin{equation}
+\simeuc(\xvec,\yvec)=\frac{1}{1+d(\xvec,\yvec)}.
+\end{equation} 
+Notice that $0<\simeuc((\xvec,\yvec)\leq 1$ and
+$\simeuc((\xvec,\yvec)=1$ iff $\xvec=\yvec$.
+\end{example}
+
+
+
+\begin{example}
+The \textbf{Generalized Tanamoto} similarity function is the
+non-negative similarity function defined on non-negative vectors by 
+\begin{equation}
+\simtan(\xvec,\yvec)=\frac{\sum\limits_{i=1}^{n}\min(x_i,y_i)}{\sum\limits_{i=1}^{n}\max(x_i,y_i)}
+\end{equation}
+unless $\xvec=\yvec=\vec{0}$ in which case we define $\simtan(\vec{0},\vec{0})=1$.
+Notice that $\simtan(\xvec,\yvec)=0$ iff
+$\xvec\centerdot\yvec=0$ and not $\xvec=\yvec=\vec{0}$,
+and $\simtan(\xvec,\yvec)=1$ iff $\xvec=\yvec$. We refer to this function as
+\textbf{generalized} Tanamoto because the original Tanamoto function was only
+applied to binary vectors. We will examine Tanamoto on binary vectors in a later
+section.
+\end{example}
+
+\begin{example}
+The \textbf{Cosine} similarity function is the total similarity function defined
+by
+\begin{equation}
+\simcos(\xvec,\yvec)=\frac{\xvec\centerdot\yvec}{\norm{\xvec}\norm{\yvec}}.
+\end{equation}
+This is the cosine of the angle between the vectors $\xvec$
+and $\yvec$ in $\R^n$.
+Notice $-1\leq\simcos(\xvec,\yvec)\leq 1$, $\simcos(\xvec,\yvec)=0$ iff
+$\xvec\centerdot\yvec=0$, $\simcos(\xvec,\yvec)=1$ iff $\xvec=\alpha\yvec$
+for some $\alpha>0$ and $\simcos(\xvec,\yvec)=-1$ iff $\xvec=\alpha\yvec$
+for some $\alpha<0$
+\end{example}
+
+\begin{example}
+The \textbf{Correlation Coefficient} similarity function is the 
+similarity function defined by
+\begin{equation}
+\begin{split}
+\simcor(\xvec,\yvec)&=\frac{\sum\limits_{i=1}^{n}x_i y_i - \left(\sum\limits_{i=1}^{n}x_i\right)\left(\sum\limits_{i=1}^{n}y_i\right)\frac{1}{n}}{\sqrt{\left[\left(\sum\limits_{i=1}^{n}x_i^2\right)-\left(\sum\limits_{i=1}^{n}x_i\right)^2\frac{1}{n}\right]\left[\left(\sum\limits_{i=1}^{n}y_i^2\right)-\left(\sum\limits_{i=1}^{n}y_i\right)^2\frac{1}{n}\right]}}\\
+&=\frac{\frac{1}{n}\sum\limits_{i=1}^{n}x_i y_i - \left(\frac{1}{n}\sum\limits_{i=1}^{n}x_i\right)\left(\frac{1}{n}\sum\limits_{i=1}^{n}y_i\right)}{\sqrt{\left[\left(\frac{1}{n}\sum\limits_{i=1}^{n}x_i^2\right)-\left(\frac{1}{n}\sum\limits_{i=1}^{n}x_i\right)^2\right]\left[\left(\frac{1}{n}\sum\limits_{i=1}^{n}y_i^2\right)-\left(\frac{1}{n}\sum\limits_{i=1}^{n}y_i\right)^2\right]}}\\
+&=\frac{\cov(\xvec,\yvec)}{\sigma(\xvec)\sigma(\yvec)}.
+\end{split}
+\end{equation}
+Here $\cov$ means covariance and $\sigma$ means standard deviation. The
+correlation coeficient is a concept from probability theory and statistics. We
+will explore its properties later in this paper. Notice that the denominator is
+zero and so the fraction is not defined if either $\xvec$ or $\yvec$ is
+constant.
+\end{example}
+
+\section{Binary Input Vectors}
+In this section we study the properties of our various similarity functions when
+restricted to binary input vectors. In this context it is useful to think of a
+similarity function as acting on \emph{sets} instead of vectors.
+
+Let $U=\singleton{1,\dots n}$. If $\xvec$ is a binary vector of length $n$, let
+$S_{\xvec}=\setof{i\in n}{x_i=1}$. Thus $S_{\xvec}\subseteq U$ is the set whose characteristic
+function is $\xvec$. In this section we will use the notational convention that
+$X=S_{\xvec}$ and $Y=S_{\yvec}$. We will think of a similarity function $f$ as
+being a function of $X$ and $Y$. 
+
+It will be convenient to introduce some more
+notation. Let $a=\card(\setof{i}{x_i=1 \aND y_i=0})=\card(X-Y)$. Let
+$b=\card(\setof{i}{y_i=1\aND x_i=0})=\card(Y-X)$. Let
+$c=\card(\setof{i}{x_i=y_i=1})=\card(X\intersect Y)$.
+Finally let
+$d=\card(\setof{i}{x_i=y_i=0})=\card(U - (X\union Y))$. 
+
+Each of our binary similarity functions may be expressed as functions of $a$,
+$b$, $c$, and $d$. We will say that a
+similarity function is \textbf{neutral} just in case the dependency of $f$ on
+$c$ and $d$ is symmetric. One way to think of this intuitively is as follows.
+Imagine that $\xvec$ and $\yvec$ represent users' binary ratings of two items. A
+$1$ in position $i$ represents a thumbs-up vote by user $i$ and a 0 in position
+$i$ represents a thumbs-down vote. Then a similarity function is neutral if it
+treats the set of users that gave thumbs-up votes to both items the same way that it 
+treats the set of users that gave thumbs-down votes to both items.
+
+We will study the properties of each of our similarity functions on binary input
+vectors.
+
+\begin{example}
+The \textbf{Tanamoto} similarity function is the non-negative binary
+similarity function defined on binary vectors by 
+\begin{equation}
+\simtan(\xvec,\yvec)=\frac{\sum\limits_{i=1}^{n}\min(x_i,y_i)}{\sum\limits_{i=1}^{n}\max(x_i,y_i)}
+\end{equation}
+unless $\xvec=\yvec=\vec{0}$ in which case we define $\simtan(\vec{0},\vec{0})=1$.
+Notice that the numerator may also be written as $\xvec\centerdot\yvec$. In
+terms of sets
+\begin{equation}
+\simtan(X,Y)=\frac{\card(X\intersect Y)}{\card(X\union Y)}.
+\end{equation}
+unless $X=Y=\emptyset$ in which case we define $\simtan(\emptyset,\emptyset)=1$.
+Notice that $0\leq \simtan(X,Y)\leq 1$ with $\simtan(X,Y)=0$ iff
+$X\intersect Y=\emptyset$ and $\simtan(X,Y)=1$ iff $X=Y$.
+In terms of $a$, $b$, $c$ and $d$
+\begin{equation}
+\simtan(X,Y)=\frac{c}{a+b+c}.
+\end{equation}
+Since Tanamoto depends on $c$ but not on $d$ it is not neutral.
+\end{example}
+
+\begin{proposition}
+For $a,b,c\geq 0$ and $a+b+c>0$ let 
+\begin{equation}
+f(a,b,c)=\frac{c}{a+b+c}.
+\end{equation}
+Then
+\begin{enumerate}
+  \item $f=0$ iff $c=0$
+  \item $f=1$ iff $a=b=0$. 
+  \item If $a+b>0$ then $f$ is strictly increasing as a function of $c$ and
+  $\lim\limits_{c\to\infty}f=1$
+  \item If $c>0$ then $f$ is strictly decreasing as a function of $a$ and
+  $\lim\limits_{a\to\infty}f=0$
+  \item If $c>0$ then $f$ is strictly decreasing as a function of $b$ and
+  $\lim\limits_{b\to\infty}f=0$
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+To see that $f$ is strictly increasing in $c$ it suffices to see that the
+partial derivative is alwyas positive. We have
+\begin{equation} 
+\frac{\partial f}{\partial c} = \frac{a+b}{(a+b+c)^2} > 0
+\end{equation}
+since $a+b>0$. All of the other claims are easy.
+\end{proof}
+
+\begin{example}We study the \textbf{Cosine} similarity function on binary input
+vectors. Notice that $\xvec\centerdot\yvec=\card(X\intersect Y)$. Also notice
+that $\norm{\xvec}=\sqrt{\card(X)}$. Thus
+\begin{equation}
+\simcos(X,Y) = \frac{\card(X\intersect Y)}{\sqrt{\card(X)\card(Y)}}
+\end{equation}
+Just as with the Tanamoto function we have $0\leq \simcos(X,Y)\leq 1$ with $\simcos(X,Y)=0$ iff
+$X\intersect Y=\emptyset$ and $\simcos(X,Y)=1$ iff $X=Y$. 
+In terms of $a$, $b$, $c$ and $d$
+\begin{equation}
+\simcos(X,Y) = \frac{c}{\sqrt{(a+c)(b+c)}}
+\end{equation}
+Like Tanamoto, Cosine depends on $c$ but not $d$ so it is not neutral.
+\end{example}
+
+\begin{proposition}
+For $a,b,c\geq 0$ and $(a+c)(b+c)>0$ let 
+\begin{equation}
+f(a,b,c)=\frac{c}{\sqrt{(a+c)(b+c)}}.
+\end{equation}
+Then
+\begin{enumerate}
+  \item $f=0$ iff $c=0$
+  \item $f=1$ iff $a=b=0$.
+  \item If $a+b>0$ then $f$ is strictly increasing as a function of $c$ and
+  $\lim\limits_{c\to\infty}f=1$
+  \item If $c>0$ then $f$ is strictly decreasing as a function of $a$ and
+  $\lim\limits_{a\to\infty}f=0$
+  \item If $c>0$ then $f$ is strictly decreasing as a function of $b$ and
+  $\lim\limits_{b\to\infty}f=0$
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+To see that $f$ is strictly increasing in $c$ it suffices to see that the
+partial derivative is alwyas positive. We have
+\begin{equation}
+\begin{split}
+\frac{\partial f}{\partial c} &= 
+\frac{\sqrt{(a+c)(b+c)}-\frac{1}{2}c\left((a+c)(b+c)\right)^{-1/2}(a+b+2c)}{(a+c)(b+c)}\\ 
+&= \frac{(a+c)(b+c)-(\frac{a+b}{2}c+c^2)}{\left((a+c)(b+c)\right)^{3/2}}.
+\end{split}
+\end{equation}
+We have $(a+c)(b+c)=ab+(a+b)c+c^2>\frac{a+b}{2}c+c^2$ since $a+b>0$. All of the
+other claims are easy.
+\end{proof}
+
+\textbf{NOTE}
+By comparing propositions 4.2 and 4.4 we see that on binary input vectors $\simtan$
+and $\simcos$ behave similarly.
+\textbf{We see no reason to prefer one of these functions over the other
+when dealing with binary input.} (That is if we ignore the cost of computation.
+Taking this into consideration we prefer Tanamoto as cosine seems more expensive
+because it involves $3n$ multiplications and a square root.)
+
+
+\begin{example} We study the \textbf{Euclidean} similarity function on binary
+input vectors. Notice that $d(\xvec,\yvec) = \sqrt{\card(X\vartriangle Y)}$ where
+$X \vartriangle Y$ is the \textbf{symmetric difference} of $X$ and $Y$.
+$X\vartriangle Y = X - Y \union Y - X$. In terms of $a$, $b$, $c$ and $d$
+\begin{equation}
+\simeuc(X,Y) = \frac{1}{1+\sqrt{a+b}}
+\end{equation}
+Notice that in contrast to cosine and Tanamoto, Euclidean does not depend on $c$
+or $d$
+at all, so it is neutral.
+\end{example}
+\begin{proposition}
+For $a,b\geq 0$  let 
+\begin{equation}
+f(a,b)=\frac{1}{1+\sqrt{a+b}}.
+\end{equation}
+Then
+\begin{enumerate}
+  \item $0<f\leq 1$
+  \item $f=1$ iff $a=b=0$.
+  \item $f$ is strictly decreasing as a function of $a$ and
+  $\lim\limits_{a\to\infty}f=0$
+  \item $f$ is strictly decreasing as a function of $b$ and
+  $\lim\limits_{b\to\infty}f=0$
+\end{enumerate}
+\end{proposition}
+
+\begin{example} We study the \textbf{Correlation Coefficient} similarity
+function on binary input vectors. For $S\subseteq U$ and $n=\card(U)$ let
+$P(S)=\card(S)/n$ be the probability of $S$ and let $\bar{S}=U-S$ be the
+compliment of $S$. From the second expression for
+the correlation coefficient (given in the example in an earlier section) we see
+directly that
+\begin{equation}
+\begin{split}
+\simcor(X,Y) &= \frac{P(X\intersect Y) - P(X)P(Y)}{\sqrt{\left[P(X)-P(X)^2\right]\left[P(Y)-P(Y)^2\right]}}\\
+&=\frac{P(X\intersect Y) - P(X)P(Y)}{\sqrt{\left[P(X)P(\bar{X})\right]\left[P(Y)P(\bar{Y})\right]}}
+\end{split}
+\end{equation}
+In terms of $a$, $b$, $c$ and $d$, and using the fact that $n=a+b+c+d$
+\begin{equation}
+\begin{split}
+\simcor(X,Y) &= \frac{\frac{c}{n} -\frac{a+c}{n}\frac{b+c}{n}}{\sqrt{\frac{a+c}{n}\frac{b+d}{n}\frac{b+c}{n}\frac{a+d}{n}}}\\ 
+&=\frac{nc - (a+c)(b+c)}{\sqrt{(a+c)(b+d)(b+c)(a+d)}}\\
+&=\frac{cd-ab}{\sqrt{(a+c)(b+d)(b+c)(a+d)}}
+\end{split}
+\end{equation}
+Since $\simcor(X,Y)$ depends on $c$ and $d$ symmetrically it is neutral.
+
+$\simcor(X,Y)=0$ iff  $P(X\intersect Y)=P(x)P(Y)$, that is, $X$ and $Y$ are
+independent events, and $\simcor(X,Y)>0$ iff
+$P(X|Y)>P(X)$ iff $P(Y|X)>P(Y)$. In summary, the sign of $\simcor(X,Y)$ indicates
+whether knowing that $i$ is in one of $X$ or $Y$ increases, decrease or has no
+effect on the likelihood that $i$ is in the other.
+\end{example}
+
+\begin{proposition}
+For $a$, $b$, $c$, and $d$ non negative numbers and $(a+c)(b+d)(b+c)(a+d)>0$, let 
+\begin{equation}
+\rho(a,b,c,d)=\frac{cd-ab}{\sqrt{(a+c)(b+d)(b+c)(a+d)}}
+\end{equation}
+Then
+\begin{enumerate}
+  \item $\rho=1$ iff $a=b=0$.
+  \item $\rho=-1$ iff $c=d=0$.
+  \item If $a=c=0$ or $a=d=0$ or $b=c=0$ or $b=d=0$ then $\rho=0$.
+   \item If $a+b>0$, $\rho$ is a strictly increasing function in $c$ and in $d$.
+   \item If $c+d>0$, $\rho$ is a strictly decreasing function in $a$ and in $b$.
+   \item Suppose $a+b>0$. If we fix $a$ and $b$ and let
+   both $c$ and $d$ go
+   to infinity we get $\lim\limits_{c,d\to\infty}\rho=1$. But if we fix $a$, $b$
+   and $c$ and let $d$ go to infinity we get $\lim\limits_{d\to\infty}\rho<1$.
+   Similarly if we fix $a$, $b$ and $d$ and let $c$ go to infinity.
+   \item Suppose $c+d>0$. If we fix $c$ and $d$ and let
+   both $a$ and $b$ go
+   to infinity we get $\lim\limits_{a,b\to\infty}\rho=-1$. But if we fix $c$, $d$
+   and $a$ and let $b$ go to infinity we get $\lim\limits_{b\to\infty}\rho>-1$.
+   Similarly if we fix $c$, $d$ and $b$ and let $a$ go to infinity.
+   
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+1. If $a=b=0$ then $\rho=cd/\sqrt{c^2d^2}=1$. If $a>0$ then the numerator of the
+expression for $\rho$ is $\leq cd$ and the denominator is greater than $cd$ so
+the fraction is less than 1. Similarly if $b>0$.
+
+2.  The proof of 2 is similar to the proof of 1.
+
+3.  These are all obvious.
+
+4. Suppose $a>0$. (The argument is similar if instead we assume that $b>0$.) We
+will show that $\rho$ is increasing in $c$. A similar argument shows that $\rho$
+is increasing in $d$. It suffices to show that the derivative of $\rho$ with
+respect to $c$ is everywhere positive. Let $S=(a+c)(b+d)(b+c)(a+d)$. Then
+\begin{equation}
+\begin{split}
+\frac{\partial \rho}{\partial c} &= \frac{d\sqrt{S} -
+\frac{1}{2}(cd-ab)S^{-1/2}(b+d)(a+d)(a+b+2c)}{S}\\ 
+&= \frac{dS - (cd-ab)(b+d)(a+d)\left(\frac{a+b}{2}+c\right)}{S^{3/2}}
+\end{split}
+\end{equation}
+To see that $\frac{\partial \rho}{\partial c}>0$ then it suffices to see that
+\begin{equation}
+d(c+a)(c+b)>(cd-ab)\left(\frac{a+b}{2}+c\right)
+\end{equation}
+Assume that $a\geq b$. (The argument is similar if we assume instead that $b\geq
+a$). Then $d(c+b)\geq cd\geq cd-ab$ and $c + a \geq c + \frac{a+b}{2}$.
+If $b>0$ then the first inequality is strict and if $b=0$ then the last
+inequality is strict. So in all cases we have that $\frac{\partial
+\rho}{\partial c}>0$. 
+
+5. This is similar to 4.
+
+6. Suppose $a>0$, the argument is similar if $b>0$. Fix a small number
+$\delta>0$. Let $c$ and $d$ be large enough that $\delta c>a$ and $\delta c>b$
+and $\delta d>a$ and $\delta d>b$. Then
+\begin{equation}
+\begin{split}
+\rho &> \frac{cd - \delta^2 cd}{\sqrt{(c+\delta c)(d+\delta d)(c+\delta
+c)(d+\delta d)}}\\ 
+&= \frac{1-\delta^2}{(1+\delta)^2}.
+\end{split}
+\end{equation}
+Since this last fraction converges to 1 as $\delta$ goes to zero, we see that $\rho$
+can be made arbitrarily close
+to $1$ by fixing $a$ and $b$ and letting $c$ and $d$ be sufficiently large. On
+the other hand, suppse we also fix $c$ and we let $d$ go to infinity. (The
+argument is similar with the roles of $c$ and $d$ reversed.) If $c=0$ and $b=0$
+then $\rho=0$. If $c=0$ and $b>0$ then $\rho<0$ and $\rho\to 0$ as $d\to\infty$.
+So suppose $c>0$. For sufficiently large $d$, $\rho>0$. But
+\begin{equation}
+\rho \leq \frac{cd}{\sqrt{(c+a)cd^2}} = \sqrt{\frac{c}{(c+a)}} <1
+\end{equation}
+Thus $\rho$ is bounded away from 1.
+
+7. This is similar to 6.
+\end{proof}
+
+\textbf{Note.} Items 1 and 2 in the previous proposition say that $\rho=1$ iff $X=Y$
+and $\rho=-1$ iff $Y=\bar{X}$.
+
+\skipsmall
+
+\textbf{Note.} We can understand 6 and 7 in the previous proposition in terms of
+conditional probability. Note that
+\begin{alignat}{2}
+P(X | Y) &= \frac{c}{c+b} &\qquad P(Y | X) &= \frac{c}{c+a} \\
+P(\bar{X} | \bar{Y}) &= \frac{d}{d+a} &\qquad P(\bar{Y} | \bar{X}) &=
+\frac{d}{d+b}.
+\end{alignat}
+
+We can understand 6 and 7 as saying that $\rho$ goes to 1 just in case all of
+these go to 1, and $\rho$ goes to -1 just in case all of these go to zero.
+
+\skipsmall
+
+\textbf{Note.} The correlation coefficient similarity function differs from the
+cosine and Tanamoto functions in that it depends on $d = \card(U - (X\union Y)$.
+But it is interesting to note that if $\card(X\union Y)$ is small compared to
+$\card(U)$ then the correlation coefficient is approximately equal to the
+cosine:
+\begin{equation}
+\rho=\frac{c-ab/d}{\sqrt{(a+c)(b/d+1)(b+c)(a/d+1)}}.
+\end{equation}
+As $d$ goes to infinity this value goes to
+\begin{equation}
+\frac{c}{\sqrt{(a+c)(b+c)}}
+\end{equation}
+which is the expression for the cosine similarity function.
+
+\begin{example}
+The \textbf{Neutral Cosine} similarity function is a variant of the cosine
+similarity function that is neutral. Given a set $X\subseteq U$ we define it's
+\textbf{neutral characteristic function} to be the vector $\vec{x}$ defined by
+$x[i]=1$ if $i\in X$, $x[i]=-1$ if $i\notin X$. Thus the neutral characteristic
+function differs from the usual characteristic function by using the value -1 in
+place of the value 0. Now we define the neutral cosine similarity function by
+$\simcosneut(X,Y) = \simcos(\vec{x},\vec{y})$ where $\vec{x}$ and $\vec{y}$ are the
+neutral characteristic functions of $X$ and $Y$ respectiviely. In terms of $a$,
+$b$, $c$ and $d$ we find that the neutral cosine function is given by
+\begin{equation}
+\simcosneut = \frac{c+d-a-b}{a+b+c+d}.
+\end{equation}
+So the neutral cosine similarity function is in fact neutral. As with each of
+the previous functions we find that $\simcosneut=1$ iff $a=b=0$ iff $X=Y$. As with the
+correlation coefficient, $\simcosneut=-1$ iff $c=d=0$ iff $Y = \bar{X}$. 
+Whereas $\simcor(X,Y)=0$ iff $X$ and $Y$ are stochastically independent events, we
+find that in the case of the neutral cosine, $\simcosneut(X,Y)=0$ iff $\card(X\intersect
+Y)+\card(U-(X\union Y)) = \card(X \vartriangle Y)$. Intuitively this means that
+the same number of users agreed about the two items as disagreed. Let us examine
+an example in which $\simcosneut$ and $\simcor$ disagree. Let
+$U=\singleton{1,\dots 14}$. Let $X=\singleton{1,2,3, 4}$. Let
+$Y=\singleton{4,5,6,7}$ This yields $a=b=3, c=1, d=7$. Since $cd-ab<0$ we find
+that $\simcor(X,Y)<0$. But $c+d-a-b>0$ so $\simcosneut(X,Y)>0$. Neutral Cosine
+says the sets have positive similarity because the number of users that agreed
+on $X$ and
+$Y$ (1 positive + 7 negative = 8) is greater than the number that disagreed (6).
+Correlation coefficient
+says the sets have negative similarity because $P(X|Y)=1/4 < 2/7 = P(X)$
+\end{example}
+
+\section{Properties of Similarity Functions}
+In this section we return to the broader context of similarity functions on
+arbitrary vectors, not just on binary vectors. As a technique for studying our
+various similarity functions we will identify some properties that a similarity
+function may or may not have.
+
+\begin{definition} 
+A similarity function $f$ is 
+\textbf{invariant under scalar multiplication in the weak sense} if 
+$f(\lambda\xvec,\lambda\yvec)=f(\xvec,\yvec)$ 
+for all $\xvec,\yvec\in\R^{n}$, and all $\lambda\not=0$, such that
+both sides of the equation are defined.
+\end{definition}
+
+\begin{definition} 
+A similarity function $f$ is 
+\textbf{invariant under scalar multiplication in the strong sense} if 
+\begin{itemize}
+  \item $f(\lambda\xvec,\yvec)=f(\xvec,\yvec)$ 
+  for all $\xvec,\yvec\in\R^{n}$, and all $\lambda>0$, such that both sides of
+  the equation are defined.
+  \item $f(\lambda\xvec,\yvec)= -f(\xvec,\yvec)$ 
+  for all $\xvec,\yvec\in\R^{n}$, and all $\lambda<0$, such that both sides of
+  the equation are defined.
+\end{itemize}
+\end{definition}
+
+Notice that by property (2) of the definition of a similarity function, in the
+above defintion it is equivalent to multiply $\yvec$ by
+$\lambda$ instead of $\xvec$. Notice also that invariance
+under scalar multiplication in the strong sense implies it in the weak sense.
+
+\begin{definition}A similarity function $f$ is \textbf{monotonic} if
+$f(\xvec,\yvec)\geq f(\xvec,\zvec)$ whenever $\zvec$ is such that
+$z[i]=y[i]$ for all $i>0$, and $|z[0]-x[0]|>|y[0]-x[0]|$.
+\end{definition}
+
+To understand the meaning of monotonic, suppose $\xvec$ and $\yvec$ represent
+the ratings of two items by $n$ users. If user $0$ changes his rating of the
+second item but all other users' ratings remain unchanged, we get a new rating 
+vector $\zvec$ that differs from $\yvec$ only in position $0$. Suppose user $0$
+changed his rating of the second item so that his
+new rating differs from his rating of the first item by more than his original
+rating of the second item did. $f$ is monotonic if the $f$-similarity of the two
+items does not increase as a result of this change. By property (3) of the
+definition of a similarity function, the definition would be equivalent if we used
+a different coordinate instead of the $0^{th}$.
+
+\skipsmall
+
+Our first observation is that two of the above properties are inconsistent with
+each other.
+
+\begin{proposition}
+If $f$ is invariant under scalar multiplication in the strong sense then $f$ is
+not monotonic.
+\end{proposition}
+\begin{proof}
+By property 4 of the definition of a similarity function we can choose two
+numbers $x$ and $y$ such that
+$f([0,1],[1,x])<f([0,1],[1,y])$. By strong invariance we have
+$f([0,x],[1,x])=f([0,1],[1,x])<f([0,1],[1,y])=f([0,x],[1,y])$. Thus $f$ violates monotonicity.
+\end{proof}
+
+\section{Scatter Plots}
+Notice that by property 3. we may think of the input to a similarity function
+as a multi-set (that is a set that allows multiple repetitions of its elements)
+of ordered pairs: $\singleton{(x_1,y_1),(x_2,y_2),\dots (x_n,y_n)}$. We may
+visualize this as a scatter-plot of points in the $X-Y$ plane. By property 2.
+$f$ is invariant under reflecting the scatter plot over the diagonal line $y=x$.
+
+\end{document}
