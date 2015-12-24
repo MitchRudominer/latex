@@ -91,6 +91,7 @@ But by \ref{lemma2} $j(f) = f$ is not cofinal in $j(\kappa) > \kappa$.
 \end{proof}
 
 \begin{lemma}
+\label{equivalence1}
 The following are equivalent:
 \begin{itemize}
 \item[(a)] $M\models$ ``$\kappa$ is an inaccessible cardinal.''
@@ -133,9 +134,29 @@ whereas $\kappa \not\in\ran(j)$.
 The conditions (a) - (d) in the previous lemma all follow in particular from the
 hypotheses $\Powerset^{M}(\kappa) = \Powerset^{N}(\kappa)$.
 
+\begin{lemma}
+\label{equivalence2}
+The following are equivalent, and in case they are true
+$\kappa$ is inaccessible in $N$.
+\begin{itemize}
+\item[(a)]  $\Powerset^{M}(\kappa) = \Powerset^{N}(\kappa)$.
+
+\item[(b)] $V^{M}_{\kappa + 1} = V^{N}_{\kappa + 1}$.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+(a) $\Implies$ (b). Assuming (a) $\kappa$ is inaccessible in $M$
+and $V^{M}_{\kappa} = V^{N}_{\kappa}$, by the previous lemma. It follows
+that $\kappa$ is a strong limit cardinal in $N$ and using (a) again it follwos
+that $\kappa$ is regualr in $N$. So $\kappa$ is inacessible in $M$ and $N$ and
+so (b) follows from the fact that $|V_{\kappa}| = \kappa$ in $M$ and $N$.
+
+(b) $\Implies$ (a). Trivial.
+\end{proof}
+
 \begin{question}
-Is there an example of a $j$ which satisfies conditions (a) - (d) of the
-previous lemma but for which $\Powerset^{M}(\kappa) \not= \Powerset^{N}(\kappa)$?
+Is there an example of a $j$ which satisfies conditions (a) - (d) of
+lemma \ref{equivalence1} but for which $\Powerset^{M}(\kappa) \not= \Powerset^{N}(\kappa)$?
 \end{question}
 
 \section{Ultrapowers}
@@ -164,6 +185,7 @@ Since $S\in N$, $S \intersect \kappa \in M$.
 \end{proof}
 
 \begin{lemma}
+\label{SameNextLevel}
 Let $M$ be a transitive model of a sufficient amount of $\ZFC$, let $\kappa$ be
 a cardinal of $M$, and let $U$ be a normal, non-principal, $\kappa$-complete
  $M$-ultrafilter over $\kappa$. Suppose
@@ -182,6 +204,115 @@ $A$, with $f(\beta) \subseteq \beta$ for all $\beta < \kappa$. For each $\alpha<
 let $X_{\alpha} = \setof{\beta < \kappa}{\alpha \in f(\beta)}$. Then
 $A = \setof{\alpha<\kappa}{X_{\alpha} \in U}$. So $A\in M$ by weak amenability.
 \end{proof}
+
+From lema \ref{equivalence2} in case (a) or (b) holds we have
+$V^{M}_{\kappa+1} = V^{N}_{\kappa+1}$ and $\kappa$ is inaccessible
+in $M$ and $N$.
+
+\section{Iterated Ultrapowers}
+
+\begin{lemma}
+Suppose $\sequence{M_{\alpha}, \kappa_{\alpha}, U_{\alpha}, i_{(\alpha, \beta)}}{\alpha<\beta}$
+is an iterated ultrapower with non-decreasing critical points $\kappa_{\alpha}$ and weakly amenable
+ultrafilters $U_{\alpha}$. Then $\kappa_{\alpha}$ is an inaccessible cardinal in
+$M_{\beta}$ and $V^{M_{\alpha}}_{\kappa_{\alpha} + 1} = V^{M_{\beta}}_{\kappa_{\alpha} + 1}$
+for $\beta>=\alpha$.
+\end{lemma}
+\begin{proof}
+By induction. The successor step follows from lemma \ref{SameNextLevel}. The limit step is trivial.
+\end{proof}
+
+\section{Mitchell Models}
+
+\begin{note}
+Lemma 2.10 of \cite{BeginningInnerModelTheory} and Theorem 19.37 of \cite{Jech_Book2}
+are incorrect as written.
+\end{note}
+\begin{proof}
+On page 1469 of \cite{BeginningInnerModelTheory} we see the following defintion:
+
+\begin{quote}
+Call a sequence $\cU$ \emph{weakly coherent} if it satisfies conditions 1 and 2 of Definition 2.6, together with the following weakened coherence condition: if $(\kappa,\beta) \in \dom(\cU)$ and
+$U = \cU(\kappa, \beta)$ then $o^{V}(U)=\beta$.
+\end{quote}
+
+Then Lemma 2.10 claims:
+
+\begin{quote}
+Suppse $\cU$ and $\cW$ are weakly coherent sequences of measures in $V$ with the same
+domain. Then $L[\cU] = L[\cW]$ and $\cU(\kappa, \beta) \intersect L[\cU] =
+\cW(\kappa, \beta) \intersect L[\cW]$ for every $(\kappa, \beta)$ in their common
+domain.
+\end{quote}
+
+Here is a simple example to see that this is not true. Suppose $o(\kappa) = 2$
+and there exists two different normal measures on $\kappa$ of order 1:
+$U_{1} \not= W_{1}$. Let $A\subseteq \kappa$ be in $U_{1}$ but not $U_{2}$ and consist
+of only measurable cardinals.
+Let the domains of $\cU$ and $\cW$ be $\setof{(\alpha,0)}{\alpha\in A} \union
+\singleton{(\kappa,0), (\kappa, 1)}$.
+For $\alpha\in A$ let $\cU(\alpha,0) = \cW(\alpha, 0)$ = any normal measure on
+$\alpha$ of order 0. Let $\cU(\kappa,0) = \cW(\kappa, 0)$  = any normal measure
+on $\kappa$ of order 0. Let $\cU(\kappa,1) = U_{1}$,
+$\cW(\kappa,1) = W_{1}$. Then $\cU$ and $\cW$ are weakly coherent according to
+the definition given above. Suppose $L[\cU] = L[\cW]$. The since $A\in L[\cU]$
+and $A\in U_1$ and $A \notin W_1$, it is clear that
+$U_1 \intersect L[\cU] \not= W_1 \intersect L[\cW]$.
+
+The same example contradicts Theorem 19.37 of \cite{Jech_Book2}.
+\end{proof}
+
+To correct the problem described above we must modify the definition of \emph{weakly coherent}.
+To use the language from \cite{Jech_Book2} and from \cite{Mitchell-Revisited},
+if $(\kappa,\beta) \in \dom(\cU)$  and $U = \cU(\kappa, \beta)$ we want not that
+$o^{V}(U)=\beta$ but rather that $o^{\cU}(U)=\beta$.
+
+In \cite{Mitchell-Revisited} Mitchell gives the following definition of \emph{weakly coherent}:
+If $(\kappa,\beta) \in \dom(\cU)$  and $U = \cU(\kappa, \beta)$ then
+then  $[\alpha \mapsto o^{\cU}(\alpha)]_{U} = \beta$. This is equivalent to the condition
+$o^{\cU}(U)=\beta$. In \cite{Mitchell-Revisited} Mitchell then goes on to prove Theorem 5 which states
+the same thing as Lemma 2.10 from \cite{BeginningInnerModelTheory} that was quoted above.
+With the correct definition of weakly coherent the proof of Theorem 5 from
+\cite{Mitchell-Revisited} works.
+
+It seems that in \cite{BeginningInnerModelTheory} Mitchell thought he could
+simplify the definition of \emph{weakly coherent}, but the simpler definition does not work.
+
+It is interesting to consider why the proof of Theorem 5 from \cite{Mitchell-Revisited} fails using
+the incorrect definition of weakly coherent from \cite{BeginningInnerModelTheory}. The answer I think
+is that with the incorrect definition of weakly coherent the comparison iteration from the proof
+of Theorem 5 does not necessarily use strictly increasing critical points. For example if you consider
+the comparison of the $L[\cU]$ and $L[\cW]$ from the counter example given above, the critical point
+$\kappa$ will end up being used more than once. This invalidates the argument that attempts to show
+that the measures on $\kappa$ used on the two sides of the comparison must be equal. What is curious
+is that in the proof sketch of Lemma 2.10 from \cite{BeginningInnerModelTheory}, Mitchell points
+out that:
+\begin{quote}
+Unlike [an earlier proof], the sequence of ordinals $\kappa_{\nu}$ need not be strictly increasing;
+however the sequence is nondecreasing and the fact that $\beta_{\nu+1} <\beta_{\nu}$ whenever
+$\kappa_{\nu+1} = \kappa_{\nu}$ implies that for each $\nu$ there is an $n < \omega$ such that
+$\kappa_{\nu + n} > \kappa_{\nu}$. This, together with the weak coherence of $\cU$ and $\cW$ is
+enough to show that the comparison termates at some stage $\theta$.
+\end{quote}
+
+I find this statement confusing because we don't need any hypothesis to know that
+there is an $n < \omega$ such that $\kappa_{\nu + n} > \kappa_{\nu}$. This follows from the fact that
+the iterated ultrapower is well-founded. Also I don't know what Mitchell had in mind for how to
+finish the proof without strictly increasing critical points.
+
+It is also interesting to note that something similar to the incorrect definition of weakly coherent
+from \cite{BeginningInnerModelTheory} is correst. In \cite{Mitchell-Revisited} Mitchell points out
+that:
+
+\begin{quote}
+A simple example of a weakly coherent sequence $\cF$ ... is obtained by letting, for $\delta<o(\alpha)$,
+$\cF(\alpha,\delta)$ be any measure $U$ on $\alpha$ such that $o(U) = \delta$.
+\end{quote}
+
+This is correct and sounds very similar to the incorrect definition of weakly coherent from
+\cite{BeginningInnerModelTheory}. The difference is that here we are adding measures at \emph{every}
+$\alpha$, not just $\alpha$ in an arbitrary domain.
+
 
 
 \bibliographystyle{amsalpha}
