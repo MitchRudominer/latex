@@ -1,0 +1,193 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Review of Beginning Inner Model Theory by Bill Mitchell}
+
+\maketitle
+
+The program of inner model theory is to define and study the properties of
+canonical models of large cardinal axioms. The minimal and historically first
+inner model is $L$, G\"{o}del's constructible universe, and this model serves
+as the touchstone for what a ``canonical" model should be like. The smallest
+large cardinals, for example weakly compact cardinals, can consistently exist
+in $L$ and so $L$ may be considered the canonical inner model for these small
+large cardinal axioms. But stronger large cardinal axioms are inconsistent
+with ``$V=L$" and hence the program to find larger inner models is pursued.
+
+We mention some of the properties of $L$ that contribute to it being considered
+canonical. $L$ is a model of ZFC + GCH and the reason that AC and GCH are true
+in $L$ can be explained by \emph{structural} properties of $L$. The axiom of choice
+is true in $L$ because $L$ has a natural simply-definable global wellordering.
+The GCH is true in $L$ because, working in $L$, if $\kappa\geq\omega$ is a cardinal
+and $A\subseteq\kappa$  then $\exists \alpha<\kappa^{+}$ s.t.
+$A\in L_{\alpha}$ (and $|L_{\alpha}| \leq \kappa$).
+We will refer to this property as \emph{condensation} (though usually that term refers
+to a different structural property that implies this property.)
+$L$ is unique: If $M$ is a transitive proper class and $M\models$``$V=L$" then $M=L$.
+
+The chapter under review begins in section 1.1 with a review of the theory of $L$
+and goes on in later sections to describe, in varying levels of details, inner
+models for progressively stronger large cardinal axioms: one measurable cardinal,
+many measurable cardinals of higher Mitchell order, a strong cardinal. The theory
+of the the last two models is given in some detail. Besides this main thread,
+other important themes in inner model theory are intertwined in the narrative
+of the chapter but in less detail: sharps, the covering lemma and the core model.
+Besides describing the ideas mentioned above another stated goal of the chapter
+is to prepare the reader for the next three chapters
+in the Handbook which extend the conversation to include more
+modern variants of the theory with stronger large cardinal axioms (Woodin cardinals
+and beyond) and which describe the core model and covering theorems in more detail.
+Bill Mitchell, the author of the chapter, is recognized as one of the founding
+fathers of inner model theory. For this reason alone it is a pleasure to read
+this chapter.
+
+In the remainder of this review we will give some more details about the type of
+material described in the chapter and we will point out a small error in one
+of the definitions and give a correction.
+
+Historically the next inner model to be studied after $L$, and the subject
+of section 1.2 of the chapter, was $L[U]$, the canonical inner model
+for a measurable cardinal. Here $U$ is a normal measure in $L[U]$ on some
+$\kappa$ that is a measurable cardinal in $L[U]$. All of the canonical
+properties of $L$ mentioned above generalize to $L[U]$ with some small provisos.
+If $U^{\prime}$ is a normal measure in $L[U^{\prime}]$ on \emph{the same} $\kappa$
+then $U^{\prime}=U$. Also $U$ is the only normal measure in $L[U]$ and $\kappa$ is the
+only measurable cardinal in $L[U]$. $L[U]$ is not quite as unique as $L$ in that there
+are other $L[U^{\prime}]$ models at other $\kappa^{\prime}$'s. But given any two such models one is
+elementarily embeddable into the other. $L[U]$ is a model of GCH but the condensation
+property is not true below $\kappa$ if we use the $L_{\alpha}[U]$ as levels.
+This is becuase for $\alpha\leq\kappa$, $U\intersect L_{\alpha}[U]=\emptyset$ and
+so $L_{\alpha}[U]=L_{\alpha}$ and so it is not reasonable to expect that
+$L_{\alpha}[U]$ contains enough sets for condensation to hold. But there is a more
+modern organization of the model in which partial information about $U$ is
+used as a predicate in constructing the earlier levels of the model and using
+this presentation we recover condensation. $L[U]$ has a definable wellorder but its
+definition is more complex than the one for $L$. Restricted to reals the wellorder
+for $L$ is $\Delta^1_2$ and the one for $L[U]$ is $\Delta^1_3$.
+
+Historically the next step in the progression we are outlining, and the subject
+of section 2, is the models of the form
+$L[\vec{U}]$ where $\vec{U}$ is a coherent sequence of normal measures in
+$L[\vec{U}]$. These models were introduced and studied by Bill Mitchell, the
+author of the chapter under review. These models capture a class of large cardinal properties
+stronger than a measurable limit of measurable cardinals, namely the property that
+$\kappa$ is a measurable cardinal of higher Mitchell order.
+
+If $U_1$ and $U_2$ are normal measures on $\kappa$ then $U_1 \vartriangleleft U_2$ iff
+$U_1 \in \text{Ult}(V, U_2)$. $\vartriangleleft$ is wellfounded and $o(U)$ denotes the
+rank of $U$ under this partial order. $o(\kappa) = \text{sup}
+\setof{o(U) + 1}{U \text{ is a normal measure on } \kappa}$  is called
+the Mitchell order of $\kappa$. So  $o(U) = 0$ if $U$
+concentrates on non-measurable cardinals, $o(\kappa) = 1$ if $\kappa$ is measurable
+but doesn't have a $U$ that concentrates on measurables, $o(U) = 1$ if $U$
+concentrates on cardinals $\alpha$ with $o(\alpha) = 1$ and $o(\kappa) = 2$ if
+$\kappa$ admits a $U$ with $o(U) = 1$ but not a $U$ that concentrates on cardinals
+$\alpha$ that admit a measure of order 1. A sequence of measures $\vec{U}$ is
+called \emph{coherent} if the measures are organized in a certain precise way
+implying, among other things, that the measures on a fixed $\kappa$ are ordered
+increasingly under $\vartriangleleft$.
+
+Models of the form $L[\vec{U}]$ can satisfy
+that there exists many measurable cardinals with many normal measures and
+with Mitchell order up to $o(\kappa)=\kappa^{++}$. All of the canonical properties
+of $L$ generalize to $L[\vec{U}]$ with some more provisos.
+$L[\vec{U}]$ is a model of GCH but the situation with condensation is similar
+to what was discussed above for $L[U]$. $L[\vec{U}]$ has a definable wellorder
+which, when restricted to reals, is $\Delta^1_3$. (Many measurable cardinals is
+not enough to increase the complexity of the wellorder beyond $\Delta^1_3$. That
+does not occur until we get past the model with one Woodin cardinal.) As for uniqueness,
+the only normal measures and the only measurable cardinals in $L[\vec{U}]$ are
+those on the sequence $\vec{U}$. If $\vec{U_1}$ and $\vec{U_2}$ have the same
+domain (meaning the same set of measurable cardinals and the same number
+of measures on each cardinal), we would like to conclude that
+$L[\vec{U_1}] = L[\vec{U_2}]$. This is true if the lengths of the sequences
+are definable but it turns out that the hypothesis
+$L[\vec{U_i}]\models \text{``}\vec{U_i} \text{ is coherent"}$
+is not sufficient for the result in general. It is sufficient to assume that the $\vec{U_i}$ consist
+of measures in $V$ (not just in the inner model) and that in $V$ the sequences satisfy a property called
+\emph{weak coherence}. With this assumption it is true that $L[\vec{U_1}] = L[\vec{U_2}]$
+and the restrictions of the two sequences to the inner model are equal.
+
+But the definition of weakly coherent given in the chapter is not correct.
+In Definition 2.6 on page 1466 the definition of a \emph{coherent} sequence $\vec{U}$
+is given as
+\begin{enumerate}
+\item $\dom(\vec{U}) = \setof{(\kappa, \beta)}{\kappa < \length(\vec{U}) \AND \beta < o^{\vec{U}}(\kappa)}$,
+where $\length(\vec{U})$ and  $o^{\vec{U}}(\kappa)$ are some ordinals.
+\item If $(\kappa, \beta) \in \dom(\vec{U})$ then $\vec{U}(\kappa, \beta)$ is a normal measure on $\kappa$.
+\item If $U=\vec{U}(\kappa, \beta)$ then $o^{i^{U}(\vec{U})}(\kappa) = \beta$ and $i^{U}(\vec{U})(\kappa, \betaprime)=
+\vec{U}(\kappa, \betaprime)$ for all $\betaprime<\beta$, where $i^{U}$ is the ultrapower embedding by $U$.
+\end{enumerate}
+
+
+At the bottom of page 1469 a sequence $\vec{U}$ is defined to be \emph{weakly coherent}
+if condition 3 above is replaced by the condition: If $U=\vec{U}(\kappa, \beta)$  then $o^{V}(U) = \beta$.
+
+This condition is not sufficient for the purposes that the author will use it. For example Lemma 2.10 on
+page 1470 states: Suppose that $\vec{U}$ and $\vec{W}$ are weakly coherent sequences of measures in $V$ with
+the same domain. Then $L[\vec{U}] = L[\vec{W}]$ and $\vec{U}(\kappa,\beta)\intersect L[\vec{U}] =
+\vec{W}(\kappa,\beta)\intersect L[\vec{W}]$ for every $(\kappa,\beta)$ in their common domain.
+
+A simple example suffices to see that this fails using the definition of weakly coherent given above. Suppose
+$o(\kappa) = 2$ and there exists two different normal measures on $\kappa$ of order 1,
+$U_1\not=W_1$. Let $A\subset \kappa$ be in $U_1$ but
+not in $W_1$ and consist only of measurable cardinals. There is such an $A$ since both $U_1$ and $W_1$ concentrate
+on measurable cardinals.
+ Let $\vec{U}$ and $\vec{W}$ be sequences of measures with common domain
+$\setof{(\alpha, 0)}{\alpha \in A} \union \singleton{(\kappa, 0), (\kappa, 1)}$. Let
+$\vec{U}(\alpha, 0) = \vec{W}(\alpha, 0)$ be any measure of order zero on $\alpha$ for $\alpha \in A$.
+Let $\vec{U}(\kappa, 0) = \vec{W}(\kappa, 0)$ be any measure of order zero on $\kappa$. Finally
+let $\vec{U}(\kappa, 1) = U_1$ and $\vec{W}(\kappa, 1) = W_1$. Then $\vec{U}$ and $\vec{W}$ satisfy
+the definition of weakly coherent given in the chapter but, since $A\in L[\vec{U}]\intersect L[\vec{W}]$,
+$U_1\intersect L[\vec{U}] \not= W_1\intersect L[\vec{W}]$.
+
+A correct definition of weakly coherent may be found in Mitchell's own earlier \cite{Mitchell-Revisited}.
+There a sequence $\vec{U}$ is defined to be weakly coherent
+if condition 3 above is replaced by just the first half of condition 3:
+If $U=\vec{U}(\kappa, \beta)$ then $o^{i^{U}(\vec{U})}(\kappa) = \beta$.
+It is shown in \cite{Mitchell-Revisited} that this
+condition suffices for the proof of Lemma 2.10.
+Some authors use the notation
+$o^{\vec{U}}(U) = \beta$ for this condition (but the chapter under review does not introduce this notation.)
+Thus the correction may be construed as consisting of changing a single symbol:
+For weak coherence, instead of $o^V(U) = \beta$ we want $o^{\vec{U}}(U) = \beta$. The reason our
+counterexample above fails to satisfy this correct definition of weakly coherent is that although
+$o^{V}(W_1) = 1$, $o^{\vec{W}}(W_1) = 0$.
+
+In \cite{Mitchell-Revisited} it is pointed out that an example of a weakly coherent sequence
+$\vec{U}$ (in the correct sense) is given by letting, for every measurable cardinal $\alpha$ and every $\beta<o(\alpha)$,
+$\vec{U}(\alpha,\beta)$ be any normal measure on $\alpha$ of order $\beta$. Notice that in
+this example $o^{\vec{U}}(\alpha) = o^V(\alpha)$ for every $\alpha$ and so this example does
+actually satisfy the definition of weak coherence given in the chapter. The reason that our
+counterexample above differs from this example is that the set $A$ did not contain all measurable
+cardinals below $\kappa$.
+
+Although this point is not explained in detail in the chapter,
+it is explained in \cite{Mitchell-Revisited}
+that the motivation for considering weakly coherent sequences is the following problem:
+Given a measurable cardinal $\kappa$ of high Mitchell order in $V$, construct a sequence $\vec{U}$ such that
+in $L[\vec{U}]$ $U$ is coherent and $\kappa$ has high Mitchell order. In the case of
+a single measurable cardinal the analogous problem was easy. If $\kappa$ is measureable let $U$ be a normal
+measure on $\kappa$ in $V$. Then $U\intersect L[U]$ is a normal measure on $\kappa$ in
+$L[U]$. But for $\beta>=\omega$ it is unknown whether the hypothesis $o(\kappa) = \beta$
+implies that there is a coherent $\vec{U}$ such $o^{\vec{U}}(\kappa) = \beta$.
+But the example from the previous paragraph shows that it is possible to construct a weakly coherent
+sequence $\vec{U}$ with $o^{\vec{U}}(\kappa) = \beta$.
+This explains the motivation behind Corollary 2.11 of the chapter which says that either
+this $\vec{U}$ is coherent in $L[\vec{U}]$ or else there is an inner model
+of $\exists \kappa (o(\kappa) = \kappa^{++})$.
+
+
+\bibliographystyle{amsalpha}
+
+\bibliography{math}
+
+\end{document}

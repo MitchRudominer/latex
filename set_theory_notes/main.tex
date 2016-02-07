@@ -137,7 +137,8 @@ hypotheses $\Powerset^{M}(\kappa) = \Powerset^{N}(\kappa)$.
 \begin{lemma}
 \label{equivalence2}
 The following are equivalent, and in case they are true
-$\kappa$ is inaccessible in $N$.
+$\kappa$ is a weakly compact cardinal with stationarily many weakly
+compact cardinals below it in both $M$ and $N$.
 \begin{itemize}
 \item[(a)]  $\Powerset^{M}(\kappa) = \Powerset^{N}(\kappa)$.
 
@@ -151,13 +152,32 @@ that $\kappa$ is a strong limit cardinal in $N$ and using (a) again it follwos
 that $\kappa$ is regualr in $N$. So $\kappa$ is inacessible in $M$ and $N$ and
 so (b) follows from the fact that $|V_{\kappa}| = \kappa$ in $M$ and $N$.
 
+Now let $T\in M$ be a tree on $\kappa$ of height $\kappa$. Then $j(T) \in N$ is
+a tree on $j(\kappa)$ of height $j(\kappa)$ so $j(T)\intersect V^{N}_{\kappa}$
+has a cofinal branch. But $j(T)\intersect V^{N}_{\kappa} = T$ so $T$ has a cofinal
+branch  $b\in N$ and by (a) $b\in M$. Thus $\kappa$ has the tree property in
+$M$ and so it is weakly compact. But then $\kappa$ is also weakly compact in
+$N$. Now let $C\subseteq\kappa$ be club with $C\in M$. Then $\kappa\in j(C)$
+so $N\models$ ``there is a weakly compact cardinal in $j(C)$" so
+$M\models$ ``there is a weakly compact cardinal in $C$". So there are stationarily
+many weakly compact cardinals below $\kappa$ in $M$ and so also in $N$.
+
 (b) $\Implies$ (a). Trivial.
 \end{proof}
 
-\begin{question}
-Is there an example of a $j$ which satisfies conditions (a) - (d) of
-lemma \ref{equivalence1} but for which $\Powerset^{M}(\kappa) \not= \Powerset^{N}(\kappa)$?
-\end{question}
+\begin{example}
+It is possible for $\kappa$ to be inaccessible in $M$ and $N$ but
+$\Powerset^{M}(\kappa) \not= \Powerset^{N}(\kappa)$. For example suppose
+$0^{\#}$ exists and let $\kappa < \kappa_2 < \kappa_3$ be indiscernibles,
+with $\kappa$ a limit indisernible.
+Working in $L$, let $X$ be the hull in
+$L_{\kappa_3}$ of $\kappa \union \singleton{\kappa_2}$.
+Notice that $\kappa \notin X$ and $|X| = \kappa$. Let $j : M \bijection X$
+be the inverse of the transitive collapse. Then
+$j:M \prec L_{\kappa_3}$ is an elementary embedding with critical point
+$\kappa$, $\kappa$ is inaccessible
+in $M$ and in $L_{\kappa_3}$ but $M$ does not have every subset of $\kappa$.
+\end{example}
 
 \section{Ultrapowers}
 
@@ -187,7 +207,7 @@ Since $S\in N$, $S \intersect \kappa \in M$.
 \begin{lemma}
 \label{SameNextLevel}
 Let $M$ be a transitive model of a sufficient amount of $\ZFC$, let $\kappa$ be
-a cardinal of $M$, and let $U$ be a normal, non-principal, $\kappa$-complete
+a cardinal of $M$, and let $U$ be a normal
  $M$-ultrafilter over $\kappa$. Suppose
 $N = \Ult(M, U)$ is wellfounded. Then the following are equivalent:
 \begin{itemize}
