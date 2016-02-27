@@ -15,6 +15,210 @@
 
 \tableofcontents
 
+\section{Ordinal Arithmethic}
+
+Let $\Sigma(\alpha)$ be the sum over $\beta<\alpha$
+of $\beta*2+1$.
+
+\begin{tabular}{|c|c|c|}
+\hline $\alpha$ & $\alpha*2+1$ & $\Sigma(\alpha)$ \\ \hline \hline
+0 & 1 & 0 \\ \hline
+1 & 3 & 1 \\ \hline
+2 & 5 & 4 \\ \hline \hline
+
+$\boldsymbol{\omega}$ & $\omega*2+1$ & $\boldsymbol{\omega}$ \\ \hline
+$\omega + 1$ & $\omega*2+2$ & $\omega*3 + 1$ \\ \hline
+$\omega + 2$ & $\omega*2+3$ & $\omega*5 + 2$ \\ \hline \hline
+
+$\boldsymbol{\omega*2}$ & $\omega*4+1$ & $\boldsymbol{\omega^2}$ \\ \hline
+$\omega*2 + 1$ & $\omega*4+2$ & $\omega^2 + \omega*4+1$ \\ \hline \hline
+
+$\omega*3$ & $\omega*6+1$ & $\omega^2 *2$ \\ \hline \hline
+
+$\omega*4$ & $\omega*8+1$ & $\omega^2 *3$ \\ \hline \hline
+
+$\boldsymbol{\omega^2}$ & $\omega^2*2+1$ & $\boldsymbol{\omega^3}$ \\ \hline
+$\omega^2 + 1$ & $\omega^2*2+2$ & $\omega^3 + \omega^2*2+1$ \\ \hline \hline
+
+$\omega^2 + \omega$ & $\omega^2*2+\omega + 1$ & $\omega^3 * 2$ \\ \hline
+$\omega^2 + \omega + 1$ & $\omega^2*2+ \omega + 2$ & $\omega^3*2 + \omega^2*2+\omega + 1$ \\ \hline \hline
+
+$\omega^2 + \omega*2$ & $\omega^2*2+\omega*2 + 1$ & $\omega^3 * 3$ \\ \hline
+
+$\omega^2 + \omega*2 + 1$ & $\omega^2*2+\omega*2 + 2$ & $\omega^3 * 3 + \omega^2*2+\omega*2 + 1$ \\ \hline \hline
+
+$\omega^2  + \omega * 3$ & $\omega^2*2+ \omega*6 + 1$ & $\omega^3 * 4$ \\ \hline \hline
+
+$\boldsymbol{\omega^2  *2}$ & $\omega^2*4+  1$ & $\boldsymbol{\omega^4}$ \\ \hline \hline
+$\omega^2  *3$ & $\omega^2*6+  1$ & $\omega^4*2$ \\ \hline \hline
+$\boldsymbol{\omega^3}$ & $\omega^3*2+  1$ & $\boldsymbol{\omega^5}$ \\ \hline \hline
+$\omega^3 + \omega^2$ & $\omega^3 *2+ \omega^2 + 1$ & $\omega^5*2$ \\ \hline \hline
+$\omega^3 + \omega^2*2$ & $\omega^3*2 + \omega^2*2 + 1$ & $\omega^5*4$ \\ \hline \hline
+$\boldsymbol{\omega^3*2}$ & $\omega^3*4+1$ & $\boldsymbol{\omega^6}$ \\ \hline \hline
+$\omega^3*3$ & $\omega^3*6+1$ & $\omega^6*2$ \\ \hline \hline
+$\boldsymbol{\omega^4}$ & $\omega^4*2+1$ & $\boldsymbol{\omega^7}$ \\ \hline \hline
+$\omega^4 + \omega^3$ & $\omega^4*2 + \omega^3 + 1$ & $\omega^7*2$ \\ \hline \hline
+$\boldsymbol{\omega^4*2}$ & $\omega^4*4+1$ & $\boldsymbol{\omega^8}$ \\ \hline \hline
+$\omega^4*3$ & $\omega^4*6+1$ & $\omega^8*2$ \\ \hline \hline
+$\boldsymbol{\omega^5}$ &  $\omega^5$*2+1 & $\boldsymbol{\omega^9}$ \\ \hline \hline
+$\omega^{\omega}$ & $\omega^{\omega}*2 + 1$ & $\omega^{\omega}$ \\ \hline \hline
+
+\end{tabular}
+
+\section{Baire Space}
+
+\begin{theorem}
+Let $D$ be a countable dense subsbset of the real interval $(0,1)$ and let $W=(0,1) - D$
+endowed with the subset topology.
+Then $\pre{\omega}{\omega}$ is homeomorphic to $W$.
+\end{theorem}
+\begin{proof}
+For each finite sequence $s\in \pre{\omega}{<\omega}$ we will define an open interval
+$I(s) =  \left(a(s), b(s) \right)$ with $I(s)\subseteq (0,1)$ with the following properties:
+\begin{itemize}
+\item[(a)] The function $I$ is one-to-one.
+\item[(b)] $I(\emptyset) = (0,1)$.
+\item[(c)] $D = \setof{a(s), b(s)}{\length(s) > 0}$.
+\item[(d)] For each $n\in\omega$, $\setof{I(s)}{\length(s) = n}$ is a set of disjoint intervals
+each of length less then $1/n$ and the closure of the union of all of those intervals is $[0,1]$.
+\item[(e)] If $s \subsetneqq t$ then the closure of $I(t)$ is contained in $I(s)$.
+\end{itemize}
+
+First suppose we have such a function $I$ and we will show how to use it to complete the proof.
+
+For $x\in \pre{\omega}{\omega}$ let $F(x) = \lim_{n\to\infty} a(x\restr n)$ if the limit exists.
+
+\begin{claim}
+$F(x)$ is defined for all $x\in \pre{\omega}{\omega}$. Furthermore for each $n\in\omega$
+$F(x) \in I(x\restr n)$.
+\end{claim}
+\begin{subproof}
+By (e), $a(x\restr m) \in I(x\restr n)$ for all $m>n$ and by (d) $\length{I(x\restr n)} < 1/n$ so
+$\sequence{a(x\restr n)}{n\in\omega}$ is cauchy. So $F(x)$ exists and since for all
+$m>n+1$, $F(x\restr m) \in I(x\restr n+1)$ and
+$\text{closure}(I(x\restr n+1)) \subset I(x\restr n)$, $F(x)\in I(x\restr n)$.
+\end{subproof}
+
+\begin{claim}
+$F$ is one-to-one.
+\end{claim}
+\begin{subproof}
+Suppose $x\not= y$ and let $n$ be such that $x\restr n \not= y\restr n$. Then
+$F(x)\in I(x\restr n)$, $F(y) \in y\restr n$, and $I(x\restr n) \intersect I(y\restr n) = \emptyset$.
+So $F(x)\not= F(y)$.
+\end{subproof}
+
+\begin{claim}
+$\ran{F} \intersect D = \emptyset$.
+\end{claim}
+\begin{subproof}
+Suppose towards a contradiciton that $F(x)\in D$. So then $F(x) = a(s)$ or
+$F(x) = b(s)$ for some $s$.
+Let $n=\length(s)$. But $x\in I(x\restr n)$ and $I(s)$ is either disjoint
+from $I(x\restr n)$ or equal to $I(x\restr n)$ so it is not possible for
+$I(x) = a(s)$ or $I(x) = b(s)$.
+\end{subproof}
+
+\begin{claim}
+$F$ is onto $W$.
+\end{claim}
+\begin{subproof}
+Let $\alpha\in W$. We define an $x\in \pre{\omega}{\omega}$ by defining $x\restr n$
+by induction on $n$.
+We maintain by induction that $\alpha\in I(x\restr n)$.
+It will then follow that $F(x) = \alpha$.
+Notice that $\alpha \in I(\emptyset)$.
+Suppose $x\restr n$ has been defined and we will define $x(n)$.
+By (d) there is a unique $s$ with $\length(s) = n + 1$ such that $\alpha \in s$.
+By induction $s\restr n = x\restr n$. So we may define $x\restr (n+1) = s$.
+\end{subproof}
+
+\begin{claim}
+$F$ is a homeomorphism from $F$ to $W$.
+\end{claim}
+\begin{subproof}
+We already have that $F$ is a bijection. To see that it is a homeomorphism, for
+each $s\in\pre{\omega}{<\omega}$ let
+$N(s) = \setof{x\in\pre{\omega}{\omega}}{s \subset x}$. Then
+$\setof{N(s)}{s\in\pre{\omega}{\omega}}$ is a basis for the topology on
+Baire space. $F[N(s)] = W \intersect I(s)$.
+$\setof{W\intersect I(s)}{s\in\pre{\omega}{<\omega}}$ is a basis for the
+relative topology on $W$ because for any open interval $J\subset (0,1)$ there
+is an $s$ such that $I(s) \subset J$.
+\end{subproof}
+
+Thus it suffices to define a function $I$ that satisfies (a) - (e).
+Enumerate $D = \sequence{q_i}{i\in\omega}$.
+We define $I(s)$ by induction on the length of $s$. Let $I(\emptyset)=(0,1)$.
+Now suppose $I$ has been defined for all $s$ of length $<= k$ and satisfies
+(d) for $n <= k$ and satisfies (e) for $s$ and $t$ of length $<= k$ and $a(s),b(s) \in D$
+for all $s$ of  length $<= k$.
+
+Fix $s$ of length $k$. We will define $I(s\adjoin j)$ for $j\in\omega$. $D\intersect I(s)$
+is dense in $I(s)$. Let $\Z$ be the set of integers (including negative integers) and let
+$f:\Z\injection D\intersect I(s)$ be order preserving and have the properties that
+\begin{itemize}
+\item[(i)] $\lim_{j\to-\infty} f(j) = a(s)$
+\item[(ii)] $\lim_{j\to\infty} f(j) = b(s)$
+\item[(iii)] $|f(j+1) - f(j)| < 1/k+1$ for all $j$.
+\item[(iv)] If $q_k\in I(s)$ then $q_k \in \range{f}$.
+\end{itemize}
+Since $D\intersect I(s)$ is dense it is trivial to construct such an $f$.
+
+Next define $I(s\adjoin (2*j)) = \left( f(j), f(j+1) \right)$
+and $I(s\adjoin (2*j+1)) = \left( f(-(j+1)), f(-j) \right)$.
+
+It is then clear that we have satisfied (b) and we have maintained (a), (c) and (d)
+by induction. So we are done.
+
+\end{proof}
+
+If $D$ is the set of rational numbers then $W$ is the set of irrationals and so Baire space
+is homeomorphic to the irrationals.
+
+One specific mapping from Baire space to the irrationals is given by continued fractions.
+More precisely if $x = \langle x(0), x(1), x(2), \ldots \rangle$, then $F(x)$
+is the continued fraction generated by $\langle x(0) + 1, x(1) + 1, x(2) + 1, \ldots \rangle$.
+
+Let $\N$ be the set of positive integers.
+The continued fraction generated by $\langle a_0, a_1, a_2, \ldots \rangle$,
+where each $a_i\in\N$, is defined as follows.
+$$C(a_0) = \frac{1}{a_0}$$
+$$C(a_0, \ldots, a_n) = \frac{1}{a_0 + C(a_1, \ldots, a_n)}$$
+$$C(a_0, a_1, \ldots) = \lim_{n\to\infty} C(a_0, a_1, \ldots, a_n)$$
+
+Some facts about continued fractions: Let $s\in\pre{\N}{<\omega}$ and $n\in\N$.
+\begin{itemize}
+\item If $\length{s}$ is even then
+$$ C(s\adjoin \angles{n+1}) \leq C(s\adjoin \angles{n,m}) <  C(s\adjoin \angles{n, m+1}) < C(s\adjoin \angles{n})$$
+and $\lim_{m\to\infty} C(s\adjoin \angles{n,m}) = C(s\adjoin \angles{n})$.
+\item If $\length{s}$ is odd then
+$$ C(s\adjoin \angles{n}) < C(s\adjoin \angles{n, m+1}) < C(s\adjoin \angles{n, m}) \leq C(s\adjoin \angles{n+1})$$
+and $\lim_{m\to\infty} C(s\adjoin \angles{n,m}) = C(s\adjoin \angles{n}$.
+\end{itemize}
+
+with equality holding where $\leq$ occurs if and only if $m=1$.
+
+
+It is interesting to analyze this continued fractions mapping in terms of the proof we gave above.
+For $s\in\pre{\omega}{<\omega}$ let $s^{+}$ be defined by $s^{+}(i) = s(i) + 1$.
+
+The function $I$ from the proof would be defined as follows:
+\begin{itemize}
+\item If $\length{s}$ is even and $n\in\omega$ then
+$$ I(s\adjoin \angles{n}) = \bigl ( C(s^{+}\adjoin \angles{n+2},  C(s^{+}\adjoin \angles{n+1}) \bigr )$$
+\item If $\length{s}$ is odd then
+$$ I(s\adjoin \angles{n}) = \bigl ( C(s^{+}\adjoin \angles{n+1}), C(s^+\adjoin \angles{n+2} \bigr )$$
+\end{itemize}
+
+
+The construction using continued fractions differs from the construction we gave in the proof
+in that the embedding of subintervals done at each stage does not have order type $\Z$ as in the proof but instead
+has order type alternating between $-\omega$ and $\omega$ depending on whether the length of $s$ is even or odd.
+Notice that it does not work to use $\omega$ at every stage because then the left
+endpoints of each of the intervals, i.e. the $a(s)$, are in the range
+of $F$ and then $F$ is not a homeomorphism.
+
 \section{Elementary Embeddings}
 
 Throughout this section let $j:M \map N$ be an elementary embedding with $\crit(j)=\kappa$, where $M$ and $N$ are transitive models of a sufficient amount of $\ZFC$.

@@ -25,7 +25,7 @@ with ``$V=L$" and hence the program to find larger inner models is pursued.
 We mention some of the properties of $L$ that contribute to it being considered
 canonical. $L$ is a model of ZFC + GCH and the reason that AC and GCH are true
 in $L$ can be explained by \emph{structural} properties of $L$. The axiom of choice
-is true in $L$ because $L$ has a natural simply-definable global wellordering.
+is true in $L$ because $L$ has a natural simply-definable global well-order.
 The GCH is true in $L$ because, working in $L$, if $\kappa\geq\omega$ is a cardinal
 and $A\subseteq\kappa$  then $\exists \alpha<\kappa^{+}$ s.t.
 $A\in L_{\alpha}$ (and $|L_{\alpha}| \leq \kappa$).
@@ -34,23 +34,25 @@ to a different structural property that implies this property.)
 $L$ is unique: If $M$ is a transitive proper class and $M\models$``$V=L$" then $M=L$.
 
 The chapter under review begins in section 1.1 with a review of the theory of $L$
-and goes on in later sections to describe, in varying levels of details, inner
+and goes on in later sections to describe, in varying levels of detail, inner
 models for progressively stronger large cardinal axioms: one measurable cardinal,
 many measurable cardinals of higher Mitchell order, a strong cardinal. The theory
-of the the last two models is given in some detail. Besides this main thread,
+of the last two models is given in some detail. Besides this main thread,
 other important themes in inner model theory are intertwined in the narrative
 of the chapter but in less detail: sharps, the covering lemma and the core model.
-Besides describing the ideas mentioned above another stated goal of the chapter
+In addition to giving an exposition of beginning inner model theory,
+another stated goal of the chapter
 is to prepare the reader for the next three chapters
 in the Handbook which extend the conversation to include more
 modern variants of the theory with stronger large cardinal axioms (Woodin cardinals
-and beyond) and which describe the core model and covering theorems in more detail.
+and beyond) \cite{Outline} and which describe the core model \cite{CoreModelToolbox}
+and covering theorems \cite{CoveringLemmaInHandbook} in more detail.
 Bill Mitchell, the author of the chapter, is recognized as one of the founding
 fathers of inner model theory. For this reason alone it is a pleasure to read
-this chapter.
+the chapter.
 
-In the remainder of this review we will give some more details about the type of
-material described in the chapter and we will point out a small error in one
+In the remainder of this review we give more details about the
+material described in the chapter and we point out a small error in one
 of the definitions and give a correction.
 
 Historically the next inner model to be studied after $L$, and the subject
@@ -62,15 +64,17 @@ If $U^{\prime}$ is a normal measure in $L[U^{\prime}]$ on \emph{the same} $\kapp
 then $U^{\prime}=U$. Also $U$ is the only normal measure in $L[U]$ and $\kappa$ is the
 only measurable cardinal in $L[U]$. $L[U]$ is not quite as unique as $L$ in that there
 are other $L[U^{\prime}]$ models at other $\kappa^{\prime}$'s. But given any two such models one is
-elementarily embeddable into the other. $L[U]$ is a model of GCH but the condensation
+elementarily embeddable into the other. In particular this implies that
+$\mathbb{R}\cap L[U] = \mathbb{R}\cap L[U^{\prime}]$.
+$L[U]$ is a model of GCH but the condensation
 property is not true below $\kappa$ if we use the $L_{\alpha}[U]$ as levels.
-This is becuase for $\alpha\leq\kappa$, $U\intersect L_{\alpha}[U]=\emptyset$ and
+This is because for $\alpha\leq\kappa$, $U\cap L_{\alpha}[U]=\emptyset$ and
 so $L_{\alpha}[U]=L_{\alpha}$ and so it is not reasonable to expect that
 $L_{\alpha}[U]$ contains enough sets for condensation to hold. But there is a more
 modern organization of the model in which partial information about $U$ is
 used as a predicate in constructing the earlier levels of the model and using
-this presentation we recover condensation. $L[U]$ has a definable wellorder but its
-definition is more complex than the one for $L$. Restricted to reals the wellorder
+this presentation we recover condensation. $L[U]$ has a definable well-order but its
+definition is more complex than the one for $L$. Restricted to reals the well-order
 for $L$ is $\Delta^1_2$ and the one for $L[U]$ is $\Delta^1_3$.
 
 Historically the next step in the progression we are outlining, and the subject
@@ -82,9 +86,10 @@ stronger than a measurable limit of measurable cardinals, namely the property th
 $\kappa$ is a measurable cardinal of higher Mitchell order.
 
 If $U_1$ and $U_2$ are normal measures on $\kappa$ then $U_1 \vartriangleleft U_2$ iff
-$U_1 \in \text{Ult}(V, U_2)$. $\vartriangleleft$ is wellfounded and $o(U)$ denotes the
+$U_1 \in \text{Ult}(V, U_2)$. $\vartriangleleft$ is well-founded and $o(U)$ denotes the
 rank of $U$ under this partial order. $o(\kappa) = \text{sup}
-\setof{o(U) + 1}{U \text{ is a normal measure on } \kappa}$  is called
+\left\{ \, o(U) + 1 \, \left| \, U \text{ is a normal measure on } \kappa \, \right.\right\}$
+is called
 the Mitchell order of $\kappa$. So  $o(U) = 0$ if $U$
 concentrates on non-measurable cardinals, $o(\kappa) = 1$ if $\kappa$ is measurable
 but doesn't have a $U$ that concentrates on measurables, $o(U) = 1$ if $U$
@@ -96,13 +101,13 @@ implying, among other things, that the measures on a fixed $\kappa$ are ordered
 increasingly under $\vartriangleleft$.
 
 Models of the form $L[\vec{U}]$ can satisfy
-that there exists many measurable cardinals with many normal measures and
+that there exist many measurable cardinals with many normal measures and
 with Mitchell order up to $o(\kappa)=\kappa^{++}$. All of the canonical properties
 of $L$ generalize to $L[\vec{U}]$ with some more provisos.
 $L[\vec{U}]$ is a model of GCH but the situation with condensation is similar
-to what was discussed above for $L[U]$. $L[\vec{U}]$ has a definable wellorder
+to what was discussed above for $L[U]$. $L[\vec{U}]$ has a definable well-order
 which, when restricted to reals, is $\Delta^1_3$. (Many measurable cardinals is
-not enough to increase the complexity of the wellorder beyond $\Delta^1_3$. That
+not enough to increase the complexity of the well-order beyond $\Delta^1_3$. That
 does not occur until we get past the model with one Woodin cardinal.) As for uniqueness,
 the only normal measures and the only measurable cardinals in $L[\vec{U}]$ are
 those on the sequence $\vec{U}$. If $\vec{U_1}$ and $\vec{U_2}$ have the same
@@ -120,11 +125,12 @@ But the definition of weakly coherent given in the chapter is not correct.
 In Definition 2.6 on page 1466 the definition of a \emph{coherent} sequence $\vec{U}$
 is given as
 \begin{enumerate}
-\item $\dom(\vec{U}) = \setof{(\kappa, \beta)}{\kappa < \length(\vec{U}) \AND \beta < o^{\vec{U}}(\kappa)}$,
-where $\length(\vec{U})$ and  $o^{\vec{U}}(\kappa)$ are some ordinals.
-\item If $(\kappa, \beta) \in \dom(\vec{U})$ then $\vec{U}(\kappa, \beta)$ is a normal measure on $\kappa$.
-\item If $U=\vec{U}(\kappa, \beta)$ then $o^{i^{U}(\vec{U})}(\kappa) = \beta$ and $i^{U}(\vec{U})(\kappa, \betaprime)=
-\vec{U}(\kappa, \betaprime)$ for all $\betaprime<\beta$, where $i^{U}$ is the ultrapower embedding by $U$.
+\item $\operatorname{dom}(\vec{U}) =
+\left\{ \, (\kappa, \beta) \, \left| \, \kappa < \operatorname{len}(\vec{U}) \wedge \beta < o^{\vec{U}}(\kappa) \, \right.\right\}$,
+where $\operatorname{len}(\vec{U})$ and  $o^{\vec{U}}(\kappa)$ are some ordinals.
+\item If $(\kappa, \beta) \in \operatorname{dom}(\vec{U})$ then $\vec{U}(\kappa, \beta)$ is a normal measure on $\kappa$.
+\item If $U=\vec{U}(\kappa, \beta)$ then $o^{i^{U}(\vec{U})}(\kappa) = \beta$ and $i^{U}(\vec{U})(\kappa, \beta^{\prime})=
+\vec{U}(\kappa, \beta^{\prime})$ for all $\beta^{\prime}<\beta$, where $i^{U}$ is the ultrapower embedding by $U$.
 \end{enumerate}
 
 
@@ -133,21 +139,22 @@ if condition 3 above is replaced by the condition: If $U=\vec{U}(\kappa, \beta)$
 
 This condition is not sufficient for the purposes that the author will use it. For example Lemma 2.10 on
 page 1470 states: Suppose that $\vec{U}$ and $\vec{W}$ are weakly coherent sequences of measures in $V$ with
-the same domain. Then $L[\vec{U}] = L[\vec{W}]$ and $\vec{U}(\kappa,\beta)\intersect L[\vec{U}] =
-\vec{W}(\kappa,\beta)\intersect L[\vec{W}]$ for every $(\kappa,\beta)$ in their common domain.
+the same domain. Then $L[\vec{U}] = L[\vec{W}]$ and $\vec{U}(\kappa,\beta)\cap L[\vec{U}] =
+\vec{W}(\kappa,\beta)\cap L[\vec{W}]$ for every $(\kappa,\beta)$ in their common domain.
 
 A simple example suffices to see that this fails using the definition of weakly coherent given above. Suppose
-$o(\kappa) = 2$ and there exists two different normal measures on $\kappa$ of order 1,
+$o(\kappa) = 2$ and there exist two different normal measures on $\kappa$ of order 1,
 $U_1\not=W_1$. Let $A\subset \kappa$ be in $U_1$ but
 not in $W_1$ and consist only of measurable cardinals. There is such an $A$ since both $U_1$ and $W_1$ concentrate
 on measurable cardinals.
  Let $\vec{U}$ and $\vec{W}$ be sequences of measures with common domain
-$\setof{(\alpha, 0)}{\alpha \in A} \union \singleton{(\kappa, 0), (\kappa, 1)}$. Let
+$\left\{ \, (\alpha, 0) \, \left| \, \alpha \in A \, \right.\right\} \cup \left\{(\kappa, 0), (\kappa, 1)\right\}$.
+Let
 $\vec{U}(\alpha, 0) = \vec{W}(\alpha, 0)$ be any measure of order zero on $\alpha$ for $\alpha \in A$.
 Let $\vec{U}(\kappa, 0) = \vec{W}(\kappa, 0)$ be any measure of order zero on $\kappa$. Finally
 let $\vec{U}(\kappa, 1) = U_1$ and $\vec{W}(\kappa, 1) = W_1$. Then $\vec{U}$ and $\vec{W}$ satisfy
-the definition of weakly coherent given in the chapter but, since $A\in L[\vec{U}]\intersect L[\vec{W}]$,
-$U_1\intersect L[\vec{U}] \not= W_1\intersect L[\vec{W}]$.
+the definition of weakly coherent given in the chapter but, since $A\in L[\vec{U}]\cap L[\vec{W}]$,
+$U_1\cap L[\vec{U}] \not= W_1\cap L[\vec{W}]$.
 
 A correct definition of weakly coherent may be found in Mitchell's own earlier \cite{Mitchell-Revisited}.
 There a sequence $\vec{U}$ is defined to be weakly coherent
@@ -172,31 +179,34 @@ cardinals below $\kappa$.
 
 The motivation for considering weakly coherent sequences is the following problem:
 Given a measurable cardinal $\kappa$ of high Mitchell order in $V$, construct a sequence $\vec{U}$ such that
-in $L[\vec{U}]$ $U$ is coherent and $\kappa$ has high Mitchell order. In the case of
-a single measurable cardinal the analogous problem was easy. If $\kappa$ is measureable let $U$ be a normal
-measure on $\kappa$ in $V$. Then $U\intersect L[U]$ is a normal measure on $\kappa$ in
-$L[U]$. But for $\beta>=\omega$ it is unknown whether the hypothesis $o(\kappa) = \beta$
+in $L[\vec{U}]$ $\vec{U}$ is coherent and $\kappa$ has high Mitchell order. In the case of
+a single measurable cardinal the analogous problem was easy. If $\kappa$ is measurable let $U$ be a normal
+measure on $\kappa$ in $V$. Then $U\cap L[U]$ is a normal measure on $\kappa$ in
+$L[U]$. But for $\beta\ge\omega$ it is unknown whether the hypothesis $o(\kappa) = \beta$
 implies that there is a coherent $\vec{U}$ such $o^{\vec{U}}(\kappa) = \beta$ in $V$.
 But the example from the previous paragraph shows that it is possible to construct a \emph{weakly} coherent
 sequence $\vec{U}$ with $o^{\vec{U}}(\kappa) = \beta$.
 This explains the motivation behind Corollary 2.11 of the chapter which says that either
 this $\vec{U}$ is coherent in $L[\vec{U}]$ or else there is an inner model
-of $\exists \kappa (o(\kappa) = \kappa^{++})$.
+of $\exists \kappa (o(\kappa) = \kappa^{++})$. (Note that $o(\kappa) = \kappa^{++}$ is the maximal
+possible Mitchell order in $L[\vec{U}]$. This is because there are only $2^{2^\kappa}$ ultrafilters
+on $\kappa$ and under GCH $2^{2^\kappa} = \kappa^{++}$. Without assuming GCH one can show
+that the maximal possible Mitchell order is $o(\kappa) = (2^{\kappa})^{+}$.)
 
 The subject of section 3 of the chapter, and approximately the next step historically, is the
 class of models of the form $L[\vec{E}]$ where $\vec{E}$ is a coherent sequence of
 extenders. With the particular organization described in the chapter an $L[\vec{E}]$
 model can satisfy large cardinal hypotheses up to and including ``there exists
 one strong cardinal." A cardinal $\kappa$ is $\beta$-\emph{strong} if there exists
-an elementary embedding $j:V\map M$ with critical point $\kappa$ such that
+an elementary embedding $j:V\rightarrow M$ with critical point $\kappa$ such that
 $\beta<j(\kappa)$ and $V_{\kappa+\beta}\subset M$. $\kappa$ is \emph{strong} iff it is
 $\beta$-strong for all $\beta$. So $\kappa$ is 1-strong iff $\kappa$ is
 measurable, but the previously considered models of the form $L[\vec{U}]$ cannot have
 even a 2-strong cardinal. An \emph{extender} is a generalization of a normal measure
 that is able to represent these stronger embeddings. The $L[\vec{E}]$ models described
-in the chapter are organized in a way very similar to the the $L[\vec{U}]$ models
+in the chapter are organized in a way very similar to the $L[\vec{U}]$ models
 but using extenders instead of measures. Whereas in $L[\vec{U}]$
-$o(\kappa) <= \kappa^{++}$ was necessary, in $L[\vec{E}]$ there is no necessary
+$o(\kappa) \le \kappa^{++}$ was necessary, in $L[\vec{E}]$ there is no necessary
 bound on $o(\kappa)$. Mitchell shows that if there is a strong cardinal in V then
 there is an $L[\vec{E}]$ with a $\kappa$ with $o(\kappa) = \text{ON}$ and this $\kappa$
 is a strong cardinal in $L[\vec{E}]$.
@@ -204,7 +214,7 @@ is a strong cardinal in $L[\vec{E}]$.
 All of the canonical properties
 of $L$ generalize to $L[\vec{E}]$ with more provisos.
 $L[\vec{E}]$ is a model of GCH but the situation with condensation is similar
-to what was discussed above. $L[\vec{E}]$ has a definable wellorder
+to what was discussed above. $L[\vec{E}]$ has a definable well-order
 which, when restricted to reals, is $\Delta^1_3$. (We are still below the
 level of a Woodin cardinal here.) The situation with uniqueness is similar
 to what was described for $L[\vec{U}]$.
@@ -213,7 +223,7 @@ Modern inner model theory studies inner models for large cardinal axioms that
 are stronger than those described in the chapter: Woodin cardinals and beyond.
 Today's models are also referred to as being of the form $L[\vec{E}]$ where $\vec{E}$
 is a sequence of extenders. But the models are organized in a different way that
-allow them to contain cardinals beyond one strong cardinal. One of the most significant
+allows them to contain cardinals beyond one strong cardinal. One of the most significant
 differences between the models described in the chapter and modern models is that
 modern models require fine-structure theory even to define them whereas the theory
 that Mitchell describes in the chapter avoids fine-structure entirely and is therefore
@@ -225,13 +235,14 @@ There is another important thread in inner model theory that gets woven together
 the one we have been describing: sharps, the core model and the covering theorem.
 Mitchell repeatedly refers to these themes in the chapter and gives small hints about
 the ideas involved but never gives much detail. A couple of the chapters in the
-Handbook that follow the chapter under review do explore these concepts in depth.
+Handbook that follow the chapter under review do explore these concepts in depth
+\cite{CoveringLemmaInHandbook}, \cite{CoreModelToolbox}.
 The final section of the chapter, section 5, is entitled ``What is the Core Model?''
-and offers a short philisophical future-looking discussion of the topic.
-We close this review with a short discussion about these ideas.
+and offers a short, philosophical, future-looking discussion of the topic.
+We close this review with a brief description of these ideas.
 
 Jensen's covering theorem for $L$ states that if $0^{\#}$ doesn't exist then every
-uncountable set $X$ of ordinals can be \emph{covered} by a set in $L$. This means
+uncountable set $X$ of ordinals can be \emph{covered} by a set in $L$, meaning
 that there is a $Y\in L$ with $|Y| = |X|$. An important consequence is called
 \emph{weak covering}: If $\lambda$ is a singular cardinal then $(\lambda^{+})^L=\lambda^{+}$.
 
@@ -245,7 +256,7 @@ obtain large cardinal strength (the existence of $0^{\#}$) from a proposition th
 does not literally entail large cardinals (the failure of the SCH.)
 
 It is natural to ask whether more large cardinal strength can be obtained from
-the failure of SCH using a similar tecnhique. A natural strategy would be
+the failure of SCH using a similar technique. A natural strategy would be
 to try to extend the covering theorem to a larger inner model like $L[U]$.
 The way to extend the notion of $0^{\#}$ is straightforward: We say the sharp for
 $L[U]$ exists iff there is a proper class of indiscernibles for $L[U]$. A natural
@@ -254,27 +265,35 @@ its sharp does not exist then covering for $L[U]$ holds. This turns out to be
 true with a weakened version of covering. This gives us that failure of SCH
 implies that if $L[U]$ exists then its sharp exists.
 
-But how do we know that $L[U]$ exists? In the previous
-discussion we knew that $L[U]$ existed because there was a measurable cardinal
+But how do we know that $L[U]$ exists? Earlier, we knew that $L[U]$ existed
+because there was a measurable cardinal
 in $V$. But the whole point of our current endeavor is that we are starting
 with a hypothesis that does not outright imply large cardinals in $V$.
 
-The idea of the core model is, without assuming large cardinals in $V$, to
-construct inner models exhibiting large cardinal strength. Furthermore, the
-idea is to construct an inner model with ``all of the large cardinal strength
-that exists in $V$'' and then show that this model is close enough to $V$ that
+The idea of the core model is, without assuming literally the existence of
+large cardinals in $V$, to
+construct inner models encapsulating large cardinal strength. Furthermore, the
+idea is to construct an inner model, known as $K$, with ``all of the large cardinal strength
+that exists in $V$'' and then show that $K$ is close enough to $V$ that
 a version of the covering theorem holds for it. One way of making sense
 of ``all of the large cardinal strength that exists in $V$'' is the following:
-If you have constructed a model $M$ and its sharp exists then you are not done:
-adjoin the sharp and keep going. So the core model should be the weakest inner
-model whose sharp does not exist.
+If you have constructed a model $M$ and its sharp exists then you are not done,
+$M\not=K$:
+adjoin the sharp and keep going. The true $K$ should contain all of
+these approximations and its sharp should not exist.
 
 The Dodd-Jensen core model $K^{\text{DJ}}$ was designed to fill the gap between $L$ and
 $L[U]$. The idea is to assume that $L[U]$ does not exist and then let $K^{\text{DJ}}$
-be the model that contains all the approximations to $L[U]$ which do exist.
+be the minimal model that contains all the approximations to $L[U]$ which do exist.
+$K^{\text{DJ}}$ then turns out to satisfy the canonical properties of $L$ that
+we described earlier: for example it satisfies ZFC + GCH and has a definable well-order.
 Dodd and Jensen show that assuming $L[U]$ does not exist that full covering
-holds for $K^{\text{DJ}}$. This gives us that failure of SCH first implies
-that $L[U]$ exists and then by the previous idea that its sharp exists.
+holds for $K^{\text{DJ}}$. Putting this together with covering for $L[U]$
+we get that the failure of SCH implies
+that $L[U]$ exists (because otherwise covering for  $K^{\text{DJ}}$ would
+hold) and then that the sharp for $L[U]$ exists (because otherwise covering
+for $L[U]$ would hold.) But since the sharp for $L[U]$ exists it must not
+be the true $K$ and so we should be able to keep going.
 
 These ideas can be extended to the higher models $L[\vec{U}]$, $L[\vec{E}]$
 and beyond. In each case we define the appropriate notions of sharps and
@@ -282,7 +301,7 @@ the core model and prove a version of covering. As the models get stronger
 the version of covering that can be proved gets weaker. For our specific
 running example of the failure of SCH the game runs out at the level of
 $L[\vec{U}]$ and does not make it to $L[\vec{E}]$. The failure of SCH turns
-out to be equiconsistent with the existense of a measurable cardinal $\kappa$
+out to be equiconsistent with the existence  of a measurable cardinal $\kappa$
 such that $o(\kappa) = \kappa^{++}$. But these same techniques may be used
 with other propositions besides failure of SCH to get large cardinal strength in the realm of
 $L[\vec{E}]$ and beyond.
