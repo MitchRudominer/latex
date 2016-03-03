@@ -65,6 +65,35 @@ $\omega^{\omega}$ & $\omega^{\omega}*2 + 1$ & $\omega^{\omega}$ \\ \hline \hline
 
 \end{tabular}
 
+\section{Combinatorics of $\omega$}
+\begin{definition}
+If $A,B \subseteq \omega$ then $A$ is  \emph{almost contained} in $B$ if
+$A - B$ is finite.
+\end{definition}
+
+\begin{lemma}
+The relation of almost containment is transitive and if $A\subset B$ then
+$A$ is almost contained in $B$.
+\end{lemma}
+\begin{proof}
+Trivial.
+\end{proof}
+
+\begin{lemma}
+Let $\alpha < \omega_1$ be a limit ordinal and suppse $\sequence{A_{\gamma}}{\gamma < \alpha}$ is a sequence of infinite
+subsets of $\omega$ such that for $\gamma_1 < \gamma_2$, $A_{\gamma_2}$ is almost contained in
+$A_{\gamma_1}$. Then there is an infinite $A_{\alpha}$ such that $A_{\alpha}$ is almost contained
+in $A_{\gamma}$ for $\gamma<\alpha$.
+\end{lemma}
+\begin{proof}
+Let $\sequence{\gamma_n}{n \in \omega}$ be cofinal in $\alpha$. Let $B_n = \Intersection{i<=n} A_{\gamma_i}$.
+Then each $B_n$ is infinite because $A_{\gamma_n}$ is almost contained in $A_{\gamma_j}$ for $i<n$. Also $B_{n+1} \subseteq B_n$.
+Pick $p_n \in B_n$ and let $A_{\alpha} = \setof{p_n}{n\in\omega}$. Then $A_{\alpha}$ is almost contained in $A_{\gamma_i}$ for each
+$i$ because $p_n \in A_{\gamma_i}$ for $n \geq i$. Let $\gamma < \alpha$. Then there is an $i$ such that $\gamma < \gamma_i$.
+Since $A_{\alpha}$ is almsot contained in $A_{\gamma_i}$ and $A_{\gamma_i}$ is almost contained in $A_{\gamma}$, we have that
+$A_{\alpha}$ is almost contained in $A_{\gamma}$.
+\end{proof}
+
 \section{Baire Space}
 
 \begin{theorem}
