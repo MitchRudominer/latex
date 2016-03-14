@@ -248,6 +248,178 @@ Notice that it does not work to use $\omega$ at every stage because then the lef
 endpoints of each of the intervals, i.e. the $a(s)$, are in the range
 of $F$ and then $F$ is not a homeomorphism.
 
+\section{Partial Orders and Boolean Algebras}
+
+\begin{lemma}
+Let $\B$ be a boolean algebra and $A\subset\B$. Then $A$ is a maximal antichain iff $A$ is a partition.
+\end{lemma}
+\begin{proof}
+Suppose $A$ is maximal. We need to show that $\Sigma A = 1$. Supose $\Sigma A = a \not= 1$. Let
+$b = -a$. Then $b \wedge x = 0$ for all $x\in A$ and this contradicts the maximality of $A$. Now suppose
+$\Sigma A = 1$. Suppose there exists a nonzero $b$ such that $b \wedge x = 0$ for all $x\in A$. Let
+$a = -b$. Then $x\leq a$ for all $x \in A$ and this contradicts $\Sigma A = 1$.
+\end{proof}
+
+\begin{lemma}
+Let $\P$ be a partial order.
+\begin{itemize}
+\item[(a)] If $D$ is dense and $A\subseteq D$ is a maximal antichain
+in $D$ then $A$ is a maximal antichain in $\P$.
+\item[(b)] If $A$ is a maximal antichain and $D$ is the downward closure
+of $A$ then $D$ is dense, open in $\P$.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+(a) Suppose $x\notin A$ and $x$ is incompatible with every element of $A$.
+Let $p\in D$ with $p\leq x$. Since $A$ is maximal in $D$ let $q\in A$ with
+$q$ compatible with $p$. Then $q$ is compatible with $x$. Contradiction.
+
+(b) Clearly $D$ is open. Let $p \in \P$ and let $q\in A$ be compatible with $p$.
+Then there is an $r\leq q$ such that $r\leq p$. Since $p$ is arbitrary and $r\in D$,
+$D$ is dense.
+\end{proof}
+
+\begin{lemma}
+Every complete field of sets is an atomic Boolean algebra.
+\end{lemma}
+\begin{proof}
+Let $\B$ be a complete field of sets and let $a\in \B$ with $a\not= \emptyset$.
+We must find an atom of $\B$ below $a$.
+Let $x\in a$ and let $b = \Pi \setof{c\in \B}{x\in c}$. Then $b\subseteq a$,
+$b\in \B$, and $b$ is an atom becuase if $b=c_1\union c_2$ with $c_1$ and $c_2$
+non-empty elements of $\B$, then one of $c_1$ and $c_2$ would contain $x$ contradicting the defintion of $b$.
+\end{proof}
+
+The sets of the form of $b$ from the previous proof are the equivalence classes of an equivalence relation
+on the underlying set of $\B$ (i.e. the element 1). $\B$ is isomorphic to the powerset of the set of
+these equivalence classes.
+
+\begin{lemma}
+Every complete Boolean algebra $\B$ is 2-distributive.
+\end{lemma}
+\begin{proof}
+Let $A=\setof{a_i}{i\in I}$ and $B=\setof{b_j}{j\in J}$ be subsets of $\B$.
+For every $(i,j)\in I \times J$, $a_i \wedge b_j \leq a_i \leq \Sigma A$ and
+$a_i \wedge b_j \leq b_j \leq \Sigma B$ so $a_i \wedge b_j \leq \Sigma A \wedge \Sigma B$,
+so
+$\Sigma \setof{a_i \wedge b_j}{(i,j)\in I \times J} \leq \Sigma A \wedge \Sigma B$.
+
+Now let $u = \Sigma \setof{a_i \wedge b_j}{(i,j)\in I \times J}$ and suppose
+towards a contradiction that
+$u < \Sigma A \wedge \Sigma B$ and let $ w= \Sigma A \wedge \Sigma B - u$, $w\not=0$.
+
+Note that $\Sigma B - w < \Sigma B$.
+
+We claim that there exists a $j$ such that $b_j \wedge w \not= 0$. For suppose not.
+Then for all $j$, $b_j\leq \Sigma B - w < \Sigma B$, contradicting the definition of $\Sigma B$.
+Fix such a $j$ and let $v = w \wedge b_j$, $v\not=0$.
+
+Note that $\Sigma A - v < \Sigma A$.
+
+Next we claim that for all $i$, $a_i \wedge v = 0$. This is because
+$a_i \wedge v \leq a_i \wedge b_j \leq u$, and $u \wedge v = 0$.
+
+Now it follows that for all $i$, $a_i \leq \Sigma A - v < \Sigma A$,
+contradicting the definition of $\Sigma A$.
+\end{proof}
+
+\begin{lemma}
+Every atomic Boolean algebra (and hence every complete field of sets) is
+$\kappa$-distributive for all $\kappa$.
+\end{lemma}
+\begin{proof}
+Let $\B$ be an atomic Boolean algebra. By Lemma 7.16 of \cite{Jech_Book2} it suffices to
+see that the intersection of $\kappa$ dense open sets of $\B$ is dense. But a set is dense
+in $\B$ if and
+only if it contains all atoms of $\B$ so this is trivial.
+\end{proof}
+
+\begin{lemma}[Exercise 7.24 from \cite{Jech_Book2}] Let $A$ be a subalgebra of a Boolean algebra $B$
+and let $u\in B - A$. Then there exists ultrafilters $F$, $G$ on $B$ such that $u\in F$, $u\notin G$,
+and $F\intersect A = G\intersect A$.
+\end{lemma}
+\begin{proof}
+For $x\in B$ let $A_x=\setof{a\in A}{a \geq x}$. Then $A_x$ is a filter on $A$.
+Let $H = A_u \union A_{-u}$.
+
+We claim that $H$ has the finite intersection property.
+It suffices to see that $a\wedge b\not= 0$ whenever $a\in A_u$ and $b\in A_{-u}$.
+This is true because $a > u$ (since $u\not\in A$) so $a\wedge -u \not = 0$.
+
+Let $K$ be an ultrafilter on $A$ that extends $H$. We claim that $K\union\singleton{u}$
+and $K\union\singleton{-u}$ both have the finite intersection property. To see this
+it suffices to see that $a\wedge u \not=0$ and $a\wedge -u \not=0$ for $a\in K$. Suppose
+for example that $a\wedge u = 0$. Then $-a \geq u$ so $-a \in A_u$ so $-a \in H$ so $-a \in K$
+which is impossible because $a\in K$ and $K$ is an ultrafilter.
+
+Let $F$ be an ultrafilter on $B$ that extends $K\union\singleton{u}$ and let $G$ be an ultrafilter
+on $B$ that extends  $K\union\singleton{-u}$. Then $F\intersect A = G\intersect A = K$ so these $F$ and $G$ work.
+\end{proof}
+
+\section{Stationary Sets}
+
+\begin{definition}
+If $X$ is a set of ordinals let $\limit(X)$ be the set of limit points of $X$.
+\end{definition}
+
+Note that if $X$ is a club set then $\limit(X)$ is also a club set.
+
+\begin{lemma}[pg 99 of \cite{Jech_Book2}]
+\label{SimilarTraceLemma}
+If $A\simeq \Aprime$ mod $I_{\text{NS}}$ then
+$\trace(A) \simeq \trace(\Aprime)$ mod $I_{\text{NS}}$.
+\end{lemma}
+\begin{proof}
+Notice that $S\simeq T$ iff there is a club set $C$ s.t. $S\intersect C = T\intersect C$.
+
+Fix a club $C$ s.t. $A\intersect C = \Aprime\intersect C$.
+We claim that $\trace(A) \intersect \limit(C) = \trace(\Aprime) \intersect \limit(C)$.
+
+For one direction, let $\alpha\in\trace(A)\intersect \limit(C)$. Let $E$ be club in $\alpha$.
+We must show that $E\intersect \Aprime \not= \emptyset$. Since $E\intersect C$
+is club in $\alpha$ and $A\intersect\alpha$ is stationary,
+there is a $\beta\in  E \intersect A\intersect C =  E \intersect \Aprime\intersect C$.
+
+The other direction is similar.
+
+\end{proof}
+
+\begin{lemma}[Lemma 8.19 of \cite{Jech_Book2}]
+\mbox{}
+\begin{enumerate}
+\item[(i)] $A<\trace(A)$.
+\item[(ii)] If $A<B$ and $B<C$ then $A<C$.
+\item[(iii)] If $A<B$ and $A\simeq \Aprime$ and $B\simeq \Bprime$ then
+$\Aprime<\Bprime$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(i) Notice that $S<T$ iff $\alpha\in\trace(S)$ for a.e. $\alpha \in T$. Then clearly for a.e.
+$\alpha\in\trace(A)$, $\alpha\in\trace(A)$.
+
+(ii) Notice that $S<T$ iff there is a club set $D$ such that $\alpha\in\trace(S)$ for all
+$\alpha$ in $T\intersect D$.
+
+Let $D_1$ witness $A<B$ and $D_2$ witness $B < C$.
+Let $D_3=\limit(D_1) \intersect D_2$.
+We claim that $D_3$ witnesses that $A<C$. Let $\alpha\in D_3 \intersect C$. We know
+that $B\intersect \alpha$ is stationary. We claim that
+$A\intersect \alpha$ is stationary. Let $E$ be club in $\alpha$. We must find
+$\beta\in E\intersect A$.
+
+Since $D_1 \intersect\limit(E)$ is club in $\alpha$, let
+$\gamma\in D_1 \intersect \limit(E) \intersect B$.
+Then $\gamma\in\trace(A)$ and $E\intersect\gamma$ is club in $\gamma$. So there
+is a $\beta<\gamma$ with $\beta\in A\intersect E$.
+
+(iii) Let $C$ be club such that $A\intersect C=\Aprime\intersect C$ and
+$B\intersect C = \Bprime\intersect C$ and for all $\alpha\in B\intersect C$,
+$\alpha\in\trace(A)$. By lemma \ref{SimilarTraceLemma}, there is a club $D$ such that
+$\trace(A)\intersect D = \trace(\Aprime) \intersect D$. So for all
+$\alpha \in C \intersect D \intersect \Bprime$, $\alpha\in\trace(\Aprime)$.
+
+\end{proof}
+
 \section{Elementary Embeddings}
 
 Throughout this section let $j:M \map N$ be an elementary embedding with $\crit(j)=\kappa$, where $M$ and $N$ are transitive models of a sufficient amount of $\ZFC$.
