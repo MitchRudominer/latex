@@ -364,6 +364,13 @@ If $X$ is a set of ordinals let $\limit(X)$ be the set of limit points of $X$.
 
 Note that if $X$ is a club set then $\limit(X)$ is also a club set.
 
+\begin{definition}
+If $X\subseteq \kappa$, $\kappa > \omega$ regular, then
+$$\trace(X) = \setof{\alpha<\kappa}{\cof(\alpha) > \omega \AND X\intersect\alpha \text{ is stationary}}$$
+if that set is stationary. Otherwise $\trace(X)$ is undefined.
+\end{definition}
+
+
 \begin{lemma}[pg 99 of \cite{Jech_Book2}]
 \label{SimilarTraceLemma}
 If $A\simeq \Aprime$ mod $I_{\text{NS}}$ then
@@ -418,6 +425,45 @@ $\alpha\in\trace(A)$. By lemma \ref{SimilarTraceLemma}, there is a club $D$ such
 $\trace(A)\intersect D = \trace(\Aprime) \intersect D$. So for all
 $\alpha \in C \intersect D \intersect \Bprime$, $\alpha\in\trace(\Aprime)$.
 
+\end{proof}
+
+\begin{lemma}[Exercise 8.5 of \cite{Jech_Book2}]
+Let $S\subseteq \omega_1$ be stationary. Then for every $\alpha <\omega_1$ there is a closed
+set $A\subseteq S$ with order-type $\alpha$.
+\end{lemma}
+\begin{proof}
+Let $C_{\alpha}$ for $\alpha<\omega_1$ be defined by induction as follows:
+\begin{align*}
+C_0 &=  \limit(S) \\
+C_{\alpha+1} &=  \limit \left ( S \intersect C_\alpha\right ) \\
+C_{\lambda} &=  \limit \left ( S \intersect \Intersection{\alpha<\lambda} C_\alpha \right )
+\end{align*}
+By induction on $\alpha$ each $C_{\alpha}$ is club.
+
+We claim that if $\lambda \in C_{\alpha}$ then $\lambda$ is the supremum of a closed subset
+of $S$ of order type $\omega^{(1 + \alpha)}$. We prove this by induction on $\alpha$.
+It is clearly true for $\alpha = 0$.
+
+Fix $\alpha>0$
+and suppose the claim is true for $\beta<\alpha$. Let $\lambda \in C_{\alpha}$.
+
+
+If $\alpha$ is a limit ordinal let $\sequence{\alpha_n}{n\in\omega}$
+be an increasing sequence with supremem $\alpha$, otherwise let $\alpha_n = \alpha-1$.
+Let
+$\sequence{\lambda_n}{n\in\omega}$ be an increasing sequences with supremem $\lambda$
+such that $\lambda_n \in S\intersect C_{\alpha_n}$. There are such sequences by the defintion of
+$C_{\alpha}$.
+
+By induction each $\lambda_n$ is the supremum of a closed set $A_n \subset S$ with the order-type
+of $A_n  = \omega^{(1 + \alpha_n)}$. Since  $\omega^{(1 + \alpha_n)}$ is closed under addition
+we may discard an initial segment of $A_n$ and still maintain the fact that the order type of
+$A_n$ is $\omega^{(1 + \alpha_n)}$. Thus we may assume that the minimum element of $A_{n+1}$ is
+greater than $\lambda_n$.
+
+Let $A= \Union{n} A_n$.
+Then $A$ is a closed subset of $S$ and $\sup(A) = \lambda$ and the order type of $A$ is
+$\omega^{(1+\alpha)}$.
 \end{proof}
 
 \section{Elementary Embeddings}
