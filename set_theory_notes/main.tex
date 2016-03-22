@@ -17,8 +17,27 @@
 
 \section{Ordinal Arithmethic}
 
+By Cantor's Normal Form Theorem (see \cite{Jech_Book2} pg 24) an ordinal
+is closed under addition (a.k.a. \emph{indecomposable}) iff it is of the form
+$\omega^{\alpha}$ for some $\alpha$. It is closed under multiplication iff
+it is of the form $\omega^{\alpha}$ for some $\alpha$ that is closed under
+addition.
+
+The canoncial well-ordering of $\text{Ord} \times \text{Ord}$ is given
+on page 30 of \cite{Jech_Book2}. Let $\Gamma(\alpha,\beta)$ be the rank
+of $(\alpha,\beta)$ under this well-ordering.
+
 Let $\Sigma(\alpha)$ be the sum over $\beta<\alpha$
-of $\beta*2+1$.
+of $\beta*2+1$. Then it is clear that $\Gamma(\alpha,\alpha) = \Sigma(\alpha)$.
+Notice that this is a generalization of the fact that the sum of the first
+n odd numbers is $n^2$.
+
+\begin{lemma}
+$\Sigma(\alpha) = \alpha$ iff $\alpha$ is closed under multiplication.
+\end{lemma}
+
+We do not prove this but below, just for fun, we give a table of values of
+$\Sigma(\alpha)$ that indicate that $\Sigma(\omega^{\omega})=\omega^{\omega}$.
 
 \begin{tabular}{|c|c|c|}
 \hline $\alpha$ & $\alpha*2+1$ & $\Sigma(\alpha)$ \\ \hline \hline
@@ -465,6 +484,54 @@ Let $A= \Union{n} A_n$.
 Then $A$ is a closed subset of $S$ and $\sup(A) = \lambda$ and the order type of $A$ is
 $\omega^{(1+\alpha)}$.
 \end{proof}
+
+\begin{lemma}[Exercises 8.13 of \cite{Jech_Book2}]
+Let $\kappa$ be a regular, uncountable cardinal.
+If $\lambda<\kappa$ is the $\alpha$th regular cardinal, then $o(E^{\kappa}_{\lambda}) = \alpha$.
+\end{lemma}
+\begin{proof}
+If $\lambda < \mu$ then $E^{\kappa}_{\lambda} < E^{\kappa}_{\mu}$ so $o(E^{\kappa}_{\lambda}) \geq \alpha$.
+We need to show that $o(E^{\kappa}_{\lambda}) \leq \alpha$.
+
+Let us write $A \subseteq^{*} B$ to mean that $A$ and $B$ are stationary and almost every element of $A$ is an element of $B$.
+
+\begin{claim}[Claim 1]
+If $A<B$ and $B \subseteq^{*} E^{\kappa}_{\lambda}$, then there is a $\mu<\lambda$ such that $A\intersect E^{\kappa}_{\mu}$ is stationary.
+\end{claim}
+\begin{subproof}
+It suffices to show that $A\intersect \Union{\mu<\lambda}E^{\kappa}_{\mu}$ is stationary.
+
+Let $E\subseteq \kappa$ be club. We will show that $E\intersect A \intersect \Union{\mu<\lambda}E^{\kappa}_{\mu} \not= \emptyset$.
+
+Let $D$ be club such that $B\intersect D \subseteq \trace(A)$ and $B\intersect D \subseteq E^{\kappa}_{\lambda}$.
+Let $\xi\in \limit(E) \intersect D \intersect B$. So then $A\intersect \xi$ is stationary and $\cof(\xi) = \lambda$ and
+$E\intersect\xi$ is club. There is a club $F\subset \xi$ consisting of ordinals of cofinality less than $\lambda$.
+Let $\eta\in F\intersect E \intersect A$. Then $\eta$ witnesses that
+ $E\intersect A \intersect \Union{\mu<\lambda}E^{\kappa}_{\mu} \not= \emptyset$.
+\end{subproof}
+
+\begin{claim}[Claim 2]
+If $A\subseteq^{*} B$ then $o(B)\leq o(A)$.
+\end{claim}
+\begin{subproof}
+This is obvious because if $C < B$ then $C < A$.
+\end{subproof}
+
+\begin{claim}[Claim 3]
+If $B\subseteq^{*}E^{\kappa}_{\lambda}$ then $o(B)\leq\alpha$ where $\lambda$ is the $\alpha$th regular cardinal.
+\end{claim}
+\begin{subproof}
+By induction on $\lambda$. Let $A<B$. It suffices to show that $o(A)<\alpha$. By Claim 1 there is a
+$\mu<\lambda$ such that $C = A\intersect E^{\kappa}_{\mu}$ is stationary. By induction $o(C) < \alpha$ and by
+Claim 2 $o(A)\leq o(C)$.
+\end{subproof}
+
+Notice that $\setof{E^{\kappa}_{\lambda}}{\lambda < \kappa, \lambda \text{ regular}}$ is a maximal antichain in
+ $\P(\kappa)$. It is also an antichain in $\P(\kappa) / I_{\text{NS}}$ and it is a maximal antichain there
+iff $\kappa$ is not Mahlo.
+
+\end{proof}
+
 
 \section{Elementary Embeddings}
 
