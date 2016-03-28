@@ -486,6 +486,7 @@ $\omega^{(1+\alpha)}$.
 \end{proof}
 
 \begin{lemma}[Exercises 8.13 of \cite{Jech_Book2}]
+\label{Exercise8.13}
 Let $\kappa$ be a regular, uncountable cardinal.
 If $\lambda<\kappa$ is the $\alpha$th regular cardinal, then $o(E^{\kappa}_{\lambda}) = \alpha$.
 \end{lemma}
@@ -521,15 +522,58 @@ This is obvious because if $C < B$ then $C < A$.
 If $B\subseteq^{*}E^{\kappa}_{\lambda}$ then $o(B)\leq\alpha$ where $\lambda$ is the $\alpha$th regular cardinal.
 \end{claim}
 \begin{subproof}
-By induction on $\lambda$. Let $A<B$. It suffices to show that $o(A)<\alpha$. By Claim 1 there is a
+By induction on $\lambda$. The claim is true if $\lambda=\omega$ so assume $\lambda $ is uncountable.
+Let $A<B$. It suffices to show that $o(A)<\alpha$. By Claim 1 there is a
 $\mu<\lambda$ such that $C = A\intersect E^{\kappa}_{\mu}$ is stationary. By induction $o(C) < \alpha$ and by
 Claim 2 $o(A)\leq o(C)$.
 \end{subproof}
 
-Notice that $\setof{E^{\kappa}_{\lambda}}{\lambda < \kappa, \lambda \text{ regular}}$ is a maximal antichain in
- $\P(\kappa)$. It is also an antichain in $\P(\kappa) / I_{\text{NS}}$ and it is a maximal antichain there
-iff $\kappa$ is not Mahlo.
+\end{proof}
 
+\begin{corollary}
+\label{CorollaryToExercise8.13}
+In the situation of Lemma \ref{Exercise8.13}, if $A\intersect E^{\kappa}_{\lambda}$ is stationary
+then $o(A)\leq\alpha$.
+\end{corollary}
+\begin{proof}
+Let $C=A\intersect E^{\kappa}_{\lambda}$. By Claim 3 from Lemma \ref{Exercise8.13} $o(C)\leq\alpha$ and
+by Claim 2 $o(A)\leq o(C)$.
+\end{proof}
+
+\begin{lemma}
+\label{NonMahloLemma}
+Let $\kappa>\omega$ be regular and let $S\subseteq\kappa$ be a stationary set consisting of singular ordinals.
+Then there is a $\lambda<\kappa$ such that $S\intersect E^{\kappa}_{\lambda}$ is stationary.
+\end{lemma}
+\begin{proof}
+Let $f(\alpha)=\cof(\alpha)$. Then $f$ is pressing down on $S$ so $f$ is constant on a stationary subset of $S$.
+\end{proof}
+
+\begin{lemma}[Exercises 8.14 of \cite{Jech_Book2}]
+$o(\kappa)\geq\kappa$ iff $\kappa$ is weakly inaccessible; $o(\kappa)\geq\kappa+1$ iff $\kappa$ is weakly Mahlo.
+\end{lemma}
+\begin{proof}
+First suppse $\kappa$ is weakly inaccessible. Then there are $\kappa$ regular cardinals below $\kappa$
+so by Lemma \ref{Exercise8.13} $o(\kappa)\geq\kappa$.
+
+Next suppose that $\kappa$ is weakly Mahlo and let $A$ be the set of regualr cardinals less than $\kappa$.
+Then $E^{\kappa}_{\lambda}<A$ for all regular $\lambda<\kappa$ so $o(A)\geq\kappa$ so $o(\kappa)>\kappa$.
+
+Now suppose $\kappa$ is not weakly inaccessible and we will show that  $o(\kappa)<\kappa$.
+This is obviously true if $\kappa=\omega$ so suppose $\kappa$ is uncountable.
+Let $A\subseteq\kappa$. There are fewer than $\kappa$ regular cardinals below $\kappa$
+so by Lemma \ref{Exercise8.13} it suffices to see that there is a $\lambda<\kappa$ such that
+$o(A)<=o(E^{\kappa}_{\lambda})$.
+Notice that $\setof{E^{\kappa}_{\lambda}}{\lambda < \kappa, \lambda \text{ regular}}$ is a partition of the limit ordinals
+below $\kappa$
+into fewer than $\kappa$ stationary sets so there is a $\lambda<\kappa$ so that $A\intersect E^{\kappa}_{\lambda}$
+is stationary. By Corollary \ref{CorollaryToExercise8.13} $o(A)\leq\alpha=o(E^{\kappa}_{\lambda})$.
+
+Finally suppose that $\kappa$ is weakly inaccessible but not weakly Mahlo and we will show that $o(\kappa)=\kappa$.
+Let $A\subseteq\kappa$ be stationary. It suffices to see that there is a $\lambda<\kappa$ such that $A\intersect E^{\kappa}_{\lambda}$
+is stationary. (Note that this is equivalent to showing that $\setof{E^{\kappa}_{\lambda}}{\lambda < \kappa, \lambda \text{ regular}}$
+is a maximal antichain in $\P(\kappa) / I_{\text{NS}}$). This follows from Lemma \ref{NonMahloLemma} since almost every element
+of $A$ is singular since $\kappa$ is not Mahlo.
 \end{proof}
 
 
@@ -850,6 +894,68 @@ $\cF(\alpha,\delta)$ be any measure $U$ on $\alpha$ such that $o(U) = \delta$.
 This is correct and sounds very similar to the incorrect definition of weakly coherent from
 \cite{BeginningInnerModelTheory}. The difference is that here we are adding measures at \emph{every}
 $\alpha$, not just $\alpha$ in an arbitrary domain.
+
+\section{$\Pkl$}
+
+\begin{definition}
+A filter $\cF$ on $\Pkl$ is \emph{fine} iff for every $a\in\Pkl$,
+$\hat{a}=\setof{b\in\Pkl}{a\subseteq b}\in\cF$.
+
+$\cF$ is \emph{normal} iff it is closed under diagonal intersections.
+
+$\cF$ has the \emph{pressing down property} iff whenever $f$ is a function
+with $\dom(f)$ an $\cF$-positive set and for all $a\in\dom(f)$, $f(a)\in a$, then $f$ is constant on an
+$\cF$-positive set.
+\end{definition}
+
+\begin{lemma}
+$\cF$ is normal iff it has the pressing down property.
+\end{lemma}
+\begin{proof}
+First suppose $\cF$ is normal. Suppose that $f$ is a function with $\dom(f)$ some $\cF$-positive set and $\ran(f)\subset\lambda$,
+and suppose $f$ is not constant on an
+$\cF$-positive set. For each $\alpha<\lambda$ let $C_{\alpha}=\setof{a\in\Pkl}{f(a)\not=\alpha}$. Then each $C_{\alpha}\in\cF$.
+Let $C$ be the diagonal intersection of the $C_{\alpha}$. So for $a\in C$, $f(a)\not=\alpha$ for all $\alpha\in a$.
+  Then $C\in\cF$ and $f$ does not press down on $C$.
+So then $f$ does not press down on an $\cF$-positive set.
+
+Conversely suppose that $\cF$ has the pressing down property. Let $C_{\alpha}\in\cF$ for $\alpha<\lambda$. Let $C$ be the diagonal
+intersection of the $C_{\alpha}$ and suppose that $C\notin\cF$ so that the complement of $C$ is $\cF$-positive. Let $f$ be the
+function on the complement of $C$ defined by $f(a) = $ the least $\alpha\in a$ such that $a\notin C_{\alpha}$. Then there is an $\alpha<\lambda$
+and an $\cF$-positive set $S$, such that $f(a)=\alpha$ for all $a\in S$.
+So for all $a\in S$, $a\notin C_{\alpha}$. But this is impossible because $S$ is $\cF$-positive and
+$C_{\alpha}\in\cF$.
+\end{proof}
+
+\begin{lemma}
+Let $\cF$ be a fine, normal filter on $\Pkl$. Then $\cF$ is $\kappa$-complete.
+\end{lemma}
+\begin{proof}
+Let $\mu<\kappa$ and let $A_{\alpha}\in\cF$ for $\alpha<\mu$. We must show that
+$\Intersection{\alpha<\mu}A_{\alpha}\in\cF$. For $\mu\leq\alpha<\lambda$ let
+$A_{\alpha}=\Pkl$. Let $A$ be the diagonal intersection of the $A_{\alpha}$
+for $\alpha<\lambda$. Then $A\in\cF$. Since $\cF$ is fine $\setof{a\in A}{\mu\subseteq a}\in\cF$.
+But if $a\in A$ and $\mu\subseteq a$ then $a\in\Intersection{\alpha<\mu}A_{\alpha}$. So
+$\Intersection{\alpha<\mu}A_{\alpha}\in\cF$.
+\end{proof}
+
+\begin{lemma}[Exercise 8.16 of \cite{Jech_Book2}]
+Let $\cF$ be a fine normal filter on $\Pkl$ and let $g$ be a function on an $\cF$-positive set
+such that $g(x)\in[x]^{<\omega}$ for all $x$. Then $g$ is constant on an $\cF$-positive set.
+\end{lemma}
+\begin{proof}
+\end{proof}
+
+\begin{lemma}[Exercise 8.17 of \cite{Jech_Book2}]
+The club filter on $\Pkl$ is a fine normal filter contained in every fine normal filter.
+\end{lemma}
+\begin{proof}
+That the club filter is normal is Lemma 8.23 of \cite{Jech_Book2}.
+If $a\in\Pkl$ it is easy to see that $\hat{a}$ is club, so the club filter is fine.
+
+Let $\cF$ be a fine normal filter on $\Pkl$. We will show that every club subset of $\Pkl$ is
+in $\cF$.
+\end{proof}
 
 
 
