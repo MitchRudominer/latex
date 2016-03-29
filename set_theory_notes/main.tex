@@ -15,6 +15,8 @@
 
 \tableofcontents
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Ordinal Arithmethic}
 
 By Cantor's Normal Form Theorem (see \cite{Jech_Book2} pg 24) an ordinal
@@ -84,6 +86,8 @@ $\omega^{\omega}$ & $\omega^{\omega}*2 + 1$ & $\omega^{\omega}$ \\ \hline \hline
 
 \end{tabular}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Combinatorics of $\omega$}
 \begin{definition}
 If $A,B \subseteq \omega$ then $A$ is  \emph{almost contained} in $B$ if
@@ -112,6 +116,8 @@ $i$ because $p_n \in A_{\gamma_i}$ for $n \geq i$. Let $\gamma < \alpha$. Then t
 Since $A_{\alpha}$ is almsot contained in $A_{\gamma_i}$ and $A_{\gamma_i}$ is almost contained in $A_{\gamma}$, we have that
 $A_{\alpha}$ is almost contained in $A_{\gamma}$.
 \end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Baire Space}
 
@@ -267,6 +273,8 @@ Notice that it does not work to use $\omega$ at every stage because then the lef
 endpoints of each of the intervals, i.e. the $a(s)$, are in the range
 of $F$ and then $F$ is not a homeomorphism.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Partial Orders and Boolean Algebras}
 
 \begin{lemma}
@@ -374,6 +382,8 @@ which is impossible because $a\in K$ and $K$ is an ultrafilter.
 Let $F$ be an ultrafilter on $B$ that extends $K\union\singleton{u}$ and let $G$ be an ultrafilter
 on $B$ that extends  $K\union\singleton{-u}$. Then $F\intersect A = G\intersect A = K$ so these $F$ and $G$ work.
 \end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Stationary Sets}
 
@@ -576,10 +586,89 @@ is a maximal antichain in $\P(\kappa) / I_{\text{NS}}$). This follows from Lemma
 of $A$ is singular since $\kappa$ is not Mahlo.
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{$\Pkl$}
+
+\begin{definition}
+A filter $\cF$ on $\Pkl$ is \emph{fine} iff for every $a\in\Pkl$,
+$\hat{a}=\setof{b\in\Pkl}{a\subseteq b}\in\cF$.
+
+$\cF$ is \emph{normal} iff it is closed under diagonal intersections.
+
+$\cF$ has the \emph{pressing down property} iff whenever $f$ is a function
+with $\dom(f)$ an $\cF$-positive set and for all $a\in\dom(f)$, $f(a)\in a$, then $f$ is constant on an
+$\cF$-positive set.
+\end{definition}
+
+\begin{lemma}
+$\cF$ is normal iff it has the pressing down property.
+\end{lemma}
+\begin{proof}
+First suppose $\cF$ is normal. Suppose that $f$ is a function with $\dom(f)$ some $\cF$-positive set and $\ran(f)\subset\lambda$,
+and suppose $f$ is not constant on an
+$\cF$-positive set. For each $\alpha<\lambda$ let $C_{\alpha}=\setof{a\in\Pkl}{f(a)\not=\alpha}$. Then each $C_{\alpha}\in\cF$.
+Let $C$ be the diagonal intersection of the $C_{\alpha}$. So for $a\in C$, $f(a)\not=\alpha$ for all $\alpha\in a$.
+  Then $C\in\cF$ and $f$ does not press down on $C$.
+So then $f$ does not press down on an $\cF$-positive set.
+
+Conversely suppose that $\cF$ has the pressing down property. Let $C_{\alpha}\in\cF$ for $\alpha<\lambda$. Let $C$ be the diagonal
+intersection of the $C_{\alpha}$ and suppose that $C\notin\cF$ so that the complement of $C$ is $\cF$-positive. Let $f$ be the
+function on the complement of $C$ defined by $f(a) = $ the least $\alpha\in a$ such that $a\notin C_{\alpha}$. Then there is an $\alpha<\lambda$
+and an $\cF$-positive set $S$, such that $f(a)=\alpha$ for all $a\in S$.
+So for all $a\in S$, $a\notin C_{\alpha}$. But this is impossible because $S$ is $\cF$-positive and
+$C_{\alpha}\in\cF$.
+\end{proof}
+
+\begin{lemma}
+Let $\cF$ be a fine, normal filter on $\Pkl$. Then $\cF$ is $\kappa$-complete.
+\end{lemma}
+\begin{proof}
+Let $\mu<\kappa$ and let $A_{\alpha}\in\cF$ for $\alpha<\mu$. We must show that
+$\Intersection{\alpha<\mu}A_{\alpha}\in\cF$. For $\mu\leq\alpha<\lambda$ let
+$A_{\alpha}=\Pkl$. Let $A$ be the diagonal intersection of the $A_{\alpha}$
+for $\alpha<\lambda$. Then $A\in\cF$. Since $\cF$ is fine $\setof{a\in A}{\mu\subseteq a}\in\cF$.
+But if $a\in A$ and $\mu\subseteq a$ then $a\in\Intersection{\alpha<\mu}A_{\alpha}$. So
+$\Intersection{\alpha<\mu}A_{\alpha}\in\cF$.
+\end{proof}
+
+\begin{lemma}[Exercise 8.16 of \cite{Jech_Book2}]
+\label{Exercise8.16}
+Let $\cF$ be a fine normal filter on $\Pkl$ and let $g$ be a function on an $\cF$-positive set
+such that $g(x)\in[x]^{<\omega}$ for all $x$. Then $g$ is constant on an $\cF$-positive set.
+\end{lemma}
+\begin{proof}
+Fix $n\in\omega$ so that $S = \setof{x}{|g(x)|=n}$ is $\cF$-positive. If $n=0$ we are done so suppose $n>0$.
+For $i<n$ let $g_i$ be the function defined on $S$ by
+$g_i(x) = $ the $i$-th element of $g(x)$.
+For $i<n$ define $S_i$ by induction on $i$ so that $S_i$ is $\cF$-positive, $g_i$ is constant on $S_i$,
+and $S\supseteq S_0\supseteq S_1 \supseteq \dots \supseteq S_{n-1}$. Then $g$ is constant on $S_{n-1}$.
+\end{proof}
+
+\begin{lemma}[Exercise 8.17 of \cite{Jech_Book2}]
+The club filter on $\Pkl$ is a fine normal filter contained in every fine normal filter.
+\end{lemma}
+\begin{proof}
+That the club filter is normal is Lemma 8.23 of \cite{Jech_Book2}.
+If $a\in\Pkl$ it is easy to see that $\hat{a}$ is club, so the club filter is fine.
+
+Let $\cF$ be a fine normal filter on $\Pkl$ and let $C\subseteq\Pkl$ be club.
+We will show that $C\in\cF$. By Lemma 8.26 from \cite{Jech_Book2}, there is a function
+$f:[\lambda]^{<\omega}\map\Pkl$ such that $C_f\subseteq C$. It suffices to see that
+$C_f\in\cF$. Suppose not and let $S$ be the compliment of $C_f$ so that $S$ is $\cF$-positive.
+Let $g$ be a function with domain $S$ such that for all $x\in S$, $g(x)$ witnesses that
+$x\notin C_f$, meaning that $g(x)\in [x]^{<\omega}$ and $f(g(x))\not\subseteq x$.
+By Lemma \ref{Exercise8.16}, there is a fixed $a$ and an $\cF$-positive set $T\subseteq S$
+such that for all $x\in T$, $g(x)=a$. So $f(a)\not\subseteq x$, for all $x\in T$. But this
+contradicts the fact that $\hat{f(a)}\in\cF$ by fineness.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Elementary Embeddings}
 
-Throughout this section let $j:M \map N$ be an elementary embedding with $\crit(j)=\kappa$, where $M$ and $N$ are transitive models of a sufficient amount of $\ZFC$.
+Throughout this section let $j:M \map N$ be an elementary embedding with $\crit(j)=\kappa$, where $M$ and $N$ are
+transitive models of a sufficient amount of $\ZFC$.
 
 \begin{lemma}
 \label{inductiveLemma}
@@ -741,6 +830,8 @@ $\kappa$, $\kappa$ is inaccessible
 in $M$ and in $L_{\kappa_3}$ but $M$ does not have every subset of $\kappa$.
 \end{example}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Ultrapowers}
 
 \begin{definition}
@@ -791,6 +882,8 @@ From lema \ref{equivalence2} in case (a) or (b) holds we have
 $V^{M}_{\kappa+1} = V^{N}_{\kappa+1}$ and $\kappa$ is inaccessible
 in $M$ and $N$.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Iterated Ultrapowers}
 
 \begin{lemma}
@@ -803,6 +896,8 @@ for $\beta>=\alpha$.
 \begin{proof}
 By induction. The successor step follows from lemma \ref{SameNextLevel}. The limit step is trivial.
 \end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Mitchell Models}
 
@@ -894,69 +989,6 @@ $\cF(\alpha,\delta)$ be any measure $U$ on $\alpha$ such that $o(U) = \delta$.
 This is correct and sounds very similar to the incorrect definition of weakly coherent from
 \cite{BeginningInnerModelTheory}. The difference is that here we are adding measures at \emph{every}
 $\alpha$, not just $\alpha$ in an arbitrary domain.
-
-\section{$\Pkl$}
-
-\begin{definition}
-A filter $\cF$ on $\Pkl$ is \emph{fine} iff for every $a\in\Pkl$,
-$\hat{a}=\setof{b\in\Pkl}{a\subseteq b}\in\cF$.
-
-$\cF$ is \emph{normal} iff it is closed under diagonal intersections.
-
-$\cF$ has the \emph{pressing down property} iff whenever $f$ is a function
-with $\dom(f)$ an $\cF$-positive set and for all $a\in\dom(f)$, $f(a)\in a$, then $f$ is constant on an
-$\cF$-positive set.
-\end{definition}
-
-\begin{lemma}
-$\cF$ is normal iff it has the pressing down property.
-\end{lemma}
-\begin{proof}
-First suppose $\cF$ is normal. Suppose that $f$ is a function with $\dom(f)$ some $\cF$-positive set and $\ran(f)\subset\lambda$,
-and suppose $f$ is not constant on an
-$\cF$-positive set. For each $\alpha<\lambda$ let $C_{\alpha}=\setof{a\in\Pkl}{f(a)\not=\alpha}$. Then each $C_{\alpha}\in\cF$.
-Let $C$ be the diagonal intersection of the $C_{\alpha}$. So for $a\in C$, $f(a)\not=\alpha$ for all $\alpha\in a$.
-  Then $C\in\cF$ and $f$ does not press down on $C$.
-So then $f$ does not press down on an $\cF$-positive set.
-
-Conversely suppose that $\cF$ has the pressing down property. Let $C_{\alpha}\in\cF$ for $\alpha<\lambda$. Let $C$ be the diagonal
-intersection of the $C_{\alpha}$ and suppose that $C\notin\cF$ so that the complement of $C$ is $\cF$-positive. Let $f$ be the
-function on the complement of $C$ defined by $f(a) = $ the least $\alpha\in a$ such that $a\notin C_{\alpha}$. Then there is an $\alpha<\lambda$
-and an $\cF$-positive set $S$, such that $f(a)=\alpha$ for all $a\in S$.
-So for all $a\in S$, $a\notin C_{\alpha}$. But this is impossible because $S$ is $\cF$-positive and
-$C_{\alpha}\in\cF$.
-\end{proof}
-
-\begin{lemma}
-Let $\cF$ be a fine, normal filter on $\Pkl$. Then $\cF$ is $\kappa$-complete.
-\end{lemma}
-\begin{proof}
-Let $\mu<\kappa$ and let $A_{\alpha}\in\cF$ for $\alpha<\mu$. We must show that
-$\Intersection{\alpha<\mu}A_{\alpha}\in\cF$. For $\mu\leq\alpha<\lambda$ let
-$A_{\alpha}=\Pkl$. Let $A$ be the diagonal intersection of the $A_{\alpha}$
-for $\alpha<\lambda$. Then $A\in\cF$. Since $\cF$ is fine $\setof{a\in A}{\mu\subseteq a}\in\cF$.
-But if $a\in A$ and $\mu\subseteq a$ then $a\in\Intersection{\alpha<\mu}A_{\alpha}$. So
-$\Intersection{\alpha<\mu}A_{\alpha}\in\cF$.
-\end{proof}
-
-\begin{lemma}[Exercise 8.16 of \cite{Jech_Book2}]
-Let $\cF$ be a fine normal filter on $\Pkl$ and let $g$ be a function on an $\cF$-positive set
-such that $g(x)\in[x]^{<\omega}$ for all $x$. Then $g$ is constant on an $\cF$-positive set.
-\end{lemma}
-\begin{proof}
-\end{proof}
-
-\begin{lemma}[Exercise 8.17 of \cite{Jech_Book2}]
-The club filter on $\Pkl$ is a fine normal filter contained in every fine normal filter.
-\end{lemma}
-\begin{proof}
-That the club filter is normal is Lemma 8.23 of \cite{Jech_Book2}.
-If $a\in\Pkl$ it is easy to see that $\hat{a}$ is club, so the club filter is fine.
-
-Let $\cF$ be a fine normal filter on $\Pkl$. We will show that every club subset of $\Pkl$ is
-in $\cF$.
-\end{proof}
-
 
 
 \bibliographystyle{amsalpha}
