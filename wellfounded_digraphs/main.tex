@@ -11,13 +11,15 @@
 
 \title{Well-Founded Two-Sorted Directed Graphs}
 \author{Mitch Rudominer}
+\address{Google}
+\email{rudominer@google.com}
 
 \keywords{graph theory, programming languages, compilers}
 
 \begin{abstract}
-We introduce a generalization of the notion of acyclicality in directed graphs:
-the notion of a \emph{well-founded} two-sorted directed graphs. We study the
-properties of well-foundedness and describe an algorithm for verifying it.
+We introduce a generalization of the notion of a directed acyclic  graph:
+a \emph{well-founded} two-sorted graph. We study the
+property of well-foundedness and describe an algorithm for verifying it.
 
 Our two-sorted graphs include two sorts of nodes: regular nodes
 nodes called \emph{circle} nodes, and special nodes called \emph{square} nodes.
@@ -126,8 +128,8 @@ is easy to understand and it is tempting to make it the definition of well-found
 \end{itemize}
 
 This recursion will turn out to be valid. However it is not logically correct to use the above clauses as the
-definition of well-foundedness. This is because recursive definition may only be given with respect to
-a well-founded relation. The clauses above are expressed using recursion on the child relation and this
+definition of well-foundedness. This is because definition by recursion may only be done with respect to
+a well-founded relation. The clauses above are expressed using recursion on the \emph{child} relation and this
 relation is not well-founded in a digraph with cycles. Instead we give the following more formal definition
 of the \emph{rank} of a node in a two-sorted graph.
 
@@ -158,6 +160,7 @@ the definition of the rank function proceeds by induction on the integers. The i
 be expressed properly as a lemma:
 
 \begin{lemma}
+\label{SimpleDefOfWF}
 Let $x$ be a node in a two-sorted graph $G$.  Then $x$ is well-founded iff
 \begin{enumerate}
 \item $x$ is a leaf node, or
@@ -166,31 +169,83 @@ Let $x$ be a node in a two-sorted graph $G$.  Then $x$ is well-founded iff
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-TODO: Write this proof.
+First assume that $x$ is well-founded. If $\rank(x) = 0$ then (a) holds.
+If $\rank(x) > 0$ then by the definition of rank if $x$ is a circle node then (b)
+holds and if $x$ is a square node then (c) holds.
+
+Conversely if (a) holds then $\rank(x) = 0$. If (b) holds then letting $n$ be
+the maximum rank of any child of $x$, $\rank(x) = n+1$. If (c) holds then letting
+$n$ be the minimum rank of any child of $x$, $\rank(x) = n+1$. So if (a), (b) or (c)
+holds then $x$ has a rank and is therefore well-founded.
+\end{proof}
+
+\begin{lemma}
+\label{WellFoundedIsLocal}
+Let $x$ be a node in a two-sorted graph $G$ and let $y$ be a node in $G_x$.
+Then $y$ is well-founded as a node in $G$
+iff $y$ is well-founded as a node in $G_x$.
+\end{lemma}
+\begin{proof}
+We prove by induction on $n$ that for all nodes $y$ of $G_x$, $\rank(y) = n$  in $G$
+iff $\rank(y) = n$  in $G_x$. For $n=0$ this just means that $y$ is a leaf of $G$ iff
+$y$ is a leaf of $G_x$. This is true since $G_x$ is closed under reachability. For
+$n>0$ this is true by induction since $y$ has the same children in $G$ as it has
+in $G_x$.
 \end{proof}
 
 Now we can relate the bottom-up notion of well-foundedness to the top-down notion of acceptabilty.
 
+
 \begin{theorem}
-Let $x$ be a node in a two-sorted graph $G$. Then $x$ is acceptable iff $x$ is well-founded.
+\label{MainEquivalence}
+Let $G$ be a two-sorted graph. Then the following are equivalent:
+\begin{enumerate}
+\item $G$ is acceptable
+\item Every node of $G$ is well-founded.
+\end{enumerate}
 \end{theorem}
 \begin{proof}
-TODO: Write this proof.
-\end{proof}
+First assume (1). Let $H$ be an acyclic, square-imposed subgraph of $G$. Since $H$ is acyclic, the
+relation $<$ on the nodes of $H$ defined by $x<y$ iff $x$ is reachable from $y$
+is a well-founded partial order, meaning that it is asymmetric,
+transitive, and has no infinite descending chains. This allows us to perform induction on it.
+Recall that $H$ and $G$ have the same set of nodes.
+We prove by induction on $<$ that every node of $H$ is well-founded (as a node in $G$).
+We use the characterization of well-founded nodes given by Lemma \ref{SimpleDefOfWF}.
+Let $x$ be a non-leaf node.
+By induction on $<$, every child of $x$ in $H$ is well-founded in $G$.
+If $x$ is a circle node since $H$ is
+square-imposed, every child of $x$ in $G$ is well-founded and so $x$ is well-founded.
+If $x$ is a square node then again, since $H$ is square-imposed,
+there is at least one child of $x$ in $G$ that is well-founded in $G$ and so $x$ is well-founded in $G$.
 
+Conversely assume (2). Let $H$ be the following square-imposed subgraph of $G$:
+For each non-leaf square node $x$ in $G$, we will pick exactly one edge $e$ originating
+from $x$ and we will add $e$ to $H$. We let $e = (x, y)$ be any out-edge from $x$ to a child $y$
+such that $\rank(y)<\rank(x)$. Since $x$ is well-founded, there is such a $y$ by the definition of the rank of a square node.
+This $H$ is clearly square-imposed. We claim that $H$ is acyclic. For suppose
+$y_0, y_1,\dots,y_n=y_0$ were a cycle in $H$. To arrive at a contradiction we will show that for each $i<n$
+$\rank(y_i)>\rank(y_{i+1})$. This will be a contradiction because $y_n=y_0$. If $y_i$ is a circle node then
+$\rank(y_i)>\rank(y_{i+1})$ because by the definition of the rank of a circle node $\rank(y_i)$ is greater than the
+ranks of all of its children. If $y_i$ is a square node then $e=(y_i,y_{i+1} )$ is the unique out-edge from $y_i$ that
+we added to $H$ and so by construction $\rank(y_i)>\rank(y_{i+1})$.
+\end{proof}
 
 Now we can give the
 
 \begin{proof}[proof of Theorem \ref{Acceptability-Is-Local}.]
-
-TODO: Write this proof.
-
+$G$ is acceptable iff every node of $G$ is well-founded (by Theorem \ref{MainEquivalence})
+iff for every node $x$ of $G$ every node $y$ of $G_x$ is well-founded in $G_x$ (by Lemma \ref{WellFoundedIsLocal})
+iff for every node $x$ of $G$, $G_x$ is acceptable (by Theorem \ref{MainEquivalence}.)
 \end{proof}
+
+Note that it may happen that $x$ is well-founded and $y\in G_x$ but $y$ is not well-founded. Thus it is not true
+that $x$ is well-founded iff $x$ is acceptable.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{An Algorithm for Verifying Acceptability}
-In this section we outline an algorithm for determining whether two-sorted graph $G$ is acceptable.
+In this section we outline an algorithm for determining whether a two-sorted graph $G$ is acceptable.
 If $G$ happens to be a regular graph (consisting of only circle nodes) then our algorithm reduces
 to the usual depth-first-search algorithm for determining whether a directed graph contains a cycle.
 
