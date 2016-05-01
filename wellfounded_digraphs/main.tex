@@ -1,6 +1,6 @@
 \documentclass[oneside,12pt]{amsart}
 
-\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
 
 \input{mathdefs}
 \input{theoremstyles}
@@ -82,7 +82,7 @@ in $G$ then $x$ has at least one out-edge in $H$.
 Thus a square-imposed subgraph is one in which the square nodes get to impose
 which of their out edges they choose to throw away, subject to the constraint that
 they must keep at least one. A circle node gets to make
-no choices: all of its out-edges must be kept.
+no choices: all of its out-edges must be kept. 
 
 Notice that if $G$ is a regular digraph (that is $G$ has only circle nodes) then it
 has no proper square-imposed subgraphs.
@@ -93,7 +93,15 @@ an acyclic square-imposed subgraph. Let $x$ be a node of $G$. We say that $x$ is
 acceptable iff $G_x$ is acceptable.
 \end{definition}
 
-So a regular digraph is acceptable iff it is acyclic.
+So a regular digraph is acceptable iff it is acyclic. Figure 1 below shows an acceptable graph $G$ on the left
+and $H$, an acyclic square-imposed subgraph of $G$, on the right.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig1.jpg}
+    \caption{H is an acyclic square-imposed subgraph of G}
+    \label{fig:fig1}
+\end{figure}
 
 \begin{theorem}
 \label{Acceptability-Is-Local}
