@@ -1,6 +1,6 @@
 \documentclass[oneside,12pt]{amsart}
 
-\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,placeins,amsaddr}
 
 \input{mathdefs}
 \input{theoremstyles}
@@ -9,8 +9,8 @@
 
 \begin{document}
 
-\title{Well-Founded Two-Sorted Directed Graphs}
-\author{Mitch Rudominer}
+\title{Well-Founded Two-Sorted Directed Graphs\vspace{-1cm}}
+\author{Mitch Rudominer\vspace{-0.4cm}}
 \address{Google}
 \email{rudominer@google.com}
 
@@ -93,15 +93,17 @@ an acyclic square-imposed subgraph. Let $x$ be a node of $G$. We say that $x$ is
 acceptable iff $G_x$ is acceptable.
 \end{definition}
 
-So a regular digraph is acceptable iff it is acyclic. Figure 1 below shows an acceptable graph $G$ on the left
-and $H$, an acyclic square-imposed subgraph of $G$, on the right.
-
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{fig1.jpg}
     \caption{H is an acyclic square-imposed subgraph of G}
     \label{fig:fig1}
 \end{figure}
+
+So a regular digraph is acceptable iff it is acyclic. Figure 1 shows an acceptable graph $G$ on the left
+and $H$, an acyclic square-imposed subgraph of $G$, on the right.
+
+\FloatBarrier
 
 \begin{theorem}
 \label{Acceptability-Is-Local}
@@ -247,8 +249,18 @@ iff for every node $x$ of $G$ every node $y$ of $G_x$ is well-founded in $G_x$ (
 iff for every node $x$ of $G$, $G_x$ is acceptable (by Theorem \ref{MainEquivalence}.)
 \end{proof}
 
-Note that it may happen that $x$ is well-founded and $y\in G_x$ but $y$ is not well-founded. Thus it is not true
-that $x$ is well-founded iff $x$ is acceptable.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{fig2.jpg}
+    \caption{x is well-founded by y is not}
+    \label{fig:fig2}
+\end{figure}
+
+Note that it may happen that $x$ is well-founded and $y\in G_x$ but $y$ is not well-founded. 
+See Figure 2. Thus it is not true
+that $x$ is well-founded iff $x$ is acceptable. 
+
+\FloatBarrier
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

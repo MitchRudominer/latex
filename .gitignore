@@ -11,3 +11,5 @@
 *.blg
 *.ps
 *.jpg
+texinput/amsaddr
+texinput/placeins
