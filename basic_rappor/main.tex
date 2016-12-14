@@ -1,0 +1,151 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,placeins,amsaddr}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Population vs Sample Statistics in Basic RAPPOR\vspace{-1cm}}
+\author{Mitch Rudominer\vspace{-0.4cm}}
+
+\maketitle
+
+Let $p, q \in [0, 1]$, $p\not= q$.
+Let $\lambda$ and $N$ be integers with $N>0$ and $0\leq\lambda\leq N$.
+Let $\theta=\lambda/N$. Let
+$$\pi = \theta q + (1-\theta) p = \theta(q-p) + p.$$
+
+Let $Y$ and $Z$ be random variables with
+
+$$Y\sim\text{Binomial}(q, \lambda) + \text{Binomial}(p, N - \lambda)$$
+
+and
+
+$$Z\sim\text{Binomial}(\pi, N).$$
+
+Notice that
+
+$$E(Y) = \lambda (q - p) + N p$$
+
+and
+
+$$E(Z) = N\pi = N\theta(q-p) + N p = \lambda (q - p) + N p.$$
+
+So $Y$ and $Z$ have the same mean.
+
+Consider one-bit basic RAPPOR with $p$ and $q$ having their usual meaning
+(and $f=0$) with $N$ observations.
+Let $\lambda$ be the number of observations with a \emph{true}, so
+$N - \lambda$ is the number of observations with a true 0.
+
+Notice that $Y$ can then be interpreted as the count of \emph{observed} ones.
+The interpretation is that we started with a set of $N$ unencoded values in
+which there were $\lambda$ ones and $N - \lambda$ zeroes and then we flipped
+the ones to zeroes with probability $q$ and we flipped the zeroes to ones
+with probability $p$.
+
+How can we interpret $Z$? Suppose that instead of thinking about starting with
+a set of $\lambda$ unencoded ones and $N-\lambda$ unencoded zeroes, instead
+we started with a set $N$ independent $\text{Bernouli}(\theta)$ random variables and after
+sampling these $N$ random variables with then applied the Basic RAPPOR encoding.
+This would then yield a set of $N$ independent $\text{Bernouli}(\pi)$ random
+variables and so their sum would be distributed as $\text{Binomial}(\pi, N)$.
+So under this interpretation we can think of $Z$ as representing the observed
+count in Basic RAPPOR.
+
+
+Another way of thinking of this is that instead of thinking of our $N$ observations
+as a complete population we think of it as a sample of size $N$ from a population
+in which the probability of a true one is $\theta$. Under this interpretation
+the random variable $Z$ may be interpretted as the observed count of ones.
+
+Thus we see that either $Y$ or $Z$ may be used to model Basic RAPPOR, the
+difference being that $Y$ models using population statistics whereas $Z$
+models using sample statistics.
+
+Which is the better model? Notice that as regards a point estimate the two
+models are equivalent because $Y$ and $Z$ have the same mean. Let
+$$W_1(Y) = \frac{Y-N P}{q-p}$$
+and
+$$W_2(Z) = \frac{Z-N P}{q-p}$$
+be the usual RAPPOR point estimate applied to $Y$ and $Z$ respectively. Then
+$E(W_1) = E(W_2) = \lambda$.  Thus we see that we may apply the usual RAPPOR
+point estimate under either the $Y$- or $Z$-interpretation and obtain an
+unbiased estimate of the parameter $\lambda$.
+
+But the difference between $Y$ and $Z$ becomes important when we consider
+the confidence intervals. This is because
+$$\text{Var}(W_1) = \frac{\text{Var}(Y)}{(q-p)^2}$$
+and
+$$\text{Var}(W_2) = \frac{\text{Var}(Z)}{(q-p)^2}$$
+and
+$\text{Var}(Y)\not=\text{Var}(Z)$ so $\text{Var}(W_1)\not=\text{Var}(W_2)$
+and so we would expect the confidence intervals to be different under
+the $Y$- and $Z$-interpretations of Basic RAPPOR.
+
+Below we will compute the variances of $Y$ and $Z$, but intuitively there is
+more uncertainty in the $Z$-interpretation than there
+is in the $Y$-interpretation because in the $Z$-interpretation we are
+sampling $N$ observations from a population whereas in the $Y$-interpretation
+we have a fixed population of size $N$. Thus we expect that
+$\text{Var}(Y) < \text{Var}(Z)$ and that in general confidence intervals
+computed using $Z$ will be larger than confidence intervals computed
+using $Y$.
+
+Recall that the formula we have been using in Cobalt to compute
+confidence intervals for $\lambda$ is based on the term we call \emph{std\_err}
+
+$$\text{std\_err} = \frac{\sqrt{X  (1 - X/N)}}{q - p}$$
+
+where $X$ is the observed count.
+
+This formula is based on a standard approximation of a confidence interval
+for the Bernouli parameter that uses a Normal approximation of the Binomial.
+The use of this formula assumes the $Z$-interpretation rather than the
+$Y$-interpretation. This is because in the $Y$ interpretation $\lambda$
+occurs only as the \emph{second} Binomial parameter:
+$$Y\sim\text{Binomial}(q, \lambda) + \text{Binomial}(p, N - \lambda)$$
+
+whereas in the $Z$ interpretation $\lambda$ occurs in the \emph{first}
+binomial parameter inside of $\pi$
+
+$$Z\sim\text{Binomial}(\pi, N).$$
+
+Therefore by using the formula above for std\_err in order to give a confidence
+interval for $\lambda$ we are implicitly relying on the $Z$-interpretation
+and therefore implicitly using \emph{sample} statistics as opposed to
+\emph{population} statistics.
+
+Now we compute the variances of $Y$ and $Z$.
+
+$$ \text{Var}(Y) = \lambda q (1-q) + (N-\lambda) p (1 - p) $$
+
+whereas
+
+\begin{equation}
+\begin{split}
+\text{Var}(Z) &= N \pi (1 - \pi) \\
+ & = N (\theta(q-p) + p)(1 - \theta(q-p) - p) \\
+ & = N (\lambda/N(q-p) + p)(1 - \lambda/N(q-p) - p) \\
+ & = \frac{(\lambda(q-p) + N p)(N - \lambda(q-p) - N p)}{N} \\
+ & = \frac{(N p + \lambda(q-p))(N (1- p) - \lambda(q-p))}{N}
+\end{split}
+\end{equation}
+
+Notice that if we let $q = 1$ and $p = 0$ then
+
+$\text{Var}(Y) = 0$ whereas
+
+\begin{equation}
+\begin{split}
+\text{Var}(Z) &= \frac{\lambda (N - \lambda)}{N} \\
+ & = N \theta (1 - \theta)
+\end{split}
+\end{equation}
+
+which is the variance of $\text{Binomial}(\theta, N)$.
+\end{document}
