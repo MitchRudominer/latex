@@ -11,8 +11,35 @@
 
 \title{Population vs Sample Statistics in Basic RAPPOR\vspace{-1cm}}
 \author{Mitch Rudominer\vspace{-0.4cm}}
+\address{Google}
+\email{rudominer@google.com}
+
+\begin{abstract}
+We consider two different ways to model the analysis of Basic RAPPOR using
+two different random variables $Y$ and $Z$ that have the same mean but
+different variances. We see that the $Y$-model can be viewed as considering
+RAPPOR to be an analysis of a whole population whereas the $Z$-model can
+be viewed as considering RAPPOR to be an analysis of a random sample taken
+from the population.
+
+Because the two models have the same mean they are
+equivalent for the sake of deriving a point estimate, but because they
+have different variances they are not equivalent for the sake of deriving
+standard errors and confidence intervals.
+
+We derive formulas for estimates of the standard errors under the two
+models and we observe that under a natural set of parameters the variance
+of $Y$ does not depend on the number of true 1's in the population and so
+the standard error does not depend on the observed count of 1's.
+\end{abstract}
 
 \maketitle
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The two models}
 
 Let $p, q \in [0, 1]$, $p\not= q$.
 Let $\lambda$ and $N$ be integers with $N>0$ and $0\leq\lambda\leq N$.
@@ -39,46 +66,105 @@ So $Y$ and $Z$ have the same mean.
 
 Consider one-bit basic RAPPOR with $p$ and $q$ having their usual meaning
 (and $f=0$) with $N$ observations.
-Let $\lambda$ be the number of observations with a \emph{true}, so
+Let $\lambda$ be the number of observations with a \emph{true} 1, so
 $N - \lambda$ is the number of observations with a true 0.
 
 Notice that $Y$ can then be interpreted as the count of \emph{observed} ones.
 The interpretation is that we started with a set of $N$ unencoded values in
 which there were $\lambda$ ones and $N - \lambda$ zeroes and then we flipped
-the ones to zeroes with probability $q$ and we flipped the zeroes to ones
+the ones to zeroes with probability $1 - q$ and we flipped the zeroes to ones
 with probability $p$.
 
 How can we interpret $Z$? Suppose that instead of thinking about starting with
-a set of $\lambda$ unencoded ones and $N-\lambda$ unencoded zeroes, instead
-we started with a set $N$ independent $\text{Bernouli}(\theta)$ random variables and after
-sampling these $N$ random variables with then applied the Basic RAPPOR encoding.
-This would then yield a set of $N$ independent $\text{Bernouli}(\pi)$ random
+a set of $\lambda$ unencoded ones and $N-\lambda$ unencoded zeroes,
+we think about starting with a set $N$ independent $\text{Bernoulli}(\theta)$ random variables and after
+sampling these $N$ random variables we then flipped the resulting ones and
+zeroes as above.
+This would then yield a set of $N$ independent $\text{Bernoulli}(\pi)$ random
 variables and so their sum would be distributed as $\text{Binomial}(\pi, N)$.
+Another way of thinking of this is that instead of thinking of our $N$ observations
+as a complete population with $\lambda$ true 1's and $N-\lambda$ true 0's
+we think of it as a sample of size $N$ from a population
+in which the probability of a true 1 is $\theta$.
 So under this interpretation we can think of $Z$ as representing the observed
 count in Basic RAPPOR.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Another way of thinking of this is that instead of thinking of our $N$ observations
-as a complete population we think of it as a sample of size $N$ from a population
-in which the probability of a true one is $\theta$. Under this interpretation
-the random variable $Z$ may be interpretted as the observed count of ones.
+\section{Maximum-Likelihood Estimators}
 
-Thus we see that either $Y$ or $Z$ may be used to model Basic RAPPOR, the
+We saw above that either $Y$ or $Z$ may be used to model Basic RAPPOR, the
 difference being that $Y$ models using population statistics whereas $Z$
 models using sample statistics.
 
-Which is the better model? Notice that as regards a point estimate the two
-models are equivalent because $Y$ and $Z$ have the same mean. Let
-$$W_1(Y) = \frac{Y-N P}{q-p}$$
+Which is the better model? In this section we notice that as regards a point estimate
+the two models are equivalent.
+
+Let $X$ be the observed count of 1's in a run of one-bit Basic RAPPOR. Consider
+the following computed statistic of the run:
+$$W(X) = \frac{X-N p}{q-p}.$$
+We claim that in both the $Y$- and the $Z$- models of Basic RAPPOR $W$ is an
+appropriate statistic to use in order to estimate the number of \emph{true} 1's.
+
+To be more precise, let
+$$W_1(Y) = \frac{Y-N p}{q-p}$$
 and
-$$W_2(Z) = \frac{Z-N P}{q-p}$$
-be the usual RAPPOR point estimate applied to $Y$ and $Z$ respectively. Then
-$E(W_1) = E(W_2) = \lambda$.  Thus we see that we may apply the usual RAPPOR
-point estimate under either the $Y$- or $Z$-interpretation and obtain an
-unbiased estimate of the parameter $\lambda$.
+$$W_2(Z) = \frac{Z-N p}{q-p}.$$
+
+Then $E(W_1) = E(W_2) = \lambda$.  So $W$ is an unbiased estimator in both
+the $Y$ and the $Z$ models.
+
+Another desirable property of a point
+estimator is that it be the \emph{maximum-likelihood estimator}. It is a standard
+result that the sample mean is the maximum-likelihood estimator of a
+Bernoulli parameter. Therefore $Z/N$ is the maximum-likelihood estimator
+of $\pi$ in the $Z$ model and so $(Z/N - p)/(q-p)$ is the maximum-likelihood
+estimator of $\theta$ and therefore $W_2$ is the maximum-likelihood estimator
+of $N \theta$ in the $Z$-model.
+
+What about in the $Y$-model? Is $W_1(Y)$ the maximum likelihood estimator
+of $\lambda$, the number of true 1's? We must be a bit careful here because
+$\lambda$ is an integer in the range $[0, N]$ whereas $W_1(Y)$ is not
+necessarily an integer and not necessarily in the range $[0, N]$. We conjecture
+that $W_1$ is as close as possible to the maximum-likelihood estimator of $\lambda$
+given these constraints.
+
+\begin{conjecture}
+\label{MLEConjecture}
+Let $\hat{\lambda}$ be the maximum-likelihood estimator of $\lambda$ in the
+$Y$-model. Then
+\begin{itemize}
+\item If $W_1 < 0$ then $\hat{\lambda} = 0$.
+\item If $W_1 > N$ then $\hat{\lambda} = N$.
+\item If $0 \leq W_1 \leq N$ then $|\hat{\lambda} - W_1| \leq 1$.
+\end{itemize}
+\end{conjecture}
+
+We have some evidence to support this conjecture. Firstly it is not hard to prove
+the following
+
+\begin{fact}
+Conjecture \ref{MLEConjecture} is true when $p=0$ so that $Y\sim\text{Binomial}(q, \lambda).$
+\end{fact}
+
+Secondly the conjecture appears to be true for several examples we have
+computed using a Python script that we wrote.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Standard Errors}
+
+In the previous section we noted that the $Y$- and $Z$- models are equivalent
+as regards a point estimate for the number of true 1's in basic RAPPOR,
+and that the statistics
+$$W(X) = \frac{X-N p}{q-p}$$
+is an unbiased estimate. Furthermore $W$ is the maximum-likelihood estimate
+under the $Z$ model and we have evidence that it is close to the maximum-likelihood
+estimate in the $Y$ model.
 
 But the difference between $Y$ and $Z$ becomes important when we consider
-the confidence intervals. This is because
+the question of confidence intervals. This is because
 $$\text{Var}(W_1) = \frac{\text{Var}(Y)}{(q-p)^2}$$
 and
 $$\text{Var}(W_2) = \frac{\text{Var}(Z)}{(q-p)^2}$$
@@ -87,65 +173,111 @@ $\text{Var}(Y)\not=\text{Var}(Z)$ so $\text{Var}(W_1)\not=\text{Var}(W_2)$
 and so we would expect the confidence intervals to be different under
 the $Y$- and $Z$-interpretations of Basic RAPPOR.
 
-Below we will compute the variances of $Y$ and $Z$, but intuitively there is
-more uncertainty in the $Z$-interpretation than there
-is in the $Y$-interpretation because in the $Z$-interpretation we are
-sampling $N$ observations from a population whereas in the $Y$-interpretation
-we have a fixed population of size $N$. Thus we expect that
-$\text{Var}(Y) < \text{Var}(Z)$ and that in general confidence intervals
-computed using $Z$ will be larger than confidence intervals computed
-using $Y$.
-
-Recall that the formula we have been using in Cobalt to compute
-confidence intervals for $\lambda$ is based on the term we call \emph{std\_err}
-
-$$\text{std\_err} = \frac{\sqrt{X  (1 - X/N)}}{q - p}$$
-
-where $X$ is the observed count.
-
-This formula is based on a standard approximation of a confidence interval
-for the Bernouli parameter that uses a Normal approximation of the Binomial.
-The use of this formula assumes the $Z$-interpretation rather than the
-$Y$-interpretation. This is because in the $Y$ interpretation $\lambda$
-occurs only as the \emph{second} Binomial parameter:
-$$Y\sim\text{Binomial}(q, \lambda) + \text{Binomial}(p, N - \lambda)$$
-
-whereas in the $Z$ interpretation $\lambda$ occurs in the \emph{first}
-binomial parameter inside of $\pi$
-
-$$Z\sim\text{Binomial}(\pi, N).$$
-
-Therefore by using the formula above for std\_err in order to give a confidence
-interval for $\lambda$ we are implicitly relying on the $Z$-interpretation
-and therefore implicitly using \emph{sample} statistics as opposed to
-\emph{population} statistics.
-
 Now we compute the variances of $Y$ and $Z$.
 
-$$ \text{Var}(Y) = \lambda q (1-q) + (N-\lambda) p (1 - p) $$
+\begin{equation}
+\begin{split}
+\text{Var}(Y) &= \lambda q (1-q) + (N-\lambda) p (1 - p) \\
+ & = \lambda\left \{ q-p+p^2-q^2\right \} + N p (1 - p) \\
+ & = \lambda\left \{ q-p+(p-q)(p+q)\right \} + N p (1 - p) \\
+ & = \lambda (q-p) \left \{ 1-(q+p) \right \} + N p (1 - p)
+\end{split}
+\end{equation}
 
-whereas
+and
 
 \begin{equation}
 \begin{split}
 \text{Var}(Z) &= N \pi (1 - \pi) \\
- & = N (\theta(q-p) + p)(1 - \theta(q-p) - p) \\
- & = N (\lambda/N(q-p) + p)(1 - \lambda/N(q-p) - p) \\
- & = \frac{(\lambda(q-p) + N p)(N - \lambda(q-p) - N p)}{N} \\
- & = \frac{(N p + \lambda(q-p))(N (1- p) - \lambda(q-p))}{N}
+ & = N \bigl[\theta(q-p) + p \bigr] \bigl[1 - \theta(q-p) - p \bigr]
 \end{split}
 \end{equation}
 
-Notice that if we let $q = 1$ and $p = 0$ then
+\begin{remark}
+If we choose $p$ and $q$ so that $p+q = 1$ then
+$$\text{Var}(Y) = N p q$$
+and in particular it is \emph{independent of} $\lambda$.
+\end{remark}
 
-$\text{Var}(Y) = 0$ whereas
+
+\begin{remark}
+If we let $q = 1$ and $p = 0$ then
+
+$$\text{Var}(Y) = 0$$
+whereas
+$$\text{Var}(Z) = N \theta (1 - \theta)$$
+which is the variance of $\text{Binomial}(\theta, N)$.
+
+\end{remark}
+
+\begin{remark}
+$\text{Var}(Y)/\text{Var}(Z)$ is a constant, independent of $N$, if $\theta$,
+the ratio of true 1's, is held constant.
+This can be seen by writing $\lambda = N \theta$ in the formula for
+$\text{Var}(Y)$ and noting that the $N$ factors out of both $\text{Var}(Y)$ and
+$\text{Var}(Z)$ and so may be cancelled.
+\end{remark}
+
+The formulas for $\text{Var}(Y)$ and $\text{Var}(Z)$ above include the unknown
+parameters $\lambda$ and $\theta$. We now consider how to estimate these variances so
+that we can give an estimate of the standard deviation of $W$ from which
+confidence intervals for $W$ may be estimated. The standard deviation for
+$W$ is sometimes called the \emph{standard error.}
+
+First we consider $\text{Var}(Y)$. Notice that $\lambda$ appears as a linear
+factor in
+$$\text{Var}(Y)  = \lambda (q-p) \left \{ 1-(q+p) \right \} + N p (1 - p)$$
+and so we may replace $\lambda$ by its estimator $W_1$ and obtain
 
 \begin{equation}
 \begin{split}
-\text{Var}(Z) &= \frac{\lambda (N - \lambda)}{N} \\
- & = N \theta (1 - \theta)
+\hat{V_1} & =  W_1  (q-p) \left \{ 1-(q+p) \right \} + N p (1 - p) \\
+ & =  (Y - N p)  \left \{ 1-(q+p) \right \} + N p (1 - p) \\
+ & =  Y (1 - (q+p)) - Np(1 - (q+p)) + Np(1-p) \\
+ & =  Y (1 - (q+p)) + Npq.
 \end{split}
 \end{equation}
 
-which is the variance of $\text{Binomial}(\theta, N)$.
+Since $E(W_1) = \lambda$, $E(\hat{V_1}) = \text{Var}(Y)$, so $\hat{V_1}$ is an
+unbiased estimator of $\text{Var}(Y)$. We want to take the square root of $\hat{V_1}$
+and so we make the
+
+\begin{claim}
+$\hat{V_1}\geq 0$.
+\end{claim}
+\begin{proof}
+If $1 - (q+p) \geq 0$ then $\hat{V_1}\geq 0$ so suppose $1 - (q+p) < 0$.
+Then $Y (1 - (q+p)) + Npq \geq N(1 - (q+p) + pq) = N(1 - p)(1 - q) \geq 0$.
+\end{proof}
+
+
+Let
+
+$$\text{std\_err}_1 = \sqrt{\hat{V_1}}/|q-p| = \frac{\sqrt{Y (1 - (q+p)) + Npq}}{|q-p|}.$$
+
+We propose to use $\text{std\_err}_1$ as the standard error in Basic RAPPOR
+under the $Y$ model. Notice that in the common case that $q+p=1$ this reduces
+to a constant, independent of the observed count of 1's
+$$\text{std\_err}_1 = \frac{\sqrt{Npq}}{|q-p|}.$$
+
+Now we consider the standard error under the $Z$-model of Basic RAPPOR.
+If we start with
+$$\text{Var}(Z) = N \pi (1 - \pi) $$
+and naively replace $\pi$ with its unbiased estimate $Z/N$ we get
+$$\hat{V_2} =   Z (1 - Z/N).$$
+
+But unlike our analogous move above with $\hat{V}_1$ the formula for $\text{Var}(Z)$
+is not linear in $\pi$ and so we may not conclude that $\hat{V_2}$ is an unbiased
+estimator for $\text{Var}(Z)$.
+
+Nevertheless we still define
+$$\text{std\_err}_2 = \sqrt{\hat{V_2}}/|q-p| = \frac{\sqrt{Z (1 - Z/N)}}{|q-p|}$$
+
+and we propose to use $\text{std\_err}_2$ as the standard error in Basic RAPPOR
+under the $Z$ model. This formula is justified by a commonly used approximation
+of the binomial proportion confidence interval. See for example
+\emph{https://en.wikipedia.org/wiki/Binomial\_proportion\_confidence\_interval}.
+
+
 \end{document}
+
