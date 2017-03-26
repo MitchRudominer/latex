@@ -1,0 +1,52 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Commutative Algebra Notes}
+\author{Mitch Rudominer}
+
+\maketitle
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Rings and Ideals}
+
+
+\subsection{Exercises}
+These are exercises from Chapter 1 of \cite{AtiyahBook}.
+
+\begin{exercise}[exercise 21]Let $\phi:A\map B$ be a ring homomorhpishm. Let $X=\Spec(A)$
+and $Y=\Spec(B)$. Notice that if $\fq\in Y$, then $\phi^{-1}[\fq]\in X$ so $\phi$ induces a mapping
+$\phistar:Y\map X$.
+\begin{enumerate}
+\item[(iii)] If $\fb$ is any ideal of $B$ then $\overline{\phistar[V(\fb)]} = V(\fb^c)$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+(iii) Let $\fp\in \phistar[V(\fb)]$. Then there is $\fq\in V(\fb)$ s.t.
+$\fp=\phi^{-1}[\fq]$. So $\fp\in V(\fb^c)$. Since $V(\fb^c)$ is closed we have
+$\overline{\phistar[V(\fb)]} \subseteq V(\fb^c)$.
+
+Suppose towards a contradiction that the containment were proper.
+Then there is an $E\subseteq A$
+such that $\overline{\phistar[V(\fb)]} = V(E)$ and $r(\fb^c) \subsetneqq E$
+and $E\subseteq\fp$ for all $\fp$ in $\phistar[V(\fb)]$.
+
+Let $a\in E - r(\fb^c)$. Then $\phi(a)\in\fq$ for all $\fq\in V(\fb)$. But this means that
+$\phi(a)\in r(\fb)$ and so $a\in r(\fb^c)$, contradiction.
+\end{proof}
+
+\bibliographystyle{amsalpha}
+
+\bibliography{math}
+
+\end{document}
