@@ -24,6 +24,31 @@
 \subsection{Exercises}
 These are exercises from Chapter 1 of \cite{AtiyahBook}.
 
+\begin{exercise}[exercise 20]
+(iv) If $A$ is a ring and $X=\Spec(A)$, then the irredecible components of $X$ are
+the closed sets $V(\fp)$ where $\fp$ is a minimal prime ideal.
+\end{exercise}
+\begin{proof}
+In any toplogical space the closure of a point is irreducible and $V(\fp)$ is the closure of $\singleton{\fp}$
+so it is irreducible. An arbitrary closed set in $\Spec(A)$ is of the form $V(\fa)$ for
+some ideal $\fa$ such that $\fa=r(\fa)$. If $\fa$ is not prime then there are two points
+$a,b\notin\fa$ (so that $X_a\intersect V(\fa)\not=\emptyset$ and
+$X_b\intersect V(\fa) \not=\emptyset$) such that $ab \in \fa$ (so that
+$X_a\intersect X_b \intersect \fa = \emptyset$) so $V(\fa)$ is not irreducible.
+In other words the only closed irreducible sets are of the form $V(\fp)$ for
+$\fp$ prime.
+
+In any topological space if a point $x$ is in the closure of a different point
+$y$ then the closure of $\singleton{x}$ is not a maximal irreducible set so
+if $\fp$ is not a minimal prime ideal then $V(\fp)$ is not an irreducible
+component.
+
+Finally suppose $\fp$ a prime ideal and $V(\fp)$ is not a maximal irreducible
+set. Then by the discussion above there must be a prime ideal $\fq\subset\fp$
+in order to yield a closed irreducible set $V(\fq)\supset V(\fp)$, and so
+$\fp$ is not a minimal prime ideal.
+\end{proof}
+
 \begin{exercise}[exercise 21]Let $\phi:A\map B$ be a ring homomorhpishm. Let $X=\Spec(A)$
 and $Y=\Spec(B)$. Notice that if $\fq\in Y$, then $\phi^{-1}[\fq]\in X$ so $\phi$ induces a mapping
 $\phistar:Y\map X$.
@@ -43,6 +68,33 @@ and $E\subseteq\fp$ for all $\fp$ in $\phistar[V(\fb)]$.
 
 Let $a\in E - r(\fb^c)$. Then $\phi(a)\in\fq$ for all $\fq\in V(\fb)$. But this means that
 $\phi(a)\in r(\fb)$ and so $a\in r(\fb^c)$, contradiction.
+\end{proof}
+
+\begin{exercise}[exercise 22] Let $A = A_1 \otimes A_2$ be a direct product of rings.
+Then $\Spec(A)$ is the disjoint union of two clopen sets $\Spec(A) = U_1 \union U_2$
+where $U_1$ is canonically homeomorphic to $\Spec(A_1)$ and $U_2$ is canonically
+homeomorphic to $\Spec(A_2)$.
+\end{exercise}
+\begin{proof}
+Let $U_1=X_{(1,0)}$ and $U_2=X_{(0, 1)}$. These sets are disjoint because no prime ideal
+can omit both $(0, 1)$ and $(1,0)$ because then it would omit their product $(0, 0)$.
+The sets cover $\Spec(A)$ because no prime ideal can contain both $(0, 1)$ and
+$(1, 0)$ because then it would contain their sum $(1, 1)$.
+
+Let $\fp\in X_{(1, 0)}$.
+Then $(0, 1) \in \fp$ which means that $\fp = \fq \times A_2$ for some $\fq \subseteq A_1$ and then
+it is easy to see that in fact $\fq$ is a prime ideal, $\fq \in \Spec(A_1)$.
+Conversely let $\fq \in \Spec(A_1)$. Then $\fq \times A_2$ is a prime ideal of $A$.
+Thus there is a canonical bijection $\pi:\Spec(A_1) \map U_1$ given by
+$\pi(\fq) = \fq \times A_2$.
+
+To see that $\pi$ is a homeomorphism notice that if $a\in A_1$ then $\pi[X_a]=X_{(a, 0)}$ so
+$\pi^{-1}$ is continuous. Conversely for any $(a, b)$, $\pi^{-1}[X_{(a,b)}] = X_a$, so $\pi$  is continuous.
+
+Similarly $U_2$ is canonically homeomorphic to $\Spec(A_2)$.
+
+As an aside we note that $X_{(a, b)} \subseteq U_1$ iff $b$ is nilpotent. pf. $b$ is nilpotent iff
+for all $\fr\in\Spec(A_2)$, $(a,b)\in A_1 \times \fr$ iff $U_2 \intersect X_{(a,b)}=\emptyset$.
 \end{proof}
 
 \bibliographystyle{amsalpha}
