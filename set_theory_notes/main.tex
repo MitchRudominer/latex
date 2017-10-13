@@ -992,6 +992,61 @@ This is correct and sounds very similar to the incorrect definition of weakly co
 $\alpha$, not just $\alpha$ in an arbitrary domain.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Descriptive Set Theory}
+
+\begin{lemma}[Exercise 7.2 from \cite{Kechris_CDST}] Let $X$ be a second-countable, zero-dimensional space.
+Let $A$ and $B$ be disjoint closed sets. Then they can be separated by clopen sets.
+\end{lemma}
+\begin{proof}
+Let $\setof{U_n}{n\in\omega}$ be a basis of clopen sets. First we
+
+\begin{claim}
+Without loss of generality, we may assume that for all $n$, $U_n\intersect A \intersect B = \emptyset$.
+\end{claim}
+
+\begin{subproof}
+Let's say that a $U_n$ is \emph{good} if $U_n\intersect A \intersect B = \emptyset$.
+Let $G$ be any open set and we will show $G$ is the union of good $U_n$. Let
+$G_1 = G\setminus B$ and let $G_2 = G\setminus A$. Then $G=G_1\union G_2$ and $G_1$ and $G_2$ are each the union of
+good $U_n$.
+\end{subproof}
+
+Now we will partition $X$ into two clopen sets $X=G_A \union G_B$ such that $A\subset G_A$ and $B \subset G_B$.
+We build up $G_A$ and $G_B$ by inductively throwing (part of) each $U_n$ into either $G_A$ or $G_B$. More
+precisely we will define clopen sets $G^n_A$ and $G^n_B$ such that $G^n_A \subset G^{n+1}_A$ and
+$G^n_B \subset G^{n+1}_B$ and $G^n_A \intersect G^n_B = \emptyset$ and $A\intersect G^n_B = \emptyset$
+and $B\intersect G^n_A = \emptyset$, and then we will let
+$G_A = \Union{n} G^n_A$ and $G_B = \Union{n} G^n_B$.
+
+Suppose we have defined
+$G^i_A$ and $G^i_B$ for all $i < n$. If $n=0$ then let $G^{-1}_A=G^{-1}_B=\emptyset$.
+By induction assume that $G^{n-1}_A \intersect G^{n-1}_B = \emptyset$ and that
+$G^{n-1}_A\intersect B = \emptyset$ and $G^{n-1}_B\intersect A = \emptyset$.
+
+If $A\intersect U_n \not= \emptyset$ then we define
+$G^n_A = G^{n-1}_A \union U_n \setminus G^{n-1}_B$ and $G^n_B = G^{n-1}_B$. Otherwise we define
+$G^n_A = G^{n-1}_A$ and $G^n_B = G^{n-1}_B \union U_n \setminus G^{n-1}_A$.
+
+Notice that we have maintained the inductive hypotheses that $G^n_A\intersect G^n_B = \emptyset$,
+$G^n_A\intersect B = \emptyset$, $G^n_B\intersect A = \emptyset$, and $G^n_A$ and $G^n_B$ are
+both clopen.
+
+Now let $G_A = \Union{n} G^n_A$ and $G_B = \Union{n} G^n_B$. We have that $G_A\intersect G_B = \emptyset$,
+and that $G_A$ and $G_B$ are open. So it suffices to see that $X = G_A \union G_B$ and that
+$A \subseteq G_A$ and $B \subseteq G_B$.
+
+Let $x \in X$ and let $n$ be least such that $n \in U_n$. Then by construction we see that
+either $x \in G^{n-1}_A$ or $x \in G^{n-1}_B$ or $X \in G^n_A$ or $x \in G^n_B$. Therefore
+$x \in G_A$ or $x \in G_B$.
+
+To see that $A\subseteq G_A$ and $B\subseteq G_B$ notice that $A\intersect G_B = \emptyset$
+and $B\intersect G_A = \emptyset$.
+
+\end{proof}
+
+
 \bibliographystyle{amsalpha}
 
 \bibliography{math}
