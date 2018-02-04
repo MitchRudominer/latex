@@ -5,6 +5,7 @@
 \usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
 \include{mathdefs}
 
+\newtheorem*{claim}{claim}
 \newtheorem*{warning}{Warning}
 \newtheorem*{question}{Question}
 
@@ -80,10 +81,10 @@
 % - Talk about 30s to 2min per frame. So there should be between about
 %   15 and 30 frames, all told.
 
-\section{Themes}
+\section{Preview}
 
 
-\begin{frame}{The Study of Definable Sets of Reals}
+\begin{frame}{Descriptive Set Theory \\ The study of \emph{definable} sets of reals}
 
 What does "definable" mean?
 
@@ -213,7 +214,7 @@ A \textbf{well-order} is a pair $(A, <)$ where $<$ is a well-ordering of $A$.
 
 \begin{itemize}
   \item  Every two well-orders $(A, <_A)$ and $(B, <_B)$ are comparable.
-  \item  A finite well-order is isomorphic to a an integer $n\geq 0$.
+  \item  A finite well-order is isomorphic to an integer $n\geq 0$.
   \item The \emph{order-type} of a well-order is the class of all well-orders
   isomorphic to it.
   \item The \emph{ordinals} are canoncial representatives of the
@@ -255,6 +256,113 @@ already a non-measurable set (as a subset of $\R^2$).
 \end{fact}
 
 \end{frame}
+
+\subsection{The Continuum Hypothesis}
+
+\begin{frame}{Cardinals}
+
+\begin{definition}
+\begin{itemize}
+  \item $|A| = |B|$ iff there is a bijection $f:A\bijection B$.
+  \item Say $A$ and $B$ are \emph{equinumerous} or have the same \emph{cardinality}
+  \item We use certain ordinals as the canonical represetatives of each cardinality.
+  \item A \emph{cardinal} is an ordinal that is least with its cardinality.
+  \item  $\aleph_0 = |\omega|$ is the cardinality of the countable
+  \item  $\aleph_1 = |\omega_1|$ is the first uncountable cardinal
+  \item $\fc  = 2^{\aleph_0} = |\R|$
+\end{itemize}
+
+\end{definition}
+
+\end{frame}
+
+\begin{frame}{The Continuum Hypothesis}
+
+\begin{fact}
+\begin{itemize}
+  \item $\R$ is uncountable
+  \item So $\aleph_0 < \fc$
+  \item So $\aleph_0 < \aleph_1 \leq \fc$
+\end{itemize}
+\end{fact}
+
+\begin{question}
+Is there a set $A \subseteq \R$ s.t. $|\omega| < |A| < |\R|$?
+\end{question}
+
+\begin{definition}
+\begin{itemize}
+  \item CH is the assertion that there is no such $A$
+  \item Equivalently that $\fc = \aleph_1$.
+\end{itemize}
+\end{definition}
+
+\end{frame}
+
+\begin{frame}{CH and Descriptive Set Theory}
+
+\begin{question}
+Can we explicitly define a set $A$ that contradicts CH?
+\end{question}
+
+\begin{question}
+Alternatively can we somehow show that every "definable" subset of
+$\R$ satisfies CH?
+\end{question}
+
+\end{frame}
+
+\begin{frame}{Perfect Sets}
+
+\begin{definition}
+$A\subseteq\R$ is \emph{perfect} iff it is closed, non-empty
+and has no isolated points.
+\end{definition}
+
+\begin{lemma}
+If $A$ is perfect then $|A| = \fc$.
+\end{lemma}
+
+\begin{definition}
+\begin{itemize}
+  \item $A\subseteq\R$ has the \emph{perfect set property} iff it is either
+  countable or contains a perfect set.
+  \item So $A$ does \emph{not} violate CH.
+\end{itemize}
+\end{definition}
+\end{frame}
+
+\begin{frame}{Proof of Lemma}
+
+\begin{block}{Proof.}
+\begin{itemize}
+  \item  Let $A$ be a perfect set.
+
+  \item  Let $\cC$ be the set of all infinite sequences of bits.
+
+  \item  We will define an injection $f : \cC \injection A$.
+
+  \item  This suffices since $|\cC| = \fc$.
+
+  \item  For example consider binary expansion of the numbers between 0 and 1.
+
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Proof of Lemma (continued)}
+
+\begin{claim}
+If $A$ is perfect and $I$ is an open interval and $I \intersect A \neq
+\emptyset$ and $\epsilon > 0$ then there are two open intervals $I_1$ and
+$I_2$ of length less $\epsilon$ such that the closures of $I_1$ and
+$I_2$ are disjoint and contained in $I$ and such that $I_1$ and $I_2$
+both intersect $A$.
+\end{claim}
+
+\end{frame}
+
 
 
 \end{document}

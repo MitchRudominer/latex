@@ -3,7 +3,7 @@
 \headcommand {\beamer@framepages {1}{1}}
 \headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
 \headcommand {\beamer@framepages {2}{2}}
-\headcommand {\sectionentry {1}{Themes}{3}{Themes}{0}}
+\headcommand {\sectionentry {1}{Preview}{3}{Preview}{0}}
 \headcommand {\beamer@sectionpages {1}{2}}
 \headcommand {\beamer@subsectionpages {1}{2}}
 \headcommand {\slideentry {1}{0}{3}{3/9}{}{0}}
@@ -33,8 +33,23 @@
 \headcommand {\beamer@framepages {46}{48}}
 \headcommand {\slideentry {2}{2}{6}{49/52}{The Axiom of Choice}{0}}
 \headcommand {\beamer@framepages {49}{52}}
-\headcommand {\beamer@partpages {1}{52}}
-\headcommand {\beamer@subsectionpages {26}{52}}
-\headcommand {\beamer@sectionpages {15}{52}}
-\headcommand {\beamer@documentpages {52}}
-\headcommand {\def \inserttotalframenumber {13}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{53}{The Continuum Hypothesis}}\headcommand {\beamer@subsectionpages {26}{52}}
+\headcommand {\slideentry {2}{3}{1}{53/53}{The Continuum Hypothesis}{0}}
+\headcommand {\beamer@framepages {53}{53}}
+\headcommand {\slideentry {2}{3}{2}{54/61}{The Continuum Hypothesis}{0}}
+\headcommand {\beamer@framepages {54}{61}}
+\headcommand {\slideentry {2}{3}{3}{62/69}{The Continuum Hypothesis}{0}}
+\headcommand {\beamer@framepages {62}{69}}
+\headcommand {\slideentry {2}{3}{4}{70/71}{The Continuum Hypothesis}{0}}
+\headcommand {\beamer@framepages {70}{71}}
+\headcommand {\slideentry {2}{3}{5}{72/76}{The Continuum Hypothesis}{0}}
+\headcommand {\beamer@framepages {72}{76}}
+\headcommand {\slideentry {2}{3}{6}{77/82}{The Continuum Hypothesis}{0}}
+\headcommand {\beamer@framepages {77}{82}}
+\headcommand {\slideentry {2}{3}{7}{83/83}{The Continuum Hypothesis}{0}}
+\headcommand {\beamer@framepages {83}{83}}
+\headcommand {\beamer@partpages {1}{83}}
+\headcommand {\beamer@subsectionpages {53}{83}}
+\headcommand {\beamer@sectionpages {15}{83}}
+\headcommand {\beamer@documentpages {83}}
+\headcommand {\def \inserttotalframenumber {20}}
