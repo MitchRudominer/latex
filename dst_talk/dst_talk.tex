@@ -101,7 +101,7 @@ The study of \emph{definable} sets of reals
   \item Examples:
   \item $\setof{x\in\R}{\text{decimal expansion of $x$ has inf many 5's}}$
   \item $\setof{y\in\R}{\exists x\in\R \text{ s.t. } y=\fprime(x)}$ where $f$ is some continuous function.
-  \item As opposed to an arbitrary set
+  \item As opposed to a set asserted to exist because of the Axiom of Choice
   \item Later we'll give two precise definitions
   \end{itemize}
 
@@ -127,40 +127,22 @@ The study of \emph{definable} sets of reals
 \subsection{A non-measurable set}
 
 \begin{frame}{A non-measurable set}
+
 \begin{theorem}
 There is a set of reals that is not Lebesgue Measurable.
 \end{theorem}
 
-\vfill
-
-\pause
-You need to know very little  about what Lebesgue measure is to
-understand the proof. Only that it is
-\begin{itemize}
-  \item countably additive
-  \item translation invariant
-\end{itemize}
-
-\end{frame}
-
-
-\begin{frame}{proof}
-
-\begin{proof}[proof (Vitali 1905)]
-We are going to construct a set
-$A \subseteq [0, 1]$ so that $[0,1] = A_0 \union A_1 \union \cdots$ where each
-$A_n$ is a rigid copy of $A$. Such an $A$ cannot be measurable. Why?
+\begin{proof}[Proof sketch (Vitali 1905)]
 
 \begin{itemize}
   \item Say $x\equiv y$ iff $x-y$ is rational.
   \item $\equiv$ is an equivalance relation.
   \item Let $A$ be a set that chooses one element of each equivalance class.
-  \item Let $\sequence{q_n}{n = 1,2,\cdots}$ enumerate all rational numbers in
-$[0,1]$.
-   \item Let $A_n = A + q_n$ (mod $\Z$).
 \end{itemize}
 \end{proof}
+
 \end{frame}
+
 
 \subsection{The Axiom of Choice}
 
@@ -188,98 +170,9 @@ $A\subseteq \R$ \textbf{is} measurable?
 
 \end{frame}
 
-\begin{frame}{Well-orderings}
 
-\begin{definition}
-A \textbf{strict linear ordering} of a set $A$ is a binary relation $<$ that is
-
-\begin{itemize}
-  \item transitive
-  \item asymmetric
-  \item connected
-\end{itemize}
-
-\end{definition}
-
-\begin{definition}
-A \textbf{well-ordering} of a set $A$ is a srict linear ordering $<$ s.t.
-
-\begin{itemize}
-  \item every subset of $A$ has a $<$-least element.
-\end{itemize}
-
-\end{definition}
-
-\begin{definition}
-A \textbf{well-order} is a pair $(A, <)$ where $<$ is a well-ordering of $A$.
-\end{definition}
-
-\end{frame}
-
-\begin{frame}{The Ordinals}
-
-\begin{itemize}
-  \item  Every two well-orders $(A, <_A)$ and $(B, <_B)$ are comparable.
-  \item  A finite well-order is isomorphic to an integer $n\geq 0$.
-  \item The \emph{order-type} of a well-order is the class of all well-orders
-  isomorphic to it.
-  \item The \emph{ordinals} are canoncial representatives of the
-    order-types of the well-orders.
-  \item Transfinite counting numbers.
-  \item $\omega = \singleton{0, 1, 2, \cdots }$ is the set of non-negative
-    integers. $\omega$ is the first infinite ordinal.
-  \item  $\omega_1 = $ the set of all countable ordinals, is the first
-    uncountable ordinal
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{AC and well-orders}
-
-The following are equivalent:
-\begin{itemize}
-  \item  The Axiom of Choice
-  \item  Every set can be well-ordered.
-  \item For every set $A$ there is a bijection between some ordinal and $A$.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{A well-ordering of the Reals}
-
-\begin{itemize}
-  \item  In particular AC implies: \emph{There is a well-ordering of $\R$.}
-  \item  This suffices for the Vitali proof.
-\end{itemize}
-
-\begin{question}
-Can we \textbf{explicitly define} a well-ordering of $\R$?
-\end{question}
-
-\begin{fact}
-If $<$ is a well-ordering of $\R$ then $<$ itself is
-already a non-measurable set (as a subset of $\R^2$).
-\end{fact}
-
-\end{frame}
 
 \subsection{The Continuum Hypothesis}
-
-\begin{frame}{Cardinals}
-
-\begin{definition}
-\begin{itemize}
-  \item $|A| = |B|$ iff there is a bijection $f:A\bijection B$.
-  \item Say $A$ and $B$ are \emph{equinumerous} or have the same \emph{cardinality}
-  \item We use certain ordinals as the canonical represetatives of each cardinality.
-  \item A \emph{cardinal} is an ordinal that is least with its cardinality.
-  \item  $\aleph_0 = |\omega|$ is the cardinality of the countable
-  \item  $\aleph_1 = |\omega_1|$ is the first uncountable cardinal
-  \item $\fc  = 2^{\aleph_0} = |\R|$
-\end{itemize}
-\end{definition}
-
-\end{frame}
 
 \begin{frame}{The Continuum Hypothesis}
 
@@ -304,19 +197,6 @@ Is there a set $A \subseteq \R$ s.t. $|\omega| < |A| < |\R|$?
 
 \end{frame}
 
-\begin{frame}{CH and Descriptive Set Theory}
-
-\begin{question}
-Can we explicitly define a set $A$ that contradicts CH?
-\end{question}
-
-\begin{question}
-Alternatively can we somehow show that every "definable" subset of
-$\R$ satisfies CH?
-\end{question}
-
-\end{frame}
-
 \subsection{The Perfect Set Property}
 
 \begin{frame}{Perfect Sets}
@@ -334,7 +214,7 @@ If $A$ is perfect then $|A| = \fc$.
 
 \begin{frame}{Proof of Lemma}
 
-\begin{block}{Proof.}
+\begin{proof}{Proof sketch.}
 \begin{itemize}
   \item  Let $A$ be a perfect set.
 
@@ -342,68 +222,12 @@ If $A$ is perfect then $|A| = \fc$.
 
   \item  We will define an injection $f : \cC \injection A$.
 
-  \item  This suffices since $|\cC| = \fc$.
 
-  \item  For example consider binary expansion of the numbers between 0 and 1.
-
-\end{itemize}
-\end{block}
-\end{frame}
-
-
-\begin{frame}{Proof of Lemma (continued: 2)}
-
-\begin{claim}
-If $A$ is perfect and $I$ is an open interval and $I \intersect A \neq
-\emptyset$ and $\epsilon > 0$ then there are two open intervals $I_1$ and
-$I_2$ of length less $\epsilon$ such that the closures of $I_1$ and
-$I_2$ are disjoint and contained in $I$ and such that $I_1$ and $I_2$
-both intersect $A$.
-\end{claim}
-
-\begin{subproof}[proof of claim]
-Let $x_1 \neq x_2$ be in $I \cap A$, which is posible because $A$
-contains no isolated points. Let $I_1$ and $I_2$ be sufficiently small,
-disjoint intervals containing $x_1$ and $x_2$ respectively.
-\end{subproof}
-
-\end{frame}
-
-\begin{frame}{Proof of Lemma (continued: 3)}
-
-For each $s$, a finite sequence of bits, define by induction on $\length(s)$
-an open interval $I_s$ such that
-
-\pause
-
-\begin{itemize}
-  \item  $I_s \intersect A \neq \emptyset$
-
-  \item   $\length(I_s) < \frac{1}{\length(s) + 1}$
-
-  \item  $\overline{I_{s \adjoin 0}} \subseteq I_s$ and $\overline{I_{s \adjoin 1}} \subseteq I_s$
-
-  \item  $\overline{I_{s \adjoin 0}} \intersect \overline{I_{s \adjoin 1}} = \emptyset$
+  \item Hint: Define a tree of open intervals labelled by finite sequence of
+  bits.
 
 \end{itemize}
-
-\pause
-
-This is possible by repeatedly applying the claim.
-
-\end{frame}
-
-\begin{frame}{Proof of Lemma (continued: 4)}
-
-Now for $x\in\cC$ define $f(x)$ to be the unique point in the
-intersection of $I_s$ such that $s$ is an initial segment of $x$.
-
-Then
-$$f : \cC \injection A$$
-
-
-$\qed$
-
+\end{proof}
 \end{frame}
 
 \begin{frame}{The Perfect Set Propety}
@@ -418,21 +242,19 @@ $\qed$
 \end{itemize}
 \end{definition}
 
+\end{frame}
+
+\begin{frame}{A set without the perfect set property}
+
 \begin{lemma}
 There is a set that does not have the perfect set property.
 \end{lemma}
-
-\end{frame}
-
-\begin{frame}{Proof of Lemma}
 
 \begin{proof}[Proof sketch]
 \begin{itemize}
   \item Enumerate all perfect sets in a sequence of order type $\fc$:
   \item $\sequence{P_{\alpha}}{\alpha < \fc}$
   \item By induction on $\alpha$ build disjoint $A$, $B$ such that both meet $P_{\alpha}$.
-  \item This is possible because there are $\fc$ reals so at
-         each stage of the induction we haven't used them all up yet.
   \item Then $A$ and $B$ are disjoint, uncountable, and they each meet every
         perfect set so neither of them contain any perfect set.
 \end{itemize}
@@ -461,110 +283,50 @@ $A\subseteq \R$ \textbf{does} have the perfect set property?
 
 \subsection{The simplest definable sets}
 
-\begin{frame}{Computably Open Sets}
-
-\begin{definition}
-\begin{itemize}
-  \item A rational open interval is an interval $(a, b)$ s.t.
-        $a<b$ are rational numbers.
-  \item A \emph{computably open} set is a set of the form
-  $$(a_0, b_0) \union (a_1, b_1) \union \cdots$$
-  where $\sequence{a_n}{n\in\omega}$ and
-  $\sequence{b_n}{n\in\omega}$ are computably enumerable
-  sequences of rationals.
-  \item There are semi-decision procedures for membership in these kinds
-  of sets.
-  \item $A$ is \emph{computably closed} iff its compliment is computably open.
-\end{itemize}
-\end{definition}
-
-\end{frame}
-
 \begin{frame}{Open Sets}
 
-\begin{definition}
+We take \emph{open} and \emph{closed} sets as our most simply "definable" sets.
+
+\pause
+
 \begin{itemize}
-  \item An \emph{open} set is a set of the form
-  $$(a_0, b_0) \union (a_1, b_1) \union \cdots$$
-  where $\sequence{a_n}{n\in\omega}$ and
-  $\sequence{b_n}{n\in\omega}$ are \emph{arbitrary} sequences of rationals.
-  \item There are semi-decision procedures for membership in these kinds
-  of sets that use $\sequence{a_n}{n\in\omega}$ and
-  $\sequence{b_n}{n\in\omega}$ as \emph{oracles.}
-  \item Key point: Open sets may be considered to be computably open
-  \emph{relative to some parameter $x$}.
-  \item $x$ may be considered to be a sequence of integers.
-  \item $A$ is \emph{closed} iff its compliment is open.
+  \item An open set may be written as a union of countably many
+  \emph{rational open intervals}
+  $$A = (a_0, b_0) \union (a_1, b_1) \union \cdots$$
+  \item Let $x$ be a sequence of integers that encodes the sequences
+  $\sequence{a_n}{n\in\omega}$ and $\sequence{b_n}{n\in\omega}$.
+  \item We think of $x$ as a \emph{parameter} in the definition
+  of $A$.
+  \item $A$ is very simply definable relative to the parameter $x$.
+  \item There is a semi-decision procedures for membership in $A$ that
+  uses $x$ as an \emph{oracle.}
 \end{itemize}
-\end{definition}
 
 \end{frame}
 
 
 \begin{frame}{Closed Sets have the Perfect Set Property}
 
-\begin{theorem}
+\begin{theorem}[Cantor-Bendixson, 1883]
 Closed sets have the perfect set propety.
 \end{theorem}
 
-\begin{definition}
-Suppose $A\subseteq \R$ and $x\in A$. We will say that $x$ is a
-\emph{condensation point} of $A$ if every open neighborhood of $x$ contains
-uncountably many elements of $A$.
-\end{definition}
+\begin{proof}[Proof sketch.]
+\begin{itemize}
+\item Write $F = F^* \union C$, $F^*\intersect C = \emptyset$, where
+\item $F^*$ is the set of accumulation points of $F$.
+\item Show $C$ is countable
+\item Show $F^*$ is perfect if it is not empty.
+\end{itemize}
+\end{proof}
 
-\begin{definition}
-Let $F$ be any set of reals. Then $F^*$ is the set of condensation points
-of $F$.
-\end{definition}
-
-\begin{observation}
-$F^*$ is closed.
-\end{observation}
+\begin{corollary}
+CH holds for closed sets.
+\end{corollary}
 
 \end{frame}
 
-\begin{frame}{Proof of Theorem}
-\begin{block}{Proof.}
-Let $F$ be any closed set. We want to show that either $F$ is countable or
-else $F$ contains a perfect subset.  Write $F = F^* \union C$ where
-$C=F-F^*$.
-
-\begin{claim}[1]
-$C$ is countable.
-\end{claim}
-
-\begin{claim}[2]
-$F^*$ is perfect if it is not empty
-\end{claim}
-
-\pause
-
-These two claims suffice.
-
-\end{block}
-
-\end{frame}
-
-\begin{frame}{Proof of Theorem (continued: 2)}
-\begin{subproof}[proof of claim 1]
-$C$ is the union of countably many sets $I_n \intersect F$ where the
-$I_n$ enumerate the rational open intervals whose intersection
-with $F$ are countable.
-\end{subproof}
-
-\begin{subproof}[proof of claim 2]
-Suppose $F^* \neq \emptyset.$ Let $x\in F^*$ and let $I$ be an open
-neighborhood of $x$. Then $I$ contains uncountably many elements of $F$ and
-since $C$ is countable, $I$ contains at least one element of $F^*$, so $x$
-is not an isolated point of $F^*$.
-\end{subproof}
-
-\qed
-
-\end{frame}
-
-\subsection{The Projective Hierarchy}
+\subsection{The projective hierarchy}
 
 \begin{frame}{Extending the Perfect Set Theorem}
 
@@ -594,43 +356,13 @@ It's also closed under countable intersections.
 \end{remark}
 
 \begin{fact}
-Because the collection of Lebesgue Measurable sets is a sigma algebra,
-every Borel set is Lebesgue measurable.
+All Borel sets are Lebesgue measurable.
 \end{fact}
 
-\begin{fact}
-It's also true that Borel sets have the perfect set property.
-\end{fact}
-
-\end{frame}
-
-\begin{frame}{The Borel Hierarchy}
-The Borel sets can be ramified into a hierarchy.
-
-\pause
-
-For $A\subseteq \R^{n}$ we say that $A$ is
-
-\begin{itemize}
-\item  $\bSigma^0_1$ iff it is open
-\item  $\bPi^0_1$ iff it is closed
-\item and then for $\alpha > 1$ a countable ordinal,
-\item $\bSigma^0_{\alpha}$ iff it is the countable union of
-       $\bPi^0_{\beta}$ sets for $\beta < \alpha$
-\item $\bPi^0_{\alpha}$ iff it is the compliment of a
-      $\bSigma^0_{\alpha}$ set
-\item $\bDelta^0_{\alpha}$ iff it is both
-      $\bSigma^0_{\alpha}$ and $\bPi^0_{\alpha}$
-\end{itemize}
-
-\begin{fact}
-These \textbf{pointclasses} form a \text{proper hierarchy} whose union
-is the Borel sigma algebra.
-\end{fact}
-
-\begin{remark}
-Notice the \textbf{boldface} font for $\bSigma$, $\bPi$ and $\bDelta$.
-\end{remark}
+\begin{theorem}[Aleksandrov, Hausdorf, 1916]
+All Borel sets have the perfect set property. \\
+(So CH holds for the Borel sets.)
+\end{theorem}
 
 \end{frame}
 
@@ -644,7 +376,6 @@ For $A\subseteq \R^{k}$ we say that $A$ is
 \begin{itemize}
 \item  $\bSigma^1_1$ iff it is the \emph{projection} of a Borel subset of $\R^{k+1}$
 \item  $\bPi^1_1$ iff it is the compliment of a $\bSigma^1_1$ set.
-\item and then for $n \geq 1$ an integer,
 \item $\bSigma^1_{n+1}$ iff it is the projection of a $\bPi^1_n$ subset of $\R^{k+1}$
 \item $\bPi^1_{n}$ iff it is the compliment of a
       $\bSigma^1_{n}$ set
@@ -665,6 +396,107 @@ For $A\subseteq \R^{k}$ we say that $A$ is
 
 \end{frame}
 
+\begin{frame}{Analytic Sets}
+
+\begin{theorem}[Luzin, 1917]
+All $\bSigma^1_1$ (and $\bPi^1_1$) sets are Lebesgue measurable.
+\end{theorem}
+
+\begin{theorem}[Suslin, 197]
+All $\bSigma^1_1$  sets have the perfect set property.
+\end{theorem}
+
+\begin{question}
+Are all $\bSigma^1_2$ sets Lebesgue measurable?
+\end{question}
+
+\begin{question}
+Do all $\bPi^1_1$ sets have the perfect set property?
+\end{question}
+
+\end{frame}
+
+\section{The Line between Regular and Exotic}
+
+\subsection{Independence, Consistency Strength and Large Cardinals}
+
+\begin{frame}{Second Incompleteness Theorem}
+\begin{theorem}[G\"{o}del's Second Incompleteness]
+Any sufficiently strong theory cannot prove its own consistency.
+\end{theorem}
+
+\begin{definition}
+A \emph{theory} is a set of sentences.
+\end{definition}
+
+\begin{itemize}
+\item $\con(T)$ means $T$ is a consistent theory.
+\item G\"{o}del's theorem says that working in $T$, we cannot prove $\con(T)$.
+\item In symbols $T\not\vdash\con(T)$
+\item If $T\vdash\con(S)$ we say that $T$ has
+\emph{greater consistency strengh} than $S$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Relative Consistency}
+
+Let $T$ be a theory and $\sigma$ a sentence. We want to formalize the
+idea that $\sigma$ is \emph{independent} of $T$.
+
+\begin{itemize}
+\item $\con(T + \sigma)$ means $T$ cannot prove $\neg\sigma$, $T\not\vdash\neg\sigma$.
+\item $\con(T + \neg\sigma)$ means $T$ cannot prove $\sigma$, $T\not\vdash\sigma$.
+\item The problem is, if $T$ is sufficiently strong then working in $T$ we
+cannot even prove $\con(T)$ let alone $\con(T + \sigma)$.
+\item So we have to resort to provig \emph{relative consistency}:
+\item $\con(T) \implies \con(T + \sigma)$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{CH is independent of ZFC}
+
+\begin{theorem}[G\"{o}del, 1938]
+$\con(\ZFC) \implies \con(\ZFC + \CH)$
+\end{theorem}
+
+\begin{theorem}[Cohen, 1963]
+$\con(\ZFC) \implies \con(\ZFC + \neg\CH)$
+\end{theorem}
+
+\end{frame}
+
+\subsection{Lebesgue Measurability and the Perfect Set Property}
+
+\begin{frame}{Why the early descriptive set theorists were frustrated}
+\begin{theorem}[G\"{o}del, 1938]
+Let $\sigma$ be the sentence that asserts
+\begin{quotation}
+\emph{"There is a $\bDelta^1_2$ subset
+of $\R$ that is not Lebesgue measurable."}
+\end{quotation}
+Let $\tau$ be the sentence that asserts
+\begin{quotation}
+\emph{"There is a $\bPi^1_1$ subset of $\R$ that does not
+have the perfect set property."}
+\end{quotation}
+Then
+$$\con(\ZFC) \implies \con(\ZFC + \sigma + \tau)$$
+\end{theorem}
+\end{frame}
+
+\begin{frame}[Solovay's Model]
+\begin{theorem}
+Let $\sigma$ be the sentence that asserts "All projective sets are Lebesgue
+measurable and have the perfect set property". Then
+$$\con(\ZFC + \exists \text{inaccessible}) \implies \con(\ZFC + \sigma)$$.
+\end{theorem}
+\end{frame}
+
+\subsection{Determinacy}
+
+\subsection{The Strength of Projective Determinacy}
 
 
 \end{document}
