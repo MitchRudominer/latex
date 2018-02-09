@@ -101,8 +101,8 @@ The study of \emph{definable} sets of reals
   \item Examples:
   \item $\setof{x\in\R}{\text{decimal expansion of $x$ has inf many 5's}}$
   \item $\setof{y\in\R}{\exists x\in\R \text{ s.t. } y=\fprime(x)}$ where $f$ is some continuous function.
-  \item As opposed to a set asserted to exist because of the Axiom of Choice
-  \item Later we'll give two precise definitions
+  \item As opposed to a set shown to exist via the Axiom of Choice
+  \item "Definable" not precise. Replace with precise concept later.
   \end{itemize}
 
 
@@ -185,7 +185,7 @@ $A\subseteq \R$ \textbf{is} measurable?
 \end{fact}
 
 \begin{question}
-Is there a set $A \subseteq \R$ s.t. $|\omega| < |A| < |\R|$?
+Is there a set $A \subseteq \R$ s.t. $|\Z| < |A| < |\R|$?
 \end{question}
 
 \begin{definition}
@@ -298,8 +298,6 @@ We take \emph{open} and \emph{closed} sets as our most simply "definable" sets.
   \item We think of $x$ as a \emph{parameter} in the definition
   of $A$.
   \item $A$ is very simply definable relative to the parameter $x$.
-  \item There is a semi-decision procedures for membership in $A$ that
-  uses $x$ as an \emph{oracle.}
 \end{itemize}
 
 \end{frame}
@@ -402,7 +400,7 @@ For $A\subseteq \R^{k}$ we say that $A$ is
 All $\bSigma^1_1$ (and $\bPi^1_1$) sets are Lebesgue measurable.
 \end{theorem}
 
-\begin{theorem}[Suslin, 197]
+\begin{theorem}[Suslin, 1917]
 All $\bSigma^1_1$  sets have the perfect set property.
 \end{theorem}
 
@@ -422,7 +420,7 @@ Do all $\bPi^1_1$ sets have the perfect set property?
 
 \begin{frame}{Second Incompleteness Theorem}
 \begin{theorem}[G\"{o}del's Second Incompleteness]
-Any sufficiently strong theory cannot prove its own consistency.
+Any sufficiently strong consistent theory cannot prove its own consistency.
 \end{theorem}
 
 \begin{definition}
@@ -431,29 +429,20 @@ A \emph{theory} is a set of sentences.
 
 \begin{itemize}
 \item $\con(T)$ means $T$ is a consistent theory.
-\item G\"{o}del's theorem says that working in $T$, we cannot prove $\con(T)$.
+\item G\"{o}del's theorem says that, assuming $T$ is consistent,  working in
+$T$, we cannot prove $\con(T)$.
 \item In symbols $T\not\vdash\con(T)$
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Relative Consistency}
-
-Let $T$ be a theory and $\sigma$ a sentence. We want to formalize the
-idea that $\sigma$ is \emph{independent} of $T$.
-
-\begin{itemize}
-\item $\con(T + \sigma)$ means $T$ cannot prove $\neg\sigma$, $T\not\vdash\neg\sigma$.
-\item $\con(T + \neg\sigma)$ means $T$ cannot prove $\sigma$, $T\not\vdash\sigma$.
-\item Notice that if $T$ is sufficiently strong then working in $T$ we
-cannot even prove $\con(T)$ let alone $\con(T + \sigma)$.
-\item So we have to resort to provig \emph{relative consistency}:
-\item $\con(T) \implies \con(T + \sigma)$.
-\end{itemize}
-
-\end{frame}
-
 \begin{frame}{CH is independent of ZFC}
+
+\pause
+
+We can only prove \emph{relative} consistency.
+
+\pause
 
 \begin{theorem}[G\"{o}del, 1938]
 $\con(\ZFC) \implies \con(\ZFC + \CH)$
@@ -471,30 +460,27 @@ Let $S$ and $T$ be theores.
 \item If $\con(S) \implies \con(T)$ we say that the \emph{consistency strength}
 of $S$ is greater than or equal to the consistency strength of $T$. We think
 of this as a partial order on theories.
-\item Now suppose that $T\vdash\con(S)$
-\item Notice that then we must have that $\con(S) \not\implies \con(T)$.
-\item Because otherwise we would get $T\vdash\con(T)$ which violates second
+\item Now suppose that $S\vdash\con(T)$
+\item Notice that then we must have that $\con(T) \not\implies \con(S)$.
+\item Because otherwise we would get $S\vdash\con(S)$ which violates second
 incompleteness.
-\item Therefore we say that $T$ has
-\emph{greater consistency strengh} than $S$.
+\item Therefore we say that $S$ has
+\emph{greater consistency strengh} than $T$.
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Large Cardinals}
 
-\begin{definition}
-An \textbf{inaccessible} cardinal is a cardinal $\kappa$ this is a
 \begin{itemize}
-\item regular
-\item strong limit cardinal
-\end{itemize}
-\end{definition}
-
-\begin{itemize}
-\item $\ZFC + \text{ } \exists \text{ innacc.} \vdash \con(\ZFC)$.
+\item Large cardinals are the standard candles by which set theorists
+measure consistency strength.
+\item Infinite cardinals, the existence of which has consistency strength.
+\item They come in a hierarcny of consistency strength
+\item $\ZFC + \text{ } \exists \text{ innaccessible} \vdash \con(\ZFC)$.
 \item $\ZFC + \text{ } \exists \text{ measurable} \vdash \con(\ZFC + \text{ } \exists \text{ innacc.})$.
 \item $\ZFC + \text{ } \exists \text{ Woodin} \vdash \con(\ZFC + \text{ } \exists \text{ measurable})$.
 \end{itemize}
+
 \end{frame}
 
 \subsection{Lebesgue Measurability and the Perfect Set Property}
@@ -514,6 +500,8 @@ Let $\tau$ be the sentence that asserts:
 have the perfect set property."}
 \end{quotation}
 
+\pause
+
 Then
 $$\con(\ZFC) \implies \con(\ZFC + \sigma + \tau)$$
 \end{theorem}
@@ -526,15 +514,21 @@ Let $\sigma$ be the sentence that asserts:
 \emph{"All $\bPi^1_1$ sets have the perfect set property". }
 \end{quotation}
 
+\pause
+
 Then
 $$  \con(\ZFC + \sigma) \implies \con(\ZFC + \text{ } \exists \text{ inacc.})$$
 \end{theorem}
+
+\pause
 
 \begin{theorem}[Shelah, 1984]
 Let $\sigma$ be the sentence that asserts:
 \begin{quotation}
 \emph{"All $\bSigma^1_3$ sets are Lebesge measurable". }
 \end{quotation}
+
+\pause
 
 Then
 $$  \con(\ZFC + \sigma) \implies \con(\ZFC + \text{ } \exists \text{ inacc.})$$
@@ -546,31 +540,47 @@ $$  \con(\ZFC + \sigma) \implies \con(\ZFC + \text{ } \exists \text{ inacc.})$$
 \begin{frame}{Solovay's Model}
 \begin{theorem}[Solovay, 1970]
 
-Let $\sigma$ be the sentence that asserts:
+$$\con(\ZFC + \text{ } \exists \text{ inacc.}) \implies \con(\ZFC + \sigma)$$
+
+where
+
+$\sigma$ is the sentence that asserts:
+
 \begin{quotation}
-\emph{"All projective sets are Lebesgue
-measurable and have the perfect set property". }
+"\textbf{All projective} sets are Lebesgue
+measurable and have the perfect set property".
 \end{quotation}
 
-
-Then
-$$\con(\ZFC + \text{ } \exists \text{ inacc.}) \implies \con(\ZFC + \sigma)$$
 \end{theorem}
 \end{frame}
 
 \begin{frame}{Solovay's Model, 2}
 \begin{theorem}[Solovay, 1970]
 
-Let $\sigma$ be the sentence that asserts:
-\begin{quotation}
-\emph{"\textbf{All} sets of reals are Lebesgue
-measurable and have the perfect set property". }
-\end{quotation}
-
-
-Then
 $$\con(\ZFC + \text{ } \exists \text{ inacc.}) \implies \con(\ZF + \sigma)$$
+
+where
+
+$\sigma$ is the sentence that asserts:
+
+\begin{quotation}
+"\textbf{All} sets are Lebesgue
+measurable and have the perfect set property".
+\end{quotation}
 \end{theorem}
+\end{frame}
+
+\begin{frame}{Summarizing the last few slides}
+
+The following are equiconstent:
+
+\begin{itemize}
+  \item $\ZFC + \text{ } \exists \text{ inacc.}$
+  \item ZFC plus all $\bPi^1_1$ sets have the perfet set property and all $\bSigma^1_2$ sets are Lebesgue measurable.
+  \item ZFC plus all projective sets have the perfect set property and are Lebesgue measurable.
+  \item ZF plus all sets have the perfect set property and are Lebesgue measurable.
+\end{itemize}
+
 \end{frame}
 
 

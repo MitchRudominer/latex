@@ -304,3 +304,19 @@ Notice the \textbf{boldface} font for $\bSigma$, $\bPi$ and $\bDelta$.
 \end{remark}
 
 \end{frame}
+
+\begin{frame}{Relative Consistency}
+
+Let $T$ be a theory and $\sigma$ a sentence. We want to formalize the
+idea that $\sigma$ is \emph{independent} of $T$.
+
+\begin{itemize}
+\item $\con(T + \sigma)$ means $T$ cannot prove $\neg\sigma$, $T\not\vdash\neg\sigma$.
+\item $\con(T + \neg\sigma)$ means $T$ cannot prove $\sigma$, $T\not\vdash\sigma$.
+\item Notice that if we want to work in  a theory no stronger than $T$,
+we cannot even prove $\con(T)$ let alone $\con(T + \sigma)$.
+\item So we have to resort to provig \emph{relative consistency}:
+\item $\con(T) \implies \con(T + \sigma)$.
+\end{itemize}
+
+\end{frame}
