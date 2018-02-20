@@ -94,11 +94,17 @@
 \headcommand {\beamer@subsectionentry {0}{4}{3}{137}{Determinacy}}\headcommand {\beamer@subsectionpages {115}{136}}
 \headcommand {\slideentry {4}{3}{1}{137/137}{Determinacy}{0}}
 \headcommand {\beamer@framepages {137}{137}}
-\headcommand {\beamer@subsectionentry {0}{4}{4}{138}{The Strength of Projective Determinacy}}\headcommand {\beamer@subsectionpages {137}{137}}
-\headcommand {\slideentry {4}{4}{1}{138/138}{The Strength of Projective Determinacy}{0}}
-\headcommand {\beamer@framepages {138}{138}}
-\headcommand {\beamer@partpages {1}{138}}
-\headcommand {\beamer@subsectionpages {138}{138}}
-\headcommand {\beamer@sectionpages {94}{138}}
-\headcommand {\beamer@documentpages {138}}
-\headcommand {\def \inserttotalframenumber {38}}
+\headcommand {\slideentry {4}{3}{2}{138/140}{Determinacy}{0}}
+\headcommand {\beamer@framepages {138}{140}}
+\headcommand {\slideentry {4}{3}{3}{141/144}{Determinacy}{0}}
+\headcommand {\beamer@framepages {141}{144}}
+\headcommand {\slideentry {4}{3}{4}{145/147}{Determinacy}{0}}
+\headcommand {\beamer@framepages {145}{147}}
+\headcommand {\beamer@subsectionentry {0}{4}{4}{148}{The Strength of Projective Determinacy}}\headcommand {\beamer@subsectionpages {137}{147}}
+\headcommand {\slideentry {4}{4}{1}{148/148}{The Strength of Projective Determinacy}{0}}
+\headcommand {\beamer@framepages {148}{148}}
+\headcommand {\beamer@partpages {1}{148}}
+\headcommand {\beamer@subsectionpages {148}{148}}
+\headcommand {\beamer@sectionpages {94}{148}}
+\headcommand {\beamer@documentpages {148}}
+\headcommand {\def \inserttotalframenumber {41}}
