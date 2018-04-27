@@ -13,5 +13,6 @@
 *.blg
 *.ps
 *.jpg
+!linear_algebra_class/images/*.jpg
 texinput/amsaddr
 texinput/placeins
