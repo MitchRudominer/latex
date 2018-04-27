@@ -1,0 +1,157 @@
+% $Header$
+
+\documentclass{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 1 \\ Functions on $\R^n$}
+\subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}{Functions}
+
+  \begin{itemize}
+  \item  A \emph{function} is an object $f$ that assigns a unique output
+  to every input from a given set.
+  \item $f(x) = y$ means that when $x$ is the input to $f$ then $y$ is the output.
+  \item The set of all possible inputs to $f$ is called the \emph{domain} of $f$,
+  written $\dom(f)$.
+  \item The set of all possible outputs from $f$ is called the \emph{range} of $f$,
+  written $\ran(f)$.
+  \item The notation $f:A \to B$ means that $f$ is a function and
+  $\dom(f)=A$ and $\ran(f)\subseteq B$. $B$ is called the \emph{target set}
+  or the \emph{codomain}.
+  \item We say "$f$ is a function from $A$ to $B$", or "$f$ maps $A$ to $B$."
+  \end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{Example}
+\begin{center}
+\includegraphics[scale=0.25]{function1}
+\end{center}
+
+\begin{itemize}
+\item Let $S=\singleton{A,B,C,D,E}$. Let $T=\singleton{1,2,3,4,5}$
+\item $f:S\to T$
+\item $\dom(f) = S$
+\item $\ran(f) = \singleton{1,2,5}$
+\item $T$ is the \emph{target}.
+\item $f(A) = 1$, $f(B) = 2$, $f(C)=2$
+\item $f(D) = 5$, $f(E) = 5$
+\item $3 \notin \ran(f)$, $4\notin\ran(f)$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{One-to-one}
+\begin{center}
+\includegraphics[scale=0.25]{function1}
+\end{center}
+
+\begin{itemize}
+\item A function $f$ is called \emph{one-to-one} or 1-1 or \emph{injective} if
+$\forall x, y \in \dom(f)$, if $x\not=y$ then $f(x)\not=f(y)$.
+\item Question: Is the function $f$ above injective?
+\item Answer: No because $f(B) = f(C) = 2$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Onto}
+\begin{center}
+\includegraphics[scale=0.25]{function1}
+\end{center}
+
+\begin{itemize}
+\item A function $f:S\to T$ is called \emph{onto} T or \emph{surjective} if
+all elements of the target set $T$ are in the range of $f$.
+\item Question: Is the function $f$ above surjective?
+\item Answer: No because 3 is not in the range.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Image}
+\begin{center}
+\includegraphics[scale=0.25]{function1}
+\end{center}
+
+\begin{itemize}
+\item If $f:S\to T$ and $R\subseteq S$ then $f[R]$, "$f$-image of $R$" is
+$\setof{f(x)}{x\in R}$.
+\item What is $f[\singleton{B,D}]$?
+\item Answer: $\singleton{2, 5}$.
+\item What is $f[\singleton{B,C,D}]$?
+\item Answer: $\singleton{2,5}$.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Inverse Image}
+\begin{center}
+\includegraphics[scale=0.25]{function1}
+\end{center}
+
+\begin{itemize}
+\item If $f:S\to T$ and $R\subseteq T$ then $f^{-1}[R]$ is
+$\setof{x\in S}{f(x)\in R}$.
+\item What is $f^{-1}[\singleton{2,5}]$?
+\item Answer: $\singleton{B, C, D, E}$
+\item What is $f^{-1}[\singleton{3,4}]$?
+\item Answer: $\emptyset$
+\end{itemize}
+\end{frame}
+
+
+
+\end{document}
+
+

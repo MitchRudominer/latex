@@ -6,6 +6,8 @@
 *.texlipse
 *.settings
 *.dvi
+*.nav
+*.snm
 *.toc
 *.bbl
 *.blg
