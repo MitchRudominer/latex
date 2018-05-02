@@ -37,7 +37,7 @@
 % Or whatever. Note that the encoding and the font should match. If T1
 % does not look nice, try deleting the line with the fontenc.
 
-\title{Lesson 1 \\ Functions on $\R^n$}
+\title{Lesson 1 \\ Functions}
 \subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
 \author{Mitch Rudominer}
 \date{}
@@ -195,53 +195,90 @@ or a \emph{one-to-one correspondence.}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Functions from $\R to \R$}
+\begin{frame}{Inverse Function}
 
-\includegraphics[scale=0.1]{parabola}
+\begin{center}
+\includegraphics[scale=0.25]{function4}
+\end{center}
 
 \begin{itemize}
-\item Functions from $\R$ to $\R$ are usually given by formulas instead of
-by drawing diagrams like on the previous slides.
-\item For example let $f:\R\map\R$ be given by $f(x) = x^2$.
-\item What is the $\dom(f)$?
-\item Answer: $\R$.
-\item What is the target set?
-\item Answer $\R$.
-\item What is $\ran(f)$.
-\item Answer: $\setof{y\in\R}{y\geq 0}$.
+\item Suppose $f:S\to T$ is a bijection.
+\item What is the \emph{inverse} of $f$ ?
+\item $f^{-1}:T\map S$ is defined by
+$$f^{-1}(x) = y \text{ iff } f(y) = x$$
+\item For the $f$ above what is $f^{-1}(2)$?
+\item Answer: $A$.
+\end{itemize}
+
+\pause
+
+\begin{center}
+\includegraphics[scale=0.25]{f-inverse}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}{Inverse Function vs Inverse Image}
+
+\begin{center}
+\includegraphics[scale=0.25]{function1}
+\end{center}
+
+\begin{itemize}
+\item \textbf{WARNING:} Inverse image is different than inverse function.
+\item The $f$ above is not one-to-one so there is no $f^{-1}$.
+\item But $f^{-1}[\singleton{2}]$ exists. Pay attention to the square brackets.
+\item $f^{-1}[\singleton{2}]$ means something different from $f^{-1}(2)$.
+\item What is $f^{-1}[\singleton{2}]$?
+\item Answer: $\singleton{B, C}$.
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Functions from $\R to \R$}
 
-\includegraphics[scale=0.1]{parabola}
+\begin{frame}{Composition}
+
+\begin{center}
+\includegraphics[scale=0.25]{function_composition}
+\end{center}
 
 \begin{itemize}
-\item Is $f$ one-to-one?
-\item Answer: No, because, for example, $f(-1) = f(1)$.
-\item Is $f$ onto?
-\item Answer: No because the negative real numbers are not in the range.
-\item What is $f\big[ [-2,2] \big]$?
-\item Answer: $[0, 4]$
+\item Suppose $f:S\to T$ and $g:T \to R$.
+\item What is $g$ \emph{composed with} $f$?
+\item $g \circ f: S \to R$ is given by
+$$g \circ f (x) = g(f(x))$$ for all $x\in S$.
+\item What is $g \circ f (C)$ for the functions above?
+\item Answer: $b$.
 \end{itemize}
+
+\pause
+
+\begin{center}
+\includegraphics[scale=0.25]{functions_composed}
+\end{center}
 
 \end{frame}
 
-\begin{frame}{Functions from $\R to \R$}
 
-\includegraphics[scale=0.1]{parabola}
+\begin{frame}{Identity Function}
+
 
 \begin{itemize}
-\item What is $f^{-1}\big[ \singleton{16} \big]$?
-\item Answer: $\singleton{-4, 4}$
-\item What is $f^{-1}\big[ \singleton{-16} \big]$?
-\item Answer: $\emptyset$
-\item What is $f^{-1}\big[ (16, \infty) \big]$?
-\item Answer: $(-\infty, -4) \union (4, \infty)$.
+\item Let $S$ be any set. Then the \emph{identity function} on $S$ is
+\item the function $I:S\map S$ defined by
+$$I(x) = x ,\forall x \in S$$
+\item Suppose $f:S\map T$ is a bijection. What is $f^{-1} \circ f$?
+\item Answer: $I$.
+\item Suppose $g:S\map T$ is any function. What is $g\circ I$?
+\item Answer $g$?
+\item Suppose $h:R\map S$ is any function. What is $I \circ h$?
+\item Answer $h$.
 \end{itemize}
 
+
 \end{frame}
+
 
 \end{document}
 

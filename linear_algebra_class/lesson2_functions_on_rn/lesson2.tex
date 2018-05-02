@@ -1,0 +1,108 @@
+% $Header$
+
+\documentclass{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 2 \\ Functions on $\R^n$}
+\subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Functions from $\R to \R$}
+
+\includegraphics[scale=0.1]{parabola}
+
+\begin{itemize}
+\item Functions from $\R$ to $\R$ are usually given by formulas instead of
+by drawing diagrams like in lesson 1.
+\item For example let $f:\R\map\R$ be given by $f(x) = x^2$.
+\item What is the $\dom(f)$?
+\item Answer: $\R$.
+\item What is the target set?
+\item Answer $\R$.
+\item What is $\ran(f)$.
+\item Answer: $\setof{y\in\R}{y\geq 0}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Functions from $\R to \R$}
+
+\includegraphics[scale=0.1]{parabola}
+
+\begin{itemize}
+\item Is $f$ one-to-one?
+\item Answer: No, because, for example, $f(-1) = f(1)$.
+\item Is $f$ onto?
+\item Answer: No because the negative real numbers are not in the range.
+\item What is $f\big[ [-2,2] \big]$?
+\item Answer: $[0, 4]$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Functions from $\R to \R$}
+
+\includegraphics[scale=0.1]{parabola}
+
+\begin{itemize}
+\item What is $f^{-1}\big[ \singleton{16} \big]$?
+\item Answer: $\singleton{-4, 4}$
+\item What is $f^{-1}\big[ \singleton{-16} \big]$?
+\item Answer: $\emptyset$
+\item What is $f^{-1}\big[ (16, \infty) \big]$?
+\item Answer: $(-\infty, -4) \union (4, \infty)$.
+\end{itemize}
+
+\end{frame}
+
+\end{document}
+
+
