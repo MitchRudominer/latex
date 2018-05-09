@@ -88,20 +88,119 @@ by drawing diagrams like in lesson 1.
 
 \end{frame}
 
-\begin{frame}{Functions from $\R to \R$}
-
-\includegraphics[scale=0.1]{parabola}
+\begin{frame}{Functions from $\R$ to $\R^2$}
 
 \begin{itemize}
-\item What is $f^{-1}\big[ \singleton{16} \big]$?
-\item Answer: $\singleton{-4, 4}$
-\item What is $f^{-1}\big[ \singleton{-16} \big]$?
-\item Answer: $\emptyset$
-\item What is $f^{-1}\big[ (16, \infty) \big]$?
-\item Answer: $(-\infty, -4) \union (4, \infty)$.
+\item What does a function from $\R$ to $\R^2$ look like?
+\item We need one input dimension but two output dimensions.
+How do we represent this?
+\item Also, how do we vizualize this? How do we graph it?
+\item One common way to do this is as a \emph{parametric} function:
+\item $f(t) = (x(t), y(y))$
 \end{itemize}
 
 \end{frame}
+
+\begin{frame}{Functions from $\R$ to $\R^2$}
+
+\begin{columns}
+\column[T]{5cm}
+Let $A=[0, \infty)$. Let $f:A\map \R^2$ be defined by
+$$f(t) = (t \cos(\pi t), t \sin(\pi t))$$
+What does the graph of $f$ look like?
+\column[T]{5cm}
+\includegraphics[scale=0.1]{spiral}
+\end{columns}
+
+\begin{itemize}
+\item Is $f$ one-to-one?
+\item Answer: Yes.
+\item Is $f$ onto?
+\item Answer: No
+\item What are the domain, target and range of $f$?
+\item $\dom(f) = A$, target is $\R^2$, range is the set of points on that
+spiral.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Functions from $\R$ to $\R^2$}
+
+\begin{columns}
+\column[T]{5cm}
+Let $A=[0, \infty)$. Let $f:A\map \R^2$ be defined by
+$$f(t) = (t \cos(\pi t), t \sin(\pi t))$$
+What does the graph of $f$ look like?
+\column[T]{5cm}
+\includegraphics[scale=0.1]{spiral}
+\end{columns}
+
+\begin{itemize}
+\item What is $f^{-1}[\singleton{(0,2)}]$?
+\item Answer: $\singleton{2}$.
+\item What is $f^{-1}[\singleton{(0,3)}]$?
+\item Answer: $\emptyset$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Functions from $\R$ to $\R^2$}
+
+\begin{columns}
+\column[T]{5cm}
+Let $A=[0, \infty)$. Let $f:A\map \R^2$ be defined by
+$$f(t) = (t \cos(\pi t), t \sin(\pi t))$$
+What does the graph of $f$ look like?
+\column[T]{5cm}
+\includegraphics[scale=0.1]{spiral}
+\end{columns}
+
+\begin{itemize}
+\item Question: What is the difference between the way we are representing
+a function as a graph this time vs the way we represented a function from
+$\R$ to $\R$?
+\item Answer: We are picturing only the target space explicitly, not
+the domain space. Previously we were picturing the domain space cross
+the target space.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Functions from $\R^2$ to $\R$}
+
+\begin{itemize}
+\item What does a function from $\R^2$ to $\R$ look like?
+\item We need two input dimension but one output dimensions.
+How do we represent this?
+\item Also, how do we vizualize this? How do we graph it?
+\item $f(x,y) = z$
+\item We can vizualize this as a surface over the $x$-, $y$- plane.
+\item Then we are again picturing both the domain space and the target space
+using their cross product.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Functions from $\R^2$ to $\R$}
+
+\begin{columns}
+\column[T]{5cm}
+$$f(x,y) = x^2 + y$$
+What does the graph of $f$ look like?
+\column[T]{5cm}
+\includegraphics[scale=0.3]{tilted-parabolic-sheet}
+\end{columns}
+
+\begin{itemize}
+\item Is $f$ one-to-one?
+\item Answer: no
+\item Is $f$ onto?
+\item Answer: no
+\end{itemize}
+
+\end{frame}
+
+
 
 \end{document}
 
