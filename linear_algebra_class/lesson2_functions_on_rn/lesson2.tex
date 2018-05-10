@@ -95,7 +95,7 @@ by drawing diagrams like in lesson 1.
 \item We need one input dimension but two output dimensions.
 How do we represent this?
 \item Also, how do we vizualize this? How do we graph it?
-\item One common way to do this is as a \emph{parametric} function:
+\item One common way to do this is as a \emph{parametric} plot:
 \item $f(t) = (x(t), y(y))$
 \end{itemize}
 
@@ -130,7 +130,6 @@ spiral.
 \column[T]{5cm}
 Let $A=[0, \infty)$. Let $f:A\map \R^2$ be defined by
 $$f(t) = (t \cos(\pi t), t \sin(\pi t))$$
-What does the graph of $f$ look like?
 \column[T]{5cm}
 \includegraphics[scale=0.1]{spiral}
 \end{columns}
@@ -150,16 +149,15 @@ What does the graph of $f$ look like?
 \column[T]{5cm}
 Let $A=[0, \infty)$. Let $f:A\map \R^2$ be defined by
 $$f(t) = (t \cos(\pi t), t \sin(\pi t))$$
-What does the graph of $f$ look like?
 \column[T]{5cm}
 \includegraphics[scale=0.1]{spiral}
 \end{columns}
 
 \begin{itemize}
-\item Question: What is the difference between the way we are representing
-a function as a graph this time vs the way we represented a function from
+\item Question: What is the difference between the way we are \emph{picturing}
+the function this time vs the way we pictured the function from
 $\R$ to $\R$?
-\item Answer: We are picturing only the target space explicitly, not
+\item Answer: Here we are picturing \emph{only the target space} explicitly, not
 the domain space. Previously we were picturing the domain space cross
 the target space.
 \end{itemize}
@@ -170,7 +168,7 @@ the target space.
 
 \begin{itemize}
 \item What does a function from $\R^2$ to $\R$ look like?
-\item We need two input dimension but one output dimensions.
+\item We need two input dimension but one output dimension.
 How do we represent this?
 \item Also, how do we vizualize this? How do we graph it?
 \item $f(x,y) = z$
@@ -185,6 +183,7 @@ using their cross product.
 
 \begin{columns}
 \column[T]{5cm}
+Consider the function $f:\R^2\map\R$ given by
 $$f(x,y) = x^2 + y$$
 What does the graph of $f$ look like?
 \column[T]{5cm}
@@ -193,12 +192,122 @@ What does the graph of $f$ look like?
 
 \begin{itemize}
 \item Is $f$ one-to-one?
-\item Answer: no
+\item No
 \item Is $f$ onto?
-\item Answer: no
+\item Yes
 \end{itemize}
 
 \end{frame}
+
+\begin{frame}{Functions from $\R^2$ to $\R$}
+
+
+\begin{columns}
+\column[T]{5cm}
+\begin{itemize}
+\item Another way to picture a function $f:\R^2\map\R$ is using
+\emph{only the domain space}.
+\item  We can draw the \emph{contour lines.}
+\end{itemize}
+
+Again consider the function $f:\R^2\map\R$ given by
+$$f(x,y) = x^2 + y$$
+\column[T]{5cm}
+\includegraphics[scale=0.1]{contour-parabolas}
+\end{columns}
+
+
+\begin{itemize}
+\item The parabolas are the inverse images of:
+\item $\singleton{3}$
+\item $\singleton{2}$
+\item $\singleton{1}$
+\item $\singleton{0}$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Functions from $\R^2$ to $\R^2$}
+\begin{itemize}
+\item What does a function from $\R^2$ to $\R^2$ look like?
+\item We need two input dimension and two output dimensions.
+How do we represent this?
+\item Also, how do we vizualize this? How do we picture it?
+\item $f(x,y) = \big( u(x,y), v(x,y) \big)$
+\item We cannot picture this using the cross-product of the domain space
+and the target space because this is four dimensional.
+\item One technique is we can picture a single $x-$ $y-$ plane to play
+the role of both the domain and the target space and we can overly
+a region in the domain with its image in the target.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Functions from $\R^2$ to $\R^2$}
+
+\begin{columns}
+\column[T]{5cm}
+Consider
+$$f(x,y) = (2x, y)$$
+
+\begin{itemize}
+\item $f(0, 0) = (0, 0)$
+\item $f(1, 0) = (2, 0)$
+\item $f(-1, 0) = (-2, 0)$
+\item $f(0,1) = (0,1)$
+\item $f(0,-1) = (0,-1)$
+\end{itemize}
+
+\column[T]{5cm}
+\includegraphics[scale=0.25]{circle-to-elipse}
+\end{columns}
+\begin{itemize}
+\item The image of the red circle is the blue elipse
+\item The image of the red point is the orange point.
+\item The image of the purple line segment is the black line segment.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Functions from $\R^2$ to $\R^2$}
+
+\begin{columns}
+\column[T]{5cm}
+Consider
+$$f(x,y) = (2x, y)$$
+
+\column[T]{5cm}
+\includegraphics[scale=0.25]{circle-to-elipse}
+\end{columns}
+\begin{itemize}
+\item Is $f$ one-to-one?
+\item Yes
+\item Is $f$ onto?
+\item Yes
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Functions from $\R^2$ to $\R^2$}
+
+\begin{columns}
+\column[T]{5cm}
+Consider
+$$f(x,y) = (2x, y)$$
+
+Notice how we have used pictures in the plane in different ways to
+represent functions
+
+\column[T]{5cm}
+\includegraphics[scale=0.25]{circle-to-elipse}
+\end{columns}
+\begin{itemize}
+\item from $\R$ to $\R$
+\item from $\R$ to $\R^2$
+\item from $\R^2$ to $\R$
+\item from $\R^2$ to $\R^2$
+\end{itemize}
+
+\end{frame}
+
 
 
 
