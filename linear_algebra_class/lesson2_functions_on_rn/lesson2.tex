@@ -187,7 +187,7 @@ Consider the function $f:\R^2\map\R$ given by
 $$f(x,y) = x^2 + y$$
 What does the graph of $f$ look like?
 \column[T]{5cm}
-\includegraphics[scale=0.3]{tilted-parabolic-sheet}
+\includegraphics[scale=0.15]{x-squared-plus-y}
 \end{columns}
 
 \begin{itemize}
@@ -235,8 +235,8 @@ How do we represent this?
 \item $f(x,y) = \big( u(x,y), v(x,y) \big)$
 \item We cannot picture this using the cross-product of the domain space
 and the target space because this is four dimensional.
-\item One technique is we can picture a single $x-$ $y-$ plane to play
-the role of both the domain and the target space and we can overly
+\item One technique is we can picture a single $x$- $y$- plane to play
+the role of both the domain and the target space and we can overlay
 a region in the domain with its image in the target.
 \end{itemize}
 \end{frame}
@@ -257,10 +257,10 @@ $$f(x,y) = (2x, y)$$
 \end{itemize}
 
 \column[T]{5cm}
-\includegraphics[scale=0.25]{circle-to-elipse}
+\includegraphics[scale=0.25]{circle-to-ellipse}
 \end{columns}
 \begin{itemize}
-\item The image of the red circle is the blue elipse
+\item The image of the red circle is the blue ellipse
 \item The image of the red point is the orange point.
 \item The image of the purple line segment is the black line segment.
 \end{itemize}
@@ -275,7 +275,7 @@ Consider
 $$f(x,y) = (2x, y)$$
 
 \column[T]{5cm}
-\includegraphics[scale=0.25]{circle-to-elipse}
+\includegraphics[scale=0.25]{circle-to-ellipse}
 \end{columns}
 \begin{itemize}
 \item Is $f$ one-to-one?
@@ -286,31 +286,245 @@ $$f(x,y) = (2x, y)$$
 
 \end{frame}
 
-\begin{frame}{Functions from $\R^2$ to $\R^2$}
+\begin{frame}{Functions from $\R^2$ to $\R^3$}
+\begin{itemize}
+\item What does a function from $\R^2$ to $\R^3$ look like?
+\item We need two input dimension and three output dimensions.
+How do we represent this?
+\item Also, how do we vizualize this? How do we picture it?
+\item $f(x,y) = \big( u(x,y), v(x,y), w(x,y) \big)$
+\item We cannot picture this using the cross-product of the domain space
+and the target space because this is five dimensional.
+\item One technique is we can picture only the target space and think
+of the function as parametric with two parameters.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Functions from $\R^2$ to $\R^3$}
 
 \begin{columns}
 \column[T]{5cm}
-Consider
-$$f(x,y) = (2x, y)$$
-
-Notice how we have used pictures in the plane in different ways to
-represent functions
-
+Consider the function $f:\R^2\map\R^3$ given by
+$$f(x,y) = (x , y, x^2 + y)$$
+What does the graph of $f$ look like?
 \column[T]{5cm}
-\includegraphics[scale=0.25]{circle-to-elipse}
+\includegraphics[scale=0.15]{x-squared-plus-y}
 \end{columns}
+
 \begin{itemize}
-\item from $\R$ to $\R$
-\item from $\R$ to $\R^2$
-\item from $\R^2$ to $\R$
-\item from $\R^2$ to $\R^2$
+\item This is the same picture we used for a function from $\R^2$ to $\R$.
+\item But now we are considering the picture to be of the target space
+only instead of the domain space cross the target space.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Functions from $\R^2$ to $\R^3$}
+
+\begin{columns}
+\column[T]{5cm}
+$$f(x,y) = (x, y, x^2 + y)$$
+\column[T]{5cm}
+\includegraphics[scale=0.15]{x-squared-plus-y}
+\end{columns}
+
+\begin{itemize}
+\item Is $f$ one-to-one?
+\item Yes
+\item Is $f$ onto?
+\item No
 \end{itemize}
 
 \end{frame}
 
 
+\begin{frame}{Functions from $\R^3$ to $\R^2$}
+
+\begin{itemize}
+\item What does a function from $\R^3$ to $\R^2$ look like?
+\item We need three input dimension and two output dimensions.
+How do we represent this?
+\item Also, how do we vizualize this? How do we picture it?
+\item $f(x,y,z) = \big( u(x,y,z), v(x,y,z) \big)$
+\item We cannot picture this using the cross-product of the domain space
+and the target space because this is five dimensional.
+\item One technique is we can picture a single copy of $R^3$ and allow the
+$x$-, $y$- plane to play two roles, both as part of the domain space and as
+the target space.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Functions from $\R^3$ to $\R^2$}
+
+\begin{columns}
+\column[T]{5cm}
+Consider the function $f:\R^3\map\R^2$ given by
+$$f(x,y, z) = \sqrt{\frac{x^2 + y^2 + z^2}{x^2+y^2}}(x, y)$$
+$$f(0,0, z) = (0,0)$$
+What does the graph of $f$ look like?
+\column[T]{5cm}
+\includegraphics[scale=0.25]{sphere2}
+\end{columns}
+
+\begin{itemize}
+\item The inverse image of the black circle is the red sphere of the same radius
+minus the north and south poles.
+\item What is $f^{-1}[\singleton{(0,0)}]$?
+\item The $z$-axis
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Functions from $\R^3$ to $\R^2$}
+
+\begin{columns}
+\column[T]{5cm}
+$$f(x,y, z) = \sqrt{\frac{x^2 + y^2 + z^2}{x^2+y^2}}(x, y)$$
+$$f(0,0, z) = (0,0)$$
+\column[T]{5cm}
+\includegraphics[scale=0.25]{sphere2}
+\end{columns}
+
+\begin{itemize}
+\item Is $f$ one-to-one?
+\item No
+\item Is $f$ onto?
+\item Yes
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Functions from $\R^3$ to $\R^3$}
+
+\begin{itemize}
+\item What does a function from $\R^3$ to $\R^3$ look like?
+\item We need three input dimension and three output dimensions.
+How do we represent this?
+\item Also, how do we vizualize this? How do we picture it?
+\item $f(x,y,z) = \big( u(x,y,z), v(x,y,z), w(x,y,z)\big)$
+\item We cannot picture this using the cross-product of the domain space
+and the target space because this is six dimensional.
+\item One technique is we can picture a single copy of $\R^3$ to play
+the role of both the domain and the target space and we can overlay
+a region in the domain with its image in the target.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Functions from $\R^3$ to $\R^3$}
+
+\begin{columns}
+\column[T]{5cm}
+$$f(x,y, z) = (2x, y, z)$$
+What is the image of the unit sphere?
+\column[T]{5cm}
+\includegraphics[scale=0.2]{sphere-to-ellipsoid}
+\end{columns}
+
+\begin{itemize}
+\item Is $f$ one-to-one?
+\item Yes
+\item Is $f$ onto?
+\item Yes
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Different ways of picturing functions from $\R^n$ to $\R^m$}
+
+
+\begin{itemize}
+\item Draw the entire \emph{graph} as a picture in $\R^n \times \R^m$
+\item Draw a single copy of $\R^n$ to play the role of the domain space
+and allow all or part of it to also play the role of the target space.
+Overlay a region of the domain with its image.
+\item Draw only the domain and picture a few inverse images.
+\item Draw only the target and picture the range (parametric plot)
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Different ways of picturing functions from $\R^n$ to $\R^m$}
+
+
+\begin{columns}
+\column[T]{5cm}
+\begin{itemize}
+\item Draw the entire \emph{graph} as a picture in $\R^n \times \R^m$
+\item $f:\R^1\map\R^1$ pictured in $\R^2$.
+\item $f(x) = x^2$
+\item $f:\R^2\map\R^1$ pictured in $\R^3$.
+\item $f(x,y) = x^2 + y$
+\end{itemize}
+
+\column[T]{5cm}
+\includegraphics[scale=0.1]{parabola}
+
+\includegraphics[scale=0.1]{x-squared-plus-y}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Different ways of picturing functions from $\R^n$ to $\R^m$}
+
+\begin{columns}
+\column[T]{5cm}
+\begin{itemize}
+\item Draw a single copy of $\R^n$ to play the role of the domain space
+and allow all or part of it to also play the role of the target space.
+\item $f:\R^2\map\R^2$ pictured in $\R^2$.
+\item $f(x,y) = (2x, y)$
+\item $f:\R^3\map\R^3$ pictured in $\R^3$.
+\item $f(x,y, z) = (2x, y, z)$
+\item $f:\R^3\map\R^2$ pictured in $\R^3$.
+\end{itemize}
+
+\column[T]{5cm}
+\includegraphics[scale=0.1]{circle-to-ellipse}
+
+\includegraphics[scale=0.15]{sphere-to-ellipsoid}
+
+\includegraphics[scale=0.15]{sphere2}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}{Different ways of picturing functions from $\R^n$ to $\R^m$}
+
+\begin{columns}
+\column[T]{5cm}
+\begin{itemize}
+\item Draw only the domain and picture a few inverse images.
+\item $f:\R^2\map\R^1$ pictured in $\R^2$.
+\item $f(x,y) = x^2 + y$
+\end{itemize}
+
+\column[T]{5cm}
+\includegraphics[scale=0.1]{contour-parabolas}
+
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Different ways of picturing functions from $\R^n$ to $\R^m$}
+
+\begin{columns}
+\column[T]{5cm}
+\begin{itemize}
+\item Draw only the target and picture the range (parametric plot)
+\item $f:\R\map\R^2$ pictured in $\R^2$.
+\item $f(t) = (t \cos(\pi t), t \sin(\pi t))$
+\item $f:\R^2\map\R^3$ pictured in $\R^3$.
+\item $f(x,y) = (x , y, x^2 + y)$
+\end{itemize}
+
+\column[T]{5cm}
+\includegraphics[scale=0.1]{spiral}
+
+\includegraphics[scale=0.1]{x-squared-plus-y}
+
+\end{columns}
+
+\end{frame}
+
 
 
 \end{document}
-
 
