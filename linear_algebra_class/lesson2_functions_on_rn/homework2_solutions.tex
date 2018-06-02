@@ -1,0 +1,150 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Solutions to Homework for Lesson 2 \\ Functions on $\R^n$}
+\author{Math 325, Linear Algebra \\ Mitch Rudominer \\ Fall 2018 \\ SFSU }
+\date{}
+
+\maketitle
+
+
+\textbf{Problem 1.}
+
+\textbf{a.} Yes $f$ is injective because if $(x_0, y_0) \not= (x_1, y_1)$
+then $(x_0 +1 , y_0 +1) \not= (x_1 +1 , y_1 +1)$ and so
+ $(x_0 +1 , y_0 +1, 5) \not= (x_1 +1 , y_1 +1, 5)$.
+
+
+\textbf{b.} No $f$ is not surjective. For example the origin of $\R^3$ is not in
+the range. Only points with $z$-coordinate equal to 5 are in the range.
+
+
+
+\textbf{c.} $\singleton{(4, -6)}$
+
+
+
+\textbf{d.}$\emptyset$
+
+
+
+\textbf{e.} The line: $y=1$, $z=5$. In other words $\setof{(x,y,z)}{y=1, z=5}$
+
+\medskip
+
+\textbf{Problem 2.}
+
+\textbf{a.} No $g$ is not injective. For example
+$g(0,0,0) = g(0, 0,1) = (0,0)$.
+
+
+\textbf{b.} No $g$ is not onto. For example $(0, -1)$ is not in the range of
+$g$ because only points with non-negative $y$-coordinates are in the range.
+
+
+\textbf{c.} The inverse image of the origin in $\R^2$ is the $z$-axis in $\R^3$.
+
+
+\textbf{d.} The inverse image of the $x$-axis in $\R^2$ is the $x$- $z$- plane
+in $\R^3$
+
+\textbf{e.} The inverse image of the horizontal line $y=1$ in $\R^2$ is
+the union of two planes in $\R^3$ parallel to the $x$- $z$- plane: The
+plane $y=1$ and the plane $y=-1$.
+
+\textbf{f.} The image of the $x$-axis in $\R^3$ is the $x$-axis in $\R^2$.
+
+\textbf{g.} The  image of the line $y=x$ in the $x$- $y$- plane
+of $\R^3$ is the parabola $y=x^2$ in $\R^2$.
+
+
+\medskip
+
+\textbf{Problem 3.}
+
+\textbf{a.}  The domain and target are $\R^2$. The range is
+
+\medskip
+
+\textbf{b.} Is $h$ one-to-one?
+
+\medskip
+
+\textbf{c.} Is $h$ surjective?
+
+\medskip
+
+\textbf{c.} What is $h^{-1}[\singleton{(0,0)}]$?
+
+\medskip
+
+\textbf{d.} What is the image of the $x$-axis under $h$?
+
+\medskip
+
+\textbf{e.} What is the image of the $y$-axis under $h$?
+
+\medskip
+
+\textbf{f.} What is the inverse image of the $x$-axis under $h$?
+
+\medskip
+
+\textbf{g.} What is the inverse image of the $y$-axis under $h$?
+
+\medskip
+
+\textbf{h.} Is $f \circ g$ defined? Explain?
+
+\bigskip
+
+\textbf{Problem 4.}
+\smallskip
+
+\textbf{a.} Give an example of a function $f:\R^2\map\R^3$ that is
+one-to-one but not onto.
+
+\bigskip
+
+\textbf{b.} Give an example of a function $f:\R^2\map\R^3$ that is neither
+one-to-one nor onto.
+
+\bigskip
+
+\textbf{c.} Give an example of a function $f:\R^3\map\R^2$ that is
+onto but not one-to-one.
+
+\bigskip
+
+\textbf{d.} Give an example of a function $f:\R^3\map\R^2$ that is neither
+one-to-one nor onto.
+
+
+\bigskip
+
+\textbf{Problem 5.} These questions are difficult.
+\smallskip
+
+\textbf{a.} Is it possible for $f:\R^2\map\R^2$ to be one-to-one but not onto?
+If so give an example. If not explain why.
+
+\bigskip
+
+\textbf{b.} Is it possible for $f:\R^2\map\R^2$ to be onto but not one-to-one?
+If so give an example. If not explain why.
+
+\bigskip
+
+\textbf{c.} Is it possible for $f:\R^3\map\R^2$ to be one-to-one?
+
+\end{document}
