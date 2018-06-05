@@ -29,13 +29,10 @@ then $(x_0 +1 , y_0 +1) \not= (x_1 +1 , y_1 +1)$ and so
 the range. Only points with $z$-coordinate equal to 5 are in the range.
 
 
-
 \textbf{c.} $\singleton{(4, -6)}$
 
 
-
 \textbf{d.}$\emptyset$
-
 
 
 \textbf{e.} The line: $y=1$, $z=5$. In other words $\setof{(x,y,z)}{y=1, z=5}$
@@ -72,79 +69,97 @@ of $\R^3$ is the parabola $y=x^2$ in $\R^2$.
 
 \textbf{Problem 3.}
 
-\textbf{a.}  The domain and target are $\R^2$. The range is
+\textbf{a.}  The domain and target are $\R^2$.
+$h(x,y) = (x+1, (y+1)^2)$.
+The range is $\setof{(x,y)}{y\geq 0}$.
 
 \medskip
 
-\textbf{b.} Is $h$ one-to-one?
+\textbf{b.} No. For example $h(0,0) = h(0, -2) = (1, 1)$
+
+
+\textbf{c.} No, because the range does not include the lower half-plane.
+
+\textbf{d.} The inverse image of the origin is the set $\singleton{(-1, -1)}$.
+
+\textbf{e.} The image of the $x$-axis is the $x$-axis.
+
+
+\textbf{f.} The image of the $y$-axis is the vertical half-line
+$\setof{(1, y)}{y\geq 1}$.
+
+\textbf{g.} The inverse image of the $x$-axis is the $x$-axis.
+
+\textbf{h.} The inverse image of the $y$-axis is the vertical line $x=-1$.
+
+\textbf{i.} Yes $f \circ g$ is defined because the target of $g$ is the domain
+of $f$, namely $\R^3$.
 
 \medskip
-
-\textbf{c.} Is $h$ surjective?
-
-\medskip
-
-\textbf{c.} What is $h^{-1}[\singleton{(0,0)}]$?
-
-\medskip
-
-\textbf{d.} What is the image of the $x$-axis under $h$?
-
-\medskip
-
-\textbf{e.} What is the image of the $y$-axis under $h$?
-
-\medskip
-
-\textbf{f.} What is the inverse image of the $x$-axis under $h$?
-
-\medskip
-
-\textbf{g.} What is the inverse image of the $y$-axis under $h$?
-
-\medskip
-
-\textbf{h.} Is $f \circ g$ defined? Explain?
-
-\bigskip
 
 \textbf{Problem 4.}
+
+\textbf{a.} The function $f:\R^2\map\R^3$ defined by
+$$f(x,y) = (x, y, 0 )$$
+is one-to-one but not onto.
+
+\textbf{b.} Let $f:\R^2\map\R^3$ be defined by
+$$f(x,y) = (x, 0, 0)$$
+Then $f$ is neither one-to-one nor onto.
+
+\textbf{c.} Let $f:\R^3\map\R^2$ be defined by
+$$f(x,y, z) = (x, y)$$
+Then $f$ is onto but not one-to-one.
+
+\bigskip
+
+\textbf{d.} Let $f:\R^3\map\R^2$ be defined by
+$$f(x,y, z) = (x, 0)$$
+
+Then $f$ is neither one-to-one nor onto.
+
+
+\medskip
+
+\textbf{Problem 5.}
+
 \smallskip
 
-\textbf{a.} Give an example of a function $f:\R^2\map\R^3$ that is
-one-to-one but not onto.
-
-\bigskip
-
-\textbf{b.} Give an example of a function $f:\R^2\map\R^3$ that is neither
-one-to-one nor onto.
-
-\bigskip
-
-\textbf{c.} Give an example of a function $f:\R^3\map\R^2$ that is
-onto but not one-to-one.
-
-\bigskip
-
-\textbf{d.} Give an example of a function $f:\R^3\map\R^2$ that is neither
-one-to-one nor onto.
+\textbf{a.} Yes. For example, in polar coordinates,
+$$f(r,\theta) = \big( \tan^{-1}(r), \theta \big).$$
+Then $f$ is one-to-one but not onto. In fact $f$ maps the whole plain onto
+the open disk of radius $\pi/2$.
 
 
-\bigskip
+\textbf{b.} Yes, for example, in polar coordinates, let
+$f(r,\theta) = (r, 2\theta)$. Then $f$ is onto but not one-to-one.
 
-\textbf{Problem 5.} These questions are difficult.
-\smallskip
 
-\textbf{a.} Is it possible for $f:\R^2\map\R^2$ to be one-to-one but not onto?
-If so give an example. If not explain why.
+\textbf{c.} Yes, but this one is tricky. There is no algebraic formula that
+will give such a function. In fact we know from Set Theory that there is a
+bijection between every $\R^n$ and $\R^m$. This follows from the fact that
+for every infinite set $X$ there is a bijection between $X$ and $X^2$.
 
-\bigskip
+\medskip
 
-\textbf{b.} Is it possible for $f:\R^2\map\R^2$ to be onto but not one-to-one?
-If so give an example. If not explain why.
+\textbf{Problem 6.} $f^{-1}[D] = [0,1].$
 
-\bigskip
+\medskip
 
-\textbf{c.} Is it possible for $f:\R^3\map\R^2$ to be one-to-one?
+\textbf{Problem 7.}
+The only function that could possibly yield the given level sets is
+(3) $f(x,y) = \sqrt{x^2 + y^2}$.
+
+\medskip
+
+\textbf{Problem 8.}
+
+\textbf{a.} The image of the unit disk is the interval on the $x$-axis
+$[-1, 1]$.
+
+\textbf{b.} The image of the purple unit disk is the orange line segment.
+The images of the red points are the green points directly below them.
+
+\includegraphics[scale=0.3]{project-circle}
 
 \end{document}
