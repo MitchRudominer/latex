@@ -1,0 +1,79 @@
+% $Header$
+
+\documentclass{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 3 \\ Vectors in $\R^n$}
+\subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\beamerdefaultoverlayspecification{}
+
+\begin{frame}{Points vs vectors.}
+
+\begin{columns}
+\column[T]{5cm}
+\begin{itemize}
+\item<1-> Let $A = (6, 7) \in \R^2$
+\item<2-> We can think of $A$ as a \emph{point}.
+\item<4-> Or we can think of $A$ is a \emph{vector}.
+\end{itemize}
+
+\column[T]{5cm}
+\includegraphics<3-4>[scale=0.1]{point}
+\includegraphics<5>[scale=0.1]{vector}
+
+\end{columns}
+
+\end{frame}
+
+\end{document}
+
