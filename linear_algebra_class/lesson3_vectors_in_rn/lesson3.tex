@@ -57,7 +57,7 @@
 
 \beamerdefaultoverlayspecification{}
 
-\begin{frame}{Points vs vectors.}
+\begin{frame}{Points vs vectors}
 
 \begin{columns}
 \column[T]{5cm}
@@ -69,11 +69,67 @@
 
 \column[T]{5cm}
 \includegraphics<3-4>[scale=0.1]{point}
-\includegraphics<5>[scale=0.1]{vector}
+\includegraphics<5->[scale=0.1]{vector}
 
 \end{columns}
 
 \end{frame}
+
+\begin{frame}{Different notions of vectors}
+
+\begin{columns}
+\column[T]{5cm}
+\begin{itemize}
+\item<1-> In physics a \emph{vector} is ``An object consisting of a point
+of application, a direction and a length.''
+\item<2-> Let's refer to this as a \emph{physical vector}
+\item<3-> A physical vector can be represented in $\R^2$ (or $\R^3$) as
+an arrow with base at some point and tip at some other point
+\item<4-> That is \emph{not} the kind of vector we will consider in this
+class
+\end{itemize}
+
+\column[T]{5cm}
+\includegraphics<3->[scale=0.1]{physical-vector}
+
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Vectors in $\R^n$}
+
+\begin{columns}
+\column[T]{5cm}
+\begin{itemize}
+\item<1-> In this class we define a \emph{vector in $\R^n$} to be
+the same thing as an element of $\R^n$.
+\item<2-> We may chose to visualize it as a point
+\item<3-> Or we may chose to visualize it as an arrow.
+\item<4-> As an arrow we always consider its base to be at the origin.
+\end{itemize}
+
+\column[T]{5cm}
+\includegraphics<2>[scale=0.1]{point}
+\includegraphics<3->[scale=0.1]{vector}
+
+\end{columns}
+
+\end{frame}
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{frame}{Adding Vectors in $\R^n$}
+
+\begin{itemize}
+\item If $v, w \in \R^n$ we define $v+w$ to be the \emph{componentwise} sum.
+\item If $$v=(v_1, v_2, \cdots , v_n)$$ and $$w=(w_1, w_2, \cdots, w_n)$$
+then $$v+w = (v_1 + w_1, v_2 + w_2, \cdots, v_n + w_n)$$
+\item Example: Suppose $$v = (6, 7)$$ and $$w=(2, -3)$$ the
+$$v+w=(8, 4)$$
+\end{itemize}
+
+\end{frame}
+
 
 \end{document}
 
