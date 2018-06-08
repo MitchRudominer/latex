@@ -62,14 +62,16 @@
 \begin{columns}
 \column[T]{5cm}
 \begin{itemize}
-\item<1-> Let $A = (6, 7) \in \R^2$
-\item<2-> We can think of $A$ as a \emph{point}.
-\item<4-> Or we can think of $A$ is a \emph{vector}.
+\item<1-> Let $a = (6, 7) \in \R^2$
+\item<2-> We can think of $a$ as a 2-tuple of numbers.
+\item<3-> Or we can think of $a$ as a \emph{point}.
+\item<4-> Or we can think of $a$ is a \emph{vector}.
+\item<5-> All of these are different representations of the same thing, $a$.
 \end{itemize}
 
 \column[T]{5cm}
-\includegraphics<3-4>[scale=0.1]{point}
-\includegraphics<5->[scale=0.1]{vector}
+\includegraphics<3>[scale=0.1]{point}
+\includegraphics<4->[scale=0.1]{vector}
 
 \end{columns}
 
@@ -80,17 +82,20 @@
 \begin{columns}
 \column[T]{5cm}
 \begin{itemize}
-\item<1-> In physics a \emph{vector} is ``An object consisting of a point
-of application, a direction and a length.''
-\item<2-> Let's refer to this as a \emph{physical vector}
-\item<3-> A physical vector can be represented in $\R^2$ (or $\R^3$) as
+\item<1-> In physics a \emph{vector} is ``A quantity having a direction and a magnitude.''
+\item<2-> In some contexts vectors also have a \emph{point of application.}
+\item<3-> Let's refer to this as a \emph{physical vector}.
+\item<4-> A physical vector can be represented in $\R^2$ (or $\R^3$) as
 an arrow with base at some point and tip at some other point
-\item<4-> That is \emph{not} the kind of vector we will consider in this
-class
 \end{itemize}
 
 \column[T]{5cm}
-\includegraphics<3->[scale=0.1]{physical-vector}
+\includegraphics<4->[scale=0.1]{physical-vector}
+
+\begin{itemize}
+\item<5-> That is \emph{not} the kind of vector we will consider in this
+class
+\end{itemize}
 
 \end{columns}
 
@@ -124,12 +129,85 @@ the same thing as an element of $\R^n$.
 \item If $v, w \in \R^n$ we define $v+w$ to be the \emph{componentwise} sum.
 \item If $$v=(v_1, v_2, \cdots , v_n)$$ and $$w=(w_1, w_2, \cdots, w_n)$$
 then $$v+w = (v_1 + w_1, v_2 + w_2, \cdots, v_n + w_n)$$
-\item Example: Suppose $$v = (6, 7)$$ and $$w=(2, -3)$$ the
+\item Example: Suppose $$v = (6, 7)$$ and $$w=(2, -3)$$ then
 $$v+w=(8, 4)$$
 \end{itemize}
 
 \end{frame}
 
+\beamerdefaultoverlayspecification{}
+
+\begin{frame}{Geometric Representation of Adding Vectors in $\R^n$}
+
+\begin{columns}
+\column[T]{5cm}
+\begin{itemize}
+\item<1-> Let $v = (6, 7)$
+\item<2-> Let $w=(2, -3)$
+\item<3-> Temporarily move $w$ so that its base point is at the tip of $v$.
+\item<4-> The tip of the moved $w$ is at the location of $v+w$
+\item<5-> $v+w = (8, 4)$
+\end{itemize}
+
+\column[T]{5cm}
+\includegraphics<1>[scale=0.1]{vector}
+\includegraphics<2>[scale=0.1]{two-vectors}
+\includegraphics<3-4>[scale=0.1]{vector-moved}
+\includegraphics<5->[scale=0.1]{vector-sum}
+
+\end{columns}
+
+\end{frame}
+
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{frame}{Scalar Multiplication of Vectors in $\R^n$}
+
+\begin{itemize}
+\item If $v \in \R^n$ and $\alpha\in\R$ we define $\alpha v$ to be the vector
+resulting from multiplying each \emph{component} of $v$ by $\alpha$.
+\item If $$v=(v_1, v_2, \cdots , v_n)$$
+then $$\alpha v = (\alpha v_1, \alpha v_2, \cdots, \alpha v_n)$$
+\item Example: Suppose $$v = (6, 7)$$ and $\alpha=-3$. Then
+$$\alpha v=(-18, -21)$$
+\end{itemize}
+
+\end{frame}
+
+\beamerdefaultoverlayspecification{}
+
+\begin{frame}{Geometric Representation of Scalar Multiplication in $\R^n$}
+
+\begin{columns}
+\column[T]{5cm}
+\begin{itemize}
+\item<1-> Let $v = (6, 7)$
+\item<2-> Let $\alpha=-3$
+\item<3-> $\alpha v=(-18, -21)$
+\end{itemize}
+
+\column[T]{5cm}
+\includegraphics<1-2>[scale=0.1]{vector}
+\includegraphics<3>[scale=0.1]{scalar-multiplied}
+
+\end{columns}
+
+\end{frame}
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{frame}{Dot Product of Vectors in $\R^n$}
+
+\begin{itemize}
+\item If $v, w \in \R^n$ we define $v \cdot w$ to be the sum of the products of the components of $v$ with the corresponding components of $w$.
+\item If $$v=(v_1, v_2, \cdots , v_n)$$ and $$w=(w_1, w_2, \cdots, w_n)$$
+then $$v \cdot w = v_1  w_1 +  v_2  w_2 + \cdots +  v_n  w_n$$
+\item Example: Suppose $$v = (6, 7)$$ and $$w=(2, -3)$$ then
+$$v \cdot w= 12 + (-21) = -10$$
+\end{itemize}
+
+\end{frame}
 
 \end{document}
 
