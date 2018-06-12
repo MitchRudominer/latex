@@ -37,7 +37,7 @@
 % Or whatever. Note that the encoding and the font should match. If T1
 % does not look nice, try deleting the line with the fontenc.
 
-\title{Lesson 3 \\ Vectors in $\R^n$}
+\title{Lesson 1 \\ Vectors in $\R^n$}
 \subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
 \author{Mitch Rudominer}
 \date{}
@@ -55,18 +55,85 @@
   \titlepage
 \end{frame}
 
+\begin{frame}{What is $\R^n$?}
+
+\begin{itemize}
+\item $\R^n$ is the set of $n$-tuples of real numbers.
+\item $\R^1=\R$ = the set of real numbers.
+\item $\R^2 = \setof{(x,y)}{x,y\in\R}$ = the set of ordered pairs,
+or 2-tuples, of real numbers.
+\item $\R^3 = \setof{(x,y,z)}{x,y,z\in\R}$ = the set of
+3-tuples, of real numbers.
+\item $\R^n = \setof{v}{v = (v_1, v_2, \cdots, v_n) \text{ where each } v_i\in\R}$.
+\item The $v_i$ are called the \emph{components} of $v$.
+\item Let $v = (3, -7, 4.1, 0)$.
+\item Then $v\in\R^4$.
+\item The first component of
+$v$ is 3. The fourth component of $v$ is 0.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Cartesian-Products}
+
+\begin{itemize}
+\item If $A$ and $B$ are sets then $A\times B$ is called the
+\emph{Cartesian product} or \emph{cross product} of $A$ and $B$. It is
+defined as
+$$A\times B=\setof{(a, b)}{a\in A \text{ and } b\in B}$$
+\item Example: $A=\singleton{0,1}$, $B=\singleton{0, 1, 2}$, then
+what is $A\times B$?
+\item $A\times B = \singleton{(0,0), (0,1), (0,2), (1,0), (1,1), (1,2)}$.
+\item Note: If $A$ and $B$ are finite then $|A\times B| = |A| \cdot |B|$.
+\item Example: $\R\times \R = \R^2$.
+\item Convention: We identify $\R^n \times \R^m$ with $\R^{n+m}$.
+\item $\R^1\times\R^2 = \R^3$.
+\item $\R^3\times\R^3=$ ?
+\item $\R^3\times\R^3=\R^6$.
+\end{itemize}
+\end{frame}
+
 \beamerdefaultoverlayspecification{}
+
+\begin{frame}{Visualizing $\R^n$}
+
+\begin{columns}
+\column[T]{5cm}
+\begin{itemize}
+\item<1-> We visualize $\R^1$ as a number line.
+\item<2-> We visualize $\R^2$ as the $x$- $y$- plane
+\item<3-> We visuzlize $\R^3$ as $x$- $y$- $z$- space
+\item<4-> Most people can't vizualize more than 3 dimensions so for $n>=4$
+we can vizualize $\R^2$ or $\R^3$ as approximations or
+analogs of $\R^n$.
+\item<5-> We should always also keep in mind $n$-tuples.
+\end{itemize}
+
+\column[T]{5cm}
+\includegraphics<1->[scale=0.1]{number-line}
+
+\bigskip
+
+\includegraphics<2->[scale=0.1]{plane}
+
+\bigskip
+
+\includegraphics<3->[scale=0.1]{space}
+
+\end{columns}
+
+\end{frame}
 
 \begin{frame}{Points vs vectors}
 
 \begin{columns}
 \column[T]{5cm}
 \begin{itemize}
-\item<1-> Let $a = (6, 7) \in \R^2$
-\item<2-> We can think of $a$ as a 2-tuple of numbers.
-\item<3-> Or we can think of $a$ as a \emph{point}.
-\item<4-> Or we can think of $a$ is a \emph{vector}.
-\item<5-> All of these are different representations of the same thing, $a$.
+\item<1-> Let $v = (6, 7) \in \R^2$
+\item<2-> We can think of $v$ as a 2-tuple of numbers.
+\item<3-> Or we can think of $v$ as a \emph{point}.
+\item<4-> Or we can think of $v$ is a \emph{vector}.
+\item<5-> All of these are different representations of the same thing, $v$.
 \end{itemize}
 
 \column[T]{5cm}
@@ -210,4 +277,5 @@ $$v \cdot w= 12 + (-21) = -10$$
 \end{frame}
 
 \end{document}
+
 
