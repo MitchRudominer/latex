@@ -68,29 +68,9 @@ or 2-tuples, of real numbers.
 \item The $v_i$ are called the \emph{components} of $v$.
 \item Let $v = (3, -7, 4.1, 0)$.
 \item Then $v\in\R^4$.
-\item The first component of
-$v$ is 3. The fourth component of $v$ is 0.
+\item $v_1 = 3$, $v_2=-7$, $v_3=4.1$, $v_4=0$.
 \end{itemize}
 
-\end{frame}
-
-\begin{frame}{Cartesian-Products}
-
-\begin{itemize}
-\item If $A$ and $B$ are sets then $A\times B$ is called the
-\emph{Cartesian product} or \emph{cross product} of $A$ and $B$. It is
-defined as
-$$A\times B=\setof{(a, b)}{a\in A \text{ and } b\in B}$$
-\item Example: $A=\singleton{0,1}$, $B=\singleton{0, 1, 2}$, then
-what is $A\times B$?
-\item $A\times B = \singleton{(0,0), (0,1), (0,2), (1,0), (1,1), (1,2)}$.
-\item Note: If $A$ and $B$ are finite then $|A\times B| = |A| \cdot |B|$.
-\item Example: $\R\times \R = \R^2$.
-\item Convention: We identify $\R^n \times \R^m$ with $\R^{n+m}$.
-\item $\R^1\times\R^2 = \R^3$.
-\item $\R^3\times\R^3=$ ?
-\item $\R^3\times\R^3=\R^6$.
-\end{itemize}
 \end{frame}
 
 \beamerdefaultoverlayspecification{}
@@ -104,9 +84,9 @@ what is $A\times B$?
 \item<2-> We visualize $\R^2$ as the $x$- $y$- plane
 \item<3-> We visuzlize $\R^3$ as $x$- $y$- $z$- space
 \item<4-> Most people can't vizualize more than 3 dimensions so for $n>=4$
-we can vizualize $\R^2$ or $\R^3$ as approximations or
-analogs of $\R^n$.
-\item<5-> We should always also keep in mind $n$-tuples.
+we mostly think of $\R^n$ as consisting of $n$-tuples of real numbers.
+\item<5-> We can vizualize $\R^2$ or $\R^3$ as \emph{approximations} or
+\emph{analogs}.
 \end{itemize}
 
 \column[T]{5cm}
@@ -132,37 +112,13 @@ analogs of $\R^n$.
 \item<1-> Let $v = (6, 7) \in \R^2$
 \item<2-> We can think of $v$ as a 2-tuple of numbers.
 \item<3-> Or we can think of $v$ as a \emph{point}.
-\item<4-> Or we can think of $v$ is a \emph{vector}.
+\item<4-> Or we can think of $v$ as a \emph{vector}.
 \item<5-> All of these are different representations of the same thing, $v$.
 \end{itemize}
 
 \column[T]{5cm}
-\includegraphics<3>[scale=0.1]{point}
-\includegraphics<4->[scale=0.1]{vector}
-
-\end{columns}
-
-\end{frame}
-
-\begin{frame}{Different notions of vectors}
-
-\begin{columns}
-\column[T]{5cm}
-\begin{itemize}
-\item<1-> In physics a \emph{vector} is ``A quantity having a direction and a magnitude.''
-\item<2-> In some contexts vectors also have a \emph{point of application.}
-\item<3-> Let's refer to this as a \emph{physical vector}.
-\item<4-> A physical vector can be represented in $\R^2$ (or $\R^3$) as
-an arrow with base at some point and tip at some other point
-\end{itemize}
-
-\column[T]{5cm}
-\includegraphics<4->[scale=0.1]{physical-vector}
-
-\begin{itemize}
-\item<5-> That is \emph{not} the kind of vector we will consider in this
-class
-\end{itemize}
+\includegraphics<3>[scale=0.15]{point}
+\includegraphics<4->[scale=0.15]{vector}
 
 \end{columns}
 
@@ -173,16 +129,18 @@ class
 \begin{columns}
 \column[T]{5cm}
 \begin{itemize}
-\item<1-> In this class we define a \emph{vector in $\R^n$} to be
+\item<1-> We define a \emph{vector in $\R^n$} to be
 the same thing as an element of $\R^n$.
 \item<2-> We may chose to visualize it as a point
-\item<3-> Or we may chose to visualize it as an arrow.
-\item<4-> As an arrow we always consider its base to be at the origin.
+\item<3-> Or we may chose to visualize it as an arrow with its base
+at the origin.
+\item<4-> No difference between a vector and its endpoint.
+\item<5-> Or we may chose to think of it as an $n$-tuple of real numbers.
 \end{itemize}
 
 \column[T]{5cm}
-\includegraphics<2>[scale=0.1]{point}
-\includegraphics<3->[scale=0.1]{vector}
+\includegraphics<2>[scale=0.15]{point}
+\includegraphics<3->[scale=0.15]{vector}
 
 \end{columns}
 
@@ -217,10 +175,10 @@ $$v+w=(8, 4)$$
 \end{itemize}
 
 \column[T]{5cm}
-\includegraphics<1>[scale=0.1]{vector}
-\includegraphics<2>[scale=0.1]{two-vectors}
-\includegraphics<3-4>[scale=0.1]{vector-moved}
-\includegraphics<5->[scale=0.1]{vector-sum}
+\includegraphics<1>[scale=0.15]{vector}
+\includegraphics<2>[scale=0.15]{two-vectors}
+\includegraphics<3-4>[scale=0.15]{vector-moved}
+\includegraphics<5->[scale=0.15]{vector-sum}
 
 \end{columns}
 
@@ -236,6 +194,8 @@ $$v+w=(8, 4)$$
 resulting from multiplying each \emph{component} of $v$ by $\alpha$.
 \item If $$v=(v_1, v_2, \cdots , v_n)$$
 then $$\alpha v = (\alpha v_1, \alpha v_2, \cdots, \alpha v_n)$$
+\item In this context the real number $\alpha$ is called a \emph{scalar}
+to emphasize that it is a different kind of thing than the vector $v$.
 \item Example: Suppose $$v = (6, 7)$$ and $\alpha=-3$. Then
 $$\alpha v=(-18, -21)$$
 \end{itemize}
@@ -250,13 +210,16 @@ $$\alpha v=(-18, -21)$$
 \column[T]{5cm}
 \begin{itemize}
 \item<1-> Let $v = (6, 7)$
-\item<2-> Let $\alpha=-3$
-\item<3-> $\alpha v=(-18, -21)$
+\item<2-> Let $\alpha=0.5$
+\item<3-> $\alpha v=(3, 3.5)$
+\item<4-> Let $\beta=-1.5$
+\item<5-> $\beta v=(-9, -10.5)$
 \end{itemize}
 
 \column[T]{5cm}
-\includegraphics<1-2>[scale=0.1]{vector}
-\includegraphics<3>[scale=0.1]{scalar-multiplied}
+\includegraphics<1-2>[scale=0.15]{vector}
+\includegraphics<3-4>[scale=0.15]{vector-times-half}
+\includegraphics<5->[scale=0.15]{two-scalar-multiples}
 
 \end{columns}
 
