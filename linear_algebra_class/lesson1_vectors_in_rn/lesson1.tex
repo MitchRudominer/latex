@@ -64,10 +64,10 @@
 or 2-tuples, of real numbers.
 \item $\R^3 = \setof{(x,y,z)}{x,y,z\in\R}$ = the set of
 3-tuples, of real numbers.
-\item $\R^n = \setof{v}{v = (v_1, v_2, \cdots, v_n) \text{ where each } v_i\in\R}$.
-\item The $v_i$ are called the \emph{components} of $v$.
+\item $\R^n = \setof{\bv}{\bv = (v_1, v_2, \cdots, v_n) \text{ where each } v_i\in\R}$.
+\item The $v_i$ are called the \emph{components} of $\bv$.
 \item Let $v = (3, -7, 4.1, 0)$.
-\item Then $v\in\R^4$.
+\item Then $\bv\in\R^4$.
 \item $v_1 = 3$, $v_2=-7$, $v_3=4.1$, $v_4=0$.
 \end{itemize}
 
@@ -109,10 +109,10 @@ we don't directly try to vizualize $\R^n$.
 \begin{columns}
 \column[T]{5cm}
 \begin{itemize}
-\item<1-> Let $v = (6, 7) \in \R^2$
-\item<2-> By definition $v$ \emph{is} a 2-tuple of numbers.
-\item<3-> We can vizualize $v$ as a \emph{point}.
-\item<4-> Or we can vizualize $v$ as a \emph{vector}.
+\item<1-> Let $\bv = (6, 7) \in \R^2$
+\item<2-> By definition $\bv$ \emph{is} a 2-tuple of numbers.
+\item<3-> We can vizualize $\bv$ as a \emph{point}.
+\item<4-> Or we can vizualize $\bv$ as a \emph{vector}.
 \end{itemize}
 
 \column[T]{5cm}
@@ -146,12 +146,31 @@ $n$-tuple.
 
 \beamerdefaultoverlayspecification{<+->}
 
+\begin{frame}{Notation for Vectors in $\R^n$}
+
+\begin{itemize}
+\item In this class we will use boldface letters like $\bv$ and $\bw$ to name
+vectors.
+\item And corresponding lightface subscripted letters $v_i$, $w_j$ for the
+\emph{components} of the vectors.
+\item For example if $\bv\in\R^4$ then $\bv=(v_1, v_2, v_3, v_4)$.
+\item On the other hand if we had four vectors in $\R^n$ we might name them
+$\bv_1$, $\bv_2$, $\bv_3$, $\bv_4$.
+\item In \emph{hand-writing} it is difficult to indicate boldface so instead
+let's use arrows over the tops of the letters. So in hand-writing
+$\vec{v}$ and $\vec{w}$ are vectors.
+\item And the components of $\vec{v}$ are $v_1$, $v_2$, etc.
+\item And $\vec{v}_1$, $\vec{v_2}$ indicates two vectors.
+\end{itemize}
+
+\end{frame}
+
 \begin{frame}{Adding Vectors in $\R^n$}
 
 \begin{itemize}
-\item If $v, w \in \R^n$ we define $v+w$ to be the \emph{componentwise} sum.
-\item If $$v=(v_1, v_2, \cdots , v_n)$$ and $$w=(w_1, w_2, \cdots, w_n)$$
-then $$v+w = (v_1 + w_1, v_2 + w_2, \cdots, v_n + w_n)$$
+\item If $\bv, \bw \in \R^n$ we define $\bv+\bw$ to be the \emph{componentwise} sum.
+\item If $$\bv=(v_1, v_2, \cdots , v_n)$$ and $$\bw=(w_1, w_2, \cdots, w_n)$$
+then $$\bv+\bw = (v_1 + w_1, v_2 + w_2, \cdots, v_n + w_n)$$
 \item Example: Suppose $$v = (6, 7)$$ and $$w=(2, -3)$$ then
 $$v+w=(8, 4)$$
 \end{itemize}
@@ -165,11 +184,11 @@ $$v+w=(8, 4)$$
 \begin{columns}
 \column[T]{5cm}
 \begin{itemize}
-\item<1-> Let $v = (6, 7)$
-\item<2-> Let $w=(2, -3)$
-\item<3-> Temporarily move $w$ so that its base point is at the tip of $v$.
-\item<4-> The tip of the moved $w$ is at the location of $v+w$
-\item<5-> $v+w = (8, 4)$
+\item<1-> Let $\bv = (6, 7)$
+\item<2-> Let $\bw=(2, -3)$
+\item<3-> Temporarily move $w$ so that its base point is at the tip of $\bv$.
+\item<4-> The tip of the moved $\bw$ is at the location of $\bv+\bw$
+\item<5-> $\bv+\bw = (8, 4)$
 \end{itemize}
 
 \column[T]{5cm}
@@ -188,14 +207,14 @@ $$v+w=(8, 4)$$
 \begin{frame}{Scalar Multiplication of Vectors in $\R^n$}
 
 \begin{itemize}
-\item If $v \in \R^n$ and $\alpha\in\R$ we define $\alpha v$ to be the vector
-resulting from multiplying each \emph{component} of $v$ by $\alpha$.
-\item If $$v=(v_1, v_2, \cdots , v_n)$$
-then $$\alpha v = (\alpha v_1, \alpha v_2, \cdots, \alpha v_n)$$
+\item If $\bv \in \R^n$ and $\alpha\in\R$ we define $\alpha \bv$ to be the vector
+resulting from multiplying each \emph{component} of $\bv$ by $\alpha$.
+\item If $$\bv=(v_1, v_2, \cdots , v_n)$$
+then $$\alpha \bv = (\alpha v_1, \alpha v_2, \cdots, \alpha v_n)$$
 \item In this context the real number $\alpha$ is called a \emph{scalar}
-to emphasize that it is a different kind of thing than the vector $v$.
-\item Example: Suppose $$v = (6, 7)$$ and $\alpha=-3$. Then
-$$\alpha v=(-18, -21)$$
+to emphasize that it is a different kind of thing than the vector $\bv$.
+\item Example: Suppose $$\bv = (6, 7)$$ and $\alpha=-3$. Then
+$$\alpha \bv=(-18, -21)$$
 \end{itemize}
 
 \end{frame}
@@ -207,11 +226,11 @@ $$\alpha v=(-18, -21)$$
 \begin{columns}
 \column[T]{5cm}
 \begin{itemize}
-\item<1-> Let $v = (6, 7)$
+\item<1-> Let $\bv = (6, 7)$
 \item<2-> Let $\alpha=0.5$
-\item<3-> $\alpha v=(3, 3.5)$
+\item<3-> $\alpha \bv=(3, 3.5)$
 \item<4-> Let $\beta=-1.5$
-\item<5-> $\beta v=(-9, -10.5)$
+\item<5-> $\beta \bv=(-9, -10.5)$
 \end{itemize}
 
 \column[T]{5cm}
@@ -225,14 +244,82 @@ $$\alpha v=(-18, -21)$$
 
 \beamerdefaultoverlayspecification{<+->}
 
+\begin{frame}{Linear Combinations of Vectors in $\R^n$}
+
+\begin{itemize}
+\item Let $\bv_1, \bv_2, \cdots  \bv_k$ be $k$ vectors.
+\item Let $\alpha_1, \alpha_2, \cdots \alpha_k$ be $k$ scalars.
+\item Then $$\alpha_1 \bv_1 + \alpha_2 \bv_2 + \cdots + \alpha_k \bv_k$$ is
+called a \emph{linear combination} of $\bv_1, \bv_2, \cdots \bv_k$.
+The $\alpha_i$ are called the \emph{coefficients} of the linear combination.
+\item Using Sigma notation we would write this as
+$$\sum_{i=1}^{k} \alpha_i \bv_i$$
+\item Example. Let $\bv = (2, 1, 0)$ and $\bw = (0, 1, 3)$ be vectors in $\R^3$.
+Express $\bu = (6, 8, 15)$ as a linear combination of $\bv$ and $\bw$.
+\item Answer: $\bu = 3 \bv + 5 \bw$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Standard Basis Vectors in $\R^n$}
+
+\begin{itemize}
+\item In $\R_n$, for $i=1\cdots n$,
+ let $\be_i$ be the vector that has a 1 for component $i$ and
+a 0 for all other components. This is called the $i$-th
+\emph{standard basis vector} of $\R^n$.
+\item If we need to keep track of which $\R^n$ these vectors are from we can
+call them $\be^n_i$.
+\item For example in $\R^4$ the 4 standard basis vectors are
+ $\be_1 = (1,0,0,0)$, $\be_2 = (0,1,0,0)$,
+$\be_3 = (0,0,1,0)$, $\be_4 = (0,0,0,1)$.
+\item If we need to keep track of the fact that these vectors are from $\R^4$
+we can call them $\be_1^4, \be_2^4, \be_3^4, \be_4^4$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Linear Combinations of the Standard Basis Vectors in $\R^n$}
+
+\begin{lemma}
+In $\R^n$, every vector can be expressed as a linear combination of the standard
+basis vectors.
+\end{lemma}
+
+\begin{proof}
+\begin{itemize}
+\item Let $\bv = (v_1, v_2, \cdots v_n)$.
+\item Then we just use the $i$-th component of $\bv$ as the $i$-th coefficient
+of the linear combination.
+\item That is,
+$$\bv = \sum _{i=1}^{n} v_i \be_i$$
+\end{itemize}
+\end{proof}
+
+\end{frame}
+
+\begin{frame}{Linear Combinations of the Standard Basis Vectors in $\R^n$}
+
+\begin{itemize}
+\item For example, let $\bv = (2, 0, -1.5, 7) \in \R^4$.
+\item Express $\bv$ as a linear combination of the standard basis vectors of
+$\R^4$.
+\item Answer $$\bv = 2 \be_1 + 0 \be_2 + (-1.5) \be_3 + 7 \be_4$$
+\item We could omit the term with the 0 coefficient and replace the addition
+of a negative with a subtraction and instead write
+$$\bv = 2 \be_1 -1.5 \be_3 + 7 \be_4$$
+\end{itemize}
+
+\end{frame}
+
 \begin{frame}{Dot Product of Vectors in $\R^n$}
 
 \begin{itemize}
-\item If $v, w \in \R^n$ we define $v \cdot w$ to be the sum of the products of the components of $v$ with the corresponding components of $w$.
-\item If $$v=(v_1, v_2, \cdots , v_n)$$ and $$w=(w_1, w_2, \cdots, w_n)$$
-then $$v \cdot w = v_1  w_1 +  v_2  w_2 + \cdots +  v_n  w_n$$
-\item Example: Suppose $$v = (6, 7)$$ and $$w=(2, -3)$$ then
-$$v \cdot w= 12 + (-21) = -10$$
+\item If $\bv, \bw \in \R^n$ we define $\bv \cdot \bw$ to be the sum of the products of the components of $\bv$ with the corresponding components of $\bw$.
+\item If $$\bv=(v_1, v_2, \cdots , v_n)$$ and $$\bw=(w_1, w_2, \cdots, w_n)$$
+then $$\bv \cdot \bw = v_1  w_1 +  v_2  w_2 + \cdots +  v_n  w_n$$
+\item Example: Suppose $$\bv = (6, 7)$$ and $$\bw=(2, -3)$$ then
+$$\bv \cdot \bw= 12 + (-21) = -10$$
 \end{itemize}
 
 \end{frame}
@@ -241,10 +328,10 @@ $$v \cdot w= 12 + (-21) = -10$$
 
 \begin{itemize}
 \item We will study the dot product more in later lessons.
-\item For now, recall from earlier classes $v \cdot w = 0$ iff
-$v$ and $w$ are orthogonal (i.e. perpendicular).
-\item Example. Let $v=(2, 0, 0)$ and $w = (0, 3, 0)$.
-Then $v \cdot w = 0$.
+\item For now, recall from earlier classes $\bv \cdot \bw = 0$ iff
+$\bv$ and $\bw$ are orthogonal (i.e. perpendicular).
+\item Example. Let $\bv=(2, 0, 0)$ and $\bw = (0, 3, 0)$.
+Then $\bv \cdot \bw = 0$.
 \end{itemize}
 
 \end{frame}
