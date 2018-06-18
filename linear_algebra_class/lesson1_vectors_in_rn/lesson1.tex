@@ -84,9 +84,9 @@ or 2-tuples, of real numbers.
 \item<2-> We visualize $\R^2$ as the $x$- $y$- plane
 \item<3-> We visuzlize $\R^3$ as $x$- $y$- $z$- space
 \item<4-> Most people can't vizualize more than 3 dimensions so for $n>=4$
-we mostly think of $\R^n$ as consisting of $n$-tuples of real numbers.
-\item<5-> We can vizualize $\R^2$ or $\R^3$ as \emph{approximations} or
-\emph{analogs}.
+we don't directly try to vizualize $\R^n$.
+\item<5-> Sometimes we use $\R^2$ or $\R^3$ as
+\emph{approximations} or \emph{analogs} of $\R^n$.
 \end{itemize}
 
 \column[T]{5cm}
@@ -104,16 +104,15 @@ we mostly think of $\R^n$ as consisting of $n$-tuples of real numbers.
 
 \end{frame}
 
-\begin{frame}{Points vs vectors}
+\begin{frame}{Vizualizing elements of $\R^n$}
 
 \begin{columns}
 \column[T]{5cm}
 \begin{itemize}
 \item<1-> Let $v = (6, 7) \in \R^2$
-\item<2-> We can think of $v$ as a 2-tuple of numbers.
-\item<3-> Or we can think of $v$ as a \emph{point}.
-\item<4-> Or we can think of $v$ as a \emph{vector}.
-\item<5-> All of these are different representations of the same thing, $v$.
+\item<2-> By definition $v$ \emph{is} a 2-tuple of numbers.
+\item<3-> We can vizualize $v$ as a \emph{point}.
+\item<4-> Or we can vizualize $v$ as a \emph{vector}.
 \end{itemize}
 
 \column[T]{5cm}
@@ -131,16 +130,15 @@ we mostly think of $\R^n$ as consisting of $n$-tuples of real numbers.
 \begin{itemize}
 \item<1-> We define a \emph{vector in $\R^n$} to be
 the same thing as an element of $\R^n$.
-\item<2-> We may chose to visualize it as a point
-\item<3-> Or we may chose to visualize it as an arrow with its base
-at the origin.
-\item<4-> No difference between a vector and its endpoint.
-\item<5-> Or we may chose to think of it as an $n$-tuple of real numbers.
+\item<2-> By definition, a vector in $\R^n$ is an
+$n$-tuple.
+\item<3-> We may chose to visualize it as a point
+\item<4-> We may chose to visualize it as an arrow with its base at the origin.
 \end{itemize}
 
 \column[T]{5cm}
-\includegraphics<2>[scale=0.15]{point}
-\includegraphics<3->[scale=0.15]{vector}
+\includegraphics<3>[scale=0.15]{point}
+\includegraphics<4->[scale=0.15]{vector}
 
 \end{columns}
 
@@ -235,6 +233,18 @@ $$\alpha v=(-18, -21)$$
 then $$v \cdot w = v_1  w_1 +  v_2  w_2 + \cdots +  v_n  w_n$$
 \item Example: Suppose $$v = (6, 7)$$ and $$w=(2, -3)$$ then
 $$v \cdot w= 12 + (-21) = -10$$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Dot product of orthogonal vectors}
+
+\begin{itemize}
+\item We will study the dot product more in later lessons.
+\item For now, recall from earlier classes $v \cdot w = 0$ iff
+$v$ and $w$ are orthogonal (i.e. perpendicular).
+\item Example. Let $v=(2, 0, 0)$ and $w = (0, 3, 0)$.
+Then $v \cdot w = 0$.
 \end{itemize}
 
 \end{frame}
