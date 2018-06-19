@@ -58,6 +58,57 @@
 
 \beamerdefaultoverlayspecification{<+->}
 
+\begin{frame}{Functions from $\R^n$ to $\R^m$}
+
+\begin{itemize}
+\item Putting together Lesson 1 ``Vectors in $\R^n$'' and Lesson 2: ``Functions''
+\item Now we consider a function $f:\R^n \map \R^m$.
+\item Domain of $f$ is vectors in $\R^n$, codomain or target space is vectors
+in $\R^m$.
+\item In this lesson we just want to get used to thinking about these and
+go over some ways of vizualizing them.
+\item We cannot vizualize in more than 3 dimensions so we will focus on
+$1\leq n, m \leq 3$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Multidimensional function notation}
+
+\begin{itemize}
+\item Let $f:\R^n \map \R^m$.
+\item Let $\bv \in \R^n$ and $\bw \in \R^m$ and suppose $f(\bv) = \bw$.
+\item Now $\bv = (v_1, v_2, \cdots v_n)$
+\item and $\bw = (w_1, w_2, \cdots w_m)$
+\item Sometimes it is useful to use a notation in which $f$, rather than appearing
+to take a single input $\bv$, appears to take $n$ inputs $v_1, v_2, \cdots v_n$.
+\item So instead of writing $f(\bv)$ we might write $f(v_1, v_2, \cdots v_n)$.
+\item Also, instead of thinking of $f$ as a single function that
+ouputs vectors, sometimes it is useful to think of $f$ as a
+\emph{vector of functions} that each output numbers.
+\item So instead of writing $f(\bv) = \bw$ we might write
+$f(\bv) = (f_1(\bv), f_2(\bv), \dots f_m(\bv))$.
+\item Here $f_i(\bv) = w_i$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Multidimensional function notation (continued)}
+
+\begin{itemize}
+\item Let $f:\R^n \map \R^m$.
+\item Let $\bv \in \R^n$ and $\bw \in \R^m$ and suppose $f(\bv) = \bw$.
+\item Now $\bv = (v_1, v_2, \cdots v_n)$
+\item and $\bw = (w_1, w_2, \cdots w_m)$
+\item Putting the two notations from the previous slide together, sometimes it
+is useful to write
+$$f(v_1, v_2, \cdots v_n) = (f_1(v_1,\cdots v_n), \cdots f_m(v_1,\cdots v_n))$$
+\item This means exactly the same thing as $f(\bv) = \bw$.
+\item We use whichever notation is most convenient for what we are trying to say.
+\end{itemize}
+
+\end{frame}
+
 \begin{frame}{Functions from $\R to \R$}
 
 \includegraphics[scale=0.1]{parabola}
