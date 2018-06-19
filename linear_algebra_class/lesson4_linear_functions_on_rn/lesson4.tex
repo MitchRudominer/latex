@@ -1,0 +1,121 @@
+% $Header$
+
+\documentclass{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 4 \\ Linear functions $\R^n$}
+\subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Linear functions on $\R^n$}
+
+\begin{itemize}
+\item Now we begin the real material of Linear Algebra
+\item We study the important concept of a \emph{linear function}
+\item For now we only talk about linear functions from $\R^n$ to $\R^m$.
+\item Later we will genearlize this to linear functions on \emph{vector spaces}.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Linear functions on $\R^n$}
+
+\begin{itemize}
+\item Let $f:\R^n \map \R^m$.
+\item $f$ is called \emph{linear} iff $f$ satisfies the following two properties:
+\item (i) For every two vectors $\bv, \bw \in\R^n$, $$f(\bv + \bw) = f(\bv) + f(\bw)$$
+\item (ii) For all vectors $\bv\in\R^n$ and all scalars $c\in \R$,
+$$f(c \bv) = c f(\bv)$$
+\item In short we say ``f preserves vector addition and scalar multiplication.''
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{$f$ Preserves Addition}
+
+\begin{center}
+\includegraphics[scale=0.25]{preserving-addition}
+\end{center}
+
+\begin{itemize}
+\item $f(\bv + \bw) = f(\bv) + f(\bw)$
+\item Let $f(\bv) = \bv^{\prime}$.
+\item Let $f(w) = \bw^{\prime}$.
+\item We can compute a vector sum on the left: $\bv + \bw$.
+\item We can compute a vector sum on the right: $\bv^{\prime} + \bw^{\prime}$.
+\item $f$ must move the vector sum on the left to the vector sum on the right.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{$f$ Preserves Scalar Multiplication}
+
+\begin{center}
+\includegraphics[scale=0.25]{preserving-scalar-mult}
+\end{center}
+
+\begin{itemize}
+\item $f(c \bv) = c f(\bv)$
+\item Let $f(\bv) = \bv^{\prime}$.
+\item Let $c = 2$.
+\item We can compute a scalar multiplication on the left: $2 \bv$.
+\item We can compute a scalar multiplication on the right: $2 \bv^{\prime}$.
+\item $f$ must move the scalar multiple on the left to the scalar multiple on the right.
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\end{document}
+
+
