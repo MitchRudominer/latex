@@ -71,7 +71,8 @@ Consider the following system of equations:
 \item The numbers 2, 8, 13, -13 constitute the \emph{right-hand-side}
 \item The goal is to find values for the unknowns in order to make all of the
 equations simultaneously true.
-\item What does this system have to do with what we have been learning?
+\item What does this have to do with what we have been learning?
+\item Notice: LH sides are linear combinations of the unknowns.
 \end{itemize}
 
 \end{frame}
@@ -182,7 +183,7 @@ $$
 3x + 9y + 8z  -7u + 2v  &= -3 \\
 \end{align*}
 
-Then the system is equivalent to the matrix equation $A \bx = \bb$.
+Then the system says exactly the same thing as the matrix equation $A \bx = \bb$.
 
 $$
 \begin{matrix}
@@ -207,6 +208,135 @@ x \\ y \\ z \\ u \\ v
 $$
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Drop the original system}
+
+Notice the matrix equation $A \bx = \bb$ contains exactly the same information
+as the original system of equations. So we may as well drop the original
+system and work only with the matrix equation.
+
+$$
+\begin{matrix}
+A =
+\begin{pmatrix}
+1 & 3 & 2 & -1 & 0 \\
+2 & 6 & 1 & 4 & 3\\
+-1 & -3 & -3 & 3 & 1 \\
+3 & 9 & 8 & -7 & 2
+\end{pmatrix}
+&
+\bx =
+\begin{pmatrix}
+x \\ y \\ z \\ u \\ v
+\end{pmatrix}
+&
+\bb =
+\begin{pmatrix}
+2 \\ 8 \\ 13 \\ -3
+\end{pmatrix}
+\end{matrix}
+$$
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Matrix Equations}
+
+\begin{itemize}
+\item The names of the unknown variables in the original system of equations
+are irrelevant.
+\item So we may as well drop the definition of $\bx$.
+\item And instead phrase the problem as:
+\item Find all vectors $x \in \R^5$ such that $A \bx = \bb$.
+\item Solving this matrix equation is the same thing as solving the
+original system of equations.
+
+\end{itemize}
+
+$$
+\begin{matrix}
+A =
+\begin{pmatrix}
+1 & 3 & 2 & -1 & 0 \\
+2 & 6 & 1 & 4 & 3\\
+-1 & -3 & -3 & 3 & 1 \\
+3 & 9 & 8 & -7 & 2
+\end{pmatrix}
+&
+\bb =
+\begin{pmatrix}
+2 \\ 8 \\ 13 \\ -3
+\end{pmatrix}
+\end{matrix}
+$$
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Matrix Equations}
+
+\begin{itemize}
+\item Notice following are equivalent:
+\item (a) $\bx$ is a solution to the original system of linear equations.
+\item (b) $A \bx = \bb$.
+\item (c) $T_A(\bx) = \bb$.
+\item (d) $\bx \in T_A^{-1}[\singleton{\bb}]$
+\item Put another way, the following are equivalent:
+\item (i) Solve the original system of linear equations
+\item (ii) Solve the matrix equation $A \bx = \bb$.
+\item (iii) Solve the equation $T_A(\bx) = \bb$.
+\item (iv) Find the inverse image under $T_A$ of $\singleton{\bb}$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{What kinds of questions do we want to ask?}
+
+\begin{itemize}
+\item What kinds of questions might we want to ask about our original system of linear equations?
+\item (1) Are there any solutions?
+If there are no solutions the system is called \emph{inconsistent}. Otherwise it is called \emph{consistent}.
+\item (2) Is there more than one solution? If so the system is called
+\emph{underdetermined}.
+\item (3) If there is a unique solution, find it.
+\item (4) If there is more than one solution, describe the structure of the
+solution set.
+\item Each of these questions can be translated into corresponding questions
+about the abstract problems.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Translation of the questions:}
+
+\begin{itemize}
+\item (1) Is the original system of equations consistent?
+\item Are there any vectors $\bx\in\R^5$ such that $A \bx = \bb$?
+\item Is $\bb\in\ran(T_A)$?
+\item (2) Is the original system of equations underdetermined?
+\item Is there more than one vector $\bx\in\R^5$ such at $A \bx = \bb$?
+\item Is the size of $T_A^{-1}[\singleton{\bb}]$ greater than 1?
+\item (3) If there is a unique solution find it.
+\item Find the unique vector $\bx$ such that $A\bx = \bb$.
+\item Find the unique element of $T_A^{-1}[\singleton{\bb}]$.
+\item (4) Describe the structure of the solution set of the original system.
+\item Describe the set of all vectors $\bx$ such that $A\bx = \bb$.
+\item Describe the inverse image under $T_A$ of $\singleton{\bb}$.
+
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \end{document}
