@@ -191,7 +191,7 @@ $$f(c \bv) = c f(\bv)$$
 
 \begin{frame}{Does $f$ preserve vector addtion?}
 \begin{align*}
-f(\bv + \bw) \\
+&f(\bv + \bw) \\
 \uncover<2->{&=  f\bigl((v_1, v_2) + (w_1, w_2)\bigr) \\}
 \uncover<3->{&= f\bigl(v_1 + w_1, v_2 + w_2\bigr) \\}
 \uncover<4->{&= \bigl(v_1 + w_1 \bigr)^2 + (v_2 + w_2) \\}
@@ -212,9 +212,9 @@ f(\bv + \bw) \\
 \begin{itemize}
 \item A linear function from $\R^n$ to $\R^1$ is also called a linear
 \emph{functional}.
-\item These are also called \emph{covectors}.
 \item Let $\bv \in \R^n$ be any vector.
-\item We will show how $\bv$ can used as a covector.
+\item We will show how $\bv$ can used as a linear functional.
+\item In its role as a linear functional, $\bv$ is called a \emph{covector}.
 \item Let $f_{\bv} : \R^n \map \R^1$ be defined by
 $$f_{\bv}(\bw) = \bv \cdot \bw$$
 \item $f_{\bv}$ is called the \emph{covector} associated to the vector $\bv$.
@@ -222,10 +222,23 @@ $$f_{\bv}(\bw) = \bv \cdot \bw$$
 
 \end{frame}
 
+\begin{frame}{Example Covector}
+
+\begin{itemize}
+\item Let $\bv = (2, -1)$
+\item So $f_{\bv}:\R^2 \map \R$.
+\item Let $\bw = (4, 5) \in \R^2$.
+\item Compute $f_{\bv}(\bw)$
+\item $= \bv \cdot \bw = 8 - 5 = 3$
+\item $f_{\bv}(\bw) =  3$.
+\end{itemize}
+
+\end{frame}
+
 \begin{frame}{Dot Product is Linear}
 
 \begin{itemize}
-\item Claim: $f_{\bv}$ is linear.
+\item Claim: For any vector $\bv\in\R^n$, $f_{\bv}:\R^n\map\R$ is linear.
 \item proof:
 \item First we show that $f_{\bv}$ preserves vector addition.
 \item Let $\bu, \bw \in \R^n$
@@ -287,6 +300,96 @@ f_{\bv}(c \bu)
 \item So $f_{\bv}$ preserves scalar multiplication.
 \item So $f_{\bv}$ is linear. $\qed$.
 \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Linear functions preserve linear combinations}
+\begin{lemma}
+Let $f:\R^n\map\R^m$. The following are equivalent:
+\begin{enumerate}
+\item $f$ is linear
+\item $f$ preserves all linear combinations.
+
+\pause
+
+i.e. for every
+$\bw_1,\bw_2,\cdots\bw_k\in\R^n$, for every $c_1,c_2,\cdots c_k\in\R$,
+$$f(c_1 \bw_1 + c_2 \bw_2 + \cdots + c_k \bw_k) = c_1 f(\bw_1) + c_2 f(\bw_2) + \cdots + c_k f(\bw_k)$$
+
+\pause
+
+Using Sigma notation
+
+$$f\left(\Sigma_{i=1}^k{c_i \bw_i}\right) = \Sigma_{i=1}^k{c_i f(\bw_i)}$$
+
+\end{enumerate}
+\end{lemma}
+\end{frame}
+
+
+\begin{frame}{Example: Covector preserves linear combinations}
+
+\begin{itemize}
+\item Let $\bv = (2, -1)$
+\item So $f_{\bv}:\R^2 \map \R$.
+\item Let $\bw_1 = (4, 5) \in \R^2$.
+\item Let $\bw_2 = (1,-1) \in \R^2$.
+\item $f_\bv(2\bw_1 -3\bw_2)$
+\item $=f_\bv\bigl((5, 13)\bigr)$
+\item $=\bv \cdot (5, 13)$
+\item $=10 - 13 = -3$.
+\item $2 f_{\bv}(\bw_1) -3 f_{\bv}(\bw_2)$
+\item $2 (\bv \cdot \bw_1) -3 (\bv \cdot \bw_2)$
+\item $=2 (8-5) - 3(2 + 1)$
+\item $=2 (3) - 3(3)$
+\item $=-3$
+\item So $f_\bv(2\bw_1 -3\bw_2) = 2f_{\bv}(\bw_1) -3 f_{\bv}(\bw_2)$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof of Lemma}
+
+\begin{itemize}
+\item First suppose that $f$ preserves all linear combinations
+\item $f\left(\Sigma_{i=1}^k{c_i \bw_i}\right) = \Sigma_{i=1}^k{c_i f(\bw_i)}$
+\item Letting $k=1$ we have
+\item $f(c_1 \bw_1) = c_1 f(\bw_1)$.
+\item So $f$ preserves scalar multiplication.
+\item Letting $k=2$ and letting $c_1 = c_2 = 1$ we have
+\item $f(\bw_1 + \bw_2) = f(\bw_1) + f(\bw_2)$.
+\item So $f$ preserves vector addition.
+\item Conversely, suppose $f$ preserves vector addition and scalar multiplication.
+\item We must show that $f$ preserves all linear combinations.
+\item This is done by induction on $k$.
+\item The base case, $k=1$, says $f(c_1 \bw_1) = c_1 f(\bw_1)$.
+\item This follows from the fact that $f$ preserves scalar multiplication.
+\end{itemize}
+
+\end{frame}
+
+\beamerdefaultoverlayspecification{}
+
+\begin{frame}{The inductive step}
+Now suppose that
+$$f\left(\Sigma_{i=1}^k{c_i \bw_i}\right) = \Sigma_{i=1}^k{c_i f(\bw_i)}$$
+
+\smallskip
+
+We must show that
+$$f\left(\Sigma_{i=1}^{k+1}{c_i \bw_i}\right) = \Sigma_{i=1}^{k+1}{c_i f(\bw_i)}$$
+
+\begin{align*}
+&f\left(\Sigma_{i=1}^{k+1}{c_i \bw_i}\right)\\
+\uncover<2->{&=  f\left(\Sigma_{i=1}^{k}{c_i \bw_i} + c_{k+1} \bw_{k+1}\right)\\}
+\uncover<3->{&=  f\left(\Sigma_{i=1}^{k}{c_i \bw_i}\right) + f(c_{k+1} \bw_{k+1}) \text{ $f$ preserves addition} \\}
+\uncover<4->{&= \Sigma_{i=1}^k{c_i f(\bw_i)} + f(c_{k+1} \bw_{k+1}) \text{ induction}\\}
+\uncover<5->{&= \Sigma_{i=1}^k{c_i f(\bw_i)} + c_{k+1} f(\bw_{k+1}) \text{ $f$ preserves scalar mult.}\\}
+\uncover<6->{&= \Sigma_{i=1}^{k+1}{c_i f(\bw_i)} }
+\end{align*}
+
+\uncover<7->{So $f$ preserves all linear combinations. $\qed$.}
+
 
 \end{frame}
 
