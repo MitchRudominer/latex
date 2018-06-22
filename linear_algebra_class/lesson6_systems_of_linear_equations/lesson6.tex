@@ -88,7 +88,7 @@ equations simultaneously true.
 3x + 9y + 8z  -7u + 2v  &= -3 \\
 \end{align*}
 
-Let $A$ be the 4 x 5 \emph{matrix of coefficients}:
+Let $A$ be the $4 \times 5$ \emph{matrix of coefficients}:
 
 $$
 A =
@@ -113,7 +113,7 @@ $$
 3x + 9y + 8z  -7u + 2v  &= -3 \\
 \end{align*}
 
-Let $\bx$ be the 5 x 1  \emph{column vector of unknowns}:
+Let $\bx$ be the $5 \times 1$  \emph{column vector of unknowns}:
 
 $$
 \begin{matrix}
@@ -145,7 +145,7 @@ $$
 3x + 9y + 8z  -7u + 2v  &= -3 \\
 \end{align*}
 
-Let $\bb$ be the 4 x 1  \emph{right-hand-side column vector}:
+Let $\bb$ be the $4 \times 1$  \emph{right-hand-side column vector}:
 
 $$
 \begin{matrix}
@@ -250,7 +250,7 @@ $$
 are irrelevant.
 \item So we may as well drop the definition of $\bx$.
 \item And instead phrase the problem as:
-\item Find all vectors $x \in \R^5$ such that $A \bx = \bb$.
+\item Find all vectors $\bx \in \R^5$ such that $A \bx = \bb$.
 \item Solving this matrix equation is the same thing as solving the
 original system of equations.
 
@@ -337,6 +337,188 @@ about the abstract problems.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{General system of linear equations}
+
+A general linear system of $m$ equations in $n$ unknowns has the form:
+
+\begin{align*}
+ a_{11}x_1 &+ a_{12}x_2 + &\cdots + a_{1n} x_n &= b_1\\
+ a_{21}x_1 &+ a_{22}x_2 + &\cdots + a_{2n} x_n &= b_2\\
+ \quad &{ \vdots \quad} \quad &{ \vdots \quad} \quad  &{ \vdots \quad} \quad\\
+ a_{m1}x_1 &+ a_{m2}x_2 + &\cdots + a_{1mn} x_n &= b_m
+\end{align*}
+
+
+\end{frame}
+
+\begin{frame}{Associated Matrix Equation}
+
+Associated to a general linear system of equations is the matrix of coefficients
+$A$ and the right-hand-side vector $\bb$. The
+matrix equation $A\bx = \bb$ is equivalent to the original system.
+
+$$
+\begin{matrix}
+A =
+\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}
+&
+\bb =
+\begin{pmatrix}
+b_1 \\ b_2 \\ \vdots \\ b_n
+\end{pmatrix}
+\end{matrix}
+$$
+
+
+\end{frame}
+
+\begin{frame}{Start with a matrix equation}
+
+Conversely, given an arbitrary $m \times n$ matrix $A$ and an arbitrary
+$n \times 1$ column vector $\bb$ we can consider the matrix equation
+$A\bx = \bb$. The system of linear equations displayed two slides back
+is equivalent to this matrix equation.
+
+$$
+\begin{matrix}
+A =
+\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}
+&
+\bb =
+\begin{pmatrix}
+b_1 \\ b_2 \\ \vdots \\ b_n
+\end{pmatrix}
+\end{matrix}
+$$
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Start with a linear transformation}
+
+\begin{itemize}
+\item Let $T$ be a linear transformation from $\R^n$ to $\R^m$.
+\item Let $\bb\in \R^m$.
+\item Then we may consider the problem of finding all vectors $\bx\in\R^n$
+such that $T(\bx) = \bb$.
+\item In other words the problem of finding $T^{-1}[\singleton{\bb}]$.
+\item Let $A$ be the unique $m \times n$ matrix such that $T = T_A$.
+\item Then this linear system on $\R^n$ is equivalent to the problem of
+solving the matrix equation $A \bx = \bb$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Three equivalent things}
+
+\begin{itemize}
+\item In summary, the following three things are equivalent.
+\item They are different ways of thinking of the same thing.
+\item (1) A system of $m$ linear equations in $n$ unknowns.
+\item (2) A matrix equation of the form $A\bx=\bb$ where $A$ is
+$m\times n$ and $\bb$ is $m\times 1$.
+\item (3) The problem of finding $T^{-1}[\singleton{\bb}]$ where
+$T:\R^n\map\R^m$ is linear and $\bb\in\R^m$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Square Matrices}
+
+\begin{itemize}
+\item Under the equivalence described above, the following things correspond:
+\item (1) The system has the same number of equations as unknowns
+\item (2) The matrix $A$ is square.
+\item (2) $n=m$ so that $T$ maps $\R^n$ to itself.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Inconsistent systems}
+
+\begin{itemize}
+\item Under the equivalence described above, the following things correspond:
+\item (1) The system of linear equations is inconsistent.
+\item (2) There is no vector $\bx \in \R^n$ such that $A \bx = \bb$.
+\item (2) $\bb \notin \ran T$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Underdetermined systems}
+
+\begin{itemize}
+\item Under the equivalence described above, the following things correspond:
+\item (1) The system of linear equations is underdetermined.
+\item (2) There is more than one vector $\bx \in \R^n$ such that $A \bx = \bb$.
+\item (2) $T^{-1}[\singleton{\bb}]$ has size greater than 1.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Structure of the solution set}
+
+\begin{itemize}
+\item Under the equivalence described above, the following things correspond:
+\item (1) The set of all solutions to the system of linear equations.
+\item (2) The set of all vectors $\bx \in \R^n$ such that $A \bx = \bb$.
+\item (2) The structure of $T^{-1}[\singleton{\bb}]$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Unique solutions}
+
+\begin{itemize}
+\item Under the equivalence described above, the following things correspond:
+\item (1) The system of linear equations has a unique solution.
+\item (2) There is exactly one vector $\bx \in \R^n$ such that $A \bx = \bb$.
+\item (2) $T^{-1}[\singleton{\bb}]$ has size exactly 1.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Study the abstract in order to inderstand the concrete}
+
+\begin{itemize}
+\item We are interested in finding ways to determine when a system of linear
+equations:
+\item (a) has a unique solution, or
+\item (b) is inconsistent, or
+\item (c) is underdetermined. And if it is underdetermined understanding
+\item (d) the structure of the solution set.
+\item In order to help us understand these things we will go on in the
+following lessons to
+study the corresponding issues about linear transformations on $\R^n$.
+\end{itemize}
+
+\end{frame}
 
 
 \end{document}
