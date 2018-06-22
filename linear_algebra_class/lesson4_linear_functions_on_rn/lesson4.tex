@@ -446,6 +446,107 @@ So $\bv=\sum_i{v_i \be_i}$.
 \end{proof}
 \end{frame}
 
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{frame}{All functionals are covectors}
+
+All functionals on $\R^n$ are given by covectors.
+
+\pause
+
+\begin{lemma}
+Let $f:\R^n\map\R$ be a covector.\\
+\pause
+Then there is a vector $\bv\in\R^n$ such that $f=f_{\bv}$. \\
+\end{lemma}
+
+\pause
+
+\begin{itemize}
+\item Proof:
+\item Let $a_i = f(\be_i)$ for $i=1,\cdots n$.
+\item Let $\bv=(a_1, a_2, \cdots a_n)$.
+\item Notice $\bv\cdot\be_i=a_i$ for $i=1,\cdots n$.
+\item So $f_{\bv}(\be_i)=a_i$ for $i=1,\cdots n$.
+\item So $f_{\bv}(\be_i)=f(\be_i)$ for $i=1,\cdots n$.
+\item By the previous lemma, $f = f_{\bv}$. $\qed$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Linear component functions}
+
+A function is linear iff it's component functions are.
+
+\pause
+
+\begin{lemma}
+Let $f:\R^n\map\R^m$ be a function.\\
+\pause
+Write $f(\bv) = \left(f_1(\bv),f_2(\bv),\cdots f_m(\bv)\right)$. \\
+\pause
+Then the following are equivalent:
+\pause
+\begin{enumerate}
+\item $f$ is linear
+\item $f_i$ is linear for $i=1,\dots m$.
+\end{enumerate}
+\end{lemma}
+
+\pause
+
+\begin{itemize}
+\item Proof:
+\item Let $\bv_1,\dots\bv_n\in\R^n$ and let $c_1,\dots c_n \in\R$.
+\item $f\left(\sum_j{c_j \bv_j}\right) = \sum_j{c_j f(\bv_j)}$
+\item iff $\left(f_1\left(\sum_j{c_j \bv_j}\right),\cdots,f_m\left(\sum_j{c_j \bv_j}\right)\right) = \left( \sum_j{c_j f_1(\bv_j)},\cdots \sum_j{c_j f_m(\bv_j)} \right)$
+\item iff $f_i\left(\sum_j{c_j \bv_j}\right) = \sum_j{c_j f_i(\bv_j)}$, for $i=1,\dots m$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Characterization of linear functions}
+
+All linear functions from $\R^n$ to $\R^m$ are given by $m$ covectors.
+
+\pause
+
+\begin{theorem}
+Let $f:\R^n\map\R^m$ be a linear function.\\
+\pause
+Then there are $m$ vectors $\bv_1,\bv_2,\cdots\bv_m \in \R^n$ such that
+$f = \left(f_{\bv_1}, f_{\bv_2}, \cdots f_{\bv_n}\right)$.
+
+\pause
+\smallskip
+
+Conversely, Let $\bv_1,\bv_2,\cdots\bv_m$ be any $m$ vectors in $\R^n$ and
+let $f=\left(f_{\bv_1}, f_{\bv_2},\cdots f_{\bv_n}\right)$.
+\pause
+Then $f:\R^n\map\R^m$ is linear.
+
+\end{theorem}
+
+\end{frame}
+
+\begin{frame}{Proof of theorem}
+
+\begin{itemize}
+\item Let $f:\R^n\map\R^m$ be a linear function.
+\item Write $f = (f_1, f_2, \cdots f_m)$.
+\item From a previous lemma each $f_i$ is linear.
+\item But $f_i:\R^n\map\R$ so each $f_i$ is a linear functional.
+\item But all linear functionals are covectors.
+\item So for each $i$, let $\bv_i$ be such that $f_i = f_{\bv_i}$.
+\item Then $f=(f_{\bv_1}, f_{\bv_2},\cdots f_{\bv_n})$.
+\item Conversely, let $\bv_1,\bv_2,\cdots\bv_m$ be any $m$ vectors in $\R^n$.
+\item Let $f=(f_{\bv_1}, f_{\bv_2},\cdots f_{\bv_n})$.
+\item Since each of the component functions of $f$ is linear, $f$ is linear.
+\end{itemize}
+
+
+\end{frame}
+
 
 \end{document}
 
