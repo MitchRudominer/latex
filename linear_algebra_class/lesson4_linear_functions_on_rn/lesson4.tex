@@ -339,8 +339,7 @@ $$f\left(\Sigma_{i=1}^k{c_i \bw_i}\right) = \Sigma_{i=1}^k{c_i f(\bw_i)}$$
 \item $=\bv \cdot (5, 13)$
 \item $=10 - 13 = -3$.
 \item $2 f_{\bv}(\bw_1) -3 f_{\bv}(\bw_2)$
-\item $2 (\bv \cdot \bw_1) -3 (\bv \cdot \bw_2)$
-\item $=2 (8-5) - 3(2 + 1)$
+\item $= 2 (\bv \cdot \bw_1) -3 (\bv \cdot \bw_2)$
 \item $=2 (3) - 3(3)$
 \item $=-3$
 \item So $f_\bv(2\bw_1 -3\bw_2) = 2f_{\bv}(\bw_1) -3 f_{\bv}(\bw_2)$.
@@ -389,8 +388,62 @@ $$f\left(\Sigma_{i=1}^{k+1}{c_i \bw_i}\right) = \Sigma_{i=1}^{k+1}{c_i f(\bw_i)}
 \end{align*}
 
 \uncover<7->{So $f$ preserves all linear combinations. $\qed$.}
+\end{frame}
 
+\beamerdefaultoverlayspecification{<+->}
 
+\begin{frame}{Arbitrary functions are flexible}
+\begin{itemize}
+\item Suppose $f:\R^2\map\R$ is \emph{some} function. (Not necessarily linear).
+\item Suppose I told you that $f(0,1) = 12$
+\item and I told you that $f(1, 0) = -1$.
+\item Question: What is $f(2, 2)$?
+\item Answer: You have no idea. It could be anything.
+\item Arbitrary functions are "flexible". They can bend however you want them to.
+\item Knowing the value of $f$ at any finite number of points tells you nothing
+about the value of $f$ at any other point.
+\item Now suppose I told you $f$ were linear?
+\item Then $f(2,2) = f\left(2(1,0) + 2(0,1)\right)$
+\item $=2f(1,0) + 2f(0,1)$
+\item $= 2(12) + 2 (-1) = 23$.
+\end{itemize}
+\end{frame}
+
+\beamerdefaultoverlayspecification{}
+
+\begin{frame}{Values at the standard basis vectors}
+
+A linear function is determined by its values at the standard basis vectors.
+
+\uncover<2->{
+\begin{lemma}
+Let $f:\R^n\map\R^m$ and $g:\R^n\map\R^m$  be two linear functions. \\
+\uncover<3->{Suppose that $f(\be_i) = g(\be_i)$ for $i=1, 2, \cdots n$.} \\
+\uncover<4->{Then $f = g$.}
+\end{lemma}
+}
+
+\end{frame}
+
+\begin{frame}{Proof of Lemma}
+
+\begin{proof}
+Assume $f(\be_i) = g(\be_i)$ for $i=1, 2, \cdots n$.
+Let $\bv\in\R^n$ be any vector.
+\uncover<2->{We must show that $f(\bv)=g(\bv)$.}
+\uncover<3->{
+Now $\bv = (v_1,v_2,\cdots v_n)$.
+So $\bv=\sum_i{v_i \be_i}$.
+}
+
+\begin{align*}
+\uncover<4->{f(\bv) &= f\left(\sum_i{v_i \be_i}\right) \\}
+\uncover<5->{&= \sum_i{v_i f(\be_i)} \text{ \qquad (by linearity)}\\}
+\uncover<6->{&= \sum_i{v_i g(\be_i)} \text { \qquad (by assumption)}\\}
+\uncover<7->{&= g\left(\sum_i{v_i \be_i}\right) { \qquad  (by linearity)} \\}
+\uncover<8->{&= g(\bv)}
+\end{align*}
+\end{proof}
 \end{frame}
 
 
