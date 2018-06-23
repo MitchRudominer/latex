@@ -318,9 +318,12 @@ $$f(c_1 \bw_1 + c_2 \bw_2 + \cdots + c_k \bw_k) = c_1 f(\bw_1) + c_2 f(\bw_2) + 
 
 \pause
 
-Using Sigma notation
+\item $f$ preserves linear combinations of length 2.
 
-$$f\left(\Sigma_{i=1}^k{c_i \bw_i}\right) = \Sigma_{i=1}^k{c_i f(\bw_i)}$$
+\pause
+
+i.e. for every $\bw_1,\bw_2\in\R^n$, for every $c_1,c_2\in\R$,
+$f(c_1 \bw_1 + c_2 \bw_2) = c_1 f(\bw_1) + c_2 f(\bw_2) f(\bw_k)$.
 
 \end{enumerate}
 \end{lemma}
@@ -350,19 +353,21 @@ $$f\left(\Sigma_{i=1}^k{c_i \bw_i}\right) = \Sigma_{i=1}^k{c_i f(\bw_i)}$$
 \begin{frame}{Proof of Lemma}
 
 \begin{itemize}
-\item First suppose that $f$ preserves all linear combinations
-\item $f\left(\Sigma_{i=1}^k{c_i \bw_i}\right) = \Sigma_{i=1}^k{c_i f(\bw_i)}$
-\item Letting $k=1$ we have
+\item (3) $\implies$ (1). Suppose that $f$ preserves linear combinations of length 2.
+\item $f(c_1 \bw_1 + c_2 \bw_2) = c_1 f(\bw_1) + c_2 f(\bw_2)$.
+\item Letting $c2=0$ we have
 \item $f(c_1 \bw_1) = c_1 f(\bw_1)$.
 \item So $f$ preserves scalar multiplication.
-\item Letting $k=2$ and letting $c_1 = c_2 = 1$ we have
+\item Letting $c_1 = c_2 = 1$ we have
 \item $f(\bw_1 + \bw_2) = f(\bw_1) + f(\bw_2)$.
 \item So $f$ preserves vector addition.
-\item Conversely, suppose $f$ preserves vector addition and scalar multiplication.
+\item So $f$ is linear.
+\item (2) $\implies$ (3) is trivial. So we are left with...
+\item (1) $\implies$ (2). Suppose $f$ is linear.
 \item We must show that $f$ preserves all linear combinations.
 \item This is done by induction on $k$.
 \item The base case, $k=1$, says $f(c_1 \bw_1) = c_1 f(\bw_1)$.
-\item This follows from the fact that $f$ preserves scalar multiplication.
+\item This follows from the fact that $f$ preserves scalar mult.
 \end{itemize}
 
 \end{frame}
@@ -381,9 +386,9 @@ $$f\left(\Sigma_{i=1}^{k+1}{c_i \bw_i}\right) = \Sigma_{i=1}^{k+1}{c_i f(\bw_i)}
 \begin{align*}
 &f\left(\Sigma_{i=1}^{k+1}{c_i \bw_i}\right)\\
 \uncover<2->{&=  f\left(\Sigma_{i=1}^{k}{c_i \bw_i} + c_{k+1} \bw_{k+1}\right)\\}
-\uncover<3->{&=  f\left(\Sigma_{i=1}^{k}{c_i \bw_i}\right) + f(c_{k+1} \bw_{k+1}) \text{ $f$ preserves addition} \\}
-\uncover<4->{&= \Sigma_{i=1}^k{c_i f(\bw_i)} + f(c_{k+1} \bw_{k+1}) \text{ induction}\\}
-\uncover<5->{&= \Sigma_{i=1}^k{c_i f(\bw_i)} + c_{k+1} f(\bw_{k+1}) \text{ $f$ preserves scalar mult.}\\}
+\uncover<3->{&=  f\left(\Sigma_{i=1}^{k}{c_i \bw_i}\right) + f(c_{k+1} \bw_{k+1}) \quad \text{ ($f$ preserves addition)} \\}
+\uncover<4->{&= \Sigma_{i=1}^k{c_i f(\bw_i)} + f(c_{k+1} \bw_{k+1}) \quad \text{ (induction)}\\}
+\uncover<5->{&= \Sigma_{i=1}^k{c_i f(\bw_i)} + c_{k+1} f(\bw_{k+1}) \quad \text{ ($f$ preserves scalar mult.)}\\}
 \uncover<6->{&= \Sigma_{i=1}^{k+1}{c_i f(\bw_i)} }
 \end{align*}
 
@@ -515,7 +520,7 @@ All linear functions from $\R^n$ to $\R^m$ are given by $m$ covectors.
 Let $f:\R^n\map\R^m$ be a linear function.\\
 \pause
 Then there are $m$ vectors $\bv_1,\bv_2,\cdots\bv_m \in \R^n$ such that
-$f = \left(f_{\bv_1}, f_{\bv_2}, \cdots f_{\bv_n}\right)$.
+$f = \left(f_{\bv_1}, f_{\bv_2}, \cdots f_{\bv_m}\right)$.
 
 \pause
 \smallskip
@@ -542,6 +547,36 @@ Then $f:\R^n\map\R^m$ is linear.
 \item Conversely, let $\bv_1,\bv_2,\cdots\bv_m$ be any $m$ vectors in $\R^n$.
 \item Let $f=(f_{\bv_1}, f_{\bv_2},\cdots f_{\bv_n})$.
 \item Since each of the component functions of $f$ is linear, $f$ is linear.
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}{Composition of linear functions}
+
+The composition of linear functions is linear.
+
+\pause
+
+\begin{lemma}
+Let $f:\R^n\map\R^m$ be linear. Let $g:\R^m\map\R^k$ be linear.
+Let $h:\R^n\map\R^k$ be given by $h=g\circ f$.
+\pause
+Then $h$ is linear.
+\end{lemma}
+
+\pause
+
+proof:
+
+\begin{itemize}
+\item $h(a\bv +b\bw)$
+\item $= g(f(a\bv +b\bw))$
+\item $= g(a f(\bv) + b f(\bw))$ \quad (because $f$ is linear)
+\item $= a g(f(\bv)) + b g(f(\bw))$ \quad (because $g$ is linear)
+\item $= a h(\bv) + b h(\bw)$.
+\item So $h$ is linear. $\qed$.
 \end{itemize}
 
 
