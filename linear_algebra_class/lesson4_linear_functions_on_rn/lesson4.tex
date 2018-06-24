@@ -552,6 +552,22 @@ Then $f:\R^n\map\R^m$ is linear.
 
 \end{frame}
 
+\begin{frame}{Example: A linear $f:\R^2\map\R^3$}
+According to the theorem, a linear function from $\R^2$ to $\R^3$ is
+given by three covectors from $\R^2$.
+
+\begin{itemize}
+\item Let $\bv_1 = (2, 1)$
+\item Let $\bv_2 = (0, -3)$
+\item Let $\bv_3 = (-1, 0)$
+\item Let $f = (f_{\bv_1},f_{\bv_2},f_{\bv_3})$.
+\item Then $f:\R^2\map\R^3$ is linear.
+\item Let $\bw = (3, -2)$. Compute $f(\bw)$.
+\item $f(\bw) = \left(f_{\bv_1}(\bw),f_{\bv_2}(\bw),f_{\bv_3}(\bw)\right)$
+\item $=(4, 6, -3)$
+\end{itemize}
+
+\end{frame}
 
 \begin{frame}{Composition of linear functions}
 
@@ -579,9 +595,125 @@ proof:
 \item So $h$ is linear. $\qed$.
 \end{itemize}
 
+\end{frame}
+
+\begin{frame}{Example Composition}
+
+Let $f:\R^2\map\R^3$ be the function we considered a few slides back:
+
+\begin{itemize}
+\item Let $\bv_1 = (2, 1)$
+\item Let $\bv_2 = (0, -3)$
+\item Let $\bv_3 = (-1, 0)$
+\item Let $f = (f_{\bv_1},f_{\bv_2},f_{\bv_3})$.
+\item So $f:\R^2\map\R^3$ is linear.
+\item Now let $\bu\in\R^3 = (-1, -1, 2)$.
+\item Then $g = f_{\bu}:\R^3\map\R$ is a covector from $\R^3$.
+\item Now let $h=g\circ f$.
+\item Then $h:\R^2\map\R^1$. According to the theorem it is linear.
+\item Let $\bw = (3, -2)$. Compute $h(\bw)$.
+\item From our earlier example $f(\bw) =(4, 6, -3)$.
+\item So $h(\bw) = g(4, 6, 3)$ = $\bu\cdot(4,6,3) = -4 -6 -6 = -16$.
+\end{itemize}
 
 \end{frame}
 
+\begin{frame}{Operations on linear functions}
+
+We can consider the \emph{set of all} linear functions from $\R^n$ to $\R^m$.
+
+\begin{itemize}
+\item Let $L(\R^n,\R^m)$ mean the set of all linear functions from $\R^n$ to $\R^m$.
+\item There are a few \emph{operations} that make sense on $L(\R^n, \R^m)$.
+\item Addition:
+\item Let $f, g \in L(\R^n, \R^m)$. We can define $f+g$.
+\item Scalar multiplication:
+\item Let $f\in L(\R^n, \R^m)$. Let $c\in\R$. We can define $cf$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Addition of linear functions}
+
+\begin{itemize}
+\item Let $f, g \in L(\R^n,\R^m)$.
+\item We want to define $h = f+g \in L(\R^n,\R^m)$.
+\item Now $f:\R^n\map\R^m$ and $g:\R^n\map\R^m$.
+\item We want to define $h:\R^n\map\R^m$.
+\item How should we define $h$?
+\item Let $\bv\in\R^n$. What should $h(\bv)$ be?
+\item $h(\bv) = (f+g)(\bv) = ?$
+\item $=f(\bv) + g(\bv)$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sum of linear functions is linear}
+
+\begin{lemma}
+Let $f,g\in L(\R^n, \R^m)$. Then $f+g$ is linear.
+\end{lemma}
+
+\pause
+
+Proof:
+
+\pause
+
+\begin{itemize}
+\item $(f+g)(c_1 \bv_1 + c_2 \bv_2)$
+\item $=f(c_1 \bv_1 + c_2 \bv_2) + g(c_1 \bv_1 + c_2 \bv_2)$ \quad (Definition of $f+g$)
+\item $=c_1f(\bv_1)+ c_2f(\bv_2) + c_1g(bv_1) + c_2g(\bv_2)$ \quad ($f$ and $g$ are both linear)
+\item $= c_1\left(f(\bv_1)+  g(bv_1)\right) + c_2\left(f(\bv_2) + g(\bv_2)\right)$
+\item $=c_1\left((f + g)(\bv_1)\right) + c_2\left((f+g)(\bv_2) \right)$ \quad (Definition of $f+g$)
+\end{itemize}
+
+\pause
+
+So $f+g$ is linear. $\qed$.
+
+\end{frame}
+
+\begin{frame}{Scalar multiplication of linear functions}
+
+\begin{itemize}
+\item Let $f \in L(\R^n,\R^m)$. Let $c\in\R$.
+\item We want to define $h = c f \in L(\R^n,\R^m)$.
+\item Now $f:\R^n\map\R^m$.
+\item We want to define $h:\R^n\map\R^m$.
+\item How should we define $h$?
+\item Let $\bv\in\R^n$. What should $h(\bv)$ be?
+\item $h(\bv) = (c f)(\bv) = ?$
+\item $= c \left(f (\bv)\right)$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Scalr multiple of a linear function is linear}
+
+\begin{lemma}
+Let $f\in L(\R^n, \R^m)$. Let $c\in\R$. Then $c f$ is linear.
+\end{lemma}
+
+\pause
+
+Proof:
+
+\pause
+
+\begin{itemize}
+\item $(c f)(c_1 \bv_1 + c_2 \bv_2)$
+\item $=c \left (f(c_1 \bv_1 + c_2 \bv_2) \right )$ \quad (Definition of $c f$)
+\item $= c \left(c_1 f(\bv_1) + c_2 f(\bv_2)  \right)$ \quad ($f$ is linear)
+\item $= \left(c_1 \cdot c \cdot f(\bv_1) + c_2 \cdot c \cdot f(\bv_2)  \right)$
+\item $= \left(c_1 (c f)(\bv_1) + c_2 (c f)(\bv_2)  \right)$ \quad (Definition of $c f$)
+\end{itemize}
+
+\pause
+
+So $c f$ is linear. $\qed$.
+
+\end{frame}
 
 \end{document}
 
