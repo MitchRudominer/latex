@@ -569,6 +569,87 @@ given by three covectors from $\R^2$.
 
 \end{frame}
 
+\begin{frame}{Linear functions given by values at the standard basis vectors.}
+
+There exists a unique linear function with any specified values for the
+standard basis vectors.
+
+\pause
+
+\begin{theorem}
+Let $\bw_1,\bw_2,\cdots\bw_n \in \R^m$. Then there exists a unique linear
+function $f:\R^n\map\R^m$ such that
+$$f(\be_i) = \bw_i, \text{ for } 1\leq i \leq n$$
+\end{theorem}
+
+\pause
+
+Proof:
+
+\begin{itemize}
+\item An earlier lemma already gave us uniqueness.
+(Linear functions are determined by their values on the standard basis vectors.)
+So we only have to prove existence.
+\item Let $\bv\in\R^n$. We have to define $f(\bv)$.
+\item Now $\bv = \sum_i{v_i \be_i}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof continued}
+
+\begin{itemize}
+\item If $f$ is going to be linear we have no choice but to define
+\item $f(\bv) = \sum_i{v_i  f(\be_i)}$
+\item $=\sum_i{v_i  \bw_i}$.
+\item This is linear:
+\item $f(c_1 \bu + c_2\bv)$
+\item $=f(\sum_i{(c_1\cdot u_i +c_2 \cdot v_i)\be_i})$
+\item $= \sum_i{(c_1\cdot u_i +c_2 \cdot v_i)\bw_i}$ \quad (definition of $f$)
+\item $= c_1\sum_i{u_i \bw_i} +c_2\sum_i{v_i \bw_i}$
+\item $= c_1f(\bu) +c_2 f(\bv)$ \quad (definition of $f$).
+\end{itemize}
+
+\pause
+
+So $f$ is linear. $\qed$.
+
+\end{frame}
+
+\begin{frame}{Example: A linear $f:\R^2\map\R^3$}
+According to the theorem, a linear function from $\R^2$ to $\R^3$ is
+given by two vectors in $\R^3$ to be the images of the two standard
+basis vectors in $\R^2$.
+
+\begin{itemize}
+\item Let $\bw_1 = (2, 0, -1)$.
+\item Let $\bw_2 = (1, -3, 0)$.
+\item According to the theorem there is a unique linear $f:\R^2\map\R^3$ such that
+\item $f(\be_1) = \bw_1$ and $f(\be_2) = \bw_2$.
+\item Let $\bu = (3, -2)$. Compute $f(\bw)$.
+\item $f(\bu) = f(3\be_1 -2\be_2)$
+\item $=3 \bw_1 -2\bw_2$
+\item $=(4, 6, -3)$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Two ways of specifying linear $f:\R^n\map\R^m$}
+
+\begin{itemize}
+\item We now have two ways of specifiying a linear function $f:\R^n\map\R^m$:
+\item By giving $m$ covectors from $\R^n$.
+\item By giving $n$ vectors in $\R^m$.
+\item Notice that in our two examples we got the same result for $f(3,-2)$.
+\item Actually we specified the same linear function both times, but in
+the two different ways.
+\item This fact will become more clear when we switch to expressing these
+ideas using matrices in the next lesson.
+\end{itemize}
+
+\end{frame}
+
+
 \begin{frame}{Composition of linear functions}
 
 The composition of linear functions is linear.
@@ -689,7 +770,7 @@ So $f+g$ is linear. $\qed$.
 
 \end{frame}
 
-\begin{frame}{Scalr multiple of a linear function is linear}
+\begin{frame}{Scalar multiple of a linear function is linear}
 
 \begin{lemma}
 Let $f\in L(\R^n, \R^m)$. Let $c\in\R$. Then $c f$ is linear.
