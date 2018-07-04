@@ -124,7 +124,7 @@ $$
 M =
 \begin{pmatrix}
 \frac{1}{3} & \frac{2}{3} \\
-0 & \frac{-1}{5}
+0 & -1
 \end{pmatrix}
 $$
 
@@ -166,6 +166,41 @@ $$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}{Vector indexing}
+
+\begin{itemize}
+\item For a row vector like $\sigma$ we will often drop the row
+index 1 and write only the column index.
+\item So instead of writing $\sigma_{1,3} = 0$
+\item we may write $\sigma_3 = 0$.
+\item Similarly for column vectors like $\bv$ below we will often
+drop the column index 1 and write only the row index.
+\item So instead of writing $v_{2,1} = 0$,
+\item we may write $v_2 = 0$.
+\end{itemize}
+
+$$
+\begin{matrix}
+\sigma =
+\begin{pmatrix}
+2, 2, 0, 1
+\end{pmatrix}
+
+&
+
+\bv =
+\begin{pmatrix}
+1 \\
+0 \\
+-5
+\end{pmatrix}
+\end{matrix}
+$$
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}{What are vectors in $\R^n$?}
 
 \begin{itemize}
@@ -183,25 +218,45 @@ column vector.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Transpose of a row vector}
+\begin{frame}{Transpose of a vector}
+
+\begin{itemize}
+\item If $\bv$ is an $n\times 1$ column vector, then $\bv^{\text{T}}$
+(pronounced $\bv$-\emph{transpose}) is the corresponding $1\times n$ row vector.
+\item If $\bv$ is a $1\times n$ row vector, then $\bv^{\text{T}}$ is the
+corresponding $n\times 1$ column vector.
+\item $$(1, 0, -5)^{\text{T}} = \begin{pmatrix} 1 \\ 0 \\ -5 \end{pmatrix}$$
+\item $$\begin{pmatrix} 1 \\ 0 \\ -5 \end{pmatrix}^{\text{T}} =  (1, 0, -5)$$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Transpose of a vector (continued)}
 
 \begin{itemize}
 \item Previously, before we started talking about matrices, we might have
-written let $\bv = (1, 0, -5)$. Then $\bv\in\R^3$.
-\item But the problem with this is that the definition of $\bv$ makes it look
-like a row vector, and we just said that elements of $\R^n$ are column
-vectors.
-\item So from now on we will write instead, let $\bv = (1, 0, -5)^{\text{T}}$.
-\item The superscript ``T'' is read \emph{transpose}.
-\item It means to interchange the rows and columns of a matrix.
-\item We will study the transpose operation in detail later in the course.
-\item For now we only use the fact that the transpose of a row vector is a
-column vector.
-\item $$(1, 0, -5)^{\text{T}} = \begin{pmatrix} 1 \\ 0 \\ -5 \end{pmatrix}$$
+written: $(1, 0, -5)\in\R^3$.
+\item But the problem with this is that because we write an $n$-tuple from
+left-to-right on a single line, it looks like a row vector, and we just said
+that elements of $\R^n$ are column vectors.
+\item So from now on we will write instead, $(1, 0, -5)^{\text{T}}\in\R^3$.
+\item Similarly, suppose we want $\bw$ to be a row vector. We might write
+let $\bv\in\R^n$, let $\bw=\bv^{\text{T}}$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{$1\times 1$ matrices}
+
+\begin{itemize}
+\item A $1\times 1$ matrix is identified with a scalar.
+\item For example the $1\times 1$ matrix $(42)$ is considered to
+be just the number 42.
 \end{itemize}
 
 \end{frame}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -212,12 +267,194 @@ column vector.
 \begin{itemize}
 \item The most important thing we do with matrices is multiply two of
 them together.
+\item Let $A$ be an $n\times m$ matrix. Let $B$ be a $m\times k$ matrix.
+\item Then the product $A B$ is defined.
+\item $A B$ is the $n\times k$ matrix defined as follow:
+\item Let $C=A B$. Then for $1\leq i \leq n$, and $1\leq j \leq k$,
+\item $$c_{ij} = \sum_{t=1}^m a_{it} b_{tj}$$
+\item To understand this better, we will look at some special cases first.
 \end{itemize}
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+\begin{frame}{Which products are defined?}
+
+\begin{itemize}
+\item Suppose $A$ and $B$ are matrices of the sizes given below. Say
+whether the product $A B$ is defined and if so say what its size is.
+\item $A$ is $3\times 4$ and $B$ is $3\times 5$.
+\item  $A B$ is not defined.
+\item $A$ is $3 \times 4$ and $B$ is $4 \times 5$.
+\item $A B$ is $3 \times 5$.
+\item $A$ is $5\times 1$ and $B$ is $6\times 1$.
+\item $A B$ is not defined.
+\item $A$ is $5\times 1$ and $B$ is $1\times 6$.
+\item $A B$ is $5\times 6$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{A row vector times a column vector}
+
+\begin{itemize}
+\item Let's look at the special case of the previous definition where $n=k=1$.
+\item Let $\bw$ be a $1\times m$ row vector. Let $\bv$ be a $m\times 1$ column vector.
+\item Then the product $\bw \bv$ is defined.
+\item $\bw \bv$ is the $1\times 1$ matrix (i.e. the scalar) defined as follow:
+\item $$\bw \bv  = \sum_{t=1}^m w_t v_t$$
+\item Let's look at an example to try to understand this.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{A row vector times a column vector: Example}
+
+\begin{itemize}
+\item Let $\bw$ be the $1\times 3$ row vector below.
+\item Let $\bv$ be the $3\times 1$ column vector below.
+\item $$\bw \bv  = \sum_{t=1}^3 w_t  v_t = $$
+\item $ = 1\cdot 4 + (-1)\cdot (-2) + 2\cdot 5$
+\item $=16$
+\item The product of a row vector times a column vector
+\emph{of the same length} is just the \emph{dot product} of the two vectors.
+\end{itemize}
+
+$$
+\begin{matrix}
+
+\bw =
+
+\begin{pmatrix}
+1 & -1 & 2
+\end{pmatrix}
+
+&
+
+\bv =
+
+\begin{pmatrix}
+4 \\ -2 \\ 5
+\end{pmatrix}
+
+\end{matrix}
+$$
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{A new way of writing dot product.}
+
+\begin{itemize}
+\item Let $\bv,\bw \in \R^n$.
+\item Then $\bv \bw$ is not defined.
+\item But $\bv^{\text{T}} \bw$ is defined and
+\item  $\bv^{\text{T}} \bw = \bv \cdot \bw$
+\item Is $\bv \bw^{\text{T}}$ defined?
+\item Yes $\bv \bw^{\text{T}}$ is an $n\times n$ matrix. We will look
+at what this is later.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{A matrix times a column vector}
+
+\begin{itemize}
+\item Let's look at the special case of the  definition where $k=1$.
+\item Let $A$ be an $n\times m$ matrix. Let $\bv$ be a $m\times 1$ column vector.
+\item Then the product $A \bv$ is defined.
+\item $A \bv$ is the $n\times 1$ column vector defined as follows:
+\item Let $\bw=A \bv$. Then for $1\leq i \leq n$,
+\item $$w_i = \sum_{t=1}^m a_{it} v_{t}$$
+\item Let's look at an example to try to understand what this means.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{A matrix times a column vector: Example}
+
+\begin{itemize}
+\item Let $A$ be a $4 \times 5$ matrix.
+\item Let $\bv$ be a $5\times 1$ column vector.
+\item Then $A \bv$ is a $4 \times 1$ column vector.
+\item Let $\bw=A \bv$. Then for $1\leq i \leq 4$,
+\item $$w_i = \sum_{t=1}^5 a_{it} v_{t}$$
+\end{itemize}
+
+$$
+\begin{matrix}
+A =
+
+\begin{pmatrix}
+1 & 3 & 2 & -1 & 0 \\
+2 & 6 & 1 & 4 & 3\\
+-1 & -3 & -3 & 3 & 1 \\
+3 & 9 & 8 & -7 & 2
+\end{pmatrix}
+
+&
+
+\bv =
+
+\begin{pmatrix}
+2 \\ 0 \\ -1 \\ 3 \\ 0
+\end{pmatrix}
+\end{matrix}
+$$
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{A matrix times a column vector: Example continued}
+
+\begin{itemize}
+\item $$w_i = \sum_{t=1}^5 a_{it} v_{t}$$
+\item The $i$-th element of $A\bv$ is the $i$-th row of $A$ times $\bv$.
+\end{itemize}
+
+$$
+\begin{matrix}
+A =
+
+\begin{pmatrix}
+1 & 3 & 2 & -1 & 0 \\
+2 & 6 & 1 & 4 & 3\\
+-1 & -3 & -3 & 3 & 1 \\
+3 & 9 & 8 & -7 & 2
+\end{pmatrix}
+
+&
+
+\bv =
+
+\begin{pmatrix}
+2 \\ 0 \\ -1\\ 3 \\ 0
+\end{pmatrix}
+
+&
+
+A \bv =
+
+\begin{pmatrix}
+-3 \\ 15 \\ 10 \\ -23
+\end{pmatrix}
+
+\end{matrix}
+$$
+
+\end{frame}
 
 
 \end{document}
