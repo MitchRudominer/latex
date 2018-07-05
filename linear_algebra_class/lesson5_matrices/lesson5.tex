@@ -271,7 +271,7 @@ them together.
 \item Then the product $A B$ is defined.
 \item $A B$ is the $n\times k$ matrix defined as follow:
 \item Let $C=A B$. Then for $1\leq i \leq n$, and $1\leq j \leq k$,
-\item $$c_{ij} = \sum_{t=1}^m a_{it} b_{tj}$$
+\item $$c_{ij} = $$
 \item To understand this better, we will look at some special cases first.
 \end{itemize}
 
@@ -455,6 +455,421 @@ A \bv =
 $$
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Product of two matrices}
+
+\begin{itemize}
+\item Let $A$ be the $3\times 2$ matrix below.
+\item Let $B$ be the $2\times 3$ matrix below.
+\item Then $A B$ is the $3 \times 3$ matrix $C$ defined by
+\item $$c_{ij} = \sum_{t=1}^3 a_{it} b_{tj}$$
+\item for $1\leq i \leq 3$, $1\leq j \leq 3$.
+\end{itemize}
+
+$$
+\begin{matrix}
+A =
+
+\begin{pmatrix}
+1 & 0 \\
+0 & 2 \\
+-2 & -3
+\end{pmatrix}
+
+&
+
+B =
+
+\begin{pmatrix}
+4  & 1 & 0 \\
+-1 & 0 & 2
+\end{pmatrix}
+
+&
+
+A B =
+
+\begin{pmatrix}
+4 & 1 & 0 \\
+-2 & 0 & 4 \\
+-5 & -2 & -6
+\end{pmatrix}
+
+\end{matrix}
+$$
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Think of the product column by column}
+
+\begin{itemize}
+\item Let $\bb_i$ be the $i$-th column of $B$.
+\item So we can write $B = (\bb_1, \bb_2, \bb_3)$ and think of $B$ is
+being a 3-tuple of column vectors.
+\item Then
+$$A B = (A\bb_1, A\bb_2, A\bb_3)$$
+\end{itemize}
+
+$$
+\begin{matrix}
+A =
+
+\begin{pmatrix}
+1 & 0 \\
+0 & 2 \\
+-2 & -3
+\end{pmatrix}
+
+&
+
+B =
+
+\begin{pmatrix}
+4  & 1 & 0 \\
+-1 & 0 & 2
+\end{pmatrix}
+
+&
+
+A B =
+
+\begin{pmatrix}
+4 & 1 & 0 \\
+-2 & 0 & 4 \\
+-5 & -2 & -6
+\end{pmatrix}
+
+\end{matrix}
+$$
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Matrix Multiplication: Summary}
+
+\begin{itemize}
+\item Let $\bw$ be a $1\times m$ row vector and $\bv$ a $m\times 1$ column vector.
+\item Then $\bw \bv$ is just the dot product of the two vectors.
+\item Let $A$ be an $n\times m$ matrix and $\bv$ an $m\times 1$ column vector.
+\item Then $A \bv$ is the $n\times 1$ column vector whose $i$-th element is
+the product of row $i$ of $A$ times $\bv$.
+\item (Multiply a matrix by a column vector by taking the matrix one row at a time).
+\item Let $A$ be an $n\times m$ matrix and $B$ an $m\times k$ matrix.
+\item Then $A B$ is the $n \times m$ matrix whose $j$-th column is the product
+of $A$ times the $j$-th column of $B$.
+\item (Multiply two matrices $A B$ by taking $B$ one column at a time.)
+\end{itemize}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Matrix Addition}
+
+\begin{itemize}
+\item Matrix addition is defined on two matrices of the \emph{same size}.
+\item Let $A$ and $B$ both be $n\times m$ matrices.
+\item Then $A + B$ is the $n \times m$ matrix $C$ defined by
+\item $c_{ij} = a_{ij} + b_{ij}$
+\item We add two matrices by adding their components.
+\end{itemize}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Matrix Addition: Example}
+
+\begin{itemize}
+\item Let $A$ and $B$ be the two $3\times 2$ matrices below.
+\item Then $A+B$ is also a $3\times 2$ matrix, shown below.
+\end{itemize}
+
+$$
+\begin{matrix}
+A =
+
+\begin{pmatrix}
+1 & 0 \\
+0 & 2 \\
+-2 & -3
+\end{pmatrix}
+
+&
+
+B =
+
+\begin{pmatrix}
+3 & -5 \\
+8 & -1 \\
+6 & 4
+\end{pmatrix}
+
+&
+
+A + B =
+
+\begin{pmatrix}
+4 & -5 \\
+8 & 1 \\
+4 & 1
+\end{pmatrix}
+
+\end{matrix}
+$$
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Matrix Scalar Multiplication}
+
+\begin{itemize}
+\item Let $A$ be an $n\times m$ matrix and $c$ a scalar.
+\item Then $cA$ is defined to be the $n\times m$ matrix $B$ with
+\item $b_{ij} = c a_{ij}$.
+\item That is we just multiply each entry in $A$ by $c$.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Matrix Scalar Multiplication: Example}
+
+\begin{itemize}
+\item Let $A$ be the $3\times 2$ matrix below.
+\item Let $c = -2$.
+\item Then $cA$ is the $3\times 2$ matrix shown below.
+\end{itemize}
+
+$$
+\begin{matrix}
+A =
+
+\begin{pmatrix}
+1 & 0 \\
+0 & 2 \\
+-2 & -3
+\end{pmatrix}
+
+&
+
+(-2) A =
+
+\begin{pmatrix}
+-2 & 0 \\
+0 & -4 \\
+4 &  6
+\end{pmatrix}
+
+\end{matrix}
+$$
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Zero Matrix}
+
+\begin{itemize}
+\item $O_{n\times m}$ means the $n\times m$ matrix all of whose entries are zero.
+\item
+$$O_{2\times 3} =
+\begin{pmatrix}
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{pmatrix}
+$$
+\item If the size of the matrix is clear from contex sometimes we just
+write $O$ for the zero matrix.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Main diagonal}
+
+\begin{itemize}
+\item If $A$ is a square $n\times n$ matrix, then the entries on the
+\emph{main diagonal} of $A$ are the entries $a_{11}, a_{22}, \cdots a_{nn}$
+whose row and column are equal.
+\item Let
+$$A =
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{pmatrix}
+$$
+\item Then the entries on the main diagonal of $A$ are 1,5 9.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Diagonal matrix}
+
+\begin{itemize}
+\item A \emph{diagonal} matrix is a \emph{square} matrix such that all
+of the entries \emph{off of the main diagonal} are zero.
+\item Let
+$$A =
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 5 & 0 \\
+0 & 0 & 9
+\end{pmatrix}
+$$
+\item Then $A$ is a diagonal matrix.
+\item We sometimes write $\diag(a_1,a_2,\cdots, a_n)$ for the $n\times n$
+diagonal matrix whose entries on the main diagonal are $a_1,a_2,\cdots, a_n$.
+\item The matrix $A$ above would be written $\diag(1,5,9)$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Identity matrix}
+
+\begin{itemize}
+\item The matrix
+$$I_n = \diag(1, 1, \cdots 1)$$
+is called the $n\times n$ \emph{identity} matrix.
+\item
+$$
+I_3 =
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+$$
+\item If the size of the matrix is clear from context we will often just
+write $I$ instead of $I_n$.
+\item So we would write
+$$
+I=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+$$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Matrix Arithmetic}
+
+\begin{itemize}
+\item We have defined three arithmetic operations on matrices.
+\item Matrix addition between two matrices of the same size.
+\item Matrix scalar multiplication.
+\item Matrix multiplication. $A B$ is only defined if the number of
+\emph{columns} of $A$ is the same as the number of \emph{rows} of $B$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Properties of matrix addition}
+
+\begin{itemize}
+\item Matrix addition is \emph{commutative}.
+\item $A+B = B + A$.
+\item proof: $a_{ij} + b_{ij} = b_{ij} + a_{ij}$.
+\item Matrix addition is \emph{associative.}
+\item $A + (B + C) = (A + B) + C$.
+\item proof: $a_{ij} + (b_{ij} + c_{ij}) = (a_{ij} + b_{ij}) + c_{ij}$.
+\item The zero matrix is an additive identity.
+\item $$A+O = O + A = A$$
+\item Additive inverses: Let $A$ be an $n\times m$ matrix. Then there is another
+matrix, $-A$ such that $A+(-A) = O$.
+\item proof: Let $-A = (-1) A$.
+\item
+$$
+\begin{matrix}
+
+A =
+
+\begin{pmatrix}
+1 & -2 & 3\\
+-4 & 5  & -6
+\end{pmatrix}
+
+&
+
+-A =
+
+\begin{pmatrix}
+-1 & 2 & -3\\
+4 & -5  & 6
+\end{pmatrix}
+
+\end{matrix}
+$$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Properties of scalar multiplication}
+
+\begin{itemize}
+\item Scalar multiplication has these properties:
+\item $(c \cdot d) A = c ( d A)$
+\item $(c + d) A = c A + d A$.
+\item proof: $(c+d)a_{ij} = c a_{ij} + d a_{ij}$.
+\item $c (A + B) = cA + cB$.
+\item proof: $c (a_{ij} + b_{ij}) = c a_{ij} + c b_{ij}$.
+\item $1 A = A$
+\item $0 A = O$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Properties of matrix multiplication}
+
+\begin{itemize}
+\item Matrix multiplication is \emph{not} commutative.
+\item $A B = B A$ is often \emph{false}.
+\item In fact if $A B$ is defined then $B A$ may not even be defined.
+\item Suppose $A$ is $3\times 4$ and $B$ is $4\times 5$. Then $A B$
+is $3\times 5$ but $B A$ is not defined.
+\item Question: When are both $A B$ and $B A$ defined?
+\item When $A$ is $n\times m$ and $B$ is $m\times n$.
+\item Then $A B$ is $n \times n$ and $B A$ is $m\times m$.
+\item If $n\not= m$ then $A B \not= B A$.
+\item So the only time there is even the chance that $A B = B A$ is
+if $A$ and $B$ are square matrices of the same size.
+
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \end{document}
