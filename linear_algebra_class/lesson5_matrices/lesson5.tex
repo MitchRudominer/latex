@@ -873,7 +873,7 @@ if $A$ and $B$ are square matrices of the same size.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Properties of matrix multiplication (2)}
+\begin{frame}{Matrix multiplication is not commutative}
 
 \begin{itemize}
 \item If $A$ and $B$ are both $n\times n$ matrices then $A B$ and $B A$
@@ -933,7 +933,7 @@ $$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Properties of matrix multiplication (3)}
+\begin{frame}{Sometimes $AB = BA$}
 
 \begin{itemize}
 \item Let
@@ -988,7 +988,7 @@ $$
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Properties of matrix multiplication (4)}
+\begin{frame}{Associative law for matrix multiplication}
 
 \begin{itemize}
 \item Matrix multiplication \emph{is} associative.
@@ -999,8 +999,8 @@ $$
 \item $A B$ is $n\times k$ so $(A B) C$ is $n \times l$.
 \item So it is at least possible that $A (B C) = (A B) C$
 \item To check that they are equal we could expand out the formula for
-the $(i, j) -th$ element of $A (B C)$  and the formula for the
-$(i, j) -th$ element of $(A B) C$ and show that they are equal.
+the $(i, j)$-th element of $A (B C)$  and the formula for the
+$(i, j)$-th element of $(A B) C$ and show that they are equal.
 \item This is not hard, but messy.
 \item Instead we will postpone the proof that matrix multiplication is
 associative to a later lesson where we will be able to do it more easily
@@ -1013,7 +1013,7 @@ and more abstractly.
 
 \beamerdefaultoverlayspecification{}
 
-\begin{frame}{Properties of matrix multiplication (5)}
+\begin{frame}{Distributive law for matrix mulitplication}
 
 \begin{itemize}
 \item<1-> Matrix multiplication distributes over matrix addition
@@ -1024,8 +1024,25 @@ and more abstractly.
 \item<6-> Proof:
 \begin{align*}
 &\sum_{t=1}^m a_{it} (b_{tj} + c_{tj}) \\
-\uncover<7->{&=  \sum_{t=1}^m a_{it} b_{tj} + a_{it} c_{tj}} \\
+\uncover<7->{&=  \sum_{t=1}^m a_{it} b_{tj} + a_{it} c_{tj} } \\
 \uncover<8->{&=  \sum_{t=1}^m a_{it} b_{tj} + \sum_{t=1}^m a_{it} c_{tj}}
+\end{align*}
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Matrix multiplication and scalar multiplication}
+
+\begin{itemize}
+\item<1-> Matrix multiplication is compatible with scalar multiplication
+\item<2-> $c (A B) = (c A) B = A (c B)$
+\item<3-> Proof:
+\begin{align*}
+&c \sum_{t=1}^m a_{it} b_{tj} \\
+\uncover<4->{&=  \sum_{t=1}^m (c a_{it}) b_{tj} } \\
+\uncover<5->{&=  \sum_{t=1}^m a_{it} (c b_{tj}) }
 \end{align*}
 \end{itemize}
 

@@ -1,0 +1,248 @@
+% $Header$
+
+\documentclass{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 6 \\ Matrices and Linear Transformations}
+\subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+
+\begin{frame}{Matrices and Linear Functions}
+
+\begin{itemize}
+\item What does Lesson 5: Matrices have to do with Lesson 4: Linear functions on $\R^n$?
+\item It turns out that an $n\times m$ matrix contains precisely the information we need
+to describe a linear function from $\R^m$ to $\R^n$.
+\item There is a one-to-one correspondence between $n\times m$ matrices and linear
+functions from $\R^m$ to $\R^n$
+\item The function is given by multiplication of the matrix by the input vectors.
+\item Furthermore multiplication of two matrices corresponds exactly to the composition of two linear functions.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear transformations}
+
+\begin{itemize}
+\item Linear functions are also often called linear \emph{transformations}.
+\item A linear transformation is exactly the same thing as a linear function.
+\item Especially in the context of matrices it is common to use the term
+linear transformation.
+\item From now on we will usually use the term linear transformation.
+\item When using the term \emph{linear transformation}, it is common to use
+letters like $T$, $S$ and $R$ to represent the linear transformation rather
+than letters like $f$, $g$ and $h$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The linear transformation associated with a matrix.}
+
+\begin{itemize}
+\item Definition:
+\item Let $A$ be an $n\times m$ matrix.
+\item Then associated with $A$ is a function $T_A:\R^m\map\R^n$.
+\item $T_A$ is defined as follows. Let $\bv\in\R^m$.
+\item Then $T_A(\bv) = A \bv$.
+\item Check that this multiplication makes sense and the output is in $\R^n$.
+\item $T_A$ is called the \emph{linear transformation associated with $A$}.
+\item We will show that in fact it is linear.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example}
+
+\begin{itemize}
+\item Example. Let
+$$
+\begin{matrix}
+A =
+&
+\begin{pmatrix}
+1 & -1  & 0 \\
+2 &  0  & -1
+\end{pmatrix}
+&
+\bv =
+&
+\begin{pmatrix}
+1 \\ -2 \\ 3
+\end{pmatrix}
+\end{matrix}
+$$
+\item Then
+$$
+T_A(\bv) =
+\begin{pmatrix}
+3 \\-1
+\end{pmatrix}
+$$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$T_A$ is linear}
+
+\begin{itemize}
+\item Lemma. Let $A$ be an $n\times m$ matrix.
+\item Then $T_A$ is linear.
+\item Proof. Let $\bv,\bw\in\R^m$. Let $c,d\in\R$.
+\item We must show that
+$$T_A(c\bv + d\bw) = c T_A(\bv) + d T_A(\bw)$$
+\item i.e. that
+$$A(c\bv + d\bw) = c A(\bv) + d A(\bw)$$
+\item But this just follows from the properties of matrix arithmetic.
+\item Namely matrix multiplication distributes over matrix addition,
+\item and matrix multiplication is compatible with scalar multiplication.
+\item So $T_A$ is linear. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Which linear transformation is $T_A$?}
+
+\begin{itemize}
+\item So $T_A$ is a linear tranformation.
+\item Question: Which linear transformation is $T_A$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Row vectors}
+
+\begin{itemize}
+\item Let $\sigma$ be $1\times m$ row vector.
+\item Then $T_{\sigma}:\R^m \map \R$.
+\item So $T_{\sigma}$ is a linear functional.
+\item So $T_{\sigma}$ is given by a \emph{covector} on $\R^m$.
+\item We will see that it is exactly the covector associated with $\sigma^{\text{T}}\in\R^m$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\beamerdefaultoverlayspecification{}
+
+\begin{frame}{Row vectors are covectors}
+
+\begin{lemma}
+Let $\bw\in\R^m$.
+
+\pause
+
+Let $\sigma = \bw^{\text{T}}$. So $\sigma$ is a $1\times m$
+row vector.
+
+\pause
+
+Then $T_{\sigma} = f_{\bw}$, the covector associated with $\bw$.
+\end{lemma}
+
+\pause
+
+\begin{proof}
+Let $\bv\in\R^m$. Then
+\pause
+\begin{align*}
+&T_{\sigma}(\bv) \\
+&=\sigma \bv \quad \text{ (defintion of linear transformation associated with a matrix ) }\\
+&=\bw \cdot \bv \quad \text{ (defintion matrix multiplication ) }\\
+&= f_{\bw}(\bv) \quad \text{ (defintion $f_{\bw}$) }
+\end{align*}
+\end{proof}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{frame}{Example}
+
+\begin{itemize}
+\item Let
+$$
+\bw =
+\begin{pmatrix}
+1 \\ 2 \\ 3
+\end{pmatrix}
+$$
+\item So $\bw\in\R^3$.
+\item Let $\sigma = \bw^{\text{T}}$.
+\item So $\sigma = (1, 2, 3)$ is a $1\times 3$ row vector.
+\item Let
+$$
+\bv =
+\begin{pmatrix}
+-1 \\ 0 \\ 1
+\end{pmatrix}
+$$
+\item So $\bv\in\R^3$.
+\item Then $T_{\sigma}(\bv)$
+\item $=\sigma \bv$
+\item $=\bw\cdot \bv =f_{\bw}(\bv)$
+\item $=2$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
+
+
