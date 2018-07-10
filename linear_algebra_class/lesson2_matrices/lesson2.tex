@@ -37,7 +37,7 @@
 % Or whatever. Note that the encoding and the font should match. If T1
 % does not look nice, try deleting the line with the fontenc.
 
-\title{Lesson 5 \\ Matrices}
+\title{Lesson 2 \\ Matrices}
 \subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
 \author{Mitch Rudominer}
 \date{}
@@ -136,17 +136,17 @@ $$
 
 \begin{itemize}
 \item A $1\times n$ matrix, with $n>1$, is called a \emph{row vector}.
-\item $\sigma$ below has size $1\times 4$ so it is a row vector.
+\item $\ba$ below has size $1\times 4$ so it is a row vector.
 \item An $m\times 1$ matrix, with $m>1$, is called a \emph{column vector}.
 \item $\bv$ below has size $3\times 1$ so it is a column vector.
-\item We often use a different naming convention for row and column vectors
-than we do for other matrices, as below where we used $\sigma$ and $\bv$
+\item We often use boldface lower-case letters for row and column vectors,
+as below where we used $\ba$ and $\bv$,
 instead of names like $A$ and $M$.
 \end{itemize}
 
 $$
 \begin{matrix}
-\sigma =
+\ba =
 \begin{pmatrix}
 2, 2, 0, 1
 \end{pmatrix}
@@ -169,19 +169,22 @@ $$
 \begin{frame}{Vector indexing}
 
 \begin{itemize}
-\item For a row vector like $\sigma$ we will often drop the row
+\item We sometimes refer to the entries of a vector as \emph{components}.
+\item We use a slightly different notation for the components of a vector
+than we do for the entries of a matrix.
+\item For a row vector like $\ba$ we will often drop the row
 index 1 and write only the column index.
-\item So instead of writing $\sigma_{1,3} = 0$
-\item we may write $\sigma_3 = 0$.
+\item So instead of writing $\ba_{1,3} = 0$,
+\item we write $a_3 = 0$. Notice also the lightface font.
 \item Similarly for column vectors like $\bv$ below we will often
 drop the column index 1 and write only the row index.
-\item So instead of writing $v_{2,1} = 0$,
+\item So instead of writing $\bv_{2,1} = 0$,
 \item we may write $v_2 = 0$.
 \end{itemize}
 
 $$
 \begin{matrix}
-\sigma =
+\ba =
 \begin{pmatrix}
 2, 2, 0, 1
 \end{pmatrix}
@@ -201,29 +204,12 @@ $$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{What are vectors in $\R^n$?}
-
-\begin{itemize}
-\item Previously, before we started talking about matrices, we said that
-a \emph{vector in $\R^n$} is an $n$-tuple of numbers.
-\item But now we have row vectors and column vectors. So which one of these
-things is what we were previously calling a vector in $\R^n$?
-\item Answer: Column vectors.
-\item Convention: A vector in $\R^n$, from now on, is an $n\times 1$
-column vector.
-\item So then what is a row vector?
-\item We will use row vectors to represent covectors.
-\end{itemize}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Transpose of a vector}
 
 \begin{itemize}
 \item If $\bv$ is an $n\times 1$ column vector, then $\bv^{\text{T}}$
 (pronounced $\bv$-\emph{transpose}) is the corresponding $1\times n$ row vector.
-\item If $\bv$ is a $1\times n$ row vector, then $\bv^{\text{T}}$ is the
+\item If $\ba$ is a $1\times n$ row vector, then $\ba^{\text{T}}$ is the
 corresponding $n\times 1$ column vector.
 \item $$(1, 0, -5)^{\text{T}} = \begin{pmatrix} 1 \\ 0 \\ -5 \end{pmatrix}$$
 \item $$\begin{pmatrix} 1 \\ 0 \\ -5 \end{pmatrix}^{\text{T}} =  (1, 0, -5)$$
@@ -231,34 +217,23 @@ corresponding $n\times 1$ column vector.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Transpose of a vector (continued)}
+
+
+\begin{frame}{Scalars}
 
 \begin{itemize}
-\item Previously, before we started talking about matrices, we might have
-written: $(1, 0, -5)\in\R^3$.
-\item But the problem with this is that because we write an $n$-tuple from
-left-to-right on a single line, it looks like a row vector, and we just said
-that elements of $\R^n$ are column vectors.
-\item So from now on we will write instead, $(1, 0, -5)^{\text{T}}\in\R^3$.
-\item Similarly, suppose we want $\bw$ to be a row vector. We might write
-let $\bv\in\R^n$, let $\bw=\bv^{\text{T}}$.
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\begin{frame}{$1\times 1$ matrices}
-
-\begin{itemize}
+\item The things which can be entries in a matrix are called \emph{scalars}.
+\item Scalars are just numbers but the word \emph{scalar} emphasizes that it
+is a different type of thing than a matrix or a vector.
+\item For a real matrix, the scalars are real numbers.
+\item Later in the class we will consider matrices in which the scalars
+are complex numbers.
 \item A $1\times 1$ matrix is identified with a scalar.
 \item For example the $1\times 1$ matrix $(42)$ is considered to
-be just the number 42.
+be just the scalar 42.
 \end{itemize}
 
 \end{frame}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -303,10 +278,10 @@ whether the product $A B$ is defined and if so say what its size is.
 
 \begin{itemize}
 \item Let's look at the special case of the previous definition where $n=k=1$.
-\item Let $\bw$ be a $1\times m$ row vector. Let $\bv$ be a $m\times 1$ column vector.
-\item Then the product $\bw \bv$ is defined.
-\item $\bw \bv$ is the $1\times 1$ matrix (i.e. the scalar) defined as follow:
-\item $$\bw \bv  = \sum_{t=1}^m w_t v_t$$
+\item Let $\ba$ be a $1\times m$ row vector. Let $\bv$ be a $m\times 1$ column vector.
+\item Then the product $\ba \bv$ is defined.
+\item $\ba \bv$ is the $1\times 1$ matrix (i.e. the scalar) defined as follow:
+\item $$\ba \bv  = \sum_{t=1}^m a_t v_t$$
 \item Let's look at an example to try to understand this.
 \end{itemize}
 
@@ -317,9 +292,9 @@ whether the product $A B$ is defined and if so say what its size is.
 \begin{frame}{A row vector times a column vector: Example}
 
 \begin{itemize}
-\item Let $\bw$ be the $1\times 3$ row vector below.
+\item Let $\ba$ be the $1\times 3$ row vector below.
 \item Let $\bv$ be the $3\times 1$ column vector below.
-\item $$\bw \bv  = \sum_{t=1}^3 w_t  v_t = $$
+\item $$\ba \bv  = \sum_{t=1}^3 a_t  v_t = $$
 \item $ = 1\cdot 4 + (-1)\cdot (-2) + 2\cdot 5$
 \item $=16$
 \item The product of a row vector times a column vector
@@ -329,7 +304,7 @@ whether the product $A B$ is defined and if so say what its size is.
 $$
 \begin{matrix}
 
-\bw =
+\ba =
 
 \begin{pmatrix}
 1 & -1 & 2
@@ -345,22 +320,6 @@ $$
 
 \end{matrix}
 $$
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{A new way of writing dot product.}
-
-\begin{itemize}
-\item Let $\bv,\bw \in \R^n$.
-\item Then $\bv \bw$ is not defined.
-\item But $\bv^{\text{T}} \bw$ is defined and
-\item  $\bv^{\text{T}} \bw = \bv \cdot \bw$
-\item Is $\bv \bw^{\text{T}}$ defined?
-\item Yes $\bv \bw^{\text{T}}$ is an $n\times n$ matrix. We will look
-at what this is later.
-\end{itemize}
 
 \end{frame}
 
@@ -994,7 +953,7 @@ $$
 \item Matrix multiplication \emph{is} associative.
 \item $A (B C) = (A B) C$ whenever the multiplication is defined.
 \item Let's first check that the sizes make sense.
-\item Let $A$ be $n\times m$, $B$ be $m\times k$, $C$, $k\times l$.
+\item Let $A$ be $n\times m$, $B$ be $m\times k$, $C$ be $k\times l$.
 \item Then $B C$ is $m\times l$ and so $A (B C)$ is $n \times l$.
 \item $A B$ is $n\times k$ so $(A B) C$ is $n \times l$.
 \item So it is at least possible that $A (B C) = (A B) C$

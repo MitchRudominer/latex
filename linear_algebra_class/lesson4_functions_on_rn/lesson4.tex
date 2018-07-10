@@ -1,0 +1,212 @@
+% $Header$
+
+\documentclass{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 4 \\ Functions on $\R^n$}
+\subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{frame}{Functions from $\R^n$ to $\R^m$}
+
+\begin{itemize}
+\item Putting together Lesson 3 ``Vectors in $\R^n$'' and Lesson 1: ``Functions''
+\item Now we consider a function $f:\R^n \map \R^m$.
+\item Domain of $f$ is vectors in $\R^n$, codomain or target space is vectors
+in $\R^m$.
+\item In this lesson we just want to get used to thinking about these.
+\item What does a function $f:\R^n \map \R^m$ ``look like''?
+\item It takes as input a vector with $n$ real components and gives as output
+a vector with $m$ real components.
+\item How would we write a formula for such a function?
+\item Could we graph such a function?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Component function notation}
+
+\begin{itemize}
+\item Let $f:\R^n \map \R^m$.
+\item Let $\bv \in \R^n$ and $\bw \in \R^m$ and suppose $f(\bv) = \bw$.
+\item Now $\bv = (v_1, v_2, \cdots v_n)^{\text{T}}$
+\item and $\bw = (w_1, w_2, \cdots w_m)^{\text{T}}$
+\item We could write $f(\bv) =$
+\item $ = \left(f_1(\bv), f_2(\bv), \cdots f_m(\bv)\right)^{\text{T}}$
+\item = $f(\bw)$.
+\item $f_1,f_2,\cdots f_m$ are called the \emph{component functions} of $f$.
+\item The output of $f_i$ is the $i$-th component of the output of $f$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example 1: Function from $\R^2$ to $\R^3$}
+\begin{itemize}
+\item Let $f:\R^2\map\R^3$ be defined by
+\item
+$$
+f
+\begin{pmatrix}
+x \\ y
+\end{pmatrix}
+=
+\begin{pmatrix}
+2x \\ y \\ y^2
+\end{pmatrix}
+$$
+\item We can abbreviate this as
+$$f(x,y) = (2x, y, y^2)^{\text{T}}$$
+\item The component functions are
+$$
+\begin{matrix}
+f_1(x,y) = 2x; & f_2(x,y) = y; & f_3(x,y) = y^2
+\end{matrix}
+$$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example 1 continued}
+$f:\R^2\map\R^3$ is defined by
+$$f(x,y) = (2x, y, y^2)^{\text{T}}$$
+\begin{itemize}
+\item What is the domain of $f$? What is the codomain?
+\item $\dom(f) =\R^2$. The codomain of $f$ is $\R^3$.
+\item What is the the range of $f$?
+\item The surface $z=y^2$ in $\R^3$.
+\end{itemize}
+\pause
+\includegraphics[scale=0.1]{z-equals-y-squared}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example 1 continued}
+$f:\R^2\map\R^3$ is defined by
+$$f(x,y) = (2x, y, y^2)^{\text{T}}$$
+\begin{itemize}
+\item Is $f$ one-to-one?
+\item Yes.
+\item Is $f$ onto?
+\item No.
+\item What is the image of the $y$-axis from $\R^2$?
+\item The parabola $z=y^2$ in the $y$- $z$- plane of $\R^3$.
+\item What is the inverse image of the $y$-axis from $\R^3$?
+\item The origin in $\R^2$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example 2: Function from $\R^3$ to $\R^2$}
+\begin{itemize}
+\item Let $f:\R^3\map\R^2$ be defined by
+\item
+$$
+f
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+=
+\begin{pmatrix}
+x \\ x^2
+\end{pmatrix}
+$$
+\item We can abbreviate this as
+$$f(x,y,z) = (x, x^2)^{\text{T}}$$
+\item The component functions are
+$$
+\begin{matrix}
+f_1(x,y,z) = x; & f_2(x,y,z) = x^2
+\end{matrix}
+$$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example 2 continued}
+$f:\R^3\map\R^2$ is defined by
+$$f(x,y,z) = (x, x^2)^{\text{T}}$$
+\begin{itemize}
+\item What is the domain of $f$? What is the codomain?
+\item $\dom(f) =\R^3$. The codomain of $f$ is $\R^2$.
+\item What is the the range of $f$?
+\item The parabola $y=x^2$ in  $\R^2$.
+\end{itemize}
+\pause
+\includegraphics[scale=0.1]{project-to-parabola}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example 2 continued}
+$f:\R^3\map\R^2$ is defined by
+$$f(x,y,z) = (x, x^2)^{\text{T}}$$
+\begin{itemize}
+\item Is $f$ one-to-one?
+\item No.
+\item Is $f$ onto?
+\item No.
+\item What is the inverse image of the origin from $\R^2$?
+\item The $y$- $z$- plane in $\R^3$.
+\end{itemize}
+\end{frame}
+
+
+\end{document}
+
