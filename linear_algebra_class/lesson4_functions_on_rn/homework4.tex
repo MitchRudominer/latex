@@ -11,7 +11,7 @@
 
 \begin{document}
 
-\title{Homework for Lesson 3 \\ Functions on $\R^n$}
+\title{Homework for Lesson 4 \\ Functions on $\R^n$}
 \author{Math 325, Linear Algebra \\ Mitch Rudominer \\ Fall 2018 \\ SFSU }
 \date{}
 
@@ -19,7 +19,7 @@
 
 
 \textbf{Problem 1.} Let $f:\R^2\map\R^3$ be defined by
-$$f(x,y) = \big(x+1, y+1,5 \big)$$
+$$f(x,y) = \big(x+1, y+1,5 \big)^{\text{T}}$$
 
 \textbf{a.} Is $f$ one-to-one? Explain.
 
@@ -29,11 +29,11 @@ $$f(x,y) = \big(x+1, y+1,5 \big)$$
 
 \bigskip
 
-\textbf{c.} What is the inverse image of the set $\singleton{(5, -5, 5)}$?
+\textbf{c.} What is the inverse image of the set $\singleton{(5, -5, 5)^{\text{T}}}$?
 
 \bigskip
 
-\textbf{d.} What is $f^{-1}[\singleton{(6, -6, 6)}]$?
+\textbf{d.} What is $f^{-1}[\singleton{(6, -6, 6)^{\text{T}}}]$?
 
 \bigskip
 
@@ -42,7 +42,7 @@ $$f(x,y) = \big(x+1, y+1,5 \big)$$
 \bigskip
 
 \textbf{Problem 2.} Let $g:\R^3\map\R^2$ be defined by
-$$f(x,y,z) = \big(x, y^2 \big)$$
+$$f(x,y,z) = \big(x, y^2 \big)^{\text{T}}$$
 
 \textbf{a.} Is $g$ injective? Explain.
 
@@ -90,7 +90,7 @@ of $\R^3$?
 
 \medskip
 
-\textbf{d.} What is $h^{-1}[\singleton{(0,0)}]$?
+\textbf{d.} What is $h^{-1}[\singleton{(0,0)^{\text{T}}}]$?
 
 \medskip
 
@@ -154,51 +154,4 @@ If so give an example. If not explain why.
 
 \textbf{c.} Is it possible for $f:\R^3\map\R^2$ to be one-to-one?
 
-\bigskip
-
-\textbf{Problem 6.} Let $f:[0, \infty)\map \R^2$ be defined by
-$$f(t) = (t \cos(\pi t), t \sin(\pi t))$$
-
-Using the technique of drawing the range within the target space we may picture
-$f$ as follows:
-
-\includegraphics[scale=0.2]{spiral}
-
-Let $D$ be the unit disk in $\R^2$: that is, $D$ is the set of points whose
-distance from the origin is at most 1. What is $f^{-1}[D]$?
-
-\bigskip
-
-\textbf{Problem 7.} Suppose $f:\R^2\map\R$ and the following is a picture
-of $f$ using the technique of drawing some of the level sets inside of the
-domain of $f$.
-
-\includegraphics[scale=0.2]{circles}
-
-The red, blue and green circles are, respectively the inverse
-images of $\singleton{1}$, $\singleton{2}$ and $\singleton{3}$.
-
-Which of the following could be the function $f$?
-
-\begin{enumerate}
-\item $f(x,y) = x + y$
-\item $f(x, y) = x^2$
-\item $f(x,y) = \sqrt{x^2 + y^2}$
-\item $f(x,y) = xy$
-\end{enumerate}
-
-\bigskip
-
-\textbf{Problem 8.} Let $f:\R^2 \map \R^2$ be defined by $f(x,y) = (0, y)$.
-
-\smallskip
-
-\textbf{a.} What is the image of the unit disk?
-
-\bigskip
-
-\textbf{b.} Draw a picture of $f$ using the technique of representing the
-domain and the target space using the same copy of $\R^2$ and illustrating
-the unit disk and its image. Show a few individual points in the domain and
-their images.
 \end{document}
