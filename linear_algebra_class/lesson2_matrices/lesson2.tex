@@ -465,14 +465,17 @@ $$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Think of the product column by column}
+\begin{frame}{Another way to think of the product of two matricies}
 
 \begin{itemize}
-\item Let $\bb_i$ be the $i$-th column of $B$.
-\item So we can write $B = (\bb_1, \bb_2, \bb_3)$ and think of $B$ is
-being a 3-tuple of column vectors.
-\item Then
-$$A B = (A\bb_1, A\bb_2, A\bb_3)$$
+\item You can also think about $A B$ is being $A$ times \emph{each column of} $B$.
+\item Let $\bb_j$ be the $j$-th column of $B$.
+\item So we can write $B = (\bb_1 \vert \bb_2 \vert \bb_3)$.
+
+\item Then notice that
+$$A B = (A\bb_1 \vert A\bb_2 \vert A\bb_3)$$
+
+\item That is, the $j$-th column of $A B$ is gotton by multiplying $A$ times the $j$-th column of $B$.
 \end{itemize}
 
 $$

@@ -102,60 +102,7 @@ $$f(c \bv) = c f(\bv)$$
 
 \end{frame}
 
-\begin{frame}{Example 1. $f:\R^1\map\R^1$}
-
-\begin{itemize}
-\item Let $f:\R^1\map\R^1$ be given by $f(x) = x^2$.
-\item Is $f$ linear?
-\item Check: Does $f$ preserve vector addition?
-\item Note that on $\R^1$ vector addition is just ordinary addition of numbers.
-\item $f(x_1 + x_2) = (x_1 + x_2)^2$
-\item $= x_1^2 + x_2^2 + 2 x_1 x_2$
-\item $= f(x_1) + f(x_2) + 2 x_1 x_2$.
-\item So $f(x_1 + x_2) \not= f(x_1) + f(x_2)$
-\item unless $2 x_1 x_2 = 0$, i.e. unless $x_1 = 0$ or $x_2 = 0$.
-\item So $f$ is \emph{not} linear.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Example 1. $f:\R^1\map\R^1$}
-
-\begin{itemize}
-\item Continue to let $f:\R^1\map\R^1$ be given by $f(x) = x^2$.
-\item We already know $f$ is not linear.
-\item Just for fun, check: Does $f$ preserve scalar multiplication?
-\item $f(c x) = (c x)^2$
-\item $= c^2 x^2$
-\item $= c^2 f(x)$.
-\item So $f(c x) \not= c f(x)$
-\item unless $c^2 = c$, i.e. unless $c=0, 1$.
-\item So again, $f$ is not linear.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Example 2. $f:\R^1\map\R^1$}
-
-\begin{itemize}
-\item Let $f:\R^1\map\R^1$ be given by $f(x) = 2 x$.
-\item Is $f$ linear?
-\item Check: Does $f$ preserve vector addition?
-\item $f(x_1 + x_2) =  2(x_1 + x_2)$
-\item $ = 2 x_1 + 2 x_2$
-\item $= f(x_1) + f(x_2)$.
-\item So $f$ \emph{does} preserve addition.
-\item Check: Does $f$ preserve scalar multiplication?
-\item $f(c x) = 2 (c x)$
-\item $ = c (2 x) $
-\item $= c f(x)$.
-\item So $f$ does preserve scalar multiplication.
-\item So $f$ is linear.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Example 3. $f:\R^3\map\R^2$}
+\begin{frame}{Example 1. $f:\R^3\map\R^2$}
 
 \begin{itemize}
 \item Consider this function from lesson 4:
@@ -187,16 +134,46 @@ $$f(c \bv) = c f(\bv)$$
 
 \beamerdefaultoverlayspecification{<+->}
 
-\begin{frame}{Linear Functionals}
+\begin{frame}{Example 2. $f:\R^3\map\R^2$}
 
 \begin{itemize}
-\item A linear function from $\R^n$ to $\R^1$ is also called a linear
-\emph{functional}.
+\item Let $f:\R^3\map\R^2$
+\item $f(x,y,z) = (x, y + 2z)^{\text{T}}$
+\item Is $f$ linear?
+\item Check: Does $f$ preserve vector addition?
+\item Let $\bv, \bw \in \R^2$
+\item We need to check if $f(\bv + \bw) = f(\bv) + f(\bw)$
+\end{itemize}
+
+\end{frame}
+
+\beamerdefaultoverlayspecification{}
+
+\begin{frame}{Does $f$ preserve vector addtion?}
+\begin{align*}
+&f(\bv + \bw) \\
+\uncover<2->{&=  f\bigl((v_1, v_2,v_3)^{\text{T}} + (w_1, w_2,w_3)^{\text{T}} \bigr) \\}
+\uncover<3->{&= f(v_1 + w_1, v_2 + w_2, v_3+w_3) \\}
+\uncover<4->{&= \left(v_1 + w_1, (v_2 + w_2) + 2 (v_3 + w_3)\right)^{\text{T}}  \\}
+\uncover<5->{&= \left(v_1 + w_1, (v_2 + 2v_3) +(w_2 + 2 w_3)  \right)^{\text{T}} \\}
+\uncover<6->{&= \left(v_1, v_2 + 2v_3 \right)^{\text{T}} + \left(w_1, w_2 + 2 w_3 \right)^{\text{T}} \\}
+\uncover<7->{&= f(v_1, v_2,v_3) + f(w_1, w_2,w_3) \\}
+\uncover<8->{&= f(\bv) + f(\bw)  \\}
+\end{align*}
+\uncover<10->{So $f$ \emph{does} preserve vector addtion.}
+\end{frame}
+
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{frame}{Covectors}
+
+\begin{itemize}
 \item Let $\bv \in \R^n$ be any vector.
-\item We will show how $\bv$ can used as a linear functional.
-\item In its role as a linear functional, $\bv$ is called a \emph{covector}.
+\item We will show to make a linear function out of $\bv$.
 \item Let $f_{\bv} : \R^n \map \R^1$ be defined by
 $$f_{\bv}(\bw) = \bv \cdot \bw$$
+\item Then $f_{\bv}$ is a linear function. We will prove this in the next lesson.
 \item $f_{\bv}$ is called the \emph{covector} associated to the vector $\bv$.
 \end{itemize}
 
@@ -205,80 +182,12 @@ $$f_{\bv}(\bw) = \bv \cdot \bw$$
 \begin{frame}{Example Covector}
 
 \begin{itemize}
-\item Let $\bv = (2, -1)$
+\item Let $\bv = (2, -1)^{\text{T}}$
 \item So $f_{\bv}:\R^2 \map \R$.
-\item Let $\bw = (4, 5) \in \R^2$.
+\item Let $\bw = (4, 5)^{\text{T}} \in \R^2$.
 \item Compute $f_{\bv}(\bw)$
 \item $= \bv \cdot \bw = 8 - 5 = 3$
 \item $f_{\bv}(\bw) =  3$.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Dot Product is Linear}
-
-\begin{itemize}
-\item Claim: For any vector $\bv\in\R^n$, $f_{\bv}:\R^n\map\R$ is linear.
-\item proof:
-\item First we show that $f_{\bv}$ preserves vector addition.
-\item Let $\bu, \bw \in \R^n$
-\item We must show $f_{\bv}(\bu + \bw) = f_{\bv}(\bu) + f_{\bv}(\bw)$
-\item i.e. that $\bv \cdot (\bu + \bw) = \bv \cdot \bu + \bv \cdot \bw$.
-\item This is just the distributive law for dot product.
-\end{itemize}
-
-\end{frame}
-
-\beamerdefaultoverlayspecification{}
-
-\begin{frame}{Distributive law for dot product}
-\begin{align*}
-f_{\bv}(\bu + \bw)
-\uncover<2->{&= \bv \cdot (\bu + \bw) }\\
-\uncover<3->{&=  \sum_i{v_i (u_i + w_i)} \\}
-\uncover<4->{&= \sum_i{v_i u_i +v_i  w_i} \\}
-\uncover<5->{&= \sum_i{v_i u_i} + \sum_i{v_i  w_i} \\}
-\uncover<6->{&= \bv \cdot \bu + \bv \cdot \bw \\}
-\uncover<7->{&= f_{\bv}(\bu) + f_{\bv}(\cdot \bw)}
-\end{align*}
-
-\end{frame}
-
-\beamerdefaultoverlayspecification{<+->}
-
-\begin{frame}{Dot Product is Linear (2)}
-
-\begin{itemize}
-\item So $f_{\bv}$ preserves vector addition.
-\item Now we must show that $f_{\bv}$ preserves scalar multiplication.
-\item Let $\bu \in \R^n$ and let $c\in\R$.
-\item We must show $f_{\bv}(c \bu) = c f_{\bv}(\bu)$
-\item i.e. that $\bv \cdot (c \bu) = c (\bv \cdot \bu)$
-\end{itemize}
-
-\end{frame}
-
-\beamerdefaultoverlayspecification{}
-
-\begin{frame}{Dot Product is Linear (3)}
-\begin{align*}
-f_{\bv}(c \bu)
-\uncover<2->{&= \bv \cdot (c \bu) }\\
-\uncover<3->{&=  \sum_i{v_i (c u_i)} \\}
-\uncover<4->{&= c \sum_i{v_i u_i } \\}
-\uncover<5->{&= c (\bv \cdot \bu) \\}
-\uncover<6->{&= c f_{\bv}(\bu)}
-\end{align*}
-
-\end{frame}
-
-\beamerdefaultoverlayspecification{<+->}
-
-\begin{frame}{Dot Product is Linear (4)}
-
-\begin{itemize}
-\item So $f_{\bv}$ preserves scalar multiplication.
-\item So $f_{\bv}$ is linear. $\qed$.
 \end{itemize}
 
 \end{frame}

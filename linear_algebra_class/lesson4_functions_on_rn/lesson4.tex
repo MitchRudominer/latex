@@ -84,9 +84,10 @@ a vector with $m$ real components.
 \item and $\bw = (w_1, w_2, \cdots w_m)^{\text{T}}$
 \item We could write $f(\bv) =$
 \item $ = \left(f_1(\bv), f_2(\bv), \cdots f_m(\bv)\right)^{\text{T}}$
-\item = $f(\bw)$.
+\item $= (w_1, w_2, \cdots w_m)^{\text{T}}$
+\item = $\bw$.
 \item $f_1,f_2,\cdots f_m$ are called the \emph{component functions} of $f$.
-\item The output of $f_i$ is the $i$-th component of the output of $f$.
+\item The output of $f_i$ is $w_i$, the $i$-th component of the output of $f$.
 \end{itemize}
 
 \end{frame}
@@ -99,6 +100,19 @@ a vector with $m$ real components.
 \item
 $$
 f
+\left(
+\begin{pmatrix}
+x \\ y
+\end{pmatrix}
+\right)
+=
+\begin{pmatrix}
+2x \\ y \\ y^2
+\end{pmatrix}
+$$
+\item We will abbreviate this as
+$$
+f
 \begin{pmatrix}
 x \\ y
 \end{pmatrix}
@@ -107,14 +121,21 @@ x \\ y
 2x \\ y \\ y^2
 \end{pmatrix}
 $$
-\item We can abbreviate this as
+\item We will abbreviate it even further as
 $$f(x,y) = (2x, y, y^2)^{\text{T}}$$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example 1 continued}
+$f:\R^2\map\R^3$ is defined by
+$$f(x,y) = (2x, y, y^2)^{\text{T}}$$
+\begin{itemize}
 \item The component functions are
-$$
-\begin{matrix}
-f_1(x,y) = 2x; & f_2(x,y) = y; & f_3(x,y) = y^2
-\end{matrix}
-$$
+\item $f_1(x,y) = 2x$
+\item $f_2(x,y) = y$
+\item $f_3(x,y) = y^2$
 \end{itemize}
 \end{frame}
 
@@ -166,7 +187,7 @@ x \\ y \\ z
 x \\ x^2
 \end{pmatrix}
 $$
-\item We can abbreviate this as
+\item We abbreviate this as
 $$f(x,y,z) = (x, x^2)^{\text{T}}$$
 \item The component functions are
 $$

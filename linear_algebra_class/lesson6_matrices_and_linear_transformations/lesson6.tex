@@ -59,13 +59,13 @@
 \begin{frame}{Matrices and Linear Functions}
 
 \begin{itemize}
-\item What does Lesson 5: Matrices have to do with Lesson 4: Linear functions on $\R^n$?
+\item What does Lesson 2 Matrices have to do with Lesson 5 Linear functions on $\R^n$?
 \item It turns out that an $n\times m$ matrix contains precisely the information we need
 to describe a linear function from $\R^m$ to $\R^n$.
 \item There is a one-to-one correspondence between $n\times m$ matrices and linear
 functions from $\R^m$ to $\R^n$
-\item The function is given by multiplication of the matrix by the input vectors.
-\item Furthermore multiplication of two matrices corresponds exactly to the composition of two linear functions.
+\item Every matrix gives us a linear function.
+\item Every linear function is given by a matrix.
 \end{itemize}
 
 \end{frame}
@@ -75,11 +75,12 @@ functions from $\R^m$ to $\R^n$
 \begin{frame}{Linear transformations}
 
 \begin{itemize}
-\item Linear functions are also often called linear \emph{transformations}.
+\item Linear functions from $\R^m$ to $\R^n$ are also often called
+linear \emph{transformations}.
 \item A linear transformation is exactly the same thing as a linear function.
 \item Especially in the context of matrices it is common to use the term
-linear transformation.
-\item From now on we will usually use the term linear transformation.
+linear transformation instead.
+\item From now on we will use the term linear transformation.
 \item When using the term \emph{linear transformation}, it is common to use
 letters like $T$, $S$ and $R$ to represent the linear transformation rather
 than letters like $f$, $g$ and $h$.
@@ -95,10 +96,10 @@ than letters like $f$, $g$ and $h$.
 \item Definition:
 \item Let $A$ be an $n\times m$ matrix.
 \item Then associated with $A$ is a function $T_A:\R^m\map\R^n$.
+\item $T_A$ is called the \emph{linear transformation associated with $A$}.
 \item $T_A$ is defined as follows. Let $\bv\in\R^m$.
 \item Then $T_A(\bv) = A \bv$.
 \item Check that this multiplication makes sense and the output is in $\R^n$.
-\item $T_A$ is called the \emph{linear transformation associated with $A$}.
 \item We will show that in fact it is linear.
 \end{itemize}
 \end{frame}
@@ -155,57 +156,154 @@ $$A(c\bv + d\bw) = c A(\bv) + d A(\bw)$$
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Which linear transformation is $T_A$?}
+\beamerdefaultoverlayspecification{}
 
-\begin{itemize}
-\item So $T_A$ is a linear tranformation.
-\item Question: Which linear transformation is $T_A$.
-\end{itemize}
+\begin{frame}{The images of the standard basis vectors.}
+
+\begin{lemma}
+Let $A$ be an $n\times m$ matrix.
+
+\pause
+
+\bigskip
+
+Then the columns of $A$ are the
+images of the standard basis vectors under $T_A$.
+
+\bigskip
+
+
+\pause
+
+$T_A(\be_j)$ is the $j$-th column of $A$.
+\end{lemma}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Row vectors}
 
-\begin{itemize}
-\item Let $\sigma$ be $1\times m$ row vector.
-\item Then $T_{\sigma}:\R^m \map \R$.
-\item So $T_{\sigma}$ is a linear functional.
-\item So $T_{\sigma}$ is given by a \emph{covector} on $\R^m$.
-\item We will see that it is exactly the covector associated with $\sigma^{\text{T}}\in\R^m$.
-\end{itemize}
+\begin{frame}{Example}
+
+Let
+$$ A =
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+5 & 6 & 7 & 8 \\
+9 & 10 & 11 & 12
+\end{pmatrix}
+$$
+
+\pause
+
+Compute $T_A(\be_3)$.
+
+\pause
+
+$$T_A(\be_3) = A \be_3$$
+
+
+\pause
+
+$$
+=
+\begin{pmatrix}
+1 & 2  & 3  & 4 \\
+5 & 6  & 7  & 8 \\
+9 & 10 & 11 & 12
+\end{pmatrix}
+\begin{pmatrix}
+0 \\ 0 \\ 1 \\ 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+3 \\ 7 \\ 11
+\end{pmatrix}
+$$
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \beamerdefaultoverlayspecification{}
 
-\begin{frame}{Row vectors are covectors}
+\begin{frame}{Values at the standard basis vectors}
 
+A linear transformation is determined by its values at the standard basis vectors.
+
+\uncover<2->{
 \begin{lemma}
-Let $\bw\in\R^m$.
-
-\pause
-
-Let $\sigma = \bw^{\text{T}}$. So $\sigma$ is a $1\times m$
-row vector.
-
-\pause
-
-Then $T_{\sigma} = f_{\bw}$, the covector associated with $\bw$.
+Let $T:\R^m\map\R^n$ and $S:\R^m\map\R^n$  be two linear transformations. \\
+\uncover<3->{Suppose that $T(\be_j) = S(\be_j)$ for $j=1, 2, \cdots m$.} \\
+\uncover<4->{Then $T = S$.}
 \end{lemma}
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Proof of Lemma}
+
+\begin{proof}
+Let $\bv\in\R^m$ be any vector.
+\uncover<2->{We must show that $T(\bv)=S(\bv)$.}
+\uncover<3->{
+Now $\bv = (v_1,v_2,\cdots v_n)^{\text{T}}$.
+So $\bv=\sum_j{v_j \be_j}$.
+}
+
+\begin{align*}
+\uncover<4->{T(\bv) &= T\left(\sum_j{v_j \be_j}\right) \\}
+\uncover<5->{&= \sum_j{v_j T(\be_j)} \text{ \qquad (by linearity)}\\}
+\uncover<6->{&= \sum_j{v_j S(\be_j)} \text { \qquad (by assumption)}\\}
+\uncover<7->{&= S\left(\sum_j{v_j \be_j}\right) { \qquad  (by linearity)} \\}
+\uncover<8->{&= S(\bv)}
+\end{align*}
+\end{proof}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Every linear transformation is given by a matrix}
+
+\begin{theorem}
+Let $T:\R^m\map\R^n$ be a linear transformation.
+
+\pause
+
+\small
+
+Then there is an $n\times m$ matrix $A$ such that $T = T_A$
+\end{theorem}
 
 \pause
 
 \begin{proof}
-Let $\bv\in\R^m$. Then
+For $j=1\dots m$, let $\ba_j = T(\be_j)$.
+
 \pause
-\begin{align*}
-&T_{\sigma}(\bv) \\
-&=\sigma \bv \quad \text{ (defintion of linear transformation associated with a matrix ) }\\
-&=\bw \cdot \bv \quad \text{ (defintion matrix multiplication ) }\\
-&= f_{\bw}(\bv) \quad \text{ (defintion $f_{\bw}$) }
-\end{align*}
+
+i.e. let $\ba_1 = T(\be_1), \ba_2 = T(\be_2), \cdots \ba_m = T(\be_m)$.
+
+\pause
+
+So each $\ba_j\in\R^n$.
+
+\pause
+
+Let $A = (\ba_1 \vert \ba_2 \vert \cdots \vert \ba_m) $ be the matrix composed of the columns $\ba_1, \ba_2 , \cdots \ba_m$.
+
+\pause
+
+So $A$ is an $n\times m$ matrix.
+
+\pause
+
+Then $T_A(\be_j) = \ba_j = T(\be_j)$.
+
+\pause
+
+So $T_A = T$.
+
 \end{proof}
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -213,35 +311,33 @@ Let $\bv\in\R^m$. Then
 \beamerdefaultoverlayspecification{<+->}
 
 \begin{frame}{Example}
-
 \begin{itemize}
+\item Find a linear transformation from $T:\R^3\map\R^4$ such that
+\item
+$$
+\begin{matrix}
+T\begin{pmatrix} 1 \\ 0 \\ 0  \end{pmatrix} = \begin{pmatrix} 3 \\ 0 \\ 1 \\ 2  \end{pmatrix}
+\text{; and }
+&
+T\begin{pmatrix} 0 \\ 1 \\ 0  \end{pmatrix} = \begin{pmatrix} 2 \\ -1 \\ 0 \\ 4  \end{pmatrix}
+\text{; and }
+&
+T \begin{pmatrix} 0 \\ 0 \\ 1  \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \\ 5 \\ 5  \end{pmatrix}
+\end{matrix}
+$$
 \item Let
 $$
-\bw =
+A =
 \begin{pmatrix}
-1 \\ 2 \\ 3
+3 & 2 & 1 \\
+0 & -1 & 1 \\
+1 & 0 & 5 \\
+2 & 4 & 5
 \end{pmatrix}
 $$
-\item So $\bw\in\R^3$.
-\item Let $\sigma = \bw^{\text{T}}$.
-\item So $\sigma = (1, 2, 3)$ is a $1\times 3$ row vector.
-\item Let
-$$
-\bv =
-\begin{pmatrix}
--1 \\ 0 \\ 1
-\end{pmatrix}
-$$
-\item So $\bv\in\R^3$.
-\item Then $T_{\sigma}(\bv)$
-\item $=\sigma \bv$
-\item $=\bw\cdot \bv =f_{\bw}(\bv)$
-\item $=2$
+\item Then $T_A$ is the desired linear transformation.
 \end{itemize}
 \end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \end{document}
 
