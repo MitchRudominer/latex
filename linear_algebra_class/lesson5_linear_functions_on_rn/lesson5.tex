@@ -68,6 +68,7 @@ $$f(c \bv) = c f(\bv)$$
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{$f$ Preserves Addition}
 
 \begin{center}
@@ -84,6 +85,8 @@ $$f(c \bv) = c f(\bv)$$
 \end{itemize}
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{$f$ Preserves Scalar Multiplication}
 
@@ -102,6 +105,8 @@ $$f(c \bv) = c f(\bv)$$
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}{Example 1. $f:\R^3\map\R^2$}
 
 \begin{itemize}
@@ -115,29 +120,33 @@ $$f(c \bv) = c f(\bv)$$
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \beamerdefaultoverlayspecification{}
 
 \begin{frame}{Does $f$ preserve vector addtion?}
+$f(x,y,z) = (x, x^2)^{\text{T}}$
 \begin{align*}
 &f(\bv + \bw) \\
-\uncover<2->{&=  f\bigl((v_1, v_2,v_3)^{\text{T}} + (w_1, w_2,w_3)^{\text{T}} \bigr) \\}
-\uncover<3->{&= f(v_1 + w_1, v_2 + w_2, v_3+w_3) \\}
-\uncover<4->{&= \left(v_1 + w_1, (v_1 + w_1)^2  \right)^{\text{T}}  \\}
-\uncover<5->{&= \left(v_1 + w_1, v_1^2 + w_1^2 + 2v_1 w_1  \right)^{\text{T}} \\}
-\uncover<6->{&= \left(v_1, v_1^2 \right)^{\text{T}} + \left(w_1, w_1^2 \right)^{\text{T}} + \left(0, 2v_1 w_1  \right)^{\text{T}} \\}
-\uncover<7->{&= f(v_1, v_2,v_3) + f(w_1, w_2,w_3)  + \left(0, 2v_1 w_1  \right)^{\text{T}} \\}
-\uncover<8->{&= f(\bv) + f(\bw)  + \left(0, 2v_1 w_1  \right)^{\text{T}} \\}
-\uncover<9->{&\not= f(\bv) + f(\bw) \text{ unless $v_1=0$ or $w_1=0$}\\}
+\uncover<2->{&= f(v_1 + w_1, v_2 + w_2, v_3+w_3) \\}
+\uncover<3->{&= \left(v_1 + w_1, (v_1 + w_1)^2  \right)^{\text{T}}  \\}
+\uncover<4->{&= \left(v_1 + w_1, v_1^2 + w_1^2 + 2v_1 w_1  \right)^{\text{T}} \\}
+\uncover<5->{&= \left(v_1, v_1^2 \right)^{\text{T}} + \left(w_1, w_1^2 \right)^{\text{T}} + \left(0, 2v_1 w_1  \right)^{\text{T}} \\}
+\uncover<6->{&= f(v_1, v_2,v_3) + f(w_1, w_2,w_3)  + \left(0, 2v_1 w_1  \right)^{\text{T}} \\}
+\uncover<7->{&= f(\bv) + f(\bw)  + \left(0, 2v_1 w_1  \right)^{\text{T}} \\}
+\uncover<8->{&\not= f(\bv) + f(\bw) \text{ unless $v_1=0$ or $w_1=0$}\\}
 \end{align*}
-\uncover<10->{So $f$ does not preserve vector addtion. So $f$ is not linear.}
+\uncover<9->{So $f$ does not preserve vector addtion. So $f$ is not linear.}
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \beamerdefaultoverlayspecification{<+->}
 
 \begin{frame}{Example 2. $f:\R^3\map\R^2$}
 
 \begin{itemize}
-\item Let $f:\R^3\map\R^2$
+\item Let $f:\R^3\map\R^2$ be defined by:
 \item $f(x,y,z) = (x, y + 2z)^{\text{T}}$
 \item Is $f$ linear?
 \item Check: Does $f$ preserve vector addition?
@@ -147,542 +156,41 @@ $$f(c \bv) = c f(\bv)$$
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \beamerdefaultoverlayspecification{}
 
 \begin{frame}{Does $f$ preserve vector addtion?}
+$f(x,y,z) = (x, y + 2z)^{\text{T}}$
+
 \begin{align*}
 &f(\bv + \bw) \\
-\uncover<2->{&=  f\bigl((v_1, v_2,v_3)^{\text{T}} + (w_1, w_2,w_3)^{\text{T}} \bigr) \\}
-\uncover<3->{&= f(v_1 + w_1, v_2 + w_2, v_3+w_3) \\}
-\uncover<4->{&= \left(v_1 + w_1, (v_2 + w_2) + 2 (v_3 + w_3)\right)^{\text{T}}  \\}
-\uncover<5->{&= \left(v_1 + w_1, (v_2 + 2v_3) +(w_2 + 2 w_3)  \right)^{\text{T}} \\}
-\uncover<6->{&= \left(v_1, v_2 + 2v_3 \right)^{\text{T}} + \left(w_1, w_2 + 2 w_3 \right)^{\text{T}} \\}
-\uncover<7->{&= f(v_1, v_2,v_3) + f(w_1, w_2,w_3) \\}
-\uncover<8->{&= f(\bv) + f(\bw)  \\}
+\uncover<2->{&= f(v_1 + w_1, v_2 + w_2, v_3+w_3) \\}
+\uncover<3->{&= \left(v_1 + w_1, (v_2 + w_2) + 2 (v_3 + w_3)\right)^{\text{T}}  \\}
+\uncover<4->{&= \left(v_1 + w_1, (v_2 + 2v_3) +(w_2 + 2 w_3)  \right)^{\text{T}} \\}
+\uncover<5->{&= \left(v_1, v_2 + 2v_3 \right)^{\text{T}} + \left(w_1, w_2 + 2 w_3 \right)^{\text{T}} \\}
+\uncover<6->{&= f(v_1, v_2,v_3) + f(w_1, w_2,w_3) \\}
+\uncover<7->{&= f(\bv) + f(\bw)  \\}
 \end{align*}
-\uncover<10->{So $f$ \emph{does} preserve vector addtion.}
+\uncover<8->{So $f$ \emph{does} preserve vector addtion.}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\beamerdefaultoverlayspecification{<+->}
-
-\begin{frame}{Covectors}
-
-\begin{itemize}
-\item Let $\bv \in \R^n$ be any vector.
-\item We will show to make a linear function out of $\bv$.
-\item Let $f_{\bv} : \R^n \map \R^1$ be defined by
-$$f_{\bv}(\bw) = \bv \cdot \bw$$
-\item Then $f_{\bv}$ is a linear function. We will prove this in the next lesson.
-\item $f_{\bv}$ is called the \emph{covector} associated to the vector $\bv$.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Example Covector}
-
-\begin{itemize}
-\item Let $\bv = (2, -1)^{\text{T}}$
-\item So $f_{\bv}:\R^2 \map \R$.
-\item Let $\bw = (4, 5)^{\text{T}} \in \R^2$.
-\item Compute $f_{\bv}(\bw)$
-\item $= \bv \cdot \bw = 8 - 5 = 3$
-\item $f_{\bv}(\bw) =  3$.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Linear functions preserve linear combinations}
-\begin{lemma}
-Let $f:\R^n\map\R^m$. The following are equivalent:
-\begin{enumerate}
-\item $f$ is linear
-\item $f$ preserves all linear combinations.
-
-\pause
-
-i.e. for every
-$\bw_1,\bw_2,\cdots\bw_k\in\R^n$, for every $c_1,c_2,\cdots c_k\in\R$,
-$$f(c_1 \bw_1 + c_2 \bw_2 + \cdots + c_k \bw_k) = c_1 f(\bw_1) + c_2 f(\bw_2) + \cdots + c_k f(\bw_k)$$
-
-\pause
-
-\item $f$ preserves linear combinations of length 2.
-
-\pause
-
-i.e. for every $\bw_1,\bw_2\in\R^n$, for every $c_1,c_2\in\R$,
-$f(c_1 \bw_1 + c_2 \bw_2) = c_1 f(\bw_1) + c_2 f(\bw_2) f(\bw_k)$.
-
-\end{enumerate}
-\end{lemma}
-\end{frame}
-
-
-\begin{frame}{Example: Covector preserves linear combinations}
-
-\begin{itemize}
-\item Let $\bv = (2, -1)$
-\item So $f_{\bv}:\R^2 \map \R$.
-\item Let $\bw_1 = (4, 5) \in \R^2$.
-\item Let $\bw_2 = (1,-1) \in \R^2$.
-\item $f_\bv(2\bw_1 -3\bw_2)$
-\item $=f_\bv\bigl((5, 13)\bigr)$
-\item $=\bv \cdot (5, 13)$
-\item $=10 - 13 = -3$.
-\item $2 f_{\bv}(\bw_1) -3 f_{\bv}(\bw_2)$
-\item $= 2 (\bv \cdot \bw_1) -3 (\bv \cdot \bw_2)$
-\item $=2 (3) - 3(3)$
-\item $=-3$
-\item So $f_\bv(2\bw_1 -3\bw_2) = 2f_{\bv}(\bw_1) -3 f_{\bv}(\bw_2)$.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Proof of Lemma}
-
-\begin{itemize}
-\item (3) $\implies$ (1). Suppose that $f$ preserves linear combinations of length 2.
-\item $f(c_1 \bw_1 + c_2 \bw_2) = c_1 f(\bw_1) + c_2 f(\bw_2)$.
-\item Letting $c2=0$ we have
-\item $f(c_1 \bw_1) = c_1 f(\bw_1)$.
-\item So $f$ preserves scalar multiplication.
-\item Letting $c_1 = c_2 = 1$ we have
-\item $f(\bw_1 + \bw_2) = f(\bw_1) + f(\bw_2)$.
-\item So $f$ preserves vector addition.
-\item So $f$ is linear.
-\item (2) $\implies$ (3) is trivial. So we are left with...
-\item (1) $\implies$ (2). Suppose $f$ is linear.
-\item We must show that $f$ preserves all linear combinations.
-\item This is done by induction on $k$.
-\item The base case, $k=1$, says $f(c_1 \bw_1) = c_1 f(\bw_1)$.
-\item This follows from the fact that $f$ preserves scalar mult.
-\end{itemize}
-
-\end{frame}
-
-\beamerdefaultoverlayspecification{}
-
-\begin{frame}{The inductive step}
-Now suppose that
-$$f\left(\Sigma_{i=1}^k{c_i \bw_i}\right) = \Sigma_{i=1}^k{c_i f(\bw_i)}$$
-
-\smallskip
-
-We must show that
-$$f\left(\Sigma_{i=1}^{k+1}{c_i \bw_i}\right) = \Sigma_{i=1}^{k+1}{c_i f(\bw_i)}$$
+\begin{frame}{Does $f$ preserve scalar multiplication?}
+$f(x,y,z) = (x, y + 2z)^{\text{T}}$
 
 \begin{align*}
-&f\left(\Sigma_{i=1}^{k+1}{c_i \bw_i}\right)\\
-\uncover<2->{&=  f\left(\Sigma_{i=1}^{k}{c_i \bw_i} + c_{k+1} \bw_{k+1}\right)\\}
-\uncover<3->{&=  f\left(\Sigma_{i=1}^{k}{c_i \bw_i}\right) + f(c_{k+1} \bw_{k+1}) \quad \text{ ($f$ preserves addition)} \\}
-\uncover<4->{&= \Sigma_{i=1}^k{c_i f(\bw_i)} + f(c_{k+1} \bw_{k+1}) \quad \text{ (induction)}\\}
-\uncover<5->{&= \Sigma_{i=1}^k{c_i f(\bw_i)} + c_{k+1} f(\bw_{k+1}) \quad \text{ ($f$ preserves scalar mult.)}\\}
-\uncover<6->{&= \Sigma_{i=1}^{k+1}{c_i f(\bw_i)} }
+\uncover<2->{&f(c \bv) \\}
+\uncover<3->{&=  f(c v_1, c v_2,c v_3) \\}
+\uncover<4->{&=  (c \cdot v1, c \cdot v2 + 2 c \cdot v3)^{\text{T}} \\}
+\uncover<5->{&=  c(v1, v2 + 2 v3)^{\text{T}} \\}
+\uncover<6->{&=  c \cdot f (v1, v2, v3) \\}
+\uncover<7->{&=  c f (\bv) \\}
 \end{align*}
 
-\uncover<7->{So $f$ preserves all linear combinations. $\qed$.}
-\end{frame}
-
-\beamerdefaultoverlayspecification{<+->}
-
-\begin{frame}{Arbitrary functions are flexible}
-\begin{itemize}
-\item Suppose $f:\R^2\map\R$ is \emph{some} function. (Not necessarily linear).
-\item Suppose I told you that $f(0,1) = 12$
-\item and I told you that $f(1, 0) = -1$.
-\item Question: What is $f(2, 2)$?
-\item Answer: You have no idea. It could be anything.
-\item Arbitrary functions are "flexible". They can bend however you want them to.
-\item Knowing the value of $f$ at any finite number of points tells you nothing
-about the value of $f$ at any other point.
-\item Now suppose I told you $f$ were linear?
-\item Then $f(2,2) = f\left(2(1,0) + 2(0,1)\right)$
-\item $=2f(1,0) + 2f(0,1)$
-\item $= 2(12) + 2 (-1) = 23$.
-\end{itemize}
-\end{frame}
-
-\beamerdefaultoverlayspecification{}
-
-\begin{frame}{Values at the standard basis vectors}
-
-A linear function is determined by its values at the standard basis vectors.
-
-\uncover<2->{
-\begin{lemma}
-Let $f:\R^n\map\R^m$ and $g:\R^n\map\R^m$  be two linear functions. \\
-\uncover<3->{Suppose that $f(\be_i) = g(\be_i)$ for $i=1, 2, \cdots n$.} \\
-\uncover<4->{Then $f = g$.}
-\end{lemma}
-}
-
-\end{frame}
-
-\begin{frame}{Proof of Lemma}
-
-\begin{proof}
-Assume $f(\be_i) = g(\be_i)$ for $i=1, 2, \cdots n$.
-Let $\bv\in\R^n$ be any vector.
-\uncover<2->{We must show that $f(\bv)=g(\bv)$.}
-\uncover<3->{
-Now $\bv = (v_1,v_2,\cdots v_n)$.
-So $\bv=\sum_i{v_i \be_i}$.
-}
-
-\begin{align*}
-\uncover<4->{f(\bv) &= f\left(\sum_i{v_i \be_i}\right) \\}
-\uncover<5->{&= \sum_i{v_i f(\be_i)} \text{ \qquad (by linearity)}\\}
-\uncover<6->{&= \sum_i{v_i g(\be_i)} \text { \qquad (by assumption)}\\}
-\uncover<7->{&= g\left(\sum_i{v_i \be_i}\right) { \qquad  (by linearity)} \\}
-\uncover<8->{&= g(\bv)}
-\end{align*}
-\end{proof}
-\end{frame}
-
-\beamerdefaultoverlayspecification{<+->}
-
-\begin{frame}{All functionals are covectors}
-
-All functionals on $\R^n$ are given by covectors.
-
-\pause
-
-\begin{lemma}
-Let $f:\R^n\map\R$ be a covector.\\
-\pause
-Then there is a vector $\bv\in\R^n$ such that $f=f_{\bv}$. \\
-\end{lemma}
-
-\pause
-
-\begin{itemize}
-\item Proof:
-\item Let $a_i = f(\be_i)$ for $i=1,\cdots n$.
-\item Let $\bv=(a_1, a_2, \cdots a_n)$.
-\item Notice $\bv\cdot\be_i=a_i$ for $i=1,\cdots n$.
-\item So $f_{\bv}(\be_i)=a_i$ for $i=1,\cdots n$.
-\item So $f_{\bv}(\be_i)=f(\be_i)$ for $i=1,\cdots n$.
-\item By the previous lemma, $f = f_{\bv}$. $\qed$
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Linear component functions}
-
-A function is linear iff it's component functions are.
-
-\pause
-
-\begin{lemma}
-Let $f:\R^n\map\R^m$ be a function.\\
-\pause
-Write $f(\bv) = \left(f_1(\bv),f_2(\bv),\cdots f_m(\bv)\right)$. \\
-\pause
-Then the following are equivalent:
-\pause
-\begin{enumerate}
-\item $f$ is linear
-\item $f_i$ is linear for $i=1,\dots m$.
-\end{enumerate}
-\end{lemma}
-
-\pause
-
-\begin{itemize}
-\item Proof:
-\item Let $\bv_1,\dots\bv_n\in\R^n$ and let $c_1,\dots c_n \in\R$.
-\item $f\left(\sum_j{c_j \bv_j}\right) = \sum_j{c_j f(\bv_j)}$
-\item iff $\left(f_1\left(\sum_j{c_j \bv_j}\right),\cdots,f_m\left(\sum_j{c_j \bv_j}\right)\right) = \left( \sum_j{c_j f_1(\bv_j)},\cdots \sum_j{c_j f_m(\bv_j)} \right)$
-\item iff $f_i\left(\sum_j{c_j \bv_j}\right) = \sum_j{c_j f_i(\bv_j)}$, for $i=1,\dots m$.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Characterization of linear functions}
-
-All linear functions from $\R^n$ to $\R^m$ are given by $m$ covectors.
-
-\pause
-
-\begin{theorem}
-Let $f:\R^n\map\R^m$ be a linear function.\\
-\pause
-Then there are $m$ vectors $\bv_1,\bv_2,\cdots\bv_m \in \R^n$ such that
-$f = \left(f_{\bv_1}, f_{\bv_2}, \cdots f_{\bv_m}\right)$.
-
-\pause
-\smallskip
-
-Conversely, Let $\bv_1,\bv_2,\cdots\bv_m$ be any $m$ vectors in $\R^n$ and
-let $f=\left(f_{\bv_1}, f_{\bv_2},\cdots f_{\bv_n}\right)$.
-\pause
-Then $f:\R^n\map\R^m$ is linear.
-
-\end{theorem}
-
-\end{frame}
-
-\begin{frame}{Proof of theorem}
-
-\begin{itemize}
-\item Let $f:\R^n\map\R^m$ be a linear function.
-\item Write $f = (f_1, f_2, \cdots f_m)$.
-\item From a previous lemma each $f_i$ is linear.
-\item But $f_i:\R^n\map\R$ so each $f_i$ is a linear functional.
-\item But all linear functionals are covectors.
-\item So for each $i$, let $\bv_i$ be such that $f_i = f_{\bv_i}$.
-\item Then $f=(f_{\bv_1}, f_{\bv_2},\cdots f_{\bv_n})$.
-\item Conversely, let $\bv_1,\bv_2,\cdots\bv_m$ be any $m$ vectors in $\R^n$.
-\item Let $f=(f_{\bv_1}, f_{\bv_2},\cdots f_{\bv_n})$.
-\item Since each of the component functions of $f$ is linear, $f$ is linear.
-\end{itemize}
-
-
-\end{frame}
-
-\begin{frame}{Example: A linear $f:\R^2\map\R^3$}
-According to the theorem, a linear function from $\R^2$ to $\R^3$ is
-given by three covectors from $\R^2$.
-
-\begin{itemize}
-\item Let $\bv_1 = (2, 1)$
-\item Let $\bv_2 = (0, -3)$
-\item Let $\bv_3 = (-1, 0)$
-\item Let $f = (f_{\bv_1},f_{\bv_2},f_{\bv_3})$.
-\item Then $f:\R^2\map\R^3$ is linear.
-\item Let $\bw = (3, -2)$. Compute $f(\bw)$.
-\item $f(\bw) = \left(f_{\bv_1}(\bw),f_{\bv_2}(\bw),f_{\bv_3}(\bw)\right)$
-\item $=(4, 6, -3)$
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Linear functions given by values at the standard basis vectors.}
-
-There exists a unique linear function with any specified values for the
-standard basis vectors.
-
-\pause
-
-\begin{theorem}
-Let $\bw_1,\bw_2,\cdots\bw_n \in \R^m$. Then there exists a unique linear
-function $f:\R^n\map\R^m$ such that
-$$f(\be_i) = \bw_i, \text{ for } 1\leq i \leq n$$
-\end{theorem}
-
-\pause
-
-Proof:
-
-\begin{itemize}
-\item An earlier lemma already gave us uniqueness.
-(Linear functions are determined by their values on the standard basis vectors.)
-So we only have to prove existence.
-\item Let $\bv\in\R^n$. We have to define $f(\bv)$.
-\item Now $\bv = \sum_i{v_i \be_i}$.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Proof continued}
-
-\begin{itemize}
-\item If $f$ is going to be linear we have no choice but to define
-\item $f(\bv) = \sum_i{v_i  f(\be_i)}$
-\item $=\sum_i{v_i  \bw_i}$.
-\item This is linear:
-\item $f(c_1 \bu + c_2\bv)$
-\item $=f(\sum_i{(c_1\cdot u_i +c_2 \cdot v_i)\be_i})$
-\item $= \sum_i{(c_1\cdot u_i +c_2 \cdot v_i)\bw_i}$ \quad (definition of $f$)
-\item $= c_1\sum_i{u_i \bw_i} +c_2\sum_i{v_i \bw_i}$
-\item $= c_1f(\bu) +c_2 f(\bv)$ \quad (definition of $f$).
-\end{itemize}
-
-\pause
-
-So $f$ is linear. $\qed$.
-
-\end{frame}
-
-\begin{frame}{Example: A linear $f:\R^2\map\R^3$}
-According to the theorem, a linear function from $\R^2$ to $\R^3$ is
-given by two vectors in $\R^3$ to be the images of the two standard
-basis vectors in $\R^2$.
-
-\begin{itemize}
-\item Let $\bw_1 = (2, 0, -1)$.
-\item Let $\bw_2 = (1, -3, 0)$.
-\item According to the theorem there is a unique linear $f:\R^2\map\R^3$ such that
-\item $f(\be_1) = \bw_1$ and $f(\be_2) = \bw_2$.
-\item Let $\bu = (3, -2)$. Compute $f(\bw)$.
-\item $f(\bu) = f(3\be_1 -2\be_2)$
-\item $=3 \bw_1 -2\bw_2$
-\item $=(4, 6, -3)$
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Two ways of specifying linear $f:\R^n\map\R^m$}
-
-\begin{itemize}
-\item We now have two ways of specifiying a linear function $f:\R^n\map\R^m$:
-\item By giving $m$ covectors from $\R^n$.
-\item By giving $n$ vectors in $\R^m$.
-\item Notice that in our two examples we got the same result for $f(3,-2)$.
-\item Actually we specified the same linear function both times, but in
-the two different ways.
-\item This fact will become more clear when we switch to expressing these
-ideas using matrices in the next lesson.
-\end{itemize}
-
-\end{frame}
-
-
-\begin{frame}{Composition of linear functions}
-
-The composition of linear functions is linear.
-
-\pause
-
-\begin{lemma}
-Let $f:\R^n\map\R^m$ be linear. Let $g:\R^m\map\R^k$ be linear.
-Let $h:\R^n\map\R^k$ be given by $h=g\circ f$.
-\pause
-Then $h$ is linear.
-\end{lemma}
-
-\pause
-
-proof:
-
-\begin{itemize}
-\item $h(a\bv +b\bw)$
-\item $= g(f(a\bv +b\bw))$
-\item $= g(a f(\bv) + b f(\bw))$ \quad (because $f$ is linear)
-\item $= a g(f(\bv)) + b g(f(\bw))$ \quad (because $g$ is linear)
-\item $= a h(\bv) + b h(\bw)$.
-\item So $h$ is linear. $\qed$.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Example Composition}
-
-Let $f:\R^2\map\R^3$ be the function we considered a few slides back:
-
-\begin{itemize}
-\item Let $\bv_1 = (2, 1)$
-\item Let $\bv_2 = (0, -3)$
-\item Let $\bv_3 = (-1, 0)$
-\item Let $f = (f_{\bv_1},f_{\bv_2},f_{\bv_3})$.
-\item So $f:\R^2\map\R^3$ is linear.
-\item Now let $\bu\in\R^3 = (-1, -1, 2)$.
-\item Then $g = f_{\bu}:\R^3\map\R$ is a covector from $\R^3$.
-\item Now let $h=g\circ f$.
-\item Then $h:\R^2\map\R^1$. According to the theorem it is linear.
-\item Let $\bw = (3, -2)$. Compute $h(\bw)$.
-\item From our earlier example $f(\bw) =(4, 6, -3)$.
-\item So $h(\bw) = g(4, 6, 3)$ = $\bu\cdot(4,6,3) = -4 -6 -6 = -16$.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Operations on linear functions}
-
-We can consider the \emph{set of all} linear functions from $\R^n$ to $\R^m$.
-
-\begin{itemize}
-\item Let $L(\R^n,\R^m)$ mean the set of all linear functions from $\R^n$ to $\R^m$.
-\item There are a few \emph{operations} that make sense on $L(\R^n, \R^m)$.
-\item Addition:
-\item Let $f, g \in L(\R^n, \R^m)$. We can define $f+g$.
-\item Scalar multiplication:
-\item Let $f\in L(\R^n, \R^m)$. Let $c\in\R$. We can define $cf$.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Addition of linear functions}
-
-\begin{itemize}
-\item Let $f, g \in L(\R^n,\R^m)$.
-\item We want to define $h = f+g \in L(\R^n,\R^m)$.
-\item Now $f:\R^n\map\R^m$ and $g:\R^n\map\R^m$.
-\item We want to define $h:\R^n\map\R^m$.
-\item How should we define $h$?
-\item Let $\bv\in\R^n$. What should $h(\bv)$ be?
-\item $h(\bv) = (f+g)(\bv) = ?$
-\item $=f(\bv) + g(\bv)$.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Sum of linear functions is linear}
-
-\begin{lemma}
-Let $f,g\in L(\R^n, \R^m)$. Then $f+g$ is linear.
-\end{lemma}
-
-\pause
-
-Proof:
-
-\pause
-
-\begin{itemize}
-\item $(f+g)(c_1 \bv_1 + c_2 \bv_2)$
-\item $=f(c_1 \bv_1 + c_2 \bv_2) + g(c_1 \bv_1 + c_2 \bv_2)$ \quad (Definition of $f+g$)
-\item $=c_1f(\bv_1)+ c_2f(\bv_2) + c_1g(bv_1) + c_2g(\bv_2)$ \quad ($f$ and $g$ are both linear)
-\item $= c_1\left(f(\bv_1)+  g(bv_1)\right) + c_2\left(f(\bv_2) + g(\bv_2)\right)$
-\item $=c_1\left((f + g)(\bv_1)\right) + c_2\left((f+g)(\bv_2) \right)$ \quad (Definition of $f+g$)
-\end{itemize}
-
-\pause
-
-So $f+g$ is linear. $\qed$.
-
-\end{frame}
-
-\begin{frame}{Scalar multiplication of linear functions}
-
-\begin{itemize}
-\item Let $f \in L(\R^n,\R^m)$. Let $c\in\R$.
-\item We want to define $h = c f \in L(\R^n,\R^m)$.
-\item Now $f:\R^n\map\R^m$.
-\item We want to define $h:\R^n\map\R^m$.
-\item How should we define $h$?
-\item Let $\bv\in\R^n$. What should $h(\bv)$ be?
-\item $h(\bv) = (c f)(\bv) = ?$
-\item $= c \left(f (\bv)\right)$.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Scalar multiple of a linear function is linear}
-
-\begin{lemma}
-Let $f\in L(\R^n, \R^m)$. Let $c\in\R$. Then $c f$ is linear.
-\end{lemma}
-
-\pause
-
-Proof:
-
-\pause
-
-\begin{itemize}
-\item $(c f)(c_1 \bv_1 + c_2 \bv_2)$
-\item $=c \left (f(c_1 \bv_1 + c_2 \bv_2) \right )$ \quad (Definition of $c f$)
-\item $= c \left(c_1 f(\bv_1) + c_2 f(\bv_2)  \right)$ \quad ($f$ is linear)
-\item $= \left(c_1 \cdot c \cdot f(\bv_1) + c_2 \cdot c \cdot f(\bv_2)  \right)$
-\item $= \left(c_1 (c f)(\bv_1) + c_2 (c f)(\bv_2)  \right)$ \quad (Definition of $c f$)
-\end{itemize}
-
-\pause
-
-So $c f$ is linear. $\qed$.
-
+\uncover<8->{So $f$ \emph{does} preserve scalar multiplication. \\}
+\uncover<9->{So $f$ \emph{is} linear.}
 \end{frame}
 
 \end{document}

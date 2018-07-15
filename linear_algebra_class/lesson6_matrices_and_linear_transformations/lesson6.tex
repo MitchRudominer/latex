@@ -141,16 +141,17 @@ $$
 \begin{frame}{$T_A$ is linear}
 
 \begin{itemize}
-\item Lemma. Let $A$ be an $n\times m$ matrix.
+\item \textbf{Lemma.} Let $A$ be an $n\times m$ matrix.
 \item Then $T_A$ is linear.
-\item Proof. Let $\bv,\bw\in\R^m$. Let $c,d\in\R$.
-\item We must show that
-$$T_A(c\bv + d\bw) = c T_A(\bv) + d T_A(\bw)$$
-\item i.e. that
-$$A(c\bv + d\bw) = c A(\bv) + d A(\bw)$$
-\item But this just follows from the properties of matrix arithmetic.
-\item Namely matrix multiplication distributes over matrix addition,
-\item and matrix multiplication is compatible with scalar multiplication.
+\item Proof.
+\item We must show that $T_A$ preserves vector addtion.
+$$T_A(\bv + \bw) = T_A(\bv) + T_A(\bw)$$
+\item But this is true because matrix multiplication distributes over matrix addtion.
+$$A(\bv + \bw) = A\bv + A\bw$$
+\item We must show that $T_A$ preserves scalar multiplication.
+$$T_A(c \bv) = c T_A(\bv)$$
+\item But this is true because matrix multiplication is compatible with scalar multiplication.
+$$A(c \bv ) = c A\bv$$
 \item So $T_A$ is linear. $\qed$
 \end{itemize}
 \end{frame}
