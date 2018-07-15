@@ -1,0 +1,136 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Homework for Lesson 5 \\ Linear functions $\R^n$}
+\author{Math 325, Linear Algebra \\ Mitch Rudominer \\ Fall 2018 \\ SFSU }
+\date{}
+
+\maketitle
+
+
+\textbf{Problem 1.} Let $f:\R^1\map\R^1$ be defined by
+$$f(x) = 2x+1$$
+Is $f$ linear? Explain why or why not. (Note that in $\R^1$ the vectors are
+just the numbers so vector addition means just ordinary addition of numbers.)
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{Problem 2.} Are constant functions linear?
+
+\smallskip
+
+\textbf{(a)} Let $f:\R^{2}\map\R^2$ be defined by $f(\bv) = \textbf{0}$ for
+all $\bv$. Is $f$ linear? Why or why not?
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{(b)} Let $f:\R^{2}\map\R^2$ be defined by $f(\bv) = (1,0)^{\text{T}}$ for
+all $\bv$. Is $f$ linear? Why or why not?
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{(c)} Let $c$ be a real number and
+$f:\R^{2}\map\R^1$ be defined by $f(\bv) = c$ for
+all $\bv$. For which values of $c$ is $f$ linear? Explain
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{Problem 3.} Equivalent definitions of linear.
+
+\smallskip
+
+We defined
+that a function $f$ is linear if it preserves vector addition and
+preserves scalar multiplication.
+
+\smallskip
+
+Say that $f$ \emph{preserves linear combinations of length 2}
+if for all vectors $\bv, \bw$ and all scalars $c, d$,
+$$f(c\bv + d\bw) = c f(\bv) + d f (\bw)$$
+
+\bigskip
+
+\textbf{(a)} Suppose that $f$ preserves linear combinations of length 2.
+Does it follow that $f$ is linear? Explain why or why not.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{(b)} Suppose that $f$ is linear. Does it follow that $f$ preserves
+linear combinations of length 2? Explain why or why not.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+Say that $f$ \emph{preserves all linear combinations} if
+for all vectors $\bv_1,\bv_2 \cdots \bv_k$, and all scalars
+$c_1, c_2, \cdots c_k$,
+
+$$f(c_1 \bv_1 + c_2 \bv_2 + \cdots + c_k \bv_k)
+= c_1 f(\bv_1) + c_2 f(\bv_2) + \cdots + c_k f(\bv_k)$$
+
+\bigskip
+
+\textbf{(c)} Suppose that $f$ is linear. Does it follow that $f$ preserves
+all linear combinations? Explain why or why not.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{Problem 3.} Composition of linear functions.
+
+\smallskip
+
+Suppose $f:\R^n\map\R^m$ and $g:\R^m\map\R^k$ are both linear.
+Let $h=g\circ f$ so that $h:\R^n\map\R^k$.
+
+\smallskip
+
+Is $h$ necessarily linear? Explain why or why not?
+
+
+
+\end{document}

@@ -264,110 +264,54 @@ Let $\bv \in \R^l$. We will show that $T_{A(BC)}(\bv) = T_{(AB)C}(\bv)$.
 \item Which linear transformation does $I$ correspond to?
 \item The \emph{identity} transformation.
 \item $T_I:\R^n\map\R^n$.
-\item Let $
+\item $T_I(\bv) = I \bv = \bv$.
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The zero matrix}
+
+\begin{itemize}
+\item Let $O$ be the $n\times m$ zero matrix.
+\item Which linear transformation does $O$ correspond to?
+\item The constantly \emph{zero} transformation.
+\item $T_O:\R^m\map\R^n$.
+\item $T_O(\bv) = O \bv = \mathbf{0}$, for all $\bv$.
+\end{itemize}
+\end{frame}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Matrix addition}
+
+\begin{itemize}
+\item Which linear transformation does $A+B$ correspond to?
+\item $T_A + T_B$.
+\item Let $f$ and $g$ be any two functions from $\R^m$ to $\R^n$.
+\item Then $f+g$ is defined to be the function
+$$(f+g)(\bv) = f(\bv) + g(\bv)$$
+\item Now $(A + B)(\bv) = A\bv + B\bv$.
+\item So $T_{A+B} = T_A + T_B$.
+\end{itemize}
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Operations on linear functions}
-
-We can consider the \emph{set of all} linear functions from $\R^n$ to $\R^m$.
+\begin{frame}{Scalar multiplication}
 
 \begin{itemize}
-\item Let $L(\R^n,\R^m)$ mean the set of all linear functions from $\R^n$ to $\R^m$.
-\item There are a few \emph{operations} that make sense on $L(\R^n, \R^m)$.
-\item Addition:
-\item Let $f, g \in L(\R^n, \R^m)$. We can define $f+g$.
-\item Scalar multiplication:
-\item Let $f\in L(\R^n, \R^m)$. Let $c\in\R$. We can define $cf$.
+\item Which linear transformation does $c A$ correspond to?
+\item $c T_A$.
+\item Let $f$ be any function from $\R^m$ to $\R^n$.
+\item Then $c f$ is defined to be the function
+$$(c f)(\bv) = c \left( f(\bv) \right)$$
+\item Now $(c A)\bv = c(A\bv)$.
+\item So $T_{cA} = cT_A$.
 \end{itemize}
-
 \end{frame}
 
-\begin{frame}{Addition of linear functions}
-
-\begin{itemize}
-\item Let $f, g \in L(\R^n,\R^m)$.
-\item We want to define $h = f+g \in L(\R^n,\R^m)$.
-\item Now $f:\R^n\map\R^m$ and $g:\R^n\map\R^m$.
-\item We want to define $h:\R^n\map\R^m$.
-\item How should we define $h$?
-\item Let $\bv\in\R^n$. What should $h(\bv)$ be?
-\item $h(\bv) = (f+g)(\bv) = ?$
-\item $=f(\bv) + g(\bv)$.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Sum of linear functions is linear}
-
-\begin{lemma}
-Let $f,g\in L(\R^n, \R^m)$. Then $f+g$ is linear.
-\end{lemma}
-
-\pause
-
-Proof:
-
-\pause
-
-\begin{itemize}
-\item $(f+g)(c_1 \bv_1 + c_2 \bv_2)$
-\item $=f(c_1 \bv_1 + c_2 \bv_2) + g(c_1 \bv_1 + c_2 \bv_2)$ \quad (Definition of $f+g$)
-\item $=c_1f(\bv_1)+ c_2f(\bv_2) + c_1g(bv_1) + c_2g(\bv_2)$ \quad ($f$ and $g$ are both linear)
-\item $= c_1\left(f(\bv_1)+  g(bv_1)\right) + c_2\left(f(\bv_2) + g(\bv_2)\right)$
-\item $=c_1\left((f + g)(\bv_1)\right) + c_2\left((f+g)(\bv_2) \right)$ \quad (Definition of $f+g$)
-\end{itemize}
-
-\pause
-
-So $f+g$ is linear. $\qed$.
-
-\end{frame}
-
-\begin{frame}{Scalar multiplication of linear functions}
-
-\begin{itemize}
-\item Let $f \in L(\R^n,\R^m)$. Let $c\in\R$.
-\item We want to define $h = c f \in L(\R^n,\R^m)$.
-\item Now $f:\R^n\map\R^m$.
-\item We want to define $h:\R^n\map\R^m$.
-\item How should we define $h$?
-\item Let $\bv\in\R^n$. What should $h(\bv)$ be?
-\item $h(\bv) = (c f)(\bv) = ?$
-\item $= c \left(f (\bv)\right)$.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Scalar multiple of a linear function is linear}
-
-\begin{lemma}
-Let $f\in L(\R^n, \R^m)$. Let $c\in\R$. Then $c f$ is linear.
-\end{lemma}
-
-\pause
-
-Proof:
-
-\pause
-
-\begin{itemize}
-\item $(c f)(c_1 \bv_1 + c_2 \bv_2)$
-\item $=c \left (f(c_1 \bv_1 + c_2 \bv_2) \right )$ \quad (Definition of $c f$)
-\item $= c \left(c_1 f(\bv_1) + c_2 f(\bv_2)  \right)$ \quad ($f$ is linear)
-\item $= \left(c_1 \cdot c \cdot f(\bv_1) + c_2 \cdot c \cdot f(\bv_2)  \right)$
-\item $= \left(c_1 (c f)(\bv_1) + c_2 (c f)(\bv_2)  \right)$ \quad (Definition of $c f$)
-\end{itemize}
-
-\pause
-
-So $c f$ is linear. $\qed$.
-
-\end{frame}
 
 \end{document}
 
