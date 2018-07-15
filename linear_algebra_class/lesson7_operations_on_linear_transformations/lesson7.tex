@@ -1,0 +1,273 @@
+% $Header$
+
+\documentclass{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 7 \\ Operations on Linear Transformations}
+\subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Matrices and Linear Transformations}
+
+\begin{itemize}
+\item We now know there is a one-to-one correspondence between $n\times m$ matrices and linear
+transformations from $\R^m$ to $\R^n$
+\item Every matrix gives us a linear transformation.
+\item Every linear transformation is given by a matrix.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Operations on matrices}
+
+\begin{itemize}
+\item We also have several operations on matrices:
+\item matrix multiplication
+\item matrix addition
+\item matrix scalar multiplication
+\item Question: What operations on linear transformations do these
+operations on matrices correspond to?
+\item Let's start with matrix multiplication.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Matrix multiplication}
+
+\begin{itemize}
+\item Let $A$ be an $n\times m$ matrix and $B$ an $m\times k$ matrix.
+\item So $A B$ is an $n\times k$ matrix.
+\item Now $T_B:\R^k\map\R^m$ and $T_A:\R^m\map\R^n$.
+\item Also $T_{AB}:\R^k\map\R^n$.
+\item How could we combine $T_A$ and $T_B$ in order to form $T_{AB}$?
+\item Let $\bv\in\R^k$. Because matrix multiplication is \emph{associative}
+\item $(A B) \bv = A (B \bv)$.
+\item So $T_{AB}(\bv) = T_A\left( T_B(\bv) \right)$.
+\item So $T_{AB} = T_A \circ T_B$.
+\item Matrix multiplication corresponds to \emph{composition} of linear transformations.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{We used associativity of matrix multiplication}
+
+\begin{itemize}
+\item It is true that matrix multiplication corresponds to composition of linear transformations.
+\item Unfortunately the argument given on the previous slide doesn't work for us as a proof.
+\item The problem is that we never proved that matrix multiplication is associative.
+\item We stated the fact in lesson 2, and said we would postpone the proof until later.
+\item We will prove that matrix multiplication is associative in this lesson, based on
+the fact that matrix multiplication corresponds to composition of linear transformations.
+\item But then we can't use the fact that matrix multiplication is associative in order
+to prove that matrix multiplication corresponds to composition.
+\item We need a different proof.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\beamerdefaultoverlayspecification{}
+\begin{frame}{Matrix multiplication corresponds to composition}
+
+\begin{theorem}
+Let $A$ be an $n\times m$ matrix and $B$ an $m\times k$ matrix.
+
+\pause
+
+Then $T_{AB} = T_A \circ T_B$.
+\end{theorem}
+
+\pause
+
+\begin{proof}
+It is enough to show that $T_{AB}$ and $T_A \circ T_B$ agree on the standard
+basis vectors.
+
+\pause
+
+Let $\be_j$ be the $j$-th standard basis vector, for $1\leq j\leq k$. We will show that
+$(AB)\be_j = A (B \be_j)$.
+
+\pause
+
+Let $\bb_1, \bb_2,\cdots \bb_k$ be the columns of $B$, so that
+$B = (\bb_1 \vert \bb_2 \vert \cdots \bb_k)$.
+
+ \pause
+
+ We know that $AB = (A \bb_1 \vert A \bb_2 \vert \cdots A \bb_k)$.
+
+ \pause
+
+ So then $(AB)\be_j = A\bb_j$. (The columns of a matrix equal the images of the standard basis vectors.)
+
+ \pause
+
+ Now $B \be_j = \bb_j$. (Same reason.) So $A (B \be_j) = A\bb_j$.
+
+ \pause
+
+ So $(AB)\be_j = A (B \be_j)$.
+
+\end{proof}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example}
+
+Let
+$$
+\begin{matrix}
+A=
+\begin{pmatrix}
+1 &  0 & 2 \\
+0 & -1 & -3
+\end{pmatrix}
+&
+B =
+\begin{pmatrix}
+ 1 & 1 \\
+-1 & 0 \\
+ 0 & 4
+\end{pmatrix}
+\end{matrix}
+$$
+
+\pause
+
+$T_B:\R^2\map \R^3$ and $T_A:\R^3\map \R^2$. So $T_A \circ T_B : \R^2\map \R^2$.
+Find the matrix corresponding to the linear transformation $T_A \circ T_B$.
+
+\pause
+
+Solution. The matrix is
+
+$$ AB =
+\begin{pmatrix}
+1 & 9 \\
+1 & -12
+\end{pmatrix}
+$$
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Matrix multiplication is associative}
+
+\begin{lemma}
+Let $A$ be an $n\times m$ matrix, $B$ an $m\times k$ matrix, and $C$ a $k\times l$ matrix
+
+\pause
+
+Then $A(BC) = (AB)C$.
+\end{lemma}
+
+\pause
+
+\textbf{Proof.}
+
+Because there is a one-to-one correspondence between matrices and linear transformations,
+it is enough to show that the two corresponding linear transformations are the same.
+
+\pause
+
+\smallskip
+
+We will show that $T_{A(BC)} = T_{(AB)C}$.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Proof continued}
+Let $\bv \in \R^l$. We will show that $T_{A(BC)}(\bv) = T_{(AB)C}(\bv)$.
+
+\uncover<2->{We repeatedly use the fact that matrix multiplication corresponds to composition of linear transformations.}
+
+\begin{align*}
+\uncover<3->{ &T_{A(BC)}(\bv) \\}
+\uncover<4->{ & = T_A\left( T_{BC} (\bv) \right) \\}
+\uncover<5->{ & = T_A\left( T_B \left( T_C(\bv) \right) \right) \\}
+\uncover<6->{ & = T_{AB}\left(  T_C(\bv) \right) \\}
+\uncover<7->{ & = T_{(AB)C}(\bv)}
+\end{align*}
+
+\uncover<8->{ So $T_{A(BC)} = T_{(AB)C}$.}
+
+
+\uncover<9->{ So $A(BC) = (AB)C \qed$.}
+
+\end{frame}
+
+\beamerdefaultoverlayspecification{<+->}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The identity matrix}
+
+\begin{itemize}
+\item Let $I$ be the $n\times n$ identity matrix.
+\item Which linear transformation does $I$ correspond to?
+\item The \emph{identity} transformation.
+\item $T_I:\R^n\map\R^n$.
+\item Let $
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+

@@ -995,6 +995,106 @@ and more abstractly.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{frame}{Multiplicative identity}
+\begin{itemize}
+\item The $n\times n$ identity matrix $I$ is a multiplicative identity.
+\item Let $A$ be an $n\times m$ matrix. Then $I A = A$.
+\item Let $B$ be an $m \times n$ matrix. Then $B I = B$.
+\item Let $C$ be an $n\times n$ matrix. Then $C I = I C = A$.
+\item
+$$
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+a & b & c & d \\
+e & f & g & h \\
+i & j & k & l
+\end{pmatrix}
+=
+\begin{pmatrix}
+a & b & c & d \\
+e & f & g & h \\
+i & j & k & l
+\end{pmatrix}
+$$
+\item
+$$
+\begin{pmatrix}
+a & b \\
+c & d \\
+e & f
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0\\
+0 & 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+a & b  \\
+c & d  \\
+e & f
+\end{pmatrix}
+$$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Multiplying by the zero matrix}
+\begin{itemize}
+\item The $n\times m$ zero matrix $O_{n\times m}$ is a multiplicative zero.
+\item Let $A$ be an $m\times k$ matrix. Then $O_{n\times m} A = O_{n\times k}$.
+\item Let $B$ be an $k \times n$ matrix. Then $B  O_{n\times m} = O_{k\times m}$.
+\item Let $O = O_{n\times n}$ be the square $n\times n$ zero matrix. Let $A$ be $n\times n$.
+\item Then $O A = A O = O$.
+\item
+$$
+\begin{pmatrix}
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+a & b & c & d \\
+e & f & g & h \\
+i & j & k & l
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+$$
+\item
+$$
+\begin{pmatrix}
+a & b \\
+c & d \\
+e & f
+\end{pmatrix}
+\begin{pmatrix}
+0 & 0\\
+0 & 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 & 0  \\
+0 & 0  \\
+0 & 0
+\end{pmatrix}
+$$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\beamerdefaultoverlayspecification{}
+
 \begin{frame}{Matrix multiplication and scalar multiplication}
 
 \begin{itemize}
