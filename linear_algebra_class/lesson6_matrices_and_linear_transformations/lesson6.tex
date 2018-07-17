@@ -60,10 +60,10 @@
 
 \begin{itemize}
 \item What does Lesson 2 Matrices have to do with Lesson 5 Linear functions on $\R^n$?
-\item It turns out that an $n\times m$ matrix contains precisely the information we need
-to describe a linear function from $\R^m$ to $\R^n$.
-\item There is a one-to-one correspondence between $n\times m$ matrices and linear
-functions from $\R^m$ to $\R^n$
+\item It turns out that an $m\times n$ matrix contains precisely the information we need
+to describe a linear function from $\R^n$ to $\R^m$.
+\item There is a one-to-one correspondence between $m\times n$ matrices and linear
+functions from $\R^n$ to $\R^m$
 \item Every matrix gives us a linear function.
 \item Every linear function is given by a matrix.
 \end{itemize}
@@ -75,7 +75,7 @@ functions from $\R^m$ to $\R^n$
 \begin{frame}{Linear transformations}
 
 \begin{itemize}
-\item Linear functions from $\R^m$ to $\R^n$ are also often called
+\item Linear functions from $\R^n$ to $\R^m$ are also often called
 linear \emph{transformations}.
 \item A linear transformation is exactly the same thing as a linear function.
 \item Especially in the context of matrices it is common to use the term
@@ -94,12 +94,12 @@ than letters like $f$, $g$ and $h$.
 
 \begin{itemize}
 \item Definition:
-\item Let $A$ be an $n\times m$ matrix.
-\item Then associated with $A$ is a function $T_A:\R^m\map\R^n$.
+\item Let $A$ be an $m\times n$ matrix.
+\item Then associated with $A$ is a function $T_A:\R^n\map\R^m$.
 \item $T_A$ is called the \emph{linear transformation associated with $A$}.
-\item $T_A$ is defined as follows. Let $\bv\in\R^m$.
+\item $T_A$ is defined as follows. Let $\bv\in\R^n$.
 \item Then $T_A(\bv) = A \bv$.
-\item Check that this multiplication makes sense and the output is in $\R^n$.
+\item Check that this multiplication makes sense and the output is in $\R^m$.
 \item We will show that in fact it is linear.
 \end{itemize}
 \end{frame}
@@ -141,7 +141,7 @@ $$
 \begin{frame}{$T_A$ is linear}
 
 \begin{itemize}
-\item \textbf{Lemma.} Let $A$ be an $n\times m$ matrix.
+\item \textbf{Lemma.} Let $A$ be an $m\times n$ matrix.
 \item Then $T_A$ is linear.
 \item Proof.
 \item We must show that $T_A$ preserves vector addtion.
@@ -162,7 +162,7 @@ $$A(c \bv ) = c A\bv$$
 \begin{frame}{The images of the standard basis vectors.}
 
 \begin{lemma}
-Let $A$ be an $n\times m$ matrix.
+Let $A$ be an $m\times n$ matrix.
 
 \pause
 
@@ -231,8 +231,8 @@ A linear transformation is determined by its values at the standard basis vector
 
 \uncover<2->{
 \begin{lemma}
-Let $T:\R^m\map\R^n$ and $S:\R^m\map\R^n$  be two linear transformations. \\
-\uncover<3->{Suppose that $T(\be_j) = S(\be_j)$ for $j=1, 2, \cdots m$.} \\
+Let $T:\R^n\map\R^m$ and $S:\R^n\map\R^m$  be two linear transformations. \\
+\uncover<3->{Suppose that $T(\be_j) = S(\be_j)$ for $j=1, 2, \cdots n$.} \\
 \uncover<4->{Then $T = S$.}
 \end{lemma}
 }
@@ -244,7 +244,7 @@ Let $T:\R^m\map\R^n$ and $S:\R^m\map\R^n$  be two linear transformations. \\
 \begin{frame}{Proof of Lemma}
 
 \begin{proof}
-Let $\bv\in\R^m$ be any vector.
+Let $\bv\in\R^n$ be any vector.
 \uncover<2->{We must show that $T(\bv)=S(\bv)$.}
 \uncover<3->{
 Now $\bv = (v_1,v_2,\cdots v_n)^{\text{T}}$.
@@ -265,35 +265,35 @@ So $\bv=\sum_j{v_j \be_j}$.
 \begin{frame}{Every linear transformation is given by a matrix}
 
 \begin{theorem}
-Let $T:\R^m\map\R^n$ be a linear transformation.
+Let $T:\R^n\map\R^m$ be a linear transformation.
 
 \pause
 
 \small
 
-Then there is an $n\times m$ matrix $A$ such that $T = T_A$
+Then there is an $m\times n$ matrix $A$ such that $T = T_A$
 \end{theorem}
 
 \pause
 
 \begin{proof}
-For $j=1\dots m$, let $\ba_j = T(\be_j)$.
+For $j=1\dots n$, let $\ba_j = T(\be_j)$.
 
 \pause
 
-i.e. let $\ba_1 = T(\be_1), \ba_2 = T(\be_2), \cdots \ba_m = T(\be_m)$.
+i.e. let $\ba_1 = T(\be_1), \ba_2 = T(\be_2), \cdots \ba_n = T(\be_n)$.
 
 \pause
 
-So each $\ba_j\in\R^n$.
+So each $\ba_j\in\R^m$.
 
 \pause
 
-Let $A = (\ba_1 \vert \ba_2 \vert \cdots \vert \ba_m) $ be the matrix composed of the columns $\ba_1, \ba_2 , \cdots \ba_m$.
+Let $A = (\ba_1 \vert \ba_2 \vert \cdots \vert \ba_n) $ be the matrix composed of the columns $\ba_1, \ba_2 , \cdots \ba_n$.
 
 \pause
 
-So $A$ is an $n\times m$ matrix.
+So $A$ is an $m\times n$ matrix.
 
 \pause
 
@@ -346,7 +346,7 @@ $$
 \begin{itemize}
 \item When the target space of a linear transformation is $\R^1$ then there
 are other names names for it.
-\item Let $T:\R^m\map\R^1$ be a linear transformation. Then $T$ is also called a
+\item Let $T:\R^n\map\R^1$ be a linear transformation. Then $T$ is also called a
 \item \emph{linear functional}.
 \item Also $T$ is called a \emph{covector}.
 \end{itemize}
@@ -356,10 +356,10 @@ are other names names for it.
 
 \begin{frame}{Covectors}
 \begin{itemize}
-\item Let $T:\R^m\map\R^1$ be a linear functional.
+\item Let $T:\R^n\map\R^1$ be a linear functional.
 \item Because every linear transformation is given by matrix, $T$ is given
 by a matrix. What size matrix?
-\item $T$ is given by an $m\times 1$ column vector.
+\item $T$ is given by a $1\times n$ row vector.
 \item Example: Let $T:\R^3\map\R$ be the linear functional such that
 $$
 \begin{matrix}
@@ -372,7 +372,7 @@ T\begin{pmatrix} 0 \\ 1 \\ 0  \end{pmatrix} = -5
 T \begin{pmatrix} 0 \\ 0 \\ 1  \end{pmatrix} = 6
 \end{matrix}
 $$
-\item Find the column vector that represents $T$.
+\item Find the row vector that represents $T$.
 \item Let $\ba = (4, -5, 6)$.
 \item Then $T = T_{\ba}$.
 \end{itemize}
@@ -382,8 +382,8 @@ $$
 
 \begin{frame}{Row vectors represent covectors}
 \begin{itemize}
-\item So column vectors represent vectors in $\R^m$.
-\item And row vectors represent covectors from $\R^m$.
+\item So column vectors represent vectors in $\R^n$.
+\item And row vectors represent covectors from $\R^n$.
 \item When you see a row vector like
 $$(4, -5, 6)$$
 \item think of it as an object that \emph{operates} on column vectors.

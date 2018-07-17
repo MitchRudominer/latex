@@ -59,8 +59,8 @@
 \begin{frame}{Matrices and Linear Transformations}
 
 \begin{itemize}
-\item We now know there is a one-to-one correspondence between $n\times m$ matrices and linear
-transformations from $\R^m$ to $\R^n$
+\item We now know there is a one-to-one correspondence between $m\times n$ matrices and linear
+transformations from $\R^n$ to $\R^m$
 \item Every matrix gives us a linear transformation.
 \item Every linear transformation is given by a matrix.
 \end{itemize}
@@ -86,10 +86,10 @@ operations on matrices correspond to?
 \begin{frame}{Matrix multiplication}
 
 \begin{itemize}
-\item Let $A$ be an $n\times m$ matrix and $B$ an $m\times k$ matrix.
-\item So $A B$ is an $n\times k$ matrix.
-\item Now $T_B:\R^k\map\R^m$ and $T_A:\R^m\map\R^n$.
-\item Also $T_{AB}:\R^k\map\R^n$.
+\item Let $A$ be an $m\times n$ matrix and $B$ an $n\times k$ matrix.
+\item So $A B$ is an $m\times k$ matrix.
+\item Now $T_B:\R^k\map\R^n$ and $T_A:\R^n\map\R^m$.
+\item Also $T_{AB}:\R^k\map\R^m$.
 \item How could we combine $T_A$ and $T_B$ in order to form $T_{AB}$?
 \item Let $\bv\in\R^k$. Because matrix multiplication is \emph{associative}
 \item $(A B) \bv = A (B \bv)$.
@@ -121,7 +121,7 @@ to prove that matrix multiplication corresponds to composition.
 \begin{frame}{Matrix multiplication corresponds to composition}
 
 \begin{theorem}
-Let $A$ be an $n\times m$ matrix and $B$ an $m\times k$ matrix.
+Let $A$ be an $m\times n$ matrix and $B$ an $n\times k$ matrix.
 
 \pause
 
@@ -209,7 +209,7 @@ $$
 \begin{frame}{Matrix multiplication is associative}
 
 \begin{lemma}
-Let $A$ be an $n\times m$ matrix, $B$ an $m\times k$ matrix, and $C$ a $k\times l$ matrix
+Let $A$ be an $m\times n$ matrix, $B$ an $n\times k$ matrix, and $C$ a $k\times l$ matrix
 
 \pause
 
@@ -273,10 +273,10 @@ Let $\bv \in \R^l$. We will show that $T_{A(BC)}(\bv) = T_{(AB)C}(\bv)$.
 \begin{frame}{The zero matrix}
 
 \begin{itemize}
-\item Let $O$ be the $n\times m$ zero matrix.
+\item Let $O$ be the $m\times n$ zero matrix.
 \item Which linear transformation does $O$ correspond to?
 \item The constantly \emph{zero} transformation.
-\item $T_O:\R^m\map\R^n$.
+\item $T_O:\R^n\map\R^m$.
 \item $T_O(\bv) = O \bv = \mathbf{0}$, for all $\bv$.
 \end{itemize}
 \end{frame}
@@ -289,7 +289,7 @@ Let $\bv \in \R^l$. We will show that $T_{A(BC)}(\bv) = T_{(AB)C}(\bv)$.
 \begin{itemize}
 \item Which linear transformation does $A+B$ correspond to?
 \item $T_A + T_B$.
-\item Let $f$ and $g$ be any two functions from $\R^m$ to $\R^n$.
+\item Let $f$ and $g$ be any two functions from $\R^n$ to $\R^m$.
 \item Then $f+g$ is defined to be the function
 $$(f+g)(\bv) = f(\bv) + g(\bv)$$
 \item Now $(A + B)(\bv) = A\bv + B\bv$.
@@ -304,7 +304,7 @@ $$(f+g)(\bv) = f(\bv) + g(\bv)$$
 \begin{itemize}
 \item Which linear transformation does $c A$ correspond to?
 \item $c T_A$.
-\item Let $f$ be any function from $\R^m$ to $\R^n$.
+\item Let $f$ be any function from $\R^n$ to $\R^m$.
 \item Then $c f$ is defined to be the function
 $$(c f)(\bv) = c \left( f(\bv) \right)$$
 \item Now $(c A)\bv = c(A\bv)$.
