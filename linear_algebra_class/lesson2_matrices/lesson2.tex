@@ -242,11 +242,11 @@ be just the scalar 42.
 \begin{itemize}
 \item The most important thing we do with matrices is multiply two of
 them together.
-\item Let $A$ be an $n\times m$ matrix. Let $B$ be a $m\times k$ matrix.
+\item Let $A$ be an $m\times n$ matrix. Let $B$ be a $n\times k$ matrix.
 \item Then the product $A B$ is defined.
-\item $A B$ is the $n\times k$ matrix defined as follow:
-\item Let $C=A B$. Then for $1\leq i \leq n$, and $1\leq j \leq k$,
-\item $$c_{ij} = \sum_{t=1}^m a_{it} b_{tj}$$
+\item $A B$ is the $m\times k$ matrix defined as follow:
+\item Let $C=A B$. Then for $1\leq i \leq m$, and $1\leq j \leq k$,
+\item $$c_{ij} = \sum_{t=1}^n a_{it} b_{tj}$$
 \item To understand this better, we will look at some special cases first.
 \end{itemize}
 
@@ -329,11 +329,11 @@ $$
 
 \begin{itemize}
 \item Let's look at the special case of the  definition where $k=1$.
-\item Let $A$ be an $n\times m$ matrix. Let $\bv$ be a $m\times 1$ column vector.
+\item Let $A$ be an $m\times n$ matrix. Let $\bv$ be a $n\times 1$ column vector.
 \item Then the product $A \bv$ is defined.
-\item $A \bv$ is the $n\times 1$ column vector defined as follows:
-\item Let $\bw=A \bv$. Then for $1\leq i \leq n$,
-\item $$w_i = \sum_{t=1}^m a_{it} v_{t}$$
+\item $A \bv$ is the $m\times 1$ column vector defined as follows:
+\item Let $\bw=A \bv$. Then for $1\leq i \leq m$,
+\item $$w_i = \sum_{t=1}^n a_{it} v_{t}$$
 \item Let's look at an example to try to understand what this means.
 \end{itemize}
 
@@ -517,16 +517,16 @@ $$
 \begin{frame}{Matrix Multiplication: Summary}
 
 \begin{itemize}
-\item Let $\bw$ be a $1\times m$ row vector and $\bv$ a $m\times 1$ column vector.
+\item Let $\bw$ be a row vector and $\bv$ a column vector of the same length.
 \item Then $\bw \bv$ is just the dot product of the two vectors.
-\item Let $A$ be an $n\times m$ matrix and $\bv$ an $m\times 1$ column vector.
-\item Then $A \bv$ is the $n\times 1$ column vector whose $i$-th element is
+\item Let $A$ be an $m\times n$ matrix and $\bv$ an $n\times 1$ column vector.
+\item Then $A \bv$ is the $m\times 1$ column vector whose $i$-th element is
 the product of row $i$ of $A$ times $\bv$.
 \item (Multiply a matrix by a column vector by taking the matrix one row at a time).
-\item Let $A$ be an $n\times m$ matrix and $B$ an $m\times k$ matrix.
+\item Let $A$ be an $m\times n$ matrix and $B$ an $n\times k$ matrix.
 \item Then the $(i,j)$-th entry of $A B$ comes from multiplying row $i$ of $A$
 by column $j$ of $B$.
-\item Can also think of $A B$ as the $n \times m$ matrix whose $j$-th column is the product
+\item Can also think of $A B$ as the matrix whose $j$-th column is the product
 of $A$ times the $j$-th column of $B$.
 \item (Multiply two matrices $A B$ by taking $B$ one column at a time.)
 \end{itemize}
@@ -540,8 +540,8 @@ of $A$ times the $j$-th column of $B$.
 
 \begin{itemize}
 \item Matrix addition is defined on two matrices of the \emph{same size}.
-\item Let $A$ and $B$ both be $n\times m$ matrices.
-\item Then $A + B$ is the $n \times m$ matrix $C$ defined by
+\item Let $A$ and $B$ both be $m\times n$ matrices.
+\item Then $A + B$ is the $m\times n$ matrix $C$ defined by
 \item $c_{ij} = a_{ij} + b_{ij}$
 \item We add two matrices by adding their components.
 \end{itemize}
@@ -598,8 +598,8 @@ $$
 \begin{frame}{Matrix Scalar Multiplication}
 
 \begin{itemize}
-\item Let $A$ be an $n\times m$ matrix and $c$ a scalar.
-\item Then $cA$ is defined to be the $n\times m$ matrix $B$ with
+\item Let $A$ be an $m\times n$ matrix and $c$ a scalar.
+\item Then $cA$ is defined to be the $m\times n$ matrix $B$ with
 \item $b_{ij} = c a_{ij}$.
 \item That is we just multiply each entry in $A$ by $c$.
 \end{itemize}
@@ -647,7 +647,7 @@ $$
 \begin{frame}{The Zero Matrix}
 
 \begin{itemize}
-\item $O_{n\times m}$ means the $n\times m$ matrix all of whose entries are zero.
+\item $O_{m\times n}$ means the $m\times n$ matrix all of whose entries are zero.
 \item
 $$O_{2\times 3} =
 \begin{pmatrix}
@@ -766,7 +766,7 @@ $$
 \item proof: $a_{ij} + (b_{ij} + c_{ij}) = (a_{ij} + b_{ij}) + c_{ij}$.
 \item The zero matrix is an additive identity.
 \item $$A+O = O + A = A$$
-\item Additive inverses: Let $A$ be an $n\times m$ matrix. Then there is another
+\item Additive inverses: Let $A$ be a matrix. Then there is another
 matrix, $-A$ such that $A+(-A) = O$.
 \item proof: Let $-A = (-1) A$.
 \item
@@ -823,8 +823,8 @@ $$
 \item Suppose $A$ is $3\times 4$ and $B$ is $4\times 5$. Then $A B$
 is $3\times 5$ but $B A$ is not defined.
 \item Question: When are both $A B$ and $B A$ defined?
-\item When $A$ is $n\times m$ and $B$ is $m\times n$.
-\item Then $A B$ is $n \times n$ and $B A$ is $m\times m$.
+\item When $A$ is $m\times n$ and $B$ is $n\times m$.
+\item Then $A B$ is $m \times m$ and $B A$ is $n\times n$.
 \item If $n\not= m$ then $A B \not= B A$.
 \item So the only time there is even the chance that $A B = B A$ is
 if $A$ and $B$ are square matrices of the same size.
@@ -956,9 +956,9 @@ $$
 \item Matrix multiplication \emph{is} associative.
 \item $A (B C) = (A B) C$ whenever the multiplication is defined.
 \item Let's first check that the sizes make sense.
-\item Let $A$ be $n\times m$, $B$ be $m\times k$, $C$ be $k\times l$.
-\item Then $B C$ is $m\times l$ and so $A (B C)$ is $n \times l$.
-\item $A B$ is $n\times k$ so $(A B) C$ is $n \times l$.
+\item Let $A$ be $m\times n$, $B$ be $n\times k$, $C$ be $k\times p$.
+\item Then $B C$ is $n\times p$ and so $A (B C)$ is $m \times p$.
+\item $A B$ is $m\times k$ so $(A B) C$ is $m \times p$.
 \item So it is at least possible that $A (B C) = (A B) C$
 \item To check that they are equal we could expand out the formula for
 the $(i, j)$-th element of $A (B C)$  and the formula for the
@@ -980,14 +980,14 @@ and more abstractly.
 \begin{itemize}
 \item<1-> Matrix multiplication distributes over matrix addition
 \item<2-> $A (B + C) = A B + A C$
-\item<3-> Assuming $A$ is $n\times m$ and $B$ and $C$ are $m\times k$.
+\item<3-> Assuming $A$ is $m\times n$ and $B$ and $C$ are $n\times k$.
 \item<4-> $(B + C) A = B A + C A$
-\item<5-> Assuming $B$  and $C$ are $n\times m$ and $A$ is $m\times k$.
+\item<5-> Assuming $B$  and $C$ are $m\times n$ and $A$ is $n\times k$.
 \item<6-> Proof:
 \begin{align*}
-&\sum_{t=1}^m a_{it} (b_{tj} + c_{tj}) \\
-\uncover<7->{&=  \sum_{t=1}^m a_{it} b_{tj} + a_{it} c_{tj} } \\
-\uncover<8->{&=  \sum_{t=1}^m a_{it} b_{tj} + \sum_{t=1}^m a_{it} c_{tj}}
+&\sum_{t=1}^n a_{it} (b_{tj} + c_{tj}) \\
+\uncover<7->{&=  \sum_{t=1}^n a_{it} b_{tj} + a_{it} c_{tj} } \\
+\uncover<8->{&=  \sum_{t=1}^n a_{it} b_{tj} + \sum_{t=1}^n a_{it} c_{tj}}
 \end{align*}
 \end{itemize}
 
@@ -1002,7 +1002,7 @@ and more abstractly.
 \item The $n\times n$ identity matrix $I$ is a multiplicative identity.
 \item Let $A$ be an $n\times m$ matrix. Then $I A = A$.
 \item Let $B$ be an $m \times n$ matrix. Then $B I = B$.
-\item Let $C$ be an $n\times n$ matrix. Then $C I = I C = A$.
+\item Let $C$ be an $n\times n$ matrix. Then $C I = I C = C$.
 \item
 $$
 \begin{pmatrix}
@@ -1047,9 +1047,9 @@ $$
 
 \begin{frame}{Multiplying by the zero matrix}
 \begin{itemize}
-\item The $n\times m$ zero matrix $O_{n\times m}$ is a multiplicative zero.
-\item Let $A$ be an $m\times k$ matrix. Then $O_{n\times m} A = O_{n\times k}$.
-\item Let $B$ be an $k \times n$ matrix. Then $B  O_{n\times m} = O_{k\times m}$.
+\item The $m\times n$ zero matrix $O_{m\times n}$ is a multiplicative zero.
+\item Let $A$ be an $n\times k$ matrix. Then $O_{m\times n} A = O_{m\times k}$.
+\item Let $B$ be an $k \times m$ matrix. Then $B  O_{m\times n} = O_{k\times n}$.
 \item Let $O = O_{n\times n}$ be the square $n\times n$ zero matrix. Let $A$ be $n\times n$.
 \item Then $O A = A O = O$.
 \item
