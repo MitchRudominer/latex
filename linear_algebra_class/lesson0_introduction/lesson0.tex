@@ -1,6 +1,7 @@
 % $Header$
 
 \documentclass{beamer}
+% \documentclass[handout]{beamer}
 
 \usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
 \include{mathdefs}
@@ -58,23 +59,22 @@
 
 \begin{frame}{Preview}
 \begin{itemize}
-\item In this introduction I am going to give you a preview of some of the material we are going
-to learn in this course.
-\item You will not be tested on anything in this preview.
-\item I don't expect you to understand all of the math in this preview.
-\item This is just to give you some sense of where we are headed.
-\item In this preview we will whip through some ideas very quickly.
-\item Don't worry, we will learn them all later much more slowly.
+\item This intro is a course preview
+\item Not tested on this preview.
+\item Not expected to understand all of the math in this preview.
+\item Just to give you a sense of where we are headed.
+\item Will whip through some ideas very quickly.
+\item Don't worry, we'll go through it more slowly later.
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Concrete problems}
 
   \begin{itemize}
-  \item  One of the main themes of this course will be the interplay between
+  \item  Main theme: interplay between
   the \emph{concrete} and the \emph{abstract} in mathematics.
   \item What do I mean by concrete?
-  \item A concrete problem in mathematics is one that focuses on a specific example.
+  \item A concrete problem focuses on a specific example.
   \item It doesn't try to understand a more general situation.
   \item It often uses actual numbers and the answer is often a number.
   \end{itemize}
@@ -85,8 +85,8 @@ to learn in this course.
 
   \begin{itemize}
   \item What do I mean by abstract?
-  \item An abstract theory in mathematics is one that tries to analyze a general class of things rather than a single specific example.
-  \item The goal in abstract mathematics is to understand how systems work at a more fundamental level.
+  \item An abstract theory tries to analyze a general class of things rather than a single specific example.
+  \item The goal is to understand how systems work at a more fundamental level.
   \item In abstract mathematics we are more interested in proving theorems than in finding the
   answer to any particular numeric problem.
   \item The style of abstract mathematics is definition-theorem-proof.
@@ -230,10 +230,10 @@ a \emph{function} called $T_A$.
 matrix $A$.
 \item For the matrix that came from our earlier system of 4 equations and 5 unknowns,
 $T_A$ is a function that takes input vectors in $\R^5$ and gives output vectors in $\R^4$.
-\item We are going to learn that solving the problem $A \bx = \bb$ is equivalent
-to looking for an input $\bx$ in $\R^4$ such that $T_A(\bx) = \bb$.
+\item We are going to learn that solving the original concrete problem is equivalent
+to looking for an input $\bx$ in $\R^5$ such that $T_A(\bx) = \bb$.
 \item If there is no solution to the original system of equations that is
-equivalent to saying that there is no input vector $\bx$ in $\R^4$ such that $T_A(\bx) = \bb$.
+equivalent to saying that there is no input vector $\bx$ in $\R^5$ such that $T_A(\bx) = \bb$.
 \end{itemize}
 \end{frame}
 
@@ -242,12 +242,12 @@ equivalent to saying that there is no input vector $\bx$ in $\R^4$ such that $T_
 \begin{itemize}
 \item By thinking of the problem in terms of the function $T_A$ we are lead
 to pose this follow-up problem:
-\item Find an input vector $\bx$ in $\R^4$ so that $T_A(\bx)$ is as \emph{close} as possible
-in $\R^5$ to $\bb$?
-\item We will learn that finding such an input vector $\bx$ in $\R^4$ is equivalent to finding the
+\item Find an input vector $\bx$ in $\R^5$ so that $T_A(\bx)$ is as \emph{close} as possible
+in $\R^4$ to $\bb$?
+\item We will learn that finding such an input vector $\bx$ in $\R^5$ is equivalent to finding the
 best \emph{approximate} solution to the original system of equations.
 \item The move to abstraction gave us the idea of finding the best approximate solution to the
-original solution of equations and suggested a technique for finding it.
+original system of equations and suggested a technique for finding it.
 \item We might not have thought of this if we stuck with the concrete original problem.
 \end{itemize}
 \end{frame}
