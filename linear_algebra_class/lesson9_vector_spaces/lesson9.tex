@@ -59,9 +59,11 @@
 
 \begin{itemize}
 \item In this lesson we will define the notion of a \emph{vector space}.
-\item This is a generalization of the notions of vectors in $\R^n$.
+\item This is a generalization of the notion of vectors in $\R^n$.
 \item So we are going even more abstract.
 \item Why bother to go more abstract?
+\item We will gain more insight into what is going on.
+\item The additional generality will make it easier to talk about certain ideas.
 \item It will make it easier to understand some things about our concrete
 problem of systems of equations.
 \end{itemize}
@@ -74,14 +76,14 @@ problem of systems of equations.
 \item \textbf{Definition.} A \emph{vector space} over $\R$, also called
 a \emph{real vector space}, consists of the following:
 \item A \emph{set of objects} $V$ (that we will call \emph{vectors}),
-\item Two \emph{operations} in the vectors:
+\item Two \emph{operations} on the vectors:
 \item \emph{addition}. If $\bv$ and $\bw$ are vectors in $V$ then
-there is another vector in $\bv$, written $\bv+\bw$.
+we know how to form their sum $\bv+\bw$.
 \item \emph{scalar multiplication}. If $\bv$ is a vector in $V$ and
-$c\in\R$ then there is another vector in $V$ written $c\bv$.
+$c\in\R$ then we know how to form the product $c\bv$.
 \item The two operations satisfy the following properties:
 \item Vector addition is commutative and associative.
-\item There is a zero vector $\mathbf{0}$ that is an additive identity.
+\item There is a zero vector $\bzero$ that is an additive identity.
 \item For each vector $\bv$ there is an additive inverse vector $-\bv$.
 \item Scalar multiplication is associative and distributive over vector addition.
 \item For any vector $\bv$, $1\bv = \bv$.
@@ -148,10 +150,10 @@ a \emph{function space.}
 \begin{itemize}
 \item \textbf{Definition.} Let $V$ be a vector space. Then a \emph{subspace}
 of $V$ is
-\item  a subset $W\subseteq V$ that contains $\mathbf{0}$ and is closed
+\item  a subset $W\subseteq V$ that contains $\bzero$ and is closed
 under vector addition and scalar multiplication:
 \item $W\subseteq V$
-\item $\mathbf{0} \in W$.
+\item $\bzero \in W$.
 \item If $\bv,\bw\in W$ then $\bv+\bw\in W$.
 \item If $\bv\in W$ and $c\in \R$ then $c\bv\in W$.
 \end{itemize}
@@ -239,6 +241,32 @@ addition and scalar multiplication.
 \item So $c\bv\in W$.
 \item So $W$ is closed under both vector addition and scalar multiplication.
 \item So $W$ is a subspace. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example: The Zero Subspace}
+
+\begin{itemize}
+\item Let $V$ be any vector space.
+\item Let $W=\singleton{\bzero}$.
+\item \textbf{Claim.} $W$ is a subspace of $v$, called the zero subspace.
+\item \textbf{proof.} Clearly $W\subseteq V$ and $\bzero\in W$.
+\item $W$ is closed under addition since $\bzero+\bzero=\bzero$.
+\item $W$ is closed under scalar multiplication since $c\bzero=\bzero$.
+\item So $W$ is a subspace. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example: Not a sub-space}
+
+\begin{itemize}
+\item Let $V$ be any vector space.
+\item Let $\bv\in V$, $\bv\not=\bzero$.
+\item Let $W=\singleton{\bv}$.
+\item Then $W$ is \emph{not} a subspace.
+\item Why?
 \end{itemize}
 \end{frame}
 
