@@ -106,7 +106,11 @@ anti-derivative of $F$ such that $F(0) = 0$.
 \item \textbf{Lemma.} Let $T:V\map W$ be a linear transformation.
 \item Then $T(\bzero) = \bzero$.
 \item \textbf{proof.} Let $\bw = T(\bzero)$. We must show that $\bw=\bzero$.
-\item $\bw = T(\bzero) = T(0 \bzero) = 0 T(\bzero) = 0 \bw = \bzero$. $\qed$
+\item $\bw = T(\bzero)$
+\item $= T(0 \bzero)$
+\item $= 0 T(\bzero)$
+\item $= 0 \bw$
+\item $= \bzero$. $\qed$
 \end{itemize}
 
 \end{frame}
@@ -118,7 +122,7 @@ anti-derivative of $F$ such that $F(0) = 0$.
 \begin{itemize}
 \item \textbf{Definition.} Let $T:V\map W$ be a linear transformation.
 \item The \textbf{kernel} of $T$, $\ker(T)$ is
-\item $\setof{v\in V}{T() = \bzero}$.
+\item $\setof{v\in V}{T(\bv) = \bzero}$.
 \item $\ker(T) = T^{-1}[\singleton{\bzero}]$.
 \item The kernel of $T$ is also called the \textbf{nullspace} of $T$.
 \end{itemize}
@@ -132,9 +136,46 @@ anti-derivative of $F$ such that $F(0) = 0$.
 \begin{itemize}
 \item \textbf{Lemma.} Let $T:V\map W$ be a linear transformation.
 \item Then $\ker(T)$ is a subspace of $V$.
-\item textbf{proof.} We must show $\ker(T)$ contains $\bzero$ and is closed
+\item \textbf{proof.} We must show $\ker(T)$ contains $\bzero$ and is closed
 under addition and scalar multiplication.
-\item $T(\bzero) = \bzero$.
+\item $T(\bzero) = \bzero$. So $\bzero\in\ker(T)$.
+\item Let $\bv_1,\bv_2\in\ker(T)$. Let $c\in\R$. We will show $\bv_1+\bv_2\in\ker(T)$ and $c\bv_1\in\ker(T)$.
+\item $T(\bv_1+\bv_2)=T(\bv_1) + T(\bv_2) = \bzero + \bzero = \bzero$.
+\item So $\bv_1+\bv_2\in\ker(T)$.
+\item $T(c\bv_1)=cT(\bv_1)=c\bzero=\bzero$.
+\item So $c\bv_1\in\ker(T)$.
+\item So $\ker(T)$ is a subspace of $V$. $\qed$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Homogeneous system of equations}
+
+\begin{itemize}
+\item \textbf{Definition.} A system of linear equations is called
+\emph{homogeneous} if the right had side of the system consists of all zeroes.
+\item As a matrix equation this means $\bb=0$ so the system looks like
+$$A\bx=\bzero.$$
+\item Notice: $\bx$ is a solution iff $\bx\in\ker(T_A)$.
+\item Therefore the set of all solutions is a subspace.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Homogeneous system of equations}
+
+\begin{itemize}
+\item \textbf{Facts.} Let $A\bx=\bzero$ be a homogeneous system of equations. Then
+\item $\bzero$ is always a solution.
+\item So a homogeneous system is never inconsistent. It always has at least one solution.
+\item $\bzero$ is called the \emph{trivial} solution.
+\item If $\bx_1$ and $\bx_2$ are solutions then so is $\bx_1+\bx_2$.
+\item Also so is $c\bx_1$ for any $c\in\R$.
+\item If there is any non-zero solution then there are infinitely many solutions.
 \end{itemize}
 
 \end{frame}
@@ -143,9 +184,56 @@ under addition and scalar multiplication.
 
 \begin{frame}{The Range of a linear transformation}
 
-% Note: Also called image
+\begin{itemize}
+\item \textbf{Lemma.} Let $T:V\map W$ be a linear transformation.
+\item Then $\ran(T)$ is a subspace of $W$.
+\item The range of $T$ is also called the \emph{image} of $T$.
+\item \textbf{proof.} We must show $\ran(T)$ contains $\bzero$ and is closed
+under addition and scalar multiplication.
+\item $T(\bzero) = \bzero$. So $\bzero\in\ran(T)$.
+\item Let $\bw_1,\bw_2\in\ran(T)$. Let $c\in\R$. We will show $\bw_1+\bw_2\in\ran(T)$ and $c\bw_1\in\ran(T)$.
+\item Let $\bv_1$ and $\bv_2$ be such that $T(\bv_1)=\bw_1$ and $T(\bv_2)=\bw_2$.
+\item $T(\bv_1+\bv_2)=T(\bv_1) + T(\bv_2) = \bw_1+\bw_2$.
+\item So $\bw_1+\bw_2\in\ran(T)$.
+\item $T(c\bv_1)=cT(\bv_1)=c\bw_1$.
+\item So $c\bw_1\in\ran(T)$.
+\item So $\ran(T)$ is a subspace of $W$. $\qed$
+\end{itemize}
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Right-hand side of a system of equations}
+
+\begin{itemize}
+\item The system of equations $A\bx=\bb$ has a solution iff $b\in\ran(T_A)$.
+\item If $\bb\notin\ran(T_A)$ then $A\bx=\bb$ is inconsistent (incompatible.)
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Inhomogeneous system of equations}
+
+\begin{itemize}
+\item Let $A$ be an $m\tims n$ matrix. Let $\bb\in\R^m$. $\bb\not=\bzero$.
+\item The system $A\bx=\bb$ is called \emph{inhomogeneous.}
+\item Let $S=\setof{\bx \in \R^n}{A \bx = \bb}$ be the \emph{solution set}.
+\item What are the possibilities for $S$?
+\item If $\bb\notin\ran(T_A)$ then $S=\emptyset$.
+\item Suppose $\bb\in\ran(T_A)$.
+\item Let $\bx_0\in\R^n$ be a particular solution. $A\bx_0=\bb$. So $\bx_0\in S$.
+\item If $T_A$ is one-to-one then $S=\singleton{\bx_0}$.
+\item $S$ is \emph{not} a subspace.
+\item $\bzero\notin S$.
+\item If $\bx_0\in S$ and $\bx_1\in S$ then $\bx_0+\bx_1\notin S$.
+\item $A(\bx_0+\bx_1) = A\bx_0+A\bx_1 = \bb+\bb = 2\bb \not= \bb$.
+\end{itemize}
+
+\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
