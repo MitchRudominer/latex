@@ -175,7 +175,7 @@ $$A\bx=\bzero.$$
 \item $\bzero$ is called the \emph{trivial} solution.
 \item If $\bx_1$ and $\bx_2$ are solutions then so is $\bx_1+\bx_2$.
 \item Also so is $c\bx_1$ for any $c\in\R$.
-\item If there is any non-zero solution then there are infinitely many solutions.
+\item If there is any non-trivial solution then there are infinitely many solutions.
 \end{itemize}
 
 \end{frame}
@@ -218,7 +218,7 @@ under addition and scalar multiplication.
 \begin{frame}{Inhomogeneous system of equations}
 
 \begin{itemize}
-\item Let $A$ be an $m\tims n$ matrix. Let $\bb\in\R^m$. $\bb\not=\bzero$.
+\item Let $A$ be an $m\times n$ matrix. Let $\bb\in\R^m$. $\bb\not=\bzero$.
 \item The system $A\bx=\bb$ is called \emph{inhomogeneous.}
 \item Let $S=\setof{\bx \in \R^n}{A \bx = \bb}$ be the \emph{solution set}.
 \item What are the possibilities for $S$?
@@ -226,9 +226,10 @@ under addition and scalar multiplication.
 \item Suppose $\bb\in\ran(T_A)$.
 \item Let $\bx_0\in\R^n$ be a particular solution. $A\bx_0=\bb$. So $\bx_0\in S$.
 \item If $T_A$ is one-to-one then $S=\singleton{\bx_0}$.
-\item $S$ is \emph{not} a subspace.
-\item $\bzero\notin S$.
-\item If $\bx_0\in S$ and $\bx_1\in S$ then $\bx_0+\bx_1\notin S$.
+\item $S$ is \emph{not} a subspace:
+\item $\bzero\notin S$. $T(\bzero) = \bzero \not= \bb$.
+\item $S$ is not closed under vector addition. If $\bx_0\in S$ and $\bx_1\in S$
+then $\bx_0+\bx_1\notin S$:
 \item $A(\bx_0+\bx_1) = A\bx_0+A\bx_1 = \bb+\bb = 2\bb \not= \bb$.
 \end{itemize}
 
@@ -237,8 +238,20 @@ under addition and scalar multiplication.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Homogeneous equations
-% Inhomogeneous equations
+\begin{frame}{Solution set}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $A\bx=\bb$ be an inhomogeneous set of linear equations.
+\item Let $S=\setof{\bx \in \R^n}{A \bx = \bb}$ be the solution set.
+\item Let $\bx_0\in S$ be a particular solution. $A\bx_0=\bb$.
+\item Then the general solution is given by
+$$S=\setof{\bx_0 + \bx}{\bx\in\ker(T_A)}.$$
+\item That is, the general solution is the kernel plus any particular solution.
+\end{itemize}
+
+\end{frame}
+
+
 
 \end{document}
 
