@@ -91,7 +91,7 @@ $T_A$ is a linear transformation from $V$ to $w$.
 \begin{itemize}
 \item Let $C^0$ be the space of all continuous functions $f:\R\map\R$.
 \item Let $T:C^0\map C^0$ be defined by $T(f) = F$ where $F$ is the
-anti-derivative of $F$ such that $F(0) = 0$.
+anti-derivative of $f$ such that $F(0) = 0$.
 \item i.e. $F(x) = \int_{t=0}^x f(t) dt$.
 \item Then $T$ is linear.
 \end{itemize}
@@ -250,6 +250,44 @@ $$S=\setof{\bx_0 + \bx}{\bx\in\ker(T_A)}.$$
 \end{itemize}
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Solution set}
+
+\begin{itemize}
+\item \textbf{Proof of lemma.} First suppose $\bx\in\ker(T)$. We must show
+that $\bx_0 + \bx \in S$.
+\item $T(\bx_0+\bx) = T(\bx_0) + T(\bx) = \bb + \bzero = \bb$.
+\item So $\bx_0+\bx\in S$.
+\item Conversely, suppose $\bv \in S$. We must show that $\bv = \bx_0 + \bx$
+for some $\bx\in\ker(T)$.
+\item Let $\bx = \bv - \bx_0$.
+\item Then $T(\bx) = T(\bv) - T(\bx_0) = \bb - \bb = \bzero$.
+\item So $\bx\in\ker(T)$.
+\item And $\bv = \bx_0 + \bx$. $\qed$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{One-to-one linear transformations}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $T:V\map W$ be a linear transformation.
+\item Then $T$ is one-to-one if and only if $\ker(T) = \singleton{\bzero}$.
+\item \textbf{proof.} If $T$ is one-to-one then $\ker(T) = \singleton{\bzero}$.
+\item This is easy because if there were a second vector $\bv\in\ker(T)$, $\bv\not=\bzero$,
+\item then we would have $T(\bv) = T(\bzero)$ so $T$ is not one-to-one.
+\item Conversely suppose $\ker(T) = \singleton{\bzero}$ and we will show $T$ is one-to-one.
+\item If $T(\bv_1) = T(\bv_2)$ then $T(\bv_1  - \bv_2) = \bzero$ so $\bv_1 - \bv_2\in\ker(T)$.
+\item So $\bv_1 - \bv_2 = \bzero$.
+\item So $\bv_1 = \bv_2$. So $T$ is one-to-one. $\qed$.
+\end{itemize}
+
+\end{frame}
+
 
 
 

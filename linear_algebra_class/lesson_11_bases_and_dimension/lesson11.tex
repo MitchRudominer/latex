@@ -1,0 +1,448 @@
+% $Header$
+
+\documentclass{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 11 \\ Bases and Dimension}
+\subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Linear dependence}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be $n$ vectors in $V$.
+\item The vectors are called \emph{linearly dependent} if
+\item there are scalars $c_1,c_2,\cdots,c_n$ such that
+\item (i) not all of the $c_i = 0$, and
+\item (ii) $c_1 \bv_1 + c_2 \bv_2 + \cdots + c_n\bv_n = \bzero$.
+\item In words: A set of vectors is linearly dependent iff there is a non-trivial linear combination
+of them that equals $\bzero$.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example of linear dependence}
+
+\begin{itemize}
+\item Let $V = \R^3$.
+\item Let $\bv_1 =
+\begin{pmatrix}
+1 \\ 0 \\ 2
+\end{pmatrix}
+$,
+$\bv_2 =
+\begin{pmatrix}
+0 \\ 1 \\ -1
+\end{pmatrix}
+$,
+$\bv_3 =
+\begin{pmatrix}
+2 \\ 3 \\ 1
+\end{pmatrix}
+$.
+
+\item Then $2\bv_1+3\bv_2 - \bv_3 = \bzero$.
+\item So $\bv_1, \bv_2, \bv_3$ are linearly dependent.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Equivalent definition of linear dependence}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $\bv_1,\bv_2,\cdots\bv_n$ be $n$ vectors.
+\item Then the following are equivalent:
+\item (a) The vectors are linearly dependent.
+\item (b) One of the velors can be expressed as a linear combination of the others.
+\item \textbf{Proof.} First suppose that the vectors are linearly dependent.
+\item Let $c_1,c_2,\cdots,c_n$ be scalars so that
+\item $c_1\bv_1+c_2\bv_2\cdots c_n\bv_n = \bzero$, and at least one of the $c_i$ is not 0.
+\item Suppose $c_1\not=0$. Then
+\item $\bv_1 = (-c_2/c_1)\bv_2 + (-c_3/c_1)\bv_3 + \cdots + (-c_n/c_1)\bv_n$.
+\item So we have expressed one of the vectors as a linear combination of the others.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{proof continued}
+
+\begin{itemize}
+\item Conversely, suppose we have expressed one of the vectors as a linear combination
+of the others. Say it is $\bv_1$.
+\item So $\bv_1 = c_2\bv_2 + c_3\bv_3 + \cdots + c_n \bv_n$.
+\item Then $\bv_1 - c_2\bv_2 - c_3\bv_3 - \cdots - c_n\bv_n = \bzero$.
+\item That is a non-trivial linear combination because the coefficient of $\bv_1$ is 1.
+\item So the vectors are linearly dependent. $\qed$
+
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example of linear dependence}
+
+\begin{itemize}
+\item Let $V = \R^3$.
+\item Let $\bv_1 =
+\begin{pmatrix}
+1 \\ 0 \\ 2
+\end{pmatrix}
+$,
+$\bv_2 =
+\begin{pmatrix}
+0 \\ 1 \\ -1
+\end{pmatrix}
+$,
+$\bv_3 =
+\begin{pmatrix}
+2 \\ 3 \\ 1
+\end{pmatrix}
+$.
+
+\item We saw before that $2\bv_1+3\bv_2 - \bv_3 = \bzero$.
+\item So $\bv_1, \bv_2, \bv_3$ are linearly dependent.
+\item Now also notice that $\bv_3 = 2\bv_1 + \bv_2$.
+\item So we have expressed one of the vectors as a linear combination of the others.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear independence}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be $n$ vectors in $V$.
+\item The vectors are called \emph{linearly independent} iff
+\item they are not linearly dependent.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example of linear independence}
+
+\begin{itemize}
+\item The standard basis vectors of $\R^n$ are always linearly independent.
+\item Let $V = \R^3$.
+\item Let $\be_1 =
+\begin{pmatrix}
+1 \\ 0 \\ 0
+\end{pmatrix}
+$,
+$\be_2 =
+\begin{pmatrix}
+0 \\ 1 \\ 0
+\end{pmatrix}
+$,
+$\be_3=
+\begin{pmatrix}
+0 \\ 0 \\ 1
+\end{pmatrix}
+$.
+
+\item Then $\be_1,\be_2,\be_3$ are linearly independent.
+\item To see this, let $c_1,c_2,c_3$ be scalars and consider the linear combination
+\item $c_1\be_1+c_2\be_2+c_3\be_3$.
+\item How can this linear combination be $\bzero$?
+\item That linear combination is equal to the vector
+$
+\begin{pmatrix}
+c_1 \\ c_2 \\ c_3
+\end{pmatrix}
+$.
+\item So it can be zero iff $c_1=c_2=c_3=0$.
+\item In other words, no non-trivial linear combination of the $\be_i$ can be zero.
+So the $\be_i$ are linearly independent.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Linear independence and the zero vector}
+
+\begin{itemize}
+\item \textbf{Lemma.} Any set of vectors that includes the zero vector is linearly dependent.
+\item \textbf{proof:} Suppose $\bv_0=\bzero$.
+\item Let $\bv_1,\bv_2,\cdots,\bv_n$ be any
+other vectors.
+\item Then
+$$\bv_0 + 0\bv_1 + 0\bv_2 + \cdots + 0\bv_n = \bzero.$$
+\item This is a non-trivial linear combination that equals zero.
+\item So $\bv_0,\bv_1,\cdots,\bv_n$ is linearly dependent. $\qed$
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Span}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be $n$ vectors in $V$.
+\item Then the \emph{span} of the vectors is the set of all linear combinations of them.
+\item $\spn(\bv_1,\bv_2,\cdots\bv_n)=\setof{c_1\bv_1+c_2\bv_2+\cdots+c_n\bv_n}{c_1,c_2,\cdots,c_n\in\R}$.
+\item \textbf{Example.} In $\R^3$, consider the span of the first two standard basis vectors.
+\item $\spn(\be_1,\be_2) = \setof{c_1\be_1+c_2\be_2}{c_1,c_2,\in\R}$.
+\item This is the $x$- $y$-plane in $\R^3$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Span is a subspace}
+
+\begin{itemize}
+\item \textbf{Lemma.} $\spn(\bv_1,\bv_2,\cdots\bv_n)$ is a subspace of $V$.
+\item \textbf{Proof.} We must show that the span contains zero and is closed under vector addition
+and scalar multiplication.
+\item The span contains zero because $\bzero$ can always be expressed as the linear combination
+of the $\bv_i$ in which all coefficients are zero.
+\item Now suppose that $\bx$ and $\by$ are in the span and $a$ is a scalar.
+\item we will show that $\bx+\by$ and $a \bx$ are in the span.
+\item Write $\bx = c_1\bv_1 + c_2\bv_2 + \cdots c_n \bv_n$
+\item and $\by = d_1\bv_1 + d_2\bv_2 + \cdots d_n \bv_n$.
+\item Then $\bx + \by = (c_1 + d_1) \bv_1 + (c_2 +d_2)\bv)2 + \cdots + (c_n+d_n)\bv_n$.
+\item And $a\bx = (ac_1)\bv_1 + (ac_2)\bv_2 + \cdots + (ac_n)\bv_n$.
+\item So both $\bx+\by$ and $a\bx$ are in the span of $\bv_1,\bv_2,\cdots,\bv_n$.
+\item So the span is a subspace of $V$. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Spanning set of vectors}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be $n$ vectors in $V$.
+\item We say that $\bv_1,\bv_2,\cdots,\bv_n$ \emph{span} $V$
+\item or that $\singleton{\bv_1,\bv_2,\cdots,\bv_n}$ is a \emph{spanning set} for $V$
+\item if $V=\spn(\bv_1,\bv_2,\cdots,\bv_n)$.
+\item In other words, if every vector of $V$ can be written as a linear combination of
+ $\bv_1,\bv_2,\cdots,\bv_n$.
+ \item \textbf{Example.} In $\R^n$, $\singleton{\be_1,\be_2,\cdots,\be_n}$ is a
+ spanning set.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Containing a spanning set}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $V$ be a vector space. Suppose $\bv_1,\bv_2,\cdots,\bv_n$ span $V$.
+\item Let $\bw_1,\bw_2,\cdots\bw_m$ be another set of vectors of $V$.
+\item Suppose $\bv_1,\bv_2,\cdots\bv_n\in\spn(\bw_1,\bw_2,\cdots,\bw_m)$.
+\item Then $\bw_1,\bw_2,\cdots,\bw_m$ also span $V$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+
+\begin{itemize}
+\item Let $V=\R^2$
+\item Let $\bw_1 =
+\begin{pmatrix}
+1 \\ 1
+\end{pmatrix}
+$, $\bw_2 =
+\begin{pmatrix}
+1 \\ 2
+\end{pmatrix}
+$
+\item Suppose we want to show that $\bw_1,\bw_2$ spans all of $\R^2$.
+\item Because we already know that $\be_1,\be_2$ is a spanning set for $\R^2$,
+\item it suffices to show $\be_1,\be_2\in\spn(\bw_1,\bw_2)$.
+\item $\be_1 = 2\bw_1 - \bw_2$.
+\item $\be_2 = \bw_2 - \bw_1$.
+
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Basis}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be $n$ vectors in $V$.
+\item We say that $\bv_1,\bv_2,\cdots,\bv_n$ is a \emph{basis} for $V$ if
+\item (i) $\bv_1,\bv_2,\cdots,\bv_n$ are linearly independent
+\item (ii) $\bv_1,\bv_2,\cdots,\bv_n$ span $V$.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example of a basis}
+
+\begin{itemize}
+\item The standard basis vectors of $\R^n$ are a basis for $\R^n$.
+\item Let $V = \R^3$.
+\item Let $\be_1 =
+\begin{pmatrix}
+1 \\ 0 \\ 0
+\end{pmatrix}
+$,
+$\be_2 =
+\begin{pmatrix}
+0 \\ 1 \\ 0
+\end{pmatrix}
+$,
+$\be_3=
+\begin{pmatrix}
+0 \\ 0 \\ 1
+\end{pmatrix}
+$.
+
+\item Then $\be_1,\be_2,\be_3$ are a basis for $\R^3$.
+\item To see this we need to recall that they are
+\item (i) linearly independent, and
+\item (ii) span $\R^3$.
+\item So the standard basis vectors form a basis.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Dimension}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ be a vector space
+\item Suppose $V$ has a basis consisting of $n$ vectors.
+\item Then we say that the \emph{dimension} of $V$ is $n$.
+\item Or that $V$ is $n$-dimensional.
+\item \textbf{Example.} $\R^n$ is $n$-dimensional.
+\item Because $\R^n$ has a basis consisting of the $n$ standard basis vectors.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Is dimension well-defined?}
+
+\begin{itemize}
+\item Let $V$ be an $n$-dimensional vector space.
+\item So $V$ has a basis consisting of $n$ vectors.
+\item Question: Is it possible that $V$ also has a different basis
+consisting of $m$ vectors, for some $m\not=n$?
+\item If this is possible, then $V$ is also $m$-dimensional.
+\item And so the dimension of $V$ is not well-defined.
+\item We will show that this cannot happen.
+\item We will show that every basis for $V$ has the same size.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Dimension is well-defined}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be a basis for $V$.
+\item Let $\bw_1,\bw_2,\cdots,\bw_n$  be any $n$ linearly independent vectors of $V$.
+\item Then $\bw_1,\bw_2,\cdots,\bw_n$ are also a basis.
+\item \textbf{Proof.} Let's just deal with the two dimensional case.  Let $V$ be a two dimensional
+vector space with basis $\bv_1,\bv_2$.
+\item Let $\bw_1,\bw_2$ be linearly
+independent. We will show they also form a basis.
+\item We need to show that the span of $\bw_1,\bw_2$ is all of $V$.
+\item It suffices to show that $\bv_1,\bv_2\in\spn(\bw_1,\bw_2)$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof continued.}
+
+\begin{itemize}
+\item $\bw_1 = c_1\bv_1 + c_2\bv_2$, for some scalars $c_1, c_2$.
+\item Since $\bw_1\not=\bzero$, either $c_1$ or $c_2$ is non-zero. Say $c_1 \not= 0$.
+\item So then $\bv_1 = (1/c_1)\bw_1 - (c_2/c_1)\bv_2$.
+\item So $\bv_1\in\spn(\bw_1,\bv_2)$.
+\item But then $\bv_1,\bv_2\in\spn(\bw_1,\bv_2)$.
+\item So $\spn(\bw_1,\bv_2)=V$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof continued.}
+
+\begin{itemize}
+\item $\bw_2 = c_1\bw_1 + c_2\bv_2$, for some scalars $c_1, c_2$.
+\item Since $\bw_1, \bw_2$, are linearly independent, $c_2 \not= 0$.
+\item So then $\bv_2 = (1/c_2)\bw_2 - (c_1/c_2)\bw_1$.
+\item So $\bv_2$ is in the span of $\bw_1$ and $\bw_2$.
+\item But then $\bv_1$ and $\bv_2$ are in the span of $\bw_1$ and $\bw_2$
+and $\bv_1,\bv_2$ span all of $V$.
+\item So $\bw_1,\bv_2$ span all of $V$. $\qed$
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Is dimension well-defined}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be a basis for $V$.
+\item Let $\bw_1,\bw_2,\cdots,\bw_{n+1}$  be any $n+1$ vectors of $V$.
+\item Then $\bw_1,\bw_2,\cdots,\bw_{n+1}$ are linearly dependent.
+\item For example, in $\R^2$ and $3$ vectors are linearly dependent.
+\item And in $\R^3$ any $4$ vectors are linearly dependent.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
