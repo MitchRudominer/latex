@@ -1,0 +1,254 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Homework for Lesson 10 \\ Linear transformations on vector spaces}
+\author{Math 325, Linear Algebra \\ Mitch Rudominer \\ Fall 2018 \\ SFSU }
+\date{}
+
+\maketitle
+
+Read Sections 7.1 and 7.2 of the textbook. But watch out for the following
+differences in notation and terminology between the book and the class notes:
+\begin{itemize}
+\item The book commonly uses $L$ for linear transformations whereas in class
+we commonly use $T$.
+\item The book uses square brackets instead of parentheses for function application.
+Thus where we usually write $T(v)$ the book writes $T[v]$ (or $L[v]$).
+(Remember that in class we used square brackets only for the image or inverse
+image of a set.)
+\item In class we said that linear \emph{function} is synonymous with linear
+\emph{transformation} and that the word linear \emph{operator} is often used
+if the vector spaces involved are function spaces. The book also adds in
+another synonym: linear \emph{map}. Also the book claims that the term
+linear \emph{transformation} is used only when the domain and codomain are
+equal but in class we make no such restriction.
+\end{itemize}
+
+\bigskip
+
+\textbf{Problem 1.} Let $\cF$ be the space of all functions $f:\R\map\R$.
+Let $T:\cF\map\R$ be the operator that evaluates $f$ at the point $x_0$:
+For all $f$, $T(f) = f(x_0)$. For which values of $x_0$ is $T$ linear?
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+\textbf{Problem 2.} Examples of kernels. In each of the cases below,
+describe the kernel of the linear transformation (or linear operator) $T$.
+Verify that $\ker(T)$ is a subspace of the domain.
+
+\textbf{(a)} Let $T$ be the operator from problem 1. Describe $\ker(T)$ and
+verify that it is a subspace.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+\textbf{(b)} Let $\cD$ be the space of all differentiable functions
+$f:\R\map\R$. Let $\cF$ be the space of all functions $f:\R\map\R$.
+Let $T:\cD\map\cF$ be the derivative operator. That is, $T$ is defined by
+$T(f) = \fprime$. Describe $\ker(T)$ and
+verify that it is a subspace of the domain.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+\textbf{(c)} Let $T:\R^2\map\R^2$ be defined by $T(\bv) = \bzero$ for
+all $\bv$. First show that $T$ is linear by giving a matrix $A$ such that
+$T=T_A$. Then describe $\ker(T)$ and verify that it is a subspace of the domain.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{(d)} Let $T:\R^2\map\R^2$ be defined by $T(\bv) = \bv$ for
+all $\bv$.  First show that $T$ is linear by giving a matrix $A$ such that
+$T=T_A$. Then describe $\ker(T)$ and verify that it is a subspace of the domain.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+\textbf{(e)} Let $T:\R^2\map\R^2$ be defined by
+$T(x,y) = (x, 0)^{\text{T}}$ for
+all $\bv$. First show that $T$ is linear by giving a matrix $A$ such that
+$T=T_A$. Then describe $\ker(T)$ and verify that it is a subspace of the domain.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+\textbf{Problem 3.} Just by looking at the kernels from problem 2, which of
+the transformations from problem 2 are one-to-one?
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+\textbf{Problem 4.} Examples of images. In each of the cases below,
+describe the image (aka range) of the linear transformation
+(or linear operator) $T$ and verify that it is a subspace of the codomain.
+
+\textbf{(a)} Let $T$ be the operator from problem 1. Describe $\ran(T)$
+and verify it is a subspace of the codomain.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+
+\textbf{(b)} Let $T:\R^2\map\R^2$ be defined by $T(\bv) = \bzero$ for
+all $\bv$.  Describe $\ran(T)$ and verify it is a subspace of the codomain.
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{(c)} Let $T:\R^2\map\R^2$ be defined by $T(\bv) = \bv$ for
+all $\bv$. Describe $\ran(T)$ and verify it is a subspace of the codomain.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{(d)} Let $T:\R^2\map\R^2$ be defined by
+$T(x,y) = (x, x)^{\text{T}}$ for
+all $\bv$.  First show that $T$ is linear by giving a matrix $A$ such that
+$T=T_A$. Then describe $\ran(T)$ and verify it is a subspace of the codomain.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+\textbf{Problem 5.} Let $V$ be the vector space of all polynomial functions
+with real coefficients. That is
+$$V=\setof{c_0 +c_1 x + \cdots + c_n x^n}{n=0,1,\cdots \text{ and each } c_i\in\R}.$$
+
+\smallskip
+
+Let $W$ be the set of all polynomials of degree $\leq 3$. That is
+$$W=\setof{c_0 +c_1 x + c_2 x^2 + c_3 x^3}{c_i\in\R}.$$
+
+\bigskip
+
+\textbf{(a)} Show that $W$ is a subspace of $V$.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+Let $T:W\map V$ be the derivative operator: $T(f) = \fprime$.
+
+\bigskip
+
+\textbf{(b)} Describe the image of $T$ and verify that it is a subspace
+of the codomain.
+
+
+
+
+\end{document}
