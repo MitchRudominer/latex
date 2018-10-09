@@ -104,7 +104,7 @@ $.
 \item \textbf{Lemma.} Let $\bv_1,\bv_2,\cdots\bv_n$ be $n$ vectors.
 \item Then the following are equivalent:
 \item (a) The vectors are linearly dependent.
-\item (b) One of the velors can be expressed as a linear combination of the others.
+\item (b) One of the vectors can be expressed as a linear combination of the others.
 \item \textbf{Proof.} First suppose that the vectors are linearly dependent.
 \item Let $c_1,c_2,\cdots,c_n$ be scalars so that
 \item $c_1\bv_1+c_2\bv_2\cdots c_n\bv_n = \bzero$, and at least one of the $c_i$ is not 0.
@@ -213,21 +213,6 @@ So the $\be_i$ are linearly independent.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Linear independence and the zero vector}
-
-\begin{itemize}
-\item \textbf{Lemma.} Any set of vectors that includes the zero vector is linearly dependent.
-\item \textbf{proof:} Suppose $\bv_0=\bzero$.
-\item Let $\bv_1,\bv_2,\cdots,\bv_n$ be any
-other vectors.
-\item Then
-$$\bv_0 + 0\bv_1 + 0\bv_2 + \cdots + 0\bv_n = \bzero.$$
-\item This is a non-trivial linear combination that equals zero.
-\item So $\bv_0,\bv_1,\cdots,\bv_n$ is linearly dependent. $\qed$
-\end{itemize}
-
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Span}
 
 \begin{itemize}
@@ -278,40 +263,20 @@ of the $\bv_i$ in which all coefficients are zero.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Containing a spanning set}
+\begin{frame}{Facts about span}
 
 \begin{itemize}
-\item \textbf{Lemma.} Let $V$ be a vector space. Suppose $\bv_1,\bv_2,\cdots,\bv_n$ span $V$.
-\item Let $\bw_1,\bw_2,\cdots\bw_m$ be another set of vectors of $V$.
-\item Suppose $\bv_1,\bv_2,\cdots\bv_n\in\spn(\bw_1,\bw_2,\cdots,\bw_m)$.
-\item Then $\bw_1,\bw_2,\cdots,\bw_m$ also span $V$.
+\item Let $W$ be a subspace of $V$ and suppose $\bv_1,\bv_2,\cdots,\bv_n\in W$.\
+\item Then $\spn(\bv_1,\bv_2,\cdots,\bv_n)\subseteq W$.
+\item \textbf{proof.} Because the subspace $W$ is closed under linear combinations. $\qed$
+\item Suppose that $\bv_1,\bv_2,\cdots,\bv_n$ span all of $V$.
+\item Then $W=V$.
+\item i.e. If a subspace contains a set of vectors that span the whole space then
+that subspace is the whole space.
 \end{itemize}
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Example}
-
-\begin{itemize}
-\item Let $V=\R^2$
-\item Let $\bw_1 =
-\begin{pmatrix}
-1 \\ 1
-\end{pmatrix}
-$, $\bw_2 =
-\begin{pmatrix}
-1 \\ 2
-\end{pmatrix}
-$
-\item Suppose we want to show that $\bw_1,\bw_2$ spans all of $\R^2$.
-\item Because we already know that $\be_1,\be_2$ is a spanning set for $\R^2$,
-\item it suffices to show $\be_1,\be_2\in\spn(\bw_1,\bw_2)$.
-\item $\be_1 = 2\bw_1 - \bw_2$.
-\item $\be_2 = \bw_2 - \bw_1$.
-
-\end{itemize}
-
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -396,7 +361,7 @@ vector space with basis $\bv_1,\bv_2$.
 \item Let $\bw_1,\bw_2$ be linearly
 independent. We will show they also form a basis.
 \item We need to show that the span of $\bw_1,\bw_2$ is all of $V$.
-\item It suffices to show that $\bv_1,\bv_2\in\spn(\bw_1,\bw_2)$.
+\item Notice that it suffices to show that $\bv_1,\bv_2\in\spn(\bw_1,\bw_2)$.
 \end{itemize}
 
 \end{frame}
@@ -423,25 +388,13 @@ independent. We will show they also form a basis.
 \item Since $\bw_1, \bw_2$, are linearly independent, $c_2 \not= 0$.
 \item So then $\bv_2 = (1/c_2)\bw_2 - (c_1/c_2)\bw_1$.
 \item So $\bv_2$ is in the span of $\bw_1$ and $\bw_2$.
-\item But then $\bv_1$ and $\bv_2$ are in the span of $\bw_1$ and $\bw_2$
-and $\bv_1,\bv_2$ span all of $V$.
+\item So $V=\spn(\bw_1,\bv_2)\subseteq\spn(\bw_1,\bw_2)$.
 \item So $\bw_1,\bv_2$ span all of $V$. $\qed$
 \end{itemize}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Is dimension well-defined}
 
-\begin{itemize}
-\item \textbf{Lemma.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be a basis for $V$.
-\item Let $\bw_1,\bw_2,\cdots,\bw_{n+1}$  be any $n+1$ vectors of $V$.
-\item Then $\bw_1,\bw_2,\cdots,\bw_{n+1}$ are linearly dependent.
-\item For example, in $\R^2$ and $3$ vectors are linearly dependent.
-\item And in $\R^3$ any $4$ vectors are linearly dependent.
-\end{itemize}
-
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
 
