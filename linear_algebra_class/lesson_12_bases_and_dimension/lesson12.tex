@@ -1,0 +1,223 @@
+% $Header$
+
+\documentclass{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 12 \\ Bases and Dimension}
+\subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Basis}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be $n$ vectors in $V$.
+\item We say that $\bv_1,\bv_2,\cdots,\bv_n$ is a \emph{basis} for $V$ if
+\item (i) $\bv_1,\bv_2,\cdots,\bv_n$ are linearly independent
+\item (ii) $\bv_1,\bv_2,\cdots,\bv_n$ span $V$.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example of a basis}
+
+\begin{itemize}
+\item The standard basis vectors of $\R^n$ are a basis for $\R^n$.
+\item Let $V = \R^3$.
+\item Let $\be_1 =
+\begin{pmatrix}
+1 \\ 0 \\ 0
+\end{pmatrix}
+$,
+$\be_2 =
+\begin{pmatrix}
+0 \\ 1 \\ 0
+\end{pmatrix}
+$,
+$\be_3=
+\begin{pmatrix}
+0 \\ 0 \\ 1
+\end{pmatrix}
+$.
+
+\item Then $\be_1,\be_2,\be_3$ are a basis for $\R^3$.
+\item To see this we need to recall that they are
+\item (i) linearly independent, and
+\item (ii) span $\R^3$.
+\item So the standard basis vectors form a basis.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Dimension}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ be a vector space
+\item Suppose $V$ has a basis consisting of $n$ vectors.
+\item Then we say that the \emph{dimension} of $V$ is $n$.
+\item Or that $V$ is $n$-dimensional.
+\item \textbf{Example.} $\R^n$ is $n$-dimensional.
+\item Because $\R^n$ has a basis consisting of the $n$ standard basis vectors.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Is dimension well-defined?}
+
+\begin{itemize}
+\item Let $V$ be an $n$-dimensional vector space.
+\item So $V$ has a basis consisting of $n$ vectors.
+\item Question: Is it possible that $V$ also has a different basis
+consisting of $m$ vectors, for some $m\not=n$?
+\item If this is possible, then $V$ is also $m$-dimensional.
+\item And so the dimension of $V$ is not well-defined.
+\item We will show that this cannot happen.
+\item We will show that every basis for $V$ has the same size.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Dimension is well-defined}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be a basis for $V$.
+\item Let $\bw_1,\bw_2,\cdots,\bw_n$  be any $n$ linearly independent vectors of $V$.
+\item Then $\bw_1,\bw_2,\cdots,\bw_n$ are also a basis.
+\item \textbf{Proof.} Let's just deal with the two dimensional case.  Let $V$ be a two dimensional
+vector space with basis $\bv_1,\bv_2$.
+\item Let $\bw_1,\bw_2$ be linearly
+independent. We will show they also form a basis.
+\item We need to show that the span of $\bw_1,\bw_2$ is all of $V$.
+\item Notice that it suffices to show that $\bv_1,\bv_2\in\spn(\bw_1,\bw_2)$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof continued.}
+
+\begin{itemize}
+\item $\bw_1 = c_1\bv_1 + c_2\bv_2$, for some scalars $c_1, c_2$.
+\item Since $\bw_1\not=\bzero$, either $c_1$ or $c_2$ is non-zero. Say $c_1 \not= 0$.
+\item So then $\bv_1 = (1/c_1)\bw_1 - (c_2/c_1)\bv_2$.
+\item So $\bv_1\in\spn(\bw_1,\bv_2)$.
+\item But then $\bv_1,\bv_2\in\spn(\bw_1,\bv_2)$.
+\item So $\spn(\bw_1,\bv_2)=V$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof continued.}
+
+\begin{itemize}
+\item $\bw_2 = c_1\bw_1 + c_2\bv_2$, for some scalars $c_1, c_2$.
+\item Since $\bw_1, \bw_2$, are linearly independent, $c_2 \not= 0$.
+\item So then $\bv_2 = (1/c_2)\bw_2 - (c_1/c_2)\bw_1$.
+\item So $\bv_2$ is in the span of $\bw_1$ and $\bw_2$.
+\item So $V=\spn(\bw_1,\bv_2)\subseteq\spn(\bw_1,\bw_2)$.
+\item So $\spn(\bw_1,\bw_2) = V$.
+\item So $\bw_1,\bw_2$ span all of $V$ and so they form a basis. $\qed$
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Dimension is well-defined}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be a basis for $V$.
+\item Let $\bw_1,\bw_2,\cdots\bw_m$ be any other vectors with $m > n$.
+\item Then $\bw_1,\bw_2,\cdots\bw_m$ are linearly dependent.
+\item \textbf{proof.} Suppose $\bw_1,\bw_2,\cdots\bw_m$ are linearly independent. We will derive a contradiction.
+\item $\bw_1,\bw_2,\cdots,\bw_n,\cdots,\bw_m$ are linearly independent.
+\item In particular $\bw_1,\bw_2,\cdots,\bw_n$ are linearly independent.
+\item So by the previous lemma $\bw_1,\bw_2,\cdots,\bw_n$ are a basis
+\item so then $\bw_{n+1}$ can be written as a linear combination of $\bw_1,\bw_2,\cdots,\bw_n$
+\item but then $\bw_1,\bw_2,\cdots\bw_m$ are not linearly independent. $\qed$
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Dimension is well-defined}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $V$ be a vector space and suppose $V$ has two different bases,
+\item one with $n$ elements and one with $m$ elements.
+\item Then $n=m$.
+\item i.e. all bases for $V$ have the same number of elements. So the dimension of $V$ is well-defined.
+\item \textbf{Proof.} This follows from the previous lemma
+\item because if one basis had fewer
+elements than the other one, then the one with more elements would be linearly dependent. $\qed$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Dimension of subspaces}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $V$ be an $n$-dimensional vector space.
+\item Let $W$ be a subspace of $V$.
+\item Then $\dim(W) \leq \dim(V)$.
+\item \textbf{proof}
+\item If $W$ is the zero space then it has dimension zero. So let $\bw_1\in W$.
+\item If $\bw_1$ spans $W$ then $W$ is one dimensional. Otherwise let $\bw_2\in V-\spn(\bw_1)$.
+\item If $\bw_1,\bw_2$ spans $W$ then $W$ is two dimensional.
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}
+
+

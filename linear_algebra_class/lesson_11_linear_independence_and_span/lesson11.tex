@@ -1,0 +1,805 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 11 \\ Linear Independence and Span}
+\subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Linear dependence}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be $n$ vectors in $V$.
+\item The vectors are called \emph{linearly dependent} if
+\item there are scalars $c_1,c_2,\cdots,c_n$ such that
+\item (i) not all of the $c_i = 0$, and
+\item (ii) $c_1 \bv_1 + c_2 \bv_2 + \cdots + c_n\bv_n = \bzero$.
+\item In words: A set of vectors is linearly dependent iff there is a non-trivial linear combination
+of them that equals $\bzero$.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example of linear dependence}
+
+\begin{itemize}
+\item Let $V = \R^3$.
+\item Let $\bv_1 =
+\begin{pmatrix}
+1 \\ 0 \\ 2
+\end{pmatrix}
+$,
+$\bv_2 =
+\begin{pmatrix}
+0 \\ 1 \\ -1
+\end{pmatrix}
+$,
+$\bv_3 =
+\begin{pmatrix}
+2 \\ 3 \\ 1
+\end{pmatrix}
+$.
+
+\item Then $2\bv_1+3\bv_2 - \bv_3 = \bzero$.
+\item So $\bv_1, \bv_2, \bv_3$ are linearly dependent.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Equivalent definition of linear dependence}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $\bv_1,\bv_2,\cdots\bv_n$ be $n$ vectors.
+\item Then the following are equivalent:
+\item (a) The vectors are linearly dependent.
+\item (b) One of the vectors can be expressed as a linear combination of the others.
+\item \textbf{Proof.} First suppose that the vectors are linearly dependent.
+\item Let $c_1,c_2,\cdots,c_n$ be scalars so that
+\item $c_1\bv_1+c_2\bv_2\cdots c_n\bv_n = \bzero$, and at least one of the $c_i$ is not 0.
+\item Suppose $c_1\not=0$. Then
+\item $\bv_1 = (-c_2/c_1)\bv_2 + (-c_3/c_1)\bv_3 + \cdots + (-c_n/c_1)\bv_n$.
+\item So we have expressed one of the vectors as a linear combination of the others.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{proof continued}
+
+\begin{itemize}
+\item Conversely, suppose we have expressed one of the vectors as a linear combination
+of the others. Say it is $\bv_1$.
+\item So $\bv_1 = c_2\bv_2 + c_3\bv_3 + \cdots + c_n \bv_n$.
+\item Then $\bv_1 - c_2\bv_2 - c_3\bv_3 - \cdots - c_n\bv_n = \bzero$.
+\item That is a non-trivial linear combination because the coefficient of $\bv_1$ is 1.
+\item So the vectors are linearly dependent. $\qed$
+
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example of linear dependence}
+
+\begin{itemize}
+\item Let $V = \R^3$.
+\item Let $\bv_1 =
+\begin{pmatrix}
+1 \\ 0 \\ 2
+\end{pmatrix}
+$,
+$\bv_2 =
+\begin{pmatrix}
+0 \\ 1 \\ -1
+\end{pmatrix}
+$,
+$\bv_3 =
+\begin{pmatrix}
+2 \\ 3 \\ 1
+\end{pmatrix}
+$.
+
+\item We saw before that $2\bv_1+3\bv_2 - \bv_3 = \bzero$.
+\item So $\bv_1, \bv_2, \bv_3$ are linearly dependent.
+\item Now also notice that $\bv_3 = 2\bv_1 + \bv_2$.
+\item So we have expressed one of the vectors as a linear combination of the others.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear independence}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be $n$ vectors in $V$.
+\item The vectors are called \emph{linearly independent} iff
+\item they are not linearly dependent.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example of linear independence}
+
+\begin{itemize}
+\item The standard basis vectors of $\R^n$ are always linearly independent.
+\item Let $V = \R^3$.
+\item Let $\be_1 =
+\begin{pmatrix}
+1 \\ 0 \\ 0
+\end{pmatrix}
+$,
+$\be_2 =
+\begin{pmatrix}
+0 \\ 1 \\ 0
+\end{pmatrix}
+$,
+$\be_3=
+\begin{pmatrix}
+0 \\ 0 \\ 1
+\end{pmatrix}
+$.
+
+\item Then $\be_1,\be_2,\be_3$ are linearly independent.
+\item To see this, let $c_1,c_2,c_3$ be scalars and consider the linear combination
+\item $c_1\be_1+c_2\be_2+c_3\be_3$.
+\item How can this linear combination be $\bzero$?
+\item That linear combination is equal to the vector
+$
+\begin{pmatrix}
+c_1 \\ c_2 \\ c_3
+\end{pmatrix}
+$.
+\item So it can be zero iff $c_1=c_2=c_3=0$.
+\item In other words, no non-trivial linear combination of the $\be_i$ can be zero.
+So the $\be_i$ are linearly independent.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear independence of two vectors}
+
+\begin{itemize}
+\item Let $\bv_1,\bv_2$ be two vectors in a vector space.
+\item $\bv_1,\bv_2$ are linearly dependent iff
+\item one is a scalar multiple of the other.
+\item Example: Let $\bv=(1,2)^{\text{T}}$, $\bw=(3,4)^{\text{T}}$.
+\item Are $\bv,\bw$ linearly independent or dependent?
+\item Solution: It is easy to see that $\bw$ is not a scalar multiple of $\bv$.
+\item So they are linearly independent.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear combination of the columns of a matrix}
+
+\begin{itemize}
+\item Let $\bv_1,\bv_2,\cdots,\bv_n \in \R^m$.
+\item Let $A =\left( \bv_1 \vert \bv_2 \vert \cdots \vert \bv_n \right)$
+be the $m\times n$ matrix whose columns are those vectors.
+\item Let $\bc = \left(c_1, c_2,\cdots c_n\right)^{\text{T}}$ be a column vector.
+\item Then $A\bc = c_1\bv_1 + c_2\bv_2 + \cdots + c_n\bv_n$.
+\item In words: A matrix times a column vector yields the linear
+combination of the columns of the matrix with coefficients given by
+the vector.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear combination of the columns of a matrix}
+
+\begin{itemize}
+\item Example: Let
+$A =
+\begin{pmatrix}
+1 & 2 \\
+3 & 4 \\
+\end{pmatrix}
+$,
+$\bc =
+\begin{pmatrix}
+2 \\
+-3 \\
+\end{pmatrix}
+$
+\item Then $A\bc$=
+\item
+$
+\begin{pmatrix}
+1 & 2 \\
+3 & 4 \\
+\end{pmatrix}
+\begin{pmatrix}
+2 \\
+-3 \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+-4 \\
+-6 \\
+\end{pmatrix}
+$
+\item
+$ =
+2
+\begin{pmatrix}
+1 \\
+3 \\
+\end{pmatrix}
+-3
+\begin{pmatrix}
+2 \\
+4 \\
+\end{pmatrix}
+$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear independence and the columns of a matrix}
+
+\begin{itemize}
+\item Let $\bv_1,\bv_2,\cdots,\bv_n \in \R^m$.
+\item Let $A =\left ( \bv_1 \vert \bv_2 \vert \cdots \vert \bv_n \right)$
+be the $m\times n$ matrix whose columns are those vectors.
+\item Then $\bv_1,\bv_2,\cdots,\bv_n$ are linearly independent
+\item iff the homogeneous system of linear equations $A\bx=\bzero$ has no non-trivial solutions
+\item iff $\ker(T_A) = \singleton{\bzero}$
+\item iff $T_A$ is one-to-one.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example}
+
+\begin{itemize}
+\item Let
+$A =
+\begin{pmatrix}
+1 & 2 \\
+3 & 4 \\
+\end{pmatrix}
+$.
+\item Is $T_A$ one-to-one?
+\item Well
+$
+\begin{pmatrix}
+1 \\ 3
+\end{pmatrix}
+$
+and
+$
+\begin{pmatrix}
+2 \\ 4
+\end{pmatrix}
+$
+are linearly independent.
+\item So there are no non-zero $c_1$ and $c_2$ s.t.
+$
+c_1
+\begin{pmatrix}
+1 \\ 3
+\end{pmatrix}
++c_2
+\begin{pmatrix}
+2 \\ 4
+\end{pmatrix}
+=0
+$
+.
+\item So there is no non-zero vector $\bc$  s.t. $A\bc=\bzero$.
+\item So $\ker(T_A) = \singleton{\bzero}$.
+\item So $T_A$ is one-to-one.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example}
+\begin{itemize}
+\item Let
+$B =
+\begin{pmatrix}
+1 & -2 \\
+3 & -6 \\
+-1 & 2  \\
+\end{pmatrix}
+$.
+\item Is $T_B$ one-to-one?
+\item Well
+$
+\begin{pmatrix}
+1 \\ 3 \\ -1
+\end{pmatrix}
+$
+and
+$
+\begin{pmatrix}
+-2 \\ -6 \\ 2
+\end{pmatrix}
+$
+are not linearly independent.
+\item
+$
+2
+\begin{pmatrix}
+1 \\ 3 \\ -1
+\end{pmatrix}
++
+\begin{pmatrix}
+-2 \\ -6 \\ 2
+\end{pmatrix}
+=
+\begin{pmatrix}
+-0 \\ 0 \\ 0
+\end{pmatrix}
+$
+
+\item $B\bx=\bzero$ where $\bx = (2,1)^{T}$.
+\item so $\ker(T_B)$ is not trivial.
+\item So $T_B$ is not one-to-one.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Interlude: How to solve some simple systems of linear equations}
+
+\begin{itemize}
+\item \textbf{Definition} A square matrix $A$ is called \emph{upper-triangular}
+\item if all entries of $A$ below the main diagonal are zero.
+\item For example
+$$A=
+\begin{pmatrix}
+3 & -1  & 3 \\
+0 & 2  & 1 \\
+0 & 0 & -2 \\
+\end{pmatrix}
+$$
+\item We are going to learn how to solve the equation $A\bx=\bb$
+\item in the case where $A$ is
+\item upper triangular, with non-zeros on the main diagonal.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The method of back-substitution}
+
+\begin{itemize}
+\item Consider the equation
+$$
+\begin{pmatrix}
+3 & -1  & 3 \\
+0 & 2  & 1 \\
+0 & 0 & -2 \\
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+=
+\begin{pmatrix}
+4 \\ 3 \\ 2
+\end{pmatrix}
+$$
+\item We can solve this equation via the method of back-substitution.
+\item The third equation is $-2z=2$.
+\item So we can see that $z=-1$.
+\item The second equation is $2y+z = 3$.
+\item But we can substitue $z=-1$ and get $2y -1 = 3$.
+\item So $y=2$.
+\item The first equation is $3x -y +3z = 4$.
+\item But we can substitue $z=-1, y=2$ and get $3x -2  - 3 = 4$
+\item So $3x = 9$ or $x=3$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The method of back-substitution}
+
+\begin{itemize}
+\item So we have solved
+$$
+\begin{pmatrix}
+3 & -1  & 3 \\
+0 & 2  & 1 \\
+0 & 0 & -2 \\
+\end{pmatrix}
+\begin{pmatrix}
+3 \\ 2 \\ -1
+\end{pmatrix}
+=
+\begin{pmatrix}
+4 \\ 3 \\ 2
+\end{pmatrix}
+$$
+\item Notice that at each stage we found the only possible value for $z$,
+then for $y$, then for $x$.
+\item So $\bx=(3,2,-1)^{\text{T}}$ is the only solution to $A\bx=\bb$.
+\end{itemize}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Upper-triangular matrices with non-zero diagonal entries}
+
+\begin{itemize}
+\item \textbf{Theorem} Let $A$ be an $n\times n$ matrix in upper-triangular
+form with all non-zeros on the diagonal.
+\item Let $\bb$ be any vector in $\R^n$.
+\item Then there is a unique solution to the equation $A\bx=\bb$.
+\item \textbf{proof} We can use the method of back substitution as in the
+previous example to find the unique solution. $\qed$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example: Homogeneous equation}
+
+\begin{itemize}
+\item Consider the equation
+$$
+\begin{pmatrix}
+3 & -1  & 3 \\
+0 & 2  & 1 \\
+0 & 0 & -2 \\
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\ 0 \\ 0
+\end{pmatrix}
+$$
+\item We can solve this equation via the method of back-substitution.
+\item The third equation is $-2z=0$.
+\item So we can see that $z= 0$.
+\item The second equation is $2y+z = 0$.
+\item But we can substitute $z=0$ and get $2y = 0$.
+\item So $y=0$.
+\item The first equation is $3x -y +3z = 0$.
+\item But we can substitute $z=0, y=0$ and get $3x  = 0$
+\item So $x=0$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example: Homogeneous equation}
+
+\begin{itemize}
+\item So we have solved
+$$
+\begin{pmatrix}
+3 & -1  & 3 \\
+0 & 2  & 1 \\
+0 & 0 & -2 \\
+\end{pmatrix}
+\begin{pmatrix}
+0 \\ 0 \\ 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\ 0 \\ 0
+\end{pmatrix}
+$$
+\item Notice that at each stage we found the only possible value for $z$,
+then for $y$, then for $x$.
+\item So $\bx=(0,0,0)^{\text{T}}$ is the only solution to $A\bx=\bb$.
+\end{itemize}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Upper-triangular matrices with non-zero diagonal entries}
+
+\begin{itemize}
+\item \textbf{Theorem} Let $A$ be an $n\times n$ matrix in upper-triangular
+form with all non-zeros on the diagonal.
+\item Then $\bx=\bzero$ is the only solution to the equation $A\bx=\bzero$.
+\item So $\ker(T_A) = \singleton{\bzero}$
+\item and $T_A$ is one-to-one
+\item and the columns of $A$ are linearly independent.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+
+\begin{itemize}
+\item Let $\bv_1 =
+\begin{pmatrix}
+5 \\ -7 \\ 0
+\end{pmatrix}
+,
+\bv_2 =
+\begin{pmatrix}
+3 \\ 2 \\ - 4
+\end{pmatrix}
+,
+\bv_3 =
+\begin{pmatrix}
+6 \\ 0 \\ 0
+\end{pmatrix}
+$.
+\item Question: Are the vectors $\bv_1,\bv_2,\bv_3$ linearly independent?
+\item Notice that we can form the matrix
+$$\left (\bv_3 \vert \bv_1 \vert \bv_2 \right) =
+\begin{pmatrix}
+6 &  5   &  3 \\
+0 & -7   &  2 \\
+0 &  0   & -4 \\
+\end{pmatrix}
+$$
+\item This matrix is upper-triangular with non-zeros on the diagonal.
+\item So $\bv_1,\bv_2,\bv_3$ is a linearly independent set of vectors.
+\item Notice that order doesn't matter for linear independence.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Span}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be $n$ vectors in $V$.
+\item Then the \emph{span} of the vectors is the set of all linear combinations of them.
+\item $\spn(\bv_1,\bv_2,\cdots\bv_n)=\setof{c_1\bv_1+c_2\bv_2+\cdots+c_n\bv_n}{c_1,c_2,\cdots,c_n\in\R}$.
+\item \textbf{Example.} In $\R^3$, consider the span of the first two standard basis vectors.
+\item $\spn(\be_1,\be_2) = \setof{c_1\be_1+c_2\be_2}{c_1,c_2,\in\R}$.
+\item This is the $x$- $y$-plane in $\R^3$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Span is a subspace}
+
+\begin{itemize}
+\item \textbf{Lemma.} $\spn(\bv_1,\bv_2,\cdots\bv_n)$ is a subspace of $V$.
+\item \textbf{Proof.} We must show that the span contains zero and is closed under vector addition
+and scalar multiplication.
+\item The span contains zero because $\bzero$ can always be expressed as the linear combination
+of the $\bv_i$ in which all coefficients are zero.
+\item Now suppose that $\bx$ and $\by$ are in the span and $a$ is a scalar.
+\item we will show that $\bx+\by$ and $a \bx$ are in the span.
+\item Write $\bx = c_1\bv_1 + c_2\bv_2 + \cdots c_n \bv_n$
+\item and $\by = d_1\bv_1 + d_2\bv_2 + \cdots d_n \bv_n$.
+\item Then $\bx + \by = (c_1 + d_1) \bv_1 + (c_2 +d_2)\bv)2 + \cdots + (c_n+d_n)\bv_n$.
+\item And $a\bx = (ac_1)\bv_1 + (ac_2)\bv_2 + \cdots + (ac_n)\bv_n$.
+\item So both $\bx+\by$ and $a\bx$ are in the span of $\bv_1,\bv_2,\cdots,\bv_n$.
+\item So the span is a subspace of $V$. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Spanning set of vectors}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be $n$ vectors in $V$.
+\item We say that $\bv_1,\bv_2,\cdots,\bv_n$ \emph{span} $V$
+\item or that $\singleton{\bv_1,\bv_2,\cdots,\bv_n}$ is a \emph{spanning set} for $V$
+\item if $V=\spn(\bv_1,\bv_2,\cdots,\bv_n)$.
+\item In other words, if every vector of $V$ can be written as a linear combination of
+ $\bv_1,\bv_2,\cdots,\bv_n$.
+ \item \textbf{Example.} In $\R^n$, $\singleton{\be_1,\be_2,\cdots,\be_n}$ is a
+ spanning set.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Span of the columns of a matrix}
+
+\begin{itemize}
+\item Let $\bv_1,\bv_2,\cdots,\bv_n \in \R^m$.
+\item Let $A =\left( \bv_1 \vert \bv_2 \vert \cdots \vert \bv_n \right)$
+be the $m\times n$ matrix whose columns are those vectors.
+\item Let $\bb\in\R^m$.
+\item Then $\bb\in\spn(\bv_1,\bv_2,\cdots,\bv_n)$
+\item iff the system of equations $A\bx=\bb$ is compatible
+\item iff $\bb\in\ran(T_A)$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The image of $T_A$}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $A$ be a matrix.
+\item Then $\ran(T_A)$ is equal to the span of the columns of $A$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example}
+
+\begin{itemize}
+\item Let
+$A=
+\begin{pmatrix}
+1 & 0 &  2 \\
+0 & 0 & -1 \\
+1 & 1 &  0 \\
+\end{pmatrix}
+$,
+$\bb=
+\begin{pmatrix}
+ 4 \\
+-1 \\
+ 3 \\
+\end{pmatrix}
+$.
+\item Is $\bb\in\ran(T_A)$?
+\item Equivalently is $\bb$ in the span of the columns of $A$?
+\item Equivalently is there an $\bx$ such that $A\bx=\bb$?
+\item Yes,
+$$
+\begin{pmatrix}
+1 & 0 &  2 \\
+0 & 0 & -1 \\
+1 & 1 &  0 \\
+\end{pmatrix}
+\begin{pmatrix}
+ 2 \\
+ 1 \\
+ 1 \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+ 4 \\
+-1 \\
+ 3 \\
+\end{pmatrix}
+$$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example}
+
+\begin{itemize}
+\item Let $\bv_1 = (0, 0, -2)^{\text{T}}$, $\bv_2 = (1, -1, 1)^{T}$ , $\bv_3=(2,0,0)^{\text{T}}$.
+\item Let $\bb = (0,-2,3)$. Is $\bb$ in the subspace spanned by $\bv_1,\bv_2,\bv_3$?
+\item
+$A=
+\begin{pmatrix}
+ 0 & 1 &  2 \\
+ 0 & -1 & 0 \\
+-2 &  1 &  0 \\
+\end{pmatrix}
+$,
+$\bb=
+\begin{pmatrix}
+ 0 \\
+-2 \\
+ 3 \\
+\end{pmatrix}
+$.
+\item Is $\bb$ in the span of the columns of $A$?
+\item Equivalently, is $\bb\in\ran(T_A)$?
+\item Equivalently is there an $\bx$ such that $A\bx=\bb$?
+\item Yes,
+$$
+\begin{pmatrix}
+ 0 &  1 &  2 \\
+ 0 & -1 &  0 \\
+-2 &  1 &  0 \\
+\end{pmatrix}
+\begin{pmatrix}
+ \frac{1}{2} \\
+ 1           \\
+ 1           \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+-2 \\
+ 3 \\
+\end{pmatrix}
+$$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Facts about span}
+
+\begin{itemize}
+\item Let $W$ be a subspace of $V$ and suppose $\bv_1,\bv_2,\cdots,\bv_n\in W$.\
+\item Then $\spn(\bv_1,\bv_2,\cdots,\bv_n)\subseteq W$.
+\item \textbf{proof.} Because the subspace $W$ is closed under linear combinations. $\qed$
+\item Suppose that $\bv_1,\bv_2,\cdots,\bv_n$ span all of $V$.
+\item Then $W=V$.
+\item i.e. If a subspace contains a set of vectors that span the whole space then
+that subspace is the whole space.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\end{document}
+
+
