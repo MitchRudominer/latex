@@ -148,7 +148,7 @@ independent. We will show they also form a basis.
 
 \begin{itemize}
 \item $\bw_1 = c_1\bv_1 + c_2\bv_2$, for some scalars $c_1, c_2$.
-\item Since $\bw_1\not=\bzero$, either $c_1$ or $c_2$ is non-zero. Say $c_1 \not= 0$.
+\item Since $\bw_1\not=\bzero$, either $c_1$ or $c_2$ is nonzero. Say $c_1 \not= 0$.
 \item So then $\bv_1 = (1/c_1)\bw_1 - (c_2/c_1)\bv_2$.
 \item So $\bv_1\in\spn(\bw_1,\bv_2)$.
 \item But then $\bv_1,\bv_2\in\spn(\bw_1,\bv_2)$.
@@ -172,7 +172,7 @@ independent. We will show they also form a basis.
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Dimension is well-defined}
+\begin{frame}{More vectors than the dimension}
 
 \begin{itemize}
 \item \textbf{Lemma.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be a basis for $V$.
@@ -184,6 +184,41 @@ independent. We will show they also form a basis.
 \item So by the previous lemma $\bw_1,\bw_2,\cdots,\bw_n$ are a basis
 \item so then $\bw_{n+1}$ can be written as a linear combination of $\bw_1,\bw_2,\cdots,\bw_n$
 \item but then $\bw_1,\bw_2,\cdots\bw_m$ are not linearly independent. $\qed$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+
+\begin{itemize}
+\item Let $A=
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+5 & 6 & 7 & 8 \\
+9 & 10 & 11 & 12\\
+\end{pmatrix}
+$
+\item Is $T_A$ one-to-one?
+\item The columns of $A$ consist of four vectors in $\R^3$.
+\item $\R^3$ is 3-dimensional.
+\item By the previous lemma, a set of four vectors in a three dimensional space is necessarily linearly dependent.
+\item So the columns of $A$ are linearly dependent.
+\item So there is a nonzero $\bx$ such that $A\bx=\bzero$.
+\item So $\ker(T_A)$ is not-trivial.
+\item So $T_A$ is not one-to-one.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Underdetermined systems}
+
+\begin{itemize}
+\item Let $A$ be a rectangular matrix with more columns than rows.
+\item Then for any $\bb$ the system $A\bx=\bb$ is always underdetermined: There is not a unique solution and in fact there are infinitely many solutions.
+\item If there are more unknowns than equations there is never a unique solution.
+\item $T_A$ is always not one-to-one.
 \end{itemize}
 
 \end{frame}
@@ -203,6 +238,51 @@ elements than the other one, then the one with more elements would be linearly d
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Other bases for $R^n$}
+
+\begin{itemize}
+\item The standard basis vectors form a basis for $\R^n$.
+\item But $\R^n$ has other bases besides the standard basis.
+\item But every basis for $\R^n$ has $n$ elements.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example: The columns of an upper-triangular matrix.}
+
+\begin{itemize}
+\item The columns of an upper-triangular matrix with nonzeros on the
+diagonal always form a basis.
+\item Let
+$
+\bv_1 =
+\begin{pmatrix}
+-4 \\ 0 \\ 0
+\end{pmatrix}
+$,
+$
+\bv_2 =
+\begin{pmatrix}
+3 \\ -8 \\ 0
+\end{pmatrix}
+$,
+$
+\bv_3 =
+\begin{pmatrix}
+-6 \\ 11 \\ -37
+\end{pmatrix}
+$
+\item Then $\bv_1,\bv_2,\bv_3$ form a basis for $\R^3$. Why?
+\item They are linearly independent, because the matrix is upper-triangular with nonzero diagonal entries.
+\item But then by an earlier lemma, in a three dimensional space, any set of three linearly independent
+vectors form a basis.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Dimension of subspaces}
 
 \begin{itemize}
@@ -210,9 +290,26 @@ elements than the other one, then the one with more elements would be linearly d
 \item Let $W$ be a subspace of $V$.
 \item Then $\dim(W) \leq \dim(V)$.
 \item \textbf{proof}
-\item If $W$ is the zero space then it has dimension zero. So let $\bw_1\in W$.
-\item If $\bw_1$ spans $W$ then $W$ is one dimensional. Otherwise let $\bw_2\in V-\spn(\bw_1)$.
-\item If $\bw_1,\bw_2$ spans $W$ then $W$ is two dimensional.
+\item By a previous lemma, any collection of more than $n$ vectors in $V$ is linearly dependent.
+\item So then any collection of more than $n$ vectors of $W$ is linearly dependent and so does not form a basis.
+\item So we know that the dimension of $W$ cannot be greater than the dimension of $V$.
+\item So why aren't we done with the proof yet?
+\item How do we know $W$ has a basis at all? That's what we still need to show.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{proof, continued}
+
+\begin{itemize}
+\item If $W$ is the zero space then it has dimension zero so we are done.
+\item So now assume that $W$ is not the zero space. So let $\bw_1\in W$, $\bw_1\not=\bzero$.
+\item If $\bw_1$ spans $W$ then $\singleton{\bw_1}$ is a basis for $W$ and so then $W$ is one dimensional and we are done.
+\item So suppose $\bw_1$ does not span $W$. Let $\bw_2\in W$, $\bw_2\notin\spn(\bw_1)$.
+\item So then $\singleton{\bw_1,\bw_2}$ are linearly independent.
+\item If $\singleton{\bw_1,\bw_2}$ is a spanning set for $W$ then  $\singleton{\bw_1,\bw_2}$ is a basis and
+so $W$ is two dimensional and we are done.
+\item So suppose $\bw_3\in W$, $\bw_3\notin\spn(\bw_1,\bw_2)$.
 \end{itemize}
 
 \end{frame}
