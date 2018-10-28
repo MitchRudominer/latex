@@ -1,0 +1,318 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,xcolor}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 13 \\ Rank and Row Echelon Form}
+\subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Rank of a matrix}
+
+\begin{itemize}
+\item Let $A$ be an $m\times n$ matrix.
+\item So $T_A:\R^n\map\R^m$.
+\item Recall that the range (or image) of $T_A$ is equal to the span of the
+columns of $A$.
+\item \textbf{Definition.} The \emph{rank} of $A$, written $\rank(A)$,
+is the dimension of the span of the columns of $A$.\
+\item Equivalently, the dimension of the image of $T_A$.
+\item Equivalently, the size of a maximal linearly independent subset of
+the columns of $A$.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example of rank}
+
+\begin{itemize}
+\item Find the rank of $A$.
+\item $A=
+\begin{pmatrix}
+1  & 0  & 1 \\
+0  & 1  & 3 \\
+2  & 0  & 2 \\
+\end{pmatrix}
+$.
+\item The first two columns are linearly independent but the third column
+is a linear combination of the first two columns.
+\item So $\rank(A) = 2$.
+\end{itemize}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example 2 of rank}
+
+\begin{itemize}
+\item Find the rank of $A$.
+\item $A=
+\begin{pmatrix}
+-3  & 2  & 1 \\
+0   & 1  & 3 \\
+0   & 0  & 2 \\
+\end{pmatrix}
+$.
+\item The three columns are linearly independent. We know this because the
+matrix is upper-triangular with nonzeros on the diagonal.
+\item So $\rank(A) = 3$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Special forms of matrics}
+
+\begin{itemize}
+\item Some matrices are in a form where it is easy to read off information
+about them, such as their rank.
+\item For example, we have already seen upper-triangular matrices with
+nonzeros on the diagonal.
+\item We will now study a generalization of this form called \emph{row-echelon} form.
+\end{itemize}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Row-Echelon Form}
+
+\begin{center}
+\includegraphics[scale=0.25]{row-echelon-form}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Pivot Columns}
+
+$
+\begin{pmatrix}
+\textcolor{red}{\mathbf{3}} & \mathbf{1}                   &  0  & 4 & \mathbf{5}                  & -7 \\
+\mathbf{0}                  & \textcolor{red}{\mathbf{-1}} & -2  & 1 & \mathbf{0}                  & 0  \\
+\mathbf{0}                  & \mathbf{0}                   &  0  & 0 & \textcolor{red}{\mathbf{2}} & -4 \\
+\mathbf{0}                  & \mathbf{0}                   &  0  & 0 & \mathbf{0}                  & 0  \\
+\end{pmatrix}
+$
+\begin{itemize}
+\item The bolded columns are called the \emph{pivot} columns. The red entries are the pivots.
+\item The pivots must all be non-zero.
+\item There must be zeros below the pivots.
+\item Above the pivots can be anything.
+\item The first pivot is the first entry of the first pivot column.
+\item The second pivot is the second entry of the second pivot column. Etc.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The pivot columns are linearly independent}
+
+$
+\begin{pmatrix}
+\textcolor{red}{\mathbf{3}} & \mathbf{1}                   &  0  & 4 & \mathbf{5}                  & -7 \\
+\mathbf{0}                  & \textcolor{red}{\mathbf{-1}} & -2  & 1 & \mathbf{0}                  & 0  \\
+\mathbf{0}                  & \mathbf{0}                   &  0  & 0 & \textcolor{red}{\mathbf{2}} & -4 \\
+\mathbf{0}                  & \mathbf{0}                   &  0  & 0 & \mathbf{0}                  & 0  \\
+\end{pmatrix}
+$
+\begin{itemize}
+\item The pivot columns are linearly independent.
+\item One way to see this is to notice that if we pull out only the pivot columns
+we can add additional columns to form a matrix in upper-triangular form with all zeros on the diagonal.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The pivot columns are linearly independent}
+
+$
+\begin{pmatrix}
+\textcolor{red}{\mathbf{3}} & \mathbf{1}                   & \mathbf{5}                  & 0 \\
+\mathbf{0}                  & \textcolor{red}{\mathbf{-1}} & \mathbf{0}                  & 0 \\
+\mathbf{0}                  & \mathbf{0}                   & \textcolor{red}{\mathbf{2}} & 0 \\
+\mathbf{0}                  & \mathbf{0}                   & \mathbf{0}                  & 1
+\end{pmatrix}
+$
+\begin{itemize}
+\item For example here we show the pivot columns from the matrix on the previous slide
+embedded into an upper-triangular matrix with all zeros on the diagonal.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The span of the pivot columns}
+
+$
+\begin{pmatrix}
+\textcolor{red}{\mathbf{3}} & \mathbf{1}                   & \mathbf{5}                  & 0 \\
+\mathbf{0}                  & \textcolor{red}{\mathbf{-1}} & \mathbf{0}                  & 0 \\
+\mathbf{0}                  & \mathbf{0}                   & \textcolor{red}{\mathbf{2}} & 0 \\
+\mathbf{0}                  & \mathbf{0}                   & \mathbf{0}                  & 1
+\end{pmatrix}
+$
+\begin{itemize}
+\item Let $\bv_1,\bv_2,\bv_3,\cdots$ be the pivot columns.
+\item Notice $\bv_1$ is a scalar multiple of the first standard basis vector $\be_1$.
+\item So $\spn(\bv_1) = \spn(\be_1)$.
+\item Notice that $\be_2\in\spn(\bv_1,\bv_2)$.
+\item So $\spn(\bv_1,\bv_2) = \spn(\be_1,\be_2)$.
+\item Notice that $\be_3\in\spn(\bv_1,\bv_2,\bv_3)$.
+\item So $\spn(\bv_1,\bv_2,\bv_3) = \spn(\be_1,\be_2,\be_3)$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The non-pivot columns}
+
+$
+\begin{pmatrix}
+\textcolor{red}{\mathbf{3}} & \mathbf{1}                   &  0  & 4 & \mathbf{5}                  & -7 \\
+\mathbf{0}                  & \textcolor{red}{\mathbf{-1}} & -2  & 1 & \mathbf{0}                  & 0  \\
+\mathbf{0}                  & \mathbf{0}                   &  0  & 0 & \textcolor{red}{\mathbf{2}} & -4 \\
+\mathbf{0}                  & \mathbf{0}                   &  0  & 0 & \mathbf{0}                  & 0  \\
+\end{pmatrix}
+$
+\begin{itemize}
+\item The non-pivot columns are in the span of the earlier pivot columns.
+\item In our example, the third and fourth columns are in $\spn(\bv_1,\bv_2) = \spn(\be_1,\be_2)$.
+\item And the sixth column is in  $\spn(\bv_1,\bv_2,\bv_3) = \spn(\be_1,\be_2,\be_3)$.
+\item This is because, by definition of row-echelon form, the non-pivot columns must have zeros
+in all entries below the previous pivots.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Maximal linearly independent set}
+
+$
+\begin{pmatrix}
+\textcolor{red}{\mathbf{3}} & \mathbf{1}                   &  0  & 4 & \mathbf{5}                  & -7 \\
+\mathbf{0}                  & \textcolor{red}{\mathbf{-1}} & -2  & 1 & \mathbf{0}                  & 0  \\
+\mathbf{0}                  & \mathbf{0}                   &  0  & 0 & \textcolor{red}{\mathbf{2}} & -4 \\
+\mathbf{0}                  & \mathbf{0}                   &  0  & 0 & \mathbf{0}                  & 0  \\
+\end{pmatrix}
+$
+\begin{itemize}
+\item \textbf{Theorem.} Let $A$ be an $m\times n$ matrix in row-echelon form.
+\item Suppose $A$ has $r$ pivot columns $\bv_1,\bv_2,\cdots\bv_r$.
+\item Then $\singleton{\bv_1,\bv_2,\cdots,\bv_r}$ is a maximal linearly independent subset of the columns of $A$.
+\item So $\rank(A)=r$.
+\item And $\singleton{\bv_1,\bv_2,\cdots,\bv_r}$ forms a basis for $\ran(T_A)$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example}
+
+Let
+$
+A=
+\begin{pmatrix}
+5 & -2 &  7  & 0 \\
+0 & 0  & -1  & 1 \\
+0 & 0  &  0  & 3 \\
+0 & 0  &  0  & 0 \\
+\end{pmatrix}
+$
+\begin{itemize}
+\item Is $A$ in row-echelon form?
+\item Yes.
+\item What is $\rank(A)$.
+\item 3.
+\item Give a basis for $\ran(T_A)$.
+\item
+$
+\begin{pmatrix}
+5 \\
+0 \\
+0 \\
+0 \\
+\end{pmatrix},
+\begin{pmatrix}
+ 7 \\
+-1 \\
+ 0 \\
+ 0 \\
+\end{pmatrix},
+\begin{pmatrix}
+0 \\
+1 \\
+3 \\
+0 \\
+\end{pmatrix}
+$.
+\end{itemize}
+
+\end{frame}
+
+\end{document}
+
+
