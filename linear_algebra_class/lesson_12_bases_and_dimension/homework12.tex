@@ -17,14 +17,318 @@
 
 \maketitle
 
-Read Sections 2.4 of the textbook. But ignore the discussions of
-Gaussian elimination, because we have not learned that yet. We will come
-back later and revisit this material after we learn Gaussian elimination.
-For now, just focus on the theory.
+Read Sections 2.4 of the textbook.
 
 \bigskip
 
 \textbf{Problem 1.} Do exercise 2.4.1 on page 103.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{Problem 2.} Do exercise 2.4.2 parts (a) and (d). (You can
+try the other parts too but they require Gaussian elimination.)
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+\textbf{Problem 3.} One of the lemmas we learned in class is that if a set
+of vectors span a vector space, you can always throw some of them away to
+obtain a maximal linearly independent subset which is then a basis.
+
+Consider the vectors
+
+$$
+\bv_1 =
+\begin{pmatrix}
+1 \\ 2 \\3
+\end{pmatrix},
+\bv_2 =
+\begin{pmatrix}
+5 \\ 1 \\ 0
+\end{pmatrix},
+\bv_3 =
+\begin{pmatrix}
+6 \\ 3 \\ 3
+\end{pmatrix},
+\bv_4 =
+\begin{pmatrix}
+4 \\ 0 \\ 0
+\end{pmatrix}.
+$$
+
+These vectors span $\R^3$ but they are not linearly independent.
+
+Find a maximal linearly independent subset of these vectors which therefore
+form a basis for $\R^3$.
+
+\newpage
+
+\textbf{Problem 4.} This problem is about the following fact: If we have a
+set of linearly independent vectors, we can always add additional vectors
+to the set in order to form a basis.
+
+Consider the vectors
+
+$$
+\bv_1 =
+\begin{pmatrix}
+3 \\ 0 \\ 4
+\end{pmatrix},
+\bv_2 =
+\begin{pmatrix}
+2 \\ 0 \\ 0
+\end{pmatrix},
+\bv_3 =
+\begin{pmatrix}
+0 \\ 0 \\ 5
+\end{pmatrix}.
+$$
+
+\textbf{(a)} Does $\bv_1,\bv_2,\bv_3$ form a basis for $\R^3$?
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+
+\textbf{(b)} Does $\bv_1,\bv_2,\bv_3$ span $\R^3$?
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+\textbf{(c)} What is the dimension of the subspace of $\R^3$ spanned by $\bv_1,\bv_2,\bv_3$?
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+\textbf{(d)} Find a maximal linearly independent subset of $\bv_1,\bv_2,\bv_3$ which
+therefore form a basis for the subspace of $\R^3$ spanned by $\bv_1,\bv_2,\bv_3$.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{(e)} Expand the set of vectors you found in part (d) to get a basis for $\R^3$.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\newpage
+
+\textbf{Problem 5.} What is the dimension of the subspace of $\R^4$ spanned by the following vectors?
+
+
+\textbf{(a)}
+
+$$
+\bv_1 =
+\begin{pmatrix}
+0 \\ 1 \\ 0 \\ 0
+\end{pmatrix},
+\bv_2 =
+\begin{pmatrix}
+0 \\ 2 \\ 0 \\ 0
+\end{pmatrix},
+\bv_3 =
+\begin{pmatrix}
+0 \\ 3 \\ 0 \\ 0
+\end{pmatrix},
+\bv_4 =
+\begin{pmatrix}
+0 \\ 4 \\ 0 \\ 0
+\end{pmatrix}.
+$$
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{(b)}
+
+$$
+\bv_1 =
+\begin{pmatrix}
+0 \\ 1 \\ 0 \\ 0
+\end{pmatrix},
+\bv_2 =
+\begin{pmatrix}
+3 \\ 2 \\ 4 \\ 0
+\end{pmatrix},
+\bv_3 =
+\begin{pmatrix}
+0 \\ 3 \\ 0 \\ 0
+\end{pmatrix},
+\bv_4 =
+\begin{pmatrix}
+5 \\ 6 \\ 0 \\ 0
+\end{pmatrix}.
+$$
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{(c)}
+
+$$
+\bv_1 =
+\begin{pmatrix}
+0 \\ 1 \\ 0 \\ 0
+\end{pmatrix},
+\bv_2 =
+\begin{pmatrix}
+0 \\ 2 \\ 0 \\ 5
+\end{pmatrix},
+\bv_3 =
+\begin{pmatrix}
+0 \\ 3 \\ 0 \\ 5
+\end{pmatrix},
+\bv_4 =
+\begin{pmatrix}
+0 \\ 1 \\ 0 \\ 5
+\end{pmatrix}.
+$$
+
+\newpage
+
+\textbf{Problem 6.} For which of the following matrices $A$ is it true that $T_A$ is one-to-one?
+
+
+\textbf{(a)}
+
+$$
+A =
+\begin{pmatrix}
+1  &   2  &  4 \\
+0  &   3  &  5  \\
+0  &   0  &  6  \\
+0  &   0  &  0  \\
+\end{pmatrix}.
+$$
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{(b)}
+
+$$
+A =
+\begin{pmatrix}
+1  &  2 &  3 &  4  & 5 \\
+6  &  7 &  8 &  9  & 10 \\
+11 & 12 & 13 &  14 & 15 \\
+16 & 17 & 18 &  18 & 20 \\
+\end{pmatrix}.
+$$
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{(c)}
+
+$$
+A =
+\begin{pmatrix}
+1  &   2  &  3 \\
+2  &   4  &  6  \\
+3  &   6  &  9 \\
+4  &   8  &  12  \\
+\end{pmatrix}.
+$$
+
+\newpage
+
+\textbf{Problem 7.} Consider the vectors
+
+$$
+\bv_1 =
+\begin{pmatrix}
+4 \\ 0 \\0
+\end{pmatrix},
+\bv_2 =
+\begin{pmatrix}
+1 \\ 2 \\ 0
+\end{pmatrix},
+\bv_3 =
+\begin{pmatrix}
+2 \\ 0 \\ -1
+\end{pmatrix},
+\bb =
+\begin{pmatrix}
+-5 \\ 6 \\ 2
+\end{pmatrix}.
+$$
+
+Find the coordinates of $\bb$ in the basis $\bv_1,\bv_2,\bv_3$.
 
 
 
