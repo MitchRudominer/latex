@@ -1,0 +1,176 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,xcolor}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 14 \\ Inverses}
+\subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Bound on the rank of a matrix}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $A$ be an $m\times n$ matrix.
+\item Then $\rank(A) \leq n$
+\item and $\rank(A) \leq m$.
+\item \textbf{proof.} The rank of $A$ is the dimension of the subspace
+of $\R^m$  spanned by the columns.
+\item So it can't be larger than the dimension of $\R^m$, which is $m$.
+\item And it can't be larger than the number of columns, which is $n$. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear Bijections}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $A$ be an $m\times n$ matrix.
+\item \textbf{(a)} $T_A$ is one-to-one iff $\rank(A) = n$.
+\item \textbf{(b)} $T_A$ is onto $\R^m$ iff $\rank(A) = m$.
+\item \textbf{(c)} $T_A$ is a bijection iff $n=m$, $A$ is a square $n\times n$ matrix, and $\rank(A) = n$.
+\item \textbf{proof.} \textbf{(a)} We already know that $T_A$ is one-to-one iff the
+columns of $A$ are linearly independent.
+\item iff $\rank(A) = m$.
+\item \textbf{(b)} $T_A$ is onto $\R^m$ iff $\dim(\ran(T_A)) = m$, iff $\rank(A) = m$.
+\item \textbf{(c)} Follows immediately from (a) and (b). $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Nonsingular Matrices}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $A$ be a square $n\times n$ matrix.
+\item $A$ is called \emph{nonsingular} or \emph{invertible} if $\rank(A)=n$.
+\item Otherwise $A$ is called \emph{singular}.
+\item Let $A$ be a matrix. $T_A^{-1}$ exists iff
+\item $A$ is a square, nonsingular matrix.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Inverses}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $V$ and $W$ be vector spaces and let
+$T:V\map W$ be a linear transformation that is one-to-one and onto.
+\item So $T^{-1}:W\map V$.
+\item Then $T^{-1}$ is linear.
+\item \textbf{proof.} Let $\bw_1,\bw_2$ be any two vectors in $W$ and let
+$c\in\R$ be a scalar.
+\item We must show that $T^{-1}(\bw_1+\bw_2) = T^{-1}(\bw_1) + T^{-1}(\bw_2)$
+and $T^{-1}(c\bw_1) = cT^{-1}(\bw_1)$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Proof}
+
+\begin{itemize}
+\item Since $T$ is onto, let $\bv_1,\bv_2\in V$ be such that $T(\bv_1)=\bw_1$
+and $T(\bv_2)=\bw_2$.
+\item Since $T$ is linear $T(\bv_1+\bv_2)=\bw_1 + \bw_2$.
+\item So, $T^{-1}(\bw_1+\bw_2) = \bv_1+\bv_2= T^{-1}(\bw_1) + T^{-1}(\bw_2)$.
+\item Also, since $T$ is linear, $T(c\bv_1) = c\bw_1$.
+\item So, $T^{-1}(c\bw_1) = c\bv_1 = cT^{-1}(\bw_1)$. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Isomorphisms}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ and $W$ be vector spaces and let
+$T:V\map W$ be a linear transformation that is one-to-one and onto.
+\item Then $T$ is called an \emph{isomprhism}.
+\item We just showed that an isomorphism from $V$ to $W$ has an inverse
+which is an isomorphism from $W$ to $V$.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Isomorphisms preserve bases}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $V$ and $W$ be vector spaces and let
+$T:V\map W$ be an isomorphism.
+\item Suppose $T$ is $n$-dimensional and $\bv_1,\bv_2,\cdots,\bv_n$
+is a basis for $V$.
+\item Let $\bw_1=T(\bv_1),\bw_2=T(\bv_2),\cdots,\bw_n=T(\bv_n)$.
+\item Then $\bw_1,\bw_2,\cdots,\bw_n$ is a basis for $W$, so $W$ is also
+$n$ dimensional.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Inverse matrices}
+
+\begin{itemize}
+\item Let $A$ be a nonsingular $n\times n$ matrix.
+\item We have seen that $T_A^{-1}$ exists and is linear.
+\item So there must be some matrix that is the matrix of $T_A^{-1}$.
+\item We call that matrix $A^{-1}$.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\end{document}
+
+
