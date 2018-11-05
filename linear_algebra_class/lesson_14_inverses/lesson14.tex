@@ -96,7 +96,8 @@ columns of $A$ are linearly independent.
 \item \textbf{Definition.} Let $A$ be a square $n\times n$ matrix.
 \item $A$ is called \emph{nonsingular} or \emph{invertible} if $\rank(A)=n$.
 \item Otherwise $A$ is called \emph{singular}.
-\item Let $A$ be a matrix. $T_A^{-1}$ exists iff
+\item \textbf{Theorem.} Let $A$ be a matrix. Then
+\item $T_A^{-1}$ exists iff
 \item $A$ is a square, nonsingular matrix.
 \end{itemize}
 \end{frame}
@@ -130,6 +131,259 @@ and $T(\bv_2)=\bw_2$.
 \item So, $T^{-1}(c\bw_1) = c\bv_1 = cT^{-1}(\bw_1)$. $\qed$
 \end{itemize}
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Inverse matrices}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $A$ be a square $n\times n$ non-singular matrix.
+\item  Then there exists another square $n\times n$ non-singular matrix $B$
+such that $AB = BA = I$.
+\item \textbf{proof}. We know that $T_A:\R^n\map\R^n$ is a bijection.
+\item So $T_A^{-1}:\R^n\map\R^n$ exists.
+\item We just learned in the previous theorem that $T_A^{-1}$ is linear.
+\item So let $B$ be the matrix for $T_A^{-1}$.
+\item Then $AB$ and $BA$ are both the matrices for the identity transformation.
+\item So $AB=BA = I$. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Impressive use of abstract theory}
+
+\begin{itemize}
+\item Let $$A=
+\begin{pmatrix}
+-11 & 17 &  41  &  -23 \\
+ 0  & -3 &   7  &   11 \\
+ 0 &  0  & -91  &   13 \\
+ 0 &  0  &   0  &   -41 \\
+\end{pmatrix}
+$$
+\item We know that there must be some
+$4\times 4$ matrix $B$ such that $AB=BA = I$.
+\item At the moment we have no idea how we might go about finding such a $B$.
+\item This is a triumph of abstract theory.
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Inverse matrices}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $A$ be any matrix.
+\item Suppose there is another matrix $B$ such that $AB = BA = I$.
+\item Then we say that $B$ is the \emph{inverse} of $A$, or $B$ is $A$-inverse,
+and we write $B=A^{-1}$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{About inverse matrices}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $A$ be any matrix. Then
+\item \textbf{(a)} $A^{-1}$ exists iff $A$ is a square, non-singular matrix.
+\item Assuming $A^{-1}$ exists we have
+\item \textbf{(b)} $A^{-1}$ is also a square matrix of the same size.
+\item \textbf{(c)} $A^{-1}$ is the matrix for $T^{-1}_A$.
+\item \textbf{(d)} $\left(A^{-1}\right)^{-1} = A$.
+\item \textbf{(e)} $A^{-1}$ is unique.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{proof}
+
+\begin{itemize}
+\item \textbf{proof.}
+\item If $AB=I$ and $BA=I$ then $T_A\circ T_B$ and $T_B\circ T_A$ are both
+the identitiy transformation.
+\item So $T_A$ and $T_B$ are inverse functions, i.e. $T_B = T_A^{-1}$ and $T_A=T_B^{-1}$.
+\item So $T_A$ and $T_B$ are both bijections.
+\item By a previous theorem, this can only happen if $A$ and $B$ are non-singular
+square matrices, and they must be of the same size since $AB$ and $BA$ are both defined.
+\item $A^{-1}$ is unique because it is the matrix of $T_A^{-1}$.
+\item $\left(A^{-1}\right)^{-1} = A$ because every function is the inverse of its inverse.
+\item $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Inverting the action of a matrix}
+
+\begin{itemize}
+\item One way to find the inverse of a matrix is to think about
+about its linear transformation as an \emph{action} on vectors.
+\item Understand what the matrix does to vectors and try to find
+a matrix that does the inverse of that.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The inverse of a diagonal matrix}
+
+\begin{itemize}
+\item Example: Let
+$$
+A =
+\begin{pmatrix}
+2 & 0 & 0 \\
+0 & -3 & 0 \\
+0 & 0 & 4 \\
+\end{pmatrix}
+$$
+\item Decide if $A$ is invertible and if so find $A^{-1}$.
+\item Let's understand the action of $A$ on vectors.
+\item Consider
+$$
+\begin{pmatrix}
+2 & 0 & 0 \\
+0 & -3 & 0 \\
+0 & 0 & 4 \\
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+=
+\begin{pmatrix}
+2x \\ -3y \\ 4z
+\end{pmatrix}
+$$
+\item What does $A$ do to a vector $\bv$?
+\item It multiplies the first component by 2, the second component by -3
+and the third component by 4.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The inverse action}
+
+\begin{itemize}
+\item Let
+$$
+A =
+\begin{pmatrix}
+2 & 0 & 0 \\
+0 & -3 & 0 \\
+0 & 0 & 4 \\
+\end{pmatrix}
+$$
+\item What action must $A^{-1}$ do to a vector?
+\item It must multiply the first component by $\frac{1}{2}$, the second component by
+$\frac{-1}{3}$  and the third component by $\frac{1}{4}$.
+\item So we must have that
+$$
+A^{-1} =
+\begin{pmatrix}
+\frac{1}{2} & 0 & 0 \\
+0 & \frac{-1}{3} & 0 \\
+0 & 0 & \frac{1}{4} \\
+\end{pmatrix}
+$$
+\item Check
+$$
+\begin{pmatrix}
+2 & 0 & 0 \\
+0 & -3 & 0 \\
+0 & 0 & 4 \\
+\end{pmatrix}
+\begin{pmatrix}
+\frac{1}{2} & 0 & 0 \\
+0 & \frac{-1}{3} & 0 \\
+0 & 0 & \frac{1}{4} \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+$$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Diagonal matrix with a zero}
+
+\begin{itemize}
+\item Example: Let
+$$
+B =
+\begin{pmatrix}
+2 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 4 \\
+\end{pmatrix}
+$$
+\item Decide if $A$ is invertible and if so find $A^{-1}$.
+\item Let's understand the action of $A$ on vectors.
+\item Consider
+$$
+\begin{pmatrix}
+2 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 4 \\
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+=
+\begin{pmatrix}
+2x \\ 0 \\ 4z
+\end{pmatrix}
+$$
+\item What does $A$ do to a vector $\bv$?
+\item It multiplies the first component by 2, the second component by 0
+and the third component by 4.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Undoing the action}
+
+\begin{itemize}
+\item Can we find a matrix that can undo the action of the matrix
+$$
+\begin{pmatrix}
+2 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 4 \\
+\end{pmatrix}
+?
+$$
+\item No we cannot.
+\item Because multiplying by zero is not invertible.
+\item Multiplying by 0 is not one-to-one.
+\item $B$ is not invertible.
+\item We can also see that because the columns of $B$ are not
+linearly independent since one of the columns is the zero vector.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Inverses of diagonal matrics}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $D=\diag(d_1,d_2,\cdots,d_n)$
+be a diagonal $n\times n$ matrix.
+\item If any of the $d_i$ are zero then $D$ is singular (non-inveritble.)
+\item If all of the $d_i$ are nonzero then $D$ is nonsingular (inveritble)
+and the inverse of $D$ is
+\item $D^{-1}=\diag(1/d_1,1/d_2,\cdots,1/d_n)$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Elementary matrices}
+
+\begin{itemize}
+\item Type I: Replace row i with row i + c(row j)
+\item Type II: Interchange row i with row j
+\item Type III: Multiply row i by c.
+\end{itemize}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -157,16 +411,6 @@ $n$ dimensional.
 \end{itemize}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Inverse matrices}
-
-\begin{itemize}
-\item Let $A$ be a nonsingular $n\times n$ matrix.
-\item We have seen that $T_A^{-1}$ exists and is linear.
-\item So there must be some matrix that is the matrix of $T_A^{-1}$.
-\item We call that matrix $A^{-1}$.
-\end{itemize}
-\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
