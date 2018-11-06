@@ -38,7 +38,7 @@
 % Or whatever. Note that the encoding and the font should match. If T1
 % does not look nice, try deleting the line with the fontenc.
 
-\title{Lesson 14 \\ Inverses}
+\title{Lesson 14 \\ Inverses and Elementary Matrices}
 \subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
 \author{Mitch Rudominer}
 \date{}
@@ -192,7 +192,6 @@ and we write $B=A^{-1}$.
 \end{itemize}
 \end{frame}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{proof}
 
@@ -211,9 +210,28 @@ square matrices, and they must be of the same size since $AB$ and $BA$ are both 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$AB=I$ is enough}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $A$  and $B$ be $n\times n$ matrices.
+\item Suppose $AB=I$.
+\item Then $A$ and $B$ are inverses.
+\item In other words, you don't need to check that $BA=I$.
+\item \textbf{proof.} First notice that $B$ is invertible.
+\item To see this suppose $B\bv=\bzero$. Multiply both sides on the left by $A$.
+\item $AB\bv=A\bzero\quad \implies \quad I\bv = \bzero \quad \implies \quad \bv = \bzero$.
+\item So $\ker(T_B)=\singleton{\bzero}$. So $B$ is invertible. So $B^{-1}$ exists and is $n\times n$.
+\item $AB=I$. Multiply both sides  on the right by $B^{-1}$.
+\item $ABB^{-1} = I B^{-1} \quad \implies \quad A I = B^{-1}\quad \implies \quad  A  = B^{-1}$. $\qed$
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Inverting the action of a matrix}
 
 \begin{itemize}
+\item Let $A$ be an invertible matrix. How do we find $A^{-1}$?
 \item One way to find the inverse of a matrix is to think about
 about its linear transformation as an \emph{action} on vectors.
 \item Understand what the matrix does to vectors and try to find
@@ -379,35 +397,482 @@ and the inverse of $D$ is
 \begin{frame}{Elementary matrices}
 
 \begin{itemize}
-\item Type I: Replace row i with row i + c(row j)
-\item Type II: Interchange row i with row j
-\item Type III: Multiply row i by c.
+\item \emph{Elementary} matrices are invertible matrices whose actions
+are particularly simple.
+\item There are three types of elementary matrices: types I, II and III.
 \end{itemize}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Isomorphisms}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Elementary matrices of type I}
 
 \begin{itemize}
-\item \textbf{Definition.} Let $V$ and $W$ be vector spaces and let
-$T:V\map W$ be a linear transformation that is one-to-one and onto.
-\item Then $T$ is called an \emph{isomprhism}.
-\item We just showed that an isomorphism from $V$ to $W$ has an inverse
-which is an isomorphism from $W$ to $V$.
+\item \textbf{Definition.} An elementary matrix of \emph{type I} is a square
+matrix whose action on vectors is: Add c times row i to row j, for some fixed
+i, j, $c\not=0$.
+\item To find the matrix that does this, perform that action on the
+rows of the identity matrix.
+\item Find the $3\times 3$ matrix that adds -2 times row 2 to row 3.
+\item Add -2 times row 2 of the identity matrix to row 3 of the identity matrix.
+\item $
+E = \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & -2 & 1 \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Elementary matrices of type I}
+
+\begin{itemize}
+\item Compute $
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & -2 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y \\
+z  \\
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & -2 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y \\
+z  \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+x \\
+y \\
+z -2y \\
+\end{pmatrix}
+$
+\item Compute $
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & -2 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+3 \\
+4 \\
+5  \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+3 \\
+4 \\
+-3 \\
+\end{pmatrix}
+$
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Inverse of an Elementary Matrix of type I}
+
+\begin{itemize}
+\item Let $E=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & -2 & 1 \\
+\end{pmatrix}
+$
+\item To find $E^{-1}$, consider the action which will undo the action
+of $E$.
+\item Add 2 times row 2 to row 3.
+\item $E^{-1}=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 2 & 1 \\
+\end{pmatrix}
+$
+\item Compute $
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 2 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+3 \\
+4 \\
+-3  \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+3 \\
+4 \\
+5 \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Check the inverse}
+
+\begin{itemize}
+\item Let $E=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & -2 & 1 \\
+\end{pmatrix}
+$
+\item Check
+\item $
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & -2 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 2 & 1 \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+$
+\item So $E^{-1}=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 2 & 1 \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{More Elementary Matrices of type I}
+
+\begin{itemize}
+\item An elementary matrix of type I:
+\item Is a square $n\times n$ matrix,
+\item with ones on the diagonal,
+\item and zeros in every other position except for one entry $c\not=0$ in position $(i,j)$ for some $i\not=j$.
+\item The action of this matrix is to replace row $i$ with row $i$ plus $c$ times row $j$.
+\item The inverse matrix has $-c$ in position $(i,j)$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example Elementary Matrices of type I}
+
+\begin{itemize}
+\item Let $E$ be the $4\times 4$ elementary matrix of type I that adds 3 times row 4 to row 2.
+\item write down $E$ and $E^{-1}$.
+\item
+$
+E=
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 3 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+$
+\item
+Compute
+$
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 3 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+1  \\
+2  \\
+3  \\
+4  \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+1  \\
+14  \\
+3  \\
+4  \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example Inverse of Elementary Matrices of type I}
+
+\begin{itemize}
+
+\item
+$
+E^{-1}=
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & -3 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+$
+\item Compute
+$
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & -3 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+1  \\
+14  \\
+3  \\
+4  \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+1  \\
+2  \\
+3  \\
+4  \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Elementary Matrices Operate on Matrices}
+
+\begin{itemize}
+\item Let $E$ be an $n\times n$ elementary matrix of type I.
+\item We can also think of $E$ as performing a row operation on other matrices.
+\item Let $A$ be any other $n\times n$ matrix.
+\item Then $EA$ is the matrix that results from performing the action of $E$
+on the rows of $A$.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example: Elementary Matrices Operate on Matrices}
+
+\begin{itemize}
+\item Let $E=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & -2 & 1 \\
+\end{pmatrix}
+$
+\item Let $A=
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9 \\
+\end{pmatrix}
+$
+\item Then $EA=
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+-1 & -2 & -3 \\
+\end{pmatrix}
+$
+\item $EA$ is the result of replacing row 3 of $A$ with row 3 plus -2 times row 2.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example: Inverse Elementary Matrices Operate on Matrices}
+
+\begin{itemize}
+\item Of course $E^{-1}\left(EA\right) = A$
+\item $
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 2 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+-1 & -2 & -3 \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9 \\
+\end{pmatrix}
+$
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Isomorphisms preserve bases}
+\begin{frame}{Elementary matrices of type II}
 
 \begin{itemize}
-\item \textbf{Theorem.} Let $V$ and $W$ be vector spaces and let
-$T:V\map W$ be an isomorphism.
-\item Suppose $T$ is $n$-dimensional and $\bv_1,\bv_2,\cdots,\bv_n$
-is a basis for $V$.
-\item Let $\bw_1=T(\bv_1),\bw_2=T(\bv_2),\cdots,\bw_n=T(\bv_n)$.
-\item Then $\bw_1,\bw_2,\cdots,\bw_n$ is a basis for $W$, so $W$ is also
-$n$ dimensional.
+\item \textbf{Definition.} An elementary matrix of \emph{type II} is a square
+matrix whose action on vectors and matrices is: Swap rows i and j
+\item To find the matrix that does this, perform that action on the
+rows of the identity matrix.
+\item Find the $3\times 3$ matrix that swaps rows 2 and 3.
+\item Swap row 2 and 3 of the identity matrix.
+\item $
+E = \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Elementary matrices of type II}
+
+\begin{itemize}
+\item Compute $
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y \\
+z  \\
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y \\
+z  \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+x \\
+z \\
+y \\
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9 \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 2 & 3 \\
+7 & 8 & 9 \\
+4 & 5 & 6 \\
+\end{pmatrix}
+$
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Inverse of an Elementary Matrix of type II}
+
+\begin{itemize}
+\item Let $E=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+$
+\item To find $E^{-1}$, consider the action which will undo the action
+of $E$.
+\item $E$ is its own inverse. $E^2=I$.
+\item $E=E^{-1}$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Inverse of a Product}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $A$ and $B$ be invertible $n\times n$ matrices.
+\item Then $AB$ is invertible and $\left(AB\right)^{-1} = B^{-1} A^{-1}$.
+\item \textbf{proof} $\left(AB\right)\left(B^{-1} A^{-1}\right)$
+\item $= A(B B^{-1})A^{-1}$
+\item $= A A^{-1}$
+\item $=I$.
+\item so $(AB)^{-1} = B^{-1} A^{-1}$. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example. The Product of two elementary permutations.}
+
+\begin{itemize}
+\item Let
+$P_1=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+$
+\item Let
+$P_2=
+\begin{pmatrix}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+$
+\item Compute $P_2 P_1$.
+\item $P_2 P_1=
+\begin{pmatrix}
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+$
+\item Compute $
+\begin{pmatrix}
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+z \\ x \\ y\\
+\end{pmatrix}
+$
 \end{itemize}
 \end{frame}
 
