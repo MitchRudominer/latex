@@ -876,6 +876,116 @@ $
 \end{itemize}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Type III Elementary Matrices}
+
+\begin{itemize}
+\item Hello
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Towards the Inverse of a $2\times 2$ Matrix}
+
+\begin{itemize}
+\item Let
+$A=
+\begin{pmatrix}
+a & b  \\
+c & d  \\
+\end{pmatrix}
+$
+be any $2\times 2$ matrix.
+\item Consider the matrix
+$B=
+\begin{pmatrix}
+ d & -b\\
+-c & a \\
+\end{pmatrix}
+$
+\item Compute $AB$.
+\item $
+\begin{pmatrix}
+a & b  \\
+c & d  \\
+\end{pmatrix}
+\begin{pmatrix}
+ d & -b\\
+-c & a \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+ ad-bc & 0\\
+0 & ad-bc \\
+\end{pmatrix}
+$
+\item $=(ad-bc)
+\begin{pmatrix}
+ 1 & 0\\
+0 & 1 \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Determinant of a $2\times 2$ Matrix}
+
+\begin{itemize}
+\item Let
+$A=
+\begin{pmatrix}
+a & b  \\
+c & d  \\
+\end{pmatrix}
+$
+be any $2\times 2$ matrix.
+\item The number $ad-bc$ is called the \emph{determinant} of $A$, written $\det(A)$ or $\left | A \right |$.
+\item Square matrices of all sizes have determinants. We will learn about
+determinants for larger square matrices later.
+\item Determinants play an important role in the theory of Linear Algebra.
+\item The determinant of a matrix is a single number that gives us some information
+about the whole matrix.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Determinant and the Inverse}
+
+\begin{itemize}
+\item Let
+$A=
+\begin{pmatrix}
+a & b  \\
+c & d  \\
+\end{pmatrix}
+\text{, }
+B=
+\begin{pmatrix}
+d & -b  \\
+-c & a  \\
+\end{pmatrix}.
+$
+\item Two slides ago we computed
+$AB = \det(A)
+\begin{pmatrix}
+1 & 0  \\
+0 & 1  \\
+\end{pmatrix}
+$.
+\item \textbf{Theorem.} $A$ is invertible iff $\det(A)\not=0$.
+\item If $A$ is invertible then
+$$A^{-1} = \frac{1}{\det(A)}
+\begin{pmatrix}
+d & -b  \\
+-c & a  \\
+\end{pmatrix}
+$$
+\end{itemize}
+\end{frame}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
