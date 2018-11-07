@@ -818,6 +818,82 @@ of $E$.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Permutation Matrices}
+
+\begin{itemize}
+\item Elementary matrices of type II are a special case of permutation matrices.
+\item \textbf{Definition.} A \emph{permuation matrix} is a matrix whose action
+is to permute rows.
+\item Find the permutation matrix whose action is to perform the following
+permutation on rows $(1,2,3) \mapsto (3,1,2)$.
+\item Apply this permutation to the rows of the identity matrix.
+\item $
+\begin{pmatrix}
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+\begin{pmatrix}
+ a \\
+ b \\
+ c \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+ c \\
+ a \\
+ b \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Permutation Matrices}
+
+\begin{itemize}
+\item A permuation matrix is a matrix containing
+only zeros and ones, where each row and each column contains exactly one one.
+\item Every permutation matrix can be expressed as the product of elementary
+matrices of type II.
+\item $
+\begin{pmatrix}
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+$
+\item How do we find the inverse of
+$
+\begin{pmatrix}
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+$?
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{The Inverse of a Product}
 
 \begin{itemize}
@@ -835,52 +911,89 @@ of $E$.
 \begin{frame}{Example. The Product of two elementary permutations.}
 
 \begin{itemize}
-\item Let
-$P_1=
-\begin{pmatrix}
-1 & 0 & 0 \\
-0 & 0 & 1 \\
-0 & 1 & 0 \\
-\end{pmatrix}
-$
-\item Let
-$P_2=
-\begin{pmatrix}
-0 & 1 & 0 \\
-1 & 0 & 0 \\
-0 & 0 & 1 \\
-\end{pmatrix}
-$
-\item Compute $P_2 P_1$.
-\item $P_2 P_1=
+\item Suppose $E_1$ and $E_2$ are elementatary matrices of type II and
+$P=E_1 E_2$ is a permutation matrix.
+\item Then $P^{-1} = E_2^{-1} E_1^{-1} = E_2 E_1$.
+\item $
 \begin{pmatrix}
 0 & 0 & 1 \\
 1 & 0 & 0 \\
 0 & 1 & 0 \\
-\end{pmatrix}
-$
-\item Compute $
-\begin{pmatrix}
-0 & 0 & 1 \\
-1 & 0 & 0 \\
-0 & 1 & 0 \\
-\end{pmatrix}
-\begin{pmatrix}
-x \\ y \\ z\\
 \end{pmatrix}
 =
 \begin{pmatrix}
-z \\ x \\ y\\
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1 \\
 \end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+$
+\item The inverse of the permutation matrix on the left is
+$
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+\begin{pmatrix}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}=
+\begin{pmatrix}
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+\end{pmatrix}
+$
+\item Check
+$
+\begin{pmatrix}
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+\begin{pmatrix}
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+\end{pmatrix}=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}.
 $
 \end{itemize}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Type III Elementary Matrices}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Elementary matrices of type III}
 
 \begin{itemize}
-\item Hello
+\item \textbf{Definition.} An elementary matrix of \emph{type III} is a square
+matrix whose action on vectors and matrices is: Multiply row $i$ by $c$.
+\item Find the $3\times 3$ matrix that multiplies row 3 by -5.
+\item Multiply row 3 of the identity matrix by -5.
+\item $
+E = \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & -5 \\
+\end{pmatrix}
+$
+\item This is just a special case of a diagonal matrix with nonzero entries.
+\item $
+E^{-1} = \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & -1/5 \\
+\end{pmatrix}
+$
 \end{itemize}
 \end{frame}
 
@@ -984,6 +1097,159 @@ d & -b  \\
 $$
 \end{itemize}
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof}
+
+\begin{itemize}
+\item \textbf{Proof.} Let
+$A=
+\begin{pmatrix}
+a & b  \\
+c & d  \\
+\end{pmatrix}
+\text{, }
+B=
+\begin{pmatrix}
+d & -b  \\
+-c & a  \\
+\end{pmatrix}.
+$
+\item So
+$AB = \det(A)
+\begin{pmatrix}
+1 & 0  \\
+0 & 1  \\
+\end{pmatrix}
+$.
+\item If $\det(A)\not=0$, then we can divide by it and get that
+$$A \left ( \frac{1}{\det(A)}B \right) = I.$$
+\item So $A^{-1} = \frac{1}{\det(A)}B$.
+\item So $A$ is invertible.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof}
+
+\begin{itemize}
+\item \textbf{Proof continued.} We have
+$A=
+\begin{pmatrix}
+a & b  \\
+c & d  \\
+\end{pmatrix}
+\text{, }
+B=
+\begin{pmatrix}
+d & -b  \\
+-c & a  \\
+\end{pmatrix}.
+$
+\item and
+$AB = \det(A)
+\begin{pmatrix}
+1 & 0  \\
+0 & 1  \\
+\end{pmatrix}
+$.
+\item If $\det(A)=0$ then we have $AB=O$.
+\item Let $\bv_1,\bv_2$ be the columns of $B$.
+\item So $A\bv_1 = \bzero$ and $A\bv_2 = \bzero$.
+\item If $\bv_1=\bv_2=\bzero$ then $B=O$ and so $A=O$ and
+so $A$ is not invertible.
+\item So assume one of $\bv_1$ or $\bv_2$ is not zero.
+\item But they are in $\ker(A)$.
+\item So $\ker(A)$ is not trivial.
+\item So $A$ is not invertible. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+
+\begin{itemize}
+\item Compute the determinant of $A$. Say whether or not $A$ is invertible
+and if so give its inverse.
+\item
+$
+A =
+\begin{pmatrix}
+1 & 2 \\
+3 & 4 \\
+\end{pmatrix}
+$
+\item $\det(A) = 4 - 6 = -2$.
+\item $A$ is invertible.
+\item $
+A^{-1} =
+(-1/2)
+\begin{pmatrix}
+4 & -2 \\
+-3 & 1 \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+-2 & 1 \\
+\frac{3}{2} & -\frac{1}{2} \\
+\end{pmatrix}
+$
+\item Check
+$
+\begin{pmatrix}
+1 & 2 \\
+3 & 4 \\
+\end{pmatrix}
+\begin{pmatrix}
+-2 & 1 \\
+\frac{3}{2} & -\frac{1}{2} \\
+\end{pmatrix}
+$
+\item
+$
+= (-1/2)
+\begin{pmatrix}
+1 & 2 \\
+3 & 4 \\
+\end{pmatrix}
+\begin{pmatrix}
+4 & -2 \\
+-3 & 1 \\
+\end{pmatrix}
+=
+(-1/2)
+\begin{pmatrix}
+-2 & 0 \\
+0 & -2\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 0 \\
+0 & 1\\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+
+\begin{itemize}
+\item Compute the determinant of $A$. Say whether or not $A$ is invertible
+and if so give its inverse.
+\item
+$
+A =
+\begin{pmatrix}
+1 & 2 \\
+3 & 6 \\
+\end{pmatrix}
+$
+\item $\det(A) = 6 - 6 = 0$.
+\item $A$ is not invertible.
+\end{itemize}
+\end{frame}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
