@@ -63,24 +63,541 @@
 \begin{itemize}
 \item \textbf{Theorem.} Let $A$ be an $m\times n$ matrix.
 \item Then there is an invertible $m\times m$ matrix $G$ such that
-$GA = B$ is in row echelon form.
+$GA = B$ is in row-echelon form.
 \item Furthermore $G$ can be expressed as a product of elementary row operations
 of types I and II.
 \item $G = E_k \cdots E_2 E_1$.
-\item In other words $E_k \cdots E_2 E_1 A = B$ is in row echelon form.
-\item In other words, we can perform a series of \emph{row operations} on $A$ to
-put it into row echelon form $B$.
-\item Furthermore the basic columns of $A$ are the same as the basic columns
-of $B$.
-\item Furthermore for any right-hand-side vector $\bb$, $A\bx=\bb$ iff
+\item In other words $E_k \cdots E_2 E_1 A = B$ is in row-echelon form.
+\item Furthermore, the indices of the basic columns of $A$ are the same as those for $B$.
+\item Furthermore, for any right-hand-side vector $\bb$, $A\bx=\bb$ iff
 $GA\bx=G\bb$.
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}{The Gaussian Elimination Algorithm}
+
+\begin{itemize}
+\item We are going to prove the theorem by describing an algorithm,
+called \emph{Gaussian elimination}.
+\item Given an $m\times n$ matrix $A$, the algorithm specifies a
+sequence of \emph{row operations} to perform.
+\item Each row operation is given by an elementary matrix of type I or II.
+\item The algorithm then results in a sequence of matrices:
+\item $A_0 = A$
+\item $A_1 = E_1 A$
+\item $A_2 = E_2 E_1 A$
+\item $A_k = E_k \cdots E_2 E_1 A$.
+\item $A_k$ will be in row-echelon form.
+\end{itemize}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Uses of the Gaussian Elimination Algorithm}
+
+\begin{itemize}
+\item Let $A$ be an $m\times n$ matrix.
+\item Suppose we perform the Guassian elimination algorithm to get $B=GA$
+with $B$ in row-echelon form. What does this buy us?
+\item Lot's of great things:
+\item We now know which are the basic columns of $A$.
+\item (Because they are the same as the pivot columns of $B$.)
+\item So we know $\rank(A)$
+\item and we have a basis for the range of $T_A$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination For Solving Systems of Equations}
+
+\begin{itemize}
+\item We have $B=GA$ with $G$ invertible and $B$ in row-echelon form.
+\item We can now solve the system of linear equations $A\bx=\bb$.
+\item $\bx$ is a solution iff $\bx$ is a solution to $B\bx=G\bb$.
+\item Since $B$ is in row-echelon form, we can easily solve $B\bx=G\bb$ using
+back-substitution.
+\item For example we now know how to find $\ker(A)$, because that is the solution to
+the homogeneous system $A\bx=\bzero$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination On Non-Singular Matrices}
+
+\begin{itemize}
+\item Suppose $A$ is a non-singular square matrix.
+\item Suppose we do Guassian elimination and get $B=G A$ with $B$ in
+row-echelon form.
+\item Then in fact $B$ is upper-triangular with nonzeros on the diagonal.
+\item So we can find the unique solution to $A\bx=\bb$.
+\item We can also find $A^{-1}$. How?
+\item We want a matrix $X$ such that $AX = I$.
+\item iff $GA X = G$.
+\item This will be easy to solve since $GA$ is in row-echelon form.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination With Back Substituion is Efficient}
+
+\begin{itemize}
+\item Linear Algegra has many real-world applications
+\item in science and engineering and computer science.
+\item In these applications the matrices often have millions of entries.
+\item Using efficient algorithms is essential.
+\item Gaussian elimination is often one of the most efficient algorithms
+to use for all of the problems we mentioned above.
+\item Gaussian elimination with back substitution is often one of the
+best algorithms for solving large systems of linear equations.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination Algorithm by Example}
+
+\begin{itemize}
+\item Use Gaussian elimination to bring the following matrix to row-echelon
+form. Find the rank and the basic columns.
+\item $
+\begin{pmatrix}
+0 & 0  &   0  &  0   &  1  &  2 \\
+0 & 1  &  17  & -11  &  0  &  1  \\
+0 & 2  &  34  & -20  &  0  &  0 \\
+0 & -1 &  -17   &  6 &  3  &  1 \\
+\end{pmatrix}
+$
+\item First skip any all-zero columns on the left.
+\item Start working with the first non-zero column. In our case that is column 2.
+\item This will be the first pivot column.
+\item We need a non-zero entry in the first position of the first pivot column.
+\item Currently we have a 0 in the first position.
+\item We have to perform a swap in order to put a nonzero there. (An elementary row operation of type II)
+\item Swap rows 1 and 2
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination Algorithm by Example}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+0 & \textbf{1} &  17    & -11   &  0  &  1  \\
+0 &         0  &   0    &   0    &  1  &  2 \\
+0 &         2  &  34    &  -20  &  0  &  0 \\
+0 &        -1  &  -17   &  6    &  3  &  1 \\
+\end{pmatrix}
+$
+\item Now the bolded 1 is our first pivot.
+\item Next we use row operations of type I in order to change all of the
+entries below the first pivot to zero.
+\item Replace row 3 with row 3 minus 2 times row 1
+\item $
+\begin{pmatrix}
+0 & \textbf{1} &  17   & -11  &  0  &  1  \\
+0 &         0  &   0   &  0   &  1  &  2 \\
+0 &         0  &   0   &  2   &  0  &  -2 \\
+0 &        -1  &  -17   &  6   &  3  &  1 \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination Algorithm by Example}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+0 & \textbf{1} &  17   & -11  &  0  &  1  \\
+0 &         0  &  0    &  0   &  1  &  2 \\
+0 &         0  &  0    &  2   &  0  &  -2 \\
+0 &        -1  &  -17  &  6   &  3  &  1 \\
+\end{pmatrix}
+$
+\item Replace row 4 with row 4 plus row 1
+\item $
+\begin{pmatrix}
+0 & \textbf{1} &  17   &  -11   &  0  &  1  \\
+0 &         0  &   0   &   0    &  1  &  2 \\
+0 &         0  &   0   &   2   &  0  &  -2 \\
+0 &         0  &   0   &  -5   &  3  &  2 \\
+\end{pmatrix}
+$
+\item Now we need to find the next pivot column. Look for the
+next column with a nonzero below the first pivot.
+\item Column 3 does not have this.
+\item Column 4 does. So column 4 is our next pivot column.
+\item But column 4 does not have a nonzero in row 2.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination Algorithm by Example}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+0 & \textbf{1} &  17   &  -11   &  0  &  1   \\
+0 &         0  &   0   &   0    &  1  &  2   \\
+0 &         0  &   0   &   2   &   0  &  -2  \\
+0 &         0  &   0   &  -5   &   3  &  2   \\
+\end{pmatrix}
+$
+\item Swap rows 2 and 3. (An elementary row operation of type II.)
+\item $
+\begin{pmatrix}
+0 & \textbf{1} &  17   &          -11   &  0  &  1  \\
+0 &         0  &   0   &   \textbf{2}   &  0  &  -2 \\
+0 &         0  &   0   &           0    &  1  &  2 \\
+0 &         0  &   0   &          -5    &  3  &  2 \\
+\end{pmatrix}
+$
+\item Now the bolded 2 is our second pivot.
+\item Next perform row operations of type I in order to change all of the
+entries below the second pivot to zero.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination Algorithm by Example}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+0 & \textbf{1} &  17   &          -11   &  0  &  1  \\
+0 &         0  &   0   &   \textbf{2}   &  0  &  -2 \\
+0 &         0  &   0   &           0    &  1  &  2 \\
+0 &         0  &   0   &          -5    &  3  &  2 \\
+\end{pmatrix}
+$
+\item Replace row 4 with row 4 + $\frac{5}{2}$ times row 2.
+\item $
+\begin{pmatrix}
+0 & \textbf{1} &  17   &          -11   &  0  &   1  \\
+0 &         0  &   0   &   \textbf{2}   &  0  &  -2  \\
+0 &         0  &   0   &           0    &  1  &   2  \\
+0 &         0  &   0   &           0    &  3  &   -3  \\
+\end{pmatrix}
+$
+\item Now we need to find the next pivot column. Look for the
+next column with a nonzero below the second pivot.
+\item Column 5 has one. So that is our next pivot column.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination Algorithm by Example}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+0 & \textbf{1} &  17   &          -11   &          0   &    1  \\
+0 &         0  &   0   &   \textbf{2}   &          0   &   -2  \\
+0 &         0  &   0   &           0    &  \textbf{1}  &   2  \\
+0 &         0  &   0   &           0    &          3   &   -3  \\
+\end{pmatrix}
+$
+\item The bolded 1 in column 5 is our next pivot.
+\item Perform row operations of type I in order to change all of the
+entries below the third pivot to zero.
+\item Replace row 4 with row 4 minus 3 times row 3.
+\item $
+\begin{pmatrix}
+0 & \textbf{1} &  17   &          -11   &          0   &    1  \\
+0 &         0  &   0   &   \textbf{2}   &          0   &   -2  \\
+0 &         0  &   0   &           0    &  \textbf{1}  &   2  \\
+0 &         0  &   0   &           0    &          0   &   -9  \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination Algorithm by Example}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+0 & \textbf{1} &  17   &          -11   &          0   &          1  \\
+0 &         0  &   0   &   \textbf{2}   &          0   &          -2  \\
+0 &         0  &   0   &           0    &  \textbf{1}  &           2  \\
+0 &         0  &   0   &           0    &          3   &   \textbf{-9 } \\
+\end{pmatrix}
+$
+\item Now the matrix is in row-echelon form.
+\item The sixth column is the fourth pivot column and the bolded -9 is the
+fourth pivot.
+\item So the rank of \emph{both} the row-echelon matrix and the \emph{original}
+matrix is 4.
+\item And the basic columns of \emph{both} the row-echelon matrix and the \emph{original}
+matrix are columns 2,4,5,6.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination Algorithm by Example}
+
+\begin{itemize}
+\item Just to emphasize this point:
+\item $
+\begin{pmatrix}
+0 & 0  &   0  &  0   &  1  &  2 \\
+0 & 1  &  17  & -11  &  0  &  1  \\
+0 & 2  &  34  & -20  &  0  &  0 \\
+0 & -1 &  -17   &  6 &  3  &  1 \\
+\end{pmatrix}
+$
+\item The rank of this matrix is 4.
+\item The basic columns of this matrix are 2,4,5,6.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Why are the basic columns the same?}
+
+\begin{itemize}
+\item Why is it true that the basic columns of the row-echelon matrix are
+the same as the basic columns of the original matrix?
+\item It is because a linear bijection is an \emph{isomorphism.}
+\item In mathematics, an isopmorphism is a bijection between two structures
+that preserves all of the form of the structures.
+\item \textbf{Theorem.} Let $V$ and $W$ be vector spaces and let
+$T:V\map W$ be a linear bijection.
+\item Let $\bv_1,\bv_2,\cdots,\bv_n$ be vectors in $V$.
+\item Then $\bv_1,\bv_2,\cdots,\bv_n$ are linearly independent in $V$
+iff $T(\bv_1),T(\bv_2),\cdots T(\bv_n)$ are linearly independent in $W$.
+\textbf{proof.} Left to an exercise. (optional)
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Why are the basic columns the same?}
+
+\begin{itemize}
+\item Now suppose $A$ is an $n\times m$ matrix and $G$ is an $n\times n$ invertible matrix
+and $B=GA$.
+\item Write $A=(\bv_1 \vert \bv_2 \vert \cdots \vert \bv_m)$ and $B=(\bw_1 \vert \bw_2 \vert \cdots \bw_m)$.
+\item $T_G:\R^n\map \R^n$ is a linear bijection and so it is an isomorphism.
+\item Notice that $T_G$ sends each column of $A$ to the corresponding column of $B$:
+\item $T_G(\bv_1) = \bw_1, T_G(\bv_2) = \bw_2, \cdots T_G(\bv_m) = \bw_m$.
+\item By the previous theorem, any set of the $\bv_i$ are linearly independent iff the coresponding set of the $\bw_i$
+are linearly independent.
+\item So the computation of which are the basic columns of $A$ yields the same result as the computation of which are the basic columns of $B$. $\qed$
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination to Solve Systems of Linear Equations}
+
+Solve the following system of equations:
+
+\pause
+
+\begin{align*}
+ \quad v - w         &= 3 \\
+-2u + 4v - w         &= 1 \\
+-2u + 5v - 4w        &= -2 \\
+\end{align*}
+
+\pause
+
+\begin{itemize}
+\item Let $A=
+\begin{pmatrix}
+ 0 & 1 & -1 \\
+-2 & 4 & -1 \\
+-2 & 5 & -4 \\
+\end{pmatrix}
+$,
+let
+$
+\bb =
+\begin{pmatrix}
+3 \\ 1 \\ -2
+\end{pmatrix}
+$
+\item Solve $A\bx=\bb$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination to Solve Systems of Linear Equations}
+
+\begin{itemize}
+\item \textbf{Lemma.} If $G$ is invertible then $A\bx=\bb$ iff $GA\bx=G\bb$.
+\item \textbf{proof.} First suppose that $A\bx=\bb$.
+\item Then we can multiply $G$ on the left on both sides of the equation
+to get $GA\bx=G\bb$.
+\item Now suppose that $GA\bx=G\bb$.
+\item Since $G$ is invertible we can multiply both sides of the equation
+on the left by $G^{-1}$.
+\item $G^{-1}GA\bx = G^{-1}G\bb$.
+\item $A\bx=\bb$. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination to Solve Systems of Linear Equations}
+
+\begin{itemize}
+\item Now suppose $G = E_k \cdots E_2 E_1$ is a product of elementary matrices of types I and II.
+\item And suppose $B = G A$ is in row echelon form.
+\item Then we have $A\bx=\bb$ iff $GA\bx = G\bb$
+\item iff $E_k \cdots E_2 E_1 A \bx = E_k \cdots E_2 E_1 \bb$.
+\item So we need to perform the same elementary row operations to $\bb$ as we do to
+$A$.
+\item In order to keep track of this we form the \emph{augmented} matrix.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\aug{\fboxsep=-\fboxrule\!\!\!\fbox{\strut}\!\!\!}
+
+\begin{frame}{The Augmented Matrix}
+
+\begin{itemize}
+\item \textbf{Definition.} If $A\bx=\bb$ is a system of linear equations then the
+\emph{augmented matrix} for the system is the matrix whose columns are the columns
+of $A$ with one additional column on the right consisting of $\bb$. We draw
+a vertical line between the columns of $A$ and $\bb$.
+\item For the system we are currently working with
+$A=
+\begin{pmatrix}
+ 0 & 1 & -1 \\
+-2 & 4 & -1 \\
+-2 & 5 & -4 \\
+\end{pmatrix}
+$,
+and
+$
+\bb =
+\begin{pmatrix}
+3 \\ 1 \\ -2
+\end{pmatrix}
+$.
+\item The augmented matrix is
+$
+\begin{pmatrix}
+ 0 & 1 & -1  &  \aug & 3  \\
+-2 & 4 & -1  &  \aug & 1  \\
+-2 & 5 & -4  &  \aug & -2  \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination with an Augmented Matrix}
+
+\begin{itemize}
+\item When performing Gaussian elimination on an augmented matrix, we perform
+the row operations on the full augmented matrix,
+\item but the goal is to get only the main matrix (to the left of the vertical line)
+to be in row-echelon form.
+\item We do not include the extra column when considering row-echelon form.
+\item This is a simple bookkeeping trick that allows us to multiply $A$ and $\bb$
+by the same sequence of elementary matrices.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example Gaussian Elimination with an Augmented Matrix}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+ 0 & 1 & -1  &  \aug & 3  \\
+-2 & 4 & -1  &  \aug & 1  \\
+-2 & 5 & -4  &  \aug & -2  \\
+\end{pmatrix}
+$
+\item Swap rows 1 and 2
+\item $
+\begin{pmatrix}
+\textbf{-2} & 4 & -1  &  \aug & 1  \\
+        0   & 1 & -1  &  \aug & 3  \\
+        -2  & 5 & -4  &  \aug & -2  \\
+\end{pmatrix}
+$
+\item Replace row 3 with row 3 minus row 1
+\item $
+\begin{pmatrix}
+\textbf{-2} & 4 & -1  &  \aug & 1  \\
+        0   & 1 & -1  &  \aug & 3  \\
+        0   & 1 & -3  &  \aug & -3  \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example Gaussian Elimination with an Augmented Matrix}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+\textbf{-2} &         4  & -1  &  \aug & 1  \\
+        0   & \textbf{1} & -1  &  \aug & 3  \\
+        0   &         1  & -3  &  \aug & -3  \\
+\end{pmatrix}
+$
+\item Replace row 3 with row 3 minus row 2.
+\item $
+\begin{pmatrix}
+\textbf{-2} &         4  &          -1  &  \aug & 1  \\
+        0   & \textbf{1} &          -1  &  \aug & 3  \\
+        0   &         0  & \textbf{-2}  &  \aug & -6  \\
+\end{pmatrix}
+$
+\item That is now in row-echelon form.
+\item Actually upper-triangular with nonzeros on the diagonal. So both matrices,
+the final one and the original one, are invertible with rank 3.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Back substitution.}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+\textbf{-2} &         4  &          -1  &  \aug & 1  \\
+        0   & \textbf{1} &          -1  &  \aug & 3  \\
+        0   &         0  & \textbf{-2}  &  \aug & -6  \\
+\end{pmatrix}
+$
+\item To solve the equation we use back-substitution.
+\item $-2 w = -6 \quad \implies \quad w = 3$
+\item $v - w = 3 \quad \implies \quad v - 3 = 3 \quad \implies \quad v=6$.
+\item $-2 u + v4 -w  = 1 \quad \implies \quad -2u +24 - 3 = 1 \quad \implies \quad u = 10$.
+\item This is the solution to the \emph{original} system too.
+\end{itemize}
+\end{frame}
 
 
 
