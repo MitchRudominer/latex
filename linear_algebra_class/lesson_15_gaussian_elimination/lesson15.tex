@@ -69,8 +69,6 @@ of types I and II.
 \item $G = E_k \cdots E_2 E_1$.
 \item In other words $E_k \cdots E_2 E_1 A = B$ is in row-echelon form.
 \item Furthermore, the indices of the basic columns of $A$ are the same as those for $B$.
-\item Furthermore, for any right-hand-side vector $\bb$, $A\bx=\bb$ iff
-$GA\bx=G\bb$.
 \end{itemize}
 \end{frame}
 
@@ -134,10 +132,7 @@ the homogeneous system $A\bx=\bzero$.
 row-echelon form.
 \item Then in fact $B$ is upper-triangular with nonzeros on the diagonal.
 \item So we can find the unique solution to $A\bx=\bb$.
-\item We can also find $A^{-1}$. How?
-\item We want a matrix $X$ such that $AX = I$.
-\item iff $GA X = G$.
-\item This will be easy to solve since $GA$ is in row-echelon form.
+\item As we will see later, we will also be able to find $A^{-1}$
 \end{itemize}
 \end{frame}
 
@@ -598,6 +593,125 @@ $
 \item This is the solution to the \emph{original} system too.
 \end{itemize}
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination to Solve Systems of Linear Equations}
+
+We have solved the original system of linear equations.
+
+\pause
+
+\begin{align*}
+ \quad v - w         &= 3 \\
+-2u + 4v - w         &= 1 \\
+-2u + 5v - 4w        &= -2 \\
+\end{align*}
+
+\pause
+
+The solution is $u = 10, v=6, w=3$.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Lower unitriangular matrices}
+
+\begin{itemize}
+
+\item \textbf{Definition.} A square matrix is \emph{lower-triangular}
+iff all entries below the main diagonal are zero.
+
+\item \textbf{Definition.} A square matrix is \emph{lower unitriangular}
+iff it is lower-triangular and all if its diagonal entries are 1.
+
+\item The elementary matrices of type 1 that are used in Gaussian elimination
+are all lower unitriangular.
+
+\item For example the $3\times 3$ matrix that adds 2 times row 2 to row 3.
+
+\item
+$
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 2 & 1 \\
+\end{pmatrix}
+$
+
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{$LU$ Factorization}
+
+\begin{itemize}
+
+\item Notice that a square matrix $A$ is non-singular iff when we apply
+Guassian elimination on it to bring it to row-echelon form, the resulting
+form is actually upper-triangular with non-zeros on the diagonal.
+
+\item Consider the special case of a non-singular matrix $A$ that has the
+property that during Gaussian elimination, no elementary matrices of
+type II need to be used. Only elementary matrices of type I.
+
+\item In that case Gaussian eliminiation gives us:
+
+\item $L_k\cdots L_2 L_1 A = U$
+
+\item where each $L_i$ is lower unitriangular and $U$ us upper-triangular with
+nonzeros on the diagonal.
+
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{$LU$ Factorization}
+
+\begin{itemize}
+
+\item $L_k\cdots L_2 L_1 A = U$
+
+\item Multiplying both sides on the left by the inverse of $L_k\cdots L_2 L_1$ gives:
+
+\item $A = L_1^{-1} L_2^{-1} \cdots L_k^{-1} U$.
+
+\item Notice that each of the $L_i^{-1}$ are also lower unitriangular.
+\item (Recall how we form the inverse of an elementary matrix of type I.)
+
+\item Let $L = L_1^{-1} L_2^{-1} \cdots L_k^{-1}$.
+
+\item Then $L$  is also lower unitriangular. (Optional exercise.)
+
+\item So we have $A = LU$.
+
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{$LU$ Factorization}
+
+\begin{itemize}
+
+\item Let $A$ be a non-singular $n\times n$ matrix and suppose that
+during Guassian elimination there is no need for any swaps.
+
+\item Then $A$ can be \emph{factored} into $A=LU$, where
+
+\item $L$ is lower unitriangular
+\item and $U$ is upper triangular with nonzeros on the diagonal.
+
+\end{itemize}
+
+\end{frame}
+
 
 
 
