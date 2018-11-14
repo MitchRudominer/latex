@@ -1,0 +1,166 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,xcolor}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 15 \\ Applications of Gaussian Elimination}
+\subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{General Systems of Linear Equations}
+
+\begin{itemize}
+\item Suppose $A\bx=\bb$ is a general system of linear equations.
+\item Recall that the possibilities for the solution set are:
+\item (i) There are no solutions. The system is incompatible (or inconsistent.) $\bb\notin\ran(T_A)$.
+\item (ii) There is exactly one solution. This happens when $T_A$ is one-to-one. ( $\ker(A)$ is trivial.)
+\item (iii) There are infinitely many solutions. The system is underdetermined.
+\item If $A$ is in row-echelon form then it is easy to see which of these three cases occur.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Incompatible systems}
+
+\begin{itemize}
+\item Suppose $A\bx=\bb$ is a general system of linear equations, and $A$ is in row-echelon form.
+\item Then the system is incompatible iff
+\item there is a row of $A$ that is all zeros but the corresponding element of $\bb$ is not zero.
+\item Example:
+$$
+A =
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+0 & 0 & 5 & 6 \\
+0 & 0 & 6 & 8 \\
+0 & 0 & 0 & 0 \\
+\end{pmatrix}
+\quad
+\bb=
+\begin{pmatrix}
+2 \\ 3 \\ 4 \\ 5
+\end{pmatrix}
+$$
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Unique solutions}
+
+\begin{itemize}
+\item Suppose $A\bx=\bb$ is a general system of linear equations, and $A$ is in row-echelon form.
+\item Then the system has a unique solution iff
+\item $A$ is actually upper triangular with nonzeros on the diagonal.
+\item Example:
+$$
+A =
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+0 & 5 & 6 & 7 \\
+0 & 0 & 9 & 8 \\
+0 & 0 & 0 & 7 \\
+\end{pmatrix}
+\quad
+\bb=
+\begin{pmatrix}
+2 \\ 3 \\ 4 \\ 5
+\end{pmatrix}
+$$
+\item We can find the unique solution using back-substitution.
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Underdetermined systems}
+
+\begin{itemize}
+\item Suppose $A\bx=\bb$ is a general system of linear equations, and $A$ is in row-echelon form.
+\item Then the system is underdetermined iff
+\item neither of the previous two cases occur
+\item Example:
+$$
+A =
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+0 & 0 & 5 & 6 \\
+0 & 0 & 6 & 8 \\
+0 & 0 & 0 & 9 \\
+\end{pmatrix}
+\quad
+\bb=
+\begin{pmatrix}
+2 \\ 3 \\ 4 \\ 5
+\end{pmatrix}
+$$
+\item We can find the infinitely many solutions through generalized back-substitution.
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Generalized back-substitution}
+
+\begin{itemize}
+\item
+\end{itemize}
+\end{frame}
+
+
+\end{document}
+
+
