@@ -701,6 +701,232 @@ Solution $x=4, y=-5$.
 
 Solution $x=1, y=-2, z=-1$.
 
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (3c)
+
+\textbf{(c)}
+
+\begin{align*}
+  2x - y          &= 0 \\
+ -x + 2y -  z     &= 1 \\
+      -y  +2z -w  &= 1 \\
+           -z+2w  &= 0 \\
+\end{align*}
+
+Solution $x=1, y=2, z=2, w=1$.
+
+\bigskip
+
+\textbf{Problem 4.}
+
+\textbf{(a)} Nonsingular. You can see by inspection that the two columns are linearly independent.
+
+\bigskip
+
+\textbf{(b)} Singular. You can see by inspection that the second column is -2 times the first column.
+
+\bigskip
+
+\textbf{(c)} I can't tell by inspection so I do Gaussian elimination.
+
+\bigskip
+
+$
+\begin{pmatrix}
+0 & 1 & 2 \\
+-1 & 1 & 3 \\
+2 & -2 & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+-1 & 1 & 3 \\
+0 & 1 & 2 \\
+2 & -2 & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+-1 & 1 & 3 \\
+0 & 1 & 2 \\
+0 & 0 & 6
+\end{pmatrix}
+$
+
+\bigskip
+
+So the rank is 3 and the matrix is nonsingular.
+
+\bigskip
+
+\textbf{(d)}
+
+$
+\begin{pmatrix}
+1 & 1 & 3 \\
+2 & 2 & 2 \\
+3 & -1 & 1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 3 \\
+0 & 0 & -4 \\
+0 & -4 & -8
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 3 \\
+0 & -4 & -8 \\
+0 & 0 & -4
+\end{pmatrix}
+$
+
+\bigskip
+
+So the rank is 3 and the matrix is nonsingular.
+
+\bigskip
+
+\textbf{(e)}
+
+$
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & -3 & -6 \\
+0 & -6 & -12
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & -3 & -6 \\
+0 & 0 & 0
+\end{pmatrix}
+$
+
+\bigskip
+
+So the rank is 2 and the matrix is singular.
+
+\bigskip
+
+\textbf{(f)}
+
+$
+\begin{pmatrix}
+-1 & 1 & 0 & -3 \\
+2 & -2 & 4 & 0 \\
+1 & -2 & 2 & -1 \\
+0 & 1 & 0 & 1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+-1 & 1 & 0 & -3 \\
+0 & 0 & 4 & -6 \\
+0 & -1 & 2 & -4 \\
+0 & 1 & 0 & 1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+-1 & 1 & 0 & -3 \\
+0 & -1 & 2 & -4 \\
+0 & 0 & 4 & -6 \\
+0 & 1 & 0 & 1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+-1 & 1 & 0 & -3 \\
+0 & -1 & 2 & -4 \\
+0 & 0 & 4 & -6 \\
+0 & 0 & 2 & -3
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+-1 & 1 & 0 & -3 \\
+0 & -1 & 2 & -4 \\
+0 & 0 & 4 & -6 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+$
+
+\bigskip
+
+So the rank is 3 and the matrix is singular.
+
+
+\bigskip
+
+\textbf{(g)}
+
+$
+\begin{pmatrix}
+0 & -1 & 0 & 1 \\
+1 & 0 & -1 & 0 \\
+0 & 2 & 0 & -2 \\
+2 & 0 & 2 & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & -1 & 0 \\
+0 & -1 & 0 & 1 \\
+0 & 2 & 0 & -2 \\
+2 & 0 & 2 & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & -1 & 0 \\
+0 & -1 & 0 & 1 \\
+0 & 2 & 0 & -2 \\
+0 & 0 & 4 & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & -1 & 0 \\
+0 & -1 & 0 & 1 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 4 & 0
+\end{pmatrix}
+$
+
+\bigskip
+
+We can stop here. The row of all zeros tells us the matrix is singular.
+
+\bigskip
+
+\textbf{(h)}
+
+$
+\begin{pmatrix}
+1 & -2 & 0 & 2 \\
+4 & 1 & -1 & -1 \\
+-8 & -1 & 2 & 1 \\
+-4 & -1 & 1 & 2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -2 & 0 & 2 \\
+0 & 9 & -1 & -9 \\
+0 & -17 & 2 & 17 \\
+0 & -9 & 1 & 10
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -2 & 0 & 2 \\
+0 & 9 & -1 & -9 \\
+0 & 0 & \frac{1}{9} & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+$
+
+\bigskip
+
+So the rank is 4 and the matrix is nonsingular.
+
 
 
 \end{document}
