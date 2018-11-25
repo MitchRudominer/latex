@@ -1162,6 +1162,138 @@ $
 
 Solution $x_1=-11, x_2=-\frac{10}{3}, x_3=-5,x_4=-7$.
 
+\bigskip
+
+\textbf{Problem 7.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (7)
+
+\bigskip
+
+\textbf{(a)} We can see by inspection that the two columns are linearly independent, so the rank is 2.
+
+\bigskip
+
+\textbf{(b)} We can see by inspection that column 1 is 2 times column 2 and column 3 is 3 times column 2.
+So the rank is 1.
+
+\bigskip
+
+\textbf{(c)} We can see by inspection that column 2 is -1 times column 1 and that column 3 is not a multiple of column 1. So the rank is 2.
+
+\bigskip
+
+\textbf{(d)} I can't tell immediately by inspecting this matrix what the rank is, so I will do Gaussian elimination.
+
+$
+\begin{pmatrix}
+2 & -1 & 0 \\
+2 & -1 & 1 \\
+1 & 1 & -1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+2 & -1 & 0 \\
+0 & 0 & 1 \\
+0 & \frac{3}{2} & -1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+2 & -1 & 0 \\
+0 & \frac{3}{2} & -1 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+So the rank is 3.
+
+\bigskip
+
+\textbf{(e)} Since this matrix has a single column and it is nonzero, its rank is one.
+
+\bigskip
+
+\textbf{(f)} This matrix has a single row and it is nonzero. Its rank is one.
+
+\bigskip
+
+\textbf{(g)} It is clear by inspection that the two columns are linearly independent
+so this matrix has rank 2.
+
+\bigskip
+
+\textbf{(h)} I cannot easily determine the rank of this matrix by inspection so I will do Gaussian elimination.
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & -1 & 2 & 1 \\
+2 & 1 & -1 & 0 \\
+1 & 2 & -3 & -1 \\
+4 & -1 & 3 & 2 \\
+0 & 3 & -5 & -2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -1 & 2 & 1 \\
+0 & 3 & -5 & -2 \\
+0 & 3 & -5 & -2 \\
+0 & 3 & -5 & -2 \\
+0 & 3 & -5 & -2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -1 & 2 & 1 \\
+0 & 3 & -5 & -2 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+$
+
+\bigskip
+
+So the rank is 2.
+
+\bigskip
+
+\textbf{(i)} I will do Gaussian elimination.
+
+\bigskip
+
+$
+\begin{pmatrix}
+0 & 0 & 0 & 3 & 1 \\
+1 & 2 & -3 & 1 & -2 \\
+2 & 4 & -2 & 1 & -2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & -3 & 1 & -2 \\
+0 & 0 & 0 & 3 & 1 \\
+2 & 4 & -2 & 1 & -2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & -3 & 1 & -2 \\
+0 & 0 & 0 & 3 & 1 \\
+0 & 0 & 4 & -1 & 2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & -3 & 1 & -2 \\
+0 & 0 & 4 & -1 & 2 \\
+0 & 0 & 0 & 3 & 1
+\end{pmatrix}
+$
+
+
+\bigskip
+
+So the rank is 3.
 
 
 
