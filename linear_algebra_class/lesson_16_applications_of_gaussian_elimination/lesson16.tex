@@ -38,7 +38,7 @@
 % Or whatever. Note that the encoding and the font should match. If T1
 % does not look nice, try deleting the line with the fontenc.
 
-\title{Lesson 15 \\ Applications of Gaussian Elimination}
+\title{Lesson 16 \\ Applications of Gaussian Elimination}
 \subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
 \author{Mitch Rudominer}
 \date{}
@@ -63,9 +63,12 @@
 \begin{itemize}
 \item Suppose $A\bx=\bb$ is a general system of linear equations.
 \item Recall that the possibilities for the solution set are:
-\item (i) There are no solutions. The system is incompatible (or inconsistent.) $\bb\notin\ran(T_A)$.
-\item (ii) There is exactly one solution. This happens when $T_A$ is one-to-one. ( $\ker(A)$ is trivial.)
-\item (iii) There are infinitely many solutions. The system is underdetermined.
+\item (i) There are no solutions. The system is incompatible (or inconsistent.)
+\item This happens when $\bb\notin\ran(T_A)$.
+\item (ii) There is exactly one solution.
+\item This happens when $\bb\in\ran(T_A)$  and $T_A$ is one-to-one ( $\ker(A)$ is trivial).
+\item (iii) There are infinitely many solutions.
+\item This happens when $\bb\in\ran(T_A)$  and $T_A$ is not one-to-one ( $\ker(A)$ is not trivial).
 \item If $A$ is in row-echelon form then it is easy to see which of these three cases occur.
 \end{itemize}
 \end{frame}
@@ -77,14 +80,14 @@
 \begin{itemize}
 \item Suppose $A\bx=\bb$ is a general system of linear equations, and $A$ is in row-echelon form.
 \item Then the system is incompatible iff
-\item there is a row of $A$ that is all zeros but the corresponding element of $\bb$ is not zero.
+\item there is a row of $A$ that is all zeros but the corresponding component of $\bb$ is not zero.
 \item Example:
 $$
 A =
 \begin{pmatrix}
 1 & 2 & 3 & 4 \\
 0 & 0 & 5 & 6 \\
-0 & 0 & 6 & 8 \\
+0 & 0 & 0 & 7 \\
 0 & 0 & 0 & 0 \\
 \end{pmatrix}
 \quad
@@ -104,23 +107,26 @@ $$
 \begin{itemize}
 \item Suppose $A\bx=\bb$ is a general system of linear equations, and $A$ is in row-echelon form.
 \item Then the system has a unique solution iff
-\item $A$ is actually upper triangular with nonzeros on the diagonal.
+\item $A$ is  upper triangular with nonzeros on the diagonal,
+\item with all zero rows at the bottom allowed as long as the corresponding components of $\bb$ are also zero.
 \item Example:
 $$
 A =
 \begin{pmatrix}
 1 & 2 & 3 & 4 \\
 0 & 5 & 6 & 7 \\
-0 & 0 & 9 & 8 \\
-0 & 0 & 0 & 7 \\
+0 & 0 & 8 & 9 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 \\
 \end{pmatrix}
 \quad
 \bb=
 \begin{pmatrix}
-2 \\ 3 \\ 4 \\ 5
+2 \\ 3 \\ 4 \\ 5 \\ 0
 \end{pmatrix}
 $$
 \item We can find the unique solution using back-substitution.
+\item We ignore the all-zero rows at the bottom.
 
 \end{itemize}
 \end{frame}
@@ -130,7 +136,7 @@ $$
 
 \begin{itemize}
 \item Suppose $A\bx=\bb$ is a general system of linear equations, and $A$ is in row-echelon form.
-\item Then the system is underdetermined iff
+\item Then the system has infinitely many solutions iff
 \item neither of the previous two cases occur
 \item Example:
 $$
@@ -138,13 +144,13 @@ A =
 \begin{pmatrix}
 1 & 2 & 3 & 4 \\
 0 & 0 & 5 & 6 \\
-0 & 0 & 6 & 8 \\
-0 & 0 & 0 & 9 \\
+0 & 0 & 0 & 8 \\
+0 & 0 & 0 & 0 \\
 \end{pmatrix}
 \quad
 \bb=
 \begin{pmatrix}
-2 \\ 3 \\ 4 \\ 5
+2 \\ 3 \\ 4 \\ 0
 \end{pmatrix}
 $$
 \item We can find the infinitely many solutions through generalized back-substitution.
@@ -153,12 +159,442 @@ $$
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Basic and Free Variables}
+
+\begin{itemize}
+\item Suppose $A\bx=\bb$ is a general system of linear equations, and $A$ is in row-echelon form.
+\item The variables corresponding to the pivot columns are called the \emph{basic} variables.
+\item The variables corresponding to the non-pivot columns are called the \emph{free} variables.
+\item Example:
+$$
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+0 & 0 & 5 & 6 \\
+0 & 0 & 0 & 8 \\
+0 & 0 & 0 & 0 \\
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+2 \\ 3 \\ 4 \\ 0
+\end{pmatrix}
+$$
+\item The basic variables are $x,z,w$. The free variables are: $y$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Generalized back-substitution}
 
 \begin{itemize}
+\item Generalized back-substitution is similar to simple back-substitution, except that we solve for the basic variable \emph{in terms of} the free variables.
 \item
+$
+\begin{pmatrix}
+1 & 2 & 2 & 3 \\
+0 & 0 & -3 & -3 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+4 \\ -3 \\  0
+\end{pmatrix}
+$
+\item The basic variables are $x$ and $z$. The free variables are $y$ and $w$.
+\item $-3z -3w = -3 \SkipImplies -3z = -3 + 3w $
+\item $ \SkipImplies z = 1 - w$.
+\item $x + 2y +2z +3w = 4 $
+\item $\SkipImplies x +2y + 2(1-w) + 3w = 4$
+\item $\SkipImplies x + 2y +2 +w = 4 \SkipImplies x = 2 -2y - w$.
 \end{itemize}
 \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{General solution}
+
+\begin{itemize}
+\item
+$
+\begin{pmatrix}
+1 & 2 & 2 & 3 \\
+0 & 0 & -3 & -3 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+4 \\ -3 \\  0
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+2 -2y - w \\
+y \\
+1-w \\
+w
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+2 \\
+0 \\
+1 \\
+0
+\end{pmatrix}
++
+y
+\begin{pmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{pmatrix}
++
+w
+\begin{pmatrix}
+-1 \\
+0 \\
+-1 \\
+1
+\end{pmatrix}
+$
+\item The free variables are \emph{parameters} to the solution set.
+\item As the free variables range over all real numbers, we get all solutions.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Particular Solution}
+
+\begin{itemize}
+\item
+$
+\begin{pmatrix}
+1 & 2 & 2 & 3 \\
+0 & 0 & -3 & -3 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+4 \\ -3 \\  0
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+2 \\
+0 \\
+1 \\
+0
+\end{pmatrix}
++
+y
+\begin{pmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{pmatrix}
++
+w
+\begin{pmatrix}
+-1 \\
+0 \\
+-1 \\
+1
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+2 \\
+0 \\
+1 \\
+0
+\end{pmatrix}
+$
+is a \emph{particular solution}.
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Particular solution plus a subspace}
+
+\begin{itemize}
+\item
+$
+\begin{pmatrix}
+1 & 2 & 2 & 3 \\
+0 & 0 & -3 & -3 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+4 \\ -3 \\  0
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+2 \\
+0 \\
+1 \\
+0
+\end{pmatrix}
++
+y
+\begin{pmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{pmatrix}
++
+w
+\begin{pmatrix}
+-1 \\
+0 \\
+-1 \\
+1
+\end{pmatrix}
+$
+
+\item Every other solution is obtained by adding to the particular solution an element of the subspace of $\R^4$ spanned by the vectors
+\item
+$
+\singleton{
+\begin{pmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{pmatrix}
+,
+\begin{pmatrix}
+-1 \\
+0 \\
+-1 \\
+1
+\end{pmatrix}
+}
+$
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Homogeneous systems and nullspaces}
+\begin{itemize}
+\item Find the kernel of the matrix
+$A=
+\begin{pmatrix}
+1 & 2 & 2 & 3 \\
+2 & 4 & 1 & 3 \\
+3 & 6 & 1 & 4
+\end{pmatrix}
+$
+\item Solution: This is the same as solving the homogeneous system of equations
+\item $A\bx=\bzero$.
+\item Technique: Form an augmented matrix.
+\item Use Gaussian elimination to bring $A$ to row-echelon form.
+\item Do back-substitution to get the general solution.
+\item (When solving a homogeneous system we don't really need to bother with the
+ augmented matrix since the right-hand-side
+of the equation consists of all zeros)
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Solving a homogeneous system}
+\begin{itemize}
+\item Solve
+$
+\begin{pmatrix}
+1 & 2 & 2 & 3 \\
+2 & 4 & 1 & 3 \\
+3 & 6 & 1 & 4
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}=
+\begin{pmatrix}
+0 \\ 0 \\ 0
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+1 & 2 & 2 & 3 & \aug & 0 \\
+2 & 4 & 1 & 3 & \aug & 0  \\
+3 & 6 & 1 & 4 & \aug & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 2 & 3 & \aug & 0  \\
+0 & 0 & -3 & -3  & \aug & 0  \\
+0 & 0 & -5 & -5 & \aug & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 2 & 3    & \aug & 0  \\
+0 & 0 & -3 & -3  & \aug & 0  \\
+0 & 0 & 0 & 0    & \aug & 0
+\end{pmatrix}
+$
+\item This is the same row-echelon form matrix we were just considering.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Solving a homogeneous system}
+
+\begin{itemize}
+\item We have reduced the homogeneous system to
+\item
+$
+\begin{pmatrix}
+1 & 2 & 2 & 3 \\
+0 & 0 & -3 & -3 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\ 0 \\  0
+\end{pmatrix}
+$
+\item The basic variables are $x$ and $z$. The free variables are $y$ and $w$.
+\item $-3z -3w = 0 \SkipImplies -3z = 3w $
+\item $ \SkipImplies z = - w$.
+\item $x + 2y +2z +3w = 0 $
+\item $\SkipImplies x +2y + 2(-w) + 3w = 0$
+\item $\SkipImplies x + 2y  + w = 0 \SkipImplies x = -2y - w$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Finding a basis for the nullspace}
+
+\begin{itemize}
+\item The general solution to the homogeneous system is
+\item
+$
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+-2y - w \\
+y \\
+-w \\
+w
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+y
+\begin{pmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{pmatrix}
++
+w
+\begin{pmatrix}
+-1 \\
+0 \\
+-1 \\
+1
+\end{pmatrix}
+$
+\item The kernel of $A$ is the subspace of $\R^4$ spanned by:
+$
+\singleton{
+\begin{pmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{pmatrix}
+,
+\begin{pmatrix}
+-1 \\
+0 \\
+-1 \\
+1
+\end{pmatrix}
+}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Homogeneous systems and nullspaces}
+\begin{itemize}
+\item Find the kernel of the matrix
+$A=
+\begin{pmatrix}
+1 & 2 & 2 & 3 \\
+2 & 4 & 1 & 3 \\
+3 & 6 & 1 & 4
+\end{pmatrix}
+$
+\item Solution: This is the same as solving the homogeneous system of equations
+\item $A\bx=\bzero$.
+\item Technique: Form an augmented matrix.
+\item Use Gaussian elimination to bring $A$ to row-echelon form.
+\item Do back-substitution to get the general solution.
+\item (When solving a homogeneous system we don't really need to bother with the
+ augmented matrix since the right-hand-side
+of the equation consists of all zeros)
+\end{itemize}
+\end{frame}
+
 
 
 \end{document}
