@@ -1,0 +1,161 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,xcolor}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 17 \\ Determinants and Miscellanesou}
+\subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Determinant Theory}
+
+\begin{itemize}
+\item \textbf{Theorem.} There exists a unique function, called the \emph{determinant}, and writen $\det$, with the following properties:
+\item (1) For every square matrix $A$, $\det(A)$ is a scalar.
+\item (2) Performing an elementary row operation of type 1 on a matrix does not change its determinant.
+\item (3) Performing an elementary row operation of type 2 on a matrix multiplies the determinant by -1.
+\item (4) Performing an elementary row operation of type 3 on a matrix, multiplying one of the rows by the scalar $t$,
+multiplies the determinant by the same scalar $t$.
+\item (5) The determinant of the identity matrix is 1.
+\item We will give a sketch of the proof but we won't go through the proof in detail.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Determinant of a $2\times 2$ matrix.}
+
+\begin{itemize}
+\item We have already defined the determinant of $2\times 2$ matrix.
+\item
+$
+\det
+\begin{pmatrix}
+a & b \\
+c & d \\
+\end{pmatrix}
+= ad - bc
+$.
+\item Verify each of the properties:
+\item (1) For every $2\times 2$ matrix $A$, $\det(A)$ is a scalar.
+\item (2) Performing an elementary row operation of type 1 on a matrix does not change its determinant.
+\item (3) Performing an elementary row operation of type 2 on a matrix multiplies the determinant by -1.
+\item (4) Performing an elementary row operation of type 3 on a matrix, multiplying one of the rows by the scalar $t$,
+multiplies the determinant by the same scalar $t$.
+\item (5) The determinant of the identity matrix is 1.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Sign of a Permutation}
+
+\begin{itemize}
+\item \textbf{Definition} If $\pi$ is a permutation of the numbers $\singleton{1,2,\cdots, n}$
+we say that $\pi$ is \emph{even} and that $\sgn(\pi) = 1$ if $\pi$ is obtained via an even number of swaps.
+\item Otherwise we say that $\pi$ is odd and $\sgn(\pi) = -1$.
+\item For example consider the following permutations of $(1,2,3,4)$.
+\item $\pi=(1,2,3,4)$. $\pi$ is even. $\sgn(pi) = 1$. $\pi$ is obtained via zero swaps.
+\item $\pi=(3,2,1,4)$. $\pi$ is odd. $\sgn(pi) = -1$. $\pi$ is obtained via one swap.
+\item $\pi=(3,2,4,1)$. $\pi$ is even. $\sgn(pi) = 1$. $\pi$ is obtained via two swaps.
+\item $\pi=(3,4,2,1)$. $\pi$ is odd. $\sgn(pi) = -1$. $\pi$ is obtained via three swaps.
+\item \textbf{Theorem.} $\sgn(\pi)$ is well-defined. (We won't prove this.)
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{General Definition of Determinant}
+
+\begin{itemize}
+\item \textbf{Definition} Let $A$ be an $n\times n$ matrix.
+\item Then
+$$\det(A) = \sum_{\pi} (\sgn(pi)) a_{\pi(1),1} a_{\pi(2), 2} \cdots, a_{\pi(n), n}$$
+\item The sum is over all permutations of the row indices $(1,2,\cdots, n)$
+\item Each term in the sum is the product over the columns of $A$ of one of the entries in that column.
+\item In column $i$ we take the entry from row $\pi(i)$.
+\item The product is multiplied by $\sgn(\pi)$.
+\item i.e. we add the product if $\pi$ is even and subtract the product of $\pi$ is odd.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Determinant of a $2\times 2$ matrix revisited.}
+
+\begin{itemize}
+\item Check that the two different definitions coincide for $2\times 2$ matrices.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Determinant of a $3\times 3$ matrix.}
+
+\begin{itemize}
+\item
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+\end{document}
+
+
