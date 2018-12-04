@@ -1,0 +1,260 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Solutions to Homework for Lesson 16 \\ Applications of Gaussian Elimination}
+\author{Math 325, Linear Algebra \\ Mitch Rudominer \\ Fall 2018 \\ SFSU }
+\date{}
+
+\maketitle
+
+
+\textbf{Problem 1}
+
+\bigskip
+
+\textbf{(a)}
+$
+\begin{pmatrix}
+1 & 5
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(b)}
+$
+\begin{pmatrix}
+1 & 0 \\
+1 & 2
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(c)}
+$
+\begin{pmatrix}
+1 & 2 \\
+2 & 1
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(d)}
+$
+\begin{pmatrix}
+1 & 2 \\
+2 & 0 \\
+-1 & 2 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(e)}
+$
+\begin{pmatrix}
+1 \\
+2 \\
+3 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(f)}
+$
+\begin{pmatrix}
+1 & 3 & 5 \\
+2 & 4 & 6
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(g)}
+$
+\begin{pmatrix}
+1 & 0 & 1 \\
+2 & 3 & 1 \\
+-1 & 2 & 5
+\end{pmatrix}
+$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bigskip
+
+\textbf{Problem 2}
+
+\bigskip
+
+\textbf{(a)}
+
+$
+\transpose{A}=
+\begin{pmatrix}
+3 & 1 \\
+-1 & 2 \\
+-1 & 1
+\end{pmatrix}
+\text{, }
+\transpose{B}=
+\begin{pmatrix}
+-1 & 2 & -3 \\
+2 & 0 & 4
+\end{pmatrix}
+\text{, }
+\transpose{(AB)} = \transpose{B}\transpose{A}=
+\begin{pmatrix}
+-2 & 0 \\
+2 & 6
+\end{pmatrix}
+$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bigskip
+
+\textbf{Problem 3}
+
+\textbf{(a)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+2 & -1 \\
+-4 & 3
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+2 & -1 \\
+0 & 1
+\end{pmatrix}
+$
+
+\bigskip
+
+So the determinant is 2. Compare this to computing the determinant directly: 6-4=2.
+
+\bigskip
+
+\textbf{(b)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+0 & 1 & -2 \\
+-1 & 0 & 3 \\
+2 & -3 & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+-1 & 0 & 3 \\
+0 & 1 & -2 \\
+2 & -3 & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+-1 & 0 & 3 \\
+0 & 1 & -2 \\
+0 & -3 & 6
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+-1 & 0 & 3 \\
+0 & 1 & -2 \\
+0 & 0 & 0
+\end{pmatrix}
+$
+
+\bigskip
+
+So the determinant is 0, which coincides with the fact that the matrix is singular.
+
+\textbf{(c)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & 2 & 3 \\
+2 & 5 & 8 \\
+3 & 8 & 10
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & 1 & 2 \\
+0 & 2 & 1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & 1 & 2 \\
+0 & 0 & -3
+\end{pmatrix}
+$
+
+\bigskip
+
+So the determinant is -3.
+
+\bigskip
+
+\textbf{(d)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+0 & 1 & -1 \\
+-2 & 1 & 3 \\
+2 & 7 & -8
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+-2 & 1 & 3 \\
+0 & 1 & -1 \\
+2 & 7 & -8
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+-2 & 1 & 3 \\
+0 & 1 & -1 \\
+0 & 8 & -5
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+-2 & 1 & 3 \\
+0 & 1 & -1 \\
+0 & 0 & 3
+\end{pmatrix}
+$
+
+\bigskip
+
+The determinant of the row-echelon form matrix is -6. In doing Gaussian elimination
+we performed one row-exchange. So the determinant of the original matrix is 6.
+
+\bigskip
+
+\textbf{(e)} This matrix is already in upper-triangular form. Its determinant
+is the product of the entries on its main diagonal.
+
+$5*3*-4*3 = -180$
+
+\end{document}
