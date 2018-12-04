@@ -165,8 +165,1041 @@ x \\  y \\ z \\ w
 \end{pmatrix}
 $
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \bigskip
 
+\textbf{Problem 3.}
+
+\textbf{(b)} The three vectors are linearly independent so they do form a basis.
+The way you can tell that they are linearly independent is to form a matrix
+out of them and use Gaussian elimination to determine that the rank is 3.
+
+\bigskip
+
+\textbf{(c)} The three vectors are not linearly independent so they do not form
+a basis. The way you can tell that they are not linearly independent is to
+form a matrix out of them and use Gaussian elimination to determine that the rank is 2.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bigskip
+
+\textbf{Problem 4.} To solve 2.4.3, form a matrix out of the 4 vectors and
+perform Gaussian elimination on it. This reveals that the rank of the matrix
+is 2.
+
+\bigskip
+
+\textbf{(a)} The vectors do not span $\R^3$ since the dimension of their span is 2.
+
+\textbf{(b)} The vectors are not linearly independent since  there are four of them in $\R^3$.
+
+\textbf{(c)} They do not form a basis for $\R^3$ because they are neither linearly independent
+nor span. It is not possible to choose a subset of them that form a basis since they do
+not span.
+
+\textbf{(d)} The dimension of the span is 2.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bigskip
+
+\textbf{Problem 5.} To solve 2.4.4, form a matrix out of the 4 vectors and
+perform Gaussian elimination on it. This reveals that the rank of the matrix
+is 3 and that the first 3 columns are basic columns.
+
+\bigskip
+
+\textbf{(a)} The vectors do  span $\R^3$ since the dimension of their span is 3.
+
+\textbf{(b)} The vectors are not linearly independent since  there are four of them in $\R^3$.
+
+\textbf{(c)} They do not form a basis for $\R^3$ because they are not linearly independent.
+It is possible to chose a subset of them that form a basis, namely the first three vectors
+form a basis.
+
+\textbf{(d)} The dimension of the span is 3.
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bigskip
+
+\textbf{Problem 6.} These exercises are asking you for a basis for the plane
+given by a single linear equation. This is equivalent to asking for a basis
+for the solution space to the homogeneous system with a single equation.
+Since the system has a single equation, the corresponding matrix is already in row-echelon
+form with a single basic column. When doing generalized back substitution we may
+solve for any one of the variables in terms of the other ones.
+
+\textbf{(a)} $z-2y=0 \SkipImplies z = 2y$. A solution to the homogeneous system
+is
+$
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+=
+\begin{pmatrix}
+x \\ y \\ 2y
+\end{pmatrix}
+=
+x
+\begin{pmatrix}
+1 \\ 0 \\ 0
+\end{pmatrix}
++
+y
+\begin{pmatrix}
+0 \\ 1 \\ 2
+\end{pmatrix}
+$
+
+So a basis is
+$
+\singleton{
+\begin{pmatrix}
+1 \\ 0 \\ 0
+\end{pmatrix}
+,
+\begin{pmatrix}
+0 \\ 1 \\ 2
+\end{pmatrix}
+}
+$
+
+\bigskip
+
+\textbf{(b)} $4x+3y-z=0 \SkipImplies z = 4x+3y$. A solution to the homogeneous system
+is
+$
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+=
+\begin{pmatrix}
+x \\ y \\ 4x+3y
+\end{pmatrix}
+=
+x
+\begin{pmatrix}
+1 \\ 0 \\ 4
+\end{pmatrix}
++
+y
+\begin{pmatrix}
+0 \\ 1 \\ 3
+\end{pmatrix}
+$
+
+So a basis is
+$
+\singleton{
+\begin{pmatrix}
+1 \\ 0 \\ 4
+\end{pmatrix}
+,
+\begin{pmatrix}
+0 \\ 1 \\ 3
+\end{pmatrix}
+}
+$
+
+\bigskip
+
+\textbf{(c)} $x+2y+z-w=0 \SkipImplies w = x+2y+z$. A solution to the homogeneous system
+is
+$
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+x \\ y \\z \\ x+2y+z
+\end{pmatrix}
+=
+x
+\begin{pmatrix}
+1 \\ 0 \\ 0 \\ 1
+\end{pmatrix}
++
+y
+\begin{pmatrix}
+0 \\ 1 \\ 0 \\ 2
+\end{pmatrix}
++
+z
+\begin{pmatrix}
+0 \\ 0\\ 1 \\ 1
+\end{pmatrix}
+$
+
+So a basis is
+$
+\singleton{
+\begin{pmatrix}
+1 \\ 0 \\ 0 \\ 1
+\end{pmatrix}
+,
+\begin{pmatrix}
+0 \\ 1 \\ 0 \\ 2
+\end{pmatrix}
+,
+\begin{pmatrix}
+0 \\ 0\\ 1 \\ 1
+\end{pmatrix}
+}
+$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bigskip
+
+\textbf{Problem 7.}
+
+\textbf{(a)}
+$2x -y + 5z = 0 \SkipImplies y = 2x + 5z$
+
+A basis for the kernel is:
+
+$
+\singleton{
+\begin{pmatrix}
+1 \\ 2 \\ 0
+\end{pmatrix},
+\begin{pmatrix}
+0 \\ 5 \\ 1
+\end{pmatrix}
+}
+$
+
+The kernel is two dimensional so it is a plane.
+
+\bigskip
+
+\textbf{(b)}
+\bigskip
+$
+\begin{pmatrix}
+1 & 2 & -1 \\
+3 & -2 & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & -1 \\
+0 & -8 & 3
+\end{pmatrix}
+$
+
+\bigskip
+
+\begin{itemize}
+\item $-8y+3z = 0 \SkipImplies y = \frac{3}{8}z$
+\item $x+2y -z = 0 \SkipImplies x + \frac{3}{4}z - z = 0 \SkipImplies x = \frac{1}{4}z$
+\end{itemize}
+
+A basis for the kernel is:
+
+$
+\singleton{
+\begin{pmatrix}
+\frac{1}{4} \\[6pt]
+ \frac{3}{8}  \\
+ 1
+\end{pmatrix}
+}
+$
+
+\bigskip
+
+The kernel is one dimensional and so it is a line.
+
+\bigskip
+
+\textbf{(c)}
+\bigskip
+$
+\begin{pmatrix}
+2 & 6 & -4 \\
+-1 & -3 & 2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+2 & 6 & -4 \\
+0 & 0 & 0
+\end{pmatrix}
+$
+
+\bigskip
+
+ $2x + 6y -4z = 0 \SkipImplies x = -3y +2z$
+
+A basis for the kernel is:
+
+$
+\singleton{
+\begin{pmatrix}
+-3 \\ 1 \\ 0
+\end{pmatrix},
+\begin{pmatrix}
+2 \\0 \\ 1
+\end{pmatrix}
+}
+$
+
+\bigskip
+
+The kernel is two dimensional and so it is a plane
+
+
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Problem 8.} This is false. For example let
+$
+A=
+\begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix}
+$.
+Let $\bv =
+\begin{pmatrix}
+1 \\ 0
+\end{pmatrix}
+$
+Then $\bv\in\ran(A)\intersect\ker(A)$.
+
+\bigskip
+
+\textbf{Problem 10.} Exercise 2.5.21---but only for the image and kernel.
+
+The way to solve these problems is to start by solving the homogeneous
+system $A\bx=\bzero$.
+
+
+\bigskip
+
+\textbf{(a)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & -3 \\
+2 & -6
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -3 \\
+0 & 0
+\end{pmatrix}
+$
+
+\bigskip
+
+$x - 3y = 0 \SkipImplies x = 3y$
+
+\bigskip
+
+So the solution to the homogeneous system is
+
+$
+\begin{pmatrix}
+x \\
+y
+\end{pmatrix}
+=
+\begin{pmatrix}
+3y \\ y
+\end{pmatrix}
+=
+y
+\begin{pmatrix}
+3 \\ 1
+\end{pmatrix}
+$
+
+So a basis for the kernel is
+$\singleton{
+\begin{pmatrix}
+3 \\ 1
+\end{pmatrix}
+}$.
+
+A basis for the image is the set of basic columns from the original matrix:
+
+$\singleton{
+\begin{pmatrix}
+1 \\ 2
+\end{pmatrix}
+}$.
+
+\bigskip
+
+\textbf{(b)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+0 & 0 & -8  \\
+1 & 2 & -1  \\
+2 & 4 & 6 &
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & -1  \\
+0 & 0 & -8  \\
+2 & 4 &  6 &
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & -1 \\
+0 & 0 & -8 \\
+0 & 0 &  8
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & -1 \\
+0 & 0 & -8 \\
+0 & 0 &  0
+\end{pmatrix}
+$
+
+\begin{itemize}
+\item $-8z = 0 \SkipImplies z = 0$
+\item $x + 2y - z = 0 \SkipImplies x + 2y = 0 \SkipImplies x = -2y$
+\end{itemize}
+
+
+So the solution to the homogeneous system is
+
+$
+\begin{pmatrix}
+x \\
+y \\
+z \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+-2y \\
+y \\
+0
+\end{pmatrix}
+=
+y
+\begin{pmatrix}
+-2 \\ 1 \\ 0
+\end{pmatrix}
+$
+
+So a basis for the kernel is
+$\singleton{
+\begin{pmatrix}
+-2 \\ 1 \\ 0
+\end{pmatrix}
+}$.
+
+A basis for the image is the set of basic columns from the original matrix:
+
+$\singleton{
+\begin{pmatrix}
+0 \\ 1 \\ 2
+\end{pmatrix},
+\begin{pmatrix}
+-8 \\ -1 \\ 6
+\end{pmatrix}
+}$.
+
+\bigskip
+
+\textbf{(c)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & 1 & 2 & 1  \\
+1 & 0 & -1 & 3  \\
+2 & 3 & 7 & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 2 & 1 \\
+0 & -1 & -3 & 2  \\
+0 & 1 & 3 & -2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 2 & 1  \\
+0 & -1 & -3 & 2 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+$
+
+\begin{itemize}
+\item $-y -3z + 2w = 0 \SkipImplies y = -3z + 2w$
+\item $x + y +2z + w = 0 \SkipImplies x -3z + 2w + 2z + w = 0 \SkipImplies x-z+3w = 0 \SkipImplies x = z-3w$.
+\end{itemize}
+
+
+So the solution to the homogeneous system is
+
+$
+\begin{pmatrix}
+x \\
+y \\
+z \\
+w
+\end{pmatrix}
+=
+\begin{pmatrix}
+z-3w \\
+-3z+2w \\
+z \\
+w \\
+\end{pmatrix}
+=
+z
+\begin{pmatrix}
+1 \\ -3 \\ 1 \\0
+\end{pmatrix}
++
+w
+\begin{pmatrix}
+-3 \\ 2 \\ 0 \\1
+\end{pmatrix}
+$
+
+So a basis for the kernel is
+$\singleton{
+\begin{pmatrix}
+1 \\ -3 \\ 1 \\0
+\end{pmatrix},
+\begin{pmatrix}
+-3 \\ 2 \\ 0 \\1
+\end{pmatrix}
+}$
+
+A basis for the image is the set of basic columns from the original matrix:
+
+$\singleton{
+\begin{pmatrix}
+1 \\ 1 \\2
+\end{pmatrix},
+\begin{pmatrix}
+1 \\ 0 \\3
+\end{pmatrix}
+}$.
+
+\bigskip
+
+\textbf{(d)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & -3 & 2 & 2 & 1   \\
+0 &  3 & -6 & 0 & -2  \\
+2 & -3 & -2 & 4 & 0  \\
+3 & -3 & -6 & 6 & 3  \\
+1 &  0 & -4 & 2 & 3
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -3 & 2 & 2 & 1  \\
+0 & 3 & -6 & 0 & -2 \\
+0 & 3 & -6 & 0 & -2 \\
+0 & 6 & -12 & 0 & 0 \\
+0 & 3 & -6 & 0 & 2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -3 & 2 & 2 &  1   \\
+0 & 3 & -6 & 0 & -2  \\
+0 & 0 & 0 & 0 &   0    \\
+0 & 0 & 0 & 0 &   4    \\
+0 & 0 & 0 & 0 &   4
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -3 & 2 & 2 & 1   \\
+0 & 3 & -6 & 0 & -2  \\
+0 & 0 & 0 & 0 & 4    \\
+0 & 0 & 0 & 0 & 0    \\
+0 & 0 & 0 & 0 & 4
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -3 & 2 & 2 & 1   \\
+0 & 3 & -6 & 0 & -2  \\
+0 & 0 & 0 & 0 & 4    \\
+0 & 0 & 0 & 0 & 0    \\
+0 & 0 & 0 & 0 & 0
+\end{pmatrix}
+$
+
+Let's call the five variables $x,y,z,w,v$.
+
+\begin{itemize}
+\item $4v=0 \SkipImplies v=0$
+\item $3y -6z -2v = 0 \SkipImplies 3y -6z = 0 \SkipImplies y=2z$.
+\item $x - 3y +2z +2w +v = 0 \SkipImplies x -6z +2z +2w = 0 \SkipImplies x = 4z - 2w$
+\end{itemize}
+
+
+So the solution to the homogeneous system is
+
+$
+\begin{pmatrix}
+x \\
+y \\
+z \\
+w \\
+v
+\end{pmatrix}
+=
+\begin{pmatrix}
+4z-2w\\
+2z\\
+z \\
+w \\
+0
+\end{pmatrix}
+=
+z
+\begin{pmatrix}
+4 \\ 2 \\ 1 \\ 0 \\ 0
+\end{pmatrix}
++
+w
+\begin{pmatrix}
+-2 \\ 0 \\0 \\1 \\ 0
+\end{pmatrix}
+$
+
+So a basis for the kernel is
+$\singleton{
+\begin{pmatrix}
+4 \\ 2 \\ 1 \\ 0 \\ 0
+\end{pmatrix},
+\begin{pmatrix}
+-2 \\ 0 \\0 \\1 \\ 0
+\end{pmatrix}
+}$
+
+A basis for the image is the set of basic columns from the original matrix:
+
+$\singleton{
+\begin{pmatrix}
+1  \\
+0  \\
+2  \\
+3  \\
+1
+\end{pmatrix},
+\begin{pmatrix}
+-3 \\
+ 3 \\
+-3 \\
+-3 \\
+ 0
+\end{pmatrix},
+\begin{pmatrix}
+ 1 \\
+-2 \\
+ 0  \\
+ 3  \\
+ 3
+\end{pmatrix}
+}$.
+
+
+\bigskip
+
+\textbf{Problem 11.} Exercise 2.5.22 on page 118.
+
+First we use Gaussian elimination in order to find the basic columns.
+
+\bigskip
+
+$
+\begin{pmatrix}
+-1 & 2 & 0 & -3 & 5 \\
+2 & -4 & 1 & 1 & -4 \\
+-3 & 6 & 2 & 0 & 8
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+-1 & 2 & 0 & -3 & 5 \\
+0 & 0 & 1 & -5 & 6 \\
+0 & 0 & 2 & 9 & -7
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+-1 & 2 & 0 & -3 & 5 \\
+0 & 0 & 1 & -5 & 6 \\
+0 & 0 & 0 & 19 & -19
+\end{pmatrix}
+$
+
+\bigskip
+
+So the basic columns are 1, 3 and 4. This means that these columns form a basis
+for the column space. That is true in both the original matrix and the row-echelon form
+matrix.
+
+Now we are asked to express the other columns as a linear combination of the
+basic columns. We can use the fact that the answer is the same for the original
+matrix and the row-echelon form matrix. Also we can use the fact that each
+non-basic column must be a linear combination of the basic columns to its left.
+
+\begin{itemize}
+  \item Let's call the columns $\bc_1,\bc_2,\bc_3,\bc_4,\bc_5$.
+  \item $\bc_2 = -2 \bc_1$
+  \item  $\bc_5 = -2 \bc_1 + \bc_3 -\bc_4$
+\end{itemize}
+
+If you don't see how I got the solution for $\bc_5$
+another way to think about solving that is: Solve the system of equations
+that has the matrix with columns $\bc_1,\bc_3, \bc_4$ on the left and $\bc_5$ on the right.
+We want to find $x,y,z$ such that $x\bc_1+y\bc_3+z\bc_4 = \bc_5$.
+We can use the matrix that is already in row-echelon form and just do back substition.
+
+\begin{itemize}
+\item $19z = -19 \SkipImplies z = -1$
+\item $y - 5z = 6 \SkipImplies y + 5 = 6 \SkipImplies y = 1$
+\item $-x -3z = 5 \SkipImplies -x + 3 = 5 \SkipImplies x = -2$.
+\end{itemize}
+
+\bigskip
+
+\textbf{Problem 12.} For each of the matrices in Exercise 2.5.23 on page 118,
+give the dimension of the kernel and the image.
+
+\bigskip
+
+\textbf{(i)} The two columns are clearly linearly dependent so the rank of
+the matrix is 1. So the dimension of the image is 1 and the dimension of
+the kernel is 1.
+
+\bigskip
+
+\textbf{(ii)} It is clear that the first and third columns are scalar multiples
+of the second column. So the rank of the matrix is 1. So the dimension of
+the image is 1 and the dimension of the kernel is 2.
+
+\bigskip
+
+
+\textbf{(iii)} It is clear that the two columns are linearly independent, so
+the rank of the matrix is 2. So the dimension of the image is 2 and the dimension
+of the kernel is 0.
+
+\bigskip
+
+\textbf{(iv)} I can't tell the rank of the matrix by inspection so I will do
+Gaussian elimination.
+
+\bigskip
+
+$
+\begin{pmatrix}
+2 & -5 & -1 \\
+1 & -6 & -4 \\
+3 & -4 & 2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+2 & -5 & -1 \\
+0 & \frac{-7}{2} & \frac{-7}{2} \\
+0 & \frac{7}{2} & \frac{7}{2}
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+2 & -5 & -1 \\
+0 & \frac{-7}{2} & \frac{-7}{2} \\
+0 & 0 & 0
+\end{pmatrix}
+$
+
+\bigskip
+
+So the rank of the matrix is 2. So the dimension of the image is 2 and the
+dimension of the kernel is 1.
+
+\bigskip
+
+\textbf{(v)} I can't tell the rank of the matrix by inspection so I will do
+Gaussian elimination.
+
+\bigskip
+
+$
+\begin{pmatrix}
+2 & 5 & 7 \\
+6 & 13 & 19 \\
+3 & 8 & 11 \\
+1 & 2 & 3
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+2 & 5 & 7 \\
+0 & -2 & -2 \\
+0 & \frac{1}{2} & \frac{1}{2} \\
+0 & \frac{-1}{2} & \frac{-1}{2}
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+2 & 5 & 7 \\
+0 & -2 & -2 \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{pmatrix}
+$
+
+\bigskip
+
+So the rank of the matrix is 2. So the dimension of the image is 2 and the
+dimension of the kernel is 1.
+
+\bigskip
+
+\textbf{(vi)} I can't tell the rank of the matrix by inspection so I will do
+Gaussian elimination.
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+3 & 2 & 4 & 1 \\
+1 & -2 & 2 & 7 \\
+3 & 6 & 5 & -2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+0 & -4 & -5 & -11 \\
+0 & -4 & -1 & 3 \\
+0 & 0 & -4 & -14
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+0 & -4 & -5 & -11 \\
+0 & 0 & 4 & 14 \\
+0 & 0 & -4 & -14
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+0 & -4 & -5 & -11 \\
+0 & 0 & 4 & 14 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+$
+
+\bigskip
+
+So the rank of the matrix is 3. So the dimension of the image is 3 and the
+dimension of the kernel is 1.
+
+\bigskip
+
+\textbf{(vii)} I can't tell the rank of the matrix by inspection so I will do
+Gaussian elimination.
+
+\bigskip
+
+$
+\begin{pmatrix}
+2 & 4 & 0 & -6 & 0 \\
+1 & 2 & 3 & 15 & 0 \\
+3 & 6 & -1 & 15 & 5 \\
+-3 & -6 & 2 & 21 & -6
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+2 & 4 & 0 & -6 & 0 \\
+0 & 0 & 3 & 18 & 0 \\
+0 & 0 & -1 & 24 & 5 \\
+0 & 0 & 2 & 12 & -6
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+2 & 4 & 0 & -6 & 0 \\
+0 & 0 & 3 & 18 & 0 \\
+0 & 0 & 0 & 30 & 5 \\
+0 & 0 & 0 & 0 & -6
+\end{pmatrix}
+$
+
+\bigskip
+
+So the rank of the matrix is 4. So the dimension of the image is 4 and the
+dimension of the kernel is 1.
+
+
+\bigskip
+
+\textbf{Problem 13.} Exercise 2.5.24 on page 118.
+
+\bigskip
+
+\textbf{(a)} The two vectors from $\R^3$ are linearly independent, as is
+easily seen from inspection. Therefore they are a basis for the subspace
+they span, which has dimension 2.
+
+\bigskip
+
+\textbf{(b)} It is clear from inspection that the second and third vectors
+are scalar multiles of the first vector. Therefore the first vector is a basis
+for the subspace, which has dimension 1.
+
+\bigskip
+
+\textbf{(c)} I can't tell by inspection whether or not the four vectors from
+$\R^4$ are linearly independent so I will form a matrix with those vectors
+as columns and perform Gaussian elimination.
+
+$
+\begin{pmatrix}
+1 & 1 & 2 & 1 \\
+0 & 0 & 2 & 2 \\
+1 & 0 & 1 & 3 \\
+0 & 1 & 0 & -3
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 2 & 1 \\
+0 & 0 & 2 & 2 \\
+0 & -1 & -1 & 2 \\
+0 & 1 & 0 & -3
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 2 & 1 \\
+0 & -1 & -1 & 2 \\
+0 & 0 & 2 & 2 \\
+0 & 1 & 0 & -3
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 2 & 1 \\
+0 & -1 & -1 & 2 \\
+0 & 0 & 2 & 2 \\
+0 & 0 & -1 & -1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 2 & 1 \\
+0 & -1 & -1 & 2 \\
+0 & 0 & 2 & 2 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+$
+
+So we have learned that the rank of the matrix is 3 and the first three columns
+are basic columns. Therefore the dimension of the subspace spanned by the
+four given vectors is 3 and the first three of the given vectors form a basis for it.
+
+\bigskip
+
+\textbf{(d)} We are given five vector in $\R^4$ so we know that they are not
+linearly independent. But I cannot tell by inspection what the dimension of
+their span is. So we use Gaussian elimination.
+
+$
+\begin{pmatrix}
+1 & 0 & -3 & 1 & 2 \\
+0 & 1 & -4 & -3 & 1 \\
+-3 & 2 & 1 & -8 & -6 \\
+2 & -3 & 6 & 7 & 9
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & -3 & 1 & 2 \\
+0 & 1 & -4 & -3 & 1 \\
+0 & 2 & -8 & -5 & 0 \\
+0 & -3 & 12 & 5 & 5
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & -3 & 1 & 2 \\
+0 & 1 & -4 & -3 & 1 \\
+0 & 0 & 0 & 1 & -2 \\
+0 & 0 & 0 & -4 & 8
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & -3 & 1 & 2 \\
+0 & 1 & -4 & -3 & 1 \\
+0 & 0 & 0 & 1 & -2 \\
+0 & 0 & 0 & 0 & 0
+\end{pmatrix}
+$
+
+So the matrix has rank 3 and the basic columns are 1, 2 and 5.
+Therefore the first, second and fifth of the original set of vectors forms
+a basis for the subspace spanned by all five vectors, and that subspace
+has dimension 3.
+
+\textbf{(e)} We are given six vector in $\R^5$ so we know that they are not
+linearly independent. But I cannot tell by inspection what the dimension of
+their span is. So we use Gaussian elimination.
+
+$
+\begin{pmatrix}
+1 & 2 & 3 & 0 & 1 & 1 \\
+1 & -1 & 0 & -3 & 3 & 0 \\
+-1 & 2 & 1 & 4 & -1 & 3 \\
+1 & 2 & 3 & 0 & 2 & 2 \\
+1 & 1 & 2 & -1 & 1 & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 3 & 0 & 1 & 1 \\
+0 & -3 & -3 & -3 & 2 & -1 \\
+0 & 4 & 4 & 4 & 0 & 4 \\
+0 & 0 & 0 & 0 & 1 & 1 \\
+0 & -1 & -1 & -1 & 0 & -1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 3 & 0 & 1 & 1 \\
+0 & -3 & -3 & -3 & 2 & -1 \\
+0 & 0 & 0 & 0 & \frac{8}{3} & \frac{8}{3} \\
+0 & 0 & 0 & 0 & 1 & 1 \\
+0 & 0 & 0 & 0 & \frac{-2}{3} & \frac{-2}{3}
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 3 & 0 & 1 & 1 \\
+0 & -3 & -3 & -3 & 2 & -1 \\
+0 & 0 & 0 & 0 & 1 & 1 \\
+0 & 0 & 0 & 0 & \frac{8}{3} & \frac{8}{3} \\
+0 & 0 & 0 & 0 & \frac{-2}{3} & \frac{-2}{3}
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 3 & 0 & 1 & 1 \\
+0 & -3 & -3 & -3 & 2 & -1 \\
+0 & 0 & 0 & 0 & 1 & 1 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
+\end{pmatrix}
+$
+
+So the matrix has rank 3 and the basic columns are 1, 2 and 5.
+Therefore the first, second and fifth of the original set of vectors forms
+a basis for the subspace spanned by all six vectors, and that subspace
+has dimension 3.
 
 
 
