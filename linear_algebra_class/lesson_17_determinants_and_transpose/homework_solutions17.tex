@@ -11,7 +11,7 @@
 
 \begin{document}
 
-\title{Solutions to Homework for Lesson 16 \\ Applications of Gaussian Elimination}
+\title{Solutions to Homework for Lesson 17 \\ Determinants and Transpose}
 \author{Math 325, Linear Algebra \\ Mitch Rudominer \\ Fall 2018 \\ SFSU }
 \date{}
 
@@ -256,5 +256,113 @@ we performed one row-exchange. So the determinant of the original matrix is 6.
 is the product of the entries on its main diagonal.
 
 $5*3*-4*3 = -180$
+
+\bigskip
+
+\textbf{(f)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & -2 & 1 & 4 \\
+2 & -4 & 0 & 0 \\
+3 & -4 & 2 & 5 \\
+0 & 2 & -4 & -9
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -2 & 1 & 4 \\
+0 & 0 & -2 & -8 \\
+0 & 2 & -1 & -7 \\
+0 & 2 & -4 & -9
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -2 & 1 & 4 \\
+0 & 2 & -1 & -7 \\
+0 & 0 & -2 & -8 \\
+0 & 2 & -4 & -9
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -2 & 1 & 4 \\
+0 & 2 & -1 & -7 \\
+0 & 0 & -2 & -8 \\
+0 & 0 & -3 & -2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -2 & 1 & 4 \\
+0 & 2 & -1 & -7 \\
+0 & 0 & -2 & -8 \\
+0 & 0 & 0 & 10
+\end{pmatrix}
+$
+
+The determinant of the upper-triangular matrix is the product of the
+entries on its main diagonal: $1*2*-2*10=-40$. In doing Gaussian elimination
+we performed one row-exchange. So the determinant of the original matrix is 40.
+
+
+\bigskip
+
+\textbf{(g)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & -2 & 1 & 4 & -5 \\
+1 & 1 & -2 & 3 & -3 \\
+2 & -1 & -1 & 2 & 2 \\
+5 & -1 & 0 & 5 & 5 \\
+2 & 2 & 0 & 4 & -1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -2 & 1 & 4 & -5 \\
+0 & 3 & -3 & -1 & 2 \\
+0 & 3 & -3 & -6 & 12 \\
+0 & 9 & -5 & -15 & 30 \\
+0 & 6 & -2 & -4 & 9
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -2 & 1 & 4 & -5 \\
+0 & 3 & -3 & -1 & 2 \\
+0 & 0 & 0 & -5 & 10 \\
+0 & 0 & 4 & -12 & 24 \\
+0 & 0 & 4 & -2 & 5
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -2 & 1 & 4 & -5 \\
+0 & 3 & -3 & -1 & 2 \\
+0 & 0 & 4 & -12 & 24 \\
+0 & 0 & 0 & -5 & 10 \\
+0 & 0 & 4 & -2 & 5
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -2 & 1 & 4 & -5 \\
+0 & 3 & -3 & -1 & 2 \\
+0 & 0 & 4 & -12 & 24 \\
+0 & 0 & 0 & -5 & 10 \\
+0 & 0 & 0 & 10 & -19
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -2 & 1 & 4 & -5 \\
+0 & 3 & -3 & -1 & 2 \\
+0 & 0 & 4 & -12 & 24 \\
+0 & 0 & 0 & -5 & 10 \\
+0 & 0 & 0 & 0 & 1
+\end{pmatrix}
+$
+
+The determinant of the upper-triangular matrix is the product of the
+entries on its main diagonal: $1*3*4*-5*1=-60$. In doing Gaussian elimination
+we performed one row-exchange. So the determinant of the original matrix is 60.
 
 \end{document}

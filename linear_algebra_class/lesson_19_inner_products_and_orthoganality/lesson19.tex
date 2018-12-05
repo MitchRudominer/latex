@@ -1,0 +1,141 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,xcolor}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 19 \\ Inner Products and Orthogonality}
+\subtitle{Math 325, Linear Algebra \\ Fall 2018 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{$\R^n$ is more than a vector space}
+
+\begin{itemize}
+\item If $\bv$ is a vector in $\R^n$ we know how to take its length.
+\item But if $\bv$ is a vector in an abstract vector space, there is no meaning to its length.
+\item If $\bv$ and $\bw$ are vectors in $\R^n$ we know how to measure the angle between them.
+\item We know whether or not the two vectors are orthogonal.
+\item But if $\bv$ and $\bw$ are vectors in an abstract vector space, the notions of angle and orthogonal don't make sense.
+\item What is going on? Why do these geometric concepts make sense in $\R^n$ but not in an abstract vector space?
+\item $\R^n$ is more than just a vector space. $\R^n$ has additional structure.
+\item It is possible to give an abstract vector space this additional structure.
+\item It is called an inner product.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Inner Product on a Real Vector Space}
+
+\begin{itemize}
+\item \textbf{Definition} Let $V$ be a real vector space.
+\item An \emph{inner product} on $V$ is a function from $V\times V$ to $\R$
+\item written as $\angles{\bv,\bw}$, such that, the function is
+\item (i) Bilinear: $\angles{c\bv+d\bu,\bw} = c\angles{\bv,\bw} + d\angles{\bu,\bw}$, and
+\item $\angles{\bv,c\bu + d\bw} = c\angles{\bv,\bu} + d\angles{\bv,\bw}$, and
+\item (i) Symmetric: $\angles{\bv,\bw}=\angles{\bw,\bv}$, and
+\item (ii) Positive Definite: $\angles{\bv,\bv} > 0$ if $\bv\not=0$.
+\item A vector space $V$ along with an inner product $\angles{\cdot, \cdot}$, is
+called an \emph{inner product space.}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Dot Product on  $\R^n$}
+
+\begin{itemize}
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The norm associated with an inner product}
+
+\begin{itemize}
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthogonality}
+
+\begin{itemize}
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Positive Definite Matrices}
+
+\begin{itemize}
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Complex Vector Spaces and Inner Products}
+
+\begin{itemize}
+
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\end{document}
+
+
