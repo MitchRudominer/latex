@@ -83,8 +83,8 @@
 \item written as $\angles{\bv,\bw}$, such that, the function is
 \item (i) Bilinear: $\angles{c\bv+d\bu,\bw} = c\angles{\bv,\bw} + d\angles{\bu,\bw}$, and
 \item $\angles{\bv,c\bu + d\bw} = c\angles{\bv,\bu} + d\angles{\bv,\bw}$, and
-\item (i) Symmetric: $\angles{\bv,\bw}=\angles{\bw,\bv}$, and
-\item (ii) Positive Definite: $\angles{\bv,\bv} > 0$ if $\bv\not=0$.
+\item (ii) Symmetric: $\angles{\bv,\bw}=\angles{\bw,\bv}$, and
+\item (iii) Positive Definite: $\angles{\bv,\bv} > 0$ if $\bv\not=0$.
 \item A vector space $V$ along with an inner product $\angles{\cdot, \cdot}$, is
 called an \emph{inner product space.}
 \end{itemize}
@@ -95,15 +95,148 @@ called an \emph{inner product space.}
 \begin{frame}{The Dot Product on  $\R^n$}
 
 \begin{itemize}
-
+\item The main example of an inner product is the dot product on $\R^n$.
+\item Recall that for $\bv,\bw\in\R^n$, $\bv\cdot\bw = \transpose{\bv}\bw$.
+\item If $\bv = \transpose{(v_1,v_2,\cdots,v_n)}$ and $\bw = \transpose{(w_1,w_2,\cdots,w_n)}$
+\item then $\bv\cdot\bw = v_1 w_1 + v_2 w_2 + \cdots + v_n w_n$.
 \end{itemize}
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Dot Product is an inner product.}
+
+\begin{itemize}
+\item \textbf{Claim} The function $\angles{\bv,\bw} = \bv\cdot\bw$ is an inner product.
+\item Consequently $\R^n$ along with the dot product is an inner-product space.
+\item \textbf{proof.} Firstly, since $\bv\cdot\bw\in\R$,  the dot product
+is a function from $\R^n\times\R^n$ to $\R$.
+\item Next we need to check the three properties:
+\item (i) Bilinear: $\angles{c\bv+d\bu,\bw} = c\angles{\bv,\bw} + d\angles{\bu,\bw}$.
+\item $(c\bv+d\bu) \cdot \bw = c(\bv\cdot\bw) + d(\bu\cdot\bw)$
+\item (ii) Symmetric: $\angles{\bv,\bw}=\angles{\bw,\bv}$.
+\item $\bv\cdot\bw = \bw \cdot \bv$
+\item (iii) Positive Definite: $\angles{\bv,\bv} > 0$ if $\bv\not=0$.
+\item If $\bv = \transpose{(v_1,v_2,\cdots,v_n)}$ then
+\item $\bv\cdot\bv = v_1^2 + v_2^2 + \cdot v_n^2 \geq 0$.
+\item If $\bv\not=0$  then one of the $v_i\not=0$ and so $\bv\cdot\bv > 0$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Length and Angle}
+
+\begin{itemize}
+\item Let $\left(V,\angles{\cdot,\cdot}\right)$ be and inner product space.
+\item The inner product on $V$ imbues $V$ with a kind of \emph{geometry.}
+\item It allows us to define \emph{length} and \emph{angle}.
+\item We start with length.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Norms on vector spaces}
+
+\begin{itemize}
+\item In Euclidean space $\R^n$, we know how to measure the length of a vector.
+\item When we generalize the notion of length to an abstract vector space we get:
+\item \textbf{Definition.} Let $V$ be a vector space.
+\item A \emph{norm} on $V$ is a function from $V$ to $\R$, written $\norm{\bv}$, such that
+\item (i) $\norm{\bv} > 0 $ for all $\bv\in V, \bv\not=0$.
+\item (ii) $\norm{c\bv} = c\norm{\bv}$ for all $\bv\in V$ and all scalars $c$.
+\item (iii) triangle inequality: $\norm{\bv+\bw} \leq \norm{\bv} + \norm{\bw}$.
+\item You should think of a norm on a vector space as a way of assigning a length to the vectors.
+\end{itemize}
+\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{The norm associated with an inner product}
 
 \begin{itemize}
+\item Every inner product space comes with an associated norm.
+\item \textbf{Definition} Let $\left(V, \angles{\cdot,\cdot}\right)$ be an inner-product space.
+\item Then there is an \emph{associated norm} defined as follows:
+\item $\norm{\bv} = \sqrt{\angles{\bv,\bv}}$.
+\item \textbf{Claim.} This gives a norm.
+\item \textbf{proof.}(i) $\norm{\bv} > 0 $ for all $\bv\in V, \bv\not=0$.
+\item $\angles{\bv,\bv} > 0$ by positive definiteness, so $\sqrt{\angles{\bv,\bv}} > 0$.
+\item (ii) $\norm{c\bv} = c\norm{\bv}$ for all $\bv\in V$ and all scalars $c$.
+\item $\sqrt{\angles{c\bv,c\bv}} = \sqrt{c^2 \angles{\bv,\bv}} = c\sqrt{\angles{\bv,\bv}}$.
+\item (iii) triangle inequality: $\norm{\bv+\bw} \leq \norm{\bv} + \norm{\bw}$.
+\item In order to prove the triangle inequality we need another famous inequality.
+\end{itemize}
+\end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Cauchy-Schwarz Inequality}
+
+\begin{itemize}
+\item \textbf{Theorem}  Let $\left(V, \angles{\cdot,\cdot}\right)$ be an inner-product space.
+\item Then for all $\bv,\bw\in V$
+\item $|\angles{\bv,\bw}| \leq \norm{\bv} \norm{\bw}$.
+\item See the proof in the textbook. We will omit it here.
+\item But for an example, let's see why the inequality is true for the dot product on $\R^n$.
+\item You may remember from other classes that in $\R^2$ and $\R^3$, we have the following geometric property of the dot product:
+\item $\bv\cdot\bw = \norm{\bv}\norm{\bw}\cos(\theta)$ where
+\item $\theta$ is the acute angle between $\bv$ and $\bw$.
+\item Since $|\cos(\theta)|\leq 1$, it follows that  $|\bv\cdot\bw| \leq \norm{\bv}\norm{\bw}$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Triangle Inequality}
+
+\begin{itemize}
+\item The Cauchy-Scharz inequality allows us to prove the triangle inequality
+\item (iii) triangle inequality: $\norm{\bv+\bw} \leq \norm{\bv} + \norm{\bw}$.
+\item $\norm{\bv+\bw}^2 = \angles{\bv+\bw,\bv+\bw}$
+\item $=\angles{\bv,\bv}+2\angles{\bv,\bw} +\angles{\bw,\bw}$, by bi-linearity
+\item $\leq \norm{\bv}^2+2\norm{\bv}\norm{\bw} +\norm{\bw}^2$, by Cauchy-Shwarz
+\item $= \left(\norm{\bv} + \norm{\bw}\right)^2$.
+\item So $\norm{\bv+\bw} \leq \norm{\bv} + \norm{\bw}$ $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Definition of angle}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $\left(V, \angles{\cdot,\cdot}\right)$ be an inner-product space.
+\item Let $\bv$ and $\bw$ be two nonzero vectors.
+\item Then the \emph{angle between} $\bv$ and $\bw$ is defined to be
+\item the arccosine of $\angles{\bv,\bw}/\norm{\bv}\norm{\bw}$.
+\item By Cauchy-Shwarz $\lvert\angles{\bv,\bw}/\norm{\bv}\norm{\bw}\rvert\leq 1$ so the arcosine is defined.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+
+\begin{itemize}
+\item In $\R^2$, let $\bv=(1,2)^{T}$ and $\bw=(2,3)^{T}$
+\item Use the standard dot product as the inner product on $\R^2$.
+\item Find $\norm{\bv}, \norm{\bw}$ and the angle between $\bv$ and $\bw$.
+\item Verify the Cauchy-Schwarz inequality for these two vectors
+\item $\angles{\bv,\bw} = \bv\cdot\bw = 2 + 6 = 8$.
+\item $\norm{\bv} = \sqrt{\angles{\bv,\bv}} =\sqrt{\bv\cdot\bv} = \sqrt{1^2+2^2} = \sqrt{5}$.
+\item $\norm{\bw} = \sqrt{\angles{\bw,\bw}} =\sqrt{\bw\cdot\bw} = \sqrt{2^2+3^2} = \sqrt{13}$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example continued}
+
+\begin{itemize}
+\item $\angles{\bv,\bw} =  8$.
+\item $\norm{\bv} = \sqrt{5}$.
+\item $\norm{\bw} =  \sqrt{13}$.
+\item Cauchy-Schwarz: $|\angles{\bv,\bw}| \leq \norm{\bv} \norm{\bw}$.
+\item $|8| \leq \sqrt{5}\sqrt{13} = \sqrt{65}$. True since $8=\sqrt{64}$.
+\item The angle between the two vectors is $\arccos\left(\angles{\bv,\bw}/\norm{\bv}\norm{\bw}\right)$
+\item $=\arccos(8/\sqrt{65}) = \arccos(\sqrt{64/65})$
+\item This is about $0.124$ radians or about $7$ degrees.
 \end{itemize}
 \end{frame}
 
@@ -111,15 +244,130 @@ called an \emph{inner product space.}
 \begin{frame}{Orthogonality}
 
 \begin{itemize}
-
+\item \textbf{Definition.} Let $\left(V, \angles{\cdot,\cdot}\right)$ be an inner-product space.
+\item Let $\bv$ and $\bw$ be two vectors in $V$. Then we say that $\bv$ and $\bw$ are \emph{orthogonal}
+\item if $\angles{\bv,\bw}=0$.
+\item Example: In Euclidean space $\R^n$, equipped with the dot product,
+\item two vectors are orthogonal iff they are perpendicular, i.e. meet at right angles.
+\item Orthogonality is the abstract analog of that in arbitrary vector spaces.
 \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthonormal basis}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $\left(V, \angles{\cdot,\cdot}\right)$ be an inner-product space.
+\item Let $\bv_1,\bv_2,\cdots,\bv_n$ be a set of vectors in $V$.
+\item Then the set is called \emph{orthogonal} iff every two distinct vectors in it are orthogonal.
+\item i.e. $\angles{\bv_i,\bv_j} = 0$ for all $i\not=j$.
+\item The set is called \emph{orthonormal} if it is orthogonal and in addition all of the elements have norm one.
+\item i.e. $\angles{\bv_i,\bv_i} = 1$ for all $i$.
+\item Of particular importance is the case where $\bv_1,\bv_2,\cdots,\bv_n$  form a basis for $V$.
+\item Then we say they form an orthogonal (or orthonormal) basis.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Converting orthogonal to orthonormal}
+
+\begin{itemize}
+\item If $\bv_1,\bv_2,\cdots,\bv_n$ is an orthogonal basis then we can convert it into an orthonormal basis,
+\item by dividing each basis element by its norm.
+\item Notice that none of the basis elements can have norm zero.
+\item Let $\bu_1 = \bv_1/\norm{\bv_1}, \bu_2=\bv_2/\norm{\bv_2},\cdots,\bu_n=\bv_n/\norm{\bv_n}$.
+\item Then $\bu_1,\bu_2,\cdots,\bu_n$ is an orthonormal basis.
+\item \textbf{proof.} First notice that the norms of the $\bu_i$ are 1.
+\item $\norm{\bu_i} = \norm{\frac{\bv_i}{\norm{\bv_i}}} = \frac{1}{\norm{\bv_i}}\norm{\bv_i} = 1$.
+\item Then notice that the $\bu_i$ are still orthogonal.
+\item $\angles{\bu_i,\bu_j} = \angles{\frac{\bv_i}{\norm{\bv_i}},\frac{\bv_j}{\norm{\bv_j}}}$
+\item $= \frac{1}{\norm{\bv_i}} \frac{1}{\norm{\bv_j}}\angles{\bv_i,\bv_j} = 0$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+
+\begin{itemize}
+\item The standard basis in $\R^n$ is an orthonormal basis
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+
+\begin{itemize}
+\item In $\R^2$, let $\bv=
+\begin{pmatrix}
+1 \\ 1
+\end{pmatrix}
+\text{, and }
+\bw=
+\begin{pmatrix}
+2 \\ 3
+\end{pmatrix}
+$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+
+\begin{itemize}
+\item In $\R^2$, let $\bv=
+\begin{pmatrix}
+1 \\ 1
+\end{pmatrix}
+\text{, and }
+\bw=
+\begin{pmatrix}
+-1 \\ 1
+\end{pmatrix}
+$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Coordinates in an orthonormal basis}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{An orthonormal set is automatically linearly independent}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthogonal Matrices}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A vector orthogonal to a subspace}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthogonal projection}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthogonal subspaces}
+
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Positive Definite Matrices}
 
 \begin{itemize}
-
+\item a
 \end{itemize}
 \end{frame}
 
@@ -127,7 +375,7 @@ called an \emph{inner product space.}
 \begin{frame}{Complex Vector Spaces and Inner Products}
 
 \begin{itemize}
-
+\item a
 \end{itemize}
 \end{frame}
 
