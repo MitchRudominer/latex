@@ -289,7 +289,24 @@ is a function from $\R^n\times\R^n$ to $\R$.
 \begin{frame}{Example}
 
 \begin{itemize}
-\item The standard basis in $\R^n$ is an orthonormal basis
+\item The standard basis in $\R^n$ is an orthonormal basis.
+\item For example in $\R^3$ with
+\item $\be_1=
+\begin{pmatrix}
+1\\0\\0
+\end{pmatrix},
+\be_2=
+\begin{pmatrix}
+0\\1\\0
+\end{pmatrix},
+\be_3=
+\begin{pmatrix}
+0\\0\\1
+\end{pmatrix}
+$
+\item We have $\angles{\be_1,\be_2} = \angles{\be_1,\be_3} = \angles{\be_2,\be_3} = 0$.
+\item $\angles{\be_1,\be_1}=\angles{\be_2,\be_2}=\angles{\be_3,\be_3}=1$.
+\item So $\singleton{\be_1,\be_2,\be_3}$ is an orthonormal basis for $\R^3$.
 \end{itemize}
 \end{frame}
 
@@ -307,6 +324,10 @@ is a function from $\R^n\times\R^n$ to $\R$.
 2 \\ 3
 \end{pmatrix}
 $.
+\item Then $\angles{\bv,\bw} = 2 + 3 = 5$.
+\item So $\bv$ and $\bw$ are not orthogonal.
+\item But they are linearly independent and since there are two of them in $\R^2$ they form a basis.
+\item But it is not an orthogonal basis.
 \end{itemize}
 \end{frame}
 
@@ -324,13 +345,162 @@ $.
 -1 \\ 1
 \end{pmatrix}
 $.
+\item Then $\angles{\bv,\bw}=0$. So $\bv$ and $\bw$ are orthogonal.
+\item $\angles{\bv,\bv}=\angles{\bw,\bw}=\sqrt{2}$.
+\item So $\singleton{\bv,\bw}$ is an orthogonal basis for $\R^2$ but not an orthonormal basis.
+\item Let $\bu_1 = \frac{1}{\sqrt{2}}\bv_1, \bu_2=\frac{1}{\sqrt{2}}\bw$.
+\item Then $\singleton{\bu_1,\bu_2}$ is an orthonormal basis for $\R^2$.
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Coordinates in an orthonormal basis}
+\begin{itemize}
+\item Working in an orthonormal basis has advantages.
+\item For example it is easy to compute the coordinates of any vector relative to an orthonormal basis.
+\item \textbf{Theorem} Let $\bv_1,\bv_2,\cdots,\bv_n$ be an orthogonal basis for an inner-product space.
+\item Let $\bv$ be any vector in the inner product space. Then
+\item $$\bv=\frac{\angles{\bv,\bv_1}}{\norm{\bv_1}^2}\bv_1 + \frac{\angles{\bv,\bv_2}}{\norm{\bv_2}^2}\bv_2+\cdots+\frac{\angles{\bv,\bv_n}}{\norm{\bv_n}^2}\bv_n.$$
+\item In particular if $\bv_1,\bv_2,\cdots,\bv_n$ is an orthonormal basis then
+\item $$\bv=\angles{\bv,\bv_1}\bv_1+\angles{\bv,\bv_2}\bv_2+\cdots+\angles{\bv,\bv_n}\bv_n.$$
+\end{itemize}
+\end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Computing coordinates in different bases}
+\begin{itemize}
+\item Let's compute the coordinates of the vector $\bv=\begin{pmatrix} 1\\2 \end{pmatrix}$ in three different bases.
+\item Basis 1: $\singleton{
+\frac{1}{\sqrt{2}}
+\begin{pmatrix} 1\\1 \end{pmatrix},
+\frac{1}{\sqrt{2}}
+\begin{pmatrix} -1\\1 \end{pmatrix},
+}$
+\item Basis 2: $\singleton{
+\begin{pmatrix} 1\\1 \end{pmatrix},
+\begin{pmatrix} -1\\1 \end{pmatrix},
+}$
+\item Basis 3: $\singleton{
+\begin{pmatrix} 1\\1 \end{pmatrix},
+\begin{pmatrix} 2\\3 \end{pmatrix},
+}$
+\end{itemize}
+\end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Computing coordinates in an orthonormal basis}
+\begin{itemize}
+\item Let's compute the coordinates of the vector $\bv=\begin{pmatrix} 1\\2 \end{pmatrix}$ in basis 1.
+\item Basis 1: $\singleton{
+\bv_1=\frac{1}{\sqrt{2}}
+\begin{pmatrix} 1\\1 \end{pmatrix},
+\bv_2=\frac{1}{\sqrt{2}}
+\begin{pmatrix} -1\\1 \end{pmatrix},
+}$
+\item This is an orthonormal basis so the theorem tells us that $\bv=\angles{\bv,\bv_1}\bv_1+\angles{\bv,\bv_2}\bv_2$.
+\item $\angles{\bv,\bv_1} = \frac{1}{\sqrt{2}}(1 + 2) = \frac{3}{\sqrt{2}}$
+\item $\angles{\bv,\bv_2} = \frac{1}{\sqrt{2}}(-1 + 2) = \frac{1}{\sqrt{2}}$
+\item So $\bv=\frac{3}{\sqrt{2}}\bv_1 + \frac{1}{\sqrt{2}}\bv_2$.
+\item Check
+\begin{align*}
+\frac{3}{\sqrt{2}}\frac{1}{\sqrt{2}}
+\begin{pmatrix}1\\1\\\end{pmatrix} +  \frac{1}{\sqrt{2}}\frac{1}{\sqrt{2}}\begin{pmatrix}-1\\1\end{pmatrix}
+&=\frac{3}{2}\begin{pmatrix}1\\1\end{pmatrix}+\frac{1}{2}\begin{pmatrix}-1\\1\end{pmatrix} \\
+&=\begin{pmatrix}1\\2\end{pmatrix}
+\end{align*}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Computing coordinates in an orthogonal basis}
+\begin{itemize}
+\item Let's compute the coordinates of the vector $\bv=\begin{pmatrix} 1\\2 \end{pmatrix}$ in basis 2.
+\item Basis 2: $\singleton{
+\bv_1=
+\begin{pmatrix} 1\\1 \end{pmatrix},
+\bv_2=
+\begin{pmatrix} -1\\1 \end{pmatrix},
+}$
+\item This is an orthogonal basis so the theorem tells us that $\bv=\frac{\angles{\bv,\bv_1}}{\norm{\bv_1}^2}\bv_1 + \frac{\angles{\bv,\bv_2}}{\norm{\bv_2}^2}\bv_2$.
+\item $\angles{\bv,\bv_1} = 1 + 2 = 3$
+\item $\angles{\bv,\bv_2} = -1 + 2 = 1$.
+\item $\norm{\bv_1}^2=2$, $\norm{\bv_2}^2=2$.
+\item So $\bv=\frac{3}{2}\bv_1 + \frac{1}{2}\bv_2$.
+\item Check
+$$
+\frac{3}{2}
+\begin{pmatrix}1\\1\\\end{pmatrix} +  \frac{1}{2}\begin{pmatrix}-1\\1\end{pmatrix}
+=\begin{pmatrix}1\\2\end{pmatrix}
+$$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Computing coordinates in a non-orthogonal basis}
+\begin{itemize}
+\item Let's compute the coordinates of the vector $\bv=\begin{pmatrix} 1\\2 \end{pmatrix}$ in basis 3.
+\item Basis 3: $\singleton{
+\bv_1=
+\begin{pmatrix} 1\\1 \end{pmatrix},
+\bv_2=
+\begin{pmatrix} 2\\3 \end{pmatrix},
+}$
+\item This basis is not orthogonal so the theorem doesn't apply. We have to fall back to earlier ideas.
+\item We are looking for two scalars $x$ and $y$ such that $x\bv_1+y\bv_2=\bv$
+\item This is a system of linear equations. Solve
+\item $
+\begin{pmatrix}
+1 & 2 \\
+1 & 3
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 \\
+2
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Computing coordinates in a non-orthogonal basis}
+\begin{itemize}
+\item Form the augmented matrix and do Gaussian elimination and back-substitution
+\item $\begin{pmatrix}
+1 & 2 & \aug & 1\\
+1 & 3 & \aug & 2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & \aug & 1\\
+0 & 1 & \aug & 1
+\end{pmatrix}
+$
+\item $y=1$
+\item $x + 2y = 1 \SkipImplies x +2 = 1 \SkipImplies x = -1$.
+\item So $\bv = -\bv_1 + \bv_2$.
+\item Check
+$$
+-\begin{pmatrix}1\\1\\\end{pmatrix} + \begin{pmatrix}2\\3\end{pmatrix}
+=\begin{pmatrix}1\\2\end{pmatrix}
+$$
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof of the theorem}
+\begin{itemize}
+\item \textbf{Proof.} Suppose $\bv_1,\bv_2,\cdots,\bv_n$ is an orthogonal basis.
+\item Let $\bv$ be any vector. Then $\bv$ has some coordinates in terms of the basis.
+\item So write $\bv = c_1\bv_1 + c_2\bv_2 + \cdots + c_n\bv_n$.
+\item Now let's compute the inner-product of $\bv$ with each of the basis elements.
+\item $\angles{\bv,\bv_i} = c_1\angles{\bv_1,\bv_i} + c_2\angles{\bv_2,\bv_i} + \cdots + c_i\angles{\bv_i,\bv_i} + \cdots + c_n\angles{\bv_n,\bv_i}$.
+\item Since the set of basis vectors is an orthogonal set, $\angles{\bv_j,\bv_i} = 0$ for all $j\not=i$.
+\item So $\angles{\bv,\bv_i} = c_i\angles{\bv_i,\bv_i}$.
+\item So $c_i = \frac{\angles{\bv,\bv_i}}{\angles{\bv_i,\bv_i}} = \frac{\angles{\bv,\bv_i}}{\norm{\bv_i}^2}$. $\qed$
+\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
