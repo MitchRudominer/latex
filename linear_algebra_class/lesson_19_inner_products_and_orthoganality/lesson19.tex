@@ -257,7 +257,7 @@ is a function from $\R^n\times\R^n$ to $\R$.
 \begin{frame}{Orthonormal basis}
 
 \begin{itemize}
-\item \textbf{Definition.} Let $\left(V, \angles{\cdot,\cdot}\right)$ be an inner-product space.
+\item \textbf{Definition.} Let $V$ be an inner-product space.
 \item Let $\bv_1,\bv_2,\cdots,\bv_n$ be a set of vectors in $V$.
 \item Then the set is called \emph{orthogonal} iff every two distinct vectors in it are orthogonal.
 \item i.e. $\angles{\bv_i,\bv_j} = 0$ for all $i\not=j$.
@@ -346,7 +346,8 @@ $.
 \end{pmatrix}
 $.
 \item Then $\angles{\bv,\bw}=0$. So $\bv$ and $\bw$ are orthogonal.
-\item $\angles{\bv,\bv}=\angles{\bw,\bw}=\sqrt{2}$.
+\item $\angles{\bv,\bv}=\angles{\bw,\bw}=2$.
+\item $\norm{\bv}=\norm{\bw}=\sqrt{2}$.
 \item So $\singleton{\bv,\bw}$ is an orthogonal basis for $\R^2$ but not an orthonormal basis.
 \item Let $\bu_1 = \frac{1}{\sqrt{2}}\bv_1, \bu_2=\frac{1}{\sqrt{2}}\bw$.
 \item Then $\singleton{\bu_1,\bu_2}$ is an orthonormal basis for $\R^2$.
@@ -580,18 +581,6 @@ $
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Two orthogonal bases}
-\begin{itemize}
-\item \textbf{Lemma} Suppose $W$ and $U$ are subspaces of the inner-product space $V$.
-\item Let $\bw_1,\bw_2,\cdots,\bw_n$ be a (not necessarily orthogonal) spanning set for $W$.
-\item Let $\bu_1,\bu_2,\cdots,\bu_n$ be a (not necessarily orthogonal) spanning set for $U$.
-\item Suppose that $\bu_i\perp\bw_j$, for all $i,j$.
-\item Then $U\perp W$.
-\item \textbf{proof} Similar to the proof of the previous lemma.
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Orthogonal Compliment}
 \begin{itemize}
 \item \textbf{Definition} Let $W$ be a subspace of the inner-product space $V$.
@@ -614,6 +603,19 @@ $
 \item This is true because $\angles{\bv+\bu,\bw}=\angles{\bv,\bw}+\angles{\bu,\bw} = 0 + 0 = 0$.
 \item (3) $\bv\in W \SkipImplies c\bv\in W$.
 \item This is true because $\angles{c\bv,\bw} = c\angles{\bv,\bw} = c0 = 0$. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$W\intersect W^{\perp}$}
+\begin{itemize}
+\item \textbf{Proposition} Let $W$ be a subspace of the inner-product space $V$.
+\item Then $W\intersect W^{\perp} = \singleton{\bzero}$.
+\item \textbf{proof.} Suppose $\bv\in W\intersect W^{\perp}$.
+\item But then $\bv$ is orthogonal to itself.
+\item So $\angles{\bv,\bv} = 0$.
+\item So $\norm{\bv} = 0$.
+\item So $\bv=\bzero$. $\qed$.
 \end{itemize}
 \end{frame}
 
@@ -650,7 +652,62 @@ this bases to produce an orthonormal bases $\bu_1,\bu_2,\cdots,\bu_n$.
 \item Then there are unique vectors $\bv_1,\bv_2$ such that
 \item $\bv=\bv_1+\bv_2$ and
 \item $\bv_1 \in W$ and $\bv_2\in W^{\perp}$.
+\item Intuitively: $\bv_1$ is the ``part of $\bv$ parallel to $W$'', and
+\item $\bv_2$ is the ``part of $\bv$ orthogonal to $W$.''
 \item \textbf{Definition.} $\bv_1$ is called the \emph{orthogonal} projection of $\bv$ onto $W$.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example Orthogonal projection}
+\begin{itemize}
+\item \textbf{Example} In $\R^3$ let $W$ be the $x$- $y$-plane. Let $\bv=
+\begin{pmatrix}1\\2\\3 \end{pmatrix}$.
+\item Then $\bv=
+\begin{pmatrix}
+1\\2\\0
+\end{pmatrix}
++
+\begin{pmatrix}
+0\\0\\3
+\end{pmatrix}
+$.
+\item $\begin{pmatrix}
+1\\2\\0
+\end{pmatrix}$
+is the orthogonal project of $\bv$ onto the $x$- $y$-plane.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof of Orthogonal projection theorem}
+\begin{itemize}
+\item \textbf{proof} Let $V$ be a finite dimensional inner product space.
+\item Let $W$ be a subspace of $V$. Let $\bv\in V$.
+\item Let $\bw_1,\bw_2,\cdots,\bw_n$ be an orthonormal basis for $W$.
+\item Let $\bv_1=\angles{\bv,\bw_1}\bw_1+\angles{\bv,\bw_2}\bw_2+\cdots+\angles{\bv,\bw_n}\bw_n.$
+\item Let $\bv_2 = \bv - \bv_1$.
+\item Then $\bv=\bv_1+\bv_2$ and $\bv_1\in W$. We need to see that $\bv_2\in W^{\perp}$.
+\item First, let $\bw_i$ be one of the basis elements and compute $\angles{\bv_1, \bw_i}$.
+\item $\angles{\bv_1, \bw_i} = \angles{\bv,\bw_1}\angles{\bw_1,\bw_i} + \angles{\bv,\bw_2}\angles{\bw_2,\bw_i} +
+\cdots + \angles{\bv,\bw_i}\angles{\bw_i,\bw_i} + \cdots + \angles{\bv,\bw_n}\angles{\bw_n,\bw_i} $
+\item $=\angles{\bv,\bw_i}\angles{\bw_i,\bw_i} = \angles{\bv,\bw_i}$.
+\item Now, to see that $\bv_2\in W^{\perp}$, take the inner product of $\bv_2$ with any of the $\bw_i$.
+\item $\angles{\bv_2, \bw_i} = \angles{\bv, \bw_i} - \angles{\bv_1, \bw_i}$
+\item $=\angles{\bv, \bw_i} - \angles{\bv,\bw_i} = 0$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof continued}
+\begin{itemize}
+\item So $\bv_2\in W^{\perp}$.
+\item So we have written $\bv=\bv_1+\bv_2$ with $\bv_1\in W$ and $\bv_2\in W^{\perp}$.
+\item To complete the proof we have to show that the decomposition is unique.
+\item Suppose that we could also write $\bv=\bu_1+\bu_2$ with $\bu_1\in W$ and $\bu_2\in W^{\perp}$.
+\item
 \end{itemize}
 
 \end{frame}
@@ -661,15 +718,15 @@ this bases to produce an orthonormal bases $\bu_1,\bu_2,\cdots,\bu_n$.
 \item \textbf{Theorem} Let $V$ be a finite dimensional inner product space.
 \item Let $W$ be a subspace of $V$.
 \item Then $V= W + W^{\perp}$. This means
-\item $\span{W\union W^{\perp}} = V$, and
+\item $\spn{W\union W^{\perp}} = V$, and
 \item $W\intersect W^{\perp} = \singleton{\bzero}$
-\item Equivalently every vector $\bv\in V$ can be written uniquely as $\bv_1+\bv+2$ with $\bv_1\in W$ and $\bv_2\in W^{\perp}$.
+\item Equivalently every vector $\bv\in V$ can be written \emph{uniquely} as
+ $\bv_1+\bv+2$ with $\bv_1\in W$ and $\bv_2\in W^{\perp}$.
 \end{itemize}
-
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{$V=W+W^{\perp}}
+\begin{frame}{$V=W+W^{\perp}$}
 \begin{itemize}
 \item \textbf{Proposition} Let $W$ be a subspace of the inner-product space $V$.
 \item Then $\left(W^{\perp}\right)^{\perp} = W$
