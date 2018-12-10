@@ -505,8 +505,176 @@ $$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{An orthonormal set is automatically linearly independent}
+\begin{itemize}
+\item \textbf{Prop.} Suppose $\bv_1,\bv_2,\cdots,\bv_n$ is an orthogonal set.
+\item Then it is also a linearly independent set. (So it is a basis for the space it spans.)
+\item \textbf{proof.} Suppose $c_1\bv_1+c_2\bv_2+\cdots+c_n\bv_n=\bzero$.
+\item We will show that $c_1=c_2=\cdots=c_n=0$.
+\item Take the inner-product of both sides of the equation above with the vector $\bv_i$.
+\item For all $j\not=i$, $\angles{\bv_i,\bv_j} = 0$. So we get
+\item $c_i\angles{\bv_i,\bv_i} = \angles{\bv_i,\bzero}$.
+\item So $c_i\norm{\bv_i}^2 = 0$.
+\item So $c_i=0$.
+\item But this is true for all $i$, so $c_i=0$ for all $i$. $\qed$.
+\end{itemize}
 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A vector orthogonal to a subspace}
+\begin{itemize}
+\item \textbf{Definition} Suppose $W$ is a subspace of the inner-product space $V$.
+\item Let $\bv$ be a vector in $V$.
+\item Then we say that $\bv$ is orthogonal to $W$, written $\bv\perp W$, if
+\item $\bv$ is orthogonal to every element of $W$.
+\item Example: In $\R^3$ let $W$ be the $x$,$y$-plane and let $\bv=\be_3$.
+\item Then $\bv\perp W$.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A vector orthogonal to a basis}
+\begin{itemize}
+\item \textbf{Lemma} Suppose $W$ is a subspace of the inner-product space $V$.
+\item Let $\bw_1,\bw_2,\cdots,\bw_n$ be a (not necessarily orthogonal) spanning set for $W$.
+\item Let $\bv$ be a vector in $V$.
+\item Suppose that $\bv\perp\bw_1,\bv\perp\bw_2\cdots,\bv\perp\bw_n$.
+\item Then $\bv\perp W$.
+\item \textbf{proof} Let $\bw\in W$. We must show that $\bv\perp\bw$.
+\item We can write $\bw=c_1\bw_1+c_2\bw_2+\cdots+c_n\bw_n$.
+\item So $\angles{\bv,\bw} = c_1\angles{\bv,\bw_1} + c_2\angles{\bv,\bw_2}+\cdots+\angles{\bv,\bw_n}$
+\item $=0 + 0 + \cdots + 0$.
+\item So $\bv\perp\bw$. $\qed$.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+\begin{itemize}
+\item In $\R^3$ let $W$ be the plane spanned by the vectors
+\item $\bw_1=
+\begin{pmatrix}
+1 \\ 1 \\ 2
+\end{pmatrix},
+\bw_2=
+\begin{pmatrix}
+0 \\ -1 \\ 2
+\end{pmatrix}
+$.
+\item Let $\bv=
+\begin{pmatrix}
+-4 \\ 2 \\ 1
+\end{pmatrix}
+$
+\item Then $\bv\perp W$.
+\item To see this just note that $\bv\perp\bw_1$ and $\bv\perp\bw_2$.
+\end{itemize}
+\end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthogonal subspaces}
+\begin{itemize}
+\item \textbf{Definition} Suppose $W$ and $U$ are subspaces of the inner-product space $V$.
+\item Then we say that $W$ and $U$ are orthogonal, written $W\perp U$ iff
+\item for all $\bw\in W$ and all $\bu\in U$, $\bw\perp\bu$.
+\item Example. In $\R^3$ the $x$- and $y$-axes are orthogonal.
+\item Example. In $\R^3$ the $x$- $y$-plane and the $z$-axis are orthogonal.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Two orthogonal bases}
+\begin{itemize}
+\item \textbf{Lemma} Suppose $W$ and $U$ are subspaces of the inner-product space $V$.
+\item Let $\bw_1,\bw_2,\cdots,\bw_n$ be a (not necessarily orthogonal) spanning set for $W$.
+\item Let $\bu_1,\bu_2,\cdots,\bu_n$ be a (not necessarily orthogonal) spanning set for $U$.
+\item Suppose that $\bu_i\perp\bw_j$, for all $i,j$.
+\item Then $U\perp W$.
+\item \textbf{proof} Similar to the proof of the previous lemma.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthogonal Compliment}
+\begin{itemize}
+\item \textbf{Definition} Let $W$ be a subspace of the inner-product space $V$.
+\item The \emph{orthogonal compliment} of $W$, written $W^{\perp}$, also pronounced ``$W$-perp'', is
+\item $\setof{\bv\in V}{\bv\perp W}$.
+\item Example: Let $W$ be the $x$-, $y$-plane in $\R^3$. Then $W^{\perp}$ is the $z$-axis.
+\item Example: Let $W$ be the $z$-axis in $\R^3$. Then $W^{\perp}$ is the $x$-, $y$-plane.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthogonal Compliment is a Subspace}
+\begin{itemize}
+\item \textbf{Proposition} Let $W$ be a subspace of the inner-product space $V$.
+\item Then $W^{\perp}$ is a subspace.
+\item \textbf{proof.} Let's check the three conditions of being a subspace:
+\item (1) $\bzero\in W^{\perp}$.
+\item This is true because $\angles{\bzero, \bv} = 0$ for all $\bv$.
+\item (2) $\bv,\bu\in W^{\perp} \SkipImplies \bv+\bu \in W^{\perp}$.
+\item This is true because $\angles{\bv+\bu,\bw}=\angles{\bv,\bw}+\angles{\bu,\bw} = 0 + 0 = 0$.
+\item (3) $\bv\in W \SkipImplies c\bv\in W$.
+\item This is true because $\angles{c\bv,\bw} = c\angles{\bv,\bw} = c0 = 0$. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthonormal Bases Exist}
+\begin{itemize}
+\item \textbf{Theorem} Let $V$ be a finite dimensional inner product space.
+\item Then $V$ has an orthonormal bases.
+\item \textbf{Proof sketch} Let $\bv_1,\bv_2,\cdots,\bv_n$ be any bases for $V$.
+\item There is an algorithm called the \emph{Gram-Schmidt algorithm} that modifies
+this bases to produce an orthonormal bases $\bu_1,\bu_2,\cdots,\bu_n$.
+\item We don't have time to learn this algorithm. Read Section 4.2 if you are interested.
+\item Here we'll give a rough sketch.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Gram-Schmidt Algorithm}
+\begin{itemize}
+\item Let $\bu_1 = \frac{1}{\norm{\bv_1}}\bv_1$.
+\item Then $\norm{\bu_1} = 1$ and $\bu_1,\bv_2,\cdots,\bv_n$ is still a basis.
+\item Let $\bw_2 = \bv_2 - \angles{\bv_2,\bu_1}\bu_1$.
+\item Then $\angles{\bw_2,\bu_1} = \angles{\bv_2,\bu_1} - \angles{\bv_2,\bu_1}\angles{\bu_1,\bu_1} = 0$.
+\item Let $\bu_2 = \frac{1}{\norm{\bw_2}}\bw_2$.
+\item Then $\norm{\bu_2}=1$ and $\angles{\bu_1,\bu_2}=0$ and $\bu_1, \bu_2,\bv_3,\cdots,\bv_n$ is still a basis.
+\item Continuing in this we we replace each $\bv_i$ with a $\bu_i$ and so obtain an orthonormal basis. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthogonal projection}
+\begin{itemize}
+\item \textbf{Theorem} Let $V$ be a finite dimensional inner product space.
+\item Let $W$ be a subspace of $V$. Let $\bv\in V$.
+\item Then there are unique vectors $\bv_1,\bv_2$ such that
+\item $\bv=\bv_1+\bv_2$ and
+\item $\bv_1 \in W$ and $\bv_2\in W^{\perp}$.
+\item \textbf{Definition.} $\bv_1$ is called the \emph{orthogonal} projection of $\bv$ onto $W$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$V=W+W^{\perp}$}
+\begin{itemize}
+\item \textbf{Theorem} Let $V$ be a finite dimensional inner product space.
+\item Let $W$ be a subspace of $V$.
+\item Then $V= W + W^{\perp}$. This means
+\item $\span{W\union W^{\perp}} = V$, and
+\item $W\intersect W^{\perp} = \singleton{\bzero}$
+\item Equivalently every vector $\bv\in V$ can be written uniquely as $\bv_1+\bv+2$ with $\bv_1\in W$ and $\bv_2\in W^{\perp}$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$V=W+W^{\perp}}
+\begin{itemize}
+\item \textbf{Proposition} Let $W$ be a subspace of the inner-product space $V$.
+\item Then $\left(W^{\perp}\right)^{\perp} = W$
+\item \textbf{proof.} By definition, every $\bw\in W$ is orthogonal to every vector in $W^{\perp}$.
+\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -515,17 +683,6 @@ $$
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{A vector orthogonal to a subspace}
-
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Orthogonal projection}
-
-
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Orthogonal subspaces}
