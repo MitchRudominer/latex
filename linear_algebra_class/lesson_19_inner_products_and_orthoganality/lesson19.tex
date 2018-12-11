@@ -706,8 +706,11 @@ is the orthogonal project of $\bv$ onto the $x$- $y$-plane.
 \item So $\bv_2\in W^{\perp}$.
 \item So we have written $\bv=\bv_1+\bv_2$ with $\bv_1\in W$ and $\bv_2\in W^{\perp}$.
 \item To complete the proof we have to show that the decomposition is unique.
-\item Suppose that we could also write $\bv=\bu_1+\bu_2$ with $\bu_1\in W$ and $\bu_2\in W^{\perp}$.
-\item
+\item Suppose that we could also write $\bv=\bv^{\prime}_1+\bv^{\prime}_2$ with $\bv^{\prime}_1\in W$ and $\bv^{\prime}_2\in W^{\perp}$.
+\item $\bv_1+\bv_2=\bv^{\prime}_1+\bv^{\prime}_2 \SkipImplies \bv_1 - \bv^{\prime}_1 = \bv^{\prime}_2 - \bv_2$.
+\item The left-hand-side is in $W$ and the right-hand-side is in $W^{\perp}$.
+\item But $W\intersect W^{\perp} = \singleton{\bzero}$.
+\item So $\bv_1=\bv_1^{\prime}$ and $\bv_2=\bv_2^{\prime}$. $\qed$.
 \end{itemize}
 
 \end{frame}
@@ -718,51 +721,400 @@ is the orthogonal project of $\bv$ onto the $x$- $y$-plane.
 \item \textbf{Theorem} Let $V$ be a finite dimensional inner product space.
 \item Let $W$ be a subspace of $V$.
 \item Then $V= W + W^{\perp}$. This means
-\item $\spn{W\union W^{\perp}} = V$, and
-\item $W\intersect W^{\perp} = \singleton{\bzero}$
-\item Equivalently every vector $\bv\in V$ can be written \emph{uniquely} as
- $\bv_1+\bv+2$ with $\bv_1\in W$ and $\bv_2\in W^{\perp}$.
+\item $\spn\left(W\union W^{\perp}\right) = V$, and
+\item $W\intersect W^{\perp} = \singleton{\bzero}$.
+\item In particular $\dim(W) + \dim(W^{\perp}) = \dim(V)$.
+\item \textbf{Proof.} This is equivalent to the previous theorem.
+\item Example. In $\R^3$ the $z$-axis and the $x$- $y$-plane are orthogonal compliments.
+\item The dimension of the $z$-axis is 1 and the dimension of the $x$- $y$-plane is 2
+\item and 1 + 2 = 3.
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{$V=W+W^{\perp}$}
+\begin{frame}{Computing Orthogonal Compliments}
 \begin{itemize}
-\item \textbf{Proposition} Let $W$ be a subspace of the inner-product space $V$.
-\item Then $\left(W^{\perp}\right)^{\perp} = W$
-\item \textbf{proof.} By definition, every $\bw\in W$ is orthogonal to every vector in $W^{\perp}$.
+\item \textbf{Proposition.} Let $V$ be a finite dimensional inner product space.
+\item Let $W$ be a subspace of $V$. Let $\bv\in V$.
+\item Let $\bw_1,\bw_2,\cdots,\bw_n$ be an \emph{orthogonal} basis for $W$.
+\item Then the orthogonal projection of $\bv$ onto $W$ is given by
+\item $\frac{\angles{\bv,\bw_1}}{\norm{\bw_1}^2}\bv_1 + \frac{\angles{\bv,\bw_2}}{\norm{\bw_2}^2}\bv_2+\cdots+\frac{\angles{\bv,\bw_n}}{\norm{\bw_n}^2}\bv_n.$
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Orthogonal Matrices}
-
-
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Orthogonal subspaces}
-
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Positive Definite Matrices}
-
+\begin{frame}{Example}
 \begin{itemize}
-\item a
+\item Let $W$ be the subspace of $\R^4$ spanned by the following three vectors:
+\item $
+\bw_1=
+\begin{pmatrix}
+0  \\
+1  \\
+1\\
+0
+\end{pmatrix}
+\text{, }
+\bw_2=
+\begin{pmatrix}
+1 \\
+0\\
+0 \\
+-1
+\end{pmatrix}
+\text{, }
+\bw_3=
+\begin{pmatrix}
+1 \\
+1 \\
+-1 \\
+1
+\end{pmatrix}
+.$
+\item Let $\bv=
+\begin{pmatrix}
+1 \\
+1 \\
+2 \\
+2
+\end{pmatrix}
+$.
+\item Find the orthogonal projection of $\bv$ onto $W$.
+\item Notice that $\bw_1,\bw_2,\bw_3$ is an orthogonal basis for $W$.
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Complex Vector Spaces and Inner Products}
-
+\begin{frame}{Example Continued}
 \begin{itemize}
-\item a
+\item $
+\bw_1=
+\begin{pmatrix}
+0  \\
+1  \\
+1\\
+0
+\end{pmatrix}
+\text{, }
+\bw_2=
+\begin{pmatrix}
+1 \\
+0\\
+0 \\
+-1
+\end{pmatrix}
+\text{, }
+\bw_3=
+\begin{pmatrix}
+1 \\
+1 \\
+-1 \\
+1
+\end{pmatrix}
+\text{, }
+\bv=
+\begin{pmatrix}
+1 \\
+1 \\
+2 \\
+2
+\end{pmatrix}
+$
+\item By the proposition, the orthogonal projection is given by
+\item $\frac{\angles{\bv,\bw_1}}{\norm{\bw_1}^2}\bw_1 + \frac{\angles{\bv,\bw_2}}{\norm{\bw_2}^2}\bw_2 + \frac{\angles{\bv,\bw_3}}{\norm{\bw_3}^2}\bw_3$.
+\item $\angles{\bv,\bw_1}=3,\angles{\bv,\bw_2}=-1,\angles{\bv,\bw_3}=2$.
+\item $\norm{\bw_1}^2=2,\norm{\bw_2}^2=2,\norm{\bw_3}^2=4$.
+\item So the orthogonal project of $\bv$ onto $W$ is:
+\item $\frac{3}{2}\bw_1 - \frac{1}{2}\bw_2 + \frac{1}{2}\bw_3$.
+\item  $ =
+\frac{3}{2}
+\begin{pmatrix}
+0  \\
+1  \\
+1\\
+0
+\end{pmatrix}
+- \frac{1}{2}
+\begin{pmatrix}
+1 \\
+0\\
+0 \\
+-1
+\end{pmatrix}
++ \frac{1}{2}\
+\begin{pmatrix}
+1 \\
+1 \\
+-1 \\
+1
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+2 \\
+1 \\
+1
+\end{pmatrix}
+$
 \end{itemize}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example Continued}
+\begin{itemize}
+\item $
+\bw_1=
+\begin{pmatrix}
+0  \\
+1  \\
+1\\
+0
+\end{pmatrix}
+\text{, }
+\bw_2=
+\begin{pmatrix}
+1 \\
+0\\
+0 \\
+-1
+\end{pmatrix}
+\text{, }
+\bw_3=
+\begin{pmatrix}
+1 \\
+1 \\
+-1 \\
+1
+\end{pmatrix}
+\text{, }
+\bv=
+\begin{pmatrix}
+1 \\
+1 \\
+2 \\
+2
+\end{pmatrix}
+$
+\item The orthogonal project of $\bv$ onto $W$ is $\bv_1=
+\begin{pmatrix}
+0 \\
+2 \\
+1 \\
+1
+\end{pmatrix}
+$
+\item Check: Let $\bv_2 = \bv - \bv_1$. $\bv_2$ should be in $W^{\perp}$.
+\item $\bv_2=
+\begin{pmatrix}
+1 \\
+1 \\
+2 \\
+2
+\end{pmatrix}
+-
+\begin{pmatrix}
+0 \\
+2 \\
+1 \\
+1
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 \\
+-1 \\
+1 \\
+1
+\end{pmatrix}
+$
+\item $\angles{\bv_2,\bw_1}=\angles{\bv_2,\bw_2}=\angles{\bv_2,\bw_3} = 0$.
+\item So $\bv_2\in W^{\perp}$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Row Space of a Matrix}
+\begin{itemize}
+\item \textbf{Definition} Let $A$ be an $m\times n$ matrix.
+\item Then the \emph{row space} of $A$ is the column space of $\transpose{A}$.
+\item Equivalently the image of $\transpose{A}$.
+\item Example: $A=
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{pmatrix}
+$
+\item The row space of $A$ is the 2-dimensional subspace of $\R^3$ spanned by
+\item $
+\singleton{
+\begin{pmatrix}
+1 \\ 2 \\ 3
+\end{pmatrix},
+\begin{pmatrix}
+4 \\ 5 \\ 6
+\end{pmatrix}
+}
+$
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Orthogonal Compliment of the Kernel}
+\begin{itemize}
+\item \textbf{Theorem} Let $A$ be any matrix.
+\item Then the row space of $A$ and the kernel of $A$ are orthogonal compliments.
+\item \textbf{proof} Let $W$ be the row space of $A$.
+\item $\bx\in\ker(A)$ iff $\transpose{\bw} \bx = 0$ for every row $\transpose{\bw}$ of $A$,
+\item iff $\angles{\bw,\bx} = 0$ every row $\transpose{\bw}$ of $A$,
+\item iff $\bx\in W^{\perp}$. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Row Rank of a Matrix}
+\begin{itemize}
+\item \textbf{Definition} Let $A$ be an $m\times n$ matrix.
+\item The \emph{row rank} of $A$ is the dimension of the row space of $A$.
+\item The normal rank of $A$ is sometimes called the \emph{column rank}.
+\item \textbf{Theorem.} The row-rank of $A$ is equal to the column rank of $A$.
+\item Let $r$ be the column rank of $A$.
+\item Previously we learned that $\dim(\ker(A)) = n  - r$.
+\item So $\dim(\ker(A)) + r = n$.
+\item But the column space of $A$ is the orthogonal compliment of the kernel.
+\item So its also true that $\dim(\ker(A)) + \dim(\text{Column Space of $A$}) = n$.
+\item So $\dim(\text{Column Space of $A$}) = r$. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+\begin{itemize}
+\item Let $V$ be the subspace of $\R^3$ spanned by the following three vectors:
+\item $\bv_1=
+\begin{pmatrix}
+1  \\
+0  \\
+3   \\
+\end{pmatrix}
+\text{, }
+\bv_2=
+\begin{pmatrix}
+-1 \\
+3\\
+3 \\
+\end{pmatrix}
+\text{, }
+\bv_3=
+\begin{pmatrix}
+5 \\
+-9 \\
+-3 \\
+\end{pmatrix}
+$
+\item Find a basis for $V^{\perp}$. What is the dimension of $V^{\perp}$?
+\item Solution: Let $A$ be the matrix with rows $\transpose{\bv_1}, \transpose{\bv_2}, \transpose{\bv_3}$.
+\item $A=
+\begin{pmatrix}
+1 & 0 & 3   \\
+-1 & 3 & 3  \\
+5 & -9 & -3
+\end{pmatrix}
+$
+\item Then we are looking for the kernel of $A$. So solve the homogeneous system of equations.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example Continued}
+\begin{itemize}
+\item So solve the homogeneous system of equations.
+\item $
+\begin{pmatrix}
+1 & 0 & 3   \\
+-1 & 3 & 3  \\
+5 & -9 & -3
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & 3    \\
+0 & 3 & 6    \\
+0 & -9 & -18
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & 3    \\
+0 & 3 & 6    \\
+0 & 0 &
+\end{pmatrix}
+$
+\item Let's call the variables $x,y,z$. So $x$ and $y$ are basic and $z$ is free.
+\item $3y+6z=0\SkipImplies y = -2z$.
+\item $x +3z =0 \SkipImplies x=-3z$.
+\item So the general solution is $
+\begin{pmatrix}
+x\\y\\z
+\end{pmatrix}
+=
+\begin{pmatrix}
+-3z\\-2z\\z
+\end{pmatrix}
+=
+z
+\begin{pmatrix}
+-3\\-2\\1
+\end{pmatrix}
+$
+\item So $
+\begin{pmatrix}
+-3\\-2\\1
+\end{pmatrix}
+$
+is a basis for $V^{\perp}$ and $V^{\perp}$ is 1-dimensional.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+\begin{itemize}
+\item Find a basis for the orthogonal compliment of the
+kernel of the following matrix. What is the dimension of the orthogonal
+compliment of the kernel?
+\item $\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+1 & 0 & 0 & 1 \\
+2 & 2 & 3 & 5 \\
+\end{pmatrix}
+$
+\item Solution. The orthogonal compliment of the kernel is the row space.
+\item So we are asked to find a basis and dimension for the row space.
+\item i.e. a basis and dimension for the column space of the transpose.
+\item $\begin{pmatrix}
+1 & 1 & 2 \\
+1 & 0 & 1 \\
+3 & 0 & 3 \\
+4 & 1 & 5 \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example continued}
+\begin{itemize}
+\item Find a basis and dimension for the column space of
+\item $\begin{pmatrix}
+1 & 1 & 2 \\
+1 & 0 & 1 \\
+3 & 0 & 3 \\
+4 & 1 & 5 \\
+\end{pmatrix}
+$
+\item We don't even need to do Gaussian elimination. We can see the solution by inspection.
+\item The first two columns are linearly independent. And the final column is the sum of the first two.
+\item So the rank is 2 and a basis is given by the first two columns.
+\end{itemize}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
