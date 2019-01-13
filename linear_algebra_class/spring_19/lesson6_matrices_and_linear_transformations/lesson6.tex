@@ -1,0 +1,546 @@
+% $Header$
+
+\documentclass{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 6 \\ Matrices and Linear Transformations}
+\subtitle{Math 325, Linear Algebra \\ Spring 2019 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+
+\begin{frame}{Matrices and Linear Functions}
+
+\begin{itemize}
+\item What does Lesson 2 Matrices have to do with Lesson 5 Linear functions on $\R^n$?
+\item It turns out that an $m\times n$ matrix contains precisely the information we need
+to describe a linear function from $\R^n$ to $\R^m$.
+\item There is a one-to-one correspondence between $m\times n$ matrices and linear
+functions from $\R^n$ to $\R^m$
+\item Every matrix gives us a linear function.
+\item Every linear function is given by a matrix.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear transformations}
+
+\begin{itemize}
+\item Linear functions from $\R^n$ to $\R^m$ are also often called
+linear \emph{transformations}.
+\item A linear transformation is exactly the same thing as a linear function.
+\item Especially in the context of matrices it is common to use the term
+linear transformation instead.
+\item From now on we will use the term linear transformation.
+\item When using the term \emph{linear transformation}, it is common to use
+letters like $T$, $S$ and $R$ to represent the linear transformation rather
+than letters like $f$, $g$ and $h$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The linear transformation associated with a matrix.}
+
+\begin{itemize}
+\item Definition:
+\item Let $A$ be an $m\times n$ matrix.
+\item Then associated with $A$ is a function $T_A:\R^n\map\R^m$.
+\item $T_A$ is called the \emph{linear transformation associated with $A$}.
+\item $T_A$ is defined as follows. Let $\bv\in\R^n$.
+\item Then $T_A(\bv) = A \bv$.
+\item Check that this multiplication makes sense and the output is in $\R^m$.
+\item We will show that in fact it is linear.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example}
+
+\begin{itemize}
+\item Example. Let
+$$
+\begin{matrix}
+A =
+&
+\begin{pmatrix}
+1 & -1  & 0 \\
+2 &  0  & -1
+\end{pmatrix}
+&
+\bv =
+&
+\begin{pmatrix}
+1 \\ -2 \\ 3
+\end{pmatrix}
+\end{matrix}
+$$
+\item Then
+$$
+T_A(\bv) =
+\begin{pmatrix}
+3 \\-1
+\end{pmatrix}
+$$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$T_A$ is linear}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $A$ be an $m\times n$ matrix.
+\item Then $T_A$ is linear.
+\item Proof.
+\item We must show that $T_A$ preserves vector addition.
+$$T_A(\bv + \bw) = T_A(\bv) + T_A(\bw)$$
+\item But this is true because matrix multiplication distributes over matrix addition.
+$$A(\bv + \bw) = A\bv + A\bw$$
+\item We must show that $T_A$ preserves scalar multiplication.
+$$T_A(c \bv) = c T_A(\bv)$$
+\item But this is true because matrix multiplication is compatible with scalar multiplication.
+$$A(c \bv ) = c A\bv$$
+\item So $T_A$ is linear. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\beamerdefaultoverlayspecification{}
+
+\begin{frame}{The images of the standard basis vectors.}
+
+\begin{lemma}
+Let $A$ be an $m\times n$ matrix.
+
+\pause
+
+\bigskip
+
+Then the columns of $A$ are the
+images of the standard basis vectors under $T_A$.
+
+\bigskip
+
+
+\pause
+
+$T_A(\be_j)$ is the $j$-th column of $A$.
+\end{lemma}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example}
+
+Let
+$$ A =
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+5 & 6 & 7 & 8 \\
+9 & 10 & 11 & 12
+\end{pmatrix}
+$$
+
+\pause
+
+Compute $T_A(\be_3)$.
+
+\pause
+
+$$T_A(\be_3) = A \be_3$$
+
+
+\pause
+
+$$
+=
+\begin{pmatrix}
+1 & 2  & 3  & 4 \\
+5 & 6  & 7  & 8 \\
+9 & 10 & 11 & 12
+\end{pmatrix}
+\begin{pmatrix}
+0 \\ 0 \\ 1 \\ 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+3 \\ 7 \\ 11
+\end{pmatrix}
+$$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\beamerdefaultoverlayspecification{}
+
+\begin{frame}{Values at the standard basis vectors}
+
+A linear transformation is determined by its values at the standard basis vectors.
+
+\uncover<2->{
+\begin{lemma}
+Let $T:\R^n\map\R^m$ and $S:\R^n\map\R^m$  be two linear transformations. \\
+\uncover<3->{Suppose that $T(\be_j) = S(\be_j)$ for $j=1, 2, \cdots n$.} \\
+\uncover<4->{Then $T = S$.}
+\end{lemma}
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Proof of Lemma}
+
+\begin{proof}
+Let $\bv\in\R^n$ be any vector.
+\uncover<2->{We must show that $T(\bv)=S(\bv)$.}
+\uncover<3->{
+Now $\bv = (v_1,v_2,\cdots v_n)^{\text{T}}$.
+So $\bv=\sum_j{v_j \be_j}$.
+}
+
+\begin{align*}
+\uncover<4->{T(\bv) &= T\left(\sum_j{v_j \be_j}\right) \\}
+\uncover<5->{&= \sum_j{v_j T(\be_j)} \text{ \qquad (by linearity)}\\}
+\uncover<6->{&= \sum_j{v_j S(\be_j)} \text { \qquad (by assumption)}\\}
+\uncover<7->{&= S\left(\sum_j{v_j \be_j}\right) { \qquad  (by linearity)} \\}
+\uncover<8->{&= S(\bv)}
+\end{align*}
+\end{proof}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Every linear transformation is given by a matrix}
+
+\begin{theorem}
+Let $T:\R^n\map\R^m$ be a linear transformation.
+
+\pause
+
+\small
+
+Then there is an $m\times n$ matrix $A$ such that $T = T_A$
+\end{theorem}
+
+\pause
+
+\begin{proof}
+For $j=1\dots n$, let $\ba_j = T(\be_j)$.
+
+\pause
+
+i.e. let $\ba_1 = T(\be_1), \ba_2 = T(\be_2), \cdots \ba_n = T(\be_n)$.
+
+\pause
+
+So each $\ba_j\in\R^m$.
+
+\pause
+
+Let $A = (\ba_1 \vert \ba_2 \vert \cdots \vert \ba_n) $ be the matrix composed of the columns $\ba_1, \ba_2 , \cdots \ba_n$.
+
+\pause
+
+So $A$ is an $m\times n$ matrix.
+
+\pause
+
+Then $T_A(\be_j) = \ba_j = T(\be_j)$.
+
+\pause
+
+So $T_A = T$.
+
+\end{proof}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{frame}{Example}
+\begin{itemize}
+\item Find a linear transformation from $T:\R^3\map\R^4$ such that
+\item
+$$
+\begin{matrix}
+T\begin{pmatrix} 1 \\ 0 \\ 0  \end{pmatrix} = \begin{pmatrix} 3 \\ 0 \\ 1 \\ 2  \end{pmatrix}
+\text{; and }
+&
+T\begin{pmatrix} 0 \\ 1 \\ 0  \end{pmatrix} = \begin{pmatrix} 2 \\ -1 \\ 0 \\ 4  \end{pmatrix}
+\text{; and }
+&
+T \begin{pmatrix} 0 \\ 0 \\ 1  \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \\ 5 \\ 5  \end{pmatrix}
+\end{matrix}
+$$
+\item Let
+$$
+A =
+\begin{pmatrix}
+3 & 2 & 1 \\
+0 & -1 & 1 \\
+1 & 0 & 5 \\
+2 & 4 & 5
+\end{pmatrix}
+$$
+\item Then $T_A$ is the desired linear transformation.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear Functionals}
+\begin{itemize}
+\item When the target space of a linear transformation is $\R^1$ then there
+are other names names for it.
+\item Let $T:\R^n\map\R^1$ be a linear transformation. Then $T$ is also called a
+\item \emph{linear functional}.
+\item Also $T$ is called a \emph{covector}.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Covectors}
+\begin{itemize}
+\item Let $T:\R^n\map\R^1$ be a linear functional.
+\item Because every linear transformation is given by matrix, $T$ is given
+by a matrix. What size matrix?
+\item $T$ is given by a $1\times n$ row vector.
+\item Example: Let $T:\R^3\map\R$ be the linear functional such that
+$$
+\begin{matrix}
+T\begin{pmatrix} 1 \\ 0 \\ 0  \end{pmatrix} = 4
+\text{; and }
+&
+T\begin{pmatrix} 0 \\ 1 \\ 0  \end{pmatrix} = -5
+\text{; and }
+&
+T \begin{pmatrix} 0 \\ 0 \\ 1  \end{pmatrix} = 6
+\end{matrix}
+$$
+\item Find the row vector that represents $T$.
+\item Let $\ba = (4, -5, 6)$.
+\item Then $T = T_{\ba}$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Row vectors represent covectors}
+\begin{itemize}
+\item So column vectors represent vectors in $\R^n$.
+\item And row vectors represent covectors from $\R^n$.
+\item When you see a row vector like
+$$(4, -5, 6)$$
+\item think of it as an object that \emph{operates} on column vectors.
+\item When given a column vector like
+$$
+\begin{pmatrix}
+1 \\ -1 \\ 0
+\end{pmatrix}
+$$
+\item Then it is the \emph{job} of $(4, -5, 6)$ to \emph{hit}
+$$
+\begin{pmatrix}
+1 \\ -1 \\ 0
+\end{pmatrix}
+$$
+\item and produce the output $9$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The rows of a matrix}
+\begin{itemize}
+\item Let
+$$A =
+\begin{pmatrix}
+1 &  0 & -2 & 0 \\
+0 &  0 &  1 & 1 \\
+2 & -1 &  0 & 5
+\end{pmatrix}
+$$
+\item We learned the significance of the columns of $A$.
+\item They are the images of the standard basis vectors under $T_A$.
+\item What is the significance of the \emph{rows} of $A$?
+\item They are the \emph{component covectors} of $A$.
+\item $T_A:\R^4\map\R^3$.
+\item So $T_A$ has three component functions, let's call them $f_1, f_2, f_3$.
+\item Let $T_A(\bv) = \bw$.
+\item
+$$T_A(\bv) =
+\begin{pmatrix}
+w_1 \\ w_2 \\ w_3
+\end{pmatrix}
+=
+\begin{pmatrix}
+f_1(\bv) \\ f_2(\bv) \\ f_3(\bv)
+\end{pmatrix}
+$$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Component covectors}
+\begin{itemize}
+\item Let
+$$
+\begin{matrix}
+A =
+\begin{pmatrix}
+1 &  0 & -2 & 0 \\
+0 &  0 &  1 & 1 \\
+2 & -1 &  0 & 5
+\end{pmatrix}
+&
+\bv =
+\begin{pmatrix}
+1 \\ 1 \\ 0 \\ -1
+\end{pmatrix}
+\end{matrix}
+$$
+\item Then
+$$
+T_A(\bv) =
+A \bv
+=
+\begin{pmatrix}
+1 \\ -1 \\ -4
+\end{pmatrix}
+=
+\begin{pmatrix}
+f_1(\bv) \\ f_2(\bv) \\ f_3(\bv)
+\end{pmatrix}
+$$
+\item So $f_1(\bv) = 1$, $f_2(\bv) = -1$, $f_3(\bv) = -4$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Rows are component covectors}
+\begin{itemize}
+\item Let
+$$A =
+\begin{pmatrix}
+1 &  0 & -2 & 0 \\
+0 &  0 &  1 & 1 \\
+2 & -1 &  0 & 5
+\end{pmatrix}
+$$
+\item Let $\ba_1, \ba_2, \ba_3$ be the rows of $A$.
+\item Then
+$$T_A(\bv) =
+A \bv
+=
+\begin{pmatrix}
+\ba_1 \bv \\ \ba_2 \bv \\ \ba_3 \bv
+\end{pmatrix}
+=
+\begin{pmatrix}
+f_1(\bv) \\ f_2(\bv) \\ f_3(\bv)
+\end{pmatrix}
+$$
+\item So $f_1 = T_{\ba_1}$,$f_2 = T_{\ba_2}$, $f_3 = T_{\ba_3}$.
+\item The rows of $A$ are the component covectors of $T_A$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{frame}{Example}
+\begin{itemize}
+\item Find a linear transformation $T:\R^2\map\R^2$ with component covectors
+$\ba_1$ and $\ba_2$ such that
+\item
+$$
+\begin{matrix}
+T_{\ba_1}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = 5
+\text{; and }
+&
+T_{\ba_1}\begin{pmatrix} 0 \\ 1  \end{pmatrix} = 6
+\text{; and }
+\end{matrix}
+$$
+\item
+$$
+\begin{matrix}
+T_{\ba_2}\begin{pmatrix} 1 \\ 0   \end{pmatrix} = 3
+\text{; and }
+&
+T_{\ba_2}\begin{pmatrix} 0 \\ 1   \end{pmatrix} = 4
+\end{matrix}
+$$
+\item Let
+$$
+A =
+\begin{pmatrix}
+5 & 6 \\
+3 & 4
+\end{pmatrix}
+$$
+\item Then $T_A$ is the desired linear transformation.
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+

@@ -1,0 +1,177 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Homework for Lesson 6 \\ Matrices and Linear Transformations $\R^n$}
+\author{Math 325, Linear Algebra \\ Mitch Rudominer \\ Spring 2019 \\ SFSU }
+\date{}
+
+\maketitle
+
+\textbf{Problem 1.} Suppose $T:\R^2\map\R^3$ is a linear transformation.
+Suppose you know that $T$ sends the first standard basis vector of of $\R^2$
+to the vector $(1, 2, 3)^{\text{T}}$ and the second standard basis vector
+of $\R^2$ to the vector $(2,3,4)^{\text{T}}$. Write down the matrix of $T$.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{Problem 2.}  Suppose $A$ is a matrix such that $T_A:\R^3\map\R^2$ and
+$$
+\begin{matrix}
+T_A \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}\text{; and }
+&
+T_A \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}\text{; and }
+&
+T_A \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 5 \\ 6 \end{pmatrix}
+\end{matrix}
+$$
+
+Give the matrix $A$.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{Problem 3.}  Suppose $T:\R^2\map\R^2$ is a linear transformation
+that swaps the two standard basis vectors. That is, it
+maps $\be_1$ to $\be_2$ and maps $\be_2$ to $\be_1$. Write down the matrix
+for $T$.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{Problem 4.}  Let
+$$
+A = \begin{pmatrix}
+9 & 8 & 7 \\
+6 & 5 & 4 \\
+3 & 2 & 1
+\end{pmatrix}
+$$
+
+Where does $T_A$ send the third standard basis vector of $\R^3$?
+
+\bigskip
+\bigskip
+
+\textbf{Problem 5.} Suppose $A$ and $B$ are both $2\times 3$ matrices and
+$$
+\begin{matrix}
+A \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} = B \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}\text{; and }
+&
+A \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} = B \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}\text{.}
+\end{matrix}
+$$
+True or false? Then we must have that $A = B$. Explain.
+
+
+\bigskip
+\bigskip
+
+
+\textbf{Problem 6.} Suppose $T:\R^2\map\R^2$ is a linear transformation and
+$T(\be_1) = \begin{pmatrix} 1 \\ 2\end{pmatrix}$
+and $T(\be_2) = \begin{pmatrix} 2 \\ 3\end{pmatrix}$. Then find
+$T\begin{pmatrix} 3 \\ 4\end{pmatrix}$.
+
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+\textbf{Problem 7.} Let $\bv = (2, 0, 2)$ be a row vector. Where does
+the covector for $\bv$ send $(4, 5, 6)^{\text{T}}$?
+
+
+\bigskip
+
+\textbf{Problem 8.} Let $T:\R^3\map\R^4$ be a linear transformation.
+
+\smallskip
+
+\textbf{a.} How many component covectors does $T$ have?
+
+\bigskip
+
+\textbf{b.} Let $f$ be the second component covector for $T$. Is $f$ linear?
+
+\bigskip
+
+\textbf{c.} Suppose you are told that
+$$
+\begin{matrix}
+f \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} = 7 \text{; and }
+&
+f \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} = 8 \text{; and }
+&
+f \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} = 9 \text{.}
+\end{matrix}
+$$
+
+Let $A$ be the matrix for $T$. What do you now know about $A$?
+
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{d.} Suppose you are now told that all of the other component covectors
+for $T$ are identically zero. Write down the matrix $A$.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{Problem 9.}  Let
+$$
+A = \begin{pmatrix}
+9 & 8 & 7 \\
+6 & 5 & 4 \\
+3 & 2 & 1
+\end{pmatrix}
+$$
+
+
+\textbf{(a.)} Where does the second component covector of $T_A$ send the
+third standard basis vector?
+
+\bigskip
+
+\textbf{(b.)} Where does the third component covector of $T_A$ send the
+second standard basis vector?
+
+\bigskip
+
+\textbf{Problem 10} Suppose $T$ and $S$ are linear transformations with
+the same component covectors. Does it follow that $T = S$? Explain.
+
+
+
+\end{document}

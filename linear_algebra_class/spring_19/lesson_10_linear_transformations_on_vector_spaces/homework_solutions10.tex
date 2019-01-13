@@ -1,0 +1,147 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Solutions to Homework for Lesson 10 \\ Linear transformations on vector spaces}
+\author{Math 325, Linear Algebra \\ Mitch Rudominer \\ Spring 2019 \\ SFSU }
+\date{}
+
+\maketitle
+
+
+\textbf{Problem 1.} $T$ is linear for all values of $x_0$. To see this we
+must see that $T$ preserves vector addition and scalar multiplication.
+Notice that the codomain of $T$ is $\R^1$ so in the codomain vector addition
+means just ordinary addition of real numbers. $T$ preserves vector addition
+because $T(f + g) = (f+g)(x_0) = f(x_0) + g(x_0) = T(f) + T(g)$.
+$T$ preserves scalar multiplication because $T(cf) = (cf)(x_0)
+= c(f(x_0)) = cT(f)$.
+
+\bigskip
+
+\textbf{Problem 2.}
+
+\textbf{(a)} The kernel is the set of all functions that assign zero to $x_0$,
+i.e. $\ker(T) = \setof{f}{f(x_0) = 0}$. To see that this is a subspace of $\cF$
+we must see that it contains the zero function $Z$ and is closed under vector addition
+and scalar multiplication. The set contains the zero function $Z$ becuase
+$Z(x_0) = 0$. The set is closed under vector addition because if $f(x_0) = 0$
+and $g(x_0) = 0$ then $(f+g)(x_0) = 0$. The set is closed under scalar
+multiplication because if $f(x_0) = 0$ the $cf(x_0) = 0$.
+
+\bigskip
+
+\textbf{(b)} The kernel is the set of constant functions
+$\cC = \setof{f\in\cF}{f \text{ is a constant function} }$. This is because
+the zero vector of the codomain is $Z$, the zero function, and the kernel
+is the set of functions whose derivative is $Z$. The derivative of $f$ is
+$Z$ iff $f$ is a constant function. To see that $\cC$ is a subspace notice
+that $\cC$ contains $Z$ and is closed under vector addition (because the sum of
+two constant functions is a constant function) and scalar multiplication
+(because a scalar multiple of a constant function is a constant function.)
+
+\bigskip
+
+\textbf{(c)} Let $O$ be the $2\times 2$ zero matrix. Then $T=T_O$. So $T$
+is linear. $\ker(T) = \R^2$. That is because $T$ sends every vector in
+$\R^2$ to $\bzero$. It is obvious that the kernel is a subspace of $\R^2$ because
+the kernel is all of $\R^2$.
+
+\bigskip
+
+\textbf{(d)} Let $I$ be the $2\times 2$ identity matrix. Then $T=T_I$. So $T$
+is linear. $\ker(T) = \singleton{\bzero}$. That is because $T$ sends every vector in
+$\R^2$ to itself so it only sends $\bzero$ to $\bzero$. The kernel in this
+case is the zero subspace which we showed in class is a subspace.
+
+\bigskip
+
+\textbf{(e)} Let $A=
+\begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}
+$.
+Then $T=T_A$ so $T$ is linear. The kernel of $T$ is the $y$-axis of $\R^2$, i.e.
+$\ker(T) = \setof{(x,y)^{\text{T}}}{x=0}$. This contains the origin and
+is closed under vector addition and scalar multiplication, so it is a subspace.
+
+\bigskip
+
+\textbf{Problem 3.} By looking at the kernels from problem 2 we can tell
+that only the transformation in part (d) is one-to-one. This is because
+a linear transformation is one-to-one iff its kernel is trivial, i.e.
+its kernel is the zero subspace.
+
+\bigskip
+
+\textbf{Problem 4.}
+
+\textbf{(a)} The image of $T$ is all of $\R$. That is because for any $c\in\R$
+there is a function $f$ such that $f(x_0) = c$: for example the constant
+$c$ function. For such an $f$ we have $T(f) = c$, so $c\in\ran(T)$.
+In this case it is obvious that the range of the transformation
+is a subspace of the codomain because the range is all of the codomain, i.e.
+$T$ is onto.
+
+\bigskip
+
+\textbf{(b)} The image of $T$ is $\singleton{\bzero}$ and this is the zero
+subspace.
+
+\bigskip
+
+\textbf{(c)} The image of $T$ is all of $\R^2$ so it is a subspace of $\R^2$,
+
+\bigskip
+
+\textbf{(d)} Let $A=
+\begin{pmatrix}
+1 & 0 \\
+1 & 0
+\end{pmatrix}
+$.
+Then $T=T_A$ so $T$ is linear.
+The image of $T$ is the line $y=x$ in $\R^2$, i.e.
+$\setof{(x,x)^{\text{T}}}{x\in\R}$. This is a subspace of $\R^2$ because
+it contains the origin and is closed under vector addition and scalar
+multiplication.
+
+\bigskip
+
+\textbf{Problem 5.} Let
+
+\textbf{(a)} $W$ is a subspace of $V$ because
+\begin{itemize}
+\item $W$ contains the zero vector because that is the zero function $Z$ and
+$Z$ is a polynomial of degree $\leq 3$.
+\item $W$ is closed under vector addition because the sum of two polynomials
+of degree at most 3 is itself a polynomial of degree at most 3.
+\item $W$ is closed under scalar multiplication because if you multiply
+a polynomial of degree at most 3 by a scalar the result is also a polynomial
+of degree at most 3.
+\end{itemize}
+
+\bigskip
+
+\textbf{(b)} The image of $T$ is the set of polynomials of degree at most 2.
+That is because if you differentiate a polynomial of degree 3 you get a
+polynomial of degree 2. The set of polynomials of degree at most 2 is a
+subspace of the set of all polynomials using exactly the same argument
+that was used in (a) above to show the same thing about the set of
+polynomials of degree at most 3.
+
+
+
+
+
+\end{document}

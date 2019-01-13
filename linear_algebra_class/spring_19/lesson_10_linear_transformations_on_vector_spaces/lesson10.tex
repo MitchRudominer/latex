@@ -1,0 +1,299 @@
+% $Header$
+
+%\documentclass[handout]{beamer}
+\documentclass{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 10 \\ Linear transformations on vector spaces}
+\subtitle{Math 325, Linear Algebra \\ Spring 2019 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Linear transformations}
+
+\begin{itemize}
+\item The definition of linear transformation makes sense on an arbitrary vector space.
+\item \textbf{Definition.} Let $V$ and $W$ be two vector spaces.
+\item Let $T:V\map W$.
+\item Then $T$ is \emph{linear} iff
+\item (a) $T$ preserves vector addition: $T(\bv+\bw) = T(\bv) + T(\bw)$.
+\item (b) $T$ preserves scalar multiplication: $T(c\bv) = c T(\bv)$.
+\item Linear Algebra is the study of linear transformations between vector spaces.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Examples of linear transformations}
+
+\begin{itemize}
+\item If $V=\R^n$ and $W=\R^m$ and $A$ is an $m\times n$ matrix then
+$T_A$ is a linear transformation from $V$ to $w$.
+\item Let $\cD$ be the space of all differentiable functions $f:\R\map\R$.
+\item Let $\cF$ be the space of all functions $f:\R\map\R$.
+\item Let $T:\cD\map\cF$ be defined by $T(f) = \fprime$.
+\item Then $T$ is linear.
+\item A linear transformation on a function space is often called a
+linear \emph{operator}.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear operators on function spaces}
+
+\begin{itemize}
+\item Let $C^0$ be the space of all continuous functions $f:\R\map\R$.
+\item Let $T:C^0\map C^0$ be defined by $T(f) = F$ where $F$ is the
+anti-derivative of $f$ such that $F(0) = 0$.
+\item i.e. $F(x) = \int_{t=0}^x f(t) dt$.
+\item Then $T$ is linear.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The image of zero}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $T:V\map W$ be a linear transformation.
+\item Then $T(\bzero) = \bzero$.
+\item \textbf{proof.} Let $\bw = T(\bzero)$. We must show that $\bw=\bzero$.
+\item $\bw = T(\bzero)$
+\item $= T(0 \bzero)$
+\item $= 0 T(\bzero)$
+\item $= 0 \bw$
+\item $= \bzero$. $\qed$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Kernel of a linear transformation}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $T:V\map W$ be a linear transformation.
+\item The \textbf{kernel} of $T$, $\ker(T)$ is
+\item $\setof{v\in V}{T(\bv) = \bzero}$.
+\item $\ker(T) = T^{-1}[\singleton{\bzero}]$.
+\item The kernel of $T$ is also called the \textbf{nullspace} of $T$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Kernel is a subspace}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $T:V\map W$ be a linear transformation.
+\item Then $\ker(T)$ is a subspace of $V$.
+\item \textbf{proof.} We must show $\ker(T)$ contains $\bzero$ and is closed
+under addition and scalar multiplication.
+\item $T(\bzero) = \bzero$. So $\bzero\in\ker(T)$.
+\item Let $\bv_1,\bv_2\in\ker(T)$. Let $c\in\R$. We will show $\bv_1+\bv_2\in\ker(T)$ and $c\bv_1\in\ker(T)$.
+\item $T(\bv_1+\bv_2)=T(\bv_1) + T(\bv_2) = \bzero + \bzero = \bzero$.
+\item So $\bv_1+\bv_2\in\ker(T)$.
+\item $T(c\bv_1)=cT(\bv_1)=c\bzero=\bzero$.
+\item So $c\bv_1\in\ker(T)$.
+\item So $\ker(T)$ is a subspace of $V$. $\qed$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Homogeneous system of equations}
+
+\begin{itemize}
+\item \textbf{Definition.} A system of linear equations is called
+\emph{homogeneous} if the right had side of the system consists of all zeroes.
+\item As a matrix equation this means $\bb=0$ so the system looks like
+$$A\bx=\bzero.$$
+\item Notice: $\bx$ is a solution iff $\bx\in\ker(T_A)$.
+\item Therefore the set of all solutions is a subspace.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Homogeneous system of equations}
+
+\begin{itemize}
+\item \textbf{Facts.} Let $A\bx=\bzero$ be a homogeneous system of equations. Then
+\item $\bzero$ is always a solution.
+\item So a homogeneous system is never inconsistent. It always has at least one solution.
+\item $\bzero$ is called the \emph{trivial} solution.
+\item If $\bx_1$ and $\bx_2$ are solutions then so is $\bx_1+\bx_2$.
+\item Also so is $c\bx_1$ for any $c\in\R$.
+\item If there is any non-trivial solution then there are infinitely many solutions.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Range of a linear transformation}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $T:V\map W$ be a linear transformation.
+\item Then $\ran(T)$ is a subspace of $W$.
+\item The range of $T$ is also called the \emph{image} of $T$.
+\item \textbf{proof.} We must show $\ran(T)$ contains $\bzero$ and is closed
+under addition and scalar multiplication.
+\item $T(\bzero) = \bzero$. So $\bzero\in\ran(T)$.
+\item Let $\bw_1,\bw_2\in\ran(T)$. Let $c\in\R$. We will show $\bw_1+\bw_2\in\ran(T)$ and $c\bw_1\in\ran(T)$.
+\item Let $\bv_1$ and $\bv_2$ be such that $T(\bv_1)=\bw_1$ and $T(\bv_2)=\bw_2$.
+\item $T(\bv_1+\bv_2)=T(\bv_1) + T(\bv_2) = \bw_1+\bw_2$.
+\item So $\bw_1+\bw_2\in\ran(T)$.
+\item $T(c\bv_1)=cT(\bv_1)=c\bw_1$.
+\item So $c\bw_1\in\ran(T)$.
+\item So $\ran(T)$ is a subspace of $W$. $\qed$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Right-hand side of a system of equations}
+
+\begin{itemize}
+\item The system of equations $A\bx=\bb$ has a solution iff $b\in\ran(T_A)$.
+\item If $\bb\notin\ran(T_A)$ then $A\bx=\bb$ is inconsistent (incompatible.)
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Inhomogeneous system of equations}
+
+\begin{itemize}
+\item Let $A$ be an $m\times n$ matrix. Let $\bb\in\R^m$. $\bb\not=\bzero$.
+\item The system $A\bx=\bb$ is called \emph{inhomogeneous.}
+\item Let $S=\setof{\bx \in \R^n}{A \bx = \bb}$ be the \emph{solution set}.
+\item What are the possibilities for $S$?
+\item If $\bb\notin\ran(T_A)$ then $S=\emptyset$.
+\item Suppose $\bb\in\ran(T_A)$.
+\item Let $\bx_0\in\R^n$ be a particular solution. $A\bx_0=\bb$. So $\bx_0\in S$.
+\item If $T_A$ is one-to-one then $S=\singleton{\bx_0}$.
+\item $S$ is \emph{not} a subspace:
+\item $\bzero\notin S$. $T(\bzero) = \bzero \not= \bb$.
+\item $S$ is not closed under vector addition. If $\bx_0\in S$ and $\bx_1\in S$
+then $\bx_0+\bx_1\notin S$:
+\item $A(\bx_0+\bx_1) = A\bx_0+A\bx_1 = \bb+\bb = 2\bb \not= \bb$.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Solution set}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $A\bx=\bb$ be an inhomogeneous set of linear equations.
+\item Let $S=\setof{\bx \in \R^n}{A \bx = \bb}$ be the solution set.
+\item Let $\bx_0\in S$ be a particular solution. $A\bx_0=\bb$.
+\item Then the general solution is given by
+$$S=\setof{\bx_0 + \bx}{\bx\in\ker(T_A)}.$$
+\item That is, the general solution is the kernel plus any particular solution.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Solution set}
+
+\begin{itemize}
+\item \textbf{Proof of lemma.} First suppose $\bx\in\ker(T)$. We must show
+that $\bx_0 + \bx \in S$.
+\item $T(\bx_0+\bx) = T(\bx_0) + T(\bx) = \bb + \bzero = \bb$.
+\item So $\bx_0+\bx\in S$.
+\item Conversely, suppose $\bv \in S$. We must show that $\bv = \bx_0 + \bx$
+for some $\bx\in\ker(T)$.
+\item Let $\bx = \bv - \bx_0$.
+\item Then $T(\bx) = T(\bv) - T(\bx_0) = \bb - \bb = \bzero$.
+\item So $\bx\in\ker(T)$.
+\item And $\bv = \bx_0 + \bx$. $\qed$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{One-to-one linear transformations}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $T:V\map W$ be a linear transformation.
+\item Then $T$ is one-to-one if and only if $\ker(T) = \singleton{\bzero}$.
+\item \textbf{proof.} If $T$ is one-to-one then $\ker(T) = \singleton{\bzero}$.
+\item This is easy because if there were a second vector $\bv\in\ker(T)$, $\bv\not=\bzero$,
+\item then we would have $T(\bv) = T(\bzero)$ so $T$ is not one-to-one.
+\item Conversely suppose $\ker(T) = \singleton{\bzero}$ and we will show $T$ is one-to-one.
+\item If $T(\bv_1) = T(\bv_2)$ then $T(\bv_1  - \bv_2) = \bzero$ so $\bv_1 - \bv_2\in\ker(T)$.
+\item So $\bv_1 - \bv_2 = \bzero$.
+\item So $\bv_1 = \bv_2$. So $T$ is one-to-one. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\end{document}
+
+

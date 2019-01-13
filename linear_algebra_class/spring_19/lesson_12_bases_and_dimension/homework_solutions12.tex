@@ -1,0 +1,227 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Solutions to Homework for Lesson 12 \\ Bases and Dimension}
+\author{Math 325, Linear Algebra \\ Mitch Rudominer \\ Spring 2019 \\ SFSU }
+\date{}
+
+\maketitle
+
+
+\textbf{Problem 1.}
+\textbf{(a)} Yes, a basis.
+\textbf{(b)} No, linearly dependent.
+\textbf{(c)} Yes, a basis.
+\textbf{(d)} No, linearly dependent.
+\textbf{(e)} No, linearly dependent.
+\bigskip
+
+\textbf{Problem 2.}
+\textbf{(a)} No, doesn't span
+\textbf{(d)} No, linearly dependent.
+
+\bigskip
+
+
+\textbf{Problem 3.} $\singleton{\bv_1,\bv_2}$ is linearly independent.
+But $\bv_3 = \bv_1+\bv_2$ so $\singleton{\bv_1,\bv_2,\bv_3}$ is linearly
+dependent. So we discard $\bv_3$. $\singleton{\bv_1,\bv_2,\bv_4}$ is linearly
+independent. We can see this because the matrix
+$\left(\bv_4 \vert \bv_2 \vert \bv_1 \right)$ is upper-triangular with
+nonzeros on the diagonal. Thus our maximal linearly independent set is
+$\singleton{\bv_1,\bv_2,\bv_4}$ and this is a basis for $\R^3$.
+
+\bigskip
+
+\textbf{Problem 4.}
+
+\textbf{(a)} No $\bv_1,\bv_2,\bv_3$ do not span $\R^3$. We can see this because
+all three vectors have a zero in the second position and so every linear combination
+of these three vectors do also. So the span of these three vectors does not include
+every vector in $\R^3$.
+
+\bigskip
+
+
+
+\textbf{(b)} No $\bv_1,\bv_2,\bv_3$ do not span $\R^3$. That's what we saw in part (a) above.
+
+\bigskip
+
+
+\textbf{(c)} The dimension of the subspace of $\R^3$ spanned by $\bv_1,\bv_2,\bv_3$ is 2.
+We know it is $<3$ because the three vectors do not span $\R^3$. But we can see that,
+for example $\bv_2$ and $\bv_3$ are linearly independent so the dimension of the
+span is at least 2. So it must be exactly 2.
+
+\bigskip
+
+
+\textbf{(d)} For example $\singleton{\bv_2,\bv_3}$ is a maximal linearly independent subset.
+(Actually any set of two of the three vectors works.)
+
+\bigskip
+
+\textbf{(e)} Let
+$\bv =
+\begin{pmatrix}
+0 \\ 1 \\0
+\end{pmatrix}.
+$
+Then $\bv_2,\bv_3,\bv$ is a basis fro $\R^3$. We know this, for example, because
+the matrix $\left(\bv_2 \vert \bv \vert \bv_3 \right)$ is upper triangular with
+nonzeros on the diagonal.
+
+\bigskip
+
+\newpage
+
+\textbf{Problem 5.}
+\textbf{(a)} $\dim\left(\spn(\bv_1,\bv_2,\bv_3,\bv_4)\right)=1$.
+$\singleton{\bv_1}$ is a maximal linearly independent set. $\bv_2,\bv_3,\bv_4$
+are all multiples of $\bv_1$.
+
+
+\bigskip
+
+\textbf{(b)} $\dim\left(\spn(\bv_1,\bv_2,\bv_3,\bv_4)\right)=3$.
+$\singleton{\bv_1,\bv_2,\bv_4}$ is a maximal linearly independent set. To
+see this first note that $\singleton{\bv_1,\bv_4}$ is linearly independent
+and then note that $\bv_2\notin\spn(\bv_1,\bv_4)$ because $\bv_1$ and $\bv_4$
+have a zero in the third component but $\bv_2$ does not. $\bv_3$ is a scalar
+multiple of $\bv_1$.
+
+\bigskip
+
+\textbf{(c)} $\dim\left(\spn(\bv_1,\bv_2,\bv_3,\bv_4)\right)=2$.
+$\singleton{\bv_1,\bv_4}$ is a maximal linearly independent set. (Actually
+any set of two of the vectors works here.) To
+see this first note that $\singleton{\bv_1,\bv_4}$ is linearly independent
+and then note that $\bv_2,\bv_3\in\spn(\bv_1,\bv_4)$.
+
+\bigskip
+
+\textbf{Problem 6.} For which of the following matrices $A$ is it true that $T_A$ is one-to-one?
+
+
+\textbf{(a)} $T_A$ is one-to-one. The columns of $A$ are linearly independent.
+To see this note that we could add a fourth column to the matrix, for example,
+$
+\begin{pmatrix}
+0  \\
+0  \\
+0  \\
+1  \\
+\end{pmatrix}.
+$
+and then the matrix would be upper-triangular with nonzeros on the diagonal.
+
+
+\bigskip
+
+\textbf{(b)} $T_A$ is not one-to-one. The columns of $A$ are not linearly
+independent. To see this note that the matrix is $4\times 5$ so that the
+columns represent 5 vectors in $\R^4$.
+
+\bigskip
+
+\textbf{(c)} $T_A$ is not one-to-one. The columns of $A$ are not linearly
+independent. The second and third columns are scalar multiples of the first.
+
+\bigskip
+
+\textbf{Problem 7.} The problem is equivalent to solving the following
+system of linear equations
+
+$$
+\begin{pmatrix}
+4 & 1 & 2 \\
+0 & 2 & 0 \\
+0 & 0 & -1 \\
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y \\
+z \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+-5 \\
+6 \\
+2 \\
+\end{pmatrix}
+.
+$$
+
+Since the matrix is upper-triangular with nonzeros on the diagonal we can
+solve the system using back-substitution.
+
+\begin{itemize}
+\item $-1z = 2 \quad\implies\quad z = -2$
+\item $2y = 6 \quad\implies\quad y = 3$
+\item $4x + y + 2z = -5 \quad\implies\quad 4x + 3 -4 = -5 \quad\implies\quad x=-1$
+\end{itemize}
+So
+$$
+\begin{pmatrix}
+4 & 1 & 2 \\
+0 & 2 & 0 \\
+0 & 0 & -1 \\
+\end{pmatrix}
+\begin{pmatrix}
+-1 \\
+3 \\
+-2 \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+-5 \\
+6 \\
+2 \\
+\end{pmatrix}
+$$
+so
+$$
+\begin{pmatrix}
+-5 \\
+6 \\
+2 \\
+\end{pmatrix}
+=
+-1
+\begin{pmatrix}
+4 \\
+0\\
+0\\
+\end{pmatrix}
++
+3
+\begin{pmatrix}
+1 \\
+2\\
+0\\
+\end{pmatrix}
+-2
+\begin{pmatrix}
+2  \\
+0  \\
+-1 \\
+\end{pmatrix}
+$$
+so $\bb = -\bv_1 + 3\bv_2 -2\bv_3$.
+So the coordinates of $\bb$ in the basis $\bv_1,\bv_2,\bv_3$ are
+$-1,3,-2$.
+
+
+
+\end{document}

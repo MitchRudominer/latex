@@ -1,0 +1,628 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Solutions to Homework for Lesson 14 \\ Inverses and Elementary Matrices}
+\author{Math 325, Linear Algebra \\ Mitch Rudominer \\ Spring 2019 \\ SFSU }
+\date{}
+
+\maketitle
+
+
+\textbf{Problem 1}
+
+\bigskip
+
+\textbf(a) Replace row 1 with row 1 minus 2 times row 2. Applies to matrices
+with two rows.
+
+\bigskip
+
+\textbf{(b)} Replace row 2 with row 2 plus 7 times row 1. Applies to matrices
+with two rows.
+
+\bigskip
+
+\textbf{(c)} Replace row 2 with row 2 minus 5 times row 3. Applies to matrices
+with three rows.
+
+\bigskip
+
+\textbf{(d)} Replace row 3 with row 3 plus 1/2 row 1. Applies to matrices
+with three rows.
+
+\bigskip
+
+\textbf{(e)} Replace row 2 with row 2 minus 3 times row 4. Applies to
+matrices with 4 rows.
+
+\bigskip
+
+\textbf{Problem 2}
+
+\bigskip
+
+\textbf{(a)}
+$
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 1 & 1 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(b)}
+$
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & -1 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(c)}
+$
+\begin{pmatrix}
+1 & 0 & 0 & 3 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(d)}
+$
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & -2 & 0 & 1 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+
+\textbf{Problem 3}
+
+\bigskip
+
+By thinking about the action that $L_2$ performs we can see that
+$L_2 L_1 =
+\begin{pmatrix}
+1 & 0 & 0\\
+2 & 1 & 0\\
+1 & 0 & 1\\
+\end{pmatrix}
+$.
+
+\bigskip
+
+Then by thinking about the action that $L_3$ performs we can see that
+$L_3 L_2 L_1=
+\begin{pmatrix}
+1 &            0 & 0\\
+2 &            1 & 0\\
+2 & \frac{1}{2} & 1\\
+\end{pmatrix}
+$.
+
+
+\bigskip
+
+
+\textbf{Problem 4}
+
+\bigskip
+
+By thinking about the action that $E_2$ performs we can see that
+$E_2 E_1 =
+\begin{pmatrix}
+ 1   & 0  & 0\\
+-2   & 1  & 0\\
+-1   & 0  & 1\\
+\end{pmatrix}
+$.
+
+\bigskip
+
+Then by thinking about the action that $E_3$ performs we can see that
+$E_3 E_2 E_1=
+\begin{pmatrix}
+ 1   & 0           & 0\\
+-2   & 1           & 0\\
+-2   & \frac{1}{2} & 1\\
+\end{pmatrix}
+$.
+
+
+\bigskip
+
+\textbf{Problem 5}
+\textbf{(a)}
+$P_1=
+\begin{pmatrix}
+1 & 0 & 0 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 1 & 0\\
+0 & 1 & 0 & 0\\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(b)}
+$P_2=
+\begin{pmatrix}
+0 & 0 & 0 & 1\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+1 & 0 & 0 & 0\\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(c)} No they do not commute.
+
+\bigskip
+
+\textbf{(d)} $P_1 P_2$ performs the permutation $(1,2,3,4) \mapsto (4,1,3,2)$.
+
+\bigskip
+
+$P_2 P_1$ performs the permutation $(1,2,3,4) \mapsto (2,4,3,1)$.
+
+\bigskip
+
+\textbf{Problem 6.}
+\textbf{(a)}
+$
+\begin{pmatrix}
+0 & 1 & 0\\
+0 & 0 & 1\\
+1 & 0 & 0\\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(b)}
+$
+\begin{pmatrix}
+0 & 0 & 0 & 1\\
+0 & 0 & 1 & 0\\
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(c)}
+$
+\begin{pmatrix}
+0 & 1 & 0 & 0\\
+1 & 0 & 0 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 1 & 0\\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(d)}
+$
+\begin{pmatrix}
+0 & 0 & 0 & 1 & 0\\
+1 & 0 & 0 & 0 & 0\\
+0 & 0 & 1 & 0 & 0\\
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 1\\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{Problem 7.}
+\textbf{(a)}
+$
+\begin{pmatrix}
+0 & 1 \\
+1 & 0 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(b)}
+$
+\begin{pmatrix}
+1 & 0 \\
+-5 & 1 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(c)}
+$
+\begin{pmatrix}
+1 & 2 \\
+0 & 1 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(d)}
+$
+\begin{pmatrix}
+1 & 0  & 0 \\
+0 & 1  & 3 \\
+0 & 0  & 1\\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(e)}
+$
+\begin{pmatrix}
+1 & 0  & 0 & 0\\
+0 & 1  & 0 & 0\\
+0 & -6  & 1 & 0\\
+0 & 0  & 0 & 1\\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(f)}
+$
+\begin{pmatrix}
+0 & 0  & 0 & 1\\
+0 & 1  & 0 & 0\\
+0 & 0  & 1 & 0\\
+1 & 0  & 0 & 0\\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{Problem 8.} The action of
+$
+L=
+\begin{pmatrix}
+1 & 0  & 0 \\
+a & 1  & 0 \\
+b & 0  & 1\\
+\end{pmatrix}
+$
+is replace row 2 with row 2 plus $a$ times row 1 and replace row 3 with
+row 3 plus $b$ times row $1$. This is the composition of two elementary
+row operations of type 1 and so this matrix is the product of the two
+inverse elementary matrices. This gives
+$
+L^{-1}=
+\begin{pmatrix}
+1 & 0  & 0 \\
+-a & 1  & 0 \\
+-b & 0  & 1\\
+\end{pmatrix}
+$
+.
+Or simply multiply the two matrices together to confirm that you get
+the identity.
+
+The action of
+$
+M=
+\begin{pmatrix}
+1 & 0  & 0 \\
+a & 1  & 0 \\
+b & c  & 1\\
+\end{pmatrix}
+$
+can be described as:
+\begin{enumerate}
+\item Add $a$ times row 1 to row 2.
+\item Add $b$ times row 1 to row 3.
+\item Add $c$ times row 2 to row 3.
+\item Subtract $ca$ times row 1 from row 3.
+\end{enumerate}
+
+Step 4 is necessary since during step 3 we add $ca$ to row 3 column 1.
+
+So the action of $M^{-1}$ must be
+\begin{enumerate}
+\item Add $ca$ times row 1 to row 3.
+\item Subtract $c$ times row 2 from row 3.
+\item Subtract $b$ times row 1 from row 3.
+\item Subtract $a$ times row 1 from row 2.
+\end{enumerate}
+
+Performing this sequence of actions on the identity matrix yields:
+
+$
+M^{-1}=
+\begin{pmatrix}
+1      &  0  & 0 \\
+-a      &  1  & 0 \\
+ca - b & -c  & 1\\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{Problem 9.} Let $A$ be an $n\times n$ matrix and suppose that the
+$i$-th row of $A$ is all zeros. Then the columns of $A$ cannot span
+$\R^n$ because every linear combination of the columns will have a zero
+in the $i$-th position. So the columns do not form a basis for $\R^n$ and
+so $A$ does not have rank $n$ and so it is not invertible.
+
+\bigskip
+
+\textbf{Problem 10.}
+
+\textbf{(a)}
+$
+A^{-1}=
+(-1)
+\begin{pmatrix}
+1 & -1 \\
+-2 & 1 \\
+\end{pmatrix}
+$
+
+$
+B^{-1}=
+(1/3)
+\begin{pmatrix}
+2 & 1 \\
+-1 & 1 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(b)}
+$
+C=
+\begin{pmatrix}
+2 & 1 \\
+3 & 0 \\
+\end{pmatrix}
+$
+
+$
+C^{-1} = B^{-1} A^{-1}=
+(-1/3)
+\begin{pmatrix}
+2 & 1 \\
+-1 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & -1 \\
+-2 & 1 \\
+\end{pmatrix}
+=
+(-1/3)
+\begin{pmatrix}
+ 0  & -1 \\
+-3 &  2 \\
+\end{pmatrix}
+$
+
+
+\bigskip
+
+\textbf{Problem 11.}
+
+\textbf{(a)}
+
+$
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}^{-1}
+=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+$
+
+\smallskip
+
+$
+\begin{pmatrix}
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+\end{pmatrix}^{-1}
+=
+\begin{pmatrix}
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+$
+
+\smallskip
+
+$
+\begin{pmatrix}
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+\end{pmatrix}^{-1}
+=
+\begin{pmatrix}
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+\end{pmatrix}
+$
+
+\smallskip
+
+$
+\begin{pmatrix}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}^{-1}
+=
+\begin{pmatrix}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+$
+
+\smallskip
+
+$
+\begin{pmatrix}
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+\end{pmatrix}^{-1}
+=
+\begin{pmatrix}
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+\end{pmatrix}
+$
+
+\smallskip
+
+$
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{pmatrix}^{-1}
+=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(b)} The ones that are their own inverse are the first one, the
+identity, and the last three, the elementary swaps.
+
+\bigskip
+
+\textbf{(c)} An example of a non-elementary permutation matrix that is
+its own inverse is the $4\times 4$ permutation matrix that swaps
+rows 1 and 2 and also swaps rows 3 and 4.
+
+\bigskip
+
+\textbf{Problem 12.}
+
+\textbf{(a)}
+
+$
+\begin{pmatrix}
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+\end{pmatrix}^{-1}=
+\begin{pmatrix}
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(b)}
+
+$
+\begin{pmatrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 0 \\
+\end{pmatrix}^{-1}=
+\begin{pmatrix}
+0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(c)}
+
+$
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+\end{pmatrix}^{-1}=
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 1 & 0 & 0 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(d)}
+
+$
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
+\end{pmatrix}^{-1}=
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 & 0 \\
+\end{pmatrix}
+$
+
+
+
+\end{document}

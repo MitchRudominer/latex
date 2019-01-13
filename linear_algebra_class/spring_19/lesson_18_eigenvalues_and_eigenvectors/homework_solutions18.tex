@@ -1,0 +1,437 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Solutions to Homework for Lesson 18 \\ Eigenvalues and Eigenvectors}
+\author{Math 325, Linear Algebra \\ Mitch Rudominer \\ Spring 2019 \\ SFSU }
+\date{}
+
+\maketitle
+
+\bigskip
+
+\textbf{STOP} You should not read these solutions before doing the homework yourself.
+If you do you will deprive yourself of a chance to practice for the final exam.
+Remember that there will be no quiz on this subject so this is one of your only
+chances to practice.
+
+\bigskip
+
+\textbf{Problem 1}
+
+\bigskip
+
+\textbf{(a)} To find the eigenvalues, first we find the characteristic polynomial.
+
+$p(\lambda)=\det(A-\lambda I)$
+
+
+\bigskip
+$
+\det
+\begin{pmatrix}
+2 - \lambda & 3 \\
+0 & -1 - \lambda
+\end{pmatrix}
+= (2-\lambda)(-1-\lambda) - 0 = (2-\lambda)(-1-\lambda)
+$
+
+\bigskip
+
+So the eigenvalues are 2 and  -1, each with algebraic multiplicity 1.
+
+\bigskip
+
+To find the eigenspace for the eigenvalue 2 we find the null space of $A-2 I$.
+
+\bigskip
+
+$
+\begin{pmatrix}
+0 & 3 \\
+0 & -3 \\
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+0 & 3 \\
+0 & 0 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+$3y=0 \SkipImplies y=0$
+
+\bigskip
+
+$x$ is a free variable.
+
+\bigskip
+
+The solution to the homogeneous system is
+
+\bigskip
+
+
+$
+\begin{pmatrix}
+x \\ y
+\end{pmatrix}
+=
+\begin{pmatrix}
+x \\ 0
+\end{pmatrix}
+=
+x
+\begin{pmatrix}
+1 \\ 0
+\end{pmatrix}
+$
+
+\bigskip
+
+So
+$
+\begin{pmatrix}
+1 \\ 0
+\end{pmatrix}
+$
+is a basis for the kernel of
+$
+\begin{pmatrix}
+0 & 3 \\
+0 & 0 \\
+\end{pmatrix}
+$.
+
+\bigskip
+
+
+So
+$
+\begin{pmatrix}
+1 \\ 0
+\end{pmatrix}
+$
+is an eigenvector of
+$
+\begin{pmatrix}
+2 & 3 \\
+0 & -1 \\
+\end{pmatrix}
+$
+corresponding to the eigenvalue 2. It is a basis for the eigenspace.
+So the eigenspace is 1-dimensional, so the geometric
+multiplicity of the eigenvalue 2 is 1.
+
+\bigskip
+
+Check:
+
+\bigskip
+
+$
+\begin{pmatrix}
+2 & 3 \\
+0 & -1 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 \\ 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+2 \\ 0
+\end{pmatrix}
+=
+2
+\begin{pmatrix}
+1 \\ 0
+\end{pmatrix}
+$
+.
+
+\bigskip
+
+\bigskip
+
+To find the eigenspace for the eigenvalue -1 we find the null space of $A+1I$.
+
+\bigskip
+
+$
+\begin{pmatrix}
+3 & 3 \\
+0 & 0 \\
+\end{pmatrix}
+$
+is already in row-echelon form.
+
+\bigskip
+
+$3x+3y=0 \SkipImplies x=-y$
+
+\bigskip
+
+$y$ is a free variable.
+
+\bigskip
+
+The solution to the homogeneous system is
+
+\bigskip
+
+
+$
+\begin{pmatrix}
+x \\ y
+\end{pmatrix}
+=
+\begin{pmatrix}
+-y \\ y
+\end{pmatrix}
+=
+y
+\begin{pmatrix}
+-1 \\ 1
+\end{pmatrix}
+$
+
+\bigskip
+
+So
+$
+\begin{pmatrix}
+-1 \\ 1
+\end{pmatrix}
+$
+is a basis for the kernel of
+$
+\begin{pmatrix}
+3 & 3 \\
+0 & 0 \\
+\end{pmatrix}
+$.
+
+\bigskip
+
+
+So
+$
+\begin{pmatrix}
+-1 \\ 1
+\end{pmatrix}
+$
+is an eigenvector of
+$
+\begin{pmatrix}
+2 & 3 \\
+0 & -1 \\
+\end{pmatrix}
+$
+corresponding to the eigenvalue -1. It is a basis for the eigenspace.
+So the eigenspace is 1-dimensional, so the geometric
+multiplicity of the eigenvalue -1 is 1.
+
+Check:
+
+\bigskip
+
+$
+\begin{pmatrix}
+2 & 3 \\
+0 & -1 \\
+\end{pmatrix}
+\begin{pmatrix}
+-1 \\ 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 \\ -1
+\end{pmatrix}
+=
+-1
+\begin{pmatrix}
+-1 \\ 1
+\end{pmatrix}
+$
+.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bigskip
+
+\textbf{(b)} To find the eigenvalues, first we find the characteristic polynomial.
+
+$p(\lambda)=\det(A-\lambda I)$
+
+
+\bigskip
+$
+\det
+\begin{pmatrix}
+4 - \lambda & -5 \\
+1 &  - \lambda
+\end{pmatrix}
+= (4-\lambda)(-\lambda) +5= \lambda^2 -4\lambda + 5.
+$
+
+\bigskip
+
+The roots of the characteristic polynomial are
+
+$$
+\lambda = \frac{4\pm\sqrt{16-20}}{2} = 2\pm i.
+$$
+
+So there are two complex eigenvalues $2+i$ and $2-i$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bigskip
+
+\textbf{(c)} To find the eigenvalues, first we find the characteristic polynomial.
+
+$p(\lambda)=\det(A-\lambda I)$
+
+
+\bigskip
+$
+\det
+\begin{pmatrix}
+-6 - \lambda & 4 \\
+-1 &  -10 - \lambda
+\end{pmatrix}
+$
+
+\bigskip
+
+$= (-6-\lambda)(-10-\lambda) +4= \lambda^2 +16\lambda + 64 = (\lambda+8)^2.$
+
+\bigskip
+
+So there is one eigenvalue, -8, and it has algebraic multiplicity 2.
+
+\bigskip
+
+To find the eigenspace for the eigenvalue -8 we find the null space of $A+8 I$.
+
+\bigskip
+
+$
+\begin{pmatrix}
+2 & 4 \\
+-1 & -2 \\
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+2 & 4 \\
+0 & 0 \\
+\end{pmatrix}
+$
+
+\bigskip
+
+$2x + 4y = 0\SkipImplies x = -2y$
+
+\bigskip
+
+$y$ is a free variable.
+
+\bigskip
+
+The solution to the homogeneous system is
+
+\bigskip
+
+
+$
+\begin{pmatrix}
+x \\ y
+\end{pmatrix}
+=
+\begin{pmatrix}
+-2y \\ y
+\end{pmatrix}
+=
+y
+\begin{pmatrix}
+-2 \\ 1
+\end{pmatrix}
+$
+
+\bigskip
+
+So
+$
+\begin{pmatrix}
+-2 \\ 1
+\end{pmatrix}
+$
+is a basis for the kernel of
+$
+\begin{pmatrix}
+2 & 4 \\
+-1 & -2 \\
+\end{pmatrix}
+$.
+
+\bigskip
+
+
+So
+$
+\begin{pmatrix}
+-2 \\ 1
+\end{pmatrix}
+$
+is an eigenvector of
+$
+\begin{pmatrix}
+-6 & 4 \\
+-1 & -10 \\
+\end{pmatrix}
+$
+corresponding to the eigenvalue -8. It is a basis for the eigenspace.
+So the eigenspace is 1-dimensional, so the geometric
+multiplicity of the eigenvalue -8 is 1.
+
+\bigskip
+
+Check:
+
+\bigskip
+
+$
+\begin{pmatrix}
+-6 & 4 \\
+-1 & -10 \\
+\end{pmatrix}
+\begin{pmatrix}
+-2 \\ 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+16 \\ -8
+\end{pmatrix}
+=
+-8
+\begin{pmatrix}
+-2 \\ 1
+\end{pmatrix}
+$
+.
+
+\bigskip
+
+
+
+\end{document}

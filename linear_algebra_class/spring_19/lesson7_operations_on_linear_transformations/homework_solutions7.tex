@@ -1,0 +1,159 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Solutions to Homework for Lesson 7 \\ Operations on Linear Transformations $\R^n$}
+\author{Math 325, Linear Algebra \\ Mitch Rudominer \\ Spring 2019 \\ SFSU }
+\date{}
+
+\maketitle
+
+\textbf{Problem 1.}
+
+\textbf{(a)}
+
+$$
+\begin{matrix}
+A \bv =
+\begin{pmatrix}
+b \\
+c \\
+d \\
+a \\
+\end{pmatrix}
+\text{; and }
+A^2\bv =
+\begin{pmatrix}
+c \\
+d \\
+a \\
+b \\
+\end{pmatrix}
+\text{; and }
+A^3\bv =
+\begin{pmatrix}
+d \\
+a \\
+b \\
+c \\
+\end{pmatrix}
+\end{matrix}
+$$
+
+
+\textbf{(b)}
+
+$
+B\bv =
+\begin{pmatrix}
+a \\
+b \\
+2c \\
+d \\
+\end{pmatrix}
+$
+
+
+\textbf{(c)}
+
+\begin{align*}
+&\left((BA) \left(A^{102}  B\right) \right ) \bw = B \left (A^{103} (B \bw) \right) \\
+&= B \left( A^{103}
+\begin{pmatrix}
+5 \\
+6 \\
+14 \\
+8 \\
+\end{pmatrix}
+\right) \\
+&= B \left( A^{3}
+\begin{pmatrix}
+5 \\
+6 \\
+14 \\
+8 \\
+\end{pmatrix}
+\right) \\
+&= B
+\begin{pmatrix}
+8 \\
+5 \\
+6 \\
+14
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+8 \\
+5 \\
+12 \\
+14
+\end{pmatrix}
+\end{align*}
+
+\textbf{Problem 2.}
+
+\textbf{(a)}
+
+\smallskip
+$
+\begin{pmatrix}
+0 & 3 & 0 & 0\\
+0 & 0 & 3 & 0\\
+0 & 0 & 0 & 3\\
+3 & 0 & 0 & 0\\
+\end{pmatrix}
+$
+
+\smallskip
+
+\textbf{(b)}
+\smallskip
+
+$
+\begin{pmatrix}
+6 \\
+7 \\
+8 \\
+5 \\
+\end{pmatrix}
++
+\begin{pmatrix}
+5 \\
+6 \\
+14 \\
+8\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+11 \\
+13 \\
+22 \\
+13 \\
+\end{pmatrix}
+$
+
+\smallskip
+
+\textbf{(c)}
+
+\smallskip
+
+$
+\begin{pmatrix}
+0 & 1 & 0 & 0\\
+0 & 0 & 2 & 0\\
+0 & 0 & 0 & 1\\
+1 & 0 & 0 & 0\\
+\end{pmatrix}
+$
+
+\end{document}

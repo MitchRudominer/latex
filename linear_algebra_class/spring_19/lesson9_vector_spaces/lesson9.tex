@@ -1,0 +1,333 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 9 \\ Vector Spaces}
+\subtitle{Math 325, Linear Algebra \\ Spring 2019 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Going more abstract}
+
+\begin{itemize}
+\item In this lesson we will define the notion of a \emph{vector space}.
+\item This is a generalization of the notion of vectors in $\R^n$.
+\item So we are going even more abstract.
+\item Why bother to go more abstract?
+\item We will gain more insight into what is going on.
+\item The additional generality will make it easier to talk about certain ideas.
+\item It will make it easier to understand some things about our concrete
+problem of systems of equations.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Definition of Real Vector Space}
+
+\begin{itemize}
+\item \textbf{Definition.} A \emph{vector space} over $\R$, also called
+a \emph{real vector space}, consists of the following:
+\item A \emph{set of objects} $V$ (that we will call \emph{vectors}),
+\item Two \emph{operations} on the vectors:
+\item \emph{addition}. If $\bv$ and $\bw$ are vectors in $V$ then
+we know how to form their sum $\bv+\bw$.
+\item \emph{scalar multiplication}. If $\bv$ is a vector in $V$ and
+$c\in\R$ then we know how to form the product $c\bv$.
+\item The two operations satisfy the following properties:
+\item Vector addition is commutative and associative.
+\item There is a zero vector $\bzero$ that is an additive identity.
+\item For each vector $\bv$ there is an additive inverse vector $-\bv$.
+\item Scalar multiplication is associative and distributive over vector addition.
+\item For any vector $\bv$, $1\bv = \bv$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example: $\R^n$ is a real vector space.}
+
+\begin{itemize}
+\item This is not surprising because we intentionally defined \emph{vector space}
+to be a generalization of $\R^n$.
+\item We already know that if $\bv, \bw, \bu$ are vectors in $\R^n$ and
+$c,d\in\R$ then:
+\item $\bv+\bw = \bw + \bv$
+\item $(\bv + \bw) + \bu = \bv + (\bw + \bu)$
+\item $\bv + \textbf{0} = \textbf{0} + \bv = \bv$.
+\item $\bv + (-\bv) = \textbf{0}$
+\item $c(\bv + \bw) = c\bv + c\bw$
+\item $(c+d)(\bv) = c\bv + d\bv$
+\item $c(d\bv) = (c d) \bv$.
+\item $1 \bv = \bv$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example: Function spaces}
+
+\begin{itemize}
+\item Let $\cF$ be the set of all functions $f:\R\map\R$. Then $\cF$
+is a vector space.
+\item Why?
+\item What are the vectors?
+\item The vectors are the functions $f:\R\map\R$
+\item What is vector addition? What is $f+g$?
+\item $f+g$ is defined pointwise: $(f+g)(x) = f(x) + g(x)$, for all $x$.
+\item What is scalar multiplication? What is $cf$?
+\item $cf$ is defined pointwise. $(cf)(x) = cf(x)$, for all $x$.
+\item Notice that with these operations the function space satisfies
+the definition of a vector space.
+\item $f+g = g+f$.
+\item $(f+g) + h = f + (g+h)$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Function spaces (continued)}
+
+\begin{itemize}
+\item What is the zero function?
+\item The function $Z$ such that $Z(x) = 0$ for all $x$.
+\item Notice that $Z + f = f$.
+\item If $f$ is a function what is $-f$?
+\item $-f$ is defined pointwise: $(-f)(x)  = -(f(x))$ for all $x$.
+\item Then $f+(-f) = Z$.
+\item A vector space in which the vectors are functions is called
+a \emph{function space.}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The zero vector and the zero scalar}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $V$ be a vector space and let $\bv \in V$ be
+any vector and let $c$ be any scalar. Then
+\item \textbf{(a)} $0 \bv = \bzero$.
+\item \textbf{(b)} $c \bzero = \bzero$.
+\item \textbf{proof.} \textbf{(a)}. Let $\bw = 0\bv$. We must show $\bw=\bzero$.
+\item $\bw = 0\bv = (0+0)\bv = 0\bv + 0\bv = \bw+\bw$.
+\item So $\bw = \bw + \bw$.
+\item Subtracting $\bw$ from both sides gives $\bzero = \bw$.
+\item \textbf{(b)}. $c\bzero = c(\bzero + \bzero) = c\bzero + c\bzero$.
+\item So as above, $c\bzero = \bzero$. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Subspaces}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ be a vector space. Then a \emph{subspace}
+of $V$ is
+\item  a subset $W\subseteq V$ that contains $\bzero$ and is closed
+under vector addition and scalar multiplication:
+\item $W\subseteq V$
+\item $\bzero \in W$.
+\item If $\bv,\bw\in W$ then $\bv+\bw\in W$.
+\item If $\bv\in W$ and $c\in \R$ then $c\bv\in W$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Subspaces are vector spaces}
+
+\begin{itemize}
+\item \textbf{Lemma.} $W$ is also a vector space, under the same operations
+as $\bv$.
+\item \textbf{proof.}
+\item For example, to see that vector addition is commutative, let
+$\bv,\bw\in W$.
+\item Well then $\bv,\bw\in V$ and $V$ is a vector space so $\bv+\bw=\bw+\bv$
+when considered as vectors in $V$.
+\item Because $W$ is a subspace $\bv + \bw\in W$, and $\bw + \bv\in W$,
+and vector addition in $W$ is the same as vector addition in $V$, so
+$\bv+\bw=\bw+\bv$ in $W$ too.
+\item The argument for all of the other properties of being a vector space
+is similar. $\qed$.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example: the $x$-,$y$-plane in $\R^3$}
+
+\begin{itemize}
+\item Consider the vector space $V = \R^3$.
+\item Let $W $ be the $x$-,$y$-plane in $\R^3$.
+\item $W = \setof{(x,y,z)^{\text{T}}}{z = 0}$.
+\item \textbf{Claim.} $W$ is a subspace of $V$.
+\item \textbf{proof.} We need to see that $\textbf{0}\in W$ and that
+$W$ is closed under vector
+addition and scalar multiplication.
+\item $\textbf{0} \in W$ because the origin is in the $x$-,$y$-plane.
+\item Let $\bv,\bw\in W$, we need to see that $\bv+\bw\in W$.
+\item Write $\bv=(x_0, y_0, 0)^{\text{T}}$, $\bw = (x_1, y_1,0)^{\text{T}}$.
+\item So $\bv+\bw = (x_0 + x_1, y_0 + y_1, 0)^{\text{T}}$.
+\item So $\bv+\bw \in W$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof of claim, continued.}
+
+\begin{itemize}
+\item Let $c\in \R$. We need to see that $c \bv\in W$.
+\item $c\bv = c(x_0, y_0, 0)^{\text{T}}$
+\item $=(cx_0, cy_0, 0)^{\text{T}}$
+\item So $c\bv\in W$.
+\item So $W$ is closed under both vector addition and scalar multiplication.
+\item So $W$ is a subspace. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example: The line $y=x$ in $\R^2$}
+
+\begin{itemize}
+\item Consider the vector space $V = \R^2$.
+\item Let $W$ be the set of points on the line $y=x$
+\item $W=\setof{(x,y)^{\text{T}}}{x=y}$.
+\item \textbf{Claim.} $W$ is a subspace of $V$.
+\item \textbf{proof.} We need to see that $\textbf{0}\in W$ and that
+$W$ is closed under vector
+addition and scalar multiplication.
+\item $\textbf{0} \in W$ because the origin is on the line $y=x$.
+\item Let $\bv,\bw\in W$, we need to see that $\bv+\bw\in W$.
+\item Write $\bv=(a,a)^{\text{T}}$, $\bw = (b,b)^{\text{T}}$.
+\item So $\bv+\bw = (a+b,a+b)^{\text{T}}$.
+\item So $\bv+\bw \in W$.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof of claim, continued.}
+
+\begin{itemize}
+\item Let $c\in \R$. We need to see that $c \bv\in W$.
+\item $c\bv = c(a,a)^{\text{T}}$
+\item $=(ca,ca)^{\text{T}}$
+\item So $c\bv\in W$.
+\item So $W$ is closed under both vector addition and scalar multiplication.
+\item So $W$ is a subspace. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example: The Zero Subspace}
+
+\begin{itemize}
+\item Let $V$ be any vector space.
+\item Let $W=\singleton{\bzero}$.
+\item \textbf{Claim.} $W$ is a subspace of $v$, called the zero subspace.
+\item \textbf{proof.} Clearly $W\subseteq V$ and $\bzero\in W$.
+\item $W$ is closed under addition since $\bzero+\bzero=\bzero$.
+\item $W$ is closed under scalar multiplication since $c\bzero=\bzero$.
+\item So $W$ is a subspace. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example: Not a sub-space}
+
+\begin{itemize}
+\item Let $V$ be any vector space.
+\item Let $\bv\in V$, $\bv\not=\bzero$.
+\item Let $W=\singleton{\bv}$.
+\item Then $W$ is \emph{not} a subspace.
+\item Why?
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example: The space of continuous functions.}
+
+\begin{itemize}
+\item Consider the vector space $\cF =$ the set of all functions $f:\R\map\R$.
+\item Let $C^0 = \setof{f\in\cF}{f \text{ is continuous.}}$.
+\item \textbf{Claim.} $C^0$ is a subspace of $\cF$.
+\item \textbf{proof.} We need to see that $\textbf{0}\in C^0$ and that
+$C^0$ is closed under vector
+addition and scalar multiplication.
+\item $\textbf{0} \in C^0$ because all constant functions are continuous.
+\item Let $f,g\in C^0$, we need to see that $f+g\in C^0$.
+\item This is true because the sum of two continuous functions is continuous.
+\item Let $c\in \R$. We need to see that $c f \in C^0$.
+\item This is true because a scalar times a continuous function is continuous.
+\item So $C^0$ is closed under both vector addition and scalar multiplication.
+\item So $C^0$ is a subspace. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example: The space of differentiable functions.}
+
+\begin{itemize}
+\item Again let $\cF =$ the set of all functions $f:\R\map\R$.
+\item Let $\cD = \setof{f\in\cF}{f \text{ is differentiable.}}$.
+\item \textbf{Claim.} $\cD$ is a subspace of $\cF$.
+\item \textbf{proof.} We need to see that $\textbf{0}\in \cD$ and that
+$\cD$ is closed under vector
+addition and scalar multiplication.
+\item $\textbf{0} \in \cD$ because all constant functions are differentiable.
+\item Let $f,g\in \cD$, we need to see that $f+g\in \cD$.
+\item This is true because the sum of two differentiable functions is differentiable.
+\item Let $c\in \R$. We need to see that $c f \in \cD$.
+\item This is true because a scalar times a differentiable function is differentiable.
+\item So $\cD$ is closed under both vector addition and scalar multiplication.
+\item So $\cD$ is a subspace. $\qed$
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+

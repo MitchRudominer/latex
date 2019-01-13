@@ -1,0 +1,1125 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,xcolor}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 19 \\ Inner Products and Orthogonality}
+\subtitle{Math 325, Linear Algebra \\ Spring 2019 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{$\R^n$ is more than a vector space}
+
+\begin{itemize}
+\item If $\bv$ is a vector in $\R^n$ we know how to take its length.
+\item But if $\bv$ is a vector in an abstract vector space, there is no meaning to its length.
+\item If $\bv$ and $\bw$ are vectors in $\R^n$ we know how to measure the angle between them.
+\item We know whether or not the two vectors are orthogonal.
+\item But if $\bv$ and $\bw$ are vectors in an abstract vector space, the notions of angle and orthogonal don't make sense.
+\item What is going on? Why do these geometric concepts make sense in $\R^n$ but not in an abstract vector space?
+\item $\R^n$ is more than just a vector space. $\R^n$ has additional structure.
+\item It is possible to give an abstract vector space this additional structure.
+\item It is called an inner product.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Inner Product on a Real Vector Space}
+
+\begin{itemize}
+\item \textbf{Definition} Let $V$ be a real vector space.
+\item An \emph{inner product} on $V$ is a function from $V\times V$ to $\R$
+\item written as $\angles{\bv,\bw}$, such that, the function is
+\item (i) Bilinear: $\angles{c\bv+d\bu,\bw} = c\angles{\bv,\bw} + d\angles{\bu,\bw}$, and
+\item $\angles{\bv,c\bu + d\bw} = c\angles{\bv,\bu} + d\angles{\bv,\bw}$, and
+\item (ii) Symmetric: $\angles{\bv,\bw}=\angles{\bw,\bv}$, and
+\item (iii) Positive Definite: $\angles{\bv,\bv} > 0$ if $\bv\not=0$.
+\item A vector space $V$ along with an inner product $\angles{\cdot, \cdot}$, is
+called an \emph{inner product space.}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Dot Product on  $\R^n$}
+
+\begin{itemize}
+\item The main example of an inner product is the dot product on $\R^n$.
+\item Recall that for $\bv,\bw\in\R^n$, $\bv\cdot\bw = \transpose{\bv}\bw$.
+\item If $\bv = \transpose{(v_1,v_2,\cdots,v_n)}$ and $\bw = \transpose{(w_1,w_2,\cdots,w_n)}$
+\item then $\bv\cdot\bw = v_1 w_1 + v_2 w_2 + \cdots + v_n w_n$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Dot Product is an inner product.}
+
+\begin{itemize}
+\item \textbf{Claim} The function $\angles{\bv,\bw} = \bv\cdot\bw$ is an inner product.
+\item Consequently $\R^n$ along with the dot product is an inner-product space.
+\item \textbf{proof.} Firstly, since $\bv\cdot\bw\in\R$,  the dot product
+is a function from $\R^n\times\R^n$ to $\R$.
+\item Next we need to check the three properties:
+\item (i) Bilinear: $\angles{c\bv+d\bu,\bw} = c\angles{\bv,\bw} + d\angles{\bu,\bw}$.
+\item $(c\bv+d\bu) \cdot \bw = c(\bv\cdot\bw) + d(\bu\cdot\bw)$
+\item (ii) Symmetric: $\angles{\bv,\bw}=\angles{\bw,\bv}$.
+\item $\bv\cdot\bw = \bw \cdot \bv$
+\item (iii) Positive Definite: $\angles{\bv,\bv} > 0$ if $\bv\not=0$.
+\item If $\bv = \transpose{(v_1,v_2,\cdots,v_n)}$ then
+\item $\bv\cdot\bv = v_1^2 + v_2^2 + \cdot v_n^2 \geq 0$.
+\item If $\bv\not=0$  then one of the $v_i\not=0$ and so $\bv\cdot\bv > 0$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Length and Angle}
+
+\begin{itemize}
+\item Let $\left(V,\angles{\cdot,\cdot}\right)$ be and inner product space.
+\item The inner product on $V$ imbues $V$ with a kind of \emph{geometry.}
+\item It allows us to define \emph{length} and \emph{angle}.
+\item We start with length.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Norms on vector spaces}
+
+\begin{itemize}
+\item In Euclidean space $\R^n$, we know how to measure the length of a vector.
+\item When we generalize the notion of length to an abstract vector space we get:
+\item \textbf{Definition.} Let $V$ be a vector space.
+\item A \emph{norm} on $V$ is a function from $V$ to $\R$, written $\norm{\bv}$, such that
+\item (i) $\norm{\bv} > 0 $ for all $\bv\in V, \bv\not=0$.
+\item (ii) $\norm{c\bv} = c\norm{\bv}$ for all $\bv\in V$ and all scalars $c$.
+\item (iii) triangle inequality: $\norm{\bv+\bw} \leq \norm{\bv} + \norm{\bw}$.
+\item You should think of a norm on a vector space as a way of assigning a length to the vectors.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The norm associated with an inner product}
+
+\begin{itemize}
+\item Every inner product space comes with an associated norm.
+\item \textbf{Definition} Let $\left(V, \angles{\cdot,\cdot}\right)$ be an inner-product space.
+\item Then there is an \emph{associated norm} defined as follows:
+\item $\norm{\bv} = \sqrt{\angles{\bv,\bv}}$.
+\item \textbf{Claim.} This gives a norm.
+\item \textbf{proof.}(i) $\norm{\bv} > 0 $ for all $\bv\in V, \bv\not=0$.
+\item $\angles{\bv,\bv} > 0$ by positive definiteness, so $\sqrt{\angles{\bv,\bv}} > 0$.
+\item (ii) $\norm{c\bv} = c\norm{\bv}$ for all $\bv\in V$ and all scalars $c$.
+\item $\sqrt{\angles{c\bv,c\bv}} = \sqrt{c^2 \angles{\bv,\bv}} = c\sqrt{\angles{\bv,\bv}}$.
+\item (iii) triangle inequality: $\norm{\bv+\bw} \leq \norm{\bv} + \norm{\bw}$.
+\item In order to prove the triangle inequality we need another famous inequality.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Cauchy-Schwarz Inequality}
+
+\begin{itemize}
+\item \textbf{Theorem}  Let $\left(V, \angles{\cdot,\cdot}\right)$ be an inner-product space.
+\item Then for all $\bv,\bw\in V$
+\item $|\angles{\bv,\bw}| \leq \norm{\bv} \norm{\bw}$.
+\item See the proof in the textbook. We will omit it here.
+\item But for an example, let's see why the inequality is true for the dot product on $\R^n$.
+\item You may remember from other classes that in $\R^2$ and $\R^3$, we have the following geometric property of the dot product:
+\item $\bv\cdot\bw = \norm{\bv}\norm{\bw}\cos(\theta)$ where
+\item $\theta$ is the acute angle between $\bv$ and $\bw$.
+\item Since $|\cos(\theta)|\leq 1$, it follows that  $|\bv\cdot\bw| \leq \norm{\bv}\norm{\bw}$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Triangle Inequality}
+
+\begin{itemize}
+\item The Cauchy-Scharz inequality allows us to prove the triangle inequality
+\item (iii) triangle inequality: $\norm{\bv+\bw} \leq \norm{\bv} + \norm{\bw}$.
+\item $\norm{\bv+\bw}^2 = \angles{\bv+\bw,\bv+\bw}$
+\item $=\angles{\bv,\bv}+2\angles{\bv,\bw} +\angles{\bw,\bw}$, by bi-linearity
+\item $\leq \norm{\bv}^2+2\norm{\bv}\norm{\bw} +\norm{\bw}^2$, by Cauchy-Shwarz
+\item $= \left(\norm{\bv} + \norm{\bw}\right)^2$.
+\item So $\norm{\bv+\bw} \leq \norm{\bv} + \norm{\bw}$ $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Definition of angle}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $\left(V, \angles{\cdot,\cdot}\right)$ be an inner-product space.
+\item Let $\bv$ and $\bw$ be two nonzero vectors.
+\item Then the \emph{angle between} $\bv$ and $\bw$ is defined to be
+\item the arccosine of $\angles{\bv,\bw}/\norm{\bv}\norm{\bw}$.
+\item By Cauchy-Shwarz $\lvert\angles{\bv,\bw}/\norm{\bv}\norm{\bw}\rvert\leq 1$ so the arcosine is defined.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+
+\begin{itemize}
+\item In $\R^2$, let $\bv=(1,2)^{T}$ and $\bw=(2,3)^{T}$
+\item Use the standard dot product as the inner product on $\R^2$.
+\item Find $\norm{\bv}, \norm{\bw}$ and the angle between $\bv$ and $\bw$.
+\item Verify the Cauchy-Schwarz inequality for these two vectors
+\item $\angles{\bv,\bw} = \bv\cdot\bw = 2 + 6 = 8$.
+\item $\norm{\bv} = \sqrt{\angles{\bv,\bv}} =\sqrt{\bv\cdot\bv} = \sqrt{1^2+2^2} = \sqrt{5}$.
+\item $\norm{\bw} = \sqrt{\angles{\bw,\bw}} =\sqrt{\bw\cdot\bw} = \sqrt{2^2+3^2} = \sqrt{13}$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example continued}
+
+\begin{itemize}
+\item $\angles{\bv,\bw} =  8$.
+\item $\norm{\bv} = \sqrt{5}$.
+\item $\norm{\bw} =  \sqrt{13}$.
+\item Cauchy-Schwarz: $|\angles{\bv,\bw}| \leq \norm{\bv} \norm{\bw}$.
+\item $|8| \leq \sqrt{5}\sqrt{13} = \sqrt{65}$. True since $8=\sqrt{64}$.
+\item The angle between the two vectors is $\arccos\left(\angles{\bv,\bw}/\norm{\bv}\norm{\bw}\right)$
+\item $=\arccos(8/\sqrt{65}) = \arccos(\sqrt{64/65})$
+\item This is about $0.124$ radians or about $7$ degrees.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthogonality}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $\left(V, \angles{\cdot,\cdot}\right)$ be an inner-product space.
+\item Let $\bv$ and $\bw$ be two vectors in $V$. Then we say that $\bv$ and $\bw$ are \emph{orthogonal}
+\item if $\angles{\bv,\bw}=0$.
+\item Example: In Euclidean space $\R^n$, equipped with the dot product,
+\item two vectors are orthogonal iff they are perpendicular, i.e. meet at right angles.
+\item Orthogonality is the abstract analog of that in arbitrary vector spaces.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthonormal basis}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ be an inner-product space.
+\item Let $\bv_1,\bv_2,\cdots,\bv_n$ be a set of vectors in $V$.
+\item Then the set is called \emph{orthogonal} iff every two distinct vectors in it are orthogonal.
+\item i.e. $\angles{\bv_i,\bv_j} = 0$ for all $i\not=j$.
+\item The set is called \emph{orthonormal} if it is orthogonal and in addition all of the elements have norm one.
+\item i.e. $\angles{\bv_i,\bv_i} = 1$ for all $i$.
+\item Of particular importance is the case where $\bv_1,\bv_2,\cdots,\bv_n$  form a basis for $V$.
+\item Then we say they form an orthogonal (or orthonormal) basis.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Converting orthogonal to orthonormal}
+
+\begin{itemize}
+\item If $\bv_1,\bv_2,\cdots,\bv_n$ is an orthogonal basis then we can convert it into an orthonormal basis,
+\item by dividing each basis element by its norm.
+\item Notice that none of the basis elements can have norm zero.
+\item Let $\bu_1 = \bv_1/\norm{\bv_1}, \bu_2=\bv_2/\norm{\bv_2},\cdots,\bu_n=\bv_n/\norm{\bv_n}$.
+\item Then $\bu_1,\bu_2,\cdots,\bu_n$ is an orthonormal basis.
+\item \textbf{proof.} First notice that the norms of the $\bu_i$ are 1.
+\item $\norm{\bu_i} = \norm{\frac{\bv_i}{\norm{\bv_i}}} = \frac{1}{\norm{\bv_i}}\norm{\bv_i} = 1$.
+\item Then notice that the $\bu_i$ are still orthogonal.
+\item $\angles{\bu_i,\bu_j} = \angles{\frac{\bv_i}{\norm{\bv_i}},\frac{\bv_j}{\norm{\bv_j}}}$
+\item $= \frac{1}{\norm{\bv_i}} \frac{1}{\norm{\bv_j}}\angles{\bv_i,\bv_j} = 0$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+
+\begin{itemize}
+\item The standard basis in $\R^n$ is an orthonormal basis.
+\item For example in $\R^3$ with
+\item $\be_1=
+\begin{pmatrix}
+1\\0\\0
+\end{pmatrix},
+\be_2=
+\begin{pmatrix}
+0\\1\\0
+\end{pmatrix},
+\be_3=
+\begin{pmatrix}
+0\\0\\1
+\end{pmatrix}
+$
+\item We have $\angles{\be_1,\be_2} = \angles{\be_1,\be_3} = \angles{\be_2,\be_3} = 0$.
+\item $\angles{\be_1,\be_1}=\angles{\be_2,\be_2}=\angles{\be_3,\be_3}=1$.
+\item So $\singleton{\be_1,\be_2,\be_3}$ is an orthonormal basis for $\R^3$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+
+\begin{itemize}
+\item In $\R^2$, let $\bv=
+\begin{pmatrix}
+1 \\ 1
+\end{pmatrix}
+\text{, and }
+\bw=
+\begin{pmatrix}
+2 \\ 3
+\end{pmatrix}
+$.
+\item Then $\angles{\bv,\bw} = 2 + 3 = 5$.
+\item So $\bv$ and $\bw$ are not orthogonal.
+\item But they are linearly independent and since there are two of them in $\R^2$ they form a basis.
+\item But it is not an orthogonal basis.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+
+\begin{itemize}
+\item In $\R^2$, let $\bv=
+\begin{pmatrix}
+1 \\ 1
+\end{pmatrix}
+\text{, and }
+\bw=
+\begin{pmatrix}
+-1 \\ 1
+\end{pmatrix}
+$.
+\item Then $\angles{\bv,\bw}=0$. So $\bv$ and $\bw$ are orthogonal.
+\item $\angles{\bv,\bv}=\angles{\bw,\bw}=2$.
+\item $\norm{\bv}=\norm{\bw}=\sqrt{2}$.
+\item So $\singleton{\bv,\bw}$ is an orthogonal basis for $\R^2$ but not an orthonormal basis.
+\item Let $\bu_1 = \frac{1}{\sqrt{2}}\bv_1, \bu_2=\frac{1}{\sqrt{2}}\bw$.
+\item Then $\singleton{\bu_1,\bu_2}$ is an orthonormal basis for $\R^2$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Coordinates in an orthonormal basis}
+\begin{itemize}
+\item Working in an orthonormal basis has advantages.
+\item For example it is easy to compute the coordinates of any vector relative to an orthonormal basis.
+\item \textbf{Theorem} Let $\bv_1,\bv_2,\cdots,\bv_n$ be an orthogonal basis for an inner-product space.
+\item Let $\bv$ be any vector in the inner product space. Then
+\item $$\bv=\frac{\angles{\bv,\bv_1}}{\norm{\bv_1}^2}\bv_1 + \frac{\angles{\bv,\bv_2}}{\norm{\bv_2}^2}\bv_2+\cdots+\frac{\angles{\bv,\bv_n}}{\norm{\bv_n}^2}\bv_n.$$
+\item In particular if $\bv_1,\bv_2,\cdots,\bv_n$ is an orthonormal basis then
+\item $$\bv=\angles{\bv,\bv_1}\bv_1+\angles{\bv,\bv_2}\bv_2+\cdots+\angles{\bv,\bv_n}\bv_n.$$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Computing coordinates in different bases}
+\begin{itemize}
+\item Let's compute the coordinates of the vector $\bv=\begin{pmatrix} 1\\2 \end{pmatrix}$ in three different bases.
+\item Basis 1: $\singleton{
+\frac{1}{\sqrt{2}}
+\begin{pmatrix} 1\\1 \end{pmatrix},
+\frac{1}{\sqrt{2}}
+\begin{pmatrix} -1\\1 \end{pmatrix},
+}$
+\item Basis 2: $\singleton{
+\begin{pmatrix} 1\\1 \end{pmatrix},
+\begin{pmatrix} -1\\1 \end{pmatrix},
+}$
+\item Basis 3: $\singleton{
+\begin{pmatrix} 1\\1 \end{pmatrix},
+\begin{pmatrix} 2\\3 \end{pmatrix},
+}$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Computing coordinates in an orthonormal basis}
+\begin{itemize}
+\item Let's compute the coordinates of the vector $\bv=\begin{pmatrix} 1\\2 \end{pmatrix}$ in basis 1.
+\item Basis 1: $\singleton{
+\bv_1=\frac{1}{\sqrt{2}}
+\begin{pmatrix} 1\\1 \end{pmatrix},
+\bv_2=\frac{1}{\sqrt{2}}
+\begin{pmatrix} -1\\1 \end{pmatrix},
+}$
+\item This is an orthonormal basis so the theorem tells us that $\bv=\angles{\bv,\bv_1}\bv_1+\angles{\bv,\bv_2}\bv_2$.
+\item $\angles{\bv,\bv_1} = \frac{1}{\sqrt{2}}(1 + 2) = \frac{3}{\sqrt{2}}$
+\item $\angles{\bv,\bv_2} = \frac{1}{\sqrt{2}}(-1 + 2) = \frac{1}{\sqrt{2}}$
+\item So $\bv=\frac{3}{\sqrt{2}}\bv_1 + \frac{1}{\sqrt{2}}\bv_2$.
+\item Check
+\begin{align*}
+\frac{3}{\sqrt{2}}\frac{1}{\sqrt{2}}
+\begin{pmatrix}1\\1\\\end{pmatrix} +  \frac{1}{\sqrt{2}}\frac{1}{\sqrt{2}}\begin{pmatrix}-1\\1\end{pmatrix}
+&=\frac{3}{2}\begin{pmatrix}1\\1\end{pmatrix}+\frac{1}{2}\begin{pmatrix}-1\\1\end{pmatrix} \\
+&=\begin{pmatrix}1\\2\end{pmatrix}
+\end{align*}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Computing coordinates in an orthogonal basis}
+\begin{itemize}
+\item Let's compute the coordinates of the vector $\bv=\begin{pmatrix} 1\\2 \end{pmatrix}$ in basis 2.
+\item Basis 2: $\singleton{
+\bv_1=
+\begin{pmatrix} 1\\1 \end{pmatrix},
+\bv_2=
+\begin{pmatrix} -1\\1 \end{pmatrix},
+}$
+\item This is an orthogonal basis so the theorem tells us that $\bv=\frac{\angles{\bv,\bv_1}}{\norm{\bv_1}^2}\bv_1 + \frac{\angles{\bv,\bv_2}}{\norm{\bv_2}^2}\bv_2$.
+\item $\angles{\bv,\bv_1} = 1 + 2 = 3$
+\item $\angles{\bv,\bv_2} = -1 + 2 = 1$.
+\item $\norm{\bv_1}^2=2$, $\norm{\bv_2}^2=2$.
+\item So $\bv=\frac{3}{2}\bv_1 + \frac{1}{2}\bv_2$.
+\item Check
+$$
+\frac{3}{2}
+\begin{pmatrix}1\\1\\\end{pmatrix} +  \frac{1}{2}\begin{pmatrix}-1\\1\end{pmatrix}
+=\begin{pmatrix}1\\2\end{pmatrix}
+$$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Computing coordinates in a non-orthogonal basis}
+\begin{itemize}
+\item Let's compute the coordinates of the vector $\bv=\begin{pmatrix} 1\\2 \end{pmatrix}$ in basis 3.
+\item Basis 3: $\singleton{
+\bv_1=
+\begin{pmatrix} 1\\1 \end{pmatrix},
+\bv_2=
+\begin{pmatrix} 2\\3 \end{pmatrix},
+}$
+\item This basis is not orthogonal so the theorem doesn't apply. We have to fall back to earlier ideas.
+\item We are looking for two scalars $x$ and $y$ such that $x\bv_1+y\bv_2=\bv$
+\item This is a system of linear equations. Solve
+\item $
+\begin{pmatrix}
+1 & 2 \\
+1 & 3
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 \\
+2
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Computing coordinates in a non-orthogonal basis}
+\begin{itemize}
+\item Form the augmented matrix and do Gaussian elimination and back-substitution
+\item $\begin{pmatrix}
+1 & 2 & \aug & 1\\
+1 & 3 & \aug & 2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & \aug & 1\\
+0 & 1 & \aug & 1
+\end{pmatrix}
+$
+\item $y=1$
+\item $x + 2y = 1 \SkipImplies x +2 = 1 \SkipImplies x = -1$.
+\item So $\bv = -\bv_1 + \bv_2$.
+\item Check
+$$
+-\begin{pmatrix}1\\1\\\end{pmatrix} + \begin{pmatrix}2\\3\end{pmatrix}
+=\begin{pmatrix}1\\2\end{pmatrix}
+$$
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof of the theorem}
+\begin{itemize}
+\item \textbf{Proof.} Suppose $\bv_1,\bv_2,\cdots,\bv_n$ is an orthogonal basis.
+\item Let $\bv$ be any vector. Then $\bv$ has some coordinates in terms of the basis.
+\item So write $\bv = c_1\bv_1 + c_2\bv_2 + \cdots + c_n\bv_n$.
+\item Now let's compute the inner-product of $\bv$ with each of the basis elements.
+\item $\angles{\bv,\bv_i} = c_1\angles{\bv_1,\bv_i} + c_2\angles{\bv_2,\bv_i} + \cdots + c_i\angles{\bv_i,\bv_i} + \cdots + c_n\angles{\bv_n,\bv_i}$.
+\item Since the set of basis vectors is an orthogonal set, $\angles{\bv_j,\bv_i} = 0$ for all $j\not=i$.
+\item So $\angles{\bv,\bv_i} = c_i\angles{\bv_i,\bv_i}$.
+\item So $c_i = \frac{\angles{\bv,\bv_i}}{\angles{\bv_i,\bv_i}} = \frac{\angles{\bv,\bv_i}}{\norm{\bv_i}^2}$. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{An orthonormal set is automatically linearly independent}
+\begin{itemize}
+\item \textbf{Prop.} Suppose $\bv_1,\bv_2,\cdots,\bv_n$ is an orthogonal set.
+\item Then it is also a linearly independent set. (So it is a basis for the space it spans.)
+\item \textbf{proof.} Suppose $c_1\bv_1+c_2\bv_2+\cdots+c_n\bv_n=\bzero$.
+\item We will show that $c_1=c_2=\cdots=c_n=0$.
+\item Take the inner-product of both sides of the equation above with the vector $\bv_i$.
+\item For all $j\not=i$, $\angles{\bv_i,\bv_j} = 0$. So we get
+\item $c_i\angles{\bv_i,\bv_i} = \angles{\bv_i,\bzero}$.
+\item So $c_i\norm{\bv_i}^2 = 0$.
+\item So $c_i=0$.
+\item But this is true for all $i$, so $c_i=0$ for all $i$. $\qed$.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A vector orthogonal to a subspace}
+\begin{itemize}
+\item \textbf{Definition} Suppose $W$ is a subspace of the inner-product space $V$.
+\item Let $\bv$ be a vector in $V$.
+\item Then we say that $\bv$ is orthogonal to $W$, written $\bv\perp W$, if
+\item $\bv$ is orthogonal to every element of $W$.
+\item Example: In $\R^3$ let $W$ be the $x$,$y$-plane and let $\bv=\be_3$.
+\item Then $\bv\perp W$.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A vector orthogonal to a basis}
+\begin{itemize}
+\item \textbf{Lemma} Suppose $W$ is a subspace of the inner-product space $V$.
+\item Let $\bw_1,\bw_2,\cdots,\bw_n$ be a (not necessarily orthogonal) spanning set for $W$.
+\item Let $\bv$ be a vector in $V$.
+\item Suppose that $\bv\perp\bw_1,\bv\perp\bw_2\cdots,\bv\perp\bw_n$.
+\item Then $\bv\perp W$.
+\item \textbf{proof} Let $\bw\in W$. We must show that $\bv\perp\bw$.
+\item We can write $\bw=c_1\bw_1+c_2\bw_2+\cdots+c_n\bw_n$.
+\item So $\angles{\bv,\bw} = c_1\angles{\bv,\bw_1} + c_2\angles{\bv,\bw_2}+\cdots+\angles{\bv,\bw_n}$
+\item $=0 + 0 + \cdots + 0$.
+\item So $\bv\perp\bw$. $\qed$.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+\begin{itemize}
+\item In $\R^3$ let $W$ be the plane spanned by the vectors
+\item $\bw_1=
+\begin{pmatrix}
+1 \\ 1 \\ 2
+\end{pmatrix},
+\bw_2=
+\begin{pmatrix}
+0 \\ -1 \\ 2
+\end{pmatrix}
+$.
+\item Let $\bv=
+\begin{pmatrix}
+-4 \\ 2 \\ 1
+\end{pmatrix}
+$
+\item Then $\bv\perp W$.
+\item To see this just note that $\bv\perp\bw_1$ and $\bv\perp\bw_2$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthogonal subspaces}
+\begin{itemize}
+\item \textbf{Definition} Suppose $W$ and $U$ are subspaces of the inner-product space $V$.
+\item Then we say that $W$ and $U$ are orthogonal, written $W\perp U$ iff
+\item for all $\bw\in W$ and all $\bu\in U$, $\bw\perp\bu$.
+\item Example. In $\R^3$ the $x$- and $y$-axes are orthogonal.
+\item Example. In $\R^3$ the $x$- $y$-plane and the $z$-axis are orthogonal.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthogonal Compliment}
+\begin{itemize}
+\item \textbf{Definition} Let $W$ be a subspace of the inner-product space $V$.
+\item The \emph{orthogonal compliment} of $W$, written $W^{\perp}$, also pronounced ``$W$-perp'', is
+\item $\setof{\bv\in V}{\bv\perp W}$.
+\item Example: Let $W$ be the $x$-, $y$-plane in $\R^3$. Then $W^{\perp}$ is the $z$-axis.
+\item Example: Let $W$ be the $z$-axis in $\R^3$. Then $W^{\perp}$ is the $x$-, $y$-plane.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthogonal Compliment is a Subspace}
+\begin{itemize}
+\item \textbf{Proposition} Let $W$ be a subspace of the inner-product space $V$.
+\item Then $W^{\perp}$ is a subspace.
+\item \textbf{proof.} Let's check the three conditions of being a subspace:
+\item (1) $\bzero\in W^{\perp}$.
+\item This is true because $\angles{\bzero, \bv} = 0$ for all $\bv$.
+\item (2) $\bv,\bu\in W^{\perp} \SkipImplies \bv+\bu \in W^{\perp}$.
+\item This is true because $\angles{\bv+\bu,\bw}=\angles{\bv,\bw}+\angles{\bu,\bw} = 0 + 0 = 0$.
+\item (3) $\bv\in W \SkipImplies c\bv\in W$.
+\item This is true because $\angles{c\bv,\bw} = c\angles{\bv,\bw} = c0 = 0$. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$W\intersect W^{\perp}$}
+\begin{itemize}
+\item \textbf{Proposition} Let $W$ be a subspace of the inner-product space $V$.
+\item Then $W\intersect W^{\perp} = \singleton{\bzero}$.
+\item \textbf{proof.} Suppose $\bv\in W\intersect W^{\perp}$.
+\item But then $\bv$ is orthogonal to itself.
+\item So $\angles{\bv,\bv} = 0$.
+\item So $\norm{\bv} = 0$.
+\item So $\bv=\bzero$. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthonormal Bases Exist}
+\begin{itemize}
+\item \textbf{Theorem} Let $V$ be a finite dimensional inner product space.
+\item Then $V$ has an orthonormal bases.
+\item \textbf{Proof sketch} Let $\bv_1,\bv_2,\cdots,\bv_n$ be any bases for $V$.
+\item There is an algorithm called the \emph{Gram-Schmidt algorithm} that modifies
+this bases to produce an orthonormal bases $\bu_1,\bu_2,\cdots,\bu_n$.
+\item We don't have time to learn this algorithm. Read Section 4.2 if you are interested.
+\item Here we'll give a rough sketch.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Gram-Schmidt Algorithm}
+\begin{itemize}
+\item Let $\bu_1 = \frac{1}{\norm{\bv_1}}\bv_1$.
+\item Then $\norm{\bu_1} = 1$ and $\bu_1,\bv_2,\cdots,\bv_n$ is still a basis.
+\item Let $\bw_2 = \bv_2 - \angles{\bv_2,\bu_1}\bu_1$.
+\item Then $\angles{\bw_2,\bu_1} = \angles{\bv_2,\bu_1} - \angles{\bv_2,\bu_1}\angles{\bu_1,\bu_1} = 0$.
+\item Let $\bu_2 = \frac{1}{\norm{\bw_2}}\bw_2$.
+\item Then $\norm{\bu_2}=1$ and $\angles{\bu_1,\bu_2}=0$ and $\bu_1, \bu_2,\bv_3,\cdots,\bv_n$ is still a basis.
+\item Continuing in this we we replace each $\bv_i$ with a $\bu_i$ and so obtain an orthonormal basis. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthogonal projection}
+\begin{itemize}
+\item \textbf{Theorem} Let $V$ be a finite dimensional inner product space.
+\item Let $W$ be a subspace of $V$. Let $\bv\in V$.
+\item Then there are unique vectors $\bv_1,\bv_2$ such that
+\item $\bv=\bv_1+\bv_2$ and
+\item $\bv_1 \in W$ and $\bv_2\in W^{\perp}$.
+\item Intuitively: $\bv_1$ is the ``part of $\bv$ parallel to $W$'', and
+\item $\bv_2$ is the ``part of $\bv$ orthogonal to $W$.''
+\item \textbf{Definition.} $\bv_1$ is called the \emph{orthogonal} projection of $\bv$ onto $W$.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example Orthogonal projection}
+\begin{itemize}
+\item \textbf{Example} In $\R^3$ let $W$ be the $x$- $y$-plane. Let $\bv=
+\begin{pmatrix}1\\2\\3 \end{pmatrix}$.
+\item Then $\bv=
+\begin{pmatrix}
+1\\2\\0
+\end{pmatrix}
++
+\begin{pmatrix}
+0\\0\\3
+\end{pmatrix}
+$.
+\item $\begin{pmatrix}
+1\\2\\0
+\end{pmatrix}$
+is the orthogonal project of $\bv$ onto the $x$- $y$-plane.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof of Orthogonal projection theorem}
+\begin{itemize}
+\item \textbf{proof} Let $V$ be a finite dimensional inner product space.
+\item Let $W$ be a subspace of $V$. Let $\bv\in V$.
+\item Let $\bw_1,\bw_2,\cdots,\bw_n$ be an orthonormal basis for $W$.
+\item Let $\bv_1=\angles{\bv,\bw_1}\bw_1+\angles{\bv,\bw_2}\bw_2+\cdots+\angles{\bv,\bw_n}\bw_n.$
+\item Let $\bv_2 = \bv - \bv_1$.
+\item Then $\bv=\bv_1+\bv_2$ and $\bv_1\in W$. We need to see that $\bv_2\in W^{\perp}$.
+\item First, let $\bw_i$ be one of the basis elements and compute $\angles{\bv_1, \bw_i}$.
+\item $\angles{\bv_1, \bw_i} = \angles{\bv,\bw_1}\angles{\bw_1,\bw_i} + \angles{\bv,\bw_2}\angles{\bw_2,\bw_i} +
+\cdots + \angles{\bv,\bw_i}\angles{\bw_i,\bw_i} + \cdots + \angles{\bv,\bw_n}\angles{\bw_n,\bw_i} $
+\item $=\angles{\bv,\bw_i}\angles{\bw_i,\bw_i} = \angles{\bv,\bw_i}$.
+\item Now, to see that $\bv_2\in W^{\perp}$, take the inner product of $\bv_2$ with any of the $\bw_i$.
+\item $\angles{\bv_2, \bw_i} = \angles{\bv, \bw_i} - \angles{\bv_1, \bw_i}$
+\item $=\angles{\bv, \bw_i} - \angles{\bv,\bw_i} = 0$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof continued}
+\begin{itemize}
+\item So $\bv_2\in W^{\perp}$.
+\item So we have written $\bv=\bv_1+\bv_2$ with $\bv_1\in W$ and $\bv_2\in W^{\perp}$.
+\item To complete the proof we have to show that the decomposition is unique.
+\item Suppose that we could also write $\bv=\bv^{\prime}_1+\bv^{\prime}_2$ with $\bv^{\prime}_1\in W$ and $\bv^{\prime}_2\in W^{\perp}$.
+\item $\bv_1+\bv_2=\bv^{\prime}_1+\bv^{\prime}_2 \SkipImplies \bv_1 - \bv^{\prime}_1 = \bv^{\prime}_2 - \bv_2$.
+\item The left-hand-side is in $W$ and the right-hand-side is in $W^{\perp}$.
+\item But $W\intersect W^{\perp} = \singleton{\bzero}$.
+\item So $\bv_1=\bv_1^{\prime}$ and $\bv_2=\bv_2^{\prime}$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$V=W+W^{\perp}$}
+\begin{itemize}
+\item \textbf{Theorem} Let $V$ be a finite dimensional inner product space.
+\item Let $W$ be a subspace of $V$.
+\item Then $V= W + W^{\perp}$. This means
+\item $\spn\left(W\union W^{\perp}\right) = V$, and
+\item $W\intersect W^{\perp} = \singleton{\bzero}$.
+\item In particular $\dim(W) + \dim(W^{\perp}) = \dim(V)$.
+\item \textbf{Proof.} This is equivalent to the previous theorem.
+\item Example. In $\R^3$ the $z$-axis and the $x$- $y$-plane are orthogonal compliments.
+\item The dimension of the $z$-axis is 1 and the dimension of the $x$- $y$-plane is 2
+\item and 1 + 2 = 3.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Computing Orthogonal Compliments}
+\begin{itemize}
+\item \textbf{Proposition.} Let $V$ be a finite dimensional inner product space.
+\item Let $W$ be a subspace of $V$. Let $\bv\in V$.
+\item Let $\bw_1,\bw_2,\cdots,\bw_n$ be an \emph{orthogonal} basis for $W$.
+\item Then the orthogonal projection of $\bv$ onto $W$ is given by
+\item $\frac{\angles{\bv,\bw_1}}{\norm{\bw_1}^2}\bv_1 + \frac{\angles{\bv,\bw_2}}{\norm{\bw_2}^2}\bv_2+\cdots+\frac{\angles{\bv,\bw_n}}{\norm{\bw_n}^2}\bv_n.$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+\begin{itemize}
+\item Let $W$ be the subspace of $\R^4$ spanned by the following three vectors:
+\item $
+\bw_1=
+\begin{pmatrix}
+0  \\
+1  \\
+1\\
+0
+\end{pmatrix}
+\text{, }
+\bw_2=
+\begin{pmatrix}
+1 \\
+0\\
+0 \\
+-1
+\end{pmatrix}
+\text{, }
+\bw_3=
+\begin{pmatrix}
+1 \\
+1 \\
+-1 \\
+1
+\end{pmatrix}
+.$
+\item Let $\bv=
+\begin{pmatrix}
+1 \\
+1 \\
+2 \\
+2
+\end{pmatrix}
+$.
+\item Find the orthogonal projection of $\bv$ onto $W$.
+\item Notice that $\bw_1,\bw_2,\bw_3$ is an orthogonal basis for $W$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example Continued}
+\begin{itemize}
+\item $
+\bw_1=
+\begin{pmatrix}
+0  \\
+1  \\
+1\\
+0
+\end{pmatrix}
+\text{, }
+\bw_2=
+\begin{pmatrix}
+1 \\
+0\\
+0 \\
+-1
+\end{pmatrix}
+\text{, }
+\bw_3=
+\begin{pmatrix}
+1 \\
+1 \\
+-1 \\
+1
+\end{pmatrix}
+\text{, }
+\bv=
+\begin{pmatrix}
+1 \\
+1 \\
+2 \\
+2
+\end{pmatrix}
+$
+\item By the proposition, the orthogonal projection is given by
+\item $\frac{\angles{\bv,\bw_1}}{\norm{\bw_1}^2}\bw_1 + \frac{\angles{\bv,\bw_2}}{\norm{\bw_2}^2}\bw_2 + \frac{\angles{\bv,\bw_3}}{\norm{\bw_3}^2}\bw_3$.
+\item $\angles{\bv,\bw_1}=3,\angles{\bv,\bw_2}=-1,\angles{\bv,\bw_3}=2$.
+\item $\norm{\bw_1}^2=2,\norm{\bw_2}^2=2,\norm{\bw_3}^2=4$.
+\item So the orthogonal project of $\bv$ onto $W$ is:
+\item $\frac{3}{2}\bw_1 - \frac{1}{2}\bw_2 + \frac{1}{2}\bw_3$.
+\item  $ =
+\frac{3}{2}
+\begin{pmatrix}
+0  \\
+1  \\
+1\\
+0
+\end{pmatrix}
+- \frac{1}{2}
+\begin{pmatrix}
+1 \\
+0\\
+0 \\
+-1
+\end{pmatrix}
++ \frac{1}{2}\
+\begin{pmatrix}
+1 \\
+1 \\
+-1 \\
+1
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+2 \\
+1 \\
+1
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example Continued}
+\begin{itemize}
+\item $
+\bw_1=
+\begin{pmatrix}
+0  \\
+1  \\
+1\\
+0
+\end{pmatrix}
+\text{, }
+\bw_2=
+\begin{pmatrix}
+1 \\
+0\\
+0 \\
+-1
+\end{pmatrix}
+\text{, }
+\bw_3=
+\begin{pmatrix}
+1 \\
+1 \\
+-1 \\
+1
+\end{pmatrix}
+\text{, }
+\bv=
+\begin{pmatrix}
+1 \\
+1 \\
+2 \\
+2
+\end{pmatrix}
+$
+\item The orthogonal project of $\bv$ onto $W$ is $\bv_1=
+\begin{pmatrix}
+0 \\
+2 \\
+1 \\
+1
+\end{pmatrix}
+$
+\item Check: Let $\bv_2 = \bv - \bv_1$. $\bv_2$ should be in $W^{\perp}$.
+\item $\bv_2=
+\begin{pmatrix}
+1 \\
+1 \\
+2 \\
+2
+\end{pmatrix}
+-
+\begin{pmatrix}
+0 \\
+2 \\
+1 \\
+1
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 \\
+-1 \\
+1 \\
+1
+\end{pmatrix}
+$
+\item $\angles{\bv_2,\bw_1}=\angles{\bv_2,\bw_2}=\angles{\bv_2,\bw_3} = 0$.
+\item So $\bv_2\in W^{\perp}$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Row Space of a Matrix}
+\begin{itemize}
+\item \textbf{Definition} Let $A$ be an $m\times n$ matrix.
+\item Then the \emph{row space} of $A$ is the column space of $\transpose{A}$.
+\item Equivalently the image of $\transpose{A}$.
+\item Example: $A=
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{pmatrix}
+$
+\item The row space of $A$ is the 2-dimensional subspace of $\R^3$ spanned by
+\item $
+\singleton{
+\begin{pmatrix}
+1 \\ 2 \\ 3
+\end{pmatrix},
+\begin{pmatrix}
+4 \\ 5 \\ 6
+\end{pmatrix}
+}
+$
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Orthogonal Compliment of the Kernel}
+\begin{itemize}
+\item \textbf{Theorem} Let $A$ be any matrix.
+\item Then the row space of $A$ and the kernel of $A$ are orthogonal compliments.
+\item \textbf{proof} Let $W$ be the row space of $A$.
+\item $\bx\in\ker(A)$ iff $\transpose{\bw} \bx = 0$ for every row $\transpose{\bw}$ of $A$,
+\item iff $\angles{\bw,\bx} = 0$ every row $\transpose{\bw}$ of $A$,
+\item iff $\bx\in W^{\perp}$. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Row Rank of a Matrix}
+\begin{itemize}
+\item \textbf{Definition} Let $A$ be an $m\times n$ matrix.
+\item The \emph{row rank} of $A$ is the dimension of the row space of $A$.
+\item The normal rank of $A$ is sometimes called the \emph{column rank}.
+\item \textbf{Theorem.} The row-rank of $A$ is equal to the column rank of $A$.
+\item Let $r$ be the column rank of $A$.
+\item Previously we learned that $\dim(\ker(A)) = n  - r$.
+\item So $\dim(\ker(A)) + r = n$.
+\item But the column space of $A$ is the orthogonal compliment of the kernel.
+\item So its also true that $\dim(\ker(A)) + \dim(\text{Column Space of $A$}) = n$.
+\item So $\dim(\text{Column Space of $A$}) = r$. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+\begin{itemize}
+\item Let $V$ be the subspace of $\R^3$ spanned by the following three vectors:
+\item $\bv_1=
+\begin{pmatrix}
+1  \\
+0  \\
+3   \\
+\end{pmatrix}
+\text{, }
+\bv_2=
+\begin{pmatrix}
+-1 \\
+3\\
+3 \\
+\end{pmatrix}
+\text{, }
+\bv_3=
+\begin{pmatrix}
+5 \\
+-9 \\
+-3 \\
+\end{pmatrix}
+$
+\item Find a basis for $V^{\perp}$. What is the dimension of $V^{\perp}$?
+\item Solution: Let $A$ be the matrix with rows $\transpose{\bv_1}, \transpose{\bv_2}, \transpose{\bv_3}$.
+\item $A=
+\begin{pmatrix}
+1 & 0 & 3   \\
+-1 & 3 & 3  \\
+5 & -9 & -3
+\end{pmatrix}
+$
+\item Then we are looking for the kernel of $A$. So solve the homogeneous system of equations.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example Continued}
+\begin{itemize}
+\item So solve the homogeneous system of equations.
+\item $
+\begin{pmatrix}
+1 & 0 & 3   \\
+-1 & 3 & 3  \\
+5 & -9 & -3
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & 3    \\
+0 & 3 & 6    \\
+0 & -9 & -18
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & 3    \\
+0 & 3 & 6    \\
+0 & 0 &
+\end{pmatrix}
+$
+\item Let's call the variables $x,y,z$. So $x$ and $y$ are basic and $z$ is free.
+\item $3y+6z=0\SkipImplies y = -2z$.
+\item $x +3z =0 \SkipImplies x=-3z$.
+\item So the general solution is $
+\begin{pmatrix}
+x\\y\\z
+\end{pmatrix}
+=
+\begin{pmatrix}
+-3z\\-2z\\z
+\end{pmatrix}
+=
+z
+\begin{pmatrix}
+-3\\-2\\1
+\end{pmatrix}
+$
+\item So $
+\begin{pmatrix}
+-3\\-2\\1
+\end{pmatrix}
+$
+is a basis for $V^{\perp}$ and $V^{\perp}$ is 1-dimensional.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+\begin{itemize}
+\item Find a basis for the orthogonal compliment of the
+kernel of the following matrix. What is the dimension of the orthogonal
+compliment of the kernel?
+\item $\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+1 & 0 & 0 & 1 \\
+2 & 2 & 3 & 5 \\
+\end{pmatrix}
+$
+\item Solution. The orthogonal compliment of the kernel is the row space.
+\item So we are asked to find a basis and dimension for the row space.
+\item i.e. a basis and dimension for the column space of the transpose.
+\item $\begin{pmatrix}
+1 & 1 & 2 \\
+1 & 0 & 1 \\
+3 & 0 & 3 \\
+4 & 1 & 5 \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example continued}
+\begin{itemize}
+\item Find a basis and dimension for the column space of
+\item $\begin{pmatrix}
+1 & 1 & 2 \\
+1 & 0 & 1 \\
+3 & 0 & 3 \\
+4 & 1 & 5 \\
+\end{pmatrix}
+$
+\item We don't even need to do Gaussian elimination. We can see the solution by inspection.
+\item The first two columns are linearly independent. And the final column is the sum of the first two.
+\item So the rank is 2 and a basis is given by the first two columns.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\end{document}
+
+

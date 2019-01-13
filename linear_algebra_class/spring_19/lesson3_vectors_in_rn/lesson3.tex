@@ -1,0 +1,356 @@
+% $Header$
+
+\documentclass{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 3 \\ Vectors in $\R^n$}
+\subtitle{Math 325, Linear Algebra \\ Spring 2019 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{What is $\R^n$?}
+
+\begin{itemize}
+\item In this class, we define $\R^n$ to be the set of $n\times 1$ column vectors of real numbers.
+\item $\R^1=\R$ = the set of real numbers.
+\item $\R^2 = \setof{(x,y)^{\text{T}}}{x,y\in\R}$ = the set of column vectors of size 2.
+\item $\R^3 = \setof{(x,y,z)^{\text{T}}}{x,y,z\in\R}$ = the set of
+column vectors of size 3.
+\item In other classes, when matrices are not relevant, there is no distinction between row
+and column vectors.
+\item Then people say that $\R^n$ is the set of $n$-tuples of real numbers
+\item without specifying whether it is a row or a column.
+\item But in this class we specifically want vectors in $\R^n$ to be
+represented as column vectors.
+\item So then what will row vectors represent?
+\item Something called \emph{co-vectors.}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Vectors in $\R^n$?}
+
+\begin{itemize}
+\item The following all mean exactly the same thing
+\item (a) $\bv$ is a vector in $\R^n$
+\item (b) $\bv \in \R^n$
+\item (c) $\bv$ is an $n\times 1$ column vector.
+\item Also sometimes, if the context is clear, we will just say
+\item (d) $\bv$ is a vector.
+\end{itemize}
+
+\end{frame}
+
+\beamerdefaultoverlayspecification{}
+
+\begin{frame}{Visualizing $\R^n$}
+
+\begin{columns}
+\column[T]{5cm}
+\begin{itemize}
+\item<1-> We visualize $\R^1$ as a number line.
+\item<2-> We visualize $\R^2$ as the $x$- $y$- plane
+\item<3-> We visualize $\R^3$ as $x$- $y$- $z$- space
+\item<4-> Most people can't visualize more than 3 dimensions so for $n>=4$
+we don't directly try to visualize $\R^n$.
+\item<5-> Sometimes we use $\R^2$ or $\R^3$ as
+\emph{approximations} or \emph{analogs} of $\R^n$.
+\end{itemize}
+
+\column[T]{5cm}
+\includegraphics<1->[scale=0.1]{number-line}
+
+\bigskip
+
+\includegraphics<2->[scale=0.1]{plane}
+
+\bigskip
+
+\includegraphics<3->[scale=0.1]{space}
+
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Visualizing elements of $\R^n$}
+
+\begin{columns}
+\column[T]{5cm}
+\begin{itemize}
+\item<1-> Let $\bv = (6, 7)^{\text{T}} \in \R^2$
+\item<2-> We may chose to visualize $\bv$ as a point
+\item<3-> Or, we may chose to visualize it as an arrow with its base at the origin.
+\item<4-> These two pictures represent the same thing,
+\item<5-> the column vector $(6, 7)^{\text{T}}$.
+\end{itemize}
+\column[T]{5cm}
+\includegraphics<2>[scale=0.15]{point}
+\includegraphics<3->[scale=0.15]{vector}
+
+\end{columns}
+
+\end{frame}
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{frame}{Notation for Vectors in $\R^n$}
+
+\begin{itemize}
+\item In this class we will use boldface letters like $\bv$ and $\bw$ to name
+vectors.
+\item And corresponding lightface subscripted letters $v_i$, $w_j$ for the
+\emph{components} of the vectors.
+\item For example if $\bv\in\R^4$ then $\bv=(v_1, v_2, v_3, v_4)^{\text{T}}$.
+\item On the other hand if we had four vectors in $\R^n$ we might name them
+$\bv_1$, $\bv_2$, $\bv_3$, $\bv_4$.
+\item In \emph{hand-writing} it is difficult to indicate boldface so instead
+let's use arrows over the tops of the letters. So in hand-writing
+$\vec{v}$ and $\vec{w}$ are vectors.
+\item And the components of $\vec{v}$ are $v_1$, $v_2$, etc.
+\item And $\vec{v}_1$, $\vec{v_2}$ indicates two vectors.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Adding Vectors in $\R^n$}
+
+\begin{itemize}
+\item If $\bv, \bw \in \R^n$ then $\bv+\bw$ is just a special case of matrix addition.
+\item The addition is component-wise.
+\item If $$\bv=(v_1, v_2, \cdots , v_n)^{\text{T}}$$ and $$\bw=(w_1, w_2, \cdots, w_n)^{\text{T}}$$
+then $$\bv+\bw = (v_1 + w_1, v_2 + w_2, \cdots, v_n + w_n)^{\text{T}}$$
+\item Example: Suppose $$v = (6, 7)^{\text{T}}$$ and $$w=(2, -3)^{\text{T}}$$ then
+$$v+w=(8, 4)^{\text{T}}$$
+\end{itemize}
+
+\end{frame}
+
+\beamerdefaultoverlayspecification{}
+
+\begin{frame}{Geometric Representation of Adding Vectors in $\R^n$}
+
+\begin{columns}
+\column[T]{5cm}
+\begin{itemize}
+\item<1-> Let $\bv = (6, 7)^{\text{T}}$
+\item<2-> Let $\bw=(2, -3)^{\text{T}}$
+\item<3-> Temporarily move $w$ so that its base point is at the tip of $\bv$.
+\item<4-> The tip of the moved $\bw$ is at the location of $\bv+\bw$
+\item<5-> $\bv+\bw = (8, 4)^{\text{T}}$
+\end{itemize}
+
+\column[T]{5cm}
+\includegraphics<1>[scale=0.15]{vector}
+\includegraphics<2>[scale=0.15]{two-vectors}
+\includegraphics<3-4>[scale=0.15]{vector-moved}
+\includegraphics<5->[scale=0.15]{vector-sum}
+
+\end{columns}
+
+\end{frame}
+
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{frame}{Scalar Multiplication of Vectors in $\R^n$}
+
+\begin{itemize}
+\item If $\bv \in \R^n$ and $c\in\R$, $c \bv$ is just a special case
+of scalar multiplication of matrices.
+\item If $$\bv=(v_1, v_2, \cdots , v_n)^{\text{T}}$$
+then $$c \bv = (c v_1, c v_2, \cdots, c v_n)^{\text{T}}$$
+\item Example: Suppose $$\bv = (6, 7)^{\text{T}}$$ and $c=-3$. Then
+$$c \bv=(-18, -21)^{\text{T}}$$
+\end{itemize}
+
+\end{frame}
+
+\beamerdefaultoverlayspecification{}
+
+\begin{frame}{Geometric Representation of Scalar Multiplication in $\R^n$}
+
+\begin{columns}
+\column[T]{5cm}
+\begin{itemize}
+\item<1-> Let $\bv = (6, 7)^{\text{T}}$
+\item<2-> Let $c=0.5$
+\item<3-> $c \bv=(3, 3.5)^{\text{T}}$
+\item<4-> Let $\beta=-1.5$
+\item<5-> $\beta \bv=(-9, -10.5)^{\text{T}}$
+\end{itemize}
+
+\column[T]{5cm}
+\includegraphics<1-2>[scale=0.15]{vector}
+\includegraphics<3-4>[scale=0.15]{vector-times-half}
+\includegraphics<5->[scale=0.15]{two-scalar-multiples}
+
+\end{columns}
+
+\end{frame}
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{frame}{Linear Combinations of Vectors in $\R^n$}
+
+\begin{itemize}
+\item Let $\bv_1, \bv_2, \cdots  \bv_k$ be $k$ vectors.
+\item Let $c_1, c_2, \cdots c_k$ be $k$ scalars.
+\item Then $$c_1 \bv_1 + c_2 \bv_2 + \cdots + c_k \bv_k$$ is
+called a \emph{linear combination} of $\bv_1, \bv_2, \cdots \bv_k$.
+The $c_i$ are called the \emph{coefficients} of the linear combination.
+\item Using Sigma notation we would write this as
+$$\sum_{i=1}^{k} c_i \bv_i$$
+\item Example. Let $\bv = (2, 1, 0)^{\text{T}}$ and $\bw = (0, 1, 3)^{\text{T}}$ be vectors in $\R^3$.
+Express $\bu = (6, 8, 15)^{\text{T}}$ as a linear combination of $\bv$ and $\bw$.
+\item Answer: $\bu = 3 \bv + 5 \bw$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Standard Basis Vectors in $\R^n$}
+
+\begin{itemize}
+\item In $\R_n$, for $i=1\cdots n$,
+ let $\be_i$ be the vector that has a 1 for component $i$ and
+a 0 for all other components. This is called the $i$-th
+\emph{standard basis vector} of $\R^n$.
+\item If we need to keep track of which $\R^n$ these vectors are from we can
+call them $\be^n_i$.
+\item For example in $\R^4$ the 4 standard basis vectors are
+ $\be_1 = (1,0,0,0)^{\text{T}}$, $\be_2 = (0,1,0,0)^{\text{T}}$,
+$\be_3 = (0,0,1,0)^{\text{T}}$, $\be_4 = (0,0,0,1)^{\text{T}}$.
+\item If we need to keep track of the fact that these vectors are from $\R^4$
+we can call them $\be_1^4, \be_2^4, \be_3^4, \be_4^4$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Linear Combinations of the Standard Basis Vectors in $\R^n$}
+
+\begin{lemma}
+In $\R^n$, every vector can be expressed as a linear combination of the standard
+basis vectors.
+\end{lemma}
+
+\begin{proof}
+\begin{itemize}
+\item Let $\bv = (v_1, v_2, \cdots v_n)^{\text{T}}$.
+\item Then we just use the $i$-th component of $\bv$ as the $i$-th coefficient
+of the linear combination.
+\item That is,
+$$\bv = \sum _{i=1}^{n} v_i \be_i$$
+\end{itemize}
+\end{proof}
+
+\end{frame}
+
+\begin{frame}{Linear Combinations of the Standard Basis Vectors in $\R^n$}
+
+\begin{itemize}
+\item For example, let $\bv = (2, 0, -1.5, 7)^{\text{T}} \in \R^4$.
+\item Express $\bv$ as a linear combination of the standard basis vectors of
+$\R^4$.
+\item Answer $$\bv = 2 \be_1 + 0 \be_2 + (-1.5) \be_3 + 7 \be_4$$
+\item We could omit the term with the 0 coefficient and replace the addition
+of a negative with a subtraction and instead write
+$$\bv = 2 \be_1 -1.5 \be_3 + 7 \be_4$$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The zero vector}
+
+\begin{itemize}
+\item The vector of length $n$ with all zero components will be written $\mathbf{0}_n$.
+\item $$\mathbf{0}_3 = (0,0,0)^{\text{T}}$$
+\item If $n$ is clear from context or irrelevant we will just write $\mathbf{0}$.
+\item $\mathbf{0}_n$ corresponds to the origin in $\R^n$.
+\item For any vector $\bv\in\R^n$, $\bv+\mathbf{0} = \bv$.
+\item $\mathbf{0}_n$ is the same thing as $O_{n\times 1}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Dot Product of Vectors in $\R^n$}
+
+\begin{itemize}
+\item If $\bv, \bw \in \R^n$ we define $\bv \cdot \bw$ to be the sum of the products of the components of $\bv$ with the corresponding components of $\bw$.
+\item If $\bv=(v_1, v_2, \cdots , v_n)^{\text{T}}$ and $\bw=(w_1, w_2, \cdots, w_n)^{\text{T}}$
+\item then $\bv \cdot \bw = v_1  w_1 +  v_2  w_2 + \cdots +  v_n  w_n$.
+\item Notice $\bv \cdot \bw = \bv^{\text{T}} \bw$.
+\item So we have two equivalent ways of writing the dot product.
+\item Example: Suppose $\bv = (6, 7)^{\text{T}}$ and $\bw=(2, -3)^{\text{T}}$.
+\item Then $\bv \cdot \bw$
+\item $=\bv^{\text{T}} \bw$
+\item
+$$
+= (6, 7) \begin{pmatrix} 2 \\ -3 \end{pmatrix}
+$$
+\item $12 + (-21) = -9$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Dot product of orthogonal vectors}
+
+\begin{itemize}
+\item We will study the dot product more in later lessons.
+\item For now, recall from earlier classes $\bv \cdot \bw = 0$ iff
+$\bv$ and $\bw$ are orthogonal (i.e. perpendicular).
+\item Example. Let $\bv=(2, 0, 0)^{\text{T}}$ and $\bw = (0, 3, 0)^{\text{T}}$.
+Then $\bv \cdot \bw = 0$.
+\item For any vector $\bv$, $\bv \cdot \mathbf{0} = 0$.
+\end{itemize}
+
+\end{frame}
+
+\end{document}
+
+

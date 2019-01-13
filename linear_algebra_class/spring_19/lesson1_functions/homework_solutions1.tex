@@ -1,0 +1,144 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Solutions to Homework for Lesson 1 \\ Functions}
+\author{Math 325, Linear Algebra \\ Mitch Rudominer \\ Spring 2019 \\ SFSU }
+\date{}
+
+\maketitle
+
+
+\textbf{Problem 1.}
+
+\textbf{a.} No $f$ is not one-to-one (a.k.a injective) because, for example,
+$f(2) = f(3) = c$.
+
+\textbf{b.} No $f$ is not surjective (a.k.a \emph{onto}) because, for example,
+$b\notin\ran(f)$.
+
+\textbf{c.} The inverse image of $\singleton{a,b,c,d}$ is $\singleton{1,2,3}$.
+
+\textbf{d.} $f^{-1}[\singleton{b, d}] = \emptyset$.
+
+
+\textbf{e.} The image of $\singleton{2,3,4}$ is $\singleton{c, e}$.
+
+\medskip
+
+\textbf{Problem 2.}
+
+\textbf{a.} $f\circ g (3)$ is not defined because the composition is in the wrong order.
+
+\textbf{b.} $g\circ f (3) = y$
+
+
+\textbf{c.} $g^{-1}(z) = a$
+
+
+\textbf{d.} $g^{-1}[\singleton{z}] = \singleton{a}$
+
+
+\textbf{e.} $f^{-1}(c)$ is not defined because $f$ is not one-to-one.
+
+
+\textbf{f.} $f^{-1}[\singleton{c}] = \singleton{2,3}$
+
+
+\textbf{g.} $f^{-1}\big[g^{-1}[\singleton{x, y, z}]\big] = \singleton{1,2,3}$
+
+
+\textbf{h.} $g^{-1} \circ g (e) = e$
+
+\textbf{i.} $g \circ g^{-1} (e)$ is not defined becuase $e$ is not in the domain of $g^{-1}$.
+
+\medskip
+
+\textbf{Problem 3.}
+
+\textbf{a.} This is false. It is only true for functions that are surjective.
+For example for the $f$ given in problem 1,  $f[A] = \singleton{a,c,e} \not= B$.
+
+\textbf{b.} This is true. It is the definition of the range to be the set of
+outputs corresponding to all of the inputs in the domain.
+
+\textbf{c.} This is true.
+\begin{proof}
+To prove that two sets are equal we prove that each is a subset of the other.
+So to show that $\dom(f) = f^{-1}[\ran(f)]$ we must show that
+$\dom(f)\subseteq f^{-1}[\ran(f)]$ and that $f^{-1}[\ran(f)] \subseteq \dom(f)$.
+
+First let's show that $\dom(f)\subseteq f^{-1}[\ran(f)]$. Let $x\in\dom(f)$.
+Let $y=f(x)$. Then $y\in\ran(f)$ and $f(x) = y$ so $x$ is in the inverse image
+of the range of f. So $\dom(f)\subseteq f^{-1}[\ran(f)]$.
+
+Now let's show that $f^{-1}[\ran(f)] \subseteq \dom(f)$. Actually let's show
+something even stronger. Let $R\subseteq B$ be any subset of $B$. Then
+$f^{-1}[R] \subseteq \dom(f)$. Let $x\in f^{-1}[R]$.
+This means that there is some $y\in R$ such that $f(x) = y$. But then
+$x$ is in the domain of $f$. So $f^{-1}[R] \subseteq \dom(f)$. Since we showed
+this for any $R\subseteq B$ we have $f^{-1}[\ran(f)] \subseteq \dom(f)$.
+
+Putting these two together we get $f^{-1}[\ran(f)] = \dom(f)$.
+\end{proof}
+
+\textbf{d.} This is true. From the second paragraph of the proof in c we
+get that the inverse image of $B$ is contained in $A = \dom(f)$. From the
+first paragraph of the proof of c we get that
+$A = \dom(f)\subseteq f^{-1}[\ran(f)] \subseteq B$.
+
+\textbf{e.} This is false in general. It is only true if $f$ is injective.
+Look at the example $f$ from problem 1. Let $S = \singleton{2}$. Then
+$f[S] = \singleton{c}$. But $f^{-1}[\singleton{c}] = \singleton{2,3} \not= S$.
+
+
+\textbf{f.} This is false in general. It is only true if $f$ is surjective.
+Look at the example $f$ from problem 1. Let $T=\singleton{a,b}$. Then
+$f^{-1}[T] = \singleton{1}$ but $f[\singleton{1}] = \singleton{a} \not= T$.
+
+\medskip
+
+\textbf{Problem 4.}
+
+\textbf{a.} This is not possible because if $f$ is one-to-one then there must
+be as many different values in the range of $f$ as there are in the domain
+of $f$. Since $A$ is finite this means that the range of $f$ must use of all
+of $A$. So $f$ is onto.
+
+\textbf{b.} This is also not possible.
+\begin{proof}
+We will prove the contrapositive. Suppose $f$ is not one-to-one we will show
+that $f$ is not onto. Since $f$ is not one-to-one there are $x_1\not=x_2\in A$
+so that $f(x_1) = f(x_2)$. But this implies that the number of values in
+the range of $f$ must be at most one less than the number of values in $A$
+(because two of the values in A only produced one value in the range.) Since
+$A$ is finite this means that not everything in $A$ can be in the range.
+
+\medskip
+
+\textbf{Problem 5.}
+
+\textbf{a.} This is possible. For example suppose $A=\R$, the set of real
+numbers. Let $f:\R\to\R$ be the function defined by $f(x)=\tan^{-1}(x)$.
+Then $f$ is one-to-one but not onto. To see this recall what the graph looks
+like and notice that it passes the horizontal line test so it is one-to-one
+but the range is contained in $(-\pi/2, \pi/2)$ so it is not onto.
+
+\textbf{b.} This is also possible. Again let $A=\R$, the set of real
+numbers. Let $f:\R\to\R$ be the function defined by $f(x) = x^3 - x^2$. Then
+$f$ is onto but not one-to-one. To see this notice that as an odd polynomial
+$\lim_{x\to-\infty}f(x) = -\infty$ and $\lim_{x\to\infty}f(x) = \infty$ and
+since $f$ is continuous all values between $-\infty$ and $\infty$ are in the
+range and so $f$ is onto. But $f(0) = f(1) = 0$ so $f$ is not one-to-one.
+\end{proof}
+
+\end{document}

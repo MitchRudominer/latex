@@ -1,0 +1,264 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Solutions to Lesson 19 \\ Inner Products and Orthogonality}
+\author{Math 325, Linear Algebra \\ Mitch Rudominer \\ Spring 2019 \\ SFSU }
+\date{}
+
+\maketitle
+
+\bigskip
+
+\textbf{STOP} You should not read these solutions before doing the homework yourself.
+If you do you will deprive yourself of a chance to practice for the final exam.
+Remember that there will be no quiz on this subject so this is one of your only
+chances to practice.
+
+\bigskip
+
+\textbf{Problem 1.}
+
+\bigskip
+
+Notice that $\singleton{\bw_1,\bw_2,\bw_3}$ is an orthogonal set of vectors.
+Thus it is an orthogonal basis for $W$.
+
+Therefore the coordinates for the orthogonal projection of $\bv$ onto $W$ in terms of this basis are
+$$\frac{\angles{\bv,\bw_1}}{\norm{\bw_1}^2}, \frac{\angles{\bv,\bw_2}}{\norm{\bw_2}^2},\frac{\angles{\bv,\bw_3}}{\norm{\bw_3}^2}.$$
+
+\bigskip
+
+We compute
+
+$$\angles{\bv,\bw_1}= -5, \quad \angles{\bv,\bw_2}= 4 , \quad \angles{\bv,\bw_3}= 17$$
+
+\bigskip
+
+and
+
+$$\norm{\bw_1}^2=5, \quad \norm{\bw_2}^2=8, \quad \norm{\bw_3}^2=13, \quad $$
+
+\bigskip
+
+Therefore the coordinates for the orthogonal projection of $\bv$ onto $W$ in terms of the basis $\singleton{\bw_1,\bw_2,\bw_3}$ are
+$$-1, \frac{1}{2},\frac{17}{13}.$$
+
+\bigskip
+
+Therefore the orthogonal projection of $\bv$ onto $W$  is given by
+
+$$
+-\bw_1  +\frac{1}{2} \bw_2 + \frac{17}{13}\bw_3 =
+-
+\begin{pmatrix}
+1  \\
+0  \\
+-2 \\
+0
+\end{pmatrix}
++
+\frac{1}{2}
+\begin{pmatrix}
+0 \\
+-2\\
+0 \\
+2
+\end{pmatrix}
++
+\frac{17}{13}
+\begin{pmatrix}
+2 \\
+2 \\
+1 \\
+2
+\end{pmatrix}\\
+$$
+
+We have no need to simplify this any further.
+
+\bigskip
+
+\textbf{Problem 2.}
+
+\bigskip
+
+Let $A$ be the matrix with rows $\transpose{\bv_1}, \transpose{\bv_2}, \transpose{\bv_3}$. Then we are looking
+for the space of all vectors $\bx$ such that $A\bx=\bzero$.
+
+\bigskip
+
+Why is this true? You can either see directly that such $x$ are exactly the $x$ for which
+$\angles{\bv_1,\bx}=\angles{\bv_2,\bx}=\angles{\bv_3,\bx}=0$, or else you
+can appeal to the theorem that says that the orthogonal compliment of the
+image of a matrix is the kernel of its transpose.
+
+\bigskip
+
+At any rate, we are looking for the kernel of $A$.
+
+\bigskip
+
+Solve the homogeneous system of equations.
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & -2 & 7\\
+2 & 0 & 6 \\
+1 & 1 & 1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -2 & 7 \\
+0 & 4 & -8 \\
+0 & 3 & -6
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -2 & 7\\
+0 & 4 & -8\\
+0 & 0 & 0
+\end{pmatrix}
+$
+
+\bigskip
+
+Let's call the variables $x,y,z$. $x$ and $y$ are basic variables and $z$ is free.
+
+\bigskip
+
+\begin{itemize}
+\item $4y - 8z = 0 \SkipImplies y = 2z$
+\item $x -2y + 7z = 0 \SkipImplies x - 4z + 7z = 0 \SkipImplies x = -3z$
+\end{itemize}
+
+\bigskip
+
+$
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+=
+\begin{pmatrix}
+-3z \\ 2z \\ z
+\end{pmatrix}
+=
+z
+\begin{pmatrix}
+-3 \\ 2 \\ 1
+\end{pmatrix}
+$
+
+\bigskip
+
+So $
+\begin{pmatrix}
+-3 \\ 2 \\ 1
+\end{pmatrix}
+$ is a basis for the kernel of $
+\begin{pmatrix}
+1 & -2 & 7\\
+2 & 0 & 6 \\
+1 & 1 & 1
+\end{pmatrix}
+$
+
+which is equal to $V^{\perp}$. $V^{\perp}$ is 1-dimensional.
+
+\bigskip
+\bigskip
+
+\textbf{Problem 3.} The solution
+is that we want to find a basis for the column space of the transpose of the
+matrix.
+
+\bigskip
+
+Why is this true? You can either see directly that if $\bx$
+is in the kernel of the matrix and $\transpose{\bv}$ is a row of the matrix
+then $\angles{\bv,\bx} = 0$. Or you can appeal to the theorem that says that
+the orthogonal compliment of the kernel of $A$ is the image of $\transpose{A}$.
+
+\bigskip
+
+An any rate, the solution is to find a basis for the column space of $
+\begin{pmatrix}
+1 & 5 & 7 \\
+0 & 2 & 4 \\
+1 & 1 & -1
+\end{pmatrix}
+$
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & 5 & 7 \\
+0 & 2 & 4 \\
+1 & 1 & -1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 5 & 7 \\
+0 & 2 & 4 \\
+0 & -4 & -8
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 5 & 7 \\
+0 & 2 & 4 \\
+0 & 0 & 0
+\end{pmatrix}
+$
+
+\bigskip
+
+So the basic columns are columns 1 and 2. So
+
+$
+\singleton{
+\begin{pmatrix}
+1 \\
+0 \\
+1
+\end{pmatrix},
+\begin{pmatrix}
+5 \\
+2 \\
+1
+\end{pmatrix},
+}
+$
+
+is a basis for the column space of $
+\begin{pmatrix}
+1 & 5 & 7 \\
+0 & 2 & 4 \\
+1 & 1 & -1
+\end{pmatrix}
+$ and so is a basis for the orthogonal compliment of the kernel of $
+\begin{pmatrix}
+1 & 0 & 1 \\
+5 & 2 & 1 \\
+7 & 4 & -1
+\end{pmatrix}
+$.
+
+The dimension of the orthogonal compliment of the kernel is 2.
+
+
+
+
+
+\end{document}
