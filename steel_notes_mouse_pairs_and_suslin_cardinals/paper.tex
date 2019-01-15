@@ -1,0 +1,52 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Mouse Pairs and Suslin Cardinals in a Type I Hierarchy}
+\author{John R. Steel}
+
+\maketitle
+
+We assume $\ADR$ and $\HPC$. Following Jackson \cite{Jackson1}:
+
+Let $\lambda_1$ be a limit of Suslin cardinals, and $\cf(\lambda_1)=\omega$.
+Put $S_{<\lambda_1} =\Union{\alpha<\lambda_1} S_{\alpha}$, and
+\begin{align*}
+\bSigma_0 &= \Union{\omega} S_{<\lambda_1} \\
+\bPi_0 &= \Intersection{\omega} S_{<\lambda_1} \
+\end{align*}
+
+and
+
+\begin{align*}
+\bSigma_{n+1} &= \exists^{\R}\bPi_n \textbf{,\quad}
+\bPi_{n+1} = \forall^{\R}\bSigma_n \\
+\bdelta_n&=\sup\setof{|R|}{R\text{ is a }\bDelta_n\text{ pwo of } \R}
+\end{align*}
+
+for $n\geq 1$. [rudominer: Should this be $n\geq 0$?]
+We have $\Scale(\bSigma_{2n+2})$ and $\Scale(\bPi_{2n+1})$,
+for all $n$, with norms into $\bdelta_{2n+1}$. We also have
+
+$$ \bdelta_{2n+1} = \lambda_{2n+1}^+,$$
+where $\lambda_{2n+1}$ is a Suslin cardinal of cofinality $\omega$.
+(So $\bdelta_1=\lambda_1^+$.) The sequence $\lambda_1,\bdelta_1,\lambda_3,\bdelta_3,\cdots$
+enumerates the Suslin cardinals in this hierarchy. For $\kappa=\bdelta_{2n+1}$,
+$S_{\kappa}=\bSigma_{2n+2}$. For $\kappa=\lambda_{2n+1}$,
+$S_{\kappa}=\bSigma_{2n+1}$.
+
+If $\lambda_1=\omega$, then $\bSigma_n = \bSigma^1_n$ (for $n\geq 1$) in  the
+ordinary projective hierarchy. In that case, we
+
+\bibliographystyle{amsalpha}
+
+\bibliography{math}
+
+\end{document}
