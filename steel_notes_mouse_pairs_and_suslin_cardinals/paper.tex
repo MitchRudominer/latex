@@ -1,6 +1,6 @@
 \documentclass[oneside,12pt]{amsart}
 
-\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,rotating}
 
 \input{mathdefs}
 \input{theoremstyles}
@@ -31,7 +31,7 @@ and
 \bdelta_n&=\sup\setof{|R|}{R\text{ is a }\bDelta_n\text{ pwo of } \R}
 \end{align*}
 
-for $n\geq 1$. [rudominer: Should this be $n\geq 0$?]
+for $n\geq 1$. [Rudominer: Should this be $n\geq 0$?]
 We have $\Scale(\bSigma_{2n+2})$ and $\Scale(\bPi_{2n+1})$,
 for all $n$, with norms into $\bdelta_{2n+1}$. We also have
 
@@ -43,7 +43,29 @@ $S_{\kappa}=\bSigma_{2n+2}$. For $\kappa=\lambda_{2n+1}$,
 $S_{\kappa}=\bSigma_{2n+1}$.
 
 If $\lambda_1=\omega$, then $\bSigma_n = \bSigma^1_n$ (for $n\geq 1$) in  the
-ordinary projective hierarchy. In that case, we
+ordinary projective hierarchy. In that case, we have the envelopes
+
+$$
+\bGamma^1_{k} = \Union{n<\omega} \Game^{k}(\omega n - \bPi^1_1)
+$$
+
+for $k\geq0$. There are self-justifying systems sealing those envelopes. For $k$ even, this gives us an optimal scale on $\bSigma^1_{k+1}$, and for $k$ odd, an optimal scale on $\bPi^1_{k+1}$. By results of
+Hjorth, Woodin and Sargsyan (See \cite{Sargsyan1}),
+$$
+\lambda^1_{2k+1} = \sup\setof{|\leq|}{\leq\text{ is a $\bGamma^1_{2k-1}$ pwo of $\R$}}.
+$$
+
+The $\bGamma^1_{k}$ are related to the mice $M_n = $ minimal model with $n$ Woodins, in various ways. For example, let
+
+$$
+T^n_{k+1}(\varphi,x) \Ifff M_k \models \varphi\left[ x,\omega_1,\cdots,\omega_n\right],
+$$
+then each $T^n_{k+1}$ is in $\bGamma^1_{k+1}$, and the  $T^n_{k+1}$ are Wadge cofinal in
+$\bGamma^1_{k+1}$.
+
+Our goal is to generalize this theory to the type I hierarchy $\bSigma_n,\bPi_n$ we have
+fixed above. The main problem is how to define the analogs of $\bGamma^1_{0}$ and
+$M_0=L$. This is a problem even
 
 \bibliographystyle{amsalpha}
 
