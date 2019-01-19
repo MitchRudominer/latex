@@ -1,6 +1,7 @@
 \documentclass[oneside,12pt]{amsart}
 
 \usepackage{amsmath,amssymb,latexsym,eucal,amsthm,rotating}
+\usepackage[shortlabels]{enumitem}
 
 \input{mathdefs}
 \input{theoremstyles}
@@ -13,6 +14,8 @@
 \author{John R. Steel}
 
 \maketitle
+
+\tableofcontents
 
 We assume $\ADR$ and $\HPC$. Following Jackson \cite{Jackson1}:
 
@@ -65,7 +68,66 @@ $\bGamma^1_{k+1}$.
 
 Our goal is to generalize this theory to the type I hierarchy $\bSigma_n,\bPi_n$ we have
 fixed above. The main problem is how to define the analogs of $\bGamma^1_{0}$ and
-$M_0=L$. This is a problem even
+$M_0=L$. This is a problem even when we are considering the second projective-like hierarchy,
+$\bSigma_n= \bSigma_{n+1}^{J_2(\R)}$. (I.e. $\lambda_1=\bdelta^1_{\omega}$.)
+Hugh Woodin recently solved this problem in its mouse set incarnation, by showing that the reals in Rudominer's ``ladder mouse'' are precisely the reals that are $\Delta_2^{J_2(\R)}$ in some
+$\alpha<\omega_1$. (It turns out that $M^{\text{ld}}$ is somewhat more analogous to $M_1$.)
+We show here that Woodin's solution to the Rudominer problem adapts (easily) to the general type I hierarchy above (assuming HPC). We then show that it yields good analogues of the $\bGamma^1_n$'s
+and $M_n$'s.
+
+As a corollary we obtain
+
+\begin{theorem} ($\AD^+$) Let $\kappa$ be a Suslin cardinal, and $(P,\Sigma)$ a
+mouse pair such that $\kappa<\ords\left( M_{\infty}(P,\Sigma)  \right)$.
+Suppose $\cf(\lambda) = \omega$, where $\lambda$ is the largest limit of Suslin
+cardinals $\leq \kappa$.
+
+Then $\kappa$ is a cutpoint of $M_{\infty}(P,\Sigma)$.
+\end{theorem}
+
+
+\begin{remark}
+It is shown in \cite{Steel1} that if $\kappa$ is a cardinal and a cutpoint of
+$M_{\infty}(P,\Sigma)$ for some mouse pair $(P,\Sigma)$, then $\kappa$ is Suslin.
+\end{remark}
+
+\begin{corollary}
+Assume $\AD_{\R} + \HPC$, and let $\kappa$ be a Suslin cardinal. Suppose
+$\cf(\lambda)=\omega$, where $\lambda$ is the largest limit of Suslin cardinals
+$\leq \kappa$; then $\kappa$ is a cutpoint of the $\HOD$-sequence.
+\end{corollary}
+
+\begin{remark}
+It is shown in \cite{Steel1} that the theorem and corollary hold when $\kappa$
+is a limit of Suslins, or the next Suslin after a limit of Suslins.
+We of course conjecture that they hold for any Suslin cardinal $\kappa$.
+\end{remark}
+
+\section{Ladder Mice for $J_2(\R)$}
+
+Woodin's work characterizing $\Delta_2^{J_2(\R)}$-in-$\alpha$ as a mouse set is
+unpublished, so we devote this section to describing it.
+
+The ladder mouse $M^{\text{ld}}$ was defined by Rudominer
+(\cite{My_Thesis} and \cite{Mouse_Sets} ).
+
+\begin{definition}
+$M^{\text{ld}}$ is the minimal iterable pure extender mouse such that for each $k<\omega$,
+ there is a $\delta<\ords(M^{\text{ld}})$ such that
+\begin{enumerate}[(a)]
+\item $M_k(M^{\text{ld}} \vert \delta) \properseg M^{\text{ld}} $, and
+\item $M_k(M^{\text{ld}} \vert \delta) \models \delta$ is Woodin, and
+\item $M^{\text{ld}} \models \delta$ is a cardinal.
+\end{enumerate}
+
+Here $M_k(N)$ is the minimal mouse with $k$ Woodins over $N$. Let $\delta_k$
+be the least $\delta$ as in (a) - (c); then $\delta_k<\delta_{k+1}$, and
+$\ords(M^{\text{ld}}) = \sup_k \delta_k$. These are the rungs of our ladder.
+
+\end{definition}
+
+Rudominer showed in \cite{My_Thesis} that every real belonging to
+$M^{\text{ld}}$ is $\Delta_2^{J_2(\R)}$ in some $\alpha<\omega_1$.
 
 \bibliographystyle{amsalpha}
 
