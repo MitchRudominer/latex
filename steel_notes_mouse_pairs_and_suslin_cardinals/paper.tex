@@ -129,6 +129,94 @@ $\ords(M^{\text{ld}}) = \sup_k \delta_k$. These are the rungs of our ladder.
 Rudominer showed in \cite{My_Thesis} that every real belonging to
 $M^{\text{ld}}$ is $\Delta_2^{J_2(\R)}$ in some $\alpha<\omega_1$.
 
+For let $N$ be the $\alpha^{\text{th}}$ level of $M^{\text{ld}}$ that projects to
+$\omega$. Say that a premouse $P$ is  $\Pi_1$-iterable iff $\forall \cT$ on $P$,
+$\forall k < \omega$,  $\exists$ maximal branch $b$ of
+$\cT$ s.t. $ M_k(M(\cT))\initseg M_b^{\cT}$ or $M_b^{\cT}\initseg M_k(M(\cT))$.
+This property is $\Pi_1^{J_2(\R)}$.
+
+\begin{aside}
+That is what we called $\Pi_0$ in the general setting. It corresponds to infinite recursive
+conjunctions of analytical predicates. [Rudominer: Then why bother calling
+it $\Pi_1$-iterable here? Why not call it either $\Pi_1^{J_2(\R)}$-iterable
+or $\Pi_0$-iterable.]
+\end{aside}
+
+One can show that $N$ is the unique $\Pi_1$-iterable premouse that thinks it is
+the $\alpha^{\text{th}}$ level projecting to $\omega$. So if $x\in{}^{\omega}\omega$
+codes the theory of $N$, the $\singleton{x}$ is $\Pi_1^{J_2(\R)}$ in $\alpha$,
+hence $x$ is $\Delta_2^{J_2(\R)}$ in $\alpha$.
+
+\begin{theorem}[Woodin, unpublished] Let $x$ be $\Delta_2^{J_2(\R)}$ in $\alpha<\omega_1$;
+then $x\in M^{\text{ld}}$.
+\end{theorem}
+
+\begin{proof}
+Let $x$ be $\Delta_2^{J_2(\R)}$ in $\alpha$. We assume $\alpha=0$ for simplicity.
+(Otherwise, iterate the least measurable of $M^{\text{ld}}$ past $\alpha$, generating
+$M^{\text{ld}}\to P$. The argument to come shows $x\in P[g]$ for all $g$
+on $\Col(\omega,\alpha)$, hence $x\in P$, hence $x\in M^{\text{ld}}$.)
+So we have recursive sequences $\angles{A_n}$ and $\angles{B_n}$ such that
+for $n\geq 1$
+\begin{enumerate}[(i)]
+\item $A_n$ and $B_n$ are $\Sigma^1_{2n}$ subsets of $\R\times\omega$,
+uniformly in $n$, and
+\item for any $k\in\omega$
+\begin{align*}
+k\in x &\Iff \exists y \bigwedge_n A_n(y,k) \\
+k\notin x &\Iff \exists y \bigwedge_n B_n(y,k). \\
+\end{align*}
+\end{enumerate}
+(We assume $x\subseteq\omega$ now.)
+
+Let $\phibar^n=\sequence{\varphi^n_i}{i\in\omega}$ be a $\Sigma^1_{2n}$
+scale on $A_n$, and $\psibar^n=\sequence{\psi^n_i}{i\in\omega}$ be a $\Sigma^1_{2n}$
+scale on $B_n$. Let $\leq^A_{n,i}$ be the prewellorder
+$\leq_{\varphi^n_i}$, and $\leq^B_{n,i}=\leq_{\psi^n_i}$. Let
+\begin{align*}
+A_k(y) &\Iff  \bigwedge_n A_n(y,k) \\
+B_k(y) &\Iff  \bigwedge_n B_n(y,k).
+\end{align*}
+
+We get scales $\thetabar^k$ and $\nubar^k$ on $A_k$ and $B_k$ via
+
+\begin{align*}
+\theta^k_{\angles{n,i}}(y) &= \varphi^n_i(y,k) \\
+\nu^k_{\angles{n,i}}(y) &= \psi^n_i(y,k).
+\end{align*}
+
+Let $S^k\subseteq(\omega \times \bdelta^1_{\omega})^{<\omega}$ and
+$T^k\subseteq(\omega \times \bdelta^1_{\omega})^{<\omega}$  be the trees of these scales,
+so that
+
+\begin{align*}
+k\in x &\Iff \left[ S^k \right] \not= \emptyset \\
+k\notin x &\Iff \left[ T^k \right] \not= \emptyset.
+\end{align*}
+
+Now we look inside $M^{\text{ld}}$. This model is projectively correct, so it
+has the prewellorders $\leq^A_{n,i}$ and $\leq^B_{n,i}$ restricted to its own
+reals. Also, for any $y\in M^{\text{ld}}$,
+
+\begin{align*}
+\left( M^{\text{ld}} \models A_k(y)  \right) &\Implies A_k(y) \text{, and} \\
+\left( M^{\text{ld}} \models B_k(y)  \right) &\Implies B_k(y).
+\end{align*}
+
+[Rudominer: Replace $\Implies$ with $\Iff$ above?]
+
+Let $S^k_{M}$ and $T^k_{M}$ be the trees of the scales
+$\left( \thetabar^k \right)^{M^{\text{ld}}}$ and
+$\left( \nubar^k \right)^{M^{\text{ld}}}$ computed in ${M^{\text{ld}}}$
+using the pwo's $\leq^A_{n,i}\intersect M^{\text{ld}}$ and
+$\leq^B_{n,i}\intersect M^{\text{ld}}$. these are isomorphic to subtress
+of the full $S^k$ and $T^k$. The projections in $M^{\text{ld}}$ are
+$A_k\intersect M^{\text{ld}}$ and
+$B_k\intersect M^{\text{ld}}$ respectively. For each $k$, at least on of
+$S^k_{M}$ and $T^k_{M}$ is wellfounded.
+
+\end{proof}
+
 \bibliographystyle{amsalpha}
 
 \bibliography{math}
