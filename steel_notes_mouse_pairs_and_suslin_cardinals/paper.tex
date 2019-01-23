@@ -209,11 +209,61 @@ Let $S^k_{M}$ and $T^k_{M}$ be the trees of the scales
 $\left( \thetabar^k \right)^{M^{\text{ld}}}$ and
 $\left( \nubar^k \right)^{M^{\text{ld}}}$ computed in ${M^{\text{ld}}}$
 using the pwo's $\leq^A_{n,i}\intersect M^{\text{ld}}$ and
-$\leq^B_{n,i}\intersect M^{\text{ld}}$. these are isomorphic to subtress
+$\leq^B_{n,i}\intersect M^{\text{ld}}$. These are isomorphic to subtress
 of the full $S^k$ and $T^k$. The projections in $M^{\text{ld}}$ are
 $A_k\intersect M^{\text{ld}}$ and
 $B_k\intersect M^{\text{ld}}$ respectively. For each $k$, at least on of
 $S^k_{M}$ and $T^k_{M}$ is wellfounded.
+
+\begin{claim}[Claim 1]
+For any $k\in\omega$, $k\in x$ iff $M^{\text{ld}} \models \text{`` }T^k_M$ is
+wellfounded, and either $S^k_M$ is illfounded, or $|T^k_M|<|S^k_M|$.''
+\end{claim}
+
+Clearly Claim 1 implies $x\in M^{\text{ld}}$, as desired.
+
+\begin{subproof}{(of Claim 1)}
+It is enough to show $\Rightarrow$, since then we get $\Leftarrow$ by assuming
+$k\notin x$ and using the same argument to show $S^k_M$ is wellfounded and
+$|S^k_M| < |T^k_m|$.
+
+So fix $k_0\in x$, and fix $y$ s.t. $A_{k_0}(y)$. Since $B_{k_0} = \emptyset$,
+$T^{k_0}_M$ is wellfounded. We must see that $|T^{k_0}_M| < |S^{k_0}_M|$ or
+$S^{k_0}_M$ is illfounded.
+
+Let for any $k$
+
+\begin{align*}
+\delta_k &=  \text{ least cardinal } \delta \text{ of } M^{\text{ld}} \text{ s.t. }
+    M_{2k+5}(M^{\text{ld}}|\delta) \initseg M^{\text{ld}} \text{ and } \\
+N_k      &=  M_{2k+5}(M^{\text{ld}}|\delta_k)
+\end{align*}
+[Rudominer: Two problems with the above text: Firstly we have already defined
+$\delta_k$ to be the $k$-th rung of the ladder. Secondly we forgot above to
+say that $\delta$ needs to be locally Woodin.]
+
+So $\delta_k$ is Woodin in $N_k$, which has $2k+5$ Woodins above it as well. The
+$\delta_k$'s are cofinal in $\lambda=\ords(M^{\text{ld}})$. By iterating,
+we may assume that for each $k$, there is an $N_k$-generic $g_k$ on
+$\Col(\omega,\delta_k)$ such that
+
+$$
+y\in N_k[g_k].
+$$
+
+We caution that $g_k$ is only $N_k$-generic, not necessarily $M^{\text{ld}}$-generic,
+because $\delta_k$ is only Woodin in $N_k$, not the full $M^{\text{ld}}$.
+(But the relevant genericity iterations do move the whold $M^{\text{ld}}$ along,
+because $\delta_k$ is a cardinal of $M^{\text{ld}}$. This is what motivated
+Rudominer's definition in the first place.)
+
+We now build a generic $G$ for the countable stationary tower $\Q^{M^{\text{ld}}}_{<\lambda}$
+such that for all $k$, $G\intersect \Q_{<\delta_k}$ is $N_k$-generic. (Note that
+$\Q^{M^{\text{ld}}}_{<\delta_k}=\Q^{N_k}_{<\delta_k}$ because $\delta_k$ is
+a cardinal of $M^{\text{ld}}$. But $M^{\text{ld}}$ has more dense subsets of $\Q_{<\delta_k}$
+than $N_k$ does.)
+
+\end{subproof}
 
 \end{proof}
 
