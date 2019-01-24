@@ -263,6 +263,38 @@ $\Q^{M^{\text{ld}}}_{<\delta_k}=\Q^{N_k}_{<\delta_k}$ because $\delta_k$ is
 a cardinal of $M^{\text{ld}}$. But $M^{\text{ld}}$ has more dense subsets of $\Q_{<\delta_k}$
 than $N_k$ does.)
 
+The following claim is what we need to build $G$. It comes out of the basics of stationary tower forcing.
+See \cite{Larson_Book}.
+
+\begin{claim}[Subclaim 2]
+Working in $M^{\text{ld}}$: for any $a\in\Q_{<\delta_k}$, there is a $b\in\Q_{<\delta_{k+1}}$
+such that $b\leq a$ in $Q_{<\delta_{k+1}}$, and
+
+$$
+b\forces \dot{G} \intersect \Q_{<\delta_k} \text{ is } N_k\text{-generic}.
+$$
+
+\end{claim}
+
+\begin{subproof}{(of Subclaim 2)}
+
+Let $X\prec M^{\text{ld}} | \delta_k^+$ be countable and $D$ be a maximal antichain of $\Q_{<\delta_k}$.
+(We are working in $M^{\text{ld}}$ now.) Recall that $X$ \emph{captures} $D$ iff
+$\exists c \in X\intersect D \left (X\intersect \Union{}c \in c  \right)$.
+
+Let
+
+\begin{align*}
+b = \big\{ \, &X\prec M^{\text{ld}} | \delta_k^+ \, \big| \, X \text{ is countable and } X\intersect \Union{}a \in a \\
+              &\text{and for every maximal antichain $D$ s.t. $D\in X\intersect N_k$, $X$ captures } D \, \big\}.
+\end{align*}
+
+The proofs of \cite{Larson_Book} show easily that $b$ is stationary. (The main point is that for each $D\in N_k$,
+there are arbitrarily large inaccessible $\gamma<\delta_k$ such that $D\intersect\Q_{<\gamma}$ is maximal
+and semiproper. This is where $N_k\models \delta_k \text{ is Woodin}$ gets used.)
+
+\end{subproof}
+
 \end{subproof}
 
 \end{proof}
