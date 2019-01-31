@@ -291,7 +291,26 @@ b = \big\{ \, &X\prec M^{\text{ld}} | \delta_k^+ \, \big| \, X \text{ is countab
 
 The proofs of \cite{Larson_Book} show easily that $b$ is stationary. (The main point is that for each $D\in N_k$,
 there are arbitrarily large inaccessible $\gamma<\delta_k$ such that $D\intersect\Q_{<\gamma}$ is maximal
-and semiproper. This is where $N_k\models \delta_k \text{ is Woodin}$ gets used.)
+and semiproper. This is where $N_k\models \delta_k \text{ is Woodin}$ gets used. But then given any structure $\fA$
+on $\left(M^{\text{ld}} \vert \delta_k^+ \right)$, we get $X\prec\fA$ s.t. $X\in b$ as follows:
+let $X_0\prec\fA$ with $X_0\intersect \Union{}a\in a$.
+Pick some $D_0\in X_0\intersect N_k$ that is maximal.
+We have $\gamma_0>\ords(\Union{}a)$ s.t. $\gamma_0\in X_0$ and $D_0\intersect\Q_{<\gamma_0}$
+is semiproper. This implies we can end extend $X_0$ below $\gamma_0$ to $X_1\prec\fA$ s.t. $X_1$ captures
+$D_0\intersect\Q_{<\gamma_0}$, hence captures $D_0$. Now pick a $D_1\in X_1\intersect N_k$ that is maximal, and
+end-extend $X_1\prec X_2$ s.t. $X_2$ captures $D_1$. End-extending means $X_2\intersect\gamma_0 = X_1\intersect \gamma_0$,
+so $X_2$ still captures $D_1$. Etc. The desired $X$ is $\Union{n} X_n$.)
+
+Again, \cite{Larson_Book} shows $b\forces \dot{G} \intersect \Q_{<\delta_k}$ is $N_k$-generic.
+
+(Let $D\in N_k$ be a maximal antichain. If $c\leq b$, then
+$$\forall X\in c \, \exists! \, d_X \in X\intersect D \, (X\intersect \Union{}d_X\in d_X).$$
+Then $\exists e$ s.t. for stationary many
+$X\in c$, $e=d_X$, say for $X\in c^*$. This means $c^*\leq e$, so
+$c^*\forces \dot{G} \intersect D = \emptyset$.)
+
+[Rudominer: Should this say $c^*\forces \dot{G} \intersect D \not= \emptyset$?]
+
 
 \end{subproof}
 
