@@ -1,6 +1,7 @@
 % $Header$
 
 \documentclass{beamer}
+%\documentclass[handout]{beamer}
 
 \usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
 \include{mathdefs}
@@ -37,10 +38,11 @@
 % Or whatever. Note that the encoding and the font should match. If T1
 % does not look nice, try deleting the line with the fontenc.
 
-\title{Lesson 6 \\ Matrices and Linear Transformations}
+\title{Lesson 4 \\ Linear Transformations on $\R^n$}
 \subtitle{Math 325, Linear Algebra \\ Spring 2019 \\ SFSU}
 \author{Mitch Rudominer}
 \date{}
+
 
 
 % If you wish to uncover everything in a step-wise fashion, uncomment
@@ -55,19 +57,180 @@
 \end{frame}
 
 
-
-\begin{frame}{Matrices and Linear Functions}
+\begin{frame}{Functions from $\R^n$ to $\R^m$}
 
 \begin{itemize}
-\item What does Lesson 2 Matrices have to do with Lesson 5 Linear functions on $\R^n$?
-\item It turns out that an $m\times n$ matrix contains precisely the information we need
-to describe a linear function from $\R^n$ to $\R^m$.
-\item There is a one-to-one correspondence between $m\times n$ matrices and linear
-functions from $\R^n$ to $\R^m$
-\item Every matrix gives us a linear function.
-\item Every linear function is given by a matrix.
+\item Putting together Lesson 3 ``Vectors in $\R^n$'' and Lesson 1: ``Functions''
+\item Now we consider a function $f:\R^n \map \R^m$.
+\item Domain of $f$ is vectors in $\R^n$, codomain or target space is vectors
+in $\R^m$.
 \end{itemize}
 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example: Function from $\R^2$ to $\R^3$}
+\begin{itemize}
+\item Let $f:\R^2\map\R^3$ be defined by
+\item
+$$
+f
+\left(
+\begin{pmatrix}
+x \\ y
+\end{pmatrix}
+\right)
+=
+\begin{pmatrix}
+2x \\ y \\ y^2
+\end{pmatrix}
+$$
+\item We will abbreviate this as
+$$
+f
+\begin{pmatrix}
+x \\ y
+\end{pmatrix}
+=
+\begin{pmatrix}
+2x \\ y \\ y^2
+\end{pmatrix}
+$$
+\item We will abbreviate it even further as
+$$f(x,y) = (2x, y, y^2)^{\text{T}}$$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example continued}
+$f:\R^2\map\R^3$ is defined by
+$$f(x,y) = (2x, y, y^2)^{\text{T}}$$
+\begin{itemize}
+\item The component functions are
+\item $f_1(x,y) = 2x$
+\item $f_2(x,y) = y$
+\item $f_3(x,y) = y^2$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example continued}
+$f:\R^2\map\R^3$ is defined by
+$$f(x,y) = (2x, y, y^2)^{\text{T}}$$
+\begin{itemize}
+\item What is the domain of $f$? What is the codomain?
+\item $\dom(f) =\R^2$. The codomain of $f$ is $\R^3$.
+\item What is the the range of $f$?
+\item The surface $z=y^2$ in $\R^3$.
+\end{itemize}
+\pause
+\includegraphics[scale=0.1]{z-equals-y-squared}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example continued}
+$f:\R^2\map\R^3$ is defined by
+$$f(x,y) = (2x, y, y^2)^{\text{T}}$$
+\begin{itemize}
+\item Is $f$ one-to-one?
+\item Yes.
+\item Is $f$ onto?
+\item No.
+\item What is the image of the $y$-axis from $\R^2$?
+\item The parabola $z=y^2$ in the $y$- $z$- plane of $\R^3$.
+\item What is the inverse image of the $y$-axis from $\R^3$?
+\item The origin in $\R^2$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear transformations on $\R^n$}
+
+\begin{itemize}
+\item Let $f:\R^n \map \R^m$.
+\item $f$ is called \emph{linear} iff $f$ satisfies the following two properties:
+\item (i) For every two vectors $\bv, \bw \in\R^n$, $$f(\bv + \bw) = f(\bv) + f(\bw)$$
+\item (ii) For all vectors $\bv\in\R^n$ and all scalars $c\in \R$,
+$$f(c \bv) = c f(\bv)$$
+\item In short we say ``f preserves vector addition and scalar multiplication.''
+\item We say $f$ is a linear function.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$f$ Preserves Addition}
+
+\begin{center}
+\includegraphics[scale=0.25]{preserving-addition}
+\end{center}
+
+\begin{itemize}
+\item $f(\bv + \bw) = f(\bv) + f(\bw)$
+\item Let $f(\bv) = \bv^{\prime}$.
+\item Let $f(\bw) = \bw^{\prime}$.
+\item We can compute a vector sum on the left: $\bv + \bw$.
+\item We can compute a vector sum on the right: $\bv^{\prime} + \bw^{\prime}$.
+\item $f$ must move the vector sum on the left to the vector sum on the right.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{$f$ Preserves Scalar Multiplication}
+
+\begin{center}
+\includegraphics[scale=0.25]{preserving-scalar-mult}
+\end{center}
+
+\begin{itemize}
+\item $f(c \bv) = c f(\bv)$
+\item Let $f(\bv) = \bv^{\prime}$.
+\item Let $c = 2$.
+\item We can compute a scalar multiplication on the left: $2 \bv$.
+\item We can compute a scalar multiplication on the right: $2 \bv^{\prime}$.
+\item $f$ must move the scalar multiple on the left to the scalar multiple on the right.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example}
+Suppose $f:\R^2\map\R^3$ is defined by
+$$f(x,y) = (2x, y, y^2)^{\text{T}}$$
+
+\includegraphics[scale=0.1]{z-equals-y-squared}
+
+\begin{itemize}
+\item Is $f$ linear?
+\item Check: Does $f$ preserve vector addition?
+\item Let $\bv, \bw \in \R^2$
+\item We need to check if $f(\bv + \bw) = f(\bv) + f(\bw)$
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Does $f$ preserve vector addition?}
+\begin{itemize}
+\item $f(x,y) = (2x, y, y^2)^{\text{T}}$.
+\item Let $\bv = (0,1)^{\text{T}}$ and $\bw = (1,1)^{\text{T}}$.
+\item Let $\bv+\bw = (1,2)^{\text{T}}$.
+\item $f(\bv) = f(0,1) = (0,1,1)^{\text{T}}$.
+\item $f(\bw) = f(1,1) = (2,1,1)^{\text{T}}$.
+\item $f(\bv+\bw) = f(1,2) = (2,2,4)^{\text{T}}$.
+\item $f(\bv) + f(\bw) = (0,1,1)^{\text{T}} + (2,1,1)^{\text{T}} = (2,2,2)^{\text{T}}$.
+\item So $f(\bv) + f(\bw) \not= f(\bv +\bw)$.
+\item So $f$ does not preserve vector addition, so $f$ is not linear.
+\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -77,9 +240,6 @@ functions from $\R^n$ to $\R^m$
 \begin{itemize}
 \item Linear functions from $\R^n$ to $\R^m$ are also often called
 linear \emph{transformations}.
-\item A linear transformation is exactly the same thing as a linear function.
-\item Especially in the context of matrices it is common to use the term
-linear transformation instead.
 \item From now on we will use the term linear transformation.
 \item When using the term \emph{linear transformation}, it is common to use
 letters like $T$, $S$ and $R$ to represent the linear transformation rather
@@ -341,205 +501,6 @@ $$
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Linear Functionals}
-\begin{itemize}
-\item When the target space of a linear transformation is $\R^1$ then there
-are other names names for it.
-\item Let $T:\R^n\map\R^1$ be a linear transformation. Then $T$ is also called a
-\item \emph{linear functional}.
-\item Also $T$ is called a \emph{covector}.
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Covectors}
-\begin{itemize}
-\item Let $T:\R^n\map\R^1$ be a linear functional.
-\item Because every linear transformation is given by matrix, $T$ is given
-by a matrix. What size matrix?
-\item $T$ is given by a $1\times n$ row vector.
-\item Example: Let $T:\R^3\map\R$ be the linear functional such that
-$$
-\begin{matrix}
-T\begin{pmatrix} 1 \\ 0 \\ 0  \end{pmatrix} = 4
-\text{; and }
-&
-T\begin{pmatrix} 0 \\ 1 \\ 0  \end{pmatrix} = -5
-\text{; and }
-&
-T \begin{pmatrix} 0 \\ 0 \\ 1  \end{pmatrix} = 6
-\end{matrix}
-$$
-\item Find the row vector that represents $T$.
-\item Let $\ba = (4, -5, 6)$.
-\item Then $T = T_{\ba}$.
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Row vectors represent covectors}
-\begin{itemize}
-\item So column vectors represent vectors in $\R^n$.
-\item And row vectors represent covectors from $\R^n$.
-\item When you see a row vector like
-$$(4, -5, 6)$$
-\item think of it as an object that \emph{operates} on column vectors.
-\item When given a column vector like
-$$
-\begin{pmatrix}
-1 \\ -1 \\ 0
-\end{pmatrix}
-$$
-\item Then it is the \emph{job} of $(4, -5, 6)$ to \emph{hit}
-$$
-\begin{pmatrix}
-1 \\ -1 \\ 0
-\end{pmatrix}
-$$
-\item and produce the output $9$.
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{The rows of a matrix}
-\begin{itemize}
-\item Let
-$$A =
-\begin{pmatrix}
-1 &  0 & -2 & 0 \\
-0 &  0 &  1 & 1 \\
-2 & -1 &  0 & 5
-\end{pmatrix}
-$$
-\item We learned the significance of the columns of $A$.
-\item They are the images of the standard basis vectors under $T_A$.
-\item What is the significance of the \emph{rows} of $A$?
-\item They are the \emph{component covectors} of $A$.
-\item $T_A:\R^4\map\R^3$.
-\item So $T_A$ has three component functions, let's call them $f_1, f_2, f_3$.
-\item Let $T_A(\bv) = \bw$.
-\item
-$$T_A(\bv) =
-\begin{pmatrix}
-w_1 \\ w_2 \\ w_3
-\end{pmatrix}
-=
-\begin{pmatrix}
-f_1(\bv) \\ f_2(\bv) \\ f_3(\bv)
-\end{pmatrix}
-$$
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Component covectors}
-\begin{itemize}
-\item Let
-$$
-\begin{matrix}
-A =
-\begin{pmatrix}
-1 &  0 & -2 & 0 \\
-0 &  0 &  1 & 1 \\
-2 & -1 &  0 & 5
-\end{pmatrix}
-&
-\bv =
-\begin{pmatrix}
-1 \\ 1 \\ 0 \\ -1
-\end{pmatrix}
-\end{matrix}
-$$
-\item Then
-$$
-T_A(\bv) =
-A \bv
-=
-\begin{pmatrix}
-1 \\ -1 \\ -4
-\end{pmatrix}
-=
-\begin{pmatrix}
-f_1(\bv) \\ f_2(\bv) \\ f_3(\bv)
-\end{pmatrix}
-$$
-\item So $f_1(\bv) = 1$, $f_2(\bv) = -1$, $f_3(\bv) = -4$.
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Rows are component covectors}
-\begin{itemize}
-\item Let
-$$A =
-\begin{pmatrix}
-1 &  0 & -2 & 0 \\
-0 &  0 &  1 & 1 \\
-2 & -1 &  0 & 5
-\end{pmatrix}
-$$
-\item Let $\ba_1, \ba_2, \ba_3$ be the rows of $A$.
-\item Then
-$$T_A(\bv) =
-A \bv
-=
-\begin{pmatrix}
-\ba_1 \bv \\ \ba_2 \bv \\ \ba_3 \bv
-\end{pmatrix}
-=
-\begin{pmatrix}
-f_1(\bv) \\ f_2(\bv) \\ f_3(\bv)
-\end{pmatrix}
-$$
-\item So $f_1 = T_{\ba_1}$,$f_2 = T_{\ba_2}$, $f_3 = T_{\ba_3}$.
-\item The rows of $A$ are the component covectors of $T_A$.
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\beamerdefaultoverlayspecification{<+->}
-
-\begin{frame}{Example}
-\begin{itemize}
-\item Find a linear transformation $T:\R^2\map\R^2$ with component covectors
-$\ba_1$ and $\ba_2$ such that
-\item
-$$
-\begin{matrix}
-T_{\ba_1}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = 5
-\text{; and }
-&
-T_{\ba_1}\begin{pmatrix} 0 \\ 1  \end{pmatrix} = 6
-\text{; and }
-\end{matrix}
-$$
-\item
-$$
-\begin{matrix}
-T_{\ba_2}\begin{pmatrix} 1 \\ 0   \end{pmatrix} = 3
-\text{; and }
-&
-T_{\ba_2}\begin{pmatrix} 0 \\ 1   \end{pmatrix} = 4
-\end{matrix}
-$$
-\item Let
-$$
-A =
-\begin{pmatrix}
-5 & 6 \\
-3 & 4
-\end{pmatrix}
-$$
-\item Then $T_A$ is the desired linear transformation.
-\end{itemize}
-\end{frame}
 
 \end{document}
 

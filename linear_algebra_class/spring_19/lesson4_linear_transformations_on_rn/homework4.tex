@@ -1,21 +1,22 @@
 \documentclass[oneside,12pt]{amsart}
 
-\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
-
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,numprint}
 \input{mathdefs}
 \input{theoremstyles}
 
+\npthousandsep{,}
 \graphicspath{{images/}}
 
 \pagestyle{plain}
 
 \begin{document}
 
-\title{Homework for Lesson 5 \\ Linear functions $\R^n$}
+\title{Homework for Lesson 4 \\ Linear Transformations on $\R^n$}
 \author{Math 325, Linear Algebra \\ Mitch Rudominer \\ Spring 2019 \\ SFSU }
 \date{}
 
 \maketitle
+
 
 \textbf{Problem 1.} Suppose $f:\R^n\map\R^m$ and $f$ is linear.
 True or false? Explain your answer:
@@ -26,20 +27,12 @@ the scalar is zero.)
 
 \bigskip
 \bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
 
 \textbf{Problem 2.} Let $f:\R^1\map\R^1$ be defined by
 $$f(x) = 2x+1$$
 Is $f$ linear? Explain why or why not. (Note that in $\R^1$ the vectors are
 just the numbers so vector addition means just ordinary addition of numbers.)
 
-\bigskip
-\bigskip
-\bigskip
-\bigskip
 \bigskip
 \bigskip
 
@@ -52,18 +45,10 @@ all $\bv$. Is $f$ linear? Why or why not?
 
 \bigskip
 \bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
 
 \textbf{(b)} Let $f:\R^{2}\map\R^2$ be defined by $f(\bv) = (1,0)^{\text{T}}$ for
 all $\bv$. Is $f$ linear? Why or why not?
 
-\bigskip
-\bigskip
-\bigskip
-\bigskip
 \bigskip
 \bigskip
 
@@ -71,10 +56,6 @@ all $\bv$. Is $f$ linear? Why or why not?
 $f:\R^{2}\map\R^1$ be defined by $f(\bv) = c$ for
 all $\bv$. For which values of $c$ is $f$ linear? Explain
 
-\bigskip
-\bigskip
-\bigskip
-\bigskip
 \bigskip
 \bigskip
 
@@ -99,18 +80,10 @@ Does it follow that $f$ is linear? Explain why or why not.
 
 \bigskip
 \bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
 
 \textbf{(b)} Suppose that $f$ is linear. Does it follow that $f$ preserves
 linear combinations of length 2? Explain why or why not.
 
-\bigskip
-\bigskip
-\bigskip
-\bigskip
 \bigskip
 \bigskip
 
@@ -128,10 +101,6 @@ all linear combinations? Explain why or why not.
 
 \bigskip
 \bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
 
 \textbf{Problem 5.} Composition of linear functions.
 
@@ -144,6 +113,56 @@ Let $h=g\circ f$ so that $h:\R^n\map\R^k$.
 
 Is $h$ necessarily linear? Explain why or why not?
 
+\bigskip
+\bigskip
+
+\textbf{Problem 6.}  Suppose $A$ is a matrix such that $T_A:\R^3\map\R^2$ and
+$$
+\begin{matrix}
+T_A \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}\text{; and }
+&
+T_A \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}\text{; and }
+&
+T_A \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 5 \\ 6 \end{pmatrix}
+\end{matrix}
+$$
+
+Give the matrix $A$.
+
+\bigskip
+\bigskip
+
+\textbf{Problem 7.}  Suppose $T:\R^2\map\R^2$ is a linear transformation
+that swaps the two standard basis vectors. That is, it
+maps $\be_1$ to $\be_2$ and maps $\be_2$ to $\be_1$. Write down the matrix
+for $T$.
+
+\bigskip
+\bigskip
+
+\textbf{Problem 8.}  Let
+$$
+A = \begin{pmatrix}
+9 & 8 & 7 \\
+6 & 5 & 4 \\
+3 & 2 & 1
+\end{pmatrix}
+$$
+
+Where does $T_A$ send the third standard basis vector of $\R^3$?
+
+\bigskip
+\bigskip
+
+
+\textbf{Problem 9.} Suppose $T:\R^2\map\R^2$ is a linear transformation and
+$T(\be_1) = \begin{pmatrix} 1 \\ 2\end{pmatrix}$
+and $T(\be_2) = \begin{pmatrix} 2 \\ 3\end{pmatrix}$. Then find
+$T\begin{pmatrix} 3 \\ 4\end{pmatrix}$.
+
+
+\bigskip
+\bigskip
 
 
 \end{document}
