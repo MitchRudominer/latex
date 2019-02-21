@@ -1,0 +1,166 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,numprint}
+\input{mathdefs}
+\input{theoremstyles}
+
+\npthousandsep{,}
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Solutions to Homework for Lesson 4 \\ Linear Transformations on $\R^n$}
+\author{Math 325, Linear Algebra \\ Mitch Rudominer \\ Spring 2019 \\ SFSU }
+\date{}
+
+\maketitle
+
+
+\textbf{Problem 1.} Yes, if $f$ is linear then necessarily
+$f(\mathbf{0}) = \mathbf{0}$. (Here the $\mathbf{0}$ on the left is the
+zero vector from the domain and the $\mathbf{0}$ on the right is the zero vector
+from the codomain.) To see this use the fact that $f$ preserves scalar multiplication
+and set the scalar equal to 0. Let $\bv$ be any vector in the domain. Then
+$$f(\mathbf{0}) = f(0 \bv) = 0 f(\bv) = \mathbf{0}$$
+
+\smallskip
+
+\textbf{Problem 2.} No $f$ is not linear. One way to see this is to use the
+result of problem 1 and notice that $f(0) = 1 \not= 0$.
+
+\smallskip
+
+\textbf{Problem 3.}
+
+\textbf{(a)} Yes the constantly zero function is linear. It preserves vector
+addition because
+$$f(\bv + \bw) = \mathbf{0} = \mathbf{0} + \mathbf{0} = f(\bv) + f(\bw).$$
+It preserves scalar multiplication because
+$$f(c \bv) = \mathbf{0} = c \mathbf{0} = c f(\bv).$$
+
+\smallskip
+
+\textbf{(b)} No this constant function is not linear. One way to see that is
+to use the result of problem 1 and notice that
+$$f(\mathbf{0}) = (1, 0)^{\textbf{T}} \not= \mathbf{0}.$$
+
+\smallskip
+
+\textbf{(c)} A constant function is linear if and only if the constant is zero.
+We saw in (a) that the constantly zero function is zero. But as in (b), a constant
+function for any other constant cannot be linear because it does not map
+zero to zero.
+
+\smallskip
+
+\textbf{Problem 4.}
+
+
+\textbf{(a)} Suppose that for all vectors $\bv, \bw$ and all scalars $c, d$,
+$$f(c\bv + d\bw) = c f(\bv) + d f (\bw).$$
+
+Then yes it does follow that $f$ is linear.
+
+To see that $f$ preserves vector addition set $c=d=1$. To see that $f$
+preserves scalar multiplication, set $d=0$.
+
+\smallskip
+
+\textbf{(b)} Suppose that $f$ is linear. Yes it does follow that $f$ preserves
+linear combinations of length 2.
+\begin{align*}
+f(c\bv + d\bw) &= f(c\bv) + f(d\bw) \quad \text{ (because $f$ preserves vector addition.)} \\
+               &= c f(\bv) + d f(\bw) \quad \text{ (because $f$ preserves scalar multiplication.)}
+\end{align*}
+
+\bigskip
+
+
+\textbf{(c)} Suppose that $f$ is linear. Yes it does follow that $f$ preserves
+all linear combinations. We know that $f$ preserves linear combinations of
+length 2 by part (b). To see that $f$ preserves longer linear combinations
+we keep using the same argument repeatedly. For example to see that $f$
+preserves linear combinations of length three notice that
+\begin{align*}
+&f(c_1 \bv_1 + c_2 \bv_2 + c_3 \bv3) \\
+&= f\left( (c_1 \bv_1 + c_2 \bv_2 )+ c_3 \bv3 \right) \\
+&= f(c_1 \bv_1 + c_2 \bv_2) + f(c_3 \bv3) \quad \text{ (because $f$ preserves vector addition.)} \\
+&= f(c_1 \bv_1 + c_2 \bv_2) + c_3f(\bv3) \quad \text{ (because $f$ preserves scalar multiplication.)} \\
+&= c_f(\bv_1) + c_2 f(\bv_2) + c_3f(\bv3) \quad \text{ (by part (b))} \\
+\end{align*}
+
+To prove this formally for all linear combinations we would use the technique
+of proof by induction.
+
+\smallskip
+
+\textbf{Problem 5.} Suppose $f:\R^n\map\R^m$ and $g:\R^m\map\R^k$ are both linear.
+Let $h=g\circ f$ so that $h:\R^n\map\R^k$. Then yes, $h$ is necessarily linear.
+
+By part (a) of problem 4 above it suffices for us to show that $h$ preserves
+linear combinations of length 2. Fix vectors $\bv, \bw \in \R^n$ and scalars
+$c,d$. We must show that $h(c\bv +d \bw) = c \cdot h(\bv) + d \cdot h(\bw)$.
+
+\begin{align*}
+&h(c\bv +d \bw) \\
+&= g\left( f(c\bv +d \bw) \right)  \quad \text{ (by definition of $h$)} \\
+&= g\left( cf(\bv) +df(\bw) \right)  \quad \text{ (because $f$ is linear)} \\
+&= c g\left( f(\bv) \right) +d g \left(f(\bw) \right)  \quad \text{ (because $g$ is linear)} \\
+& = c \cdot h(\bv) + d \cdot h(\bw) \quad \text{ (by definition of $h$)}
+\end{align*}
+
+\bigskip
+
+\textbf{Problem 6.}
+
+$$
+\begin{pmatrix}
+3 & 5 & 1 \\
+4 & 6 & 2 \\
+\end{pmatrix}
+$$
+
+\bigskip
+
+\textbf{Problem 7.}
+
+$$
+\begin{pmatrix}
+0 & 1 \\
+1 & 0 \\
+\end{pmatrix}
+$$
+
+\bigskip
+
+\textbf{Problem 8.} $(7, 4, 1)^{\text{T}}$.
+
+\bigskip
+
+
+\textbf{Problem 9.} There are two ways you might think of this.
+
+\smallskip
+
+(i) $\begin{pmatrix} 3 \\ 4\end{pmatrix} = 3 \be_1 + 4 \be_2$
+so
+\begin{align*}
+&T\begin{pmatrix} 3 \\ 4\end{pmatrix} = 3 T(\be_1) + 4 T(\be_2) \\
+&= 3\cdot \begin{pmatrix} 1 \\ 2\end{pmatrix} + 4 \cdot \begin{pmatrix} 2 \\ 3\end{pmatrix}
+=\begin{pmatrix} 11 \\ 18\end{pmatrix}
+\end{align*}
+
+\medskip
+
+(ii) Let $A$ be the matrix of $T$. From the data given we see that
+$$A = \begin{pmatrix}
+1 & 2 \\
+2 & 3 \\
+\end{pmatrix}
+.$$
+So $T\begin{pmatrix} 3 \\ 4\end{pmatrix} = A\begin{pmatrix} 3 \\ 4\end{pmatrix} = \begin{pmatrix} 11 \\ 18\end{pmatrix}$.
+
+
+\end{document}
