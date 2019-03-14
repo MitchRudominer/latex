@@ -1,0 +1,377 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 8\\ Gaussian Elimination, Part 1}
+\subtitle{Math 325, Linear Algebra \\ Spring 2019 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Solving a matrix equation}
+
+\begin{itemize}
+\item Solve the equation $A\bx=\bb$.
+\item Here $A$ is an $m\times n$ matrix, $\bb\in\R^{m}$.
+\item How should we think about this?
+\item Idea: What would we do if $A$, $\bb$ and $\bx$ were numbers instead of matrices?
+\item $\bx = \frac{\bb}{A}$.
+\item This doesn't work with matrices because matrix division is not defined. Is it?
+\item Suppose $A$ were an invertible matrix.
+\item Then multiply both sides of the equation by $A^{-1}$. We get
+\item $\bx = A^{-1}\bb$. We have solved the equation!
+\item But this is not a good general solution.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Solving a matrix equation with the inverse}
+
+\begin{itemize}
+\item Solve the equation $A\bx=\bb$.
+\item $\bx = A^{-1}\bb$ is a solution if $A$ is invertible.
+\item But there are two problems:
+\item (i) $A$ might not be invertible.
+\item (ii) If $A$ is invertible but it is a large matrix, then computing
+$A^{-1}$ is very expensive--more expensive than solving the original equation.
+\item Besides, we haven't yet learned how to find the inverse of a large matrix.
+\item So while $\bx = A^{-1}\bb$ is interesting theoretically, that is
+not the techniqe we will be using for solving $A\bx=\bb$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A different idea}
+
+\begin{itemize}
+\item Solve the equation $A\bx=\bb$.
+\item Here $A$ is an $m\times n$ matrix, $\bb\in\R^{m}$.
+\item Suppose $G$ is an invertible $m\times m$ matrix.
+\item Then for all $\bx$,
+\item $A\bx=\bb$ iff $GA\bx = G\bb$.
+\item Why?
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A different idea, continued}
+
+\begin{itemize}
+\item $A\bx=\bb$ iff $GA\bx = G\bb$.
+\item What good is this? Is the second equation easier to solve?
+\item Let $A^{\prime} = GA$, $\bb^{\prime} = G\bb$.
+\item So the second equatin is $A^{\prime}\bx=\bb^{\prime}$.
+\item This looks just like the original equation, so have we gotten anywhere?
+\item Idea: Pick the invertible matrix $G$ so that $A^{\prime}=GA$ is in a simple form.
+\item If $A^{\prime}$ is in a simple form then it is easy to solve $A^{\prime}\bx=\bb^{\prime}$.
+\item Plan: Find an invertible matrix $G$ so that $GA$ is in a simple form.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Plan}
+
+\begin{itemize}
+\item Plan: Find an invertible matrix $G$ so that $GA$ is in a simple form.
+\item So what is $G$?
+\item $G$ will be the product of elementary matrices of types I and II.
+\item $G=G_1\cdot G_2 \cdot \cdots \cdot G_k$, where each $G_k$ is an elementary matrix.
+\item So we will be performing a series of elementary row operations on $A$
+\item until we have put $A$ in a simple form.
+\item And we will be performing the same series of elementary row operations
+on the right-hand-side vector $\bb$.
+\item So what is the simple form of the matrix we are looking for?
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Upper-triangular form}
+
+\begin{itemize}
+\item \textbf{Definition} A square matrix $A$ is called \emph{upper-triangular}
+\item if all entries of $A$ below the main diagonal are zero.
+\item For example
+$$A=
+\begin{pmatrix}
+3 & -1  & 3 \\
+0 & 2  & 1 \\
+0 & 0 & -2 \\
+\end{pmatrix}
+$$
+\item We are going to learn how to solve the equation $A\bx=\bb$
+\item in the case where $A$ is
+\item upper triangular, with non-zeros on the main diagonal.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The method of back-substitution}
+
+\begin{itemize}
+\item Consider the equation
+$$
+\begin{pmatrix}
+3 & -1  & 3 \\
+0 & 2  & 1 \\
+0 & 0 & -2 \\
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+=
+\begin{pmatrix}
+4 \\ 3 \\ 2
+\end{pmatrix}
+$$
+\item We can solve this equation via the method of back-substitution.
+\item The third equation is $-2z=2$.
+\item So we can see that $z=-1$.
+\item The second equation is $2y+z = 3$.
+\item But we can substitue $z=-1$ and get $2y -1 = 3$.
+\item So $y=2$.
+\item The first equation is $3x -y +3z = 4$.
+\item But we can substitue $z=-1, y=2$ and get $3x -2  - 3 = 4$
+\item So $3x = 9$ or $x=3$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The method of back-substitution}
+
+\begin{itemize}
+\item So we have solved
+$$
+\begin{pmatrix}
+3 & -1  & 3 \\
+0 & 2  & 1 \\
+0 & 0 & -2 \\
+\end{pmatrix}
+\begin{pmatrix}
+3 \\ 2 \\ -1
+\end{pmatrix}
+=
+\begin{pmatrix}
+4 \\ 3 \\ 2
+\end{pmatrix}
+$$
+\item Notice that at each stage we found the only possible value for $z$,
+then for $y$, then for $x$.
+\item So $\bx=(3,2,-1)^{\text{T}}$ is the only solution to $A\bx=\bb$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Upper-triangular matrices with non-zero diagonal entries}
+
+\begin{itemize}
+\item \textbf{Theorem} Let $A$ be an $n\times n$ matrix in upper-triangular
+form with all non-zeros on the diagonal.
+\item Let $\bb$ be any vector in $\R^n$.
+\item Then there is a unique solution to the equation $A\bx=\bb$.
+\item \textbf{proof} We can use the method of back substitution as in the
+previous example to find the unique solution. $\qed$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Gaussian Elimination}
+
+\begin{itemize}
+\item Gaussian Elimination is an algorithm that
+\item - takes a rectangular $m\times n$ matrix $A$ as input
+\item - performs a series of row operations on the matrix
+\item - resulting in a new $m\times n$ matrix $\Aprime$, such that
+\item - $\Aprime$ is in a particular simple form.
+\item What is this particularly simple form? It is called row-echelon form.
+\item We will learn about row-echelon form later. For now we only consider the easy case.
+\item In the easy case, $\Aprime$ will be upper-triangular with non-zeros on the diagonal.
+\item This is the case we will study first.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Augmented Matrix}
+
+\begin{itemize}
+\item \textbf{Definition.} If $A\bx=\bb$ is a system of linear equations then the
+\emph{augmented matrix} for the system is the matrix whose columns are the columns
+of $A$ with one additional column on the right consisting of $\bb$. We draw
+a vertical line between the columns of $A$ and $\bb$.
+\item For the system we are currently working with
+$A=
+\begin{pmatrix}
+ 0 & 1 & -1 \\
+-2 & 4 & -1 \\
+-2 & 5 & -4 \\
+\end{pmatrix}
+$,
+and
+$
+\bb =
+\begin{pmatrix}
+3 \\ 1 \\ -2
+\end{pmatrix}
+$.
+\item The augmented matrix is
+$
+\begin{pmatrix}
+ 0 & 1 & -1  &  \aug & 3  \\
+-2 & 4 & -1  &  \aug & 1  \\
+-2 & 5 & -4  &  \aug & -2  \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example Gaussian Elimination with an Augmented Matrix}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+ 0 & 1 & -1  &  \aug & 3  \\
+-2 & 4 & -1  &  \aug & 1  \\
+-2 & 5 & -4  &  \aug & -2  \\
+\end{pmatrix}
+$
+\item Swap rows 1 and 2
+\item $
+\begin{pmatrix}
+\textbf{-2} & 4 & -1  &  \aug & 1  \\
+        0   & 1 & -1  &  \aug & 3  \\
+        -2  & 5 & -4  &  \aug & -2  \\
+\end{pmatrix}
+$
+\item Replace row 3 with row 3 minus row 1
+\item $
+\begin{pmatrix}
+\textbf{-2} & 4 & -1  &  \aug & 1  \\
+        0   & 1 & -1  &  \aug & 3  \\
+        0   & 1 & -3  &  \aug & -3  \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example Gaussian Elimination with an Augmented Matrix}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+\textbf{-2} &         4  & -1  &  \aug & 1  \\
+        0   & \textbf{1} & -1  &  \aug & 3  \\
+        0   &         1  & -3  &  \aug & -3  \\
+\end{pmatrix}
+$
+\item Replace row 3 with row 3 minus row 2.
+\item $
+\begin{pmatrix}
+\textbf{-2} &         4  &          -1  &  \aug & 1  \\
+        0   & \textbf{1} &          -1  &  \aug & 3  \\
+        0   &         0  & \textbf{-2}  &  \aug & -6  \\
+\end{pmatrix}
+$
+\item That is now upper-triangular with nonzeros on the diagonal.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Back substitution.}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+\textbf{-2} &         4  &          -1  &  \aug & 1  \\
+        0   & \textbf{1} &          -1  &  \aug & 3  \\
+        0   &         0  & \textbf{-2}  &  \aug & -6  \\
+\end{pmatrix}
+$
+\item To solve the equation we use back-substitution.
+\item $-2 w = -6 \quad \implies \quad w = 3$
+\item $v - w = 3 \quad \implies \quad v - 3 = 3 \quad \implies \quad v=6$.
+\item $-2 u + v4 -w  = 1 \quad \implies \quad -2u +24 - 3 = 1 \quad \implies \quad u = 10$.
+\item This is the solution to the \emph{original} system too.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination to Solve Systems of Linear Equations}
+
+We have solved the original system of linear equations.
+
+\pause
+
+\begin{align*}
+ \quad v - w         &= 3 \\
+-2u + 4v - w         &= 1 \\
+-2u + 5v - 4w        &= -2 \\
+\end{align*}
+
+\pause
+
+The solution is $u = 10, v=6, w=3$.
+
+\end{frame}
+
+
+
+\end{document}
+
+

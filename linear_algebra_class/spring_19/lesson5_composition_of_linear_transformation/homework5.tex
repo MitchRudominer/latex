@@ -1,0 +1,111 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Homework for Lesson 5 \\ Composition of Linear Transformations $\R^n$}
+\author{Math 325, Linear Algebra \\ Spring 2019 \\ SFSU }
+\date{}
+
+\maketitle
+
+\textbf{Problem 1.} Let
+
+\smallskip
+
+$$
+\begin{matrix}
+A = \begin{pmatrix}
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1\\
+1 & 0 & 0 & 0\\
+\end{pmatrix}
+\text{; and }
+&
+B = \begin{pmatrix}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 2 & 0\\
+0 & 0 & 0 & 1\\
+\end{pmatrix}
+\text{; and }
+\end{matrix}
+$$
+
+ Let
+
+\smallskip
+
+$
+\bv = \begin{pmatrix}
+a \\
+b \\
+c \\
+d \\
+\end{pmatrix}
+$
+
+represent an arbitrary column vector in $\R^4$.
+
+\smallskip
+
+\textbf{(a)} Compute $A \bv$, $A^2 \bv$ and $A^3 \bv$.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{(b)} Compute $B \bv$.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{(c)} Let
+
+\smallskip
+
+$
+\bw = \begin{pmatrix}
+5 \\
+6 \\
+7 \\
+8 \\
+\end{pmatrix}
+$
+\bigskip
+\bigskip
+\bigskip
+
+Compute $$\left((BA) \left(A^{102}  B\right) \right ) \bw.$$
+
+Here $A^{102}$ means
+$A A A \cdots$ 102 times, i.e. $A$ multiplied by itself 102 times.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{Problem 2.} Let $A$ and $B$ be the matrices from problem 1.
+Let $T=T_A$ and $S = T_B$ be the linear transformations corresponding to
+$A$ and $B$. Write down the matrix of the linear transformation $T \circ S$.
+
+\end{document}
