@@ -125,7 +125,7 @@ $
 \item Above the pivots can be anything.
 \item The first pivot is the first entry of the first pivot column.
 \item The second pivot is the second entry of the second pivot column. Etc.
-\item The non-pivot columns must have zeros below the pivot column immediately to the left.
+\item The non-pivot columns must have zeros below the pivot immediately to the left.
 \end{itemize}
 
 \end{frame}
@@ -411,105 +411,17 @@ fourth pivot.
 \end{itemize}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{General Systems of Linear Equations}
-
-\begin{itemize}
-\item Suppose $A\bx=\bb$ is a general system of linear equations.
-\item Recall that the possibilities for the solution set are:
-\item (i) There are no solutions. The system is incompatible (or inconsistent.)
-\item This happens when $\bb\notin\ran(T_A)$.
-\item (ii) There is exactly one solution.
-\item This happens when $\bb\in\ran(T_A)$  and $T_A$ is one-to-one ( $\ker(A)$ is trivial).
-\item (iii) There are infinitely many solutions.
-\item This happens when $\bb\in\ran(T_A)$  and $T_A$ is not one-to-one ( $\ker(A)$ is not trivial).
-\item If $A$ is in row-echelon form then it is easy to see which of these three cases occur.
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Incompatible systems}
-
-\begin{itemize}
-\item Suppose $A\bx=\bb$ is a general system of linear equations, and $A$ is in row-echelon form.
-\item Then the system is incompatible iff
-\item there is a row of $A$ that is all zeros but the corresponding component of $\bb$ is not zero.
-\item Example:
-$$
-A =
-\begin{pmatrix}
-1 & 2 & 3 & 4 \\
-0 & 0 & 5 & 6 \\
-0 & 0 & 0 & 7 \\
-0 & 0 & 0 & 0 \\
-\end{pmatrix}
-\quad
-\bb=
-\begin{pmatrix}
-2 \\ 3 \\ 4 \\ 5
-\end{pmatrix}
-$$
-
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Unique solutions}
-
-\begin{itemize}
-\item Suppose $A\bx=\bb$ is a general system of linear equations, and $A$ is in row-echelon form.
-\item Then the system has a unique solution iff
-\item $A$ is  upper triangular with nonzeros on the diagonal,
-\item with all zero rows at the bottom allowed as long as the corresponding components of $\bb$ are also zero.
-\item Example:
-$$
-A =
-\begin{pmatrix}
-1 & 2 & 3 & 4 \\
-0 & 5 & 6 & 7 \\
-0 & 0 & 8 & 9 \\
-0 & 0 & 0 & 1 \\
-0 & 0 & 0 & 0 \\
-\end{pmatrix}
-\quad
-\bb=
-\begin{pmatrix}
-2 \\ 3 \\ 4 \\ 5 \\ 0
-\end{pmatrix}
-$$
-\item We can find the unique solution using back-substitution.
-\item We ignore the all-zero rows at the bottom.
-
-\end{itemize}
-\end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Underdetermined systems}
+
+\begin{frame}{Applications of Gaussian Elimination}
 
 \begin{itemize}
-\item Suppose $A\bx=\bb$ is a general system of linear equations, and $A$ is in row-echelon form.
-\item Then the system has infinitely many solutions iff
-\item neither of the previous two cases occur
-\item Example:
-$$
-A =
-\begin{pmatrix}
-1 & 2 & 3 & 4 \\
-0 & 0 & 5 & 6 \\
-0 & 0 & 0 & 8 \\
-0 & 0 & 0 & 0 \\
-\end{pmatrix}
-\quad
-\bb=
-\begin{pmatrix}
-2 \\ 3 \\ 4 \\ 0
-\end{pmatrix}
-$$
-\item We can find the infinitely many solutions through generalized back-substitution.
-
+\item Gaussian elimination is an algorithm.
+\item It takes as input an arbitrary $m\times n$ matrix $A$.
+\item It gives as output a related $m\times n$ matrix $\Aprime$ in row-echelon form.
+\item What are the aplications of this algorithm?
+\item We will learn many applications of Gaussian elimination in later lessons.
+\item For now we are interested in a single application: Solving a system of linear equations.
 \end{itemize}
 \end{frame}
 
@@ -541,7 +453,20 @@ $$
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Example of an underdetermined system}
+
+\begin{frame}{Gaussian Elimination to Solve a System of Linear Equations}
+
+\begin{itemize}
+\item Given a system of linear equations $A\bx=\bb$ we can solve it as follows:
+\item Form the augmented matrix $\left(A\vert \bb\right)$.
+\item Perform Gaussian elimination on the augmented matrix until we get
+$\left(\Aprime\vert \bb^{\prime}\right)$ such that $\Aprime$ is in row-echelon form.
+\item Perform generalized back-substitution.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
 
 \begin{itemize}
 \item \textbf{Example} Solve the following general system of linear equations:
@@ -613,9 +538,6 @@ $
 \item Step 3. Perform generalized back-substitution.
 \end{itemize}
 \end{frame}
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Generalized back-substitution}
 
@@ -789,7 +711,7 @@ is a \emph{particular solution}.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Particular solution plus a subspace}
+\begin{frame}{General Solution}
 
 \begin{itemize}
 \item
@@ -841,7 +763,8 @@ w
 1
 \end{pmatrix}
 $
-\item Every other solution is obtained by adding to the particular solution an element of the subspace of $\R^4$ spanned by the vectors
+\item Every other solution is obtained by adding to the particular solution a linear combination
+of
 \item
 $
 \singleton{
@@ -861,6 +784,233 @@ $
 }
 $
 
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Possibilities for the Solution Set}
+
+\begin{itemize}
+\item Suppose $A\bx=\bb$ is a general system of linear equations.
+\item There are three possibilities for the solution set:
+\item (i) There are no solutions. The system is incompatible (or inconsistent.)
+\item This happens when $\bb\notin\ran(T_A)$.
+\item (ii) There is exactly one solution.
+\item This happens when $\bb\in\ran(T_A)$  and $T_A$ is one-to-one.
+\item (iii) There are infinitely many solutions.
+\item This happens when $\bb\in\ran(T_A)$  and $T_A$ is not one-to-one.
+\item If $A$ is in row-echelon form then it is easy to see which of these three cases occur.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Incompatible systems}
+
+\begin{itemize}
+\item Suppose $A\bx=\bb$ is a general system of linear equations, and $A$ is in row-echelon form.
+\item Then the system is incompatible iff
+\item there is a row of $A$ that is all zeros but the corresponding component of $\bb$ is not zero.
+\item Example:
+$$
+A =
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+0 & 0 & 5 & 6 \\
+0 & 0 & 0 & 7 \\
+0 & 0 & 0 & 0 \\
+\end{pmatrix}
+\quad
+\bb=
+\begin{pmatrix}
+2 \\ 3 \\ 4 \\ 5
+\end{pmatrix}
+$$
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Unique solutions}
+
+\begin{itemize}
+\item Suppose $A\bx=\bb$ is a general system of linear equations, and $A$ is in row-echelon form.
+\item Then the system has a unique solution iff
+\item $A$ is  upper triangular with nonzeros on the diagonal,
+\item with all zero rows at the bottom allowed as long as the corresponding components of $\bb$ are also zero.
+\item Example:
+$$
+A =
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+0 & 5 & 6 & 7 \\
+0 & 0 & 8 & 9 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 \\
+\end{pmatrix}
+\quad
+\bb=
+\begin{pmatrix}
+2 \\ 3 \\ 4 \\ 5 \\ 0
+\end{pmatrix}
+$$
+\item We can find the unique solution using back-substitution.
+\item We ignore the all-zero rows at the bottom.
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Underdetermined systems}
+
+\begin{itemize}
+\item Suppose $A\bx=\bb$ is a general system of linear equations, and $A$ is in row-echelon form.
+\item Then the system has infinitely many solutions iff
+\item neither of the previous two cases occur
+\item Example:
+$$
+A =
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+0 & 0 & 5 & 6 \\
+0 & 0 & 0 & 8 \\
+0 & 0 & 0 & 0 \\
+\end{pmatrix}
+\quad
+\bb=
+\begin{pmatrix}
+2 \\ 3 \\ 4 \\ 0
+\end{pmatrix}
+$$
+\item We can find the infinitely many solutions through generalized back-substitution.
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Homogeneous Systems of Equations}
+
+\begin{itemize}
+\item The system of equations $A\bx=\bb$ is called \emph{homogeneous} iff $\bb=\bzero$.
+\item A homogeneous system of equations can never be incompatible.
+\item This is because $\bx=\bzero$ is always a solution.
+\item A homogeneous system is underdetermined iff there is some non-zero solution also.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Solving a homogeneous system}
+\begin{itemize}
+\item Solve
+$
+\begin{pmatrix}
+1 & 2 & 2 & 3 \\
+2 & 4 & 1 & 3 \\
+3 & 6 & 1 & 4
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}=
+\begin{pmatrix}
+0 \\ 0 \\ 0
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+1 & 2 & 2 & 3 & \aug & 0 \\
+2 & 4 & 1 & 3 & \aug & 0  \\
+3 & 6 & 1 & 4 & \aug & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 2 & 3 & \aug & 0  \\
+0 & 0 & -3 & -3  & \aug & 0  \\
+0 & 0 & -5 & -5 & \aug & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 2 & 3    & \aug & 0  \\
+0 & 0 & -3 & -3  & \aug & 0  \\
+0 & 0 & 0 & 0    & \aug & 0
+\end{pmatrix}
+$
+\item This is the same row-echelon form matrix we were just considering.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Solving a homogeneous system}
+
+\begin{itemize}
+\item We have reduced the homogeneous system to
+\item
+$
+\begin{pmatrix}
+1 & 2 & 2 & 3 \\
+0 & 0 & -3 & -3 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\ 0 \\  0
+\end{pmatrix}
+$
+\item The basic variables are $x$ and $z$. The free variables are $y$ and $w$.
+\item $-3z -3w = 0 \SkipImplies -3z = 3w $
+\item $ \SkipImplies z = - w$.
+\item $x + 2y +2z +3w = 0 $
+\item $\SkipImplies x +2y + 2(-w) + 3w = 0$
+\item $\SkipImplies x + 2y  + w = 0 \SkipImplies x = -2y - w$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The general solution to a homogeneous system}
+
+\begin{itemize}
+\item The general solution to the homogeneous system is
+\item
+$
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+-2y - w \\
+y \\
+-w \\
+w
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+y
+\begin{pmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{pmatrix}
++
+w
+\begin{pmatrix}
+-1 \\
+0 \\
+-1 \\
+1
+\end{pmatrix}
+$
 \end{itemize}
 \end{frame}
 
