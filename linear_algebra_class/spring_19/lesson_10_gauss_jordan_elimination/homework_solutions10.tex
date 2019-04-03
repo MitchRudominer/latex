@@ -1,0 +1,297 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Solutions to Homework for Lesson 10 \\ Gauss-Jordan Elimination}
+\author{Math 325, Linear Algebra \\ Spring 2019\\ SFSU }
+\date{}
+
+\maketitle
+
+
+\textbf{Problem 1}  Exercise 1.5.25 on page 39.
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (1 d)
+
+\textbf{(d)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & 2 & 3 & \aug & 1 & 0 & 0 \\
+4 & 5 & 6 & \aug & 0 & 1 & 0 \\
+7 & 8 & 9 & \aug &  0 & 0 & 1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 3 &    \aug &  1 & 0 & 0 \\
+0 & -3 & -6 &  \aug & -4 & 1 & 0 \\
+0 & -6 & -12 & \aug & -7 & 0 & 1
+\end{pmatrix}
+\SkipImplies
+$
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & 2  & 3   &  \aug &   1 & 0 & 0 \\
+0 & 1  & 2   &  \aug &  \frac{4}{3} & \frac{-1}{3} & 0 \\
+0 & -6 & -12 &  \aug &   -7 & 0 & 1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 3 &  \aug & 1 & 0 & 0 \\
+0 & 1 & 2 &  \aug & \frac{4}{3} & \frac{-1}{3} & 0 \\
+0 & 0 & 0 &  \aug & 1 & -2 & 1
+\end{pmatrix}
+$
+
+\bigskip
+
+The matrix is not invertible.
+
+\bigskip
+
+\textbf{(e)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+1  & 0  & -2 & \aug &  1 & 0 & 0 \\
+3  & -1 &  0 & \aug &  0 & 1 & 0 \\
+-2 & 1  & -3 & \aug &  0 & 0 & 1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0  & -2  & \aug & 1 & 0 & 0 \\
+0 & -1 & 6   & \aug & -3 & 1 & 0 \\
+0 & 1  & -7  & \aug & 2 & 0 & 1
+\end{pmatrix}
+\SkipImplies
+$
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & 0 & -2 & \aug & 1 & 0 & 0 \\
+0 & 1 & -6 & \aug & 3 & -1 & 0 \\
+0 & 1 & -7 & \aug & 2 & 0 & 1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & -2 &  \aug & 1 & 0 & 0 \\
+0 & 1 & -6 &  \aug & 3 & -1 & 0 \\
+0 & 0 & -1 &  \aug & -1 & 1 & 1
+\end{pmatrix}
+\SkipImplies
+$
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & 0 & -2 & \aug & 1 & 0 & 0 \\
+0 & 1 & -6 & \aug & 3 & -1 & 0 \\
+0 & 0 & 1 &  \aug & 1 & -1 & -1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & 0 & \aug & 3 & -2 & -2 \\
+0 & 1 & 0 & \aug & 9 & -7 & -6 \\
+0 & 0 & 1 & \aug & 1 & -1 & -1
+\end{pmatrix}
+\SkipImplies
+$
+
+\bigskip
+
+So the matrix is invertible and its inverse is
+
+$
+\begin{pmatrix}
+3 & -2 & -2 \\
+9 & -7 & -6 \\
+1 & -1 & -1
+\end{pmatrix}
+$.
+
+\bigskip
+
+\textbf{(f)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & 2 & 3 & \aug & 1 & 0 & 0 \\
+3 & 5 & 5 & \aug & 0 & 1 & 0 \\
+2 & 1 & 2 & \aug & 0 & 0 & 1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2  & 3  &  \aug & 1 & 0 & 0 \\
+0 & -1 & -4 &  \aug & -3 & 1 & 0 \\
+0 & -3 & -4 &  \aug & -2 & 0 & 1
+\end{pmatrix}
+\SkipImplies
+$
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & 2  & 3  &  \aug & 1 & 0 & 0 \\
+0 & 1  & 4  &  \aug & 3 & -1 & 0 \\
+0 & -3 & -4 &  \aug & -2 & 0 & 1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & -5 & \aug  & -5   & 2 & 0 \\
+0 & 1 & 4 &  \aug  &  3   & -1 & 0 \\
+0 & 0 & 8 &  \aug  &  7   & -3 & 1
+\end{pmatrix}
+\SkipImplies
+$
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & 0 & -5 & \aug  & -5   & 2 & 0 \\
+0 & 1 & 4 &  \aug  &  3   & -1 & 0 \\
+0 & 0 & 1 &  \aug  &  \frac{7}{8}   & -\frac{3}{8} & \frac{1}{8}
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & 0 & \aug & \frac{-5}{8} & \frac{1}{8} & \frac{5}{8} \\[6pt]
+0 & 1 & 0 & \aug & \frac{-1}{2} & \frac{1}{2} & \frac{-1}{2} \\[6pt]
+0 & 0 & 1 & \aug & \frac{7}{8} & \frac{-3}{8} & \frac{1}{8}
+\end{pmatrix}
+\SkipImplies
+$
+
+So the matrix is invertible and its inverse is
+
+\bigskip
+
+$
+\begin{pmatrix}
+\frac{-5}{8} & \frac{1}{8} & \frac{5}{8} \\[6pt]
+\frac{-1}{2} & \frac{1}{2} & \frac{-1}{2} \\[6pt]
+\frac{7}{8} & \frac{-3}{8} & \frac{1}{8}
+\end{pmatrix}
+$.
+
+
+\bigskip
+
+\textbf{(g)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+2 &  1  & 2  & \aug & 1 & 0 & 0 \\
+4 &  2  & 3  & \aug & 0 & 1 & 0 \\
+0 & -1 & 1 & \aug & 0 & 0 & 1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & \frac{1}{2} & 1  &  \aug & \frac{1}{2} & 0 & 0 \\
+4 &  2  & 3  & \aug & 0 & 1 & 0 \\
+0 & -1 & 1 & \aug & 0 & 0 & 1
+\end{pmatrix}
+\SkipImplies
+$
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & \frac{1}{2} & 1  &  \aug & \frac{1}{2} & 0 & 0 \\
+0 & 0 & -1 &  \aug& -2 & 1 & 0 \\
+0 & -1 & 1 & \aug & 0 & 0 & 1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+ 1 & \frac{1}{2} & 1  &  \aug & \frac{1}{2} & 0 & 0 \\
+0 & -1 & 1 & \aug & 0 & 0 & 1 \\
+0 & 0 & -1 &  \aug& -2 & 1 & 0 \\
+\end{pmatrix}
+\SkipImplies
+$
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & \frac{1}{2} & 1  &  \aug & \frac{1}{2} & 0 & 0 \\
+0 & 1 & -1 & \aug & 0 & 0 & -1 \\
+0 & 0 & -1 &  \aug& -2 & 1 & 0 \\
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & \frac{1}{2} & 1  &  \aug & \frac{1}{2} & 0 & 0 \\
+0 & 1 & -1 & \aug & 0 & 0 & -1 \\
+0 & 0 &  1 &  \aug&  2 & -1 & 0 \\
+\end{pmatrix}
+\SkipImplies
+$
+
+\bigskip
+
+(Notice that I am doing this in a slightly different order than what I presented in class.
+First I am creating a matrix that is upper triangular with 1's on the diagonal. Then
+I am clearing the entries above the diagonal starting from the right and moving left.
+In class we cleared the entries above the diagonal at the same time that we
+cleared the entries below the diagonal and worked from left to right. Both techniques
+work and yield the same result.)
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & \frac{1}{2} & 0 &  \aug &  \frac{-3}{2} & 1 & 0 \\
+0 & 1 & 0 &            \aug &  2 & -1 & -1 \\
+0 & 0 & 1 &            \aug &  2 & -1 & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & 0 &    \aug &     \frac{-5}{2} & \frac{3}{2} & \frac{1}{2} \\
+0 & 1 & 0 &    \aug &      2 & -1 & -1 \\
+0 & 0 & 1 &    \aug &     2 & -1 & 0
+\end{pmatrix}
+\SkipImplies
+$
+
+\bigskip
+
+
+So the matrix is invertible and its inverse is
+
+\bigskip
+
+$
+\begin{pmatrix}
+\frac{-5}{2} & \frac{3}{2} & \frac{1}{2} \\[6pt]
+ 2 & -1 & -1 \\
+2 & -1 & 0
+\end{pmatrix}
+$.
+
+\end{document}

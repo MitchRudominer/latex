@@ -1,0 +1,484 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Solutions to Homework for Lesson 9 \\ Gaussian Elimination, Part 2}
+\author{Math 325, Linear Algebra \\ Spring 2019\\ SFSU }
+\date{}
+
+\maketitle
+
+
+\textbf{Problem 1}
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (1 a)
+
+\textbf{(a)} There is a unique solution:
+
+\bigskip
+
+$
+\begin{pmatrix}
+x \\  y
+\end{pmatrix}
+=
+\begin{pmatrix}
+\frac{-1}{2} \\[6pt]
+\frac{-3}{4}
+\end{pmatrix}
+$
+
+
+\bigskip
+
+\textbf{(b)} There are infinitely many solutions:
+
+\bigskip
+
+$
+\begin{pmatrix}
+x \\  y \\z
+\end{pmatrix}
+=
+\begin{pmatrix}
+1-2z \\
+-1+z\\
+z
+\end{pmatrix}
+=
+\begin{pmatrix}
+1\\
+-1 \\
+0
+\end{pmatrix}
++
+z
+\begin{pmatrix}
+-2 \\
+1 \\
+1
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(c)} There are no solutions.
+
+\bigskip
+
+\textbf{(d)} There is a unique solution:
+
+\bigskip
+
+$
+\begin{pmatrix}
+x \\  y \\ z
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 \\
+-2 \\
+1
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(e)}  There are infinitely many solutions:
+
+\bigskip
+
+$
+\begin{pmatrix}
+x \\  y \\z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+5-2z \\
+1 \\
+z \\
+0
+\end{pmatrix}
+=
+\begin{pmatrix}
+5\\
+1 \\
+0 \\
+0
+\end{pmatrix}
++
+z
+\begin{pmatrix}
+-2 \\
+0 \\
+1 \\
+0
+\end{pmatrix}
+$
+
+
+\bigskip
+
+You were only asked to do (a) through (e) but here are solutions to the
+rest of the exercises too.
+
+\bigskip
+
+\textbf{(f)} There is a unique solution:
+
+\bigskip
+
+$
+\begin{pmatrix}
+x \\  y \\ z
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 \\
+0 \\
+1
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(g)} There is a unique solution:
+
+\bigskip
+
+$
+\begin{pmatrix}
+x \\  y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+2 \\
+1 \\
+3 \\
+1
+\end{pmatrix}
+$
+
+\bigskip
+
+
+\textbf{Problem 2} Exercise 1.8.23
+
+\bigskip
+
+Notice that when solving a homogeneous system of equations we don't need
+to bother with an augmented matrix because the right-hand-side will always
+be all zeros.
+
+\textbf{(a)}
+
+$
+\begin{pmatrix}
+ 3 & -1 \\
+-9 &  3
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+3 & -1 \\
+0 &  0
+\end{pmatrix}
+$
+
+\bigskip
+
+Perform back-substitution. $x_1$ is a basic variable and $x_2$ is a
+free variable.
+
+\begin{itemize}
+\item $3x_1 -x_2 = 0  \SkipImplies x_1 = x_2/3$
+\end{itemize}
+
+So the general solution is
+
+$$
+\begin{pmatrix}
+ x_1 \\ x_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+ x_2/3 \\ x_2
+\end{pmatrix}
+=
+x_2
+\begin{pmatrix}
+ 1/3 \\ 1
+\end{pmatrix}
+$$
+
+\bigskip
+
+\textbf{(b)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+2 & -1 & 4 \\
+3 & 1  &  2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+2 & -1 & 4           \\
+0 & \frac{5}{2} & -4
+\end{pmatrix}
+$
+
+\bigskip
+
+Perform back-substitution. $x_1,x_2$ are basic variables and $x_3$ is a
+free variable.
+
+\begin{itemize}
+\item $\frac{5}{2}x_2 -4x_3 = 0  \SkipImplies x_2 = \frac{8}{5} x_3$
+\item $2 x_1 - x_2 +4 x_3 = 0 \SkipImplies 2x_1 - \frac{8}{5} x_3 + 4 x_3 =0$
+\item $\SkipImplies 2x_1 = -\frac{12}{5} x_3 \SkipImplies x_1=-\frac{6}{5} x_3$
+\end{itemize}
+
+So the general solution is
+
+$$
+\begin{pmatrix}
+ x_1 \\ x_2 \\ x_3
+\end{pmatrix}
+=
+\begin{pmatrix}
+ -\frac{6}{5} x_3  \\ \frac{8}{5} x_3 \\ x_3
+\end{pmatrix}
+=
+x_3
+\begin{pmatrix}
+-\frac{6}{5}   \\ \frac{8}{5} \\ 1
+\end{pmatrix}
+$$
+
+
+\bigskip
+
+\textbf{(c)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & -2 & 3 & -3  \\
+2 &  1 & 4 & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -2 &  3 & -3 \\
+0 &  5 & -2 &  6
+\end{pmatrix}
+$
+
+\bigskip
+
+Perform back-substitution. $x_1,x_2$ are basic variables and $x_3,x_4$ are a
+free variables.
+
+\begin{itemize}
+\item $5x_2=2x_3-6x_4  \SkipImplies x_2 = \frac{2}{5} x_3 - \frac{6}{5} x_4$
+\item $x_1 =2x_2 -3x_3 +3x_4 =-\frac{11}{5} x_3 +\frac{3}{5} x_4$
+\end{itemize}
+
+So the general solution is
+
+$$
+\begin{pmatrix}
+ x_1 \\ x_2 \\ x_3 \\ x_4
+\end{pmatrix}
+=
+\begin{pmatrix}
+ -\frac{11}{5} x_3 +\frac{3}{5} x_4 \\ \frac{2}{5} x_3 - \frac{6}{5} x_4 \\ x_3 \\ x_4
+\end{pmatrix}
+=
+x_3
+\begin{pmatrix}
+-\frac{11}{5}  \\ \frac{2}{5} \\ 1 \\ 0
+\end{pmatrix}
++
+x_4
+\begin{pmatrix}
+\frac{3}{5}   \\ - \frac{6}{5} \\ 0 \\ 1
+\end{pmatrix}
+$$
+
+
+\bigskip
+
+\textbf{(d)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 3    \\
+0 & -3 & -6  \\
+0 & -6 & -12
+\end{pmatrix}
+\SkipImplies
+$
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 &  2 & 3    \\
+0 & -3 & -6  \\
+0 &  0 & 0
+\end{pmatrix}
+$
+
+\bigskip
+
+Perform back-substitution. $x_1,x_2$ are basic variables and $x_3$ is a
+free variable.
+
+\begin{itemize}
+\item $-3x_2 = 6x_3  \SkipImplies x_2 = -2x_3$
+\item $x_1 = -2x_2 - 3x_3 = 4x_3 - 3x_3 = x_3$
+\end{itemize}
+
+So the general solution is
+
+$$
+\begin{pmatrix}
+ x_1 \\ x_2 \\ x_3
+\end{pmatrix}
+=
+\begin{pmatrix}
+ x_3 \\ -2 x_3 \\ x_3
+\end{pmatrix}
+=
+x_3
+\begin{pmatrix}
+1 \\ -2 \\ 1
+\end{pmatrix}
+$$
+
+\bigskip
+
+\textbf{(e)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+0 & 2 & -1 \\
+-2 & 0 & 3 \\
+1 & 3 & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+-2 & 0 & 3 \\
+0 & 2 & -1 \\
+1 & 3 & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+-2 & 0 & 3 \\
+0 & 2 & -1 \\
+0 & 3 & \frac{3}{2}
+\end{pmatrix}
+\SkipImplies
+$
+
+\bigskip
+
+$
+\begin{pmatrix}
+-2 & 0 & 3  \\
+0  & 2 & -1 \\
+0  & 0 & 3
+\end{pmatrix}
+$
+
+\bigskip
+
+This matrix is upper-triangular with non-zeros on the diagonal so the
+original matrix is invertible and the system has a unique solution.
+
+Since this is a homogeneous system the unique solution is the origin.
+
+i.e. the only solution is
+
+$
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\ 0 \\ 0
+\end{pmatrix}
+$
+
+\bigskip
+
+\textbf{(f)}
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & -2  \\
+1 & -1  \\
+2 & -1  \\
+1 &  0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -2  \\
+0 & 1   \\
+0 & 3   \\
+0 & 2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & -2  \\
+0 & 1   \\
+0 & 0   \\
+0 & 0
+\end{pmatrix}
+$
+
+
+\bigskip
+
+Both columns are basic columns so this system again has a unique solution.
+
+Since this is a homogeneous system the unique solution is the origin.
+
+i.e. the only solution is
+
+$
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\ 0 \\ 0 \\ 0
+\end{pmatrix}
+$
+\end{document}
+

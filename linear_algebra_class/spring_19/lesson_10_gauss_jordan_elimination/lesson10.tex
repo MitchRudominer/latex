@@ -65,20 +65,357 @@
 \item They are not used in Gaussian elimination.
 \item They are needed in Gauss-Jordan elimination.
 \item Gauss-Jordan elimination is an extension of Gaussian elimination that
-offers an alternative to back-substituion.
-\item The idea is that instead of doing back-substittion we continue to
+offers an alternative to back-substitution.
+\item The idea is that instead of doing back-substitution we continue to
 perform elementary row-operations on the augmented matrix $(\Aprime \vert \bb^{\prime})$
 until we have converted $\Aprime$ to the identity matrix $I$.
 \item That is, we keep doing row operations until we arrive at the augmented
 matrix $(I \vert \bb^{\prime\prime})$.
-\item At this point we don't need to perform any back-substituion because $\bb^{\prime\prime}$
+\item At this point we don't need to perform any back-substitution because $\bb^{\prime\prime}$
 is the result.
 \item This technique can only succeed if the original matrix is invertible.
 \end{itemize}
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}{Gauss-Jordan Elimination Example}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+        2 &   2   &   6    &  \aug &    4 \\
+        2  &   1   &   7    &  \aug &    6  \\
+       -2  &  -6   &  -7    &  \aug &   -1  \\
+\end{pmatrix}
+$
+\item Solve the system of linear equations given by the augmented matrix above.
+\item We start out just like Gaussian elimination.
+\item We look for our first pivot.
+\item Here it is the two in row 1 column 1.
+\item $
+\begin{pmatrix}
+    \bf{2} &   2   &   6    &  \aug &    4 \\
+        2  &   1   &   7    &  \aug &    6  \\
+       -2  &  -6   &  -7    &  \aug &   -1  \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gauss-Jordan Elimination Example}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+\bf{2} &   2   &   6    &  \aug &    4 \\
+        2  &   1   &   7    &  \aug &    6  \\
+       -2  &  -6   &  -7    &  \aug &   -1  \\
+\end{pmatrix}
+$
+\item But now our strategy becomes different. Our goal is to turn the pivot to a 1.
+\item We use a type III row operation. Divide row 1 by 2.
+\item $
+\begin{pmatrix}
+\bf{1} &   1   &   3    &  \aug &    2 \\
+        2  &   1   &   7    &  \aug &    6  \\
+       -2  &  -6   &  -7    &  \aug &   -1  \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gauss-Jordan Elimination Example}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+\bf{1} &   1   &   3    &  \aug &    2 \\
+        2  &   1   &   7    &  \aug &    6  \\
+       -2  &  -6   &  -7    &  \aug &   -1  \\
+\end{pmatrix}
+$
+\item Next we clear the column below our first pivot, just like Gaussian elimination.
+\item $
+\begin{pmatrix}
+\bf{1} &    1   &   3    &  \aug &    2 \\
+        0  &   -1   &   1    &  \aug &    2  \\
+        0  &   -4   &  -1    &  \aug &    3  \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gauss-Jordan Elimination Example}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+\bf{1} &            1    &   3    &  \aug &    2 \\
+        0  &   \bf{-1 }  &   1    &  \aug &    2  \\
+        0  &            -4   &  -1    &  \aug &    3  \\
+\end{pmatrix}
+$
+\item Our next pivot position is the bolded -1.
+\item Use a type III row operation to turn it into a 1.
+\item Multiple row 2 by -1
+\item $
+\begin{pmatrix}
+\bf{1} &            1    &    3    &  \aug &    2 \\
+        0  &   \bf{ 1 }  &   -1    &  \aug &   -2  \\
+        0  &            -4   &   -1    &  \aug &    3  \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gauss-Jordan Elimination Example}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+\bf{1} &            1    &    3    &  \aug &    2 \\
+        0  &   \bf{ 1 }  &   -1    &  \aug &   -2  \\
+        0  &            -4   &   -1    &  \aug &    3  \\
+\end{pmatrix}
+$
+\item Now here is something different from Gaussian elimination.
+\item Use type I row operations to clear the second column below \emph{and above} the pivot.
+\item $
+\begin{pmatrix}
+\bf{1} &            0    &    4    &  \aug &    4 \\
+        0  &   \bf{ 1 }  &   -1    &  \aug &   -2  \\
+        0  &            0    &   -5    &  \aug &   -5  \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gauss-Jordan Elimination Example}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+\bf{1} &            0    &             4    &  \aug &    4 \\
+        0  &   \bf{ 1 }  &            -1    &  \aug &   -2  \\
+        0  &            0    &   \bf{-5}    &  \aug &   -5  \\
+\end{pmatrix}
+$
+\item The third pivot position is the bolded -5.
+\item Use a type III row operation to turn it into a 1.
+\item Divide row 3 by -5.
+\item $
+\begin{pmatrix}
+\bf{1} &            0    &             4    &  \aug &    4 \\
+        0  &   \bf{ 1 }  &            -1    &  \aug &   -2  \\
+        0  &            0    &   \bf{1}     &  \aug &    1  \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gauss-Jordan Elimination Example}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+\bf{1} &            0    &             4    &  \aug &    4 \\
+        0  &   \bf{ 1 }  &            -1    &  \aug &   -2  \\
+        0  &            0    &   \bf{1}     &  \aug &    1  \\
+\end{pmatrix}
+$
+\item Use type I row operations to clear the column \emph{above} the third pivot.
+\item $
+\begin{pmatrix}
+\bf{1} &            0    &            0     &   \aug &    0  \\
+        0  &   \bf{ 1 }  &            0     &   \aug &    -1  \\
+        0  &            0    &    \bf{1}    &   \aug &    1   \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gauss-Jordan Elimination Example}
+
+\begin{itemize}
+\item $
+\begin{pmatrix}
+\bf{1} &            0    &            0     &   \aug &    0  \\
+        0  &   \bf{ 1 }  &            0     &   \aug &    -1  \\
+        0  &            0    &    \bf{1}    &   \aug &    1   \\
+\end{pmatrix}
+$
+\item So $x=0, y=-1, z=1$ is a solution to the original system.
+\item $
+\begin{pmatrix}
+\bf{1} &            1    &    3    &  \aug &    2 \\
+        0  &   \bf{ 1 }  &   -1    &  \aug &   -2  \\
+        0  &            -4   &   -1    &  \aug &    3  \\
+\end{pmatrix}
+$
+\item Check this.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gauss-Jordan Elimination is not as efficient}
+
+\begin{itemize}
+\item In general Gauss-Jordan elimination takes \emph{more steps}
+than Gaussian elimination + back-substitution.
+\item You should not program a computer to do Gauss-Jordan elimination for large
+matrices.
+\item But if you want to use on small hand-computed problems that is fine.
+\item There is one exception to the rule about Gauss-Jordan not being efficient.
+\item Gauss-Jordan elimination is a good way to compute matrix inverses.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Computing Matrix Inverses}
+
+\begin{itemize}
+\item Suppose $A$ is a square matrix and you want to determine whether or not
+$A$ is invertible and if it is invertible find its inverse.
+\item How do you do this?
+\item We want to solve the matrix equation $AX = I$ for $X$.
+\item Here $X$ is a matrix of unknowns.
+\item Let us write $X$ as $X = (\bx_1 \vert \bx_2 \vert \cdots \vert \bx_n)$.
+\item Let us write the identity matrix $I$ as $I = (\be_1 \vert \be_2 \vert \cdots \vert \be_n)$.
+\item Here the $\be_i$ are the standard basis vectors.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Computing Matrix Inverses}
+
+\begin{itemize}
+\item We want to solve the matrix equation $AX = I$.
+\item $A(\bx_1 \vert \bx_2 \vert \cdots \vert \bx_n) = (\be_1 \vert \be_2 \vert \cdots \vert \be_n)$.
+\item So this is just $n$ different systems of equations:
+\item $A\bx_1 = \be_1$, $A\bx_2=\be_2$,$\cdots$,$A\bx_n=\be_n$.
+\item All $n$ systems have the same left-hand side, $A$.
+\item So we can do a single run of Gauss-Jordan elimination on all of them at once.
+\item We start with the augmented matrix $(A\vert I)$.
+\item We perform Gauss-Jordan elimination in order to convert $A$ to the identity $I$ yielding
+$(I \vert B)$.
+\item But then $B$ is the solution to $AX=I$.
+\item So $AB=I$. So $B=A^{-1}$.
+\item In summary we use Gauss-Jordan to do $(A\vert I) \implies (I \vert A^{-1})$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Computing Matrix Inverses, Example}
+
+\begin{itemize}
+\item If possible, find the inverse of
+$A=
+\begin{pmatrix}
+1 & 1 & 1 \\
+1 & 2 & 2 \\
+1 & 2 & 3
+\end{pmatrix}
+$
+\item We form the augmented matrix
+$ (A\vert I) =
+\begin{pmatrix}
+1 & 1 & 1 & \aug & 1 & 0 & 0\\
+1 & 2 & 2 & \aug & 0 & 1 & 0\\\
+1 & 2 & 3 & \aug & 0 & 0 & 1
+\end{pmatrix}
+$
+\item Now perform Gauss-Jordon on this augmented matrix converting
+the left-hand side to the identity $I$.
+\item Then the right-hand side will be $A^{-1}$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Computing Matrix Inverses, Example}
+
+\begin{itemize}
+\item
+$
+\begin{pmatrix}
+1 & 1 & 1 & \aug & 1 & 0 & 0\\
+1 & 2 & 2 & \aug & 0 & 1 & 0\\\
+1 & 2 & 3 & \aug & 0 & 0 & 1
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+1 & 1 & 1 & \aug &  1 & 0 & 0\\
+0 & 1 & 1 & \aug & -1 & 1 & 0\\\
+0 & 1 & 2 & \aug & -1 & 0 & 1
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+1 & 0 & 0 & \aug &  2 & -1 & 0\\
+0 & 1 & 1 & \aug & -1 &  1 & 0\\\
+0 & 0 & 1 & \aug &  0 &  -1 & 1
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Computing Matrix Inverses, Example}
+
+\begin{itemize}
+\item
+$
+\begin{pmatrix}
+1 & 0 & 0 & \aug &  2 & -1 & 0\\
+0 & 1 & 1 & \aug & -1 &  1 & 0\\\
+0 & 0 & 1 & \aug &  0 &  -1 & 1
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+1 & 0 & 0 & \aug &  2 & -1 & 0\\
+0 & 1 & 0 & \aug & -1 &  2 & -1\\\
+0 & 0 & 1 & \aug &  0 &  -1 & 1
+\end{pmatrix}
+$
+\item Therefore $A^{-1}=
+\begin{pmatrix}
+2 & -1 & 0\\
+-1 &  2 & -1\\\
+0 &  -1 & 1
+\end{pmatrix}
+$
+\end{itemize}
+
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
