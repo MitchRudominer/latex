@@ -1,0 +1,282 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,xcolor}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 12 \\ Transpose and Symmetric Matrices}
+\subtitle{Math 325, Linear Algebra \\ Spring 2019 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Transpose of a matrix}
+\begin{itemize}
+\item \textbf{Definition} Let $A$ be an $m\times n$ matrix.
+\item Then $\transpose{A}$ is the $n\times m$ matrix obtained by
+converting the rows of $A$ into columns.
+\item More precisely if $B=\transpose{A}$ then $b_{ij} = a_{ji}$.
+\item Example. Let
+$
+A=
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{pmatrix}
+$
+\item Then
+$
+\transpose{A} =
+\begin{pmatrix}
+1 & 4 \\
+2 & 5 \\
+3 & 6 \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Transpose of a square matrix}
+\begin{itemize}
+\item If $A$ is a square matrix then $\transpose{A}$ is obtained from $A$
+by reflecting across the diagonal.
+\item Example. Let
+$
+A=
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{pmatrix}
+$
+\item Then
+$
+\transpose{A} =
+\begin{pmatrix}
+1 & 4  & 7 \\
+2 & 5  & 8\\
+3 & 6  & 9\\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Transpose of Transpose}
+\begin{itemize}
+\item $\transpose{\left(\transpose{A}\right)} = A$.
+\item Example. Let
+$
+A=
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{pmatrix}
+$
+\item Then
+$
+\transpose{A} =
+\begin{pmatrix}
+1 & 4 \\
+2 & 5 \\
+3 & 6 \\
+\end{pmatrix}
+$
+\item and
+$
+\transpose{\left(\transpose{A}\right)} =
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Transpose is Linear}
+\begin{itemize}
+\item $\transpose{(A+B)} = \transpose{A} + \transpose{B}$.
+\item \textbf{proof} Let $C=\transpose{(A+B)}$.
+\item Then $c_{ij}=(a+b)_{ji} = a_{ji} + b_{ji}$.
+\item $\transpose{cA} = c\transpose{A}$.
+\item Compare to the matrix inverse.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Transpose of a product}
+\begin{itemize}
+\item $\transpose{(AB)} =  \transpose{B}\transpose{A}$.
+\item \textbf{Example}
+\item $A=
+\begin{pmatrix}
+1 & 0 & 1 \\
+0 & -1 & 1
+\end{pmatrix}
+\text{, }
+B=
+\begin{pmatrix}
+1 & 2 \\
+0 & 1 \\
+-1 & 0
+\end{pmatrix}
+$
+\item $AB=
+\begin{pmatrix}
+0 & 2 \\
+-1 & -1
+\end{pmatrix}
+\text{, }
+\transpose{(AB)}=
+\begin{pmatrix}
+0 & -1 \\
+2 & 1
+\end{pmatrix}
+$
+\item $\transpose{A}=
+\begin{pmatrix}
+1 & 0 \\
+0 & -1 \\
+1 & 1
+\end{pmatrix}
+\text{, }
+\transpose{B}=
+\begin{pmatrix}
+1 & 0 & -1 \\
+2 & 1 & 0
+\end{pmatrix}
+$
+\item $\transpose{B}\transpose{A}=
+\begin{pmatrix}
+0 & -1 \\
+2 & -1
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Inverse Transpose}
+\begin{itemize}
+\item If $A$ is invertible then $\transpose{A}$ is invertible and
+$(\transpose{A})^{-1}=\transpose{(A^{-1})}$.
+\item \textbf{Proof.} $\transpose{(A^{-1})}\transpose{A}=\transpose{(A A^{-1})} = \transpose{I} = I$.
+\item We write $A^{-\text{T}}$ to mean $(\transpose{A})^{-1}=\transpose{(A^{-1})}$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Determinant of transpose}
+\begin{itemize}
+\item \textbf{Theorem.} Let $A$ be a square matrix. Then $\det(A) = \det(\transpose{A})$.
+\item \textbf{sketch of proof.}  In the formula
+$$
+\det(A) = \sum_{\pi} (\sgn(pi)) a_{\pi(1),1} a_{\pi(2), 2} \cdots, a_{\pi(n), n}
+$$
+each one of the terms in the sum is a product consisting of exactly one entry from each row and exactly one entry from each column.
+\item This is symmetric with respect to rows and columns. $\qed$.
+\item Example. Consider a $2\times 2$ matrix.
+\item
+$
+A =
+\begin{pmatrix}
+a & b \\
+c & d \\
+\end{pmatrix}
+\text{, }
+\det(A) = ad - bc
+$
+\item
+$
+\transpose{A} =
+\begin{pmatrix}
+a & c \\
+b & d \\
+\end{pmatrix}
+\text{, }
+\det(\transpose{A}) = ad - cb = \det(A)
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{frame}{Symmetric Matricies}
+\begin{itemize}
+\item A square matrix $A$ is called \emph{symmetric} iff $A=\transpose{A}$.
+\item Equivalently $a_{ij} = a_{ji}$.
+\item Equivalently, the entries above the main diagonal are a reflection of the entries below the main diagonal.
+\item Example
+\item $
+\begin{pmatrix}
+1 & 2 & 3 \\
+2 & 0 & 4 \\
+3 & 4 & 5
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+
+
+\end{document}
+
+
