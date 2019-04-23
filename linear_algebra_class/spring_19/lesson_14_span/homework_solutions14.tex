@@ -1,0 +1,183 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\graphicspath{{images/}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Solutions to Homework for Lesson 14 \\ Span}
+\author{Math 325, Linear Algebra \\  Mitch Rudominer \\ Spring 2019\\ SFSU }
+\date{}
+
+\maketitle
+
+
+\textbf{Problem 1.}
+
+\textbf{(a)} In this case, without doing any work, I can see that the answer is
+yes, it is in the span because
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 \\ -2 \\ -3
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 \\ 1 \\ 0
+\end{pmatrix}
+-
+3
+\begin{pmatrix}
+0 \\ 1 \\ 1
+\end{pmatrix}
+$.
+
+\bigskip
+
+But if you do not see this right away then another way to solve the problem
+is this:
+
+The problem is equivalent to determining whether or not
+the system given by the augmented matrix
+$
+\begin{pmatrix}
+1 & 0 & \aug &   1 \\
+1 & 1 & \aug &  -2 \\
+0 & 1 & \aug &  -3 \\
+\end{pmatrix}
+$
+is consistent. We do this by performing Gaussian elimination on the augmented
+matrix in order to bring the left-hand-side of the matrix to row-echelon form.
+
+\bigskip
+
+
+$
+\begin{pmatrix}
+1 & 0 & \aug &   1 \\
+1 & 1 & \aug &  -2 \\
+0 & 1 & \aug &  -3 \\
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & \aug & 1 \\
+0 & 1 & \aug & -3 \\
+0 & 1 & \aug & -3
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & \aug & 1 \\
+0 & 1 & \aug & -3 \\
+0 & 0 & \aug & 0
+\end{pmatrix}
+$
+
+\bigskip
+
+This system is consistent so the original system is consistent so
+
+$
+\begin{pmatrix}
+1 \\ -2 \\ -3
+\end{pmatrix}
+$
+is in the span of
+$
+\begin{pmatrix}
+1 \\ 1 \\ 0
+\end{pmatrix}
+\text{ and }
+3
+\begin{pmatrix}
+0 \\ 1 \\ 1
+\end{pmatrix}
+$.
+
+\bigskip
+
+We were not asked to find the linear combination so we don't have
+to perform back-substitution.
+
+\bigskip
+
+\textbf{(b)} This time I cannot just look at the vectors and see the answer
+so I will use Gaussian elimination:
+
+\bigskip
+
+$
+\begin{pmatrix}
+1 & 1  & 0 & \aug &   1 \\
+2 & -2 & 3 & \aug &  -2 \\
+2 & 0  & 4 & \aug &  -1 \\
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 0  & \aug & 1 \\
+0 & -4 & 3 & \aug & -4 \\
+0 & -2 & 4 & \aug & -3
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1  & 0           & \aug & 1 \\
+0 & -4 & 3           & \aug & -4 \\
+0 & 0  & \frac{5}{2} & \aug & -1
+\end{pmatrix}
+$
+
+This system is consistent so the original system is consistent so the answer
+to the original problem is yes, the given vector is in the span of the other
+vectors. We were not asked to find the linear combination so we don't have
+to perform back-substitution.
+
+\bigskip
+
+\textbf{(c)}
+
+$
+\begin{pmatrix}
+1 & 0  & 2  & \aug &   3 \\
+2 & -1 & 0  & \aug &   0 \\
+0 & 3  & 1  & \aug &  -1 \\
+1 & 0  & -1 & \aug &  -2 \\
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & 2   & \aug & 3 \\
+0 & -1 & -4 & \aug & -6 \\
+0 & 3 & 1   & \aug & -1 \\
+0 & 0 & -3  & \aug & -5
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & 2   & \aug & 3 \\
+0 & -1 & -4 & \aug & -6 \\
+0 & 0 & -11 & \aug & -19 \\
+0 & 0 & -3  & \aug & -5
+\end{pmatrix}
+$
+
+$
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & 2   & \aug & 3 \\
+0 & -1 & -4 & \aug & -6 \\
+0 & 0 & -11 & \aug & -19 \\
+0 & 0 & 0   & \aug & \frac{2}{11}
+\end{pmatrix}
+$
+
+This system is inconsistent so the original system is inconsistent so the answer
+to the original problem is no, the given vector is not in the span of the other
+vectors.
+
+
+\end{document}

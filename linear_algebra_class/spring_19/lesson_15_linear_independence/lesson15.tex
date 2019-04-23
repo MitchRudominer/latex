@@ -1,0 +1,251 @@
+% $Header$
+
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 15 \\ Linear Independence}
+\subtitle{Math 325, Linear Algebra \\ Spring 2019 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Linear dependence}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be $n$ vectors in $V$.
+\item The vectors are called \emph{linearly dependent} if
+\item there are scalars $c_1,c_2,\cdots,c_n$ such that
+\item (i) not all of the $c_i = 0$, and
+\item (ii) $c_1 \bv_1 + c_2 \bv_2 + \cdots + c_n\bv_n = \bzero$.
+\item In words: A set of vectors is linearly dependent iff there is a non-trivial linear combination
+of them that equals $\bzero$.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example of linear dependence}
+
+\begin{itemize}
+\item Let $V = \R^3$.
+\item Let $\bv_1 =
+\begin{pmatrix}
+1 \\ 0 \\ 2
+\end{pmatrix}
+$,
+$\bv_2 =
+\begin{pmatrix}
+0 \\ 1 \\ -1
+\end{pmatrix}
+$,
+$\bv_3 =
+\begin{pmatrix}
+2 \\ 3 \\ 1
+\end{pmatrix}
+$.
+
+\item Then $2\bv_1+3\bv_2 - \bv_3 = \bzero$.
+\item So $\bv_1, \bv_2, \bv_3$ are linearly dependent.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Equivalent definition of linear dependence}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $\bv_1,\bv_2,\cdots\bv_n$ be $n$ vectors.
+\item Then the following are equivalent:
+\item (a) The vectors are linearly dependent.
+\item (b) One of the vectors can be expressed as a linear combination of the others.
+\item \textbf{Proof.} First suppose that the vectors are linearly dependent.
+\item Let $c_1,c_2,\cdots,c_n$ be scalars so that
+\item $c_1\bv_1+c_2\bv_2\cdots c_n\bv_n = \bzero$, and at least one of the $c_i$ is not 0.
+\item Suppose $c_1\not=0$. Then
+\item $\bv_1 = (-c_2/c_1)\bv_2 + (-c_3/c_1)\bv_3 + \cdots + (-c_n/c_1)\bv_n$.
+\item So we have expressed one of the vectors as a linear combination of the others.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{proof continued}
+
+\begin{itemize}
+\item Conversely, suppose we have expressed one of the vectors as a linear combination
+of the others. Say it is $\bv_1$.
+\item So $\bv_1 = c_2\bv_2 + c_3\bv_3 + \cdots + c_n \bv_n$.
+\item Then $\bv_1 - c_2\bv_2 - c_3\bv_3 - \cdots - c_n\bv_n = \bzero$.
+\item That is a non-trivial linear combination because the coefficient of $\bv_1$ is 1.
+\item So the vectors are linearly dependent. $\qed$
+
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example of linear dependence}
+
+\begin{itemize}
+\item Let $V = \R^3$.
+\item Let $\bv_1 =
+\begin{pmatrix}
+1 \\ 0 \\ 2
+\end{pmatrix}
+$,
+$\bv_2 =
+\begin{pmatrix}
+0 \\ 1 \\ -1
+\end{pmatrix}
+$,
+$\bv_3 =
+\begin{pmatrix}
+2 \\ 3 \\ 1
+\end{pmatrix}
+$.
+
+\item We saw before that $2\bv_1+3\bv_2 - \bv_3 = \bzero$.
+\item So $\bv_1, \bv_2, \bv_3$ are linearly dependent.
+\item Now also notice that $\bv_3 = 2\bv_1 + \bv_2$.
+\item So we have expressed one of the vectors as a linear combination of the others.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear independence}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $V$ be a vector space and let $\bv_1,\bv_2,\cdots,\bv_n$ be $n$ vectors in $V$.
+\item The vectors are called \emph{linearly independent} iff
+\item they are not linearly dependent.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example of linear independence}
+
+\begin{itemize}
+\item The standard basis vectors of $\R^n$ are always linearly independent.
+\item Let $V = \R^3$.
+\item Let $\be_1 =
+\begin{pmatrix}
+1 \\ 0 \\ 0
+\end{pmatrix}
+$,
+$\be_2 =
+\begin{pmatrix}
+0 \\ 1 \\ 0
+\end{pmatrix}
+$,
+$\be_3=
+\begin{pmatrix}
+0 \\ 0 \\ 1
+\end{pmatrix}
+$.
+
+\item Then $\be_1,\be_2,\be_3$ are linearly independent.
+\item To see this, let $c_1,c_2,c_3$ be scalars and consider the linear combination
+\item $c_1\be_1+c_2\be_2+c_3\be_3$.
+\item How can this linear combination be $\bzero$?
+\item That linear combination is equal to the vector
+$
+\begin{pmatrix}
+c_1 \\ c_2 \\ c_3
+\end{pmatrix}
+$.
+\item So it can be zero iff $c_1=c_2=c_3=0$.
+\item In other words, no non-trivial linear combination of the $\be_i$ can be zero.
+So the $\be_i$ are linearly independent.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear independence of two vectors}
+
+\begin{itemize}
+\item Let $\bv_1,\bv_2$ be two vectors in a vector space.
+\item $\bv_1,\bv_2$ are linearly dependent iff
+\item one is a scalar multiple of the other.
+\item Example: Let $\bv=(1,2)^{\text{T}}$, $\bw=(3,4)^{\text{T}}$.
+\item Are $\bv,\bw$ linearly independent or dependent?
+\item Solution: It is easy to see that $\bw$ is not a scalar multiple of $\bv$.
+\item So they are linearly independent.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear independence and the columns of a matrix}
+
+\begin{itemize}
+\item Let $\bv_1,\bv_2,\cdots,\bv_n \in \R^m$.
+\item Let $A =\left ( \bv_1 \vert \bv_2 \vert \cdots \vert \bv_n \right)$
+be the $m\times n$ matrix whose columns are those vectors.
+\item Then $\bv_1,\bv_2,\cdots,\bv_n$ are linearly independent
+\item iff the homogeneous system of linear equations $A\bx=\bzero$ has no non-trivial solutions
+\end{itemize}
+
+\end{frame}
+
+
+
+\end{document}
+
+
