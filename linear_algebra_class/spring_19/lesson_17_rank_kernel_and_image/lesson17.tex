@@ -1,0 +1,947 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 17 \\ Rank, Kernel and Image}
+\subtitle{Math 325, Linear Algebra \\ Spring 2019 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Rank of a matrix}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $A$ be an $m\times n$ matrix.
+\item The span of the columns of $A$ is called the \emph{column space} of $A$.
+\item \textbf{Definition.} The \emph{rank} of $A$, written $\rank(A)$,
+is the dimension of the column space of $A$.\
+\item Equivalently, the size of a maximal linearly independent subset of
+the columns of $A$.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example of rank}
+
+\begin{itemize}
+\item Find the rank of $A$.
+\item $A=
+\begin{pmatrix}
+1  & 0  & 1 \\
+0  & 1  & 3 \\
+2  & 0  & 2 \\
+\end{pmatrix}
+$.
+\item The first two columns are linearly independent but the third column
+is a linear combination of the first two columns.
+\item So $\rank(A) = 2$.
+\item And the first two columns are a basis for the column space.
+\end{itemize}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example 2 of rank}
+
+\begin{itemize}
+\item Find the rank of $A$.
+\item $A=
+\begin{pmatrix}
+-3  & 2  & 1 \\
+0   & 1  & 3 \\
+0   & 0  & 2 \\
+\end{pmatrix}
+$.
+\item The three columns are linearly independent. We know this because the
+matrix is upper-triangular with nonzeros on the diagonal.
+\item So $\rank(A) = 3$.
+\item And all three columns form a basis for the column space.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The basic columns of a matrix}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $A = \left(\bv_1 \vert \bv_2 \vert \cdots \vert \bv_n\right)$
+be an $m\times n$ matrix with columns $\bv_1,\bv_2,\cdots,\bv_n$.
+\item The \emph{basic} columns of $A$ are defined as follows:
+\item If $A$ is the zero matrix then it has no basic columns.
+\item Let $\bv_f$ be the first nonzero column. Then $\bv_f$ is the first basic column.
+\item So for example if $\bv_1\not=\bzero$ then $\bv_1 = \bv_f$ is the first basic column.
+\item For $i>f$, $\bv_i$ is a basic column iff it is not in the span of the earlier columns.
+\item i.e $\bv_i$ is a basic column iff $\bv_i\notin\spn(\bv_1,\bv_2,\cdots,\bv_{i-i})$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The basic columns are a maximal linearly independent set}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $A = \left(\bv_1 \vert \bv_2 \vert \cdots \vert \bv_n\right)$
+be an $m\times n$ matrix with columns $\bv_1,\bv_2,\cdots,\bv_n$.
+\item Let $\bv_{i_1},\bv_{i_2},\cdots,\bv_{i_r}$ be the $r$ basic columns of $A$.
+\item Then $\singleton{\bv_{i_1},\bv_{i_2},\cdots,\bv_{i_r}}$ is a maximal linearly independent
+subset of the columns of $A$.
+\item So $\rank(A) = r$
+\item and $\singleton{\bv_{i_1},\bv_{i_2},\cdots,\bv_{i_r}}$ form a basis for the
+column space of $A$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The basic columns are a maximal linearly independent set}
+
+\begin{itemize}
+\item \textbf{proof.} $\singleton{\bv_{i_1},\bv_{i_2},\cdots,\bv_{i_r}}$ is linearly
+independent:
+\item Suppose $c_1\bv_{i_1} + c_2\bv_{i_2} + \cdots + c_r \bv_{i_r} = 0$.
+\item Let $k$ be greatest such that $c_k\not=0$.
+\item So $c_1\bv_{i_1} + c_2\bv_{i_2} + \cdots + c_k \bv_{i_k} = 0$.
+\item Then we could divide by $c_k$ and solve for $\bv_{i_k}$.
+\item $\bv_{i_k} = -(c_1/c_k)\bv_{i_1} -(c_2/c_k)\bv_{i_2} \cdots -(c_{k-1}/c_k)\bv_{i_{k-1}}$.
+\item So we have expressed $\bv_{i_k}$ as a linear combination of the earlier $\bv_i$.
+\item But by definition of $\bv_{i_k}$ it is not in the span of the earlier columns. $\diamondsuit$
+\item $\singleton{\bv_{i_1},\bv_{i_2},\cdots,\bv_{i_r}}$ is maximal:
+\item Every other
+column was not chosen to be a basic column because it is in the span of the
+earlier columns. So throwing it in would give us a linearly dependent set. $\qed$.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example}
+
+\begin{itemize}
+\item Let
+$$A = \left(\bv_1 \vert \bv_2 \vert \bv_3 \vert \bv_4 \vert \bv_5 \right) =
+\begin{pmatrix}
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 1 & 0 \\
+0 & 1 & 0 & 1 & 0 \\
+\end{pmatrix}.
+$$
+\item $\bv_1 = \bzero$ is not a basic column.
+\item $\bv_2
+=
+\begin{pmatrix}
+0 \\
+0 \\
+1 \\
+\end{pmatrix}
+$
+is the first basic column.
+\item $\bv_3 =
+\begin{pmatrix}
+0 \\
+1 \\
+0 \\
+\end{pmatrix}
+$
+is not a multiple of $\bv_2$ so it is the second basic column.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example continued}
+
+\begin{itemize}
+\item We have
+$$A = \left(\bv_1 \vert \bv_2 \vert \bv_3 \vert \bv_4 \vert \bv_5 \right) =
+\begin{pmatrix}
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 1 & 0 \\
+0 & 1 & 0 & 1 & 0 \\
+\end{pmatrix}.
+$$
+\item $\bv_4
+=
+\begin{pmatrix}
+0 \\
+1 \\
+1 \\
+\end{pmatrix}
+$
+is in the span of $\bv_2,\bv_3$ so it is not a basic column.
+\item $\bv_5
+=
+\begin{pmatrix}
+1 \\
+0 \\
+0 \\
+\end{pmatrix}
+$
+is not in the span of $\bv_2,\bv_3$ so it is the third basic column.
+\item So the basic columns of $A$ are $\bv_2,\bv_3,\bv_5$.
+\item So these form a basis for the column space of $A$
+\item and $\rank(A) = 3$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Basic columns in row-echelon form}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $A$ be an $m\times n$ matrix in row-echelon form.
+\item Suppose $A$ has $r$ pivot columns $\bv_1,\bv_2,\cdots\bv_r$.
+\item Then $\singleton{\bv_1,\bv_2,\cdots,\bv_r}$ are the basic columns of $A$.
+\item So $\singleton{\bv_1,\bv_2,\cdots,\bv_r}$ is a maximal linearly independent subset of the columns of $A$.
+\item So $\rank(A)=r$.
+\item And $\singleton{\bv_1,\bv_2,\cdots,\bv_r}$ forms a basis for the column space of $A$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example}
+
+Let
+$
+A=
+\begin{pmatrix}
+5 & -2 &  7  & 0 \\
+0 & 0  & -1  & 1 \\
+0 & 0  &  0  & 3 \\
+0 & 0  &  0  & 0 \\
+\end{pmatrix}
+$
+\begin{itemize}
+\item Is $A$ in row-echelon form?
+\item Yes.
+\item Give a basis for the column space of $A$.
+\item The pivot columns of $A$ are
+$
+\begin{pmatrix}
+5 \\
+0 \\
+0 \\
+0 \\
+\end{pmatrix},
+\begin{pmatrix}
+ 7 \\
+-1 \\
+ 0 \\
+ 0 \\
+\end{pmatrix},
+\begin{pmatrix}
+0 \\
+1 \\
+3 \\
+0 \\
+\end{pmatrix}
+$.
+\item What is $\rank(A)$?
+\item 3.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The pivot columns are linearly independent}
+
+$
+\begin{pmatrix}
+\textcolor{red}{\mathbf{3}} & \mathbf{1}                   &  0  & 4 & \mathbf{5}                  & -7 \\
+\mathbf{0}                  & \textcolor{red}{\mathbf{-1}} & -2  & 1 & \mathbf{0}                  & 0  \\
+\mathbf{0}                  & \mathbf{0}                   &  0  & 0 & \textcolor{red}{\mathbf{2}} & -4 \\
+\mathbf{0}                  & \mathbf{0}                   &  0  & 0 & \mathbf{0}                  & 0  \\
+\end{pmatrix}
+$
+\begin{itemize}
+\item The pivot columns are linearly independent.
+\item One way to see this is to notice that if we pull out only the pivot columns
+we can add additional columns to form a matrix in upper-triangular form with all zeros on the diagonal.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The pivot columns are linearly independent}
+
+$
+\begin{pmatrix}
+\textcolor{red}{\mathbf{3}} & \mathbf{1}                   & \mathbf{5}                  & 0 \\
+\mathbf{0}                  & \textcolor{red}{\mathbf{-1}} & \mathbf{0}                  & 0 \\
+\mathbf{0}                  & \mathbf{0}                   & \textcolor{red}{\mathbf{2}} & 0 \\
+\mathbf{0}                  & \mathbf{0}                   & \mathbf{0}                  & 1
+\end{pmatrix}
+$
+\begin{itemize}
+\item For example here we show the pivot columns from the matrix on the previous slide
+embedded into an upper-triangular matrix with nonzeros on the diagonal.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The span of the pivot columns}
+
+$
+\begin{pmatrix}
+\textcolor{red}{\mathbf{3}} & \mathbf{1}                   &  0  & 4 & \mathbf{5}                  & -7 \\
+\mathbf{0}                  & \textcolor{red}{\mathbf{-1}} & -2  & 1 & \mathbf{0}                  & 0  \\
+\mathbf{0}                  & \mathbf{0}                   &  0  & 0 & \textcolor{red}{\mathbf{2}} & -4 \\
+\mathbf{0}                  & \mathbf{0}                   &  0  & 0 & \mathbf{0}                  & 0  \\
+\end{pmatrix}
+$
+\begin{itemize}
+\item Notice $\bv_1$ is a scalar multiple of the first standard basis vector $\be_1$.
+\item So $\spn(\bv_1) = \spn(\be_1)$.
+\item Notice that $\be_2\in\spn(\be_1,\bv_2)=\spn(\bv_1,\bv_2)$.
+\item $\be_2 = -1(\bv_2 - \be_1)$.
+\item So $\spn(\bv_1,\bv_2) = \spn(\be_1,\be_2)$.
+\item Notice that $\be_3\in\spn(\be_1,\be_2,\bv_5)=\spn(\bv_1,\bv_2,\bv_5)$.
+\item So $\spn(\bv_1,\bv_2,\bv_5) = \spn(\be_1,\be_2,\be_3)$.
+\item In general the span of the first $k$ pivot columns is equal to the
+span of the first $k$ standard basis vectors $\be_1,\be_2,\cdots,\be_k$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The non-pivot columns}
+
+$
+\begin{pmatrix}
+\textcolor{red}{\mathbf{3}} & \mathbf{1}                   &  0  & 4 & \mathbf{5}                  & -7 \\
+\mathbf{0}                  & \textcolor{red}{\mathbf{-1}} & -2  & 1 & \mathbf{0}                  & 0  \\
+\mathbf{0}                  & \mathbf{0}                   &  0  & 0 & \textcolor{red}{\mathbf{2}} & -4 \\
+\mathbf{0}                  & \mathbf{0}                   &  0  & 0 & \mathbf{0}                  & 0  \\
+\end{pmatrix}
+$
+\begin{itemize}
+\item The non-pivot columns are in the span of the earlier pivot columns.
+\item In our example, $\bv_3,\bv_4\in\spn(\bv_1,\bv_2) = \spn(\be_1,\be_2)$.
+\item And $\bv_6\in\spn(\bv_1,\bv_2,\bv_5) = \spn(\be_1,\be_2,\be_3)$.
+\item This is because, by definition of row-echelon form, the non-pivot columns must have zeros
+in all entries below the pivot to the immediate left.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gaussian Elimination for Finding the Basic Columns}
+
+\begin{itemize}
+\item \textbf{Theorem} Suppose $A$ is an $m\times n$ matrix.
+\item Supose $G$ is an invertible matrix and $E=GA$.
+\item Then the indices of the basic columns of $A$ are the same as the
+indices of the basic columns of $E$.
+\item Suppose $E$ is in row-echelon form.
+\item Then the pivot columns of $E$ are the basic columns of $E$.
+\item So, to find the basic columns of $A$, put $A$ into row-echelon form.
+\item The indices of the pivot columns of the row-echelon form matrix
+are the indices of the basic columns of the original matrix.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example}
+
+\begin{itemize}
+\item Let $A=
+\begin{pmatrix}
+0 & 2 & 1 \\
+1 & 1 & 0 \\
+2 & 0 & -1
+\end{pmatrix}
+$
+\item Find $\rank(A)$ and find a basis for the column space of $A$.
+\item We perform Gaussian elimination
+\item $
+\begin{pmatrix}
+1 & 1 & 0 \\
+0 & 2 & 1 \\
+2 & 0 & -1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 0 \\
+0 & 2 & 1 \\
+0 & -2 & -1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 0 \\
+0 & 2 & 1 \\
+0 & 0 & 0
+\end{pmatrix}
+$
+\item So $\rank(A)=2$ and a basis for the column space of $A$ is
+\item $
+\begin{pmatrix}
+0 \\
+1 \\
+2
+\end{pmatrix}
+\text{, and }
+\begin{pmatrix}
+2 \\
+1 \\
+0
+\end{pmatrix}
+$
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear transformations}
+
+\begin{itemize}
+\item The definition of linear transformation makes sense on an arbitrary vector space.
+\item \textbf{Definition.} Let $V$ and $W$ be two vector spaces.
+\item Let $T:V\map W$.
+\item Then $T$ is \emph{linear} iff
+\item (a) $T$ preserves vector addition: $T(\bv+\bw) = T(\bv) + T(\bw)$.
+\item (b) $T$ preserves scalar multiplication: $T(c\bv) = c T(\bv)$.
+\item Linear Algebra is the study of linear transformations between vector spaces.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The image of zero}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $T:V\map W$ be a linear transformation.
+\item Then $T(\bzero) = \bzero$.
+\item \textbf{proof.} Let $\bw = T(\bzero)$. We must show that $\bw=\bzero$.
+\item $\bw = T(\bzero)$
+\item $= T(0 \bzero)$
+\item $= 0 T(\bzero)$
+\item $= 0 \bw$
+\item $= \bzero$. $\qed$
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Image of a linear transformation}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $T:V\map W$ be a linear transformation.
+\item Then $\ran(T)$ is a subspace of $W$.
+\item The range of $T$ is also called the \emph{image} of $T$.
+\item \textbf{proof.} We must show $\ran(T)$ contains $\bzero$ and is closed
+under addition and scalar multiplication.
+\item $T(\bzero) = \bzero$. So $\bzero\in\ran(T)$.
+\item Let $\bw_1,\bw_2\in\ran(T)$. Let $c\in\R$. We will show $\bw_1+\bw_2\in\ran(T)$ and $c\bw_1\in\ran(T)$.
+\item Let $\bv_1$ and $\bv_2$ be such that $T(\bv_1)=\bw_1$ and $T(\bv_2)=\bw_2$.
+\item $T(\bv_1+\bv_2)=T(\bv_1) + T(\bv_2) = \bw_1+\bw_2$.
+\item So $\bw_1+\bw_2\in\ran(T)$.
+\item $T(c\bv_1)=cT(\bv_1)=c\bw_1$.
+\item So $c\bw_1\in\ran(T)$.
+\item So $\ran(T)$ is a subspace of $W$. $\qed$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Column Space is the Image}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $A$ be an $m\times n$ matrix.
+\item Then the column space of $A$ is the image of $T_A$.
+\item And $\rank(A) = $ the dimension of the image of $A$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example}
+
+\begin{itemize}
+\item Let $A=
+\begin{pmatrix}
+0 & 2 & 1 \\
+1 & 1 & 0 \\
+2 & 0 & -1
+\end{pmatrix}
+$
+\item Find the dimension of and a basis for the image of $T_A$.
+\item We perform Gaussian elimination
+\item $
+\begin{pmatrix}
+1 & 1 & 0 \\
+0 & 2 & 1 \\
+2 & 0 & -1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 0 \\
+0 & 2 & 1 \\
+0 & -2 & -1
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 0 \\
+0 & 2 & 1 \\
+0 & 0 & 0
+\end{pmatrix}
+$
+\item So the dimension is 2 and a basis for the image of $T_A$ is
+\item $
+\begin{pmatrix}
+0 \\
+1 \\
+2
+\end{pmatrix}
+\text{, and }
+\begin{pmatrix}
+2 \\
+1 \\
+0
+\end{pmatrix}
+$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Kernel of a linear transformation}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $T:V\map W$ be a linear transformation.
+\item The \textbf{kernel} of $T$, $\ker(T)$ is
+\item $\setof{v\in V}{T(\bv) = \bzero}$.
+\item $\ker(T) = T^{-1}[\singleton{\bzero}]$.
+\item The kernel of $T$ is also called the \textbf{nullspace} of $T$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Kernel is a subspace}
+
+\begin{itemize}
+\item \textbf{Lemma.} Let $T:V\map W$ be a linear transformation.
+\item Then $\ker(T)$ is a subspace of $V$.
+\item \textbf{proof.} We must show $\ker(T)$ contains $\bzero$ and is closed
+under addition and scalar multiplication.
+\item $T(\bzero) = \bzero$. So $\bzero\in\ker(T)$.
+\item Let $\bv_1,\bv_2\in\ker(T)$. Let $c\in\R$. We will show $\bv_1+\bv_2\in\ker(T)$ and $c\bv_1\in\ker(T)$.
+\item $T(\bv_1+\bv_2)=T(\bv_1) + T(\bv_2) = \bzero + \bzero = \bzero$.
+\item So $\bv_1+\bv_2\in\ker(T)$.
+\item $T(c\bv_1)=cT(\bv_1)=c\bzero=\bzero$.
+\item So $c\bv_1\in\ker(T)$.
+\item So $\ker(T)$ is a subspace of $V$. $\qed$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{One-to-one linear transformations}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $T:V\map W$ be a linear transformation.
+\item Then $T$ is one-to-one if and only if $\ker(T) = \singleton{\bzero}$.
+\item \textbf{proof.} If $T$ is one-to-one then $\ker(T) = \singleton{\bzero}$.
+\item This is easy because if there were a second vector $\bv\in\ker(T)$, $\bv\not=\bzero$,
+\item then we would have $T(\bv) = T(\bzero)$ so $T$ is not one-to-one.
+\item Conversely suppose $\ker(T) = \singleton{\bzero}$ and we will show $T$ is one-to-one.
+\item If $T(\bv_1) = T(\bv_2)$ then $T(\bv_1  - \bv_2) = \bzero$ so $\bv_1 - \bv_2\in\ker(T)$.
+\item So $\bv_1 - \bv_2 = \bzero$.
+\item So $\bv_1 = \bv_2$. So $T$ is one-to-one. $\qed$.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Homogeneous system of equations}
+
+\begin{itemize}
+\item \textbf{Definition.} A system of linear equations is called
+\emph{homogeneous} if the right had side of the system consists of all zeroes.
+\item As a matrix equation this means $\bb=0$ so the system looks like
+$$A\bx=\bzero.$$
+\item Notice: $\bx$ is a solution iff $\bx\in\ker(T_A)$.
+\item Therefore the set of all solutions is a subspace.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Homogeneous systems and null spaces}
+\begin{itemize}
+\item Find the kernel of the matrix
+$A=
+\begin{pmatrix}
+1 & 2 & 2 & 3 \\
+2 & 4 & 1 & 3 \\
+3 & 6 & 1 & 4
+\end{pmatrix}
+$
+\item Solution: This is the same as solving the homogeneous system of equations
+\item $A\bx=\bzero$.
+\item Use Gaussian elimination to bring $A$ to row-echelon form.
+\item Do back-substitution to get the general solution.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Solving a homogeneous system}
+\begin{itemize}
+\item Solve
+$
+\begin{pmatrix}
+1 & 2 & 2 & 3 \\
+2 & 4 & 1 & 3 \\
+3 & 6 & 1 & 4
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}=
+\begin{pmatrix}
+0 \\ 0 \\ 0
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+1 & 2 & 2 & 3 & \aug & 0 \\
+2 & 4 & 1 & 3 & \aug & 0  \\
+3 & 6 & 1 & 4 & \aug & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 2 & 3 & \aug & 0  \\
+0 & 0 & -3 & -3  & \aug & 0  \\
+0 & 0 & -5 & -5 & \aug & 0
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 2 & 2 & 3    & \aug & 0  \\
+0 & 0 & -3 & -3  & \aug & 0  \\
+0 & 0 & 0 & 0    & \aug & 0
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Solving a homogeneous system}
+
+\begin{itemize}
+\item We have reduced the homogeneous system to
+\item
+$
+\begin{pmatrix}
+1 & 2 & 2 & 3 \\
+0 & 0 & -3 & -3 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\ 0 \\  0
+\end{pmatrix}
+$
+\item The basic variables are $x$ and $z$. The free variables are $y$ and $w$.
+\item $-3z -3w = 0 \SkipImplies -3z = 3w $
+\item $ \SkipImplies z = - w$.
+\item $x + 2y +2z +3w = 0 $
+\item $\SkipImplies x +2y + 2(-w) + 3w = 0$
+\item $\SkipImplies x + 2y  + w = 0 \SkipImplies x = -2y - w$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Finding the null space}
+
+\begin{itemize}
+\item The general solution to the homogeneous system is
+\item
+$
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+-2y - w \\
+y \\
+-w \\
+w
+\end{pmatrix}
+$
+\item
+$
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+y
+\begin{pmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{pmatrix}
++
+w
+\begin{pmatrix}
+-1 \\
+0 \\
+-1 \\
+1
+\end{pmatrix}
+$
+\item The kernel of $A$ is the subspace of $\R^4$ spanned by:
+$
+\singleton{
+\begin{pmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{pmatrix}
+,
+\begin{pmatrix}
+-1 \\
+0 \\
+-1 \\
+1
+\end{pmatrix}
+}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Fundamental Theorem of Linear Algebra (Part 1)}
+\begin{itemize}
+\item \textbf{Theorem.} Let $A$ be an $m\times n$ matrix of rank $r$.
+\item Then $\dim(\ran(A)) = r$, and
+\item $\dim(\ker(A)) = n-r$.
+\item Example. Let
+ $ A =
+\begin{pmatrix}
+1 & 2 & 2 & 3 \\
+2 & 4 & 1 & 3 \\
+3 & 6 & 1 & 4
+\end{pmatrix}
+$
+\item Then as we saw earlier, $A$ has two basic columns. (The row-echelon form has 2 pivot columns.)
+\item $\rank(A) = 2$. So $\dim(\ran(A)) = 2$.
+\item $\dim(\ker(A)) = 4 - 2 =2$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Finding a basis for the null space}
+
+\begin{itemize}
+\item Let
+$A=
+\begin{pmatrix}
+1 & 2 & 2 & 3 \\
+2 & 4 & 1 & 3 \\
+3 & 6 & 1 & 4
+\end{pmatrix}
+$
+\item We saw before that the kernel of $A$ is the subspace of $\R^4$ spanned by:
+$
+\singleton{
+\begin{pmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{pmatrix}
+,
+\begin{pmatrix}
+-1 \\
+0 \\
+-1 \\
+1
+\end{pmatrix}
+}
+$
+\item Those two vectors span $\ker(A)$.
+\item Now we know more: Those two vectors form a basis for the kernel.
+\item We know this because we know that $\dim(\ker(A)) = 2$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof of the fundamental theorem}
+\begin{itemize}
+\item \textbf{Proof} Let $A$ be an $m\times n$ matrix of rank $r$.
+\item We must show that $\dim(\ker(A)) = n -r$.
+\item $A$ has $r$ basic variables and $n-r$  free variables.
+\item Using the generalized back-substitution technique we showed above
+how to find the general solution to the homogeneous system $A\bx=\bzero$.
+\item The general solution is expressed as the span of $n-r$ vectors, one for
+each free variable.
+\item So the only thing we need to prove is that the $n-r$ vectors are
+linearly independent.
+\item This follows from the fact if the $i$-th variable is free then the
+vector corresponding to the $i$-th variable has a 1 in position $i$ and all
+of the other vectors have a 0 in position $i$. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example of proof.}
+\begin{itemize}
+\item For example, if
+$A=
+\begin{pmatrix}
+1 & 2 & 2 & 3 \\
+2 & 4 & 1 & 3 \\
+3 & 6 & 1 & 4
+\end{pmatrix}
+$
+\item The general solution to the homogeneous system $A\bx=\bzero$ is
+\item
+$
+\begin{pmatrix}
+x \\ y \\ z \\ w
+\end{pmatrix}
+=
+\begin{pmatrix}
+-2y - w \\
+y \\
+-w \\
+w
+\end{pmatrix}
+=
+y
+\begin{pmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{pmatrix}
++
+w
+\begin{pmatrix}
+-1 \\
+0 \\
+-1 \\
+1
+\end{pmatrix}
+$
+\item The free variables are $y$ and $w$ in positions 2 and 4.
+\item The first vector has a 1 in position 2 and a 0 in position 4.
+\item The second vector has a 0 in position 2 and a 1 in position 4.
+\item So the two vectors are linearly independent.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Fundamental Theorem of Linear Algebra (More formal version)}
+\begin{itemize}
+\item \textbf{Theorem.} Let $V$ be an $n$-dimensional vector space.
+\item Let $T:V\map W$ be a linear transformation.
+\item Let $r=\dim(\ran(T))$.
+\item Then $\dim(\ker(T)) = n - r$.
+\item i.e. $\dim(\ker(T)) + \dim(\ran(T)) = \dim(V)$.
+\item \textbf{proof.} Let $\bv_1,\bv_2,\cdots,\bv_s$ be a basis for $\ker(T)$.
+\item Let $\bu_1,\bu_2,\cdots,\bu_t$ be additional vectors so that
+\item $\bv_1,\bv_2,\cdots,\bv_s,\bu_1,\bu_2,\cdots,\bu_t$ are a basis for $V$.
+\item So $s+t = n$.
+\item It suffices to show that $T(u_1), T(u_2),\cdots, T(u_t)$ forms a basis for $\ran(T)$.
+\item Because then $t=r$ and $\dim(\ker(T)) = s = n-r$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{proof continued.}
+\begin{itemize}
+\item Since every element of $V$ is in the span of $\bv_1,\bv_2,\cdots,\bv_s,\bu_1,\bu_2,\cdots,\bu_t$,
+\item every element of $\ran(T)$ is in the span of $T(\bv_1),T(\bv_2),\cdots,T(\bv_s), T(\bu_1),T(\bu_2),\cdots,T(\bu_t)$.
+\item But $T(\bv_1) = T(\bv_2) = \cdots = T(\bv_s) = 0$.
+\item So every element of $\ran(T)$ is in the span of $T(\bu_1),T(\bu_2),\cdots,T(\bu_t)$.
+\item Suppose $c_1 T(\bu_1) + c_2 T(\bu_2) + \cdots + c_t T(\bu_t) = \bzero.$
+\item Then $T(c_1\bu_1 + c_2 \bu_2 + \cdots + c_t\bu_t) = \bzero$.
+\item So $c_1\bu_1 + c_2 \bu_2 + \cdots + c_t\bu_t \in \ker(T)$.
+\item So $c_1\bu_1 + c_2 \bu_2 + \cdots + c_t\bu_t$ is in the span of $\bv_1,\bv_2,\cdots,\bv_s$.
+\item But $\bv_1,\bv_2,\cdots,\bv_s,\bu_1,\bu_2,\cdots,\bu_t$ are linearly independent.
+\item So $c_1\bu_1 + c_2 \bu_2 + \cdots + c_t\bu_t = \bzero$.
+\item So $c_1 = c_2 = \cdots = c_t = 0$.
+\item So $T(\bu_1), T(\bu_2),\cdots, T(\bu_t)$  are linearly independent. $\qed$
+\end{itemize}
+\end{frame}
+
+
+
+\end{document}
+
+

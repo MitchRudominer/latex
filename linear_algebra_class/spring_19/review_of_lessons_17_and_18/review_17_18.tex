@@ -1,0 +1,564 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\include{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Review of Lesson 17 Rank, Kernel and Image \\ and Lesson 18 Inner Products and Orthogonality}
+\subtitle{Math 325, Linear Algebra \\ Spring 2019 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Fundamental Theorem of Linear Algebra }
+\begin{itemize}
+\item \textbf{Theorem.} Let $A$ be an $m\times n$ matrix of rank $r$.
+\item Then $\dim(\image(T_A)) = r$, and
+\item $\dim(\ker(T_A)) = n-r$.
+\item i.e. $\dim(\ker(T_A)) + \dim(\image(T_A)) = n = \dim(\dom(T_A))$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{One-to-one linear transformations}
+
+\begin{itemize}
+\item \textbf{Theorem.} Let $T:V\map W$ be a linear transformation.
+\item Then $T$ is one-to-one if and only if $\ker(T) = \singleton{\bzero}$.
+\item Let $A$ be an $m\times n$ matrix.
+\item Then $T_A$ is one-to-one iff $\rank(A) = n$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Surjective linear transformations}
+
+\begin{itemize}
+\item Let $A$ be an $m\times n$ matrix.
+\item Then $T_A$ is onto $\R^m$ iff $\rank(A) = m$.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example}
+
+\begin{itemize}
+\item Let $A=
+\begin{pmatrix}
+1 & 1 & 2 & 1  \\
+1 & 0 & -1 & 3  \\
+2 & 3 & 7 & 0
+\end{pmatrix}
+$
+
+\item What is $\dom(T_A)$?
+\item $\R^4$
+\item What is the codomain of $T_A$?
+\item $\R^3$
+\item $T_A:\R^4\map\R^3$.
+\item The Fundamental Theorem of Linear Algebra says that $\dim(\ker(T_A)) + \dim(\image(T_A)) = 4$.
+\item $\dim(\ker(T_A)) + \rank(A) = 4$.
+\item $\dim(\ker(T_A)) =  4 - \rank(A)$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example Exercise}
+
+\begin{itemize}
+\item Let $A=
+\begin{pmatrix}
+1 & 1 & 2 & 1  \\
+1 & 0 & -1 & 3  \\
+2 & 3 & 7 & 0
+\end{pmatrix}
+$
+\item Find $\rank(A)$.
+\item Find $\dim(\image(T_A))$.
+\item Find a basis for $\image(T_A)$.
+\item Find $\dim(\ker(T_A))$.
+\item Find a basis for $\ker(T_A)$.
+\item Is $T_A$ one-to-one? Explain.
+\item Is $T_A$ onto? Explain.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example: Find the rank}
+
+\begin{itemize}
+\item Let $A=
+\begin{pmatrix}
+1 & 1 & 2 & 1  \\
+1 & 0 & -1 & 3  \\
+2 & 3 & 7 & 0
+\end{pmatrix}
+$
+\item $
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 2 & 1 \\
+0 & -1 & -3 & 2  \\
+0 & 1 & 3 & -2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 2 & 1  \\
+0 & -1 & -3 & 2 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+$
+\item So $\rank(A) = 2$.
+\item Find $\dim(\image(T_A))$.
+\item $\dim(\image(T_A))=\rank(A)=2$.
+\item Find $\dim(\ker(T_A))$.
+\item $\dim(\ker(T_A)) = 4 - 2 = 2$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example: Find a basis for $\image(T_A)$}
+
+\begin{itemize}
+\item Let $A=
+\begin{pmatrix}
+1 & 1 & 2 & 1  \\
+1 & 0 & -1 & 3  \\
+2 & 3 & 7 & 0
+\end{pmatrix}
+$
+\item $
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 2 & 1 \\
+0 & -1 & -3 & 2  \\
+0 & 1 & 3 & -2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 2 & 1  \\
+0 & -1 & -3 & 2 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+$
+\item So a basis for $\image(T_A)$ is
+$\singleton{
+\begin{pmatrix}
+1 \\ 1 \\2
+\end{pmatrix},
+\begin{pmatrix}
+1 \\ 0 \\3
+\end{pmatrix}
+}$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example: Find a basis for $\ker(T_A)$}
+
+\begin{itemize}
+\item Let $A=
+\begin{pmatrix}
+1 & 1 & 2 & 1  \\
+1 & 0 & -1 & 3  \\
+2 & 3 & 7 & 0
+\end{pmatrix}
+$
+\item $
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 2 & 1 \\
+0 & -1 & -3 & 2  \\
+0 & 1 & 3 & -2
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 1 & 2 & 1  \\
+0 & -1 & -3 & 2 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+$
+\item To find a basis for $\ker(T_A)$ we solve the homogeneous equation $A\bx=\bzero$.
+\item $-y -3z + 2w = 0 \SkipImplies y = -3z + 2w$
+\item $x + y +2z + w = 0 \SkipImplies x -3z + 2w + 2z + w = 0 \SkipImplies x-z+3w = 0 \SkipImplies x = z-3w$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example: Find a basis for $\ker(T_A)$, continued}
+
+\begin{itemize}
+\item $-y -3z + 2w = 0 \SkipImplies y = -3z + 2w$
+\item $x + y +2z + w = 0 \SkipImplies x -3z + 2w + 2z + w = 0 \SkipImplies x-z+3w = 0 \SkipImplies x = z-3w$.
+\item
+$
+\begin{pmatrix}
+x \\
+y \\
+z \\
+w
+\end{pmatrix}
+=
+\begin{pmatrix}
+z-3w \\
+-3z+2w \\
+z \\
+w \\
+\end{pmatrix}
+=
+z
+\begin{pmatrix}
+1 \\ -3 \\ 1 \\0
+\end{pmatrix}
++
+w
+\begin{pmatrix}
+-3 \\ 2 \\ 0 \\1
+\end{pmatrix}
+$
+\item
+So a basis for the kernel is
+$\singleton{
+\begin{pmatrix}
+1 \\ -3 \\ 1 \\0
+\end{pmatrix},
+\begin{pmatrix}
+-3 \\ 2 \\ 0 \\1
+\end{pmatrix}
+}$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Inner Product on a Real Vector Space}
+
+\begin{itemize}
+\item \textbf{Definition} Let $V$ be a real vector space.
+\item An \emph{inner product} on $V$ is a function from $V\times V$ to $\R$
+\item written as $\angles{\bv,\bw}$, such that, the function is
+\item (i) Bilinear
+\item (ii) Symmetric
+\item (iii) Positive Definite
+\item A vector space $V$ along with an inner product $\angles{\cdot, \cdot}$, is
+called an \emph{inner product space.}
+\item An inner product on $V$ imbues $V$ with a kind of \emph{geometry.}
+\item It allows us to define \emph{length} and \emph{angle}.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Dot Product on  $\R^n$}
+
+\begin{itemize}
+\item The main example of an inner product is the dot product on $\R^n$.
+\item The function $\angles{\bv,\bw} = \bv\cdot\bw$ is an inner product.
+\item Consequently $\R^n$ along with the dot product is an inner-product space.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthogonality}
+
+\begin{itemize}
+\item \textbf{Definition.} Let $\left(V, \angles{\cdot,\cdot}\right)$ be an inner-product space.
+\item Let $\bv$ and $\bw$ be two vectors in $V$. Then we say that $\bv$ and $\bw$ are \emph{orthogonal}
+\item if $\angles{\bv,\bw}=0$.
+\item Example: In Euclidean space $\R^n$, equipped with the dot product,
+\item two vectors are orthogonal iff they are perpendicular, i.e. meet at right angles.
+\item Orthogonality is the abstract analog of that in arbitrary vector spaces.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Orthogonal Compliment}
+\begin{itemize}
+\item \textbf{Definition} Let $W$ be a subspace of the inner-product space $V$.
+\item The \emph{orthogonal compliment} of $W$, written $W^{\perp}$, also pronounced ``$W$-perp'', is
+\item $\setof{\bv\in V}{\bv\perp W}$.
+\item Example: Let $W$ be the $x$-, $y$-plane in $\R^3$. Then $W^{\perp}$ is the $z$-axis.
+\item Example: Let $W$ be the $z$-axis in $\R^3$. Then $W^{\perp}$ is the $x$-, $y$-plane.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$W\intersect W^{\perp}$}
+\begin{itemize}
+\item \textbf{Proposition} Let $W$ be a subspace of the inner-product space $V$.
+\item Then $W\intersect W^{\perp} = \singleton{\bzero}$.
+\item \textbf{proof.} Suppose $\bv\in W\intersect W^{\perp}$.
+\item But then $\bv$ is orthogonal to itself.
+\item So $\angles{\bv,\bv} = 0$.
+\item So $\norm{\bv} = 0$.
+\item So $\bv=\bzero$. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$V=W+W^{\perp}$}
+\begin{itemize}
+\item \textbf{Theorem} Let $V$ be a finite dimensional inner product space.
+\item Let $W$ be a subspace of $V$.
+\item Then $V= W + W^{\perp}$. This means
+\item $\spn\left(W\union W^{\perp}\right) = V$, and
+\item $W\intersect W^{\perp} = \singleton{\bzero}$.
+\item In particular $\dim(W) + \dim(W^{\perp}) = \dim(V)$.
+\item Example. In $\R^3$ the $z$-axis and the $x$- $y$-plane are orthogonal compliments.
+\item The dimension of the $z$-axis is 1 and the dimension of the $x$- $y$-plane is 2
+\item and 1 + 2 = 3.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Row Space of a Matrix}
+\begin{itemize}
+\item \textbf{Definition} Let $A$ be an $m\times n$ matrix.
+\item Then the \emph{row space} of $A$ is the column space of $\transpose{A}$.
+\item Equivalently the image of $\transpose{A}$.
+\item Example: $A=
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{pmatrix}
+$
+\item The row space of $A$ is the 2-dimensional subspace of $\R^3$ spanned by
+\item $
+\singleton{
+\begin{pmatrix}
+1 \\ 2 \\ 3
+\end{pmatrix},
+\begin{pmatrix}
+4 \\ 5 \\ 6
+\end{pmatrix}
+}
+$
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Orthogonal Compliment of the Kernel}
+\begin{itemize}
+\item \textbf{Theorem} Let $A$ be any matrix.
+\item Then the row space of $A$ and the kernel of $A$ are orthogonal compliments.
+\item \textbf{proof} Let $W$ be the row space of $A$.
+\item $\bx\in\ker(A)$ iff $\transpose{\bw} \bx = 0$ for every row $\transpose{\bw}$ of $A$,
+\item iff $\angles{\bw,\bx} = 0$ every row $\transpose{\bw}$ of $A$,
+\item iff $\bx\in W^{\perp}$. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Row Rank of a Matrix}
+\begin{itemize}
+\item \textbf{Definition} Let $A$ be an $m\times n$ matrix.
+\item The \emph{row rank} of $A$ is the dimension of the row space of $A$.
+\item The (usual) rank of $A$ is sometimes called the \emph{column rank}.
+\item \textbf{Theorem.} The row-rank of $A$ is equal to the column rank of $A$.
+\item Let $r$ be the column rank of $A$.
+\item The Fundamental Theorem of Linear Algebra says that $\dim(\ker(A)) + r = n$.
+\item But the column space of $A$ is the orthogonal compliment of the kernel.
+\item So its also true that $\dim(\ker(A)) + \dim(\text{Column Space of $A$}) = n$.
+\item So $\dim(\text{Column Space of $A$}) = r$. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+\begin{itemize}
+\item Let $V$ be the subspace of $\R^3$ spanned by the following three vectors:
+\item $\bv_1=
+\begin{pmatrix}
+1  \\
+0  \\
+3   \\
+\end{pmatrix}
+\text{, }
+\bv_2=
+\begin{pmatrix}
+-1 \\
+3\\
+3 \\
+\end{pmatrix}
+\text{, }
+\bv_3=
+\begin{pmatrix}
+5 \\
+-9 \\
+-3 \\
+\end{pmatrix}
+$
+\item Find a basis for $V^{\perp}$. What is the dimension of $V^{\perp}$?
+\item Solution: Let $A$ be the matrix with rows $\transpose{\bv_1}, \transpose{\bv_2}, \transpose{\bv_3}$.
+\item $A=
+\begin{pmatrix}
+1 & 0 & 3   \\
+-1 & 3 & 3  \\
+5 & -9 & -3
+\end{pmatrix}
+$
+\item Then we are looking for the kernel of $A$. So solve the homogeneous system of equations.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example Continued}
+\begin{itemize}
+\item So solve the homogeneous system of equations.
+\item $
+\begin{pmatrix}
+1 & 0 & 3   \\
+-1 & 3 & 3  \\
+5 & -9 & -3
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & 3    \\
+0 & 3 & 6    \\
+0 & -9 & -18
+\end{pmatrix}
+\SkipImplies
+\begin{pmatrix}
+1 & 0 & 3    \\
+0 & 3 & 6    \\
+0 & 0 &
+\end{pmatrix}
+$
+\item Let's call the variables $x,y,z$. So $x$ and $y$ are basic and $z$ is free.
+\item $3y+6z=0\SkipImplies y = -2z$.
+\item $x +3z =0 \SkipImplies x=-3z$.
+\item So the general solution is $
+\begin{pmatrix}
+x\\y\\z
+\end{pmatrix}
+=
+\begin{pmatrix}
+-3z\\-2z\\z
+\end{pmatrix}
+=
+z
+\begin{pmatrix}
+-3\\-2\\1
+\end{pmatrix}
+$
+\item So $
+\begin{pmatrix}
+-3\\-2\\1
+\end{pmatrix}
+$
+is a basis for $V^{\perp}$ and $V^{\perp}$ is 1-dimensional.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+\begin{itemize}
+\item Find a basis for the orthogonal compliment of the
+kernel of the following matrix. What is the dimension of the orthogonal
+compliment of the kernel?
+\item $\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+1 & 0 & 0 & 1 \\
+2 & 2 & 3 & 5 \\
+\end{pmatrix}
+$
+\item Solution. The orthogonal compliment of the kernel is the row space.
+\item So we are asked to find a basis and dimension for the row space.
+\item i.e. a basis and dimension for the column space of the transpose.
+\item $\begin{pmatrix}
+1 & 1 & 2 \\
+1 & 0 & 1 \\
+3 & 0 & 3 \\
+4 & 1 & 5 \\
+\end{pmatrix}
+$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example continued}
+\begin{itemize}
+\item Find a basis and dimension for the column space of
+\item $\begin{pmatrix}
+1 & 1 & 2 \\
+1 & 0 & 1 \\
+3 & 0 & 3 \\
+4 & 1 & 5 \\
+\end{pmatrix}
+$
+\item We don't even need to do Gaussian elimination. We can see the solution by inspection.
+\item The first two columns are linearly independent. And the final column is the sum of the first two.
+\item So the rank is 2 and a basis is given by the first two columns.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
+
+
