@@ -1,0 +1,47 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,rotating}
+\usepackage[shortlabels]{enumitem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\setof}[2]{\left\{ \, #1 \, \left| \, #2 \, \right.\right\}}
+\newcommand{\intersect}{\cap}
+\newcommand{\bSigma}{\boldsymbol{\Sigma}}
+\newcommand{\defeq}{=_{\text{def}}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{The Mouse Set Theorem Just Past Projective}
+\begin{abstract}
+We will give the proof of the mouse set theorem for the pointclass
+$\Pi^1_{\omega+1}$ ($\defeq \forall^{\R} \Sigma^1_{\omega}$,
+where $\Sigma^1_{\omega}\defeq$  recursive infinite disjunctions of projective formulae.)
+These pointclasses lie at the start of the next projective-like hierarchy
+beyond the projective. $\Pi^1_{\omega+1}$  is a scaled pointclass
+and may be considered to be analogous to $\Pi^1_3$. Also $\Pi^1_{\omega+1} = \Pi_2(J_2(\R))$.
+
+Let $A=\setof{x\in\R}{x\text{ is } \Delta^1_{\omega+1} \text{ in a countable ordinal.}}$.
+$A$ is analogous to $Q_3$. We will describe a mouse $M$ and show that
+$\R\intersect M = A$. This is analogous to $\R\intersect M_1^{\sharp} = Q_3$.
+
+$M$ is the least mouse such that for all $n\in\omega$, there is a $\delta_n$ such
+that $\delta_n$ is a cardinal of $M$ and is Woodin in $M$ ``with respect to
+$\Sigma^1_n$ subsets of $\delta_n$." This mouse was isolated in 1993
+and at that time we proved that $\R\intersect M \subseteq A$, but we were
+not able to prove that $A \subseteq  M$. Recently Woodin proved
+that $A \subseteq M$ yielding the mouse set theorem.
+
+This talk will focus on Woodin's proof that if $x\in\R$ is $\Delta^1_{\omega+1}$
+in a countable ordinal, then $x\in M$.
+
+
+\end{abstract}
+
+\maketitle
+
+\end{document}

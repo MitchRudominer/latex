@@ -1,0 +1,80 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,rotating}
+\usepackage[shortlabels]{enumitem}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\textbf{Alternative proof of Theorem 11.}  We have
+$$A(x) \Iff \neg \exists y \bigwedge_{n\in\omega}B_n(x,y)$$
+and $b_x$ is a $\Pi^1_{\omega}$ code for
+$\setof{y}{\forall n B_n(x,y)}$.
+We let Let $M=M^{\text{ld}}(x)$.
+We have $T = T_{b_x}$ and $T^M =T^M_{b_x}$. We are assuming $A(x)$ is true,
+so $T$ is wellfounded (and so is $T^M$.) It suffices to prove
+
+\begin{claim}
+There is an $n\in\omega$ and a $z\in\WO\intersect M$ such that
+$|T^M| < |T^M_{c^n_z}|$ and $T^M_{c^n_z}$ is w.f. or
+$|T^M| < |T^M_{d^n_z}|$ and $T^M_{d^n_z}$ is w.f.
+\end{claim}
+
+Here $c^n_z$ and $d^n_z$ are, respectively,
+ $\Pi^1_{\omega}$ codes for for the set of $\Pi^1_{\omega}$-iterable, sound putative $x$-ladders $P$ that project to
+$\omega$ and have order type $|z|$ and satisfy the $n$-th sentence, respectively
+the negation of the $n$-th sentence.
+
+\begin{proof}
+Work in a generic extension of $V$, $V[K]$,  such that
+\begin{itemize}
+\item $\R^V$ is countable in $V[K]$, and
+\item $V$ and $V[K]$ satisfy the same projective statements with parameters
+in $\R^{V}$.
+\end{itemize}
+(\textbf{Question.} What metatheory should we be working in that will allow
+us to do this?)
+
+Let $\sequence{r_i}{i\in\omega}$ enumerate $\R^V$.
+Using repeated genericity iterations, iterate $M$ $\omega$ times yielding
+$$M \map M_1 \map M_2 \map \cdots$$ so that each $M_i\in V$ and each $M_i$ is
+countable in $V$ and $r_i$ is
+$\Col(\omega,\delta_i^{M_i})$ generic over $N_i^{M_i}$, where $\delta_i^{M_i}$
+and $N_i^{M_i}$ refer to the $i$-th rung of the ladder structure of $M_i$.
+Let $M^*$ be the direct limit of the $M_i$. Let $\gamma = o(M^*)$.
+So $\gamma=\omega_1^V$ and every initial segment of $M^*$ is in $V$.
+
+Let $G$ be a filter on $\Q_{<\gamma}^{M^*}$ such that for all $i\in\omega$,
+$G\intersect \Q_{<\delta_i}^{M^*}$ is generic over $N_i^{M^*}$ and in $V$.
+
+Let $M^{\infty}= \Ult(M^*,G)$.
+So $\omega_1^{M^{\infty}} = \omega_1^V$.
+
+Let $P$ be the least initial segment of $M^{\infty}$ that projects to $\omega$
+and that contains $\omega_1^M$. Since every initial segment of $M^*$ and $G$ is
+in $V$ and countable in $V$,
+$P\in V$ and $P$ is countable in $V$. Let $\alpha=o(P)$. Let $z\in WO^V$ with $|z|=\alpha$.
+
+Because any real
+coding $P$ is not a $\Pi^1_{\omega}$-in-$\alpha$ singleton, there is an $n$
+in $\omega$ such that both $T^V_{c^n_z}$ and $T^V_{d^n_z}$ are ill-founded.
+Because the $\sequence{r_i}{i\in\omega}$ enumerate $\R^V$, using the Hjorth
+argument, both $T^{M^{\infty}}_{c^n_z}$ and $T^{M^{\infty}}_{d^n_z}$ are ill-founded. It follows that
+$M^{\infty}\models$ ``$|T^{M^{\infty}}| < |T^{M^{\infty}}_{c^n_z}|$ or
+$T^{M^{\infty}}_{c^n_z}$ is illfounded" and
+$M^{\infty}\models$ ``$|T^{M^{\infty}}| < |T^{M^{\infty}}_{d^n_z}|$ or
+$T^{M^{\infty}}_{d^n_z}$ is illfounded".
+
+By elementarity, $M\models$ ``$\exists z \in \WO \exists n
+\in \omega$ s.t  $T^M_{c^n_z}$ w.f. $\implies
+|T^M| < |T^M_{c^n_z}|$ and $T^M_{d^n_z}$ w.f. $\implies
+|T^M| < |T^M_{d^n_z}|$". Since $M\models$ ``$\forall z \in \WO$,
+$\forall n \in \omega$, $T^M_{c^n_z}$ w.f.
+or $T^M_{d^n_z}$ w.f.", we are done.
+
+\end{proof}
+\end{document}
