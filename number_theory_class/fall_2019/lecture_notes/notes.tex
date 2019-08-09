@@ -52,7 +52,8 @@ powers of $9$ in $\Z_{10}$ are $9$ and $1$.
 
 Now consider the powers of $3$ in $\Z^*_{10}$. $3^2=9, 3^3 = 7, 3^4 =1, 3^5 = 9, 3^6 = 7, \cdots$.
 So the powers of $3$ in $\Z_{10}$ are $\singleton{1,3,7,9}$, i.e. all of $\Z^*_{10}$. We say
-that $3$ is a generator of $\Z^*_{10}$ and that 3 is a \emph{primitive root} of 10.
+that $3$ is a generator of $\Z^*_{10}$ and that 3 is a \emph{primitive root} of 10. As we saw above,
+9 is not a primitive root of 10.
 
 Now let's play that whole game with $\Z_8$ instead of $\Z_{10}$.
 $\Z_8 = \singleton{0,1,2,3,4,5,6,7}$ under addition and multiplication $\mod 8$.
@@ -64,9 +65,81 @@ Which integers have primitive roots? With effort you could check the following:
 3 yes, 4 yes, 5 yes, 6 yes, 7 yes, 8 no, 9 yes, 10 yes, 11 yes, 12 no, 13 yes, 14 yes, 15 no,
 16 no, 17 yes, 18 yes, 19 yes 20 no.
 
-What's going on here? What is the logic behind which integers have primitive roots. After taking
+What's going on here? What is the pattern of which integers have primitive roots? After taking
  this
 class, you will have a full and deep understanding of this question.
+
+\section{Axioms for the Integers}
+
+\textbf{Question} Find the prime factorization of 20.
+
+\textbf{Answer} $20=2^2 \times 5$?
+
+\textbf{Question} Is this the only prime factorization of 20?
+
+\textbf{Answer} Yes.
+
+\textbf{Question} Find the prime factorization of 54.
+
+\textbf{Answer} $54=2\times 3^3$?
+
+\textbf{Question} Is this the only prime factorization of 54?
+
+\textbf{Answer} Yes.
+
+\begin{theorem}[The Fundamental Theorem Of Arithmetic] For all integers $n>1$, $n$ may be expressed as
+a product of primes: $n=p_1^{e_1}p_2^{e_2}\cdots p_k^{e_k}$, and this expression is unique
+up to reordering of the primes.
+\end{theorem}
+
+Our first major goal of the course will be to prove the Fundamental Theorem of Arithmetic. Think about how you would prove it.
+
+One problem that arises immediately is this: The fact that you can factor integers into prime numbers is something we learn
+early in school. If we are going to prove this fact then obviously we are not allowed to assume this fact. But this is
+one of the ``basic" facts about the integers. If we are not allowed to assume this basic fact then which other basic facts
+are we not allowed to assume? If we don't know what we are allowed to assume, then how could we possibly prove anything?
+
+To resolve this problem we will write down exactly what it is we are planning to assume about the integers. Everything else in
+this course will be derived from these axioms.
+
+\subsection{Axioms Of Order}
+The order $<$ on $\Z$ is a discrete linear order without endpoints such that every segment bounded below is well-founded.
+In more detail this means:
+
+\begin{enumerate}
+\item transitive: $\forall n,m,p \in \Z, n < m \And m < p \Implies n < p$
+\item asymmetric: $\forall n,m \in \Z, n < m \Implies m \not< n$.
+\item connected: $\forall n,m \in \Z, n\not=m \Implies (n < m \Or m < n)$
+\item successors and predecessors: \\
+$(\forall b, \exists a,c) \left\{ a < b < c \And (\forall x )
+\left [ \neg (a < x < b) \And \neg (b < x < c) \right] \right \}$.
+\item quasi-well-founded: Let $A\subset \Z, A\not=\emptyset,A $
+bounded below (i.e. $\exists n\in \Z, \forall m\in A, n < m$.) Then $A$ has a least element.
+\end{enumerate}
+
+Axiom (5) may sound circular but it is not. The point to keep in mind is that $n$ is not in $A$ so
+$n$ is not the least element of $A$ so the assertion that $A$ has some least element is not vacuous.
+To see that Axiom (5) is not circular, the following exercise asks you to show that Axiom (5) is not true
+if we replace the integers with the real numbers.
+
+\begin{homework}
+Show that Axiom (5) is not true of the real numbers. Give a set $A\subset\R$ such that $A\not=\emptyset$,
+$A$ is bounded below, but $A$ does not have a least element.
+\end{homework}
+
+\begin{homework}
+Explain why the ``bounded below" hypothesis is necessary. Give a non-empty subset of $\Z$ that is not bounded
+below and does not have a least element.
+\end{homework}
+
+The primary instance of Axiom (5) we will use is:
+
+\begin{remark}
+Let $A$ be a non-empty set of positive integers. Then $A$ has a least element.
+\end{remark}
+\begin{proof}
+This follows from Axiom (5) because every set of positive integers is bounded below (by 0).
+\end{proof}
 
 \bibliographystyle{amsalpha}
 
