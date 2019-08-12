@@ -87,58 +87,115 @@ class, you will have a full and deep understanding of this question.
 
 \textbf{Answer} Yes.
 
-\begin{theorem}[The Fundamental Theorem Of Arithmetic] For all integers $n>1$, $n$ may be expressed as
-a product of primes: $n=p_1^{e_1}p_2^{e_2}\cdots p_k^{e_k}$, and this expression is unique
-up to reordering of the primes.
+\begin{theorem}[The Fundamental Theorem Of Arithmetic] For all integers $n>1$, $n$ may be expressed
+as a product of powers of primes: $n=p_1^{e_1}p_2^{e_2}\cdots p_k^{e_k}$, where each
+$p_i$ is a prime number and each $e_i\geq 1$. This expression is unique up to the order of
+the primes.
 \end{theorem}
 
-Our first major goal of the course will be to prove the Fundamental Theorem of Arithmetic. Think about how you would prove it.
+Our first major goal of the course will be to prove the Fundamental Theorem of Arithmetic. Think
+for a moment about how you would prove it yourself.
 
 One problem that arises immediately is this: The fact that you can factor integers into prime numbers is something we learn
 early in school. If we are going to prove this fact then obviously we are not allowed to assume this fact. But this is
 one of the ``basic" facts about the integers. If we are not allowed to assume this basic fact then which other basic facts
 are we not allowed to assume? If we don't know what we are allowed to assume, then how could we possibly prove anything?
 
-To resolve this problem we will write down exactly what it is we are planning to assume about the integers. Everything else in
+To resolve this problem we will write down exactly what it is we are planning to assume about the integers. We will call these assumptions the Axioms of the Integers. Everything else in
 this course will be derived from these axioms.
 
-\subsection{Axioms Of Order}
-The order $<$ on $\Z$ is a discrete linear order without endpoints such that every segment bounded below is well-founded.
-In more detail this means:
+\subsection{Axioms about addition}
+The integers form an abelian group under addition.
 
 \begin{enumerate}
-\item transitive: $\forall n,m,p \in \Z, n < m \And m < p \Implies n < p$
-\item asymmetric: $\forall n,m \in \Z, n < m \Implies m \not< n$.
-\item connected: $\forall n,m \in \Z, n\not=m \Implies (n < m \Or m < n)$
-\item successors and predecessors: \\
-$(\forall b, \exists a,c) \left\{ a < b < c \And (\forall x )
-\left [ \neg (a < x < b) \And \neg (b < x < c) \right] \right \}$.
-\item quasi-well-founded: Let $A\subset \Z, A\not=\emptyset,A $
-bounded below (i.e. $\exists n\in \Z, \forall m\in A, n < m$.) Then $A$ has a least element.
+\item $+$ is associative: $\forall n,m,k\in\Z, (n+m)+k=n+(m+k)$
+\item $+$ is commutative: $\forall n,m\in\Z, n+m=m+n$
+\item 0 is an additive identity: $\forall n\in\Z, n+0 = 0+n = n$
+\item Every integer has an additive inverse: For all integers $n$ there exists another
+integer called $-n$ such that $n + (-n) = (-n) + n = 0$.
 \end{enumerate}
 
-Axiom (5) may sound circular but it is not. The point to keep in mind is that $n$ is not in $A$ so
-$n$ is not the least element of $A$ so the assertion that $A$ has some least element is not vacuous.
-To see that Axiom (5) is not circular, the following exercise asks you to show that Axiom (5) is not true
-if we replace the integers with the real numbers.
+We write $a-b$ instead of $a + (-b)$.
 
-\begin{homework}
-Show that Axiom (5) is not true of the real numbers. Give a set $A\subset\R$ such that $A\not=\emptyset$,
-$A$ is bounded below, but $A$ does not have a least element.
-\end{homework}
+\subsection{Axioms about multiplication}
+The integers form a commutative ring under addition and multiplication.
 
-\begin{homework}
-Explain why the ``bounded below" hypothesis is necessary. Give a non-empty subset of $\Z$ that is not bounded
-below and does not have a least element.
-\end{homework}
-
-The primary instance of Axiom (5) we will use is:
+\begin{enumerate}
+\item $\times$ is associative: $\forall n,m,k\in\Z, (n\times m )\times k = n \times (m \times k)$
+\item $\times$ is commutative: $\forall n,m\in\Z, n\times m = m\times n$
+\item 1 is a multiplicative identity: $\forall n\not= 0, n\times 1 = n$
+\item $\times$ distributes over $+$: $\forall n,m,k\in\Z, n\times(m+k) = (n\times m) + (n\times k)$
+\end{enumerate}
 
 \begin{remark}
-Let $A$ be a non-empty set of positive integers. Then $A$ has a least element.
+Notice that there are additive inverses but not multiplicative inverses.
 \end{remark}
+
+We use several other notations besides $\times$ to indicate multiplication.
+All of the following can mean $a\times b: a*b, a\cdot b, ab$.
+Multiplication has higher order of precedence than addition in an expression so
+that $ab+cd$ means $(a\times b) + (c\times d)$ and not $a(b+c)d$.
+
+\subsection{Axioms of linear order}
+$(\Z, <)$ is a discrete linear order in which $n+1$ is the successor of $n$ and
+$n-1$ is the predecessor of $n$.
+
+\begin{enumerate}
+\item $<$ is transitive: $\forall n,m,p \in \Z, n < m \And m < p \Implies n < p$
+\item $<$ is asymmetric: $\forall n,m \in \Z, n < m \Implies m \not< n$.
+\item $<$ is connected: $\forall n,m \in \Z, n\not=m \Implies (n < m \Or m < n)$
+\item For all integers $n$, $n+1$ is the successor of $n$, i.e. the least integer greater than $n$.
+That is, $n<n+1$ and there is no $m$ such that $n < m < n+1$.
+\end{enumerate}
+
+\begin{remark}
+It follows from (4) that $n-1$ is the predecessor of $n$, i.e. the greatest integer
+less than $n$.
+\end{remark}
+
+\begin{definition}
+If $n>0$ we say that $n$ is positive and if $n<0$ we say that $n$ is negative.
+\end{definition}
+
+\subsection{Axiom of wellordering}
+The set of positive integers is wellorderd by $<$ and the negative numbers are the
+reflection of the positive numbers.
+
+\begin{enumerate}
+\item Every non-empty set of positive integers contains a least element.
+\item If $n$ is negative then $-n$ is positive.
+\end{enumerate}
+
+Axiom (1) allows us to use proof by induction on the positive integers.
+\begin{lemma}[Proof by induction] Let P be any property of integers. Suppose
+\begin{enumerate}
+\item[(i)] $P(1)$, and
+\item For all $n>0$, $P(n) \Implies P(n+1)$.
+\end{enumerate}
+Then $P(n)$ holds for all positive integers.
+\end{lemma}
 \begin{proof}
-This follows from Axiom (5) because every set of positive integers is bounded below (by 0).
+Let $S$ be the set of positive integers for which $P$ does not hold. We will show that
+$S$ is empty. Suppose $S$ is not empty and we will derive a contradiction.
+By axiom (1), $S$ has a least element, $m$. By (i), $m\not=1$ so $m=n+1$ for
+some positive integer $n$. Since $n<m$ and $m$ is the least positive integer in $S$,
+$n\notin S$. So $P(n)$ holds. By (ii), $P(n+1)$ holds. So $m\notin S$. Contradiction.
+\end{proof}
+
+\begin{homework}
+Show that the set of positive \emph{real} numbers is not wellordered by $<$.
+Give a non-empty set of positive real numbers that does not contain a least element.
+\end{homework}
+
+
+\begin{lemma}
+If $n$ is positive then $-n$ is negative.
+\end{lemma}
+\begin{proof}
+We prove by induction that for all $n>0$, $-n<0$. This is true for $n=1$ since $-1$ is the
+predecessor of 0. Suppose it is true for $n$ and we will show it is true for $n+1$.
+We need to show that $-(n+1) < 0$. But $-(n+1) = -n -1$ is the predecessor of $-n$ so
+$-(n+1) < -n < 0$.
 \end{proof}
 
 \bibliographystyle{amsalpha}
