@@ -30,6 +30,7 @@ We'll cover all of this carefully later on. Here I'm just trying
 to give you a flavor of the material you will learn in this class.
 
 \begin{definition}[The $\bmod$ operator]
+\label{ModOperatorTake1}
 Let $a$ and $b$ be positive integers. Then $a \bmod b$ means the remainder when $a$ is divided by $b$.
 \end{definition}
 
@@ -337,6 +338,21 @@ If $n$ is positive then $-n$ is negative.
 (Hint: Use the previous lemma with $a=0$.)
 \end{homework}
 
+Axiom (2) of this section allows us to define \emph{absolute value.}
+
+\begin{definition}
+If $a$ is a non-negative integer then $\av{a} = a$. If $a$ is a negative integer
+then $\av{a} = -a$.
+\end{definition}
+
+\begin{remark}
+For all non-zero integers $a$, $\av{a} \geq 1$.
+\end{remark}
+
+\begin{homework}
+For all integers $a,b$, $\av{ab} = \av{a}\av{b}$.
+\end{homework}
+
 \begin{lemma}
 \label{OrderInTermsOfPositive}
 For all integers $a,b$, $a<b$ iff $b-a$ is positive.
@@ -356,6 +372,7 @@ the second inequality follows because $a+x -a = x$ is positive.
 \end{proof}
 
 \begin{lemma}
+\label{ProductOfTwoPositives}
 If $a,b>0$ then $a \leq ab$.
 \end{lemma}
 \begin{proof}
@@ -408,6 +425,198 @@ to the statement of exercise \ref{ZeroIsUnique}.
 For all integers $n$ and $m$, if $n\not=0$
 and $n\times m=n$ then $m=1$.
 \end{homework}
+
+\section{Divisibility}
+
+\begin{definition}
+If $a$ and $b$ are integers we write $a\divides b$, pronounced $a$ \emph{divides}
+$b$, iff there is an integer $c$ such that $b=ac$. If it is not true that
+$a\divides b$ we write $a\nmid b$.
+
+If $a\divides$ be we also say that $a$ is a \emph{divisor} of $b$ and that
+$b$ is a \emph{multiple} of $a$ and that $b$ is \emph{divisible} by $a$.
+\end{definition}
+
+\begin{in_class_example}
+Find all of the positive divisors of 12.
+\end{in_class_example}
+
+
+\begin{numbered_example}
+Some examples of divisibility
+\begin{itemize}
+\item $3\divides 6$, $3\divides -6$, $-3\divides 6$, $-3\divides -6$.
+\item $3 \ndivides 8$, $6\ndivides 3$.
+\item For all integers $b$, $1\divides b$ because $b = 1\cdot b$.
+\item For all integers $a$, $a\divides a$ because $a = a\cdot 1$.
+\item For all integers $a$, $a\divides 0$ because $0 = a\cdot 0$.
+\item In particular $0\divides 0$.
+\item If $b\not=0$ then $0\ndivides b$ because for all $c$, $b\not=0\cdot c$.
+\end{itemize}
+
+\end{numbered_example}
+
+\begin{lemma}
+If $a\divides b$ and $b\not=0$ then $1 \leq \av{a} \leq \av{b}$.
+\end{lemma}
+\begin{proof}
+Suppose $b=ac$ and $b\not=0$. Then $c\not=0$, so $\av{c}\geq 1$, and
+$\av{b} = \av{ac} = \av{a}\av{c}$. So $\av{b} \geq \av{a}$ by Lemma
+\ref{ProductOfTwoPositives}.
+\end{proof}
+
+\begin{homework}
+Prove the following. For all integers $a,b,c$
+\begin{itemize}
+\item $a\divides b$ iff $-a\divides b$ iff $a\divides -b$.
+\item $a\divides b \And a\divides c \IImplies a\divides (b+c)$.
+\item $a\divides b \And b\divides c \IImplies  a\divides c$.
+\end{itemize}
+\end{homework}
+
+\begin{definition}
+An integer $n$ is called a \emph{zero-divisor} if $n\not=0$ and $n\divides 0$.
+\end{definition}
+
+There are no zero-divisors in $\Z$. But other rings we will consider in this
+class do have zero-divisors.
+
+\begin{definition}
+An integer $a$ is called a \emph{unit} iff $a\divides 1$.
+\end{definition}
+
+\begin{lemma}
+$a$ is a unit iff $a$ has a multiplicative inverse.
+\end{lemma}
+\begin{proof}
+$a\divides 1$ iff there is a $c$ such that $ac=1$. This $c$ is a multiplicative
+inverse of $a$ by definition.
+\end{proof}
+
+\begin{lemma}
+If $u$ is a unit and $a=bu$ then there is a unit $t$ such that $b=at$.
+\end{lemma}
+\begin{proof}
+Since $u$ is a unit there is a $t$ such that $ut=1$. Multiply both sides
+of $a=bu$ by $t$ to get $at=but=b$.
+\end{proof}
+
+\begin{definition}
+Two integers $a$ and $b$ are called \emph{associates} iff there
+is a unit $u$ such that $a=bu$, or equivalently there is a unit $t$ such
+that $b=at$.
+\end{definition}
+
+\begin{lemma}
+Let $a$ and $b$ be integers. Then $a$ and $b$ are associates iff $a\divides b$
+and $b\divides a$.
+\end{lemma}
+\begin{proof}
+If $a$ and $b$ are associates then there are units $u$ and $t$ such that
+$a=bu$ and $b=at$. Therefore $a\divides b$ and $b\divides a$.
+
+Conversely, suppose $a\divides b$ and $b\divides a$. Let $c$ and $d$ be such
+that $a=bc$ and $b=ad$. Then $a=adc$. By the Cancellation Law Lemma
+\ref{CancellationLaw} $1=dc$. This means that $d$ and $c$ are units and so
+$a$ and $b$ are associates.
+\end{proof}
+
+\begin{lemma}
+The units of $\Z$ are 1 and -1.
+
+Therefore in $\Z$, $a$ and $b$ are associates iff $a=\pm b$.
+
+Also $a\divides b$ and $b\divides a$ iff $a=\pm b$.
+\end{lemma}
+\begin{proof}
+Suppose $a\divides 1$ so there is a $b$ such that $1=ab$.
+Then $a,b\not=0$ so $\av{a}\geq 1$, $\av{b}\geq 1$.
+We have $1=\av{1} = \av{a}\av{b} \geq \av{a} \geq 1$. So $\av{a} = 1$
+so $a=1$ or $a=-1$.
+\end{proof}
+
+\begin{theorem}[Quotient and Remainder Property. a.k.a. Euclid's Division Lemma]
+Let $a,b$ be integers with $b>0$. Then there are unique
+integers $q,r$ with $0\leq r < b$
+such that $a = qb+r$.
+
+$q$ is called the \emph{quotient} and $r$ is called the remainder.
+\end{theorem}
+\begin{proof}
+Let $S=\setof{a-qb}{q\in\Z\And a-qb\geq 0}$.
+
+\begin{claim}[Claim 1]
+$S\not=\emptyset$.
+\end{claim}
+
+\begin{subproof}[Proof of Claim 1]
+If $a\geq 0$ then let $q=0$. Then $a=a-qb\geq0$ so $a-qb\in S$.
+If $a<0$, let $q=a$. Then $a-qb=a-ab=a(1-b)$. Since $a<0$ and $1-b\leq 0$,
+$a-qb\geq 0$ so $a-qb\in S$. In either case we have found an element of $S$
+so $S\not=\emptyset$.
+\end{subproof}
+
+Since $S$ is a non-empty set of non-negative integers, let $r$ be the smallest element of $S$,
+and let $q$ be such that $r=a-qb$. Then $a=qb+r$ and $r\geq 0$.
+
+\begin{claim}[Claim 2]
+$r<b$.
+\end{claim}
+
+\begin{subproof}[Proof of Claim 2]
+Suppose $r\geq b$ and let $\rprime = r -b$. Then $0\leq\rprime < r$ and
+$\rprime = r - b = a-qb -b = a -(q+1) b \in S$. This contradicts the fact that
+$r$ was chosen to be the smallest element of $S$.
+\end{subproof}
+
+So we have shown that there are integers $q,r$ with $0\leq r < b$
+such that $a = qb+r$. What's left is to show that these are the unique such integers.
+
+Suppose there were another pair of integers $\qprime$ and $\rprime$ such that
+$0\leq \rprime < b$ and $a = \qprime b+\rprime$. Then
+$qb+r = \qprime b + \rprime$ so $(q - \qprime)b = \rprime-r$. We claim
+that $q=\qprime$ and $r=\rprime$. If not then  $q-\qprime\not=0$ and
+$r-\rprime\not=0$.  Assume $q>\qprime$ (or else swap the names of $q$ and $\qprime$.)
+Then $q-\qprime > 0$ and $b>0$ and $r\geq 0$ so
+$\rprime \geq \rprime-r = (q - \qprime)b \geq b$.
+This contradicts the fact that $\rprime < b$, so $q=\qprime$ and $r=\rprime$.
+\end{proof}
+
+In definition \ref{ModOperatorTake1} we defined the $\bmod$ operator on positive
+numbers $a$ and $b$. Now we give a slightly more general definition where we
+don't require $a$ to be positive.
+
+\begin{definition}[The $\bmod$ operator]
+\label{ModOperator}
+Let $a$ be any integer and $b$ a positive integer. Let $q$ and $r$
+be the unique quotient and remainder from the previous theorem so that
+$a=qb+r$ with $0\leq r < b$.Then we define
+$a \bmod b=r$.
+\end{definition}
+
+\begin{homework} Compute the following remainders.
+\begin{itemize}
+\item $17 \bmod 100$
+\item $100 \bmod 17$
+\item $-17 \bmod 100$
+\item $-100 \bmod 17$
+\item $27 \bmod 3$
+\item $4 \bmod 3$
+\item $3 \bmod 3$
+\item $2 \bmod 3$
+\item $1 \bmod 3$
+\item $0 \bmod 3$
+\item $-1 \bmod 3$
+\item $-2 \bmod 3$
+\item $-3 \bmod 3$
+\item $-4 \bmod 3$
+\end{itemize}
+\end{homework}
+
+\textbf{Textbook Reading} Read Section 1.1
+\emph{Divisibility and primality}, pages 1 -4 of \emph{Shoup}.
+
+\textbf{Textbook Exercises:} Do exercise 1.1 on page 4 of \emph{Shoup}.
 
 \bibliographystyle{amsalpha}
 
