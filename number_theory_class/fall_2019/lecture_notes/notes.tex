@@ -430,6 +430,9 @@ For all integers $n$ and $m$, if $n\not=0$
 and $n\times m=n$ then $m=1$.
 \end{homework}
 
+\textbf{Textbook Reading}
+\emph{Preliminaries}, pages xiv-xvii of \emph{Shoup}.
+
 \newpage
 
 \section{Divisibility}
@@ -769,9 +772,13 @@ Show that $(a,b) = (a) + (b)$.
 
 \begin{in_class_example}
 \quad
-$(3) + (5) = (3,5) = (1) = \Z$.
+\begin{itemize}
+\item $(3) + (5) = (3,5) = (1) = \Z$.
 
-$(4) + (6) = (4,6) = (2)$ = the set of all even numbers.
+\item $(4) + (6) = (4,6) = (2)$ = the set of all even numbers.
+
+\item $(12) + (18) = (12,18) = (6)$ = the set of all multiples of 6.
+\end{itemize}
 \end{in_class_example}
 
 \begin{theorem}[$\Z$ is a PID]
@@ -810,12 +817,14 @@ $a$ and $b$, written $\gcd(a,b)$, is the unique non-negative integer $d$
 such that $(d) = (a,b)$.
 \end{definition}
 
-\begin{example}
-In an in-class example above we saw that $(3,5)$, so $\gcd(3,5) = 1$.
+\begin{in_class_example}
+\quad
+\begin{itemize}
+\item Above we saw that $(3,5) = (1)$, so $\gcd(3,5) = 1$.
 
-In an in-class example above we saw that $(4,6) = (2)$,
-so $\gcd(4,6) = 2$.
-\end{example}
+\item Above bove we saw that $(4,6) = (2)$, so $\gcd(4,6) = 2$.
+\end{itemize}
+\end{in_class_example}
 
 \begin{definition}
 Let $a$ and $b$ be integers. Then $d$ is a \emph{common divisor} of $a$ and $b$
@@ -860,6 +869,122 @@ $(e) \subseteq (d)$ by (\ref{gcd-equation-2}).
 So $(d) = (e)$ and since $d$ and $e$ are both non-negative, by
 Theorem \ref{ZIsAPID}, $d=e$.
 \end{proof}
+
+\begin{in_class_example}
+\quad
+\begin{itemize}
+\item $\gcd(3,5)=1$. Suppose $a\divides 3$ and $a\divides 5$. Then $a\divides 1$.
+
+\item $\gcd(4,6)=2$. Suppose $a\divides 4$ and $a\divides 6$. Then $a\divides 2$.
+
+\item $\gcd(12,18)=6$. Suppose $a\divides 12$ and $a\divides 18$. Then $a\divides 6$.
+\end{itemize}
+\end{in_class_example}
+
+\begin{lemma}
+$\gcd(a,b)$ is the greatest common divisor of $a$ and $b$.
+\end{lemma}
+\begin{proof}
+Let $d=\gcd(a,b)$. We have already seen that $d$ is a common divisor of
+$a$ and $b$. Suppose $c$ is any other common divisor. We need to see that
+$c\leq d$. By the previous
+lemma, $c\divides{d}$. Thus $c\leq\av{c}\leq\av{d}=d$.
+\end{proof}
+
+The main advantage of our abstract approach to $\gcd$s via ideals is that
+now we know the following:
+
+\begin{theorem}
+Let $a$, $b$ be integers. Then $\gcd(a,b)$ can be expressed as an integer
+linear combination of $a$ and $b$.
+\end{theorem}
+\begin{proof}
+Let $d=\gcd(a,b)$. The theorem follows immediately from the fact that
+$(d) = (a,b)$.
+\end{proof}
+
+\begin{in_class_example}
+Express $\gcd(6,10)$ as a linear combination of $6$ and $10$.
+\end{in_class_example}
+
+\begin{homework}
+In each case below, express $gcd(a,b)$ as a linear combination of $a$ and $b$.
+\begin{enumerate}
+\item $a = 8, b= 12$
+\item $a = 20, b= 12$
+\item $a=10, b=7$
+\item $a=20, b=14$
+\end{enumerate}
+\end{homework}
+
+\begin{definition}
+Two integers $a$ and $b$ are called \emph{relatively prime} if
+$\gcd(a,b) = 1$.
+\end{definition}
+
+\begin{lemma}
+Let $a$, $b$ be integers. Then $a$, $b$ are relatively prime iff
+their only positive common divisor is $1$.
+\end{lemma}
+\begin{proof} $a$ and $b$ are relatively prime iff
+$\gcd(a,b)=1$ iff all common divisors of $a$ and $b$ divide 1
+iff the only positive common divisor is 1.
+\end{proof}
+
+\begin{in_class_example}
+$\gcd(6,25) = 1$ so $6$ and $25$ are relatively prime.
+\end{in_class_example}
+
+\begin{theorem}
+Let $a$, $b$ be integers. Then $a$ and $b$ are relatively prime iff
+there is an integer linear combination of $a$ and $b$ that equals 1.
+\end{theorem}
+\begin{proof}
+We already saw that $\gcd(a,b)$ can be expressed as a linear combination
+of $a$ and $b$ so if $1=\gcd(a,b)$ then 1 can be expressed as a linear combination
+of $a$ and $b$.
+
+Conversely, suppose 1 can be expressed as a linear combination of $a$ and $b$.
+This means that $1\in (a,b)$ so $(a,b) = \Z = (1)$ so $1=\gcd(a,b)$.
+\end{proof}
+
+\begin{in_class_example}
+$\gcd(6,25) = 1$. Find an integer linear combination of $6$ and $25$
+that equals 1.
+\end{in_class_example}
+
+This last idea is the key ingredient we will need in the next section to
+prove the Fundamental Theorem of Arithmetic.
+
+\begin{in_class_example}
+True or false? If $c \divides ab$ then $c\divides a$ or $c \divides b$.
+Consider this question with two examples:
+\begin{itemize}
+\item $a = 9,  b = 50, c = 10$
+\item $a = 9,  b = 50, c = 15$
+\end{itemize}
+\end{in_class_example}
+
+\begin{theorem}
+Let $a,b,c \in \Z$ such that $c\divides ab$ and $\gcd(c,a) = 1$.
+Then $c \divides b$.
+\end{theorem}
+\begin{proof}
+Since $\gcd(c,a) = 1$ there are integers $x$ and $y$ such that
+$xc + ya = 1$. Multiply both sides of this equation by $b$ to
+get $xcb + yab = b$.  Now $c\divides xcb$ and by hypothesis
+$c\divides ab$. So $c\divides b$.
+\end{proof}
+
+\bigskip
+
+\textbf{Textbook Reading} Read Section 1.2
+\emph{Ideals and greatest common divisors}, pages 5-8 of \emph{Shoup}.
+
+\bigskip
+
+\textbf{Textbook Exercises:} Do the following exercises on page 9 of
+\emph{Shoup}: 1.8, 1.9, 1.10, 1.11
 
 \bibliographystyle{amsalpha}
 
