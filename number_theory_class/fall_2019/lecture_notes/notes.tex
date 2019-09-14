@@ -484,7 +484,8 @@ Prove the following. For all integers $a,b,c$
 \end{homework}
 
 \begin{definition}
-An integer $n$ is called a \emph{zero-divisor} if $n\not=0$ and $n\divides 0$.
+Let $a$ be a nonzero element of a commutative ring. Then $a$ is called a
+\emph{zero-divisors} iff there is a nonzero element $b$ such that $ab=0$.
 \end{definition}
 
 There are no zero-divisors in $\Z$. But other rings we will consider in this
@@ -966,6 +967,7 @@ Consider this question with two examples:
 \end{in_class_example}
 
 \begin{theorem}
+\label{PrePrimeProperty}
 Let $a,b,c \in \Z$ such that $c\divides ab$ and $\gcd(c,a) = 1$.
 Then $c \divides b$.
 \end{theorem}
@@ -985,6 +987,98 @@ $c\divides ab$. So $c\divides b$.
 
 \textbf{Textbook Exercises:} Do the following exercises on page 9 of
 \emph{Shoup}: 1.8, 1.9, 1.10, 1.11
+
+\section{Primes}
+
+A \emph{prime number} is an integer $p>1$ such that the only positive divisors
+of $p$ are $1$ and $p$. The first few prime numbers are $2,3,5,7,11,13,17,19,23$.
+
+If $n>1$ is not prime it is called \emph{composite}.
+
+Notice that $1$ is not considered either prime or composite.
+
+Also we will only use the terms prime and composite for positive numbers.
+
+Notice that $n$ is composite iff  $n=ab$ for some integers $a$ and $b$ with
+$1<a,b<n$.
+
+Let $p$ be prime and let $a$ be any integer. What are the possibilities
+for $\gcd(p,a)$?
+
+\begin{homework}
+Let $p$ be prime and let $a$ be any integer. Then either
+\begin{itemize}
+  \item $p\divides a$ and $\gcd(p,a) = p$, or
+  \item $p\ndivides a$ and $\gcd(p,a) = 1$.
+\end{itemize}
+\end{homework}
+
+\begin{theorem} Let $p$ be prime and let $a,b\in\Z$.
+\label{PrimeProperty}
+If $p\divides ab$ then $p\divides a$ or $p\divides b$.
+\end{theorem}
+\begin{proof}
+Suppose $p\divides ab$ and $p\ndivides a$. Then $\gcd(p,a) = 1$.
+By Theorem \ref{PrePrimeProperty} $p\divides b$.
+\end{proof}
+
+\begin{definition}
+\label{PrimePropertyDef}
+Let $x>1$ be an integer. We say that $x$ has the \emph{prime property}
+iff for all $a,b\in\Z$, if $x\divides ab$ then $x\divides a$ or $x\divides b$.
+\end{definition}
+
+The previous theorem says that primes have the prime property.
+
+\begin{theorem}
+\label{PrimesAreIrreducible}
+Let $x>1$ be an integer with the prime property. Then $x$ is prime.
+\end{theorem}
+\begin{proof}
+Suppose $x$ is not prime. Then $x=ab$ with $1<a,b<x$. But then $x\divides ab$
+and $x\ndivides a$ and $x\ndivides b$ so $x$ does not have the prime property.
+\end{proof}
+
+So for positive integers, having the prime property is equivalent to being
+prime. In fact in an arbitrary commutative ring, the prime property is
+used as the definition of prime and our definition of prime is what in an
+arbitrary integral domain is called \emph{irreducible}.
+
+More precisely, in a commutative ring $R$, an element $x\in R$ is called
+\emph{prime} iff $x\not=0$ and $x$ is not a unit and for all $a,b\in R$, if $x\divides ab$ then
+$x\divides a$ or $x\divides b$.
+
+In an integral domain $R$, an element $x\in R$ is called \emph{irreducible}
+iff $x\not=0$ and $x$ is not a unit and whenever $x = ab$ then either $a$ or $b$ is a unit.
+
+In an arbitrary integral domain, all primes are irreducible. A proof similar to
+our proof of Theorem \ref{PrimesAreIrreducible} works. But it is not necessarily
+true that every prime is irreducible. This is because
+for the proof of Theorem \ref{PrimeProperty} we needed to use GCDs and not
+every integral domain has GCDs.
+
+\begin{corollary}
+Let $p$ be prime and let $a_1,\cdots,a_k\in\Z$. If $p$ divides the product
+$a_1\cdots a_k$ then $p$ divides one of the $a_i$.
+\end{corollary}
+\begin{proof}
+By induction on $k$. For $k=1$ there is nothing to prove and $k=2$ is
+Theorem \ref{PrimeProperty}. Suppose the corollary is true for $k$ and
+we will show it is true for $k+1$. Suppose $p$ divides $a_1\cdots a_k a_{k+1}$.
+Let $b=a_1\cdots a_k$. Then $p\divides b a_{k+1}$. By the case $k=2$,
+$p\divides b$ or $p\divides a_{k+1}$. If $p\divides a_{k+1}$ we are done,
+so suppose $p\divides b$. Then $p$ divides the product $a_1\cdots a_k$, so
+by induction, $p$ divides one of the $a_i$.
+\end{proof}
+
+\begin{theorem}[Fundamental theorem of arithmetic]
+Every non-zero integer $n$ can be expressed as
+$$n=\pm p_1^{e_1} \cdots p_r^{e_r}$$
+where $p_1,\cdots,p_r$ are distinct primes and $e_1,\cdots,e_r$ are positive integers.
+Moreover this expression is unique up to a reordering of the primes.
+\end{theorem}
+
+If $n=\pm 1$ then $r=0$ and the empty product is interpreted as 1.
 
 \bibliographystyle{amsalpha}
 
