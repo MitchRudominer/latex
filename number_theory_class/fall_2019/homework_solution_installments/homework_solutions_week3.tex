@@ -1,0 +1,135 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Homework Solutions, Week 3 \\ Math 310, Elementary Number Theory \\ Fall 2019}
+\author{Mitch Rudominer}
+
+\maketitle
+
+\textbf{Solution to Exercise 3.14}
+\begin{itemize}
+\item $17 \mod 100 = 17$
+\item $100 \mod 17 = 15$
+\item $-17 \bmod 100 = 83$
+\item $-100 \bmod 17 = 2$
+\item $27 \bmod 3 = 0$
+\item $4 \bmod 3 = 1$
+\item $3 \bmod 3 = 0$
+\item $2 \bmod 3 = 2$
+\item $1 \bmod 3 = 1$
+\item $0 \bmod  = 0$
+\item $-1 \bmod 3 = 2$
+\item $-2 \bmod 3 = 1$
+\item $-3 \bmod 3 = 0$
+\item $-4 \bmod 3 = 2$
+\end{itemize}
+
+\bigskip
+
+\textbf{Solution to Exercise 1.1 on page 4 of \emph{Shoup}}.
+Let $a,b,d\in\Z$ with $d\not=0$. Show that $a\divides b$ if and only if
+$da\divides db$.
+\begin{proof}
+Suppose $a\divides b$ and let $c$ be such that $b=ac$. Then $bd=adc$ so
+$ad \divides bd$. Conversely suppose $ad \divides bd$ and let $c$ be
+such that $bd = adc$. Since $d\not=0$ we can cancel it to yield
+$b=ac$. So $a\divides b$.
+\end{proof}
+
+\bigskip
+
+\textbf{Solution to Exercise 4.5} Suppose $I_1$ and $I_2$ are ideals. Show that $I_1 \intersect I_2$ is an ideal.
+\begin{proof}
+We must show that  $I_1 \intersect I_2$  satisfies the the three clauses in the definition of an ideal:
+\begin{itemize}
+\item It is non-empty.
+\item It is closed under addition.
+\item It is closed under scalar multiplication.
+\end{itemize}
+Since 0 is in both $I_1$ and $I_2$, 0 is in  $I_1 \intersect I_2$ and so  $I_1 \intersect I_2$  is non-empty.
+To see that $I_1 \intersect I_2$ is closed under addition, let $a, b\in I_1 \intersect I_2$ and we will show that $a+b\in  I_1 \intersect I_2$.
+Since  $a, b\in I_1 \intersect I_2$,  $a, b\in I_1$. Since $I_1$ is an ideal, $a+b\in I_1$. By the same argument $a+b\in I_2$.
+So $a+b\in I_1\intersect I_2$.
+
+To see that $I_1 \intersect I_2$ is closed under scalar multiplication, let $a \in I_1 \intersect I_2$ and let $x\in\Z$ and we will show that $xa\in  I_1 \intersect I_2$.
+Since  $a\in I_1 \intersect I_2$,  $a\in I_1$. Since $I_1$ is an ideal, $xa\in I_1$. By the same argument $xa\in I_2$.
+So $xa\in I_1\intersect I_2$.
+\end{proof}
+
+Now suppose that $\cS$ is a non-empty collection of ideals. Prove that the intersection
+of all ideals in $\cS$ is also an ideal.
+
+\begin{proof}
+This proof is very similar to the previous one except it is a little more abstract because rather than having two ideals $I_1$ and $I_2$ we now have
+a set $\cS$ of ideals. In order to follow this proof, think about the fact that if $\cS = \singleton{I_1, I_2}$ then this proof reduces to the previous proof.
+
+Let $I$ be the intersection of all ideals in $\cS$. To see that $I$ is an ideal we must show that it is non-empty, closed under addition, and closed under scalar multiplication. It is non-empty because $0\in I$ because 0 is in every ideal in $\cS$. Let $a, b \in I$. Then $a$ and $b$ are in every ideal in $\cS$ so $a+b$ is in every ideal in $\cS$ so $a+b\in I$. Let $a\in I$ and $x\in\Z$. Then $a$ is in every ideal in $\cS$ so $xa$ is in every ideal in $\cS$ so $xa\in I$.
+\end{proof}
+
+\bigskip
+
+\textbf{Solution to Exercise 4.8} Show that $a\Z$ is an ideal of $\Z$ that contains $a$.
+\begin{proof}
+$a\Z$ contains $a$ because $a=1\cdot a$ is a multiple of $a$. Thus $a\Z$ is not empty. To see that $a\Z$ is closed under addition, note that
+$xa + ya = (x+y)a$ so that the sum of two multiples of $a$ is again a multiple of $a$. To see that $a\Z$ is closed under scalar multiplication,
+note that $y(xa) = (yx)a$ so that a scalar multiple of a multiple of $a$ is also a multiple of $a$.
+\end{proof}
+
+\bigskip
+
+\textbf{Solution to Exercise 4.10}  Note that we will use Lemma 4.9 so we know that $(a) = a\Z$.
+
+$b\in (a)$ iff $a\divides b$.
+\begin{proof}
+This is easy because $b\in (a)$ iff $b\in a\Z$ iff $b$ is a multiple of $a$ iff $a\divides b$.
+\end{proof}
+
+For any ideal $I$, $b\in I$ iff $(b)\subseteq I$.
+\begin{proof}
+If $(b)\subseteq I$ then obviously $b\in I$. For the other direction, suppose $b\in I$. The reason we get $(b)\subseteq I$ is that $I$ is closed under scalar multiplication and so every multiple of $b$ is also in $I$.
+\end{proof}
+
+$(b)\subseteq (a)$ iff $a\divides b$.
+\begin{proof}
+If $(b)\subseteq (a)$ then $b\in (a)$ so $a\divides b$ by the first part of this exercise. If $a\divides b$ then $b\in (a)$ so by the second part of
+this exercise $(b)\subseteq (a)$.
+\end{proof}
+
+\bigskip
+
+\textbf{Solution to Exercise 4.12}  Show that $I_1+I_2$ is an ideal.
+\begin{proof}
+Let $I=I_1+I_2$. $0\in I$ because $0=0+0$. So $I$ is not empty. To see that $I$ is closed under addition,
+let $a,b\in I$. Then there are $a_1,b_1\in I_1$ and $a_2,b_2\in I_2$ such that $a=a_1+a_2$ and $b=b_1+b_2$.
+Then $a+b = (a_1+b_1) + (a_2 + b_2)$ and $(a_1+b_1)\in I_1$ and $(a_2+b_2)\in I_2$ so $a+b\in I$.
+To see that $I$ is closed under scalar multiplication, let $a=a_1+a_2$ be as above and let $x\in\Z$.
+Then $xa=xa_1+xa_2\in I$.
+\end{proof}
+
+\bigskip
+
+\textbf{Solution to Exercise 4.13}  Let $(a)$ and $(b)$ be two principal ideals. Show that $(a)+(b)$ is equal to the set of all integer linear combinations of $a$ and $b$.
+\begin{proof}
+This follows just by unravelling definitions. An element of $(a)+(b)$ looks like $xa+yb$ for some $x,y\in\Z$.
+But this is exactly an integer linear combination of $a$ and $b$ by definition.
+\end{proof}
+
+\bigskip
+
+\textbf{Solution to Exercise 4.15}  Show that $(a,b)=(a)+(b)$.
+\begin{proof}
+$(a)+(b)$ is an ideal that contains $a$ and $b$ so $(a,b)\subseteq(a)+(b)$. By Lemma 4.3 every ideal
+is closed under integer linear combinations, so $(a,b)$ contains all integer linear combinations of $a$ and $b$
+so by the previous exercise $(a)+(b)\subseteq (a,b)$.
+\end{proof}
+
+\end{document}
+
