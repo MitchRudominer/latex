@@ -988,6 +988,8 @@ $c\divides ab$. So $c\divides b$.
 \textbf{Textbook Exercises:} Do the following exercises on page 9 of
 \emph{Shoup}: 1.8, 1.9, 1.10, 1.11
 
+\newpage
+
 \section{Primes}
 
 A \emph{prime number} is an integer $p>1$ such that the only positive divisors
@@ -1058,6 +1060,7 @@ for the proof of Theorem \ref{PrimeProperty} we needed to use GCDs and not
 every integral domain has GCDs.
 
 \begin{corollary}
+\label{GeneralizedPrimeProperty}
 Let $p$ be prime and let $a_1,\cdots,a_k\in\Z$. If $p$ divides the product
 $a_1\cdots a_k$ then $p$ divides one of the $a_i$.
 \end{corollary}
@@ -1079,6 +1082,194 @@ Moreover this expression is unique up to a reordering of the primes.
 \end{theorem}
 
 If $n=\pm 1$ then $r=0$ and the empty product is interpreted as 1.
+
+\begin{proof}
+ First, it suffices to prove the theorem for $n > 0$ because then
+if $n < 0$ then the unique prime factorization of $n$ is just $-1$ times the
+unique prime factorization of $-n$. So assume that $n > 0$.
+First we will prove existence and then we will prove uniqueness.
+
+We prove existence by induction on $n$. For $n = 1$, we have that 1
+has a prime factorization given by the empty product.
+
+Now assume $n > 1$ and that for all positive $m < n$, $m$ has a prime
+factorization. If $n$ is prime then $n$ is already a prime factorization.
+So suppose $n$ is composite. Then there exists $a, b$ with $1 < a, b < n$
+such that $n = ab$. By induction, $a$ and $b$ have a prime factorization, so
+$n = ab$ does.
+
+That completes the proof of existence of prime factorizations. Now
+we turn to uniqueness.
+
+
+Suppose $p_1 p_2 \cdots p_r = q_1 q_2 \cdots q_r$ where each $p_i$ and each $q_j$ are 
+prime.
+But we are no longer assuming that the $p_i$ are distinct. That is, $p_1$
+might equal $p_2$. That is what allows us to not write the exponents $e_i$
+from the statement of the theorem.
+
+We want to prove that the $p_i$ are a rearrangement of the $q_j$.
+In other
+words, we want to prove that $r = s$ and that the $p_i$ and the $q_j$ are the
+same, except possibly in a different order.
+
+
+We prove this fact by induction on $r$. If $r = 0$ then the left-hand-side
+equals 1 so the right hand side equals 1 so $s = 0$ and we are done. So
+now suppose that $r > 0$. So then we must also have $s > 0$.
+
+Assume the uniqueness claim is true for $r - 1$ and we will show it
+is true for $r$. Since $p_1$ divides the left-hand-side, $p_1$ divides the 
+righthand-side. In other words
+
+$$p_1 \divides q_1 q_2 \cdots q_s.$$
+
+Because $p_1$ is prime, by Corollary \ref{GeneralizedPrimeProperty},
+$p_1$ divides one of the $q_j$.
+But $q_j$
+is prime so its only positive divisors are $q_j$ and 1, so we must have
+that $p_1=q_j$.
+This allows us to cancel $p_1$ from the left-hand-side and $q_j$
+from the right-hand-side and get 
+$p_1\cdots p_r = q_1 \cdots q_{j-i} \cdot q_{j+1} \cdots q_s$. By
+induction, $r - 1 = s - 1$ and the remaining $p_i$ are a rearrangement of
+the remaining $q_k$. Therefore the original $p_i$ are a rearrangement of the
+original $q_j$.
+\end{proof}
+
+
+\textbf{Textbook Exercises:} Do exercise 1.2 on page 4 of Shoup. Do
+exercises 1.12 and 1.15 on page 9 of Shoup.
+
+\newpage
+
+\section{Consequences of Unique Factorization}
+
+\begin{theorem}
+There are infinitely many primes.
+\end{theorem}
+\begin{proof}
+Suppose towards a contradiction that there were finitely many primes,
+$p_1,p_2,\cdots,p_n$. Let $a$ be the product of all of these primes:
+$$a=p_1 p_2 \cdots p_n$$
+
+Consider the number $a+1$. Since $a+1$ is greater than each of the $p_i$, it is not
+one of the $p_i$, so it is not prime, so it is composite. Since it is composite
+it is divisible by a prime and so there is some $i$ such that $p_i \divides (a+1)$.
+
+But also $p_i \divides a$ so then $p_i \divides 1$ which is impossible.
+
+This contradiction implies that there were not finitely many primes.
+\end{proof}
+
+\begin{definition}
+Let $p$ be a prime and $n$ a non-zero integer. Then $\nu_p(n)$ is the greatest
+non-negative integer $\nu$ such that $p^{\nu}\divides n$. 
+
+In other words,
+Let $n = p_1^{e_1} \cdots p_r^{e_r}$ be the unique prime factorization of $n$ with each
+fo the $p_i$ distinct. If $p$ is not one of the $p_i$ then $p\ndivides n$ and
+$\nu_p(n) = 0$. Otherwise, $p\divides n$ and $p=p_i$ for some $i$. In this case
+$\nu_p(n) = e_i$.
+\end{definition}
+
+With this definition, each non-zero integer $n$ can be represented as
+
+$$n = \pm \prod_p p^{\nu_p(n)}$$
+
+where the product is over all primes $p$.For all but finitely many primes $p$,
+$\nu_p(n)=0$.
+
+\begin{in_class_example}
+Examples of this expression for some $n$.
+\end{in_class_example}
+
+\begin{numbered_fact}
+$\nu_p(a\cdot b) = \nu_p(a) + \nu_p(b)$
+\end{numbered_fact}
+
+\begin{in_class_example}
+Examples of this fact.
+\end{in_class_example}
+
+\begin{numbered_fact}
+$a\divides b$ iff $\nu_p(a) \leq \nu_p(b)$ for all primes $p$.
+\end{numbered_fact}
+
+\begin{in_class_example}
+Examples of this fact.
+\end{in_class_example}
+
+\begin{numbered_fact}
+$$\gcd(a,b)=\prod_p p^{\min(\nu_p(a), \nu_p(b))}$$
+\end{numbered_fact}
+
+\begin{in_class_example}
+Examples of this fact.
+\end{in_class_example}
+
+\begin{homework} Find
+\begin{enumerate}
+\item[(a)] $\nu_5(100)$
+\item[(b)] $\nu_5(-100)$
+\item[(c)] the smallest positive integers $a,b,c$ such that $\nu_2(a)=b$ and 
+$\nu_3(b)=c$ and $\nu_2(c) > \nu_3(c)$.
+\end{enumerate}
+\end{homework}
+
+\begin{definition}
+Let $a,b\in\Z$. Then a \emph{common multiple} of $a$ and $b$ is an integer $m$
+that is a multiple of both $a$ and $b$. 
+\end{definition}
+
+Notice that 0 is a common multiple of every pair $a,b$.
+
+Let $a,b$ be two non-zero integers. Then they have at least one positive common multiple,
+namely $\av{a} \av{b}$.
+
+\begin{definition}
+Let $a,b\in \Z$. Then the \textbf{least common multiple} of $a$ and $b$,
+$\lcm(a,b)$ is the least non-negative common multiple of $a$ and $b$.
+\end{definition}
+
+\begin{in_class_example}
+Examples of $\lcm$s.
+\end{in_class_example}
+
+\begin{numbered_fact}
+$$\lcm(a,b) =\prod_p p^{\max(\nu_p(a), \nu_p(b))}$$
+\end{numbered_fact}
+
+\begin{numbered_fact}
+$\lcm(a,b)$ divides every common multiple of $a$ and $b$.
+\end{numbered_fact}
+
+\begin{in_class_example}
+Examples of these facts.
+\end{in_class_example}
+
+\begin{fact}
+$\lcm(a,b)$ is the unique non-negative integer $m$ such that $(m) = (a) \intersect (b)$.
+\end{fact}
+You will prove this fact for homework.
+
+\begin{fact}
+$\gcd(a,b) \cdot \lcm(a,b) = \av{a,b}$.
+\end{fact}
+You will prove this fact for homework.
+
+\begin{fact}
+Let $a$ and $b$ be positive integers. Then
+$\lcm(a,b) = ab$ iff $a$ and $b$ are relatively prime.
+\end{fact}
+You will prove this fact for homework.
+
+\textbf{Textbook Reading} Read Section 1.3 of Shoup.
+
+\textbf{Textbook Exercises:} Do exercise 1.20, 1.21, 1.27, 1.28, 1.29, 1.34
+of \emph{Shoup}.
+
+
 
 \bibliographystyle{amsalpha}
 
