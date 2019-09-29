@@ -482,6 +482,58 @@ the product of the prime factors of $n$ whose exponents are odd. In
 other words, $a$ is the same $a$ that we constructed above. But then $b^2=n/a$ so $b$ is the same $b$ that we constructed above. This proves uniqueness.
 \end{proof}
 
+\bigskip
+
+\textbf{Solution to Exercise 6.6}
+
+\begin{enumerate}
+\item[(a)] $\nu_5(100) = 2$ because $100=2^2 \cdot 5^2$.
+\item[(b)] $\nu_5(-100) = 2$ because $-100=-1 \cdot 2^2 \cdot 5^2$.
+\item[(c)] We are asked to find the smallest positive integers $a,b,c$ such that 
+$\nu_2(a)=b$ and $\nu_3(b)=c$ and $\nu_2(c) > \nu_3(c)$. The smallest positive $c$ such
+that $\nu_2(c) > \nu_3(c)$ is $c=2$. For this $c$ we have 
+$\nu_2(c) = 1, \nu_3(c)=0$. The smallest positive integer $b$ such that 
+$\nu_3(b)=2$ is $b=3^2=9$. The smallest positive integer $a$ such that
+$\nu_2(a)=9$  is $a=2^9=512$.
+\end{enumerate}
+
+\bigskip
+
+\textbf{Solution to Exercise 1.20 from Shoup} Let $a,b,c\in\Z$.
+\begin{enumerate}
+\item[(a)] $\lcm(a,b)=\lcm(b,a)$
+\begin{subproof}
+This is trivial because being a ``common multiple of $a$ and $b$'' is the same thing
+as being a ``common multiple of $b$ and $a$.''
+\end{subproof}
+\item[(b)] $\lcm(a,b)=\av{a} \Iff b\divides a$.
+\begin{subproof}
+First consider the case $a\geq 0$.  If $b\divides a$ then $a$ is a multiple of $b$,
+so $a$ is a common multiple of $a$ and $b$, and $a$ divides every common multiple of
+$a$ and $b$ so $a=\lcm(a,b)$. Conversely if $a=\lcm(a,b)$ then in paticular $a$ is
+a multiple of $b$ so $b\divides a$. So if $a\geq 0$ we have 
+$b\divides a \Iff \av{a} = a=\lcm(a,b)$.
+
+Now suppose $a<0$. Notice that $x$ is a multiple of $a$ iff $x$ is a multiple of $-a$.
+Thus $\lcm(a,b) = \lcm(-a,b)$. So we have
+$b\divides a \Iff b\divides (-a) \Iff \av{a} = -a = \lcm(-a,b) = \lcm(a,b)$.
+\end{subproof}
+
+\item[(c)] $\lcm(a,a)=\lcm(a,1)=\av{a}$.
+\begin{subproof}
+The first equality is trivial becase a ``common multiple of $a$ and $a$'' is the same
+thing as a multiple of $a$ which is the same thing as a ``common multiple of $a$ and 1'' 
+since every integer is a multiple of 1.
+
+For the second equality, first take the case that $a\geq 0$. Then clearly $a$ itself is
+the least non-negative multiple of $a$ so $\av{a} = a = \lcm(a,a)$.
+
+Now take the case that $a$ is negative. Then $x$ is a multiple of $a$ iff $x$ is a multiple
+of $-a$, so $\lcm(a,a)=\lcm(-a,-a)=-a=\av{a}$.
+\end{subproof}
+
+\end{enumerate}
+
 
 \end{document}
 
