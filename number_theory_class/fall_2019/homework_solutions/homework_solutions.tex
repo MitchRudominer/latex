@@ -532,6 +532,58 @@ Now take the case that $a$ is negative. Then $x$ is a multiple of $a$ iff $x$ is
 of $-a$, so $\lcm(a,a)=\lcm(-a,-a)=-a=\av{a}$.
 \end{subproof}
 
+\item[(d)] $\lcm(ca,cb) = \av{c}\lcm(a,b)$.
+\begin{subproof}
+Let $m=\lcm(a,b)$. So $ca\divides cm$ and $cb\divides cm$ and $ca\divides (-cm)$ and $cb\divides (-cm)$ so $\av{c}m$ is a non-negative
+common multiple of $ca$ and $cb$. 
+
+Let $k$ be any common multiple of $ca$ and $cb$. We must show that $k$ is a multiple of $\av{c}m$.
+Write $k=cas=cbt$. Cancelling $c$ we get $as=bt$ is a common multiple of $a$ and $b$ and so a multiple of $m$: $as=bt=mr$.
+So $k=cmr$ so $cm\divides k$ and $-cm\divides k$ so $\av{c}m\divides k$.
+\end{subproof}
+
+\end{enumerate}
+
+
+\bigskip
+
+\textbf{Solution to Exercise 1.21 from Shoup} Show that for all $a,b\in\Z$ we have:
+\begin{enumerate}
+\item[(a)] $\gcd(a,b) \cdot \lcm(a,b) = \av{ab}$.
+First we prove a 
+
+\textbf{Lemma} Suppose $a$ and $b$ are relatively prime and positive. Then $\lcm(a,b) = ab$.
+\begin{subproof}
+Clearly $ab$ is a common multiple of $a$ and $b$. To see that it is the least common multiple, let
+$k$ be any common multiple of $a$ and $b$. We must show that $ab\divides k$.
+Let $x$ and $y$ be such that $k=xa=yb$. Then $a\divides (yb)$ and $a$ is relatively prime to $b$, so we
+know that $a\divides y$. So write $y=za$. Then $k=zab$. So $ab\divides k$.
+\end{subproof}
+
+Now we turn to the proof of the exercise.
+\begin{subproof}
+First lets handle the case that $a$ and $b$ are not negative.
+
+Let $d=\gcd(a,b)$. If $d=0$ then $a=b=0$ so $\lcm(a,b)=0$ and $\av{ab}=0$ and the equation is true.
+
+So now assume $d\not=0$. 
+
+Since $d\divides a$ and $d\divides b$ let $\aprime,\bprime$ be such that
+$a=d\aprime$, $b=d\bprime$. By Exercise 1.10 from Shoup, $\aprime$ and $\bprime$ are relatively prime.
+Let $m=d\aprime\bprime = ab/d$. To prove the exercise we must show that $m=\lcm(a,b)$.
+
+By the Lemma we just proved $\lcm(\aprime,\bprime) = \aprime \bprime$.
+
+By part (d) of the previous exercise $\lcm(d\aprime,d\bprime) = d\lcm(\aprime,\bprime)$.
+So $\lcm(a,b) = d\aprime\bprime=m$.
+
+If $a<0$ and $b\geq 0$ then $\lcm(a,b) = \lcm(-a,b) = \gcd(-a,b) (-ab) = \gcd(a,b) \av{ab}$.
+
+Similarly if $b<0$ and $a\geq 0$.
+
+If $a<0$ and $b<0$ then $\lcm(a,b) = \lcm(-a,-b) = \gcd(-a,-b) (-a\cdot -b) = \gcd(a,b) \av{ab}$.
+
+\end{subproof}
 \end{enumerate}
 
 
