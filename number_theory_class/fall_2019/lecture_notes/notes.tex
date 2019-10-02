@@ -1465,7 +1465,7 @@ $\gcd(100,35) = 5$ and $5 = -1 \cdot 100 + 3 \cdot 35$.
 
 \bigskip
 
-\textbf{Textbook Exercises:} Frome section 2-2 of Andrews do:
+\textbf{Textbook Exercises:} From section 2-2 of Andrews do:
 \begin{itemize}
 \item \textbf{(1)} d,e,f
 \item \textbf{(2)} But use the Extended Euclidean algorithm. Don't use back-substitution.
@@ -1477,6 +1477,42 @@ $\gcd(100,35) = 5$ and $5 = -1 \cdot 100 + 3 \cdot 35$.
 
 \textbf{Optional} Read sections 4.1 and 4.2 of Shoup. You will not be responsible for this. This is only if you are interested
 in a more sophisticated computer science view of the Extended Euclidean algorithm.
+
+\newpage
+
+\section{Linear Diophantine Equations}
+
+In the last example from the previous section we saw that 
+
+$\gcd(100,35) = 5$ and $5 = -1 \cdot 100 + 3 \cdot 35$.
+
+\begin{question}
+Let $a=100, b=35, d=\gcd(a,b)=5$.
+
+
+Are $x=-1$ and $y=3$ the only solutions to $x\cdot a + y\cdot b = d$?
+
+\end{question}
+
+Let $a,b,c\in\Z$ with $a,b\not=0$. Consider the following problem. Find all integers $x$ and $y$ such that
+$$ax+by=c.$$
+
+This is called a linear diophantine equation.
+
+We will see that a linear diophantine equation has either no solutions or infinitely many solutions Thus in
+the particular case where $d=\gcd(a,b)$ there are infinitely many solutions to $ax+by=d$.
+
+Let $d=\gcd(a,b)$.
+Notice that there is a solution to $ax+by=c$ iff $c$ can be written as a linear combination of $a$ and $b$
+iff $c\in(a,b)$ iff $c\in(d)$ iff $d\divides c$. We have proven:
+
+\begin{theorem}
+Let $a,b,c\in\Z$ with $a,b\not=0$. Then the linear diophantine equation $ax+by=c$ has a solution iff
+$d\divides c$, where $d=\gcd(a,b)$.
+\end{theorem}
+
+
+
 
 \bibliographystyle{amsalpha}
 
