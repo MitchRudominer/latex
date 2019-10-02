@@ -1269,7 +1269,214 @@ You will prove this fact for homework.
 \textbf{Textbook Exercises:} Do exercise 1.20, 1.21, 1.27, 1.28, 1.29, 1.34
 of \emph{Shoup}.
 
+\newpage
 
+\section{The Euclidean Algorithm}
+
+Let $a,b\in\Z$ with $a>b>0$. Let $d=\gcd(a,b)$. We know that there are integers $x,y$ such that $d=xa+yb$.
+
+\begin{question}
+How do we find $d$?
+\end{question}
+
+\begin{question}
+How do we find $x$ and $y$?
+\end{question}
+
+
+
+\textbf{Idea:} By the Quotient and Remainder Property (i.e. Euclid's Division Lemma) there are
+unique $q,r\in\Z$ such that $a=qb+r$ with $0\leq r < b$. Notice that $r=a-qb$. This means that
+$a$ is an integer linear combination of $b$ and $r$, and $r$ is an integer linear combination
+of $a$ and $b$. This means that $(a,b) = (b,r)$. This means that $d=\gcd(a,b)=\gcd(b,r)$.
+
+Why is this interesting? Because $b<a$ and $r<b$. We have reduced the problem of finding $\gcd(a,b)$
+to the \emph{smaller} problem of finding $\gcd(b,r)$. The idea of the Euclidean algorithm is to
+repeat this process yielding smaller and smaller pairs of integers until finally one of the integers is zero.
+
+\begin{example}[The Euclidean Algorithm]
+Find $\gcd(527,341)$.
+
+$527 = 1 \cdot 341 + 186$. \qquad $\gcd(527,341) = \gcd(341,186)$.
+
+$341 = 1 \cdot 186 + 155$. \qquad $\gcd(341, 186) = \gcd(186, 155)$.
+
+$186 = 1 \cdot 155 +  31$. \qquad $\gcd(186, 155) = \gcd(155, 31)$.
+
+$155 = 5 \cdot 31 + 0$. \qquad $\gcd(155, 31) = \gcd(31, 0) = 31$.
+
+So $\gcd (527,341) = 31$.
+
+To check this, find the prime factorization of 527 and 341.
+
+$527 = 17 \cdot 31$.
+
+$341 = 11 \cdot 31$.
+
+So $\gcd(527, 341) = 31$.
+\end{example}
+
+What is the point of the Euclidean algorithm? We found the answer more easily by looking at the prime factorization? The point is that
+the Euclidean algorithm is efficient. When dealing with large integers, finding the prime factorization is impossible.
+
+Suppose $a$ and $b$ are each 100-digit integers. How long would it take to find the prime factorizations of $a$ and $b$?
+There is no efficient algorithm for finding the prime factorization of large integers. The best algorithms for finding the prime factorization of $a$
+are not much better than searching through every positive integer $n<a$, testing to see if $n$ is prime, and then testing to see if $n\divides a$.
+How long would this take? Suppose it were possible to test 100-billion integers per second. (This is much faster than a computer could really do it.)
+100-billion is $10^{11}$. We said that $a$ was 100 digits long, so approximately $10^{100}$. This means it would $\frac{10^{100}}{10^{11}} = 10^{89}$ seconds.
+How long is that?
+There are about 30 million seconds in a year. Let's round up to 100-million = $10^8$. So it would take more than $\frac{10^{89}}{10^{8}} = 10^{81}$ years.
+Currently the universe is only about $10^{10}$ years old. So to find the prime factorization of $a$ would take much, much longer than the current age of the
+universe. In other words, it is not possible even with all of the computers on earth churning away for a billion years.
+
+
+Now compare this with the Euclidean Algorithm.
+
+\begin{theorem}
+The Euclidean algorithm runs in time proportional to the number of digits of $a$ times the number of digits of $b$
+\end{theorem}
+So if $a$ and $b$ were both 100-digits long it would take less than 10,000 steps to compute their $\gcd$. If we could do 1000 steps per second on a computer
+(computers can do much better than this) it would take 10 seconds.
+
+Why is this of practical importance? Why would we ever care about computing the $\gcd$ of two 100 digit integers? Number Theory has a very practical application: Cryptography,
+the science of encryption. Computing the $\gcd$ and other number theoretic computations on large integers is an essential ingedient of the encryption that
+your computer does every time you go to a URL that starts with ``https''. This is called public-key encryption and it is based on Number Theory computations on large integers.
+We will learn about public-key encryption later in the course. For now it is important to understand only that some Number Theory computations are \emph{tractable} meaning
+they can be performed in a reasonable amount of time because there exists an \emph{efficient} algorithm for them, while others are \emph{intractibale}, they cannot be
+performed in a reasonable amount of time because there is no efficient algorithm for them. Computing the $\gcd$ of two 100-digit integers is tractable, finding the
+prime factorization of a 100-digit integer is intractable.
+
+Now back to the original problem. The Euclidean algorithm allows us to compute $d=\gcd(a,b)$. But how do we find $x,y$ such that $d=x\cdot a + y \cdot b$?.
+
+Look back at the Euclidean algorithm computation above and notice that on each line we
+expressed the remainder on that line as an integer linear combination of the
+quotient and divisor from that line.
+The $\gcd$ is the second-to-last remainder, and our goal is to express the $\gcd$
+as an integer linear combination of of the original values $a$ and $b$. We can
+do this by starting at the end of the computation and working backwards:
+
+
+\bigskip
+
+$31 = 186 - 155 \cdot 1$
+
+$31 = 186 - (341 - 186 \cdot 1) = 2 \cdot 186 - 341$
+
+$31 = 2 \cdot (527 - 341\cdot 1) - 341 = 2\cdot 527 - 3\cdot 341$.
+
+\bigskip
+
+Thus letting $x=2, y=-3$, we have that $31 = \gcd(527,341) = 527x + 341y$.
+The technique we used to find $x$ and $y$ is called \emph{back-substitution}.
+
+\bigskip
+
+Next we are going to learn a technique that allows us to compute $x$ and $y$ at the same time that
+we are computing $d$ and so allow us to avoid the extra back-substitution step.
+
+\bigskip
+
+
+\textbf{The Extended Euclidean Algorithm} Given $a,b\in\Z$ with $a>b>0$ define:
+
+\begin{itemize}
+\item $r_0=a$,  $s_0 = 1$, $t_0 = 0$
+\item $r_1=b$, $s_1 = 0$, $t_1 = 1$
+\item Motivation:
+\item $a = qb + r \Implies r_0 = q_1 r_1 + r_2 \Implies r_2 = r_0 - q_1 r_1$.
+\item In general for $i\geq 1$, let
+\item $r_{i-1} = q_i r_i + r_{i+1}  \Implies r_{i+1} = r_{i-1} - q_i r_i$
+\item $s_{i+1} = s_{i-1} - q_i s_i$
+\item $t_{i+1} = t_{i-1} - q_i t_i$
+\end{itemize}
+
+The algorithm terminates when $r_{i+1}=0$. Then $r_i = d = \gcd(a,b)$ and $d = s_i a + t_i b$.
+
+\bigskip
+
+\begin{example} Let $a=527, b=341$. Use the extended Euclidean algorithm to find $d=\gcd(a,b)$ and $x$ and $y$ so
+that $d=xa+yb$.
+\end{example}
+
+\bigskip
+
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\quad & \quad                     & \quad       & \quad & 527    & 341   &  \quad                   & \quad \\ \hline
+$i$   & \quad                     & $q_{i}$     & $r_i$ & $s_i$  & $t_i$ &  \quad                   & \quad \\ \hline\hline
+0     & \quad                     & \quad       & 527   &  1     & 0     &  \quad                   & \quad \\ \hline
+1     & \quad                     &  1          & 341   &  0     & 1     &  \quad                   & \quad \\ \hline
+2     & $527 = 1\cdot 341 + 186$  &  1          & 186   &  1     & -1    & $s_2 = s_0 - q_1 s_1$    & $t_2 = t_0 - q_1 t_1$  \\
+\quad & \quad                     & \quad       & \quad & \quad  & \quad & $1 =   1 - 1 \cdot 0$    & $-1=0-1\cdot1$ \\ \hline
+3     & $341 = 1 \cdot 186 + 155$ &  1          & 155   &  -1    & 2     & $s_3 = s_1 - q_2 s_2$    & $t_3 = t_1 - q_2 t_2$  \\
+\quad & \quad                     & \quad       & \quad & \quad  & \quad & $-1 =   0 - 1 \cdot 1$   & $2=1-1\cdot(-1)$ \\ \hline
+4     & $186 = 1 \cdot 155 + 31$  &  1          & 31    &  2     & -3    & $s_4 = s_2 - q_3 s_3$    & $t_4 = t_1 - q_3 t_3$  \\
+\quad & \quad                     & \quad       & \quad & \quad  & \quad & $2 =   1 - 1 \cdot (-1)$ & $-3=-1-1\cdot 2$ \\ \hline
+5     & $155 = 5 \cdot 31 + 0$    &  5          & 0     & \quad  & \quad & \quad  &  \\ \hline
+\end{tabular}
+
+\bigskip
+
+The algorithm terminated when $i=5$ because $r_5=0$. Thus $d=r_4=31$ and 
+$d = s_4\cdot 527 + t_4 \cdot 341$.
+
+\bigskip
+$\gcd(527, 341) = 31$ and $31 = 2 \cdot 527 - 3 \cdot 341$.
+
+
+\bigskip
+
+\begin{example} Let $a=100, b=35$. Use the extended Euclidean algorithm to find $d=\gcd(a,b)$ and $x$ and $y$ so
+that $d=xa+yb$.
+\end{example}
+
+\bigskip
+
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\quad & \quad                     & \quad       & \quad & 100    &  35   &  \quad                   & \quad \\ \hline
+$i$   & \quad                     & $q_{i}$     & $r_i$ & $s_i$  & $t_i$ &  \quad                   & \quad \\ \hline\hline
+0     & \quad                     & \quad       & 100   &  1     & 0     &  \quad                   & \quad \\ \hline
+1     & \quad                     &  2          &  35   &  0     & 1     &  \quad                   & \quad \\ \hline
+2     & $100=2\cdot35 + 30$       &  1          &  30   &  1     & -2    & $s_2 = s_0 - q_1 s_1$    & $t_2 = t_0 - q_1 t_1$  \\
+\quad & \quad                     & \quad       & \quad & \quad  & \quad & $1 =   1 - 2 \cdot 0$    & $-2=0-2\cdot1$ \\ \hline
+3     &3$5 = 1\cdot 30 + 5$       &  6          &   5   &  -1    & 3     & $s_3 = s_1 - q_2 s_2$    & $t_3 = t_1 - q_2 t_2$  \\
+\quad & \quad                     & \quad       & \quad & \quad  & \quad & $-1 =   0 - 1 \cdot 1$   & $3=1-1\cdot(-2)$ \\ \hline
+4     & $30 = 6\cdot 5 + 0$       &             &   0   &        &       &                          &                \\ \hline
+\end{tabular}
+
+\bigskip
+
+The algorithm terminated when $i=4$ because $r_4=0$. Thus $d=r_3=5$ and 
+$d = s_3\cdot 100 + t_3 \cdot 35$.
+
+\bigskip
+$\gcd(100,35) = 5$ and $5 = -1 \cdot 100 + 3 \cdot 35$.
+
+\bigskip
+
+\textbf{Reading} Read the Wikipedia article on \emph{The Extended Euclidean Algorithm}.
+
+\bigskip
+
+\textbf{Textbook Reading} Read section 2-2 \emph{Divisibility} of \textbf{Number Theory} by George E. Andrews.
+
+\bigskip
+
+\textbf{Textbook Exercises:} Frome section 2-2 of Andrews do:
+\begin{itemize}
+\item \textbf{(1)} d,e,f
+\item \textbf{(2)} But use the Extended Euclidean algorithm. Don't use back-substitution.
+\item \textbf{(3)}
+\item \textbf{(5)}
+\end{itemize}
+
+\bigskip
+
+\textbf{Optional} Read sections 4.1 and 4.2 of Shoup. You will not be responsible for this. This is only if you are interested
+in a more sophisticated computer science view of the Extended Euclidean algorithm.
 
 \bibliographystyle{amsalpha}
 
