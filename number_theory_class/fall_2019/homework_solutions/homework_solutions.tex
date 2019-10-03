@@ -583,6 +583,23 @@ Similarly if $b<0$ and $a\geq 0$.
 
 If $a<0$ and $b<0$ then $\lcm(a,b) = \lcm(-a,-b) = \gcd(-a,-b) (-a\cdot -b) = \gcd(a,b) \av{ab}$.
 
+\bigskip
+
+\textbf{Solution to Exercise 1.27 from Shoup.} For all $a,b\in\Z$,
+$$\gcd(a+b,\lcm(a,b)) = \gcd(a,b).$$
+\begin{proof}
+First we handle the case that $a$ and $b$ are relatively prime. In this case we must show that
+$a+b$ and $ab$ are relativley prime. This is true because if $p$ is a prime and $p$ divides
+both $ab$ and $a+b$ then $p$ divides one of $a$ or $b$, but then since $p$ divides $a+b$ it
+divides both $a$ and $b$, which is impossible since $a$ and $b$ are relatively prime.
+
+Now let $a,b$ be arbitrary integers. Let $d=\gcd(a,b)$ and let $\abar,\bbar$ be such that
+$a=d\abar,b=d\bbar$. Then $\abar,\bbar$ are relatively prime and letting $m=d\abar\bbar$ we have
+that $m=\lcm(a,b)$. By what we have just shown,
+$\gcd(\abar+\bbar,\abar\bbar) = 1$. Multiplying by $d$ and using a fact from an exercise we proved earlier,
+$\gcd(d\abar+d\bbar,d\abar\bbar)=d$. So $\gcd(a+b,m)=d$ as was to be shown.
+\end{proof}
+
 \end{subproof}
 \end{enumerate}
 

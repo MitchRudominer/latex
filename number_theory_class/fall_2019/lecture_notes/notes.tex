@@ -1497,22 +1497,132 @@ Are $x=-1$ and $y=3$ the only solutions to $x\cdot a + y\cdot b = d$?
 Let $a,b,c\in\Z$ with $a,b\not=0$. Consider the following problem. Find all integers $x$ and $y$ such that
 $$ax+by=c.$$
 
-This is called a linear diophantine equation.
+This is called a linear Diophantine equation.
 
-We will see that a linear diophantine equation has either no solutions or infinitely many solutions Thus in
+We will see that a linear Diophantine equation has either no solutions or infinitely many solutions. Thus in
 the particular case where $d=\gcd(a,b)$ there are infinitely many solutions to $ax+by=d$.
 
-Let $d=\gcd(a,b)$.
-Notice that there is a solution to $ax+by=c$ iff $c$ can be written as a linear combination of $a$ and $b$
-iff $c\in(a,b)$ iff $c\in(d)$ iff $d\divides c$. We have proven:
+
+\begin{lemma}
+Suppose $a$ and $b$ are relatively prime and $ax=by$.
+Then there is a $k$ such that $x=k b$ and $y=ka$.
+\end{lemma}
+\begin{proof}
+Since $a \divides by$ and $\gcd(a,b) = 1$, $a\divides y$, so there is some $k_1\in\Z$ such that
+$y=k_1 a$. Similarly, there is some $k_2\in\Z$ such that $x=k_2 b$. Thus we have $ak_2 b = bk_1 a$
+and so $k_1=k_2$. So $x = k_1 b$ and $y=k_1 a$.
+\end{proof}
+
+To start our investigation of linear Diophantine equations, let's first
+consider the \emph{homogeneous} linear Diophantine equation
+$$ax+by=0.$$
+
+
+Let $d=\gcd(a,b)$.  Let $\abar$ and $\bbar$ be such that $a=d\abar$ and $b=d\bbar$.
+Notice that $m=\abar \bbar d = \lcm(a,b)$.  Also note that $\abar$ and $\bbar$ are relatively prime. 
+
+Note that $ax+by=0$ iff $ax=-by$ iff $\abar d x = - \bbar d y$ iff $\abar x = -\bbar y$.
+
+Since $\gcd(\abar,\bbar)=1$, the previous lemma tells us that $\abar x = -\bbar y$ 
+iff there is some $k\in\Z$ such that
+$x=k\bbar,y=-k\abar$. So we have proven
+
+\begin{lemma}
+Let $a,b$ be non-zero integers. Let $d=\gcd(a,b)$ and let $\abar,\bbar$ be such that
+$a=d\abar, b=d\bbar$. Then the set of solutions to the
+homogeneous, linear Diophantine equation $ax+by=0$ is the set of $\angles{x,y}$ in the set
+$$\setof{\angles{t\bbar,-t\abar}}{t\in\Z}.$$
+\end{lemma}
+
+Notice that the solutions to $ax+by=0$ are the points on the linear subspace of $\R^2$ spanned
+by the vector $\angles{\bbar,-\abar}$ with integer coordinates.
+
+\begin{in_class_example}
+Find all solutions to the following homogeneous linear Diophantine equations:
+\begin{itemize}
+\item[(a)] $12x + 18y = 0$;
+\item[(b)] $3x + 5y = 0$.
+\end{itemize}
+\end{in_class_example}
+
+
+Now we go on to consider the general linear Diophantine equations $ax+by=c$.
+
+As above, let $d=\gcd(a,b)$.  Let $\abar$ and $\bbar$ be such that $a=d\abar$ and $b=d\bbar$.
+To repeat what we wrote above, notice that $m=\abar \bbar d = \lcm(a,b)$
+and $\abar$ and $\bbar$ are relatively prime. 
+
+Let $x_0$ and $y_0$ be such that $ax_0 + b y_0 = d$. We can find $x_0$ and $y_0$ using
+the Extended Euclidean algorithm.
+
+Now let $c\in \Z$. Notice that there is a solution to $ax+by=c$ iff $c$ can be written as a linear combination of $a$ and $b$
+iff $c\in(a,b)$ iff $c\in(d)$ iff $d\divides c$. 
+
+
+
+Suppose $d\divides c$ and let $c=d\cbar$. 
+
+
+Then
+$$ a (x_0 \cbar) +  b (y_0 \cbar)=  d \cbar = c.$$
+Thus $x= x_0 \cbar, y=y_0 \cbar $ is a \emph{particular} solution to the linear Diophantine equation $ax+by=c$.
+
+
+
+We want to understand the \emph{general} solution, i.e. the set of all pairs $x,y$ such that $ax+by=c$.
+
+
+Suppose that $\angles{x_1,y_1}$ is a second solution to this equation. Then notice that
+$\angles{x-x_1,y-y_1}$ is a solution to the homogeneous linear Diophantine equation. Conversely,
+if $\angles{x_2,y_2}$ is a solution to the homogeneous linear Diophantine equation and
+$\angles{x,y}$ is a solution to the equation $ax+by=c$, then
+$\angles{x+x_2, y+y_2}$ is another solution.
+
+Putting this all together we have proven this
 
 \begin{theorem}
-Let $a,b,c\in\Z$ with $a,b\not=0$. Then the linear diophantine equation $ax+by=c$ has a solution iff
-$d\divides c$, where $d=\gcd(a,b)$.
+Let $a,b$ be non-zero integers and let $c$ be an integer. Then the linear Diophantine equation
+$ax+by=c$ has a solution iff $d\divides c$, where $d=\gcd(a,b)$ in which case there are infinitely
+many solutions.
+
+Suppose that $d\divides c$ and let $\abar,\bbar, \cbar$ be such that $a=d\abar, b=d\bbar, c=d\cbar$.
+
+Let $x_0,y_0$ be such that $a x_0 + b y_0 = d$.
+
+Then the general solution to the linear Diophantine equation $ax+by=c$ is the set of all
+$\angles{x,y}$ in the set
+$$\setof{\angles{\cbar x_0 + t\bbar, \cbar y_0 - t\abar}}{t\in\Z}.$$
 \end{theorem}
 
+\begin{in_class_example}
+Find all solutions, if any, to the following linear Diophantine equations:
+\begin{itemize}
+\item[(a)] $12x + 18y = 20$;
+\item[(b)] $12x + 18y = 30$;
+\item[(b)] $3x + 5y = 7$.
+\end{itemize}
+\end{in_class_example}
+
+\begin{in_class_example}
+Let $a=100, b=35, d=\gcd(a,b)=5$.
 
 
+Are $x=-1$ and $y=3$ the only solutions to $x\cdot a + y\cdot b = d$?
+
+\end{in_class_example}
+
+\bigskip
+
+\textbf{Textbook Reading} Read section 2-3 \emph{The Linear Diophantine Equation} of 
+\textbf{Number Theory} by George E. Andrews.
+
+\bigskip
+
+\textbf{Textbook Exercises:} From section 2-3 of Andrews do:
+\begin{itemize}
+\item \textbf{1. a,b,c,d,e,f} If you don't need to use the Euclidean algorithm you don't have to. But if you
+do use the Euclidean algorithm, use the Extended Euclidean algorithm. Don't use back-substitution.
+\end{itemize}
 
 \bibliographystyle{amsalpha}
 
