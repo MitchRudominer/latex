@@ -508,15 +508,28 @@ as being a ``common multiple of $b$ and $a$.''
 \end{subproof}
 \item[(b)] $\lcm(a,b)=\av{a} \Iff b\divides a$.
 \begin{subproof}
-First consider the case $a\geq 0$.  If $b\divides a$ then $a$ is a multiple of $b$,
-so $a$ is a common multiple of $a$ and $b$, and $a$ divides every common multiple of
-$a$ and $b$ so $a=\lcm(a,b)$. Conversely if $a=\lcm(a,b)$ then in paticular $a$ is
-a multiple of $b$ so $b\divides a$. So if $a\geq 0$ we have 
-$b\divides a \Iff \av{a} = a=\lcm(a,b)$.
+First consider the case $a\geq 0$ so we can ignore the absolute value signs. 
 
-Now suppose $a<0$. Notice that $x$ is a multiple of $a$ iff $x$ is a multiple of $-a$.
-Thus $\lcm(a,b) = \lcm(-a,b)$. So we have
-$b\divides a \Iff b\divides (-a) \Iff \av{a} = -a = \lcm(-a,b) = \lcm(a,b)$.
+We will give two proofs of the fact that $\lcm(a,b) = a \Iff b\divides a$.
+
+For the first proof we use the $\nu$ function.
+
+\begin{align*}
+\lcm(a,b) = a &\Iff \prod_p p^{\max\left(\nu_p(a)\nu_p(b)\right)} = \prod_p p^{\nu_p(a)} \\
+              &\Iff \forall p \, \nu_p(a)\geq \nu_p(b) \\
+              &\Iff b\divides a
+\end{align*}
+
+
+For the second proof of the fact $\lcm(a,b) = a \Iff b\divides a$ we directly use
+divisibility.
+
+If $a=\lcm(a,b)$ then in particular $a$ is a multiple of $b$ so $b\divides a$. Conversely if
+$b\divides a$ then $a$ is a common multiple of $a$ and $b$ and $a$ divides every common
+multiple of $a$ and $b$ so $a=\lcm(a,b)$.
+ 
+Now suppose $a<0$ so $\av{a}=-a$. Notice $a$ and $-a$ have the same multiples. 
+So $\lcm(a,b) = \av{a} \Iff \lcm(\av{a},b) = \av{a} \Iff b\divides\av{a} \Iff b\divides a$.
 \end{subproof}
 
 \item[(c)] $\lcm(a,a)=\lcm(a,1)=\av{a}$.
@@ -525,21 +538,40 @@ The first equality is trivial becase a ``common multiple of $a$ and $a$'' is the
 thing as a multiple of $a$ which is the same thing as a ``common multiple of $a$ and 1'' 
 since every integer is a multiple of 1.
 
-For the second equality, first take the case that $a\geq 0$. Then clearly $a$ itself is
-the least non-negative multiple of $a$ so $\av{a} = a = \lcm(a,a)$.
+For the second equality, first take the case that $a\geq 0$ so we can ignore the absolute
+value signs. Then clearly $a$ itself is
+the least non-negative multiple of $a$ so $a = \lcm(a,a)$.
 
-Now take the case that $a$ is negative. Then $x$ is a multiple of $a$ iff $x$ is a multiple
-of $-a$, so $\lcm(a,a)=\lcm(-a,-a)=-a=\av{a}$.
+Now take the case that $a$ is negative. Then clearly $\av{a}$ is the least positive
+multiple of $a$ and so the least common multiple of $a$ and 1.
 \end{subproof}
 
 \item[(d)] $\lcm(ca,cb) = \av{c}\lcm(a,b)$.
 \begin{subproof}
-Let $m=\lcm(a,b)$. So $ca\divides cm$ and $cb\divides cm$ and $ca\divides (-cm)$ and $cb\divides (-cm)$ so $\av{c}m$ is a non-negative
-common multiple of $ca$ and $cb$. 
+First lets consider the case $c\geq 0$ so we can ignore the absolute value signs.
 
-Let $k$ be any common multiple of $ca$ and $cb$. We must show that $k$ is a multiple of $\av{c}m$.
-Write $k=cas=cbt$. Cancelling $c$ we get $as=bt$ is a common multiple of $a$ and $b$ and so a multiple of $m$: $as=bt=mr$.
-So $k=cmr$ so $cm\divides k$ and $-cm\divides k$ so $\av{c}m\divides k$.
+We give two proofs of the fact that $\lcm(ca,cb) = c\lcm(a,b)$.
+
+For the first proof we use the $\nu$ function.
+
+\begin{align*}
+\lcm(ca,cb)  &=  \prod_p p^{\max\left(\nu_p(ca),\nu_p(cb)\right)} \\
+             &=  \prod_p p^{\max\left(\nu_p(c)+\nu_p(a),\nu_p(c) + \nu_p(b)\right)} \\
+             &=  \prod_p p^{\nu_p(c) + \max(\nu_p(a),\nu_p(b))} \\
+             &=  \prod_p p^{\nu_p(c)} \cdot \prod_p p^{\max(\nu_p(a),\nu_p(b))}\\
+             &=  c \lcm(a,b) \\
+\end{align*}
+
+For the second proof of the fact that $\lcm(ca,cb) = c\lcm(a,b)$ we use straight divisibility.
+
+Let $m=\lcm(a,b)$. So $ca\divides cm$ and $cb\divides cm$ and so $cm$ is a common multiple of $ca$ and $cb$.
+
+Let $k$ be any common multiple of $ca$ and $cb$. So $k=cas=cbt$, for some integers $s,t$. 
+Cancelling $c$ we get $as=bt$ is a common multiple of $a$ and $b$ and so a multiple of $m$: $as=bt=mr$
+for some $r$. So $k=cmr$ so $cm\divides k$. We have shown that $m$ is a common multiple of $a$ and $b$ and that every common multiple of 
+$a$ and $b$ divides m, so $m=\lcm(a,b)$.
+
+Now suppose $c$ is negative. Then $\lcm(ca,cb) = \lcm(-ca,-cb) = -c \lcm(a,b) = \av{c} \lcm(a,b)$.
 \end{subproof}
 
 \end{enumerate}
@@ -550,38 +582,60 @@ So $k=cmr$ so $cm\divides k$ and $-cm\divides k$ so $\av{c}m\divides k$.
 \textbf{Solution to Exercise 1.21 from Shoup} Show that for all $a,b\in\Z$ we have:
 \begin{enumerate}
 \item[(a)] $\gcd(a,b) \cdot \lcm(a,b) = \av{ab}$.
-First we prove a 
+
+If $a$ or $b$ are zero then both sides of the equation are zero. So now assume that $a$ and $b$ are non-zero.
+
+First assume that $a$ and $b$ are positive so we can ignore the absolute value sign.
+
+We will give two proofs of the fact that $\gcd(a,b) \cdot \lcm(a,b) = ab$.
+
+For the first proof we use the $\nu$ function.
+
+\begin{align*}
+\gcd(a,c) \cdot \lcm(a,b)  &=  \prod_p p^{\min\left(\nu_p(a),\nu_p(b)\right)}\cdot \prod_p p^{\max\left(\nu_p(a),\nu_p(b)\right)} \\
+           &= \prod_p p^{\min\left(\nu_p(a),\nu_p(b)\right)+\max\left(\nu_p(a),\nu_p(b)\right)} \\
+           &= \prod_p p^{\nu_p(a) + \nu_p(b)} \\
+           &= ab \\
+\end{align*}
+
+
+For the second proof of the fact that $\gcd(a,b) \cdot \lcm(a,b) = ab$ when $a,b>0$ we will use straight divisibility.
+First we handle the special case that $a$ and $b$ are relatively prime.
 
 \textbf{Lemma} Suppose $a$ and $b$ are relatively prime and positive. Then $\lcm(a,b) = ab$.
 \begin{subproof}
 Clearly $ab$ is a common multiple of $a$ and $b$. To see that it is the least common multiple, let
-$k$ be any common multiple of $a$ and $b$. We must show that $ab\divides k$.
-Let $x$ and $y$ be such that $k=xa=yb$. Then $a\divides (yb)$ and $a$ is relatively prime to $b$, so we
-know that $a\divides y$. So write $y=za$. Then $k=zab$. So $ab\divides k$.
+$k$ be any common multiple of $a$ and $b$. So there are $s$ and $t$ such that $k=sa=tb$.
+Since $a\divides (sa)$, $a\divides (tb)$. Since $a$ is relatively prime to $b$, $a\divides t$. 
+So write $t=ar$. Then $k=arb$. So $ab\divides k$. We have shown that $ab$ divides every common multiple of 
+$a$ and $b$ so $ab=\lcm(a,b)$.
 \end{subproof}
 
-Now we turn to the proof of the exercise.
-\begin{subproof}
-First lets handle the case that $a$ and $b$ are not negative.
+Now we consider the general case where $a$ and $b$ are not necessarily relatively prime. We want to show that
+$\gcd(a,b) \cdot \lcm(a,b) = ab$ when $a,b>0$.
 
-Let $d=\gcd(a,b)$. If $d=0$ then $a=b=0$ so $\lcm(a,b)=0$ and $\av{ab}=0$ and the equation is true.
+Let $d=\gcd(a,b)$. Since $a,b>0$, $d>0$.
 
-So now assume $d\not=0$. 
 
-Since $d\divides a$ and $d\divides b$ let $\aprime,\bprime$ be such that
-$a=d\aprime$, $b=d\bprime$. By Exercise 1.10 from Shoup, $\aprime$ and $\bprime$ are relatively prime.
-Let $m=d\aprime\bprime = ab/d$. To prove the exercise we must show that $m=\lcm(a,b)$.
+Since $d\divides a$ and $d\divides b$ let $\abar, \bbar$ be such that
+$a=d\abar$, $b=d\bbar$. 
 
-By the Lemma we just proved $\lcm(\aprime,\bprime) = \aprime \bprime$.
+By Exercise 1.10 from Shoup, $\abar$ and $\bbar$ are relatively prime.
+Let $m=d\abar\bbar = ab/d$. We must show that $m=\lcm(a,b)$.
 
-By part (d) of the previous exercise $\lcm(d\aprime,d\bprime) = d\lcm(\aprime,\bprime)$.
-So $\lcm(a,b) = d\aprime\bprime=m$.
+By the Lemma we just proved $\lcm(\abar,\bbar) = \abar \bbar$.
+
+By part (d) of the previous exercise $\lcm(d\abar,d\bbar) = d\lcm(\abar,\bbar)$.
+So $\lcm(a,b) = d\abar\bbar=m$.
 
 If $a<0$ and $b\geq 0$ then $\lcm(a,b) = \lcm(-a,b) = \gcd(-a,b) (-ab) = \gcd(a,b) \av{ab}$.
 
 Similarly if $b<0$ and $a\geq 0$.
 
 If $a<0$ and $b<0$ then $\lcm(a,b) = \lcm(-a,-b) = \gcd(-a,-b) (-a\cdot -b) = \gcd(a,b) \av{ab}$.
+
+\item[(b)] This part follows immediately from part (a).
+\end{enumerate}
 
 \bigskip
 
@@ -600,8 +654,16 @@ $\gcd(\abar+\bbar,\abar\bbar) = 1$. Multiplying by $d$ and using a fact from an 
 $\gcd(d\abar+d\bbar,d\abar\bbar)=d$. So $\gcd(a+b,m)=d$ as was to be shown.
 \end{proof}
 
-\end{subproof}
-\end{enumerate}
+\bigskip
+
+\textbf{Solution to Exercise 1.28 from Shoup.} Show that for every positive integer $k$, there exists $k$
+consecutive composite integers. Thus, there are arbitrarily loarge gaps
+between rimes.
+
+\begin{proof}
+\end{proof}
+
+
 
 
 \end{document}
