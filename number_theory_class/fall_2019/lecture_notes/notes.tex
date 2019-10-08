@@ -1624,6 +1624,110 @@ Are $x=-1$ and $y=3$ the only solutions to $x\cdot a + y\cdot b = d$?
 do use the Euclidean algorithm, use the Extended Euclidean algorithm. Don't use back-substitution.
 \end{itemize}
 
+\newpage
+
+\section{The Congruence Equivalence Relation}
+
+\begin{definition}
+Let $R$ be a binary relation on a set $S$. $R$ is called an \textbf{equivalence relation} iff $R$ is
+\begin{enumerate}
+\item reflexive $\forall x\in S \, R(x,x)$.
+\item symmetric: $\forall x,y\in S\, R(x,y) \Iff R(y,x)$.
+\item transitive: $\forall x,y,z\in S \, \left(R(x,y) \AND R(y,z) \right) \Implies R(x,z)$.
+\end{enumerate}
+\end{definition}
+
+\begin{in_class_example}
+Which of the following relations are equivalence relations?
+\begin{enumerate}
+\item $S$ is the set of people and $R(x,y)$ iff $x$ and $y$ are (full) siblings.
+\item $S$ is the set of integers and $R(x,y)$ iff $x\leq y$.
+\item $S$ is the set of points in the plane and $R(x,y)$ iff the distance between $x$ and $y$ is less than 1.
+\item $S$ is the set of integers and $R(x,y)$ iff $x=\pm y$.
+\end{enumerate}
+\end{in_class_example}
+
+\begin{definition}
+Let $R$ be an equivalence relation on a set $S$. Let $a\in S$. Then $[a]_R=\setof{b\in S}{R(a,b)}$.
+$[a]_R$ is called the \emph{equivalence class} of $a$.
+\end{definition}
+
+\begin{in_class_example}
+Equivalence classes of the relation $R(x,y)$ iff $x=\pm y$.
+\end{in_class_example}
+
+\begin{in_class_example}
+Equivalence relations on a deck of playing cards.
+\end{in_class_example}
+
+\begin{definition}
+Let $S$ be a set. A \emph{partition} of $S$ is a collection $\cP$ of non-empty, disjoint, subsets of $S$ such that the
+union of all of sets in $\cP$ is equal to  $S$.
+\end{definition}
+
+\begin{lemma}
+Let $R$ be an equivalence relation on a set $S$. Then the set of equivalence classes of $R$ form a partition of $S$.
+\end{lemma}
+
+\begin{in_class_example}
+Example with the equivalence relations on a deck of playing cards.
+\end{in_class_example}
+
+\begin{definition}
+Let $R$ be an equivalence relation on a set $S$. Let $A\subset S$ be one of the equivalence classes. Then a \emph{representative} of $A$ is any member of $A$,
+i.e. any $a\in S$ such that $[a]_R=A$.
+\end{definition}
+
+\begin{definition}
+Let $R$ be an equivalence relation on a set $S$. Then a \emph{complete set of representatives} for the equivalence relation is
+a set $X\subset S$ such that for each equivalence class of $A$ of $R$ there is excactly one representative of $A$ in $X$.
+\end{definition}
+
+\begin{in_class_example}
+Example with the equivalence relations on a deck of playing cards.
+\end{in_class_example}
+
+\begin{definition}
+Let $n$ be a positive integer. Then $\equiv_n$ is the equivalence relation defined by $x\equiv_n y$ iff $n\divides (x-y)$.
+\end{definition}
+
+$\equiv_n$ is an equivalence relation on $\Z$.
+
+\bigskip
+
+Instead of $x\equiv_n y$ people usually write $x\equiv y \pmod{n}$.
+We say $x$ is \emph{congruent} to $y \pmod{n}$.
+
+\bigskip
+
+Let $n$ be a positive integer.  Let $a\in Z$. Then $[a]_n$ means the equivalence
+class of $a$ under the equivalence relation of congruence $\pmod n$. If $n$ is
+clear from context we write just $[a]$. 
+
+$$[a]_n = \setof{a + ny}{y\in\Z}.$$
+
+$[a]_n$ is called the \emph{residue class} of $a \pmod n$.
+
+$a$ is a \emph{representative} of the residue class.
+
+\bigskip
+
+\begin{definition}
+A complete set of representatives for the equivalence relation of congruence $\pmod n$ is known as a
+\emph{complete residue system} $\pmod n$.
+\end{definition}
+
+\begin{lemma}
+The equivalence relation of congurence $\pmod n$ has exactly $n$ equivalence classes and the set
+$\singleton{0,1,2,\cdots, n-1}$ is a complete residue system.
+\end{lemma}
+
+
+\textbf{Textbook Reading} Read Sections 2.1 and 2.2 of Shoup.
+
+\textbf{Textbook Exercises:} Do exercise 2.1, 2.2, 2.3, 2.5
+of \emph{Shoup}.
+
 \bibliographystyle{amsalpha}
 
 \bibliography{math}
