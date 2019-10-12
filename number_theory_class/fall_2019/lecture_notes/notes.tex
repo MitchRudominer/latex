@@ -1728,6 +1728,111 @@ $\singleton{0,1,2,\cdots, n-1}$ is a complete residue system.
 \textbf{Textbook Exercises:} Do exercise 2.1, 2.2, 2.3, 2.5
 of \emph{Shoup}.
 
+\newpage
+
+\section{The Ring $\Z/(n)$}
+
+\begin{definition}
+A \emph{commutative ring} is a 5-tuple $\left(S,+,\times,0,1,\right)$ such that:
+\begin{enumerate}
+\item $S$ is a non-empty set,
+\item $+$ and $\times$ are binary operations on $S$,
+\item $0,1\in S, 0\not=1$,
+\item $+$ is associative and commutative, $0$ is an additive identity,
+\item every $x\in S$ has an additive inverse named $-x$,
+\item $\times$ is associative and commutative, $1$ is a multiplicative identity,
+\item $\times$ distributes over $+$.
+\end{enumerate}
+\end{definition}
+
+We will often abuse notation and refer to $S$ as the ring instead of $\left(S,+,\times,0,1,\right)$.
+
+So far our only example of a commutative ring is $\Z$ (along with the usual $+$, $\times$, $0$ and $1$.) 
+
+\begin{definition}
+Let $\left(S,+,\times,0,1,\right)$ be a commutative ring. Then an \emph{ideal} of $S$ is a subset $I\subseteq S$ such that
+\begin{enumerate}
+\item $I\not=0$,
+\item $I$ is closed under addition: $\forall x,y\in I, \, x+y\in I$.
+\item $I$ is closed under scalar multiplicatoin: $\forall x\in I \, \forall y \in S, \, xy \in I$.
+\end{enumerate}
+\end{definition}
+
+So far our only examples of ideals are the principal ideals $(n) \subseteq \Z$.
+
+\begin{lemma}
+Let $I$ be an ideal of the ring $S$. Consider the binary relation on $S$ defined by $x\equiv_I y \Iff x - y \in I$.
+then $\equiv_I$ is an equivalence relation.
+\end{lemma}
+\begin{proof} \quad \\
+
+\textbf{reflexive:} For all $x\in S, x-x\in I$.
+
+\textbf{symmetric:} For all $x,y\in S, x-y = -(y-x)$.
+
+\textbf{transitive:} For all $x,y,z\in S, x-z=(x-y)+(y-z)$.
+\end{proof}
+
+\begin{lemma}
+Let $I$ be an ideal of the ring $S$. Let $a\in S$. Then
+$$[a]_I=\setof{a+x}{x\in I} = I+x.$$
+\end{lemma}
+\begin{proof}
+If $x\in I$ then $a+x\in [a]_I$ because $(a+x)-a \in I$.
+
+Conversely, suppose $b\in [a]_I$. Let $x=b-a$. Then $x\in I$ and $b=a+x$.
+\end{proof}
+
+
+\begin{lemma}
+Let $I$ be an ideal of the ring $S$. Let $a,\aprime,b,\bprime\in S$. Suppose that $a\equiv_I\aprime$ and $b\equiv_I\bprime$.
+Then
+\begin{enumerate}
+\item $a+b\equiv_I \aprime+\bprime$
+\item $-a\equiv_I -\aprime$
+\item $ab \equiv_I \aprime\bprime$
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+$(a+b)-(\aprime+\bprime)=(a-\aprime)+(b-\bprime) \in I$.
+
+$-a - (-\aprime) = \aprime-a \in I$.
+
+Suppose $\aprime = a + x$ and $\bprime = b + y$ with $x,y\in I$. Then
+$\aprime\bprime = ab +xb + ya + xy$ and $xb + ya + xy \in I$.
+\end{proof}
+
+\begin{definition}
+Let $I$ be an ideal of the ring $S$. Then $S/I$ (pronounced $S$-mod-$I$) is the set of equivalence classes under $\equiv_I$.
+$S/I=\setof{[a]_I}{a\in S}$.
+\end{definition}
+
+\begin{theorem}
+Let $I$ be an ideal of the ring $S$. Then $S/I$ is also a ring under the following operations:
+\item $[a]+[b] = [a+b]$.
+\item $[0]=I$ is the additive identity
+\item $[a][b] = [ab]$.
+\item $-[a] = [-a]$
+\item $[1]$ is the multiplicative identity.
+\end{theorem}
+\begin{proof}
+The operations are well-defined by the previous lemma. We need to see that the arithmetic properties defining a ring are true:
+
+$+$ is commutative: $[a+b]=[b+a]$.
+
+$+$ is associative: $[a+b] + [c] = [a+b+c] = [a] + [b+c]$.
+
+$\times$ is commutative: $[ab] = [ba]$.
+
+$\times$ is associative: $[ab][c] = [abc] = [a][bc]$.
+
+$\times$ distributes over $+$: $[a]\left([b] + [c] \right) =[a][b+c] = [a(b+c)] = [ab+ac] = [ab] + [ac] =[a][b] + [a][c]$.
+
+$[0]=I$ is the additive identity: $[a] + [0] = [a+0] = [a]$
+
+$[1]$ is the multiplicative identity: $[a][1]=[a\cdot 1] = [a]$.
+\end{proof}
+
 \bibliographystyle{amsalpha}
 
 \bibliography{math}
