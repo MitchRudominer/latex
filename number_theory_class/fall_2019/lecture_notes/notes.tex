@@ -1783,6 +1783,11 @@ If $x\in I$ then $a+x\in [a]_I$ because $(a+x)-a \in I$.
 Conversely, suppose $b\in [a]_I$. Let $x=b-a$. Then $x\in I$ and $b=a+x$.
 \end{proof}
 
+\begin{example}
+In the ring $\Z$ consider the ideal $I=(n)$. Let $r\in\Z, 0\leq r < n$. Then 
+$[r]_n = (n) + r = \setof{kn+r}{k\in\Z}$.
+\end{example}
+
 
 \begin{lemma}
 Let $I$ be an ideal of the ring $S$. Let $a,\aprime,b,\bprime\in S$. Suppose that $a\equiv_I\aprime$ and $b\equiv_I\bprime$.
@@ -1806,6 +1811,10 @@ $\aprime\bprime = ab +xb + ya + xy$ and $xb + ya + xy \in I$.
 Let $I$ be an ideal of the ring $S$. Then $S/I$ (pronounced $S$-mod-$I$) is the set of equivalence classes under $\equiv_I$.
 $S/I=\setof{[a]_I}{a\in S}$.
 \end{definition}
+
+\begin{example}
+$\Z/(6)$ a.k.a $\Z/6\Z$.
+\end{example}
 
 \begin{theorem}
 Let $I$ be an ideal of the ring $S$. Then $S/I$ is also a ring under the following operations:
@@ -1832,6 +1841,68 @@ $[0]=I$ is the additive identity: $[a] + [0] = [a+0] = [a]$
 
 $[1]$ is the multiplicative identity: $[a][1]=[a\cdot 1] = [a]$.
 \end{proof}
+
+\begin{example}
+$\Z/(6)$ is a ring.
+\end{example}
+
+
+\begin{definition}
+Let $\left(S,+,\times,0,1,\right)$ and $\left(\dot{S},\dotplus,\dottimes,\dot{0},\dot{1},\right)$ be two rings.
+An \emph{isomorphism} between the two rings is a function $\pi:S\map\dot{S}$ such that
+\begin{enumerate}
+\item $\pi$ is one-to-one and onto.
+\item $\pi(a+b) = \pi(a) \dotplus \pi(b)$ for all $a,b\in S$
+\item $\pi(a\times b) = \pi(a) \dottimes \pi(b)$ for all $a,b\in S$
+\item $\pi(0) = \dot{0}$
+\item $\pi(1) = \dot{1}$
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+Let $n>1$ be an integer. The $\Z_n = \singleton{0,1,2,\cdots, n-1}$.
+\end{definition}
+
+\begin{lemma}
+Let $\dotplus$ and $\dottimes$ be the binary operations on $\Z_n$ defined by
+$$a\dotplus b = a+b \bmod n$$
+and
+$$a\dottimes b = ab \bmod n.$$
+Then $\left(\Z_n,\dotplus,\dottimes,0,1\right)$ is a commutative ring. Furthermore
+let ${\pi:\Z/(n) \map \Z_n}$ be given by ${\pi([a]_n) = a\bmod n}$. Then $\pi$ is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+By exercise 2.3 of Shoup, $a\equiv b \pmod{n} \Iff a\bmod n = b \bmod n$. This means that
+$[a]_n = [b]_n \Iff \pi([a]_n) = \pi([b]_n)$.
+
+
+This tells us that
+$\pi$ is well-defined and one-to-one. Also since $\Z_n$ is a complete set of residues, $\pi$ is onto.
+
+
+We will show that $\pi$ is an isomorphism and that will also show that $\Z_n$ is a ring since
+it is isomorphic to the ring $\Z/(n)$.
+
+
+Let $a,b\in Z$. Let $a=q_1n + r_1$ and $b=q_2n+r_2$ with $r_1 = a\bmod n$ and $r_2=b\bmod n$.
+
+So $\pi([a]_n) = r_1$ and $\pi([b]_n) = r_2$. Also $a\equiv r_1 \bmod n$ and $b\equiv r_2 \bmod n$
+
+\bigskip
+
+$\pi([a]_n+[b]_n) = \pi([r_1]_n + [r_2]_n) = (r_1+r_2) \bmod n = \pi([a]_n) \dotplus \pi([b]_n)$.
+
+\bigskip
+
+$\pi([a]_n [b]_n) = \pi([r_1]_n  [r_2]_n) = (r_1 r_2) \bmod n = \pi([a]_n) \dottimes \pi([b]_n)$.
+
+\bigskip
+
+$\pi([0]_n) = 0$ and $\pi([1]_n)=1$.
+\end{proof}
+
+\textbf{Textbook Exercises}: Do exercise  2.4, 2.6, 2.7, 2.8 of \emph{Shoup}.
 
 \bibliographystyle{amsalpha}
 
