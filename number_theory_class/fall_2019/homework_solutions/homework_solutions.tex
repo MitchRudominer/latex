@@ -984,5 +984,98 @@ So a general solution to the original problem is given by
 
 $$x=156+8t, y=208+11t.$$
 
+\bigskip
+
+\textbf{Solution to Shoup Exercise 2.1} Consider the relations $=$, $\leq$, and $<$ on the set $\R$.
+Which of these are equivalence relations? Explain your answers.
+
+\bigskip
+
+$=$ is an equivalence relation because it is reflexive ($x=x$), symmetric ($x=y\Implies y=x$)
+and transitive ($x=y\And y=z \Implies x=z$.)
+
+\bigskip
+
+$\leq$ is not an equivalence relation because it is not symmetric: $1\leq 2$ but $2\not\leq 1$.
+
+\bigskip
+
+$<$ is not an equivalence relation because it is not symmetric: $1<2$ but $2\not<1$.
+
+\bigskip
+
+\textbf{Solution to Shoup Exercise 2.2} Let $S \defeq (\R \times \R) \setminus \singleton{(0,0)}$. For $(x,y), (\xprime,\yprime)\in S$,
+let us say $(x,y)\sim(\xprime,\yprime)$ if there exists a real number $\lambda>0$ such that
+$(x,y) = (\lambda x, \lambda y)$. Show that $\sim$ is an equivalence relation; moreover, show that each equivalence class contains
+a unique representative that lies on the unit circle.
+
+\begin{proof}
+$\sim$ is reflexive: Let $\lambda=1$.
+
+\bigskip
+
+$\sim$ is symmetric: $(x,y) = (\lambda \xprime, \lambda \yprime) \IImplies (\xprime,\yprime) = \frac{1}{\lambda}(x,y)$.
+
+\bigskip
+
+$\sim$ is transitive: $(x,y) = (\lambda \xprime, \lambda \yprime)\And(\xprime,\yprime) = (\mu x^{\prime\prime}, \mu y^{\prime\prime})\IImplies
+(x,y) = \lambda\mu(x^{\prime\prime}, y^{\prime\prime})$.
+
+\bigskip
+
+This equivalence relation may be described in words as: Two points are equivalent if they lie on the same ray with base point at the origin.
+This means that each equivalence class is the set of points lying on such a ray.
+Since each such ray intersects the unit circle in exactly one point, we have that each equivalence class contains a unique representative
+that lies on the unit circle.
+
+Specifically, let $(x,y)\in S$. Let $\lambda=\frac{1}{\sqrt{x^2+y^2}}$. Then $(x,y)\sim(\lambda x, \lambda y)$ and $(\lambda x, \lambda y)$ lies
+on the unit circle, and this is the only point on the unit circle that is on the same ray as $(x,y)$.
+\end{proof}
+
+\bigskip
+
+\textbf{Solution to Shoup Exercise 2.3} Let $a,b,n\in\Z$ with $n>0$. Show that $a\equiv b \pmod n$ if and only if
+$(a \bmod n) = (b \bmod n)$
+\begin{proof}
+Let $a=q_1 n + r_1$ and $b=q_2n + r_2$ with $a\bmod n = r_1$ and $b\bmod n = r_2$.
+Then $a-b = n(q_1 - q_2) + (r_1 - r_2)$. Since $0\leq r_1,r_2 < n$, $n\ndivides (r_1 - r_2)$
+unless $r_1 = r_2$. But $n\divides n(q_1-q_2)$. So $n\divides(a-b) \Iff r_1 = r_2$, i.e.
+$a\equiv b \pmod n$ if and only if
+$(a \bmod n) = (b \bmod n)$.
+\end{proof}
+
+\bigskip
+
+\textbf{Solution to Shoup Exercise 2.4} Let $a,b,n\in\Z$ with $n>0$ and $a\equiv b \pmod n$. Also, let
+$c_0,c_1,\cdots,c_k \in \Z$. Show that
+$$c_0+c_1a  \cdots + c_ka^k \equiv c_0 +c_1 b + \cdots + c_k b^k \pmod n.$$
+
+\begin{proof}
+Another way of phrasing this exercise is that if $a\equiv b \pmod n$ and $p(x)$ is any polynomial with
+integer coefficients, then $p(a) \equiv p(b) \pmod n$. Since a polynomial with integer coefficients
+is built up by repeated applications of integer multiplication and addition, this fact follows by repeated application
+of Theorem 2.3 from Shoup.
+
+
+Formally we prove this induction on $k$. 
+Assume the statement is true for all polynomials of degree $k$ and we will show it is true for 
+polynomials of degree $k+1$.
+Let $c_0,c_1,\cdots,c_k,c_{k+1} \in \Z$. We must show that 
+$$c_0+c_1a  \cdots + c_ka^k + c_{k+1}a^{k+1} \equiv c_0 +c_1 b + \cdots + c_k b^k + c_{k+1}b^{k+1} \pmod n.$$
+By induction we know that
+$$c_0+c_1a \cdots + c_ka^k \equiv c_0 +c_1 b + \cdots + c_k b^k \pmod n.$$
+So by Theorem 2.3 from Shhoup it suffices to see that
+$$c_{k+1}a^{k+1} \equiv c_{k+1}b^{k+1} \pmod n.$$
+By the same theorem, it suffices to see that 
+$$a^{k+1} \equiv b^{k+1} \pmod n.$$
+But again by the induction hypothesis we have $a^k \equiv b^k \pmod n$. (Notice that $a^k$ and $b^k$ are also polynomials of degree $k$
+so we may apply our induction hypothesis.)
+
+Since we also have $a \equiv b \pmod n$
+we can apply the same theorem again and multiply these two congruences to yield
+$a^k\cdot a \equiv b^k \cdot b \pmod n$ or $a^{k+1} \equiv b^{k+1} \pmod n.$
+\end{proof}
+
+
 \end{document}
 
