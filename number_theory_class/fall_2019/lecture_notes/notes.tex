@@ -1790,6 +1790,7 @@ $[r]_n = (n) + r = \setof{kn+r}{k\in\Z}$.
 
 
 \begin{lemma}
+\label{RingOperationsCompatibleWithIdeals}
 Let $I$ be an ideal of the ring $S$. Let $a,\aprime,b,\bprime\in S$. Suppose that $a\equiv_I\aprime$ and $b\equiv_I\bprime$.
 Then
 \begin{enumerate}
@@ -1817,6 +1818,7 @@ $\Z/(6)$ a.k.a $\Z/6\Z$.
 \end{example}
 
 \begin{theorem}
+\label{RingModIdealIsRing}
 Let $I$ be an ideal of the ring $S$. Then $S/I$ is also a ring under the following operations:
 \item $[a]+[b] = [a+b]$.
 \item $[0]=I$ is the additive identity
@@ -1903,6 +1905,146 @@ $\pi([0]_n) = 0$ and $\pi([1]_n)=1$.
 \end{proof}
 
 \textbf{Textbook Exercises}: Do exercise  2.4, 2.6, 2.7, 2.8 of \emph{Shoup}.
+
+\newpage
+
+\section{Solving Linear Congruences}
+
+Before getting into Linear Congruences, let's briefly revisit the material from the previous section.
+In the previous section we were discussing rings and ideals in the abstract. Here we revisit this
+material in the more concrete setting of the integers.
+
+\begin{theorem}
+\label{ArithmeticCompatibleWithCongruence}
+Let $a,b,n\in\Z$ with $n>1$. If $a\equiv\aprime \pmod n$ and $b\equiv\bprime \pmod n$ then
+\begin{enumerate}
+\item $a+b\equiv \aprime + \bprime \pmod n$
+\item $ab \equiv \aprime\bprime \pmod n$
+\item $-a \equiv -\aprime \pmod n$.
+\end{enumerate}
+\end{theorem}
+
+\begin{note}
+This is Theorem 2.3 from \emph{Shoup} and Theorem 4-2 from \emph{Andrews.}
+
+This theorem says the same thing as Lemma \ref{RingOperationsCompatibleWithIdeals} from the previous section,
+except that lemma was stated more abstractly in terms of ideals and rings. Even though we already proved
+that lemma, we give a direct proof of the theorem here.
+\end{note}
+
+\begin{proof}
+Write $a=\aprime + nx$ and $b=\bprime + ny$. Then
+\begin{enumerate}
+\item $a+b = \aprime + \bprime + n(x+y)$
+\item $ab = \aprime\bprime + n(\aprime y + \bprime x + nxy)$
+\item $-a = -\aprime + n(-x)$
+\end{enumerate}
+\end{proof}
+
+One consequence of this theorem is the following 
+
+\begin{theorem}
+Let $n>1$ be an integer. Let $\Z/(n)$ be the set of $n$ residue classes $\bmod n$,
+in other words the set  $\singleton{[0]_n,[1]_n,\cdots,[n-1]_n}$ of equivalence classes
+under the equivalence relation $\equiv \bmod n$. Then $\Z/(n)$ is a ring under the operations
+\begin{itemize}
+\item $[a] + [b] \defeq [a+b]$
+\item $[a][b] \defeq [ab]$
+\item $-[a] \defeq [-a]$.
+\end{itemize}
+\end{theorem}
+\begin{proof}
+This is a special case of Theorem \ref{RingModIdealIsRing} from the previous section.
+\end{proof}
+
+Now we turn to the real topic of this section, solving linear congruences.
+
+\begin{example}
+Find all integers $x$ such that $36x \equiv 48 \pmod{15}$.
+\end{example}
+
+A \textbf{linear congruence} is an expression of the form
+$$ax\equiv b \pmod n$$
+where $a,b,n\in \Z$ and $n>1$. The goal is to find all integers $x$ that
+make the congruence expression true.
+
+\bigskip
+
+By Theorem \ref{ArithmeticCompatibleWithCongruence}, we can replace $a$ and $b$ with
+the unique elements of $\Z_p$ that they are congruent to, namely $a\bmod n$ and $b\bmod n$.
+
+\begin{example}
+So the previous example may be reduced to:
+Find all integers $x$ such that $6x \equiv 3 \pmod{15}$.
+\end{example}
+
+By Theorem \ref{ArithmeticCompatibleWithCongruence} again, if $x$ is any solution 
+the linear congruence $ax\equiv b \pmod n$, then so is $x+kn$ for all $k\in\Z$.
+All of those solutions are congruent. So the interesting question is to find all \emph{incongruent} solutions, or
+equivalently all solutions in $\Z_n$.
+
+\begin{example}
+So the previous example may be reduced to:
+Find all integers $x$ with $0\leq x \leq 14$ such that $6x \equiv 3 \pmod{15}$.
+\end{example}
+
+\begin{theorem}
+Let $a,b,n\in \Z$ with $n>1$. Let $d=\gcd(a,n)$. Then
+\begin{enumerate}
+\item The linear congruence $ax\equiv b \pmod n$ has a solution if and only if $d\divides n$.
+\item If $d\divides n$ then there are $d$ incongruent solutions. Equivalently there are
+$d$ solutions $x\in \Z_n$, i.e. such that $0\leq x < n$.
+\item Let $\abar = a/d$, $\bbar=b/d$ and $\nbar = n/d$. Then there is a unique solution 
+$x_0\in Z_{\nbar}$ to the linear
+congruence $\abar x\equiv  \bbar \pmod \nbar$, and $x_0$ is also a solution to the original
+congruence $ax\equiv b \pmod n$.
+\item The other solutions to the original congruence besides $x_0$ are $x_0 + \nbar, x_0 + 2\nbar, \cdots x_0 + (d-1)\nbar$.
+\end{enumerate}
+\end{theorem}
+
+\begin{example}
+For the congruence $6x \equiv 3 \pmod{15}$, we have $d=\gcd(6, 15) = 3$. $3\divides 3$ so there
+are solutions. There are 3 solutions in $\Z_{15}$.
+
+Dividing by $d=3$ gives us $\abar=2$, $\bbar= 1$, $\nbar= 5$ and so we get
+the linear congruence $2x \equiv 1 \pmod{5}$. We see that $x_0=3$ is the unique
+solution. The other two solutions to the original congruence are $x=8,13$.
+\end{example}
+
+\begin{proof}
+\begin{enumerate}
+\item $ax\equiv b \pmod n$ has a solution if and only if there exists $x,y$ such that
+$ax - b = ny$ iff there is a solution to the linear Diophantine equation $ax - ny = b$,
+iff $d= \gcd(a,n) \divides b$. So now suppose $d\divides b$ and let $\abar,\bbar,\nbar$
+be as in the statement of the theorem.
+\item Let $x_0$ be a solution. $x_1$ is another solution iff $a(x_1 - x_0) \equiv 0 \pmod n$.
+In other words, $x_1 = x_0 + z$ where $az \equiv 0 \pmod n$.
+
+$n\divides az$ iff $\nbar\divides \abar z$ iff $\nbar\divides z$ (since $\nbar$ and $\abar$ are relatively prime). 
+So $z$ is a multiple of $\nbar$ and there are $d$ multiples of $\nbar$ between $0$ and $n$, namely,
+$z=0,\nbar,2\nbar,\cdots (d-1)\nbar$.
+
+\item There is a unqiue solution in $\Z_{\nbar}$ to $\abar x \equiv \bbar \pmod \nbar$ by parts 1 and 2
+since $\gcd(\abar,\nbar) = 1$ and $1\divides \bbar$. Let $x_0$ be that unique solution.
+Since $\abar x_0 -\bbar = k\nbar$, multiplying by $d$ we get $ax_0 - b = kn$ and so
+$ax_0 \equiv b \pmod n$.
+
+\item We already proved part (4) in the step (2).
+\end{enumerate}
+\end{proof}
+
+\textbf{Textbook Reading:} Section 2.3 of \emph{Shoup}, \emph{Solving linear congruences}.
+
+\bigskip
+
+\textbf{Textbook Reading: } Section 4-2 of \emph{Andrews}, \emph{Residue Systems}.
+\textbf{Textbook Exercises}: Do exercises 1 and 2 on page 55 of \emph{Andrews}.
+
+\bigskip
+
+\textbf{Textbook Reading: } Section 5-1 of \emph{Andrews}, \emph{Linear Congruences}.
+\textbf{Textbook Exercises}: Do exercises 1,2 and 3 on page 61 of \emph{Andrews}.
+
 
 \bibliographystyle{amsalpha}
 
