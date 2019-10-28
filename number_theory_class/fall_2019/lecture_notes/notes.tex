@@ -2088,6 +2088,150 @@ But so is $\singleton{1,13,27,39}$.
 \textbf{Textbook Reading: } Section 5-1 of \emph{Andrews}, \emph{Linear Congruences}.
 \textbf{Textbook Exercises}: Do exercises 1,2 and 3 on page 61 of \emph{Andrews}.
 
+\newpage
+
+\section{The Chinese Remainder Theorem}
+
+\begin{definition}
+If $A$ and $B$ are sets, then their \emph{cross-product} or \emph{cartesian prodct}
+is the set of all ordered pairs whose first element comes from $A$ and whose second
+element comes form $B$.
+$$A\times B = \setof{(a,b)}_{a\in A \AND b\inB}.$$
+\end{definition}
+
+\begin{example}
+If $A=\Z\mod 4$ and $B=\Z\mod 9$ then $A\times B$ contains, for example, the following:
+$(0,0), (1,0), (2,0), (3, 0), (0, 1), (1,1), (2,1), \cdots (0,9), (1,8), (2,8), (3,8)$.
+\end{example}
+
+\begin{fact}
+If $R_1$ and $R_2$ are commutative rings then $R_1\times R_2$ is a commutative ring
+under the operations of componentwise addition and multiplication. The
+zero element (i.e. additive identity) is $(0_1,0_2)$ where $0_1$ is the zero 
+element of $R_1$ and $0_2$ is the zero element of $R_2$. The one element (i.e.
+multiplicative identity) is $(1_1,1_2)$ where $1_1$ is the one 
+element of $R_1$ and $1_2$ is the one element of $R_2$.
+\end{fact}
+
+\begin{example}
+$\Z/(4) \times \Z/(9)$ is a ring. In this ring we have, for example, the following
+addition and multiplication: $(2,3) \dotplus (5,4) = (3, 7)$.
+$(2,3) \dottimes (5,4) = (2, 3)$.
+\end{example}
+
+A major theme we are now going to turn to in this course is the structure of
+the rings $\Z/(n)$ and of the corresponding groups of units $(\Z/(n))^*$.
+
+We will analyze the $\Z/(n)$ by dividing $n$ into three types:
+\begin{enumerate}
+\item[type 1.] First we analyze $\Z/(p)$ for $p$ a prime.
+\item[typ 2.] Then we analyze $\Z/(p^k)$ for $p$ a prime.
+\item[type 3.] Finally we look at $\Z/(n)$ for $n$ an arbitrary integer.
+\end{enumerate}
+
+The Chinese Remainder Theorem will help us with type 3. It will tell us that
+a ring of type 3 is just a Cartesian product of rings of type 2. So once we 
+understand the $\Z/(p^k)$ we will understand all $\Z/(n)$.
+
+There is a concrete and an abstract way to look at the Chinese Remainder Theorem.
+The abstract way to look at it is that we will show the following:
+
+\bigskip
+
+If $\gcd(n,m)=1$ then $\Z/(nm)\isomorphic \Z/(n) \times \Z/(m)$.
+
+\bigskip
+
+For example, $36=2^4\cdot 3^2$. So $n=36$ is of type 3. It is of type
+$n=p^2q^2$, where $p,q$ are primes.
+
+The Chinese Remainder Theorem will tell us that
+
+$\Z/(36) \isomorphic \Z/(4) \times \Z/(9)$.
+
+\bigskip
+
+The concrete way of viewing the Chinese Remainder Theorem is:
+
+\bigskip
+
+Suppose $\gcd(n,m) = 1$. Let $a,b\in\Z$. Then there is an $x\in \Z$ such that
+
+\begin{align*}
+x &\equiv a \pmod n\\
+x &\equiv b \pmod m
+\end{align*}
+
+and $x$ is unique modulo $nm$.
+
+\bigskip
+
+For example, there is a unique $x$ modulo 36 such that
+
+\begin{align*}
+x &\equiv 3 \pmod 4 \\
+x &\equiv 5 \pmod 9
+\end{align*}
+
+The solution is $x=23$.
+
+\bigskip
+
+Why are the two ways of looking at the Chinese Remainder Theorem related? Consider
+the map $\pi:\Z/(36) \map \Z/(4)\times\Z/(9)$ given by $\pi(x) = \left(x\bmod 4, x\bmod 9 \right)$.
+
+For example $\pi(10) = (1,2)$, $\pi(11) = (2,3)$, $\pi(12) = (3, 0)$. The concrete version of the
+Chinese Remainder Theorem guarantees that this map is onto. For example if we want to see that
+$(3,5)$ is in the range of $\pi$, the example above tells us that $\pi(23) = (3,5)$.
+
+\bigskip
+
+The examples we have been looking at above involve two simultaneous linear congruencies.
+For the version of the Chinese Remainder Theorem we wish to state we will allow any finite
+number of simultaneous linear congruences.
+
+\begin{definition}
+Let $n_1,n_2,\cdots,n_K\in\Z$. We say that the $n_i$ are \emph{pairwise relatively prime}
+iff whenever $1\leq i < j \leq K$, $\gcd(n_i,n_j) = 1$.
+\end{definition}
+
+\begin{theorem}[Chinese Remainder Theorem] Let $n_1,n_2,\cdots,n_K$ be integers greater
+than 1. Let $a_1,a_2,\cdots,a_K$ be any integers. Then there is a solution to the
+system of simultaneous linear congruences
+
+\begin{align*}
+x &\equiv a_1 \pmod{n_1} \\
+x &\equiv a_2 \pmod{n_2} \\
+  &\vdots \\
+x &\equiv a_K \pmod{n_K}.
+\end{align*}
+
+Furthermore the solution is unique module $n_1 n_2 \cdots n_K$.
+
+\end{theorem}
+
+To prove this we start with a special case of it.
+
+\begin{lemma} Let $n_1,n_2,\cdots,n_K$ be integers greater
+than 1.Then there is a solution to the
+system of simultaneous linear congruences
+
+\begin{align*}
+x &\equiv 1 \pmod{n_1} \\
+x &\equiv 0 \pmod{n_2} \\
+  &\vdots \\
+x &\equiv 0 \pmod{n_K}
+\end{align*}
+
+\end{lemma}
+\begin{proof}
+Let $m = n_2 n_3 \cdots n_k$. Since $n_1$ is relatively prime to $n_2,n_3,\cdots, n_K$,
+$n_1$ is relatively prime to $m$. Thus there are integers $r,s$ such that
+$$r n_1 + s m = 1.$$
+Let $x=sm$. Then $n_2\divides x, n_3\divides x, \cdots x_K \divides x$ and 
+$x\equiv 1 \pmod{n_1}$. So $x$ solves the system of equations.
+\end{proof}
+
 
 \bibliographystyle{amsalpha}
 
