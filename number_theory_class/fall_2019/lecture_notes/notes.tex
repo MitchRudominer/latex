@@ -2096,12 +2096,12 @@ But so is $\singleton{1,13,27,39}$.
 If $A$ and $B$ are sets, then their \emph{cross-product} or \emph{cartesian prodct}
 is the set of all ordered pairs whose first element comes from $A$ and whose second
 element comes form $B$.
-$$A\times B = \setof{(a,b)}_{a\in A \AND b\inB}.$$
+$$A\times B = \setof{(a,b)}{a\in A \And b\in B}.$$
 \end{definition}
 
 \begin{example}
-If $A=\Z\mod 4$ and $B=\Z\mod 9$ then $A\times B$ contains, for example, the following:
-$(0,0), (1,0), (2,0), (3, 0), (0, 1), (1,1), (2,1), \cdots (0,9), (1,8), (2,8), (3,8)$.
+If $A=\Z_9$ and $B=\Z_4$ then $A\times B$ contains 36 elements:
+$(0,0), (0,1), (0,2), (0,3), (1,0), (1,1), (1,2), (1,3), \cdots , (8,0), (8,1), (8,2), (8,3)$.
 \end{example}
 
 \begin{fact}
@@ -2114,19 +2114,21 @@ element of $R_1$ and $1_2$ is the one element of $R_2$.
 \end{fact}
 
 \begin{example}
-$\Z/(4) \times \Z/(9)$ is a ring. In this ring we have, for example, the following
-addition and multiplication: $(2,3) \dotplus (5,4) = (3, 7)$.
-$(2,3) \dottimes (5,4) = (2, 3)$.
+$\Z_9 \times \Z_4$ is a ring. In this ring we have, for example, the following
+addition and multiplication: $(7,2) \dotplus (4,3) = (2,1)$.
+$(4,3) \dottimes (5,3) = (2,1)$.
 \end{example}
 
 A major theme we are now going to turn to in this course is the structure of
-the rings $\Z/(n)$ and of the corresponding groups of units $(\Z/(n))^*$.
+the rings $\Z_n$ and of the corresponding groups of units $\Z_n^*$.
 
-We will analyze the $\Z/(n)$ by dividing $n$ into three types:
+Recall that $\Z_n\isomorphic \Z/(n)$ so we will often use the two notations interchangably.
+
+When we analyze the $\Z_n$ or $\Z/(n)$ we consider 3 different types of $n$:
 \begin{enumerate}
-\item[type 1.] First we analyze $\Z/(p)$ for $p$ a prime.
-\item[typ 2.] Then we analyze $\Z/(p^k)$ for $p$ a prime.
-\item[type 3.] Finally we look at $\Z/(n)$ for $n$ an arbitrary integer.
+\item[type 1.] $\Z/(p)$ for $p$ a prime.
+\item[type 2.]  $\Z/(p^k)$ for $p$ a prime.
+\item[type 3.] $\Z/(n)$ for $n$ divisible by two different primes.
 \end{enumerate}
 
 The Chinese Remainder Theorem will help us with type 3. It will tell us that
@@ -2142,12 +2144,12 @@ If $\gcd(n,m)=1$ then $\Z/(nm)\isomorphic \Z/(n) \times \Z/(m)$.
 
 \bigskip
 
-For example, $36=2^4\cdot 3^2$. So $n=36$ is of type 3. It is of type
+For example, $36=3^2\cdot 2^2$. So $n=36$ is of type 3. It is of type
 $n=p^2q^2$, where $p,q$ are primes.
 
 The Chinese Remainder Theorem will tell us that
 
-$\Z/(36) \isomorphic \Z/(4) \times \Z/(9)$.
+$\Z/(36) \isomorphic \Z/(9) \times \Z/(4)$.
 
 \bigskip
 
@@ -2169,8 +2171,8 @@ and $x$ is unique modulo $nm$.
 For example, there is a unique $x$ modulo 36 such that
 
 \begin{align*}
+x &\equiv 5 \pmod 9 \\
 x &\equiv 3 \pmod 4 \\
-x &\equiv 5 \pmod 9
 \end{align*}
 
 The solution is $x=23$.
@@ -2178,17 +2180,16 @@ The solution is $x=23$.
 \bigskip
 
 Why are the two ways of looking at the Chinese Remainder Theorem related? Consider
-the map $\pi:\Z/(36) \map \Z/(4)\times\Z/(9)$ given by $\pi(x) = \left(x\bmod 4, x\bmod 9 \right)$.
+the map $\pi:\Z/(36) \map \Z/(9)\times\Z/(4)$ given by $\pi(x) = \left(x\bmod 9, x\bmod 4 \right)$.
 
 For example $\pi(10) = (1,2)$, $\pi(11) = (2,3)$, $\pi(12) = (3, 0)$. The concrete version of the
 Chinese Remainder Theorem guarantees that this map is onto. For example if we want to see that
-$(3,5)$ is in the range of $\pi$, the example above tells us that $\pi(23) = (3,5)$.
+$(5,3)$ is in the range of $\pi$, the example above tells us that $\pi(23) = (5,3)$.
 
 \bigskip
 
-The examples we have been looking at above involve two simultaneous linear congruencies.
-For the version of the Chinese Remainder Theorem we wish to state we will allow any finite
-number of simultaneous linear congruences.
+So far we have been looking at two simultaneous linear congruences.
+The Chinese Remainder Theorem allows any finite number of simultaneous linear congruences.
 
 \begin{definition}
 Let $n_1,n_2,\cdots,n_K\in\Z$. We say that the $n_i$ are \emph{pairwise relatively prime}
@@ -2196,7 +2197,7 @@ iff whenever $1\leq i < j \leq K$, $\gcd(n_i,n_j) = 1$.
 \end{definition}
 
 \begin{theorem}[Chinese Remainder Theorem] Let $n_1,n_2,\cdots,n_K$ be integers greater
-than 1. Let $a_1,a_2,\cdots,a_K$ be any integers. Then there is a solution to the
+than 1 that are pairwise relatively prime. Let $a_1,a_2,\cdots,a_K$ be any integers. Then there is a solution to the
 system of simultaneous linear congruences
 
 \begin{align*}
@@ -2206,14 +2207,14 @@ x &\equiv a_2 \pmod{n_2} \\
 x &\equiv a_K \pmod{n_K}.
 \end{align*}
 
-Furthermore the solution is unique module $n_1 n_2 \cdots n_K$.
+Furthermore the solution is unique module $n=n_1 n_2 \cdots n_K$.
 
 \end{theorem}
 
 To prove this we start with a special case of it.
 
 \begin{lemma} Let $n_1,n_2,\cdots,n_K$ be integers greater
-than 1.Then there is a solution to the
+than 1 that are pairwise relatively prime. Then there is a solution to the
 system of simultaneous linear congruences
 
 \begin{align*}
@@ -2225,13 +2226,135 @@ x &\equiv 0 \pmod{n_K}
 
 \end{lemma}
 \begin{proof}
-Let $m = n_2 n_3 \cdots n_k$. Since $n_1$ is relatively prime to $n_2,n_3,\cdots, n_K$,
+Let $m = n_2 n_3 \cdots n_k$. Since $n_1$ is relatively prime to $n_2, n_3,\cdots, n_K$,
 $n_1$ is relatively prime to $m$. Thus there are integers $r,s$ such that
 $$r n_1 + s m = 1.$$
-Let $x=sm$. Then $n_2\divides x, n_3\divides x, \cdots x_K \divides x$ and 
-$x\equiv 1 \pmod{n_1}$. So $x$ solves the system of equations.
+Let $x=sm$. Then $n_2\divides x, n_3\divides x, \cdots n_K \divides x$ and 
+$x\equiv 1 \pmod{n_1}$. So $x$ solves the system of linear congruences in the lemma.
 \end{proof}
 
+\begin{proof} (Of the Chinese Remainder Theorem.)
+By the lemma, let $x_1$ be such that
+
+\begin{align*}
+x_1 &\equiv 1 \pmod{n_1} \\
+x_1 &\equiv 0 \pmod{n_2} \\
+  &\vdots \\
+x_1 &\equiv 0 \pmod{n_K}
+\end{align*}
+
+Similarly let $x_2$ be such that 
+
+\begin{align*}
+x_2 &\equiv 0 \pmod{n_1} \\
+x_2 &\equiv 1 \pmod{n_2} \\
+  &\vdots \\
+x_2 &\equiv 0 \pmod{n_K}
+\end{align*}
+
+In general, for $1\leq i \leq K$, let $x_i\in\Z$ be such that
+$$x_i\equiv 1 \pmod {n_i}$$
+and
+$$x_i\equiv 0 \pmod {n_j}$$
+for $j\not=i$.
+
+Then let $x=x_1 a_1 + x_2 a_2 + \cdots + x_K a_K$.
+
+Then for  $1\leq i \leq K$, $x\pmod{n_i} = a_i$. So $x$
+is a solution to the system of linear congruences.
+
+To see that the solution is unique mod $n$. suppose that $\xprime$ is also a solution.
+Then $x\equiv \xprime \pmod {n_1}, x\equiv \xprime \pmod {n_2}, \cdots, x\equiv \xprime \pmod {n_K}$,
+so $x \equiv \xprime \pmod n$.
+
+\end{proof}
+
+\begin{theorem}[The Chinese Remainder Map Theorem]
+Let $n_1,n_2,\cdots,n_K$ be integers greater
+than 1 that are pairwise relatively prime. Let $n=n_1 n_2 \cdots n_K$. Then
+$$\Z_n \isomorphic \Z_{n_1} \times \Z_{n_2} \times \cdots \times \Z_{n_K}.$$
+
+The map $\pi:\Z_n \map \Z_{n_1} \times \Z_{n_2} \times \cdots \times \Z_{n_K}$ given by
+$$\pi(x) = \left(x \bmod n_1, x\bmod n_2, \cdots , x\bmod n_K\right)$$
+is an isomorphism.
+\end{theorem}
+\begin{proof}
+The Chinese Remainder Theorem tells us exactly that $\pi$ is a bijection. So we need to
+see that it preserves addition, multiplication, zero, and one.
+
+\bigskip
+
+$\pi(0) = (0,0,\cdots,0)$ and $\pi(1) = (1,1,\cdots, 1)$, so $\pi$ preserves zero and one.
+
+\bigskip
+
+We need to see that
+$$\pi(x\dotplus y) =  \pi(x) \dotplus \pi(y)$$
+and
+$$\pi(x\dottimes y) = \pi(x) \dottimes \pi(y) $$
+where $\dotplus$ and $\dottimes$ on the left refer to addition and multiplication in $\Z_n$ and
+$\dotplus$ and $\dottimes$ on the right refer to addition and multiplication in
+$\Z_{n_1} \times \Z_{n_2} \times \cdots \times \Z_{n_K}$.
+
+\bigskip
+
+\begin{align*}
+\left( (x+y) \bmod n \right) \bmod n_i  &= (x+y) \bmod n_i \\
+  &= (x \bmod n_i + y \bmod n_i) \bmod n_i.
+\end{align*}
+This shows that every coordinate of $\pi(x\dotplus y)$ is the same as the corresponding coordinate of
+$\pi(x) \dotplus \pi(y)$. This shows that $\pi(x\dotplus y) =  \pi(x) \dotplus \pi(y)$.
+
+The argument is similar for multiplication.
+\end{proof}
+
+\begin{in_class_example}
+Solve
+\begin{align*}
+x &\equiv 1 \pmod 3 \\
+x &\equiv 4 \pmod 5 \\
+x &\equiv 6 \pmod 7
+\end{align*}
+\end{in_class_example}
+
+We can also solve a more general type of problem using the Chinese Remainder Theorem. We can solve problems of the form
+
+\begin{align*}
+a_1 x &\equiv b_1 \pmod{n_1} \\
+a_2 x &\equiv b_2 \pmod{n_2} \\
+  &\vdots \\
+a_K x &\equiv b_K \pmod{n_K}.
+\end{align*}
+
+where $n_1,n_2,\cdots,n_K$ are integers greater than 1 that are pairwise relatively prime, 
+$b_1,b_2,\cdots,b_K$ are any integers, and $\gcd(a_i,n_i)=1$ for each $i$. This is because
+then each $a_i$ has an inverse mod $n_i$ and so we can multiply by the inverse and
+reduce the problem to the previous kind.
+
+\begin{in_class_example}
+Solve
+\begin{align*}
+2x &\equiv 1 \pmod 3 \\
+3x &\equiv 2 \pmod 4 \\
+6x &\equiv 17 \pmod {25}
+\end{align*}
+\end{in_class_example}
+
+\textbf{Textbook Reading:} Section 2.4 of \emph{Shoup}, \emph{The Chinese Remainder Theorem}.
+
+\textbf{Textbook Exercises}: Do exercise 2.14.
+
+\bigskip
+
+\textbf{Textbook Reading:} Section 2.5 of \emph{Shoup}, \emph{Residue Classes}.
+
+\textbf{Textbook Exercises}: Do exercises 2.20, 2.21.
+
+\bigskip
+
+\textbf{Textbook Reading:} Section 5-3 of \emph{Andrews}, \emph{The Chinese Remainder Theorem}.
+
+\textbf{Textbook Exercises}: Do exercise 1 parts a,b,c,d, exercise 2, exercise 5.
 
 \bibliographystyle{amsalpha}
 
