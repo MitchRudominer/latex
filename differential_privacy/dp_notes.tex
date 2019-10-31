@@ -1,0 +1,82 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Notes on Differential Privacy}
+\author{Mitch Rudominer}
+
+\maketitle
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Amplificatin by Shuffling}
+
+In this section I am trying to understand the amplification by shuffling idea.
+
+In order to avoid dealing with unnecessry exponentials, we define 
+$\alpha$- and $(\alpha,\delta)$-differential-privacy to
+be just like $\epsilon$- and  and $(\epsilon,\delta)$-differential-privacy except that
+we replace $e^{\epsilon}$ with $\alpha$.
+
+Consider the experiment in which a user has a true bit value (0 or 1) and the user
+emits the true value with probability $3/4$ and the opposite value with
+probability $1/4$. Cleary this mechanism satisfies $\alpha$-differential-privacy
+with $\alpha=3$. 
+
+Let $\delta=(0.75)^{101} \approx 2.4\times 10^{-13}$. Then this mechanism also satisfies
+$(\alpha,\delta)$-differential-privacy with 
+$$\alpha=\frac{0.75 - \delta}{0.25} = 3-4\delta \approx 3-9.6\times 10^{-13}.$$
+This is the local model.
+
+Now consider the the experiment in which there are 100 users each of which perform the
+above local experiment and emit a bit value. Call the true bit values $b_i$ and the
+emitted values $x_i$ for $i=0,\cdots,99$.
+
+Let $Y$ be the sum of the $x_i$, and consider the mechanism that emits $Y$. So this
+is the central model.
+
+In fact this is the shuffled model because the shuffled model is equivalent to emitting
+the multi-set of locally-emitted values, or equivalently the histogram of locally-emitted
+values. So we can use this example to analyze amplification by Shuffling.
+
+
+Consider the case that $b_i=1$ for $i=1,\cdots,99$. Then
+
+$$P(Y=100 \mid b_0 = 1) = \left(\frac{3}{4}\right)^{100}$$
+and
+$$P(Y=100 \mid b_0 = 0) = \left(\frac{3}{4}\right)^{99}\frac{1}{4}$$
+
+Thus this mechanism again satisfies $\alpha$-differential-privacy with 
+
+$$\alpha=\frac{(\frac{3}{4})^{100}}{(\frac{3}{4})^{99}\frac{1}{4}}=3.$$
+
+This indicates that there is no amplification by Shuffling in the pure $\alpha$-differential-privacy
+model. One needs to include $\delta$ to see the amplification.
+
+Again letting $\delta=(0.75)^{101}$ this mechanism satisfies $(\alpha,\delta)$ differential privacy
+where $\alpha$ satisifes
+$$\left(\frac{3}{4}\right)^{100} = \alpha \left(\frac{3}{4}\right)^{99}\frac{1}{4} + \delta$$
+or
+\begin{align*}
+\alpha &=\frac{(\frac{3}{4})^{100} - \delta}{(\frac{3}{4})^{99}\frac{1}{4}} \\
+&= 4\left(\frac{3}{4}  - \frac{\delta}{\left(\frac{3}{4}\right)^{99}} \right) \\
+&= 3 - 4\delta\left(\frac{4}{3}\right)^{99} \\
+&= 3 - 4(\frac{3}{4})^{101}\left(\frac{4}{3}\right)^{99} \\
+&= 3 - 4\left(\frac{3}{4}\right)^2 \\
+&= 3 - 3\frac{3}{4} = 3 \times (1/4) = 3/4.
+\end{align*}
+
+\bibliographystyle{amsalpha}
+
+\bibliography{math}
+
+\end{document}
