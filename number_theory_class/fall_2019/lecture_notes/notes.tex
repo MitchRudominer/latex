@@ -2358,7 +2358,7 @@ Solve
 
 \newpage
 
-\section{Euler's $\phi$ function}
+\section{Euler's $\varphi$ function}
 We start with a review of some ideas.
 
 Recall that $\Z/(n) \cong \Z_n$. In this class we use $\Z/(n)$ to refer to the 
@@ -2430,13 +2430,285 @@ non-negative integers less than 10 that are relatively prime to 10.
 OK, now on to the main point of this lesson.
 
 \begin{definition}
-Let $n\geq 1$ be an integer. Then $\phi(n) = |\Z_n^*| = $ the number of positive integers less than $n$ that are relatively prime to $n$.
+Let $n\geq 1$ be an integer. Then $\varphi(n) = |\Z_n^*| = $ the number of positive integers less than $n$ that are relatively prime to $n$.
 \end{definition}
 
-For example $\phi(10) = 4$ because $|\singleton{1,3,7,9}|=4$.
+For example $\varphi(10) = 4$ because $|\singleton{1,3,7,9}|=4$.
 
-In this lesson it is our goal to compute $\phi(n)$ for all integers $n\geq 1$.
+In this lesson it is our goal to compute $\varphi(n)$ for all integers $n\geq 1$.
 
+\begin{theorem}
+If $p$ is prime then $\varphi(p) = p-1$.
+\end{theorem}
+\begin{proof}
+Since $p$ is prime, if $1\leq x < p$ then $\gcd(x,p) = 1$.
+\end{proof}
+
+\begin{theorem}
+Let $p$ be a prime and $e$  a positive integer. Then $\varphi(p^e) = p^{e-1}(p-1)$.
+\end{theorem}
+\begin{proof}
+Let $x$ be a positive integer less than $p^e$. Then $x$ is relatively prime to $p^e$ iff
+$x$ is relatively prime to $p$ iff $x$ is not divisible by $p$. It is easy to enumerate the
+ $x$ that \emph{are} divisible by $p$: $x = 0, p,2p,3p,\cdots,(p^{e-1} - 1)p$. Since there are exactly
+ $p^{e-1}$ $x$ that are divisible by $p$, there are $p^e - p^{e-1} = p^{e-1}(p-1)$ $x$ that are not.
+\end{proof}
+
+\begin{theorem}
+Let $n_1,n_2,\cdots,n_k$ be positive integers that are pairwise relatively prime and let 
+$n=n_1\times n_2 \times \cdots \times n_k$. Then
+$$\varphi(n) = \varphi(n_1) \times \varphi(n_2) \times \cdots \times \varphi(n_k).$$
+\end{theorem}
+\begin{proof}
+The Chinese Remainder Map theorem tells us that
+$$\Z_n \isomorphic \Z_{n_1} \times \Z_{n_2} \times \cdots \times \Z_{n_k}$$
+
+and that the map $\pi:\Z_n \map \Z_{n_1} \times \Z_{n_2} \times \cdots \times \Z_{n_k}$ given by
+$$\pi(x) = \left(x \bmod n_1, x\bmod n_2, \cdots , x\bmod n_k\right)$$
+is an isomorphism.
+
+In fact it is true that
+
+$$\Z^*_n \isomorphic \Z^*_{n_1} \times \Z^*_{n_2} \times \cdots \times \Z^*_{n_k}$$
+
+and that the restriction of the map $\pi$ to $\Z^*_n$ is an isomorphism.
+This is because, if $a\in\Z^*_n$ then there is a $b\in \Z^*_n$ such that $a\dottimes b = 1$ in $\Z^*_n$.
+So then $\pi(a) \dottimes \pi(b) = (1,1,\cdots, 1)$ in $\Z_{n_1} \times \Z_{n_2} \times \cdots \times \Z_{n_k}$ since
+$\pi$ is an isomorphism. But this means that the $i$-th component of $\pi(a)$ is a unit in $\Z_{n_i}$ and so is in $\Z^*_{n_i}$ for
+each $i$. In other words $\pi(a)\in \Z^*_{n_1} \times \Z^*_{n_2} \times \cdots \times \Z^*_{n_k}$.
+
+Conversely if $\pi(a)\in \Z^*_{n_1} \times \Z^*_{n_2} \times \cdots \times \Z^*_{n_k}$ then each component of
+ $\pi(a)$ is a unit $\Z_{n_i}$ and then $a$ is a unit in $\Z_n$.
+
+ So the restriction of $\pi$ to $\Z^*_n$ is a bijection from $\Z^*_n$ to $Z^*_{n_1} \times \Z^*_{n_2} \times \cdots \times \Z^*_{n_k}$
+ and so it is also a group isomorphism. (We already know it preserves the multiplicative group structure of
+ the group of units because the full map $\pi$ preserves the full ring structure, which includes this multiplicative group structure.)
+
+ The theorem now follows.
+\end{proof}
+
+\begin{theorem}
+Let $n$ be a positive integer and let $n=p_1^{e_1}p_2^{e_2}\cdots p_r^{e_r}$ be the factorization
+of $n$ into distinct primes. Then
+$$\varphi(n) = \prod_{i=1}^r p_i^{e_i-1}(p_i-1).$$
+\end{theorem}
+\begin{proof}
+This follows immediately from the previous theorem.
+\end{proof}
+
+\begin{homework} Compute the following:
+\begin{itemize}
+\item $\varphi(100)$
+\item $\varphi(99)$
+\item $\varphi(98)$
+\item $\varphi(97)$
+\item $\varphi(96)$
+\item $\varphi(81)$
+\end{itemize}
+\end{homework}
+
+\begin{homework} Answer the following:
+
+\begin{itemize}
+\item[(a)] How many positive integers $x$ less than 30 have the property that $\gcd(x,30) = 1$?
+\item[(b)] List them all.
+\end{itemize}
+
+\end{homework}
+
+\begin{homework}
+For every $a\in\Z_{9}$, if $a$ has a multiplicative inverse in $\Z_9$ then give it, otherwise
+say that it does not.
+\end{homework}
+
+\begin{homework}
+Write down the complete multiplication table for $\Z^*_{12}$.
+\end{homework}
+
+\bigskip
+
+\textbf{Textbook Reading:} Section 2.6 of \emph{Shoup}, \emph{Euler's phi function}.
+
+\textbf{Textbook Exercises}: Do exercises 2.22 (from the previous section) and 2.23 and 2.24.
+
+
+\newpage
+
+\section{Euler's Theorem and Fermat's Little Theorem}
+
+
+\begin{definition}
+Let $a\in\Z_n^*$. Then the \emph{multiplicative order} of $a$ in $\Z_n^*$ is the least positive integer $k$ such that $a^k=1$ in $\Z_n^*$.
+
+In terms of congruence: Let $a\in\Z$ with $\gcd(a,n)=1$. Then the \emph{multiplicative order} of $a$ mod $n$ is the least integer $k$ such
+that $a^k\equiv 1 \pmod n$.
+\end{definition}
+
+\begin{theorem}
+Let $a\in\Z_n^*$ and let $k$ be the multiplicative order of $a$ in $\Z_n^*$. Then for all positive integers $r$, $a^r=1$ in $\Z^*_n$ iff $k\divides r$.
+\end{theorem}
+
+\begin{theorem}[Euler's Theorem]
+Let $n$ be a positive integer and $a\in\Z_n^*$. Then $a^{\varphi(n)} = 1$ and the multiplicative order of $a$ divides $\varphi(n)$.
+\end{theorem}
+
+\begin{corollary}
+Let $p$ be prime and let $n$ be an integer with $\gcd(n,p)=1$. Then $p\divides \left (n^{p-1} -1 \right)$.
+\end{corollary}
+
+\begin{theorem}[Fermat's Little Theorem]
+For every prime $p$ and every integer $a$, $a^p\equiv a \pmod p$.
+\end{theorem}
+
+\begin{definition}
+Let $a\in\Z$ with $\gcd(a,n)=1$. Then $a$ is a \emph{primitive root} mod $n$ iff the multiplicative order of $a$ mod $n$ is equal to $\varphi(n)$.
+\end{definition}
+
+If $a\in\Z_n^*$ then $a$ is a primitive root iff $a$ is a multplicative \emph{generator} of $\Z_n*$ and so $\Z_n^*$ is a \emph{cyclic} group.
+
+Not every $n$ has a primitive root. Not every $\Z_n^*$ is cyclic.
+
+\begin{homework} Do these two:
+\begin{itemize}
+\item[(a)] What is the remainder when $41^{75}$ is divided by 3?
+\item[(b)] What is the remainder when $473^{38}$ is divided by 5?
+\end{itemize}
+
+\end{homework}
+
+\bigskip
+
+\textbf{Textbook Reading:} Section 2.7 of \emph{Shoup}, \emph{Euler's theorem and Fermat's little theorem}.
+
+\textbf{Textbook Exercises}: Do exercises 2.26, 2.27, 2.29
+
+\newpage
+
+\section{Wilson's Theorem and Quadratic Residues}
+
+We study square roots in $\Z^*_n$.
+
+\begin{definition}
+Let $a\in\Z^*_n$. Then $a$ is called a \emph{quadratic residue} in $\Z^*_n$ iff there is a $b\in\Z^*_n$ such that $b^2 = a$.
+
+In other words $a$ is a quadratic residue in $\Z^*_n$ iff it has a square root in $\Z^*_n$.
+
+Let $x\in\Z$ with $\gcd(x,n) = 1$. Then $x$ is called a \emph{quadratic residue} mod $n$ iff there is an integer $b$ such that
+$a\equiv b^2 \pmod n$.
+\end{definition}
+
+\begin{example}
+2 is a quadratic residue in $\Z^*_7$ because $4^2 = 2$ in $\Z^*_7$.
+
+23 is a quadratic residue mod 7 because $23 \equiv 4^2 \pmod 7$.
+\end{example}
+
+Notice that 1 is a quadratic residue mod $n$ for all $n$.
+
+\begin{question}
+How many square roots does 1 have?
+\end{question}
+
+\begin{in_class_example}
+Find all of the square roots of 1 in $\Z^*_8$.
+\end{in_class_example}
+
+Notice that in any commutative ring, 1 and -1 are always square roots of 1.
+$a$ is a square root of 1 iff the multiplicative order of $a$ is 1 or 2.
+
+From now on we will only be considering quadratic residues in $\Z^*_p$ for $p$ an odd prime.
+
+\begin{lemma}
+Let $p$ be an odd prime. Then in $\Z^*_p$ there are only two square roots of 1: 1 and -1.
+\end{lemma}
+\begin{proof}
+Suppose $a\in\Z^*_p$ and $a^2=1$. Then $a^2 - 1 = 0$ so $(a-1)(a+1) = 0$ in $\Z^*_p$. This means that
+in $\Z$ we have that $p\divides (a-1)(a+1)$. Since $p$ is prime, $p\divides (a-1)$ or $p\divides (a+1)$.
+So in $\Z^*_p$, $a-1=0$ or $a+1=0$. So $a=1$ or $a=-1$.
+\end{proof}
+
+Notice that $a$ is a square root of 1 iff $a = a^{-1}$. So in $\Z^*_p$ if $a\not=1$ and $a\not=-1$ then $a\not= a^{-1}$.
+
+\begin{lemma}
+Let $p$ be an odd prime. Then
+$$\prod_{a\in\Z^*_p} a = -1.$$
+\end{lemma}
+\begin{proof}
+For all $a\in\Z^*_p$, $a\not= a^{-1}$ and so in the product, $a$ and $a^{-1}$ cancel. That leaves only two element
+left in the product: 1 and $-1$. Thus the product is $-1$.
+\end{proof}
+
+\begin{theorem}[Wilson's Theorem]
+If $p$ is prime then $p \divides \left[(p-1)! + 1 \right]$.
+\end{theorem}
+\begin{proof}
+This follows from the previous lemma.
+\end{proof}
+
+\begin{in_class_example}
+$13\divides (12! + 1)$.
+\end{in_class_example}
+
+
+\begin{lemma}
+Let $p$ be an odd prime. Let $a\in\Z^*_p$. Then $a^{\frac{p-1}{2}} = \pm 1$.
+\end{lemma}
+\begin{proof}
+Let $b=a^{\frac{p-1}{2}}$. Then $b^2=a^{(p-1)} = 1$ by Euler's Theorem. Thus
+$b$ is a square root of 1 and so $b=\pm 1$.
+\end{proof}
+
+Let $a\in\Z^*_p$.
+Notice that $a$ is a quadratic residue iff $a = b^2$ iff $b=b^{-1}a$ for some $b\in\Z^*_p$.
+
+\begin{theorem}[Euler's Criterion]
+Let $p$ be an odd prime and let $a\in\Z^*_p$. Then
+$a$ is a quadratic residue iff $a^{\frac{p-1}{2}}=1$.
+\end{theorem}
+\begin{proof}
+If $a=b^2$ then $a^{\frac{p-1}{2}} = b^{(p-1)} =1$ by Euler's Theorem. 
+
+Conversely, suppose that $a$ is not a quadratic residue. Consider the product 
+$$\prod_{b\in\Z^*_p} b.$$
+By Wilson's Theorem we know the value of this product is -1. 
+
+Notice that for each $b\in\Z^*_p$, $b^{-1} a\in\Z^*_p$ and
+$b\not=b^{-1} a$ since $a$ is not a quadratic residue. Furthermore $b\cdot b^{-1}a = a$.
+Thus the product over all elements of $\Z^*_p$ may be written as the product of $(p-1)/2$ terms
+of the form $b\cdot b^{-1}a$, each of which is the product of two elements whose product is $a$. Thus
+$$\prod_{b\in\Z^*_p} b = a^{\frac{p-1}{2}}$$ and so
+$$a^{\frac{p-1}{2}} = -1.$$
+\end{proof}
+
+[NOTE: More notes for this section are coming. Check back here tomorrow.]
+
+\bigskip
+
+\begin{homework} 
+Prove that if $3\ndivides n$ then $3\divides n^2 -1$.
+\end{homework}
+
+\begin{homework}
+Prove that $12 \divides n^2 -1$ if $\gcd(n,6) = 1$.
+\end{homework}
+
+\begin{homework}
+Find the smallest positive integer congruent to
+$$19! + (13!)^{44} \pmod{23}.$$
+Justify your answer. Quote any theorems that you use.
+\end{homework}
+
+\begin{homework}
+Prove the $p$ is the smallest prime dividing $(p-1)! + 1$.
+\end{homework}
+
+\bigskip
+
+\textbf{Textbook Reading:} Section 2.8 of \emph{Shoup}, \emph{Quadratic Residues}. But you may skip the following parts of the section:
+subsection 2.8.2 \emph{Quadratic residues modulo $p^e$}, subsection 2.8.3 \emph{Quadratic residues modulo $n$}, Theorem 2.33 (Thue's lemma),
+and Theorem 2.34 (Fermat's two squares theorem). We will not be discussing those topics in class.
+
+\textbf{Textbook Exercises}: Do exercises 2.33, 2.34, 2.35, 2.36, 2.37
 
 
 \bibliographystyle{amsalpha}
