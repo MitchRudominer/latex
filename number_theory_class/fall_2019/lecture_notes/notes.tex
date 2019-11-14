@@ -2616,7 +2616,13 @@ Find all of the square roots of 1 in $\Z^*_8$.
 Notice that in any commutative ring, 1 and -1 are always square roots of 1.
 $a$ is a square root of 1 iff the multiplicative order of $a$ is 1 or 2.
 
-From now on we will only be considering quadratic residues in $\Z^*_p$ for $p$ an odd prime.
+\begin{definition}
+$(\Z^*_n)^k = \setof{a^k}{a\in\Z^*_n}$.
+\end{definition}
+
+Thus $(\Z^*_n)^2$ is the set of quadratic residues mod $n$.
+
+From now on we will only be considering quadratic residues in $\Z^*_p$ for $p$ an odd prime: $(\Z^*_p)^2$.
 
 \begin{lemma}
 Let $p$ be an odd prime. Then in $\Z^*_p$ there are only two square roots of 1: 1 and -1.
@@ -2625,6 +2631,25 @@ Let $p$ be an odd prime. Then in $\Z^*_p$ there are only two square roots of 1: 
 Suppose $a\in\Z^*_p$ and $a^2=1$. Then $a^2 - 1 = 0$ so $(a-1)(a+1) = 0$ in $\Z^*_p$. This means that
 in $\Z$ we have that $p\divides (a-1)(a+1)$. Since $p$ is prime, $p\divides (a-1)$ or $p\divides (a+1)$.
 So in $\Z^*_p$, $a-1=0$ or $a+1=0$. So $a=1$ or $a=-1$.
+\end{proof}
+
+\begin{corollary}
+Let $p$ be an odd prime. Let  $a\in(\Z^*_p)^2$ and let $b\in\Z^*_p$ with $b^2=a$. Then there are exactly 2 square roots of $a$ in $\Z^*_p$:
+$b$ and $-b$.
+\end{corollary}
+\begin{proof}
+$b^2 = (-b)^2 = a$. Also $b\not= -b$ because $b=-b\Implies 2b = 0 \Implies 2b \equiv 0 \pmod{p}$ which is impossible as $p$ is an odd prime
+and $b\in Z^*_p$. So there are at least two square roots of $a$ in $\Z^*_p$. Suppose $c\in\Z^*_p$ and $c^2=a$. Then 
+$c^2=b^2 \Implies (c^{-1}b)^2 = 1 \Implies c^{-1}b = \pm 1 \Implies c = \pm b$. So $a$ has exactly two square roots in $\Z^*_p$.
+\end{proof}
+
+\begin{corollary}
+Let $p$ be an odd prime. Then exactly half of the elements of $\Z^*_p$ are quadratic residues. In other words,
+$\card{(\Z^*_p)^2} = (p-1)/2$.
+\end{corollary}
+\begin{proof}
+Let $f:\Z^*_p \map (\Z^*_p)^2$ be defined by $f(a) = a^2$. Then by the previous corollary, $f$ is 2-to-1. Also $f$ is surjective.
+It follows that the range of $f$ has cardinality equal to half of the cardinality of the domain of $f$.
 \end{proof}
 
 Notice that $a$ is a square root of 1 iff $a = a^{-1}$. So in $\Z^*_p$ if $a\not=1$ and $a\not=-1$ then $a\not= a^{-1}$.
@@ -2680,7 +2705,36 @@ $$\prod_{b\in\Z^*_p} b = a^{\frac{p-1}{2}}$$ and so
 $$a^{\frac{p-1}{2}} = -1.$$
 \end{proof}
 
-[NOTE: More notes for this section are coming. Check back here tomorrow.]
+\begin{theorem}
+Let $p$ be an odd prime. Let $a,b\in\Z^*_p$.
+\begin{enumerate}
+\item $a,b\in(\Z^*_p)^2 \Implies ab \in (\Z^*_p)^2$.
+\item $a\in(\Z^*_p)^2, b\notin(\Z^*_p)^2 \Implies ab \notin (\Z^*_p)^2$.
+\item $a,b\notin(\Z^*_p)^2 \Implies ab \in (\Z^*_p)^2$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+In words we want to show that the product of two squares is a square, the
+product of a square and a non-square is a non-square, and the product of two non-squares is a square.
+\begin{enumerate}
+\item If $a=c^2$ and $b=d^2$ then $ab = (cd)^2$.
+\item If $a=c^2$ and $ab=d^2$ then $b=(c^{-1}d)^2$.
+\item If $a,b\notin(\Z^*_p)^2$ then, Applying Euler's criterion,
+\begin{align*}
+(ab)^{\frac{p-1}{2}} &= a^{\frac{p-1}{2}}b^{\frac{p-1}{2}}\\
+                     &= (-1)(-1) =1.
+\end{align*}
+So, applying Euler's criterion again, $ab$ is a quadratic residue.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+Let $p$ be an odd prime. Then $-1$ is a quadratic residue mod $p$ iff $p\equiv 1 \pmod 4$.
+\end{theorem}
+\begin{proof}
+By Euler's criterion, $-1$ is a quadratic residue iff $(-1)^{\frac{p-1}{2}}=1$. But this is true
+iff $\frac{p-1}{2}$ is even iff $p-1$ is divisible by 4.
+\end{proof}
 
 \bigskip
 
