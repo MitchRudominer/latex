@@ -2764,6 +2764,191 @@ and Theorem 2.34 (Fermat's two squares theorem). We will not be discussing those
 
 \textbf{Textbook Exercises}: Do exercises 2.33, 2.34, 2.35, 2.36, 2.37
 
+\newpage
+
+\section{Primitive Roots}
+
+\begin{definition}
+Let $a\in\Z_n^*$ with $n>1$. Then $a$ is a \emph{primitive root} of $n$ iff the multiplicative order of $a$ in $\Z^*_n$ is $\varphi(n)$.
+$a$ is also called a \emph{generator} of $\Z^*_n$.
+
+In the language of congruence, let $a\in\Z$ with $\gcd(a,n)=1$. Then $a$ is a \emph{primitive root} of $n$ iff the multiplicative order of
+$a$ mod $n$ is $\varphi(n)$.
+\end{definition}
+
+Not every $n>1$ has a primitive root. If $n$ has a primitive root then $\Z^*_n$ is a \emph{cyclic} group.
+
+\begin{in_class_example} Some $\Z^*_n$ are cyclic and some are not.
+\begin{enumerate}
+\item $\Z^*_8$ is not cyclic. There is no primitive root of 8.
+\item $\Z^*_9$ is cyclic. 2 is a primitive root. The powers of 2 are: 2, 4, 8, 7, 5, 1.
+\item $\Z^*_{10}$ is cyclic. 3 is a primitive root of 10. The powers of 3 are: 3, 9, 7, 1
+\item $\Z^*_{11}$ is cyclic. 2 is a primitive root of 11. The powers of 2 are: 2, 4, 8, 5, 10, 9, 7, 3, 6, 1
+\item $\Z^*_{12}$ is not cyclic. There are no primitive roots of 12.
+\end{enumerate}
+\end{in_class_example}
+
+\begin{homework}
+Find all of the primitive roots of $n$ for $n$ equal to
+\begin{enumerate}
+\item[{(a)}] 3
+\item[{(b)}] 5
+\item[{(c})] 15
+\end{enumerate}
+\end{homework}
+
+\begin{lemma}
+Suppose $\Z^*_n$ is cyclic and let $a\in\Z^*_n$ be a primitive root. Then $\Z^*_n=\setof{a^i}{1\leq i <= \varphi(n)}$.
+\end{lemma}
+\begin{proof}
+Since the multiplicative order of $a$ is $\varphi(n)$, each of the $a^i$ listed above are distinct and there are $\varphi(n)$ different values so they must include each value of $\Z^*_n$ exactly once.
+\end{proof}
+
+\begin{lemma}
+Suppose $\Z^*_n$ is cyclic and let $a\in\Z^*_n$ be a primitive root. Let $i,j$ be non-negative integers. Then in $\Z^*_n$, $a^i=a^j$ iff $i\equiv j \pmod {\varphi(n)}$.
+\end{lemma}
+\begin{proof}
+In $\Z^*_n$, $a^i=a^j$ iff $a^{i-j} = 1$ iff $\varphi(n) \divides (i-j)$.
+\end{proof}
+
+\begin{theorem}
+Suppose $\Z^*_n$ is cyclic and let $a\in\Z^*_n$ be a primitive root. Then $\left(\Z^*_n, \dottimes\right ) \cong \left(\Z_{\varphi(n)},\dotplus \right)$
+and the function $\pi:\Z^*_n\map\Z_{\varphi(n)}$ given by $\pi(a^i) = i$ is an isomorphism.
+\end{theorem}
+\begin{proof}
+The function $\pi$ is clearly a bijection and $\pi(a^i \cdot a^j) = \pi(a^{i+j}) = \pi(a^{(i+j)\bmod \varphi(n)}) = (i+j)\bmod \varphi(n) = i \dotplus j = \pi(a^i) \dotplus \pi(a^j)$.
+\end{proof}
+
+\begin{in_class_example} Some example isomorphisms:
+\begin{enumerate}
+\item $\left(\Z^*_9, \dottimes, \right) \cong \left(\Z_6, \dotplus \right)$
+\item $\left(\Z^*_{10},\dottimes \right) \cong \left(\Z_4, \dotplus \right )$
+\item $\left(\Z^*_{11}, \dottimes, \right) \cong \left(\Z_{10}, \dotplus \right)$
+\end{enumerate}
+\end{in_class_example}
+
+\begin{definition}
+An \emph{additive generator} of $\Z_n$ is an integer $k\in\Z_n$ such that the multiples of $k$ mod $n$ are all of the elements of $\Z_n$.
+\end{definition}
+
+The additive generators of $\Z_n$ are the elements of $\Z_n$ that are relatively prime to $n$. (These are the same as the elements of $\Z^*_n$ except that
+in this context we are only thinking about $\left(\Z_n,\dotplus\right)$ as a group under addition, not as a ring.)
+1 is always an additive generator.
+
+\begin{in_class_example}
+The additive generators of $\Z_4$ are 1 and 3. The additive generators of $\Z_5$ are 1,2,3,4. The additive generators of $\Z_6$ are 1 and 5.
+The additive generators of $\Z_{10}$ are 1,3,7,9.
+\end{in_class_example}
+
+
+\begin{lemma}
+Suppose $\Z^*_n$ is cyclic and let $a\in\Z^*_n$ be a primitive root. 
+Then the multiplicative order of $a^i$ in $\Z^*_n$ is $\lcm(i,\varphi(n))/i = \varphi(n)/\gcd(i,\varphi(n))$.
+\end{lemma}
+\begin{proof}
+$(a^i)^k=a^{ik}=1$ iff $\varphi(n)\divides ik$. If $k$ is least such that $\varphi(n)\divides ik$ then $ik=\lcm(i, \varphi(n))$ so $k=\lcm(i,\varphi(n))/i$.
+\end{proof}
+
+\begin{corollary}
+Suppose $\Z^*_n$ is cyclic. Then the number of primitive roots of $n$ in $\Z^*_n$ is $\varphi(\varphi(n))$.
+Let $a$ be a primitive root of $n$. Then the primitive roots of $n$ in $\Z^*_n$ is $\setof{a^i}{\gcd(i,\varphi(n)) = 1}.$
+Let $\pi:\Z^*_n\map\Z_{\varphi(n)}$ be given by $\pi(a^i) = i$. Then $\pi$ maps the set of primitive roots of $n$ to the additive generators of $\Z_{\varphi(n)}$.
+\end{corollary}
+\begin{proof}
+By the previous Lemma, $a^i$ is a primitive root of $n$ iff $\lcm(i,\varphi(n))/i = \varphi(i)$ iff $i$ is relatively prime to $\varphi(n)$.
+\end{proof}
+
+
+\begin{in_class_example} Some examples of this lemma:
+\begin{enumerate}
+\item There are 2 primitive roots of 9 in $\Z^*_9$: $2^1=2, 2^5=5$. This corresponds to the fact that $\varphi(9)=6$ and there are two additive generators of $\Z_6$: 1 and 5.
+\item There are 2 primitive roots of 10 in $\Z^*_{10}$: $3^1=3, 3^3=7$. This corresponds to the fact that $\varphi(10)=4$ and there are two additive generators of $\Z_4$: 1 and 3.
+\item There are 4 primitive roots of 11 in $\Z^*_{11}$: $2^1=2, 2^3=8, 2^7=7, 2^9=6$. This corresponds to the fact that $\varphi(11)=10$ and there are four additive generators of $\Z_{10}$: 1,3,7,9
+\end{enumerate}
+\end{in_class_example}
+
+\begin{homework}
+Given that 2 is a primitive root of 13:
+\begin{enumerate}
+\item[{(a)}] How many primitive roots does 13 have?
+\item[{(b)}] Express all of the primitive roots of 13 as powers of 2.
+\item[{(c)}] Express all of the primitive roots of 13 as positive integers less than 13.
+\end{enumerate}
+\end{homework}
+
+\begin{homework}
+Given that 2 is a primitive root of 27:
+\begin{enumerate}
+\item[{(a)}] How many primitive roots does 27 have?
+\item[{(b)}] Express all of the primitive roots of 27 as powers of 2.
+\end{enumerate}
+\end{homework}
+
+
+The moral here is that if we know that $\Z^*_n$ is cyclic and we have a primitive root of 
+$\Z^*_n$, then we have an isomorphism between the multiplicative group $\Z^*_n$ and the additive group $\Z_{\varphi(n)}$ and so it is easy to analyze the multiplicative group $\Z^*_n$
+(because the additive group $\Z_{\varphi(n)}$ is easy to understand.) In a nutshell, knowing that $\Z^*_n$ is cyclic is \emph{good}. So we would like to understand for which $n$ is
+it true that $\Z^*_n$ is cyclic. The answer is given by:
+
+\begin{theorem}[Primitive Root Theorem]
+Let $n>1$ be an integer. Then $n$ has a primitive root iff $n=2$ or $n=4$ or $n=p^e$ or $n=2p^e$ for $p$ and odd prime and $e\geq 1$ .
+\end{theorem}
+
+\begin{homework}
+List all of the positive integers less than 30 which have a primitive root.
+\end{homework}
+
+We will prove the Primitive Root Theorm in several steps. We start with
+
+\begin{theorem}
+Let $p$ be an odd prime. Then $p$ has a primitive root.
+\end{theorem}
+
+In order to prove this theorem, it turns out that it is necessary to understand polynomials over $\Z_p$.
+
+\begin{definition}
+A \emph{polynomial over $\Z_p$} is an expression of the form
+$$f(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_1x + a_0$$
+where each $a_i\in\Z_p$ and $a_n\not=0$. $n$ is called the \emph{degree} of $f$.
+
+If $b\in\Z_p$ then $f(b)$ is defined by
+$$f(b) = a_nb^n + a_{n-1}b^{n-1} + \cdots + a_1b + a_0$$
+with addition and multiplication in the ring $\Z_p$.
+
+$b\in\Z_p$ is a \emph{root} of $f$ if $f(b)=0$ in $\Z_p$.
+\end{definition}
+
+\begin{example}
+Let $f(x)=2x^2 + 5x + 2$. Then $f$ is a polynomial of degree $2$ over $\Z_7$.
+$f(0)=2$.
+
+$f(1)=2\dotplus 5 \dotplus 2 = 2$.
+
+$f(3) = 2\dottimes 3^2 \dotplus 5\dottimes 3 \dotplus 2 = 0$.
+So $3$ is a root of $f$ in $\Z_7$.
+\end{example}
+
+\begin{theorem}
+Let $p$ be a prime and let $f(x)$ be a polynomial of degree $n$ over $\Z_p$. Then $f(x)$ has at
+most $n$ distinct roots in $\Z_p$.
+\end{theorem}
+\begin{proof}
+By induction on $n$. For $n=0$, a polynomial of degree 0 is a non-zero constant term and that obviously has no roots.
+Suppose the theorem is true for polynomials of degree $<n$ and we will show that it is true for polynomials of degree $n$. Let
+$$f(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_1x + a_0$$
+be a polynomail of degree $n$. Suppose that $b_1,b_2,\cdots, b_n$ are distinct roots of $f(x)$ and we will show that $f$ does not have
+any other roots.
+
+Consider the polynomial
+$$g(x)=f(x) - a_n(x-b_1)(x-b_2)\cdots(x-b_n).$$
+Notice that the term $a_n x^n$ cancels and so $g(x)$ is a polynomial of degree less than $n$. Also notice that each of $b_1,b_2,\cdots b_n$
+are roots of $g(x)$. Thus $g(x)$ is a polynomial of degree less than $n$ with $n$ distinct roots. But this violates the induction hypothesis.
+The only way to avoid the contradiction is if $g(x)$ is identially zero, i.e. that $f(x) = a_n(x-b_1)(x-b_2)\cdots(x-b_n)$. Now let
+$b$ be any other element of $\Z_p$ distinct from $b_1,b_2,\cdots,b_n$. Then $f(b)=a_n(b-b_1)(b-b_2)\cdots(b-b_n)$. Now each
+term in this product is non-zero. Because $p$ is prime, $\Z_p$ has no zero-divisors, so the product of non-zero elements is non-zero.
+Thus $f(b)\not=0$ so $b$ is not a root of $f(x)$. So $f(x)$ cannot have more than $n$ roots.
+\end{proof}
+
 
 \bibliographystyle{amsalpha}
 
