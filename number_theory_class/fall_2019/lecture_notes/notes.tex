@@ -2797,6 +2797,33 @@ Find all of the primitive roots of $n$ for $n$ equal to
 \end{enumerate}
 \end{homework}
 
+\begin{homework} Find the multiplicative orders of 2, 3 and 5:
+\begin{enumerate}
+\item[(a)] mod 17
+\item[(b)] mod 23
+\end{enumerate}
+\end{homework}
+
+\begin{homework}
+\label{OrderOfAToTheHIsK}
+Prove that if the multiplicative order of $a$ mod $n$ is $hk$ then the multiplicative order of $a^h$ mod $n$ is $k$.
+\end{homework}
+
+\begin{homework}
+Prove that if $p$ is an odd prime and the multiplicative order of $a$ mod $p$ is $2k$ then the 
+$a^k\equiv -1 \pmod p$.
+\end{homework}
+
+\begin{homework}
+Prove that if $a$ has multiplicative order $n-1$ mod $n$ then $n$ is prime.
+\end{homework}
+
+\begin{homework}
+Prove that $\varphi(2^n-1)$ is a multiple of $n$ for all $n>1$.
+Hint: First show that 2 has multiplicative order $n$ mod $2^n-1$.
+\end{homework}
+
+
 \begin{lemma}
 Suppose $\Z^*_n$ is cyclic and let $a\in\Z^*_n$ be a primitive root. Then $\Z^*_n=\setof{a^i}{1\leq i <= \varphi(n)}$.
 \end{lemma}
@@ -2810,6 +2837,10 @@ Suppose $\Z^*_n$ is cyclic and let $a\in\Z^*_n$ be a primitive root. Let $i,j$ b
 \begin{proof}
 In $\Z^*_n$, $a^i=a^j$ iff $a^{i-j} = 1$ iff $\varphi(n) \divides (i-j)$.
 \end{proof}
+
+\begin{homework}
+Prove the following: If $a$ is a primitive root of $n$ then $a^i$ is a quadratic residue mod $n$ iff $i$ is even.
+\end{homework}
 
 \begin{theorem}
 Suppose $\Z^*_n$ is cyclic and let $a\in\Z^*_n$ be a primitive root. Then $\left(\Z^*_n, \dottimes\right ) \cong \left(\Z_{\varphi(n)},\dotplus \right)$
@@ -2891,7 +2922,7 @@ $\Z^*_n$, then we have an isomorphism between the multiplicative group $\Z^*_n$ 
 it true that $\Z^*_n$ is cyclic. The answer is given by:
 
 \begin{theorem}[Primitive Root Theorem]
-Let $n>1$ be an integer. Then $n$ has a primitive root iff $n=2$ or $n=4$ or $n=p^e$ or $n=2p^e$ for $p$ and odd prime and $e\geq 1$ .
+Let $n>1$ be an integer. Then $n$ has a primitive root iff $n=2$ or $n=4$ or $n=p^e$ or $n=2p^e$ for $p$ an odd prime and $e\geq 1$ .
 \end{theorem}
 
 \begin{homework}
@@ -2901,6 +2932,7 @@ List all of the positive integers less than 30 which have a primitive root.
 We will prove the Primitive Root Theorm in several steps. We start with
 
 \begin{theorem}
+\label{PrimesHavePrimitiveRoots}
 Let $p$ be an odd prime. Then $p$ has a primitive root.
 \end{theorem}
 
@@ -2949,10 +2981,148 @@ term in this product is non-zero. Because $p$ is prime, $\Z_p$ has no zero-divis
 Thus $f(b)\not=0$ so $b$ is not a root of $f(x)$. So $f(x)$ cannot have more than $n$ roots.
 \end{proof}
 
+\begin{homework} Find all roots, if any, of the following polynomials.
+\begin{enumerate}
+\item[(a)] $x^2-1$ over $\Z_5$.
+\item[(b)] $x^2 - 1$ over $\Z_{97}$
+\item[(c)] $x^2 + 1$ over $\Z_5$
+\item[(d)] $x^2 + 1$ over $\Z_7$
+\item[(e)] $x^3 + 2x -2$ over $\Z_5$
+\item[(f)] $x^{96} - 1$ over $\Z_{97}$
+\end{enumerate}
+\end{homework}
+
+There is one last fact we need before we can prove that every odd prime has a primitive root.
+
+\begin{lemma}
+\label{OrderOfAProduct}
+Suppose the multiplicative order of $a$ mod $n$ is $r$, the multiplicative order of $b$ mod $n$ is $s$, and $r$ and $s$ are relatively prime. 
+Then the multiplicative order of $ab$ mod $n$ is $rs$.
+\end{lemma}
+\begin{proof}
+Let $k$ be the multiplicative order of $ab$ mod $n$. We want to show that $k=rs$. Using arithmetic in $\Z^*_n$ we have that
+$(ab)^{rs} = (a^r)^s(b^s)^r=1\cdot1 = 1$. It follows that $k\divides rs$.
+
+Now $1=1^r=((ab)^k)^r = (a^r)^k(b^{kr}) = b^{kr}$ so $s|(kr)$ and since $\gcd(r,s)=1$ we have $s\divides k$.
+Similarly $r\divides k$. Since $\gcd(r,s)=1$, $rs\divides k$. So $rs=k$.
+\end{proof}
+
+Now we can prove that every odd prime has a primitive root.
+\begin{proof}[Proof of Theorem \ref{PrimesHavePrimitiveRoots}]
+Let $p$ be an odd prime. We must show that there is an $a\in\Z^*_n$ that has order $p-1$.
+Let $p-1=q_1^{r_1}q_2^{r_2}\cdots q_k^{r_k}$ be the prime factorization of $p-1$. It
+suffices to show that for each $i$ there is an element $a_i\in\Z^*_n$ such that the
+multiplicative order of $a_i$ is $q_i^{r_i}$. Because then if we let
+$a=a_1 a_2 \cdots a_k$, by (multiple applications of) Lemma \ref{OrderOfAProduct} we get
+that the order of a is $p-1$. 
+
+So fix $i$ and we will show that there is some element of order $q_i^{r_i}$.
+It suffices to show that there is some element whose order is divisible by $q_i^{r_i}$. Because
+suppose the order of $b$ is $q_i^{r_i}u$. Then $b^u$ has order $q_i^{r_i}$ by Homework \ref{OrderOfAToTheHIsK}.
+
+Assume towards a contradiction that there is no element of $\Z^*_n$ whose order is divisible by $q_i^{r_i}$.
+Let 
+$$m=(p-1)/q_i =q_1^{r_1}q_2^{r_2}\cdots q_i^{r_i-1}\cdots q_k^{r_k}.$$
+
+Let $a$ be any element of $\Z^*_n$. We know that the order of $a$ divides 
+$p-1=q_1^{r_1}q_2^{r_2}\cdots q_k^{r_k}$ and since $q_i^{r_i}$ does not divide the order of $a$ we must have that
+the order of $a$ divides $m$. This means that $a^m=1$. But $a$ was arbitrary so we have that for all $a\in\Z^*_n$,
+$a^m=1$. But this means that every $a\in\Z^*_n$ is a root of the polynomial $x^m-1$. But this is impossible because
+there are only $m$ roots of this polynomial and there are $p-1>m$ elements of $\Z^*_n$. This contradiction means
+that there is an element of $\Z^*_n$ whose order is divisible by $q_i^{r_i}$ as we wished to prove.
+\end{proof}
+
+Continuing with our proof of The Primitive Root Theorem, we next turn to some negative results.
+
+\begin{homework} Let $n>2$.
+If $\Z^*_n$ is cyclic then it has exactly one element of order $2$.
+\end{homework}
+
+Thus if we want to show that $\Z^*_n$ is not cyclic it suffices to show that there are at least two elements of order 2. If $n>2$ then
+$-1 \bmod n$ is always an element of order 2. So if we want to show that $\Z^*_n$ is not cyclic it suffices to show that there is
+at least one element of $\Z^*_n$ other than $-1$ that has order 2.
+
+\begin{theorem}
+Suppose that $n,m>2$ and $\gcd(n,m)=1$. Then $\Z^*_{nm}$ is not cyclic.
+\end{theorem}
+\begin{proof}
+By the Chinese Remainder Map Theorem we know that $\Z^*_{nm} \cong \Z^*_n \times \Z^*_m$. So it suffices to see that
+$\Z^*_n \times \Z^*_m$ has at least two distinct elements of order 2. To see this, notice that $(n-1,1)$ and $(1,m-1)$
+both have multiplicative order 2. This is because $n-1 \equiv -1 \pmod n$ and $m-1 \equiv -1 \pmod m$
+and $(-1,1)^2 = (1,-1)^2 = (1,1)$. Thus 
+$\Z^*_n \times \Z^*_m$ has at least two distinct elements of order $2$ and so $\Z^*_{nm}$ does and so
+$\Z^*_{nm}$ is not cyclic.
+\end{proof}
+
+\begin{corollary}
+If $n$ is divisible to two distinct odd primes then $\Z^*_n$ is not cyclic.
+
+Also if $n=2^kp^i$ where $p$ is an odd prime, $k>1$, $i\geq 1$ then $\Z^*_n$ is not cyclic.
+\end{corollary}
+
+\begin{example}
+$\Z^*_{21}$ is not cyclic because $21=7\cdot 3$. Let's find two distinct elements of $\Z^*_{21}$ of order 2.
+Following the proof we want to find the two elements of $\Z^*_{21}$ that map to $(6, 1)$ and $(1, 2)$ in 
+$\Z^*_7\times \Z^*_3$. That is we want to find elements $a$ and $b$ in $\Z^*_{21}$ such that
+
+\begin{align*}
+a &\equiv 6 \pmod 7 \\
+a &\equiv 1 \pmod 3
+\end{align*}
+
+and 
+
+\begin{align*}
+b &\equiv 1 \pmod 7 \\
+b &\equiv 2 \pmod 3
+\end{align*}
+
+We can see that the solutions are $a=13, b=8$. Notice that $13^2 \equiv 1 \pmod {21}$ and $8^2 \equiv 1 \pmod {21}$.
+So $\Z^*_{21}$ is not cyclic.
+\end{example}
+
+\begin{homework}
+Find two distinct elements of order 2 in $\Z^*_{20}$, thus showing that $\Z^*_{20}$ is not cyclic.
+\end{homework}
+
+There is one last negative result we need for our proof of The Primitive Root Theorem.
+
+\begin{theorem}
+Let $n=2^k$ for $k\geq 3$. Then $\Z^*_n$ is not cyclic.
+\end{theorem}
+\begin{proof}
+It suffices to show that there is an $a\in\Z^*_n$ such that $a\not= -1$ and the order of $a$ is 2.
+Let $a=2^{k-1} + 1$. This works because 
+$a^2 = 2^{2k - 2} + 2^k + 1$ so that $a^2\equiv 1 \pmod {2^k}$, since $2k-2 > k$.
+Also, since $k\geq 3$, $a \not= 2^k - 1 \equiv -1 \pmod {2^k}$ so that we really have found two
+distinct elements of order 2.
+\end{proof}
+
+\begin{example}
+Let $n=2^6$. $\Z^*_{64}$ is not cyclic because it has at least two elements of order 2: $63\equiv-1\pmod {64}$ and
+$33 = 2^5+1$.
+\end{example}
+
+\begin{homework}
+Find two distinct elements of order 2 in $\Z^*_{128}$.
+\end{homework}
+
+The last item left in the proof the the Primitive Root Theorem is:
+
+\begin{theorem}
+Let $p$ be an odd prime and let $i\geq 1$. Then $\Z^*_{p^i}$ is cyclic.
+\end{theorem}
+
+Because this lesson has already gone on for a long time and the proof of this theorem is not short, we are not going to give 
+the proof now. Time permitting we will prove the theorem in a later lesson.
+
+\begin{homework}
+Verify that 2 is a primitive root of 27. Note that you only have to show that the order of 2 is not 3 or 9.
+\end{homework}
+
 
 \bibliographystyle{amsalpha}
 
 \bibliography{math}
 
 \end{document}
-
