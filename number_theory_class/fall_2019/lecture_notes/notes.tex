@@ -3281,31 +3281,79 @@ For $a\in\Z^*_p$ let us write
 $$\av{a}=
 \begin{cases}
 a &\text{ if } \sign(a) = 1 \\
-p-1 &\text{ if } \sign(a) = -1
+p-a &\text{ if } \sign(a) = -1
 \end{cases}
 $$
 
-For example with $p=13$ we have $\av{6} = 6$ and $\av{9}=4$ since in $\Z^*_{13}$, $9=-4$ and $\sign(9)=-1$.
+For example with $p=13$ we have $\av{6} = 6$ and $\av{9}=4$ since in $\Z_{13}$, $9=-4$ and $\sign(9)=-1$.
 
-Now notice that the set of absolute values of the first $(p-1)/2$ multiples of $a$ in $\Z^*_p$ is just a rearrangement
-of the set of the first $(p-1)/2$ integers:
+Now notice that the set of absolute values of the first $(p-1)/2$ multiples of $a$ in $\Z_p$ is just a rearrangement
+of the set of the first $(p-1)/2$ positive integers:
 \begin{align*}
 &\singleton{\av{a},\av{2a}, \cdots \av{(\frac{p-1}{2})a}} \\
 = &\singleton{1,2,\cdots \frac{p-1}{2}}.
 \end{align*}
 
-Here we are using multiplication in $\Z^*_p$.
+Here we are using arithmetic in $\Z_p$.
 
 For example looking at the example that proceeds this proof, the set of absolute values of the first 6 multiples
-of 3 in $Z^*_{13}$ is $\singleton{3,6,4,1,2,5}$ which is just a rearrangement of $\singleton{1,2,3,4,5,6}$.
+of 3 in $Z_{13}$ is $\singleton{3,6,4,1,2,5}$ which is just a rearrangement of $\singleton{1,2,3,4,5,6}$.
 
-The reason this is always true is that $\singleton{\av{a},\av{2a}, \cdots \av{(\frac{p-1}{2})a}}$ contains $(p-1)/2$ values in the
-range $1,\cdots, (p-1)/2$ and these values are all distinct. To see that they are distinct consider the following cases:
-Suppose $ja$ and $ka$ both have $\sign=+1$. Then $ja=ka\Implies j=k$. Next suppose
-$\sign(ja)=\sign(ka)=-1$. Then $p-ja=p-ka \Implies -ja = -ka \Implies -j = -k \Implies j=k $.
+The reason this is always true is that the list $\av{a},\av{2a}, \cdots \av{(\frac{p-1}{2})a}$ contains $(p-1)/2$ values in the
+range $1,\cdots, (p-1)/2$ and these values are all distinct. To see that they are distinct notice that
+if $1\leq i<j\leq (p-1)/2$ then $ia\not= ja$ (otherwise multiply both sides by $a^{-1}$ yielding $i=j$) and also $ia\not=-ja$
+(otherwise multiply both sides by $a^{-1}$ yielding $i=-j$ in $\Z_p$. But $i\not=-j$ since both $i$ and $j$ have $\sign=+1$.)
 
+Now, using arithmetic in $\Z_p$, consider the product
+
+$$ 
+a \dottimes 2a \dottimes 3a \dottimes \cdots \dottimes \left(\frac{p-1}{2}\right)a = a^{\frac{p-1}{2}}\left(\frac{p-1}{2} \right)!
+$$
+
+By the discussion above, the absolute values of the terms in the product are a rearrangement of the terms in $\left(\frac{p-1}{2} \right)!$. Therefore
+
+$$ 
+a \dottimes 2a \dottimes 3a \dottimes \cdots \dottimes (\frac{p-1}{2})a = (-1)^n\left(\frac{p-1}{2} \right)!
+$$
+
+So we have proven that
+
+$$
+a^{\frac{p-1}{2}} = (-1)^n.
+$$
 
 \end{proof}
+
+\begin{homework}
+Use Gauss' lemma to compute each of the Legendre symbols below. That is, in each case
+obtain the integer $n$ from the theorem for which $\left( \frac{a}{p} \right) = (-1)^n$.
+\begin{enumerate}
+\item[(a)] $\left( \frac{8}{11} \right)$.
+\item[(b)] $\left( \frac{7}{13} \right)$.
+\item[(c)] $\left( \frac{5}{19} \right)$. 
+\item[(d)] $\left( \frac{11}{23} \right)$. 
+\item[(e)] $\left( \frac{6}{31} \right)$.
+\end{enumerate}
+\end{homework}
+
+Gauss' Lemma allows us to answer the question: For which odd primes $p$ is it true that $2$ is a quadratic residue mod $p$.
+
+\begin{theorem}
+Let $p$ be an odd prime. Then $2$ is a quadratic residue mod $p$ iff $p\equiv 1 \pmod 8$ or $p\equiv 7 \pmod 8$.
+\end{theorem}
+\begin{proof}
+Consider the first $(p-1)/2$ multiples of $2$. These are precisely the even numbers less than $p$. By Gauss' Lemma, $2$ is
+a quadratic residue just in case there are an even number of these even numbers that are greater than $(p-1)/2$. There are four
+cases to consider.
+
+If $p\bmod 8 = 1$ then $(p-1)/2$ is a multiple of 4 and so there are an even number greater than $(p-1)/2$ and less than $p$.
+
+If $p\mod 8 = 3$ then $(p-1)/2 \bmod 4 = 1$
+\end{proof}
+
+\begin{homework}
+List all primes $p$ with $2<p<30$ with the property that in the field $\Z_p$ there is a square-root of 2.
+\end{homework}
 
 \bibliographystyle{amsalpha}
 
