@@ -2729,6 +2729,7 @@ So, applying Euler's criterion again, $ab$ is a quadratic residue.
 \end{proof}
 
 \begin{theorem}
+\label{WhenIsMinusOneASquare}
 Let $p$ be an odd prime. Then $-1$ is a quadratic residue mod $p$ iff $p\equiv 1 \pmod 4$.
 \end{theorem}
 \begin{proof}
@@ -3120,6 +3121,191 @@ the proof now. Time permitting we will prove the theorem in a later lesson.
 Verify that 2 is a primitive root of 27. Note that you only have to show that the order of 2 is not 3 or 9.
 \end{homework}
 
+\newpage
+
+\section{Quadratic Reciprocity}
+Let $p$ be a prime and $a\in\Z$.
+
+\bigskip
+
+Recall the following definition:  $a$ is a \emph{quadratic residue} mod $p$ iff $p\ndivides a$ and
+$a\equiv x^2 \pmod p$ for some $x\in\Z$.
+
+\bigskip
+
+Recall \emph{Euler's Criteria}: Suppose $p \ndivides a$. Then
+
+$$
+a^{\frac{p-1}{2}} \equiv
+\begin{cases}
+1 \pmod p &\text{ ; if } a \text{ is a quadratic residue mod } p \\
+-1 \pmod p &\text{ ; if } a \text{ is not a quadratic residue mod } p.
+\end{cases}
+$$
+
+
+\begin{definition} Let $p$ be an odd prime and $a\in\Z$. Then we define the \emph{Legendgre Symbol} for $a$ and $p$ as
+
+$$
+\left( \frac{a}{p} \right) =
+\begin{cases}
+0  &\text{ ; if } p\divides a \\
+1  &\text{ ; if } a \text{ is a quadratic residue mod } p \\
+-1   &\text{ ; otherwise } \\
+\end{cases}
+$$
+
+Some authors (like Shoup) write $(a \divides b)$ for the Legendre symbol.
+
+\end{definition}
+
+\begin{note}
+If $p\ndivides a$ then $\left( \frac{a}{p} \right) \equiv a^{\frac{p-1}{2}} \pmod p$.
+\end{note}
+
+\begin{note}
+If $a\equiv b \pmod p$ then $\left( \frac{a}{p} \right)=\left( \frac{b}{p} \right)$.
+\end{note}
+
+\begin{example}
+\begin{itemize}
+\item $\left( \frac{4}{5} \right) = 1$ because $4$ is a quadratic residue mod $5$.
+\item $\left( \frac{15}{5} \right) = 0$ because $5\divides 15$.
+\item $\left( \frac{16}{5} \right) = \left( \frac{1}{5} \right)= 1$.
+\item $\left( \frac{2}{5} \right) = -1$ because $2$ is not a quadratic residue mod $5$. We can see this by noticing that in $\Z^*_5$,
+$1^2=1, 2^2=4, 3^2=4, 4^2=1$. We can also see it by noticing that $2^{\frac{5-1}{2}}=2^2=4=-1$ in $\Z^*_5$.
+\item $\left( \frac{2}{7} \right)=1$ because $3^2\equiv 2 \pmod 7$. Also, in $\Z^*_7$, $2^3=8=1$.
+\item $\left( \frac{3}{7} \right) = -1$ because $3^3=27\equiv -1 \pmod 7$.
+\end{itemize}
+\end{example}
+
+\begin{lemma} Let $p$ be prime and $a,b\in\Z$. Then
+$$\left( \frac{ab}{p} \right)= \left( \frac{a}{p} \right)\left( \frac{b}{p} \right).$$
+\end{lemma}
+\begin{proof}
+If $p\divides a$ or $p\divides b$ then both sides of the equation above equal to zero. So suppose
+$p\ndivides a$ and $p\ndivides b$.
+
+Then
+
+$$\left( \frac{ab}{p} \right) \equiv (ab)^{\frac{p-1}{2}} \equiv (a)^{\frac{p-1}{2}} (b)^{\frac{p-1}{2}}  \equiv \left( \frac{a}{p} \right)\left( \frac{b}{p} \right) \pmod p.$$
+
+Since the left- and righ-hand sides of the equation we are proving have the values 1 or -1 and are congruent mod $p$, they are equal.
+\end{proof}
+
+\begin{lemma}
+If $p\ndivides a$ then $\left( \frac{a^2b}{p} \right)=\left( \frac{b}{p} \right)$.
+\end{lemma}
+\begin{proof}
+Because $\left( \frac{a^2}{p} \right) = 1$.
+\end{proof}
+
+\begin{lemma} Let $p$ be prime. Then
+$$
+\left( \frac{-1}{p} \right) =
+\begin{cases}
+1  &\text{ ; if } p\equiv 1 \pmod 4 \\
+-1    &\text{ ; if } p\equiv 3 \pmod 4 \\
+\end{cases}
+$$
+\end{lemma}
+\begin{proof}
+This follows from Theorem \ref{WhenIsMinusOneASquare}.
+\end{proof}
+
+\begin{example}
+Is there a solution to
+$$x^2\equiv -46 \pmod {17}?$$
+
+\begin{align*}
+\left( \frac{-46}{17} \right) &= \left( \frac{-1}{17} \right) \left( \frac{46}{17} \right) = \left( \frac{46}{17} \right)\\
+&=   \left( \frac{12}{17} \right) =  \left( \frac{3 \cdot 4}{17} \right) = \left( \frac{3}{17} \right) \\
+&\equiv 3^8 \pmod {17} \\
+&\equiv (81)^2 \pmod {17} \\
+&\equiv (-4)^2 \pmod {17} \\
+&\equiv 16 \equiv -1 \pmod {17}. \\
+\end{align*}
+
+So the answer is no, there are no solutions.
+\end{example}
+
+\begin{homework}
+Find the value of the following Legendre symbols:
+\begin{enumerate}
+\item[(a)] $\left(\frac{19}{23} \right)$.
+\item[(b)] $\left(\frac{-23}{59} \right)$ 
+\item[(c)] $\left(\frac{20}{31} \right)$  
+\item[(d)] $\left(\frac{18}{43} \right)$  
+\item[(e)] $\left(\frac{-72}{131} \right)$
+\end{enumerate}
+\end{homework}
+
+\begin{definition}
+Let $p$ be an odd prime and $a\in\Z^*_p$. Then we say that $\sign(a)=+1$ if $0<a\leq (p-1)/2$,
+$\sign(a) = -1$ if $(p-1)/2 < a < p$, and $\sign(0)=0$.
+\end{definition}
+
+\begin{example}
+Le $p=11$. Then the elements of $\Z^*_{11}$ whose $\sign$ is $+1$ are $1,2,3,4,5$ and the elements
+of $\Z^*_{11}$ whose $\sign$ is $-1$ are $6,7,8,9,10 = -5,-4,-3,-2,-1.$ Thuse we
+are considering the bottom half of the non-zero elements to be positive and the top half of the
+non-zero elements to be negative.
+\end{example}
+
+\begin{theorem}[Gauss' Lemma]
+\label{GaussLemma}
+Let $p$ be an odd prime and let $a\in\Z$ with $p\ndivides a$.
+
+Let
+
+$$n=\card{\setof{j}{1\leq j\leq \frac{p-1}{2} \text{ and } \sign(ja \bmod p) = -1}}.$$
+
+Then $\left(\frac{a}{p} \right) = (-1)^n$.
+\end{theorem}
+
+\begin{example} Use Gauss' Lemma to compute $\left(\frac{3}{13} \right)$.
+
+Let $p=13$. Then $(p-1)/2=6$. Look at the first six multiples of $3$ in $\Z^*_{13}$:
+
+$$
+3,6,9,12, 2,5 = 3,6,-4,-1,2,5
+$$
+This list has 4 elements with $\sign=+1$ and 2 elements with $\sign=-1$. Since $2$ is even $(-1)^2=1$ and so
+$\left(\frac{3}{13} \right)=1$ and so 3 is a quadratic residue mod 13. (In fact $4^2=3$ in $\Z^*_{13}$.)
+\end{example}
+
+\begin{proof}[Proof of Guass's Lemma]
+By replacing $a$ by $a\bmod p$ we may assume $a\in\Z^*_p$.
+
+For $a\in\Z^*_p$ let us write 
+$$\av{a}=
+\begin{cases}
+a &\text{ if } \sign(a) = 1 \\
+p-1 &\text{ if } \sign(a) = -1
+\end{cases}
+$$
+
+For example with $p=13$ we have $\av{6} = 6$ and $\av{9}=4$ since in $\Z^*_{13}$, $9=-4$ and $\sign(9)=-1$.
+
+Now notice that the set of absolute values of the first $(p-1)/2$ multiples of $a$ in $\Z^*_p$ is just a rearrangement
+of the set of the first $(p-1)/2$ integers:
+\begin{align*}
+&\singleton{\av{a},\av{2a}, \cdots \av{(\frac{p-1}{2})a}} \\
+= &\singleton{1,2,\cdots \frac{p-1}{2}}.
+\end{align*}
+
+Here we are using multiplication in $\Z^*_p$.
+
+For example looking at the example that proceeds this proof, the set of absolute values of the first 6 multiples
+of 3 in $Z^*_{13}$ is $\singleton{3,6,4,1,2,5}$ which is just a rearrangement of $\singleton{1,2,3,4,5,6}$.
+
+The reason this is always true is that $\singleton{\av{a},\av{2a}, \cdots \av{(\frac{p-1}{2})a}}$ contains $(p-1)/2$ values in the
+range $1,\cdots, (p-1)/2$ and these values are all distinct. To see that they are distinct consider the following cases:
+Suppose $ja$ and $ka$ both have $\sign=+1$. Then $ja=ka\Implies j=k$. Next suppose
+$\sign(ja)=\sign(ka)=-1$. Then $p-ja=p-ka \Implies -ja = -ka \Implies -j = -k \Implies j=k $.
+
+
+\end{proof}
 
 \bibliographystyle{amsalpha}
 
