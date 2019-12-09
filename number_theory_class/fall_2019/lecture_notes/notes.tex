@@ -925,7 +925,7 @@ $\gcd(a,b) = 1$.
 
 \begin{lemma}
 Let $a$, $b$ be integers. Then $a$, $b$ are relatively prime iff
-their only positive common divisor is $1$.
+their only positive common divizzsor is $1$.
 \end{lemma}
 \begin{proof} $a$ and $b$ are relatively prime iff
 $\gcd(a,b)=1$ iff all common divisors of $a$ and $b$ divide 1
@@ -3274,7 +3274,7 @@ This list has 4 elements with $\sign=+1$ and 2 elements with $\sign=-1$. Since $
 $\left(\frac{3}{13} \right)=1$ and so 3 is a quadratic residue mod 13. (In fact $4^2=3$ in $\Z^*_{13}$.)
 \end{example}
 
-\begin{proof}[Proof of Guass's Lemma]
+\begin{proof}[Proof of Guass' Lemma]
 By replacing $a$ by $a\bmod p$ we may assume $a\in\Z^*_p$.
 
 For $a\in\Z^*_p$ let us write 
@@ -3342,18 +3342,126 @@ Gauss' Lemma allows us to answer the question: For which odd primes $p$ is it tr
 Let $p$ be an odd prime. Then $2$ is a quadratic residue mod $p$ iff $p\equiv 1 \pmod 8$ or $p\equiv 7 \pmod 8$.
 \end{theorem}
 \begin{proof}
-Consider the first $(p-1)/2$ multiples of $2$. These are precisely the even numbers less than $p$. By Gauss' Lemma, $2$ is
-a quadratic residue just in case there are an even number of these even numbers that are greater than $(p-1)/2$. There are four
-cases to consider.
+Consider the first $(p-1)/2$ multiples of $2$. These are precisely the even positive integers less than $p$. By Gauss' Lemma, $2$ is
+a quadratic residue just in case there are an even number of these even numbers that are greater than $(p-1)/2$. 
 
-If $p\bmod 8 = 1$ then $(p-1)/2$ is a multiple of 4 and so there are an even number greater than $(p-1)/2$ and less than $p$.
+Notice the following facts:
+\begin{enumerate}
+\item[(i)] Every sequence of 4 consecutive integers contains an even number of even integers.
+\item[(ii)] A sequence of 3 consecutive integers contains an even number of even integers iff the first element of the sequence is even.
+\item[(iii)] A sequence of 2 consecutive integers contains an odd number of even integers
+\item[(iv)] A sequence of 1 integer contains an even number of even integers iff the single integer in the sequence is odd.
+\end{enumerate}
 
-If $p\mod 8 = 3$ then $(p-1)/2 \bmod 4 = 1$
+Now let $I=\setof{x\in\Z}{(p-1)/2 < x < p}$. So $|I|=(p-1)/2$ and the first element of $I$ is $(p-1)/2 + 1$.
+We want to know if there are an even or odd number of even numbers in $I$.
+Consider four cases:
+
+\begin{itemize}
+\item $p\bmod 8 = 1$. Then $(p-1)/2$ is a multiple of 4 and so there are an even number of evens in $I$ by (i) above.
+\item $p\bmod 8 = 3$. Then $(p-1)/2 \bmod 4 = 1$ and the first element of $I$ is even so $I$ contains an odd number of evens by (i) and (iv) above.
+\item $p\bmod 8 = 5$. Then $(p-1)/2 \bmod 4 = 2$ so $I$ contains an odd number of evens by (i) and (iii) above.
+\item $p\bmod 8 = 7$. Then $(p-1)/2 \bmod 4 = 3$ and the first element of $I$ is even so $I$ contains an even number of evens by (i) and (ii) above.
+\end{itemize}
+
 \end{proof}
 
 \begin{homework}
 List all primes $p$ with $2<p<30$ with the property that in the field $\Z_p$ there is a square-root of 2.
 \end{homework}
+
+Now we are ready to state the main theorem.
+
+\begin{theorem}[Quadratic Reciprocity]
+\label{QuadraticReciprocity}
+Let $p$ and $q$ be odd primes. 
+
+If at least one of $p$ or $q$ is congruent to 1 mod 4 then then 
+$$\left( \frac{p}{q} \right) = \left( \frac{q}{p} \right).$$
+
+Otherwise both $p$ and $q$ are congruent to 3 mod 4 and in this case
+$$\left( \frac{p}{q} \right) = -1 \cdot \left( \frac{q}{p} \right).$$
+\end{theorem}
+
+\begin{example}
+Compute $\left( \frac{29}{53} \right)$.
+
+\begin{align*}
+\left( \frac{29}{53} \right) &= \left( \frac{53}{29} \right) \quad &\text{because $29\equiv 1 \pmod 4$} \\
+\left( \frac{53}{29} \right) &= \left( \frac{24}{29} \right) =  \left( \frac{2}{29} \right)^3 \left( \frac{3}{29} \right)\\
+\left( \frac{2}{29} \right) &= -1 \quad &\text{because $29\equiv 5 \pmod 8$} \\
+\left( \frac{3}{29} \right) &= \left( \frac{29}{3} \right) \quad &\text{because $29\equiv 1 \pmod 4$} \\
+\left( \frac{29}{3} \right) &= \left( \frac{2}{3} \right) = -1 \\
+\end{align*}
+So $\left( \frac{29}{53} \right) = 1$
+
+\end{example}
+
+
+\begin{homework}
+Evaluate the following Legendre symbols:
+\begin{enumerate}
+\item[(a)] $\left( \frac{71}{73} \right)$.
+\item[(b)] $\left( \frac{-219}{383} \right)$.
+\item[(c)] $\left( \frac{461}{773} \right)$.
+\item[(d)] $\left( \frac{1234}{4567} \right)$.
+\item[(e)] $\left( \frac{3658}{12703} \right)$.
+[Hint: $3658 = 2 \cdot 31 \cdot 59$.]
+\end{enumerate}
+\end{homework}
+
+The rest of this section is devoted to a proof of the Quadratic Reciprocity Theorem.
+
+Let $p$ be an odd prime and $a$ a positive integer. Consider the value
+$$\floor{\frac{a}{p}}$$
+which is the greatest integer less than or equal to $a/p$. Notice that this may be
+thought of as the zero-based index of the block of of integers of length $p$ that contains $a$. 
+In other words
+$$\floor{\frac{a}{p}}p \leq a < \left(\floor{\frac{a}{p}} + 1\right)p.$$
+We will refer to $\floor{\frac{a}{p}}$ as the $p$-block-index of $a$.
+
+The following lemma is a corollary of Gauss' Lemma. Let $n$ be the value from
+Gauss' Lemma. The following lemma says that the parity of $n$ is the same as the
+parity of the sum of the $p$-block indices of the first $(p-1)/2$ multiples of $a$.
+
+\begin{lemma}
+Let $p$ be an odd prime and $a$ an odd integer not divisible by $p$.
+
+Let
+
+$$N=\sum_{j=1}^{\frac{p-1}{2}}\floor{\frac{ja}{p}}.$$
+
+Then $$\left(\frac{a}{p} \right) = (-1)^N.$$
+
+\end{lemma}
+
+(To be continued: I will insert the proof of the Quadratic Reciprocity Theorem
+in this space soon.)
+
+
+\bigskip
+
+\textbf{Textbook Reading:} Section 12.1 of \emph{Shoup}, \emph{The Legendre Symbol}.
+
+\textbf{Textbook Exercises}: Do exercises 12.1 and 12.2.
+
+\bigskip
+
+\textbf{Textbook Reading:} Section 9-1 of \emph{Andrews}, \emph{Euler's Criterion}.
+
+\textbf{Textbook Exercises}: Do exercise 1.
+
+\bigskip
+
+\textbf{Textbook Reading:} Section 9-2 of \emph{Andrews}, \emph{The Legendre Symbol}.
+
+\bigskip
+
+\textbf{Textbook Reading:} Section 9-3 of \emph{Andrews}, \emph{The Quadratic Reciprocity Law}.
+But skip the proof the Quadratic Reciprocity Theorem, Theorem 9-4, because we will be following
+the proof from Shoup instead.
+
+\textbf{Textbook Exercises}: Do exercises 4,5,6,7.
 
 \bibliographystyle{amsalpha}
 
