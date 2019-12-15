@@ -3010,9 +3010,9 @@ Similarly $r\divides k$. Since $\gcd(r,s)=1$, $rs\divides k$. So $rs=k$.
 
 Now we can prove that every odd prime has a primitive root.
 \begin{proof}[Proof of Theorem \ref{PrimesHavePrimitiveRoots}]
-Let $p$ be an odd prime. We must show that there is an $a\in\Z^*_n$ that has order $p-1$.
+Let $p$ be an odd prime. We must show that there is an $a\in\Z^*_p$ that has order $p-1$.
 Let $p-1=q_1^{r_1}q_2^{r_2}\cdots q_k^{r_k}$ be the prime factorization of $p-1$. It
-suffices to show that for each $i$ there is an element $a_i\in\Z^*_n$ such that the
+suffices to show that for each $i$ there is an element $a_i\in\Z^*_p$ such that the
 multiplicative order of $a_i$ is $q_i^{r_i}$. Because then if we let
 $a=a_1 a_2 \cdots a_k$, by (multiple applications of) Lemma \ref{OrderOfAProduct} we get
 that the order of a is $p-1$. 
@@ -3021,16 +3021,16 @@ So fix $i$ and we will show that there is some element of order $q_i^{r_i}$.
 It suffices to show that there is some element whose order is divisible by $q_i^{r_i}$. Because
 suppose the order of $b$ is $q_i^{r_i}u$. Then $b^u$ has order $q_i^{r_i}$ by Homework \ref{OrderOfAToTheHIsK}.
 
-Assume towards a contradiction that there is no element of $\Z^*_n$ whose order is divisible by $q_i^{r_i}$.
+Assume towards a contradiction that there is no element of $\Z^*_p$ whose order is divisible by $q_i^{r_i}$.
 Let 
 $$m=(p-1)/q_i =q_1^{r_1}q_2^{r_2}\cdots q_i^{r_i-1}\cdots q_k^{r_k}.$$
 
-Let $a$ be any element of $\Z^*_n$. We know that the order of $a$ divides 
+Let $a$ be any element of $\Z^*_p$. We know that the order of $a$ divides 
 $p-1=q_1^{r_1}q_2^{r_2}\cdots q_k^{r_k}$ and since $q_i^{r_i}$ does not divide the order of $a$ we must have that
-the order of $a$ divides $m$. This means that $a^m=1$. But $a$ was arbitrary so we have that for all $a\in\Z^*_n$,
-$a^m=1$. But this means that every $a\in\Z^*_n$ is a root of the polynomial $x^m-1$. But this is impossible because
-there are only $m$ roots of this polynomial and there are $p-1>m$ elements of $\Z^*_n$. This contradiction means
-that there is an element of $\Z^*_n$ whose order is divisible by $q_i^{r_i}$ as we wished to prove.
+the order of $a$ divides $m$. This means that $a^m=1$. But $a$ was arbitrary so we have that for all $a\in\Z^*_p$,
+$a^m=1$. But this means that every $a\in\Z^*_p$ is a root of the polynomial $x^m-1$. But this is impossible because
+there are only $m$ roots of this polynomial and there are $p-1>m$ elements of $\Z^*_p$. This contradiction means
+that there is an element of $\Z^*_p$ whose order is divisible by $q_i^{r_i}$ as we wished to prove.
 \end{proof}
 
 Continuing with our proof of The Primitive Root Theorem, we next turn to some negative results.
@@ -3429,15 +3429,111 @@ Let $p$ be an odd prime and $a$ an odd integer not divisible by $p$.
 
 Let
 
-$$N=\sum_{j=1}^{\frac{p-1}{2}}\floor{\frac{ja}{p}}.$$
+$$N=\sum_{j=1}^{(p-1)/2}\floor{\frac{ja}{p}}.$$
 
 Then $$\left(\frac{a}{p} \right) = (-1)^N.$$
 
 \end{lemma}
+\begin{proof}
+Let
+$$n=\card{\setof{j}{1\leq j\leq \frac{p-1}{2} \text{ and } \sign(ja \bmod p) = -1}}.$$
+Gauss' Lemma tells us that
+$$\left(\frac{a}{p} \right) = (-1)^n.$$
+Thus we need to show that $N\equiv n \pmod 2$.
 
-(To be continued: I will insert the proof of the Quadratic Reciprocity Theorem
-in this space soon.)
+Let $r_1, r_2, \cdots , r_n$ be an enumeration of 
+$$\setof{ja \bmod p}{1\leq j\leq \frac{p-1}{2} \text{ and } \sign(ja \bmod p) = -1}.$$
+Let $s_1, s_2, \cdots, s_k$ be an enumeration of
+$$\setof{ja \bmod p}{1\leq j\leq \frac{p-1}{2} \text{ and } \sign(ja \bmod p) = 1}.$$
 
+Notice that 
+$$ja = p\floor{\frac{ja}{p}} + ja \bmod p.$$
+
+Thus
+$$\sum_{j=1}^{(p-1)/2}ja = \sum_{j=1}^{(p-1)/2}p\floor{\frac{ja}{p}}  + 
+\sum_{j=1}^n r_j + \sum_{j=1}^k s_j$$
+
+or
+
+$$a\sum_{j=1}^{(p-1)/2}j = pN  + 
+\sum_{j=1}^n r_j + \sum_{j=1}^k s_j.$$
+
+Let
+$$T=\sum_{j=1}^{(p-1)/2} j$$
+
+$$R=\sum_{j=1}^nr_j$$
+
+$$S=\sum_{j=1}^k s_j.$$.
+
+so we have that $pN = aT - R -S$.
+
+As we saw in the proof of Gauss' Lemma, the set of absolute values of the first 
+$(p-1)/2$ multiples of $a$ mod $p$ is just a rearrangement
+of the set of the first $(p-1)/2$ positive integers:
+\begin{align*}
+&\singleton{s_1,s_2,\cdots, s_k} \union \singleton{p - r_1, p-r_2,\cdots, p-r_k} \\
+= &\singleton{1,2,\cdots \frac{p-1}{2}}.\
+\end{align*}
+
+Thus
+
+$$
+\sum_{j=1}^{(p-1)/2} j = \sum_{j=1}^k s_j+ \sum_{j=1}^n(p-r_j) =  \sum_{j=1}^k s_j + np - \sum_{j=1}^nr_j
+$$
+
+or $np = T  +  R - S$. Compare this with  $pN = aT -R -S$ from above.
+
+Because $a$ is odd, $aT\equiv T \pmod 2$. Also $R\equiv -R \pmod 2$. Also because $p$ is odd,
+$pN\equiv N \pmod 2$ and $pn \equiv n \pmod 2$. Putting all this together we get $N\equiv n \pmod 2$ as we
+were trying to show.
+
+\end{proof}
+
+This Lemma is the main tool we need to prove the Quadratic Reciprocity Theorem.
+
+\begin{proof}[proof of Theorem \ref{QuadraticReciprocity} Quadratic Reciprocity]
+Let $p$ and $q$ be odd primes. 
+
+Let
+
+$$S=\setof{(x,y)}{1\leq x \leq (p-1)/2, 1\leq y \leq (q-1)/2}.$$
+
+Note that $S$ contains no pair $(x,y)$ with $qx=py$ so let us partition $S$ into two subsets:
+
+$$S_1=\setof{(x,y)\in S}{py<qx}$$
+
+$$S_2=\setof{(x,y)\in S}{py>qx}.$$
+
+Note that $(x,y)\in S_1$ iff $1\leq x \leq (p-1)/2$ and $1\leq y \leq \floor{qx/p}$. So
+
+$$\av{S_1} = \sum_{x=1}^{(p-1)/2}\floor{qx/p}.$$
+
+Similarly
+$$\av{S_2} = \sum_{y=1}^{(q-1)/2}\floor{py/q}.$$
+
+So we have
+
+$$\frac{p-1}{2}\frac{q-1}{2}=\av{S}=\av{S_1}+\av{S_2} =  \sum_{x=1}^{(p-1)/2}\floor{qx/p} + \sum_{y=1}^{(q-1)/2}\floor{py/q}.$$
+
+Now
+$$\frac{p-1}{2}\frac{q-1}{2}$$
+
+is odd iff $p\equiv q \equiv 3 \pmod 4$.
+
+So
+
+$$(-1)^{\frac{p-1}{2}\frac{q-1}{2}}$$
+equals $-1$ iff $p\equiv q \equiv 3 \pmod 4$.
+
+By the previous Lemma, 
+$$(-1)^{\sum_{x=1}^{(p-1)/2}\floor{qx/p}}=\left(\frac{q}{p} \right)$$
+and
+$$(-1)^{\sum_{y=1}^{(q-1)/2}\floor{py/q}}=\left(\frac{p}{q} \right)$$.
+
+So $$\left(\frac{q}{p} \right)\left(\frac{p}{q} \right)=-1$$
+iff $p\equiv q \equiv 3 \pmod 4$.
+
+\end{proof}
 
 \bigskip
 
