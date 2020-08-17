@@ -1,0 +1,127 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 1 \\ The Integers}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2020 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}{Number Systems}
+
+  \begin{itemize}
+  \item $\Z = \singleton{\cdots -3,-2,-1,0,1,2,3,\cdots} = $ the integers
+  \item $\Q = \setof{\frac{n}{m}}{n,m\in \Z, m\not= 0} = $ the rationals
+  \item $\R = $ the reals
+  \item $\Q = \setof{x\in\R}{\text{decimal expansion of $x$ is terminating or repeating}}$
+  \item $\C = $ the complex numbers
+  \item $\Zpos = \singleton{1,2,3,\cdots} =$ the positive integers
+  \item $\Znonneg = \singleton{0,1,2,3,\cdots} =$ the non-negative integers
+  \item  $\Zpos \subset \Znonneg \subset \Z \subset \Q \subset \R \subset \C$
+  \end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{Number Systems: Example}
+\begin{itemize}
+  \item  Give an example of an $x\in \Znonneg \setminus \Zpos$.
+  \item $x=0$.
+  \item  Give an example of an $x\in \Z \setminus \Z^{\geq 0}$.
+  \item $x=-1$.
+  \item  Give an example of an $x\in \Q \setminus \Z$.
+  \item $x=1/2$.
+  \item  Give an example of an $x\in \R \setminus \Q$.
+  \item $x=\sqrt{2}$.
+  \item How do you know $\sqrt{2}\notin \Q$? See Theorem 1.1 in Rosen.
+  \item Give an example of $x\in\C \setminus \R$.
+  \item $x=i$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{This class is about $\Z$}
+
+\begin{itemize}
+\item Elementary number theory studies the integers $\Z$.
+\item Mostly we will be studying the positive integers $\Z^+$.
+\item At first blush you might think that $\Z^+$ is not interesting.
+\item After all when you visualize it is looks very simple: just an infinite sequence of points.
+How interesting could the theory be?
+\item But it turns out there is a lot of complexity, even in the set of positive integers less than 100.
+\item If we consider very large integers it becomes even more interesting and has applications
+to computer cryptography.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Divisibility}
+
+\begin{definition}
+Let $a,b\in\Z$. We say that $a$ \emph{divides} b iff there is a $c\in\Z$ such that $b = a c$.
+We write $a$ divides $b$ as $a\divides b$.
+\end{definition}
+
+\begin{itemize}
+  \item If $a$ doesn't divide $b$ we write $a\ndivides b$.
+  \item Be careful not to confuse $a\divides b$ with $a/b$.
+  \item True or false: $14 \divides 7$.
+  \item True or false: $7 \divides 14$.
+  \item True or false: $-7 \divides 14$.
+  \item True or false: $7 \divides -14$.
+  \item True or false: $7 \divides 0$.
+  \item True or false: $0 \divides 7$.
+  \item True or false: $0 \divides 0$.
+\end{itemize}
+
+\end{frame}
+
+\end{document}
