@@ -83,7 +83,7 @@
   \item $x=1/2$.
   \item  Give an example of an $x\in \R \setminus \Q$.
   \item $x=\sqrt{2}$.
-  \item How do you know $\sqrt{2}\notin \Q$? See Theorem 1.1 in Rosen.
+  \item How do you know $\sqrt{2}\notin \Q$?
   \item Give an example of $x\in\C \setminus \R$.
   \item $x=i$.
   \end{itemize}
@@ -106,10 +106,25 @@ to computer cryptography.
 \begin{frame}{Axioms of the integers}
 
 \begin{itemize}
-  \item The following is the list of all assumptions about the Integers that we
-  will make in this class.
-  \item Everything else we prove in this class will be derived from this list of assumptions.
-  \item Axiom 1: $\left(\Z, +, 0\right)$ is an Abelian group. This means:
+  \item The integers are familiar objects you have known about for most of your life.
+  \item Early in this course we will prove some facts about the integers
+  that you have "known to be true" for many years:
+  \begin{itemize}
+    \item When you divide one integer by another you get a unique quotient and remainder.
+    \item Every integer has a unique prime factorization.
+  \end{itemize}
+  \item The question comes up: What assumptions about the integers are we allowing
+  ourselves to make when proving these ``elementar facts''.
+  \item In the following few slides we will give the list of all assumptions
+  about the integers that we will make in this class.
+  \item Everything else we prove in this class may be derived from this list of assumptions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Axioms about addition}
+
+\begin{itemize}
+  \item $\left(\Z, +, 0\right)$ is an Abelian group. This means:
   \item  $+$ is a binary operation on $\Z$: For every $x,y\in\Z$, $x+y\in\Z$.
   \item  $+$ is commutative: $x+y=y+x$, for all $x,y\in\Z$.
   \item  $+$ is associative: $x + (y+z) = (x+y) +z$, for all $x,y,z\in\Z$.
@@ -123,12 +138,13 @@ to computer cryptography.
 \begin{frame}{Axioms about multiplication}
 
 \begin{itemize}
-  \item Axiom 2: $\left(\Z, +, \times, 0, 1\right)$ is a commutative ring. This means (in addition to Axiom 1):
+  \item $\left(\Z, +, \times, 0, 1\right)$ is a commutative ring. This means (in addition to the previous axioms):
   \item  $\times$ is a binary operation on $\Z$: For every $x,y\in\Z$, $x\times y\in\Z$.
   \item (Note that $x\times y$ is also written $x\cdot y$ and $x y$.)
   \item  $\times$ is commutative: $x\cdot y= y \cdot x$, for all $x,y\in\Z$.
   \item  $\times $ is associative: $x \cdot (y\cdot z) = (x\cdot y) \cdot z$, for all $x,y,z\in\Z$.
   \item  $1$ is a multiplicative identity element: $x\cdot 1 = x$, for all $x\in\Z$.
+  \item $1\not=0$.
   \item Distributive law: $x\cdot (y + z) = x \cdot y + x \cdot z$.
   \item Cancellation law: If $x\cdot z = y \cdot z$ and $z\not=0$ then $x=y$, for all $x,y,z\in\Z$.
   \item  (Note that we do not have multiplicative inverses.)
@@ -139,7 +155,9 @@ to computer cryptography.
 \begin{frame}{The ordering on the integers}
 
 \begin{itemize}
-  \item For $x,y\in\Z$ define $x<y$ iff $y-x\in\Zpos$.
+  \item We want to now introduce some definitions and axioms that describe the
+  ordering on the integers.
+  \item Attempt: For $x,y\in\Z$ define $x<y$ iff $y-x\in\Zpos$.
   \item Wait, there is a problem with this definition.
   \item $\Zpos = \setof{x\in\Z}{0<x}$.
   \item So $\Zpos$ is defined in terms of $<$, so we cannot define $<$ in terms of $\Zpos$.
@@ -151,7 +169,7 @@ to computer cryptography.
 \begin{frame}{Axioms about the positive integers}
 
 \begin{itemize}
-  \item Axiom 3: There is a subset $\Zpos\subset\Z$ called the set of \emph{positive integers} such that:
+  \item There is a subset $\Zpos\subset\Z$ called the set of \emph{positive integers} such that:
   \item For every $x\in\Z$ exactly one of the following holds:
     \begin{itemize}
       \item $x=0$
@@ -167,12 +185,71 @@ to computer cryptography.
 \begin{frame}{The well-ordering axiom}
 
 \begin{itemize}
-  \item Axiom 4: $\Z+$ is well-ordered by $<$. This means:
+  \item  $\Zpos$ is well-ordered by $<$. This means:
   \item Let $S$ be any non-empty subset of $\Z^+$. Then $S$ contains
   a least element.
   \item (Note this is not true of $\Z,\Q,\R,\C$.)
   \item (It is not true of $\R^+$.)
-  \item What about $\Znonneg$?
+  \item (What about $\Znonneg$?)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Simple facts about $+$, $-$, $\times$ and $<$}
+
+\begin{itemize}
+  \item Going forward, the only axiom we will ever mention explicitly is the last one: the well-ordering axiom.
+  \item We will often use ``common, simple facts'' about integer arithmetic that follow
+  from the axioms without bothering to explicitly mention them.
+  \item Example: If $a<b$ and $b<c$ then $a < c$.
+  \item Example: If $a<b$ and $c>0$ then $ac < bc$.
+  \item Example: $-1\times a = -a$ for all $a\in\Z$.
+  \item Example: 1 is the least positive integer.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example application of the well-ordering property}
+
+\begin{itemize}
+  \item Theorem: $\sqrt{2}$ is irrational.
+  \item proof: Suppose that $\sqrt{2}$ were rational.
+  \item Let $a,b$ be positive integers such that $\sqrt{2}=a/b$.
+  \item Notice that $a=b\sqrt{2}$ is a positive integer.
+  \item Let $S=\setof{k\sqrt{2}}{k,k\sqrt{2}\in\Zpos}.$
+  \item $S$ is a set of positive integers. $S\not=\emptyset$ because $a\in S$.
+  \item By the well-ordering property there is a least element of $S$, say $s$.
+  \item So $s\in\Zpos$ and there is a $t\in\Zpos$ such that $s=t\sqrt{2}$.
+  \item Let $\sprime = s(\sqrt{2} - 1)$. Notice that $0< \sprime<s$.
+  \item We will get a contradiction by showing that $\sprime\in S$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof continued}
+
+\begin{itemize}
+  \item Remember $S=\setof{k\sqrt{2}}{k,k\sqrt{2}\in\Zpos}.$
+  \item $s$ is the least element of $S$. $s=t\sqrt{2}$
+  \item $\sprime = s(\sqrt{2} - 1)$.
+  \item $0< \sprime<s$.
+  \item We will get a contradiction by showing that $\sprime\in S$.
+  \item $\sprime = s\sqrt{2} -s = t\sqrt{2}\sqrt{2} - s = 2t -s$.
+  \item So $\sprime$ is a  positive integer.
+  \item $\sprime = s\sqrt{2} -s = s\sqrt{2} - t\sqrt{2} = (s-t)\sqrt{2}$.
+  \item So $\sprime\in S$.
+  \item Contradiction. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Reading assignment}
+
+\begin{itemize}
+  \item \emph{What is Number Theory?} pages 1-3.
+  \item Beginning of Chapter 1. page 5 - top of page 7.
+  \item You can stop before the definition of \emph{algebraic} number.
+  \item Appendix A: \emph{Axioms for the Set of Integers.} pages 605-606.
 \end{itemize}
 
 \end{frame}
