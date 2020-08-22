@@ -1,7 +1,7 @@
 % $Header$
 
-\documentclass{beamer}
-%\documentclass[handout]{beamer}
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
 
 \usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
 \input{mathdefs}
@@ -114,7 +114,7 @@ to computer cryptography.
     \item Every integer has a unique prime factorization.
   \end{itemize}
   \item The question comes up: What assumptions about the integers are we allowing
-  ourselves to make when proving these ``elementar facts''.
+  ourselves to make when proving these ``elementary facts''?
   \item In the following few slides we will give the list of all assumptions
   about the integers that we will make in this class.
   \item Everything else we prove in this class may be derived from this list of assumptions.
@@ -243,11 +243,45 @@ to computer cryptography.
 
 \end{frame}
 
+\begin{frame}{Proof by Contradiction}
+\begin{itemize}
+\item The preceding proof was an example of \emph{proof by contradiction}.
+\item We will do proofs of this form several times in this class.
+\item Here is how such a proof works.
+\item Suppose we want to prove a statement $\sigma$.
+\item We start by assuming the \emph{negation} of $\sigma$. Equivalently we assume
+that $\sigma$ is false.
+\item Then we derive a \emph{contradiction}. This means we find some sentence $\tau$
+and we prove both that $\tau$ is true and that $\tau$ is false.
+\item It is impossible that $\tau$ could be both true and false.
+\item But we derived this from assuming that $\sigma$ was false.
+\item Thus our assumption that $\sigma$ was false must have been wrong.
+\item It must be the case that $\sigma$ is true.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Proof by Contradiction, continued}
+\begin{itemize}
+\item For example, in the previous proof we wanted to prove the sentence
+$\sigma$ that says that ``$\sqrt{2}$ is irrational''.
+\item The negation of $\sigma$ is  the sentence ``$\sqrt{2}$ is rational''.
+\item So we assumed this.
+\item Then we derived the following \emph{contradiction}:
+\item Let$\tau$ be the sentence
+``$s$ is the least element of $S$'' where $s$ and $S$ are as in the previous proof.
+\item First we showed that $\tau$ is true.
+\item Then we showed that $\tau$ is false by finding $\sprime<s$
+with $\sprime\in S$.
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Reading assignment}
 
 \begin{itemize}
   \item \emph{What is Number Theory?} pages 1-3.
-  \item Beginning of Chapter 1. page 5 - top of page 7.
+  \item Beginning of Section 1.1 \emph{The Integers: Numbers and Sequences},
+  page 5 - top of page 7.
   \item You can stop before the definition of \emph{algebraic} number.
   \item Appendix A: \emph{Axioms for the Set of Integers.} pages 605-606.
 \end{itemize}
