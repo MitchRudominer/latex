@@ -38,7 +38,7 @@
 % Or whatever. Note that the encoding and the font should match. If T1
 % does not look nice, try deleting the line with the fontenc.
 
-\title{Lesson 1 \\ The Integers}
+\title{Lesson 2 \\ Divisibility}
 \subtitle{Math 310, Elementary Number Theory \\ Fall 2020 \\ SFSU}
 \author{Mitch Rudominer}
 \date{}
@@ -57,62 +57,25 @@
 \end{frame}
 
 
-\begin{frame}{Number Systems}
+\begin{frame}{Divisibility}
 
-  \begin{itemize}
-  \item $\Z = \singleton{\cdots -3,-2,-1,0,1,2,3,\cdots} = $ the integers
-  \item $\Q = \setof{\frac{n}{m}}{n,m\in \Z, m\not= 0} = $ the rationals
-  \item $\R = $ the reals
-  \item $\Q = \setof{x\in\R}{\text{decimal expansion of $x$ is terminating or repeating}}$
-  \item $\C = $ the complex numbers
-  \item $\Zpos = \singleton{1,2,3,\cdots} =$ the positive integers
-  \item $\Znonneg = \singleton{0,1,2,3,\cdots} =$ the non-negative integers
-  \item  $\Zpos \subset \Znonneg \subset \Z \subset \Q \subset \R \subset \C$
-  \end{itemize}
-
-
-\end{frame}
-
-\begin{frame}{Number Systems: Example}
-\begin{itemize}
-  \item  Give an example of an $x\in \Znonneg \setminus \Zpos$.
-  \item $x=0$.
-  \item  Give an example of an $x\in \Z \setminus \Z^{\geq 0}$.
-  \item $x=-1$.
-  \item  Give an example of an $x\in \Q \setminus \Z$.
-  \item $x=1/2$.
-  \item  Give an example of an $x\in \R \setminus \Q$.
-  \item $x=\sqrt{2}$.
-  \item How do you know $\sqrt{2}\notin \Q$? See Theorem 1.1 in Rosen.
-  \item Give an example of $x\in\C \setminus \R$.
-  \item $x=i$.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{This class is about $\Z$}
 
 \begin{itemize}
-\item Elementary number theory studies the integers $\Z$.
-\item Mostly we will be studying the positive integers $\Z^+$.
-\item At first blush you might think that $\Z^+$ is not interesting.
-\item After all when you visualize it is looks very simple: just an infinite sequence of points.
-How interesting could the theory be?
-\item But it turns out there is a lot of complexity, even in the set of positive integers less than 100.
-\item If we consider very large integers it becomes even more interesting and has applications
-to computer cryptography.
+  \item \textbf{Definition:} Let $a,b\in\Z$. Then we say that $a$ \emph{divides}
+  $b$ iff there is a $c\in\Z$ such that $b = a c$.
+  \item We write this as $a\divides b$.
+  \item If $a$ doesn't divide $b$ we write $a\ndivides b$.
+  \item Example: $5 \divides 15$ because $15 = 5 \cdot 3$.
+  \item Example: $5 \ndivides 16$ because there is no integer $c$ such that
+  $16 = 5  c$.
+  \item Be careful not to confuse the notations $a\divides b$ with $a / b$.
 \end{itemize}
+
 \end{frame}
 
 \begin{frame}{Divisibility}
 
-\begin{definition}
-Let $a,b\in\Z$. We say that $a$ \emph{divides} b iff there is a $c\in\Z$ such that $b = a c$.
-We write $a$ divides $b$ as $a\divides b$.
-\end{definition}
-
 \begin{itemize}
-  \item If $a$ doesn't divide $b$ we write $a\ndivides b$.
-  \item Be careful not to confuse $a\divides b$ with $a/b$.
   \item True or false: $14 \divides 7$.
   \item True or false: $7 \divides 14$.
   \item True or false: $-7 \divides 14$.
@@ -120,6 +83,115 @@ We write $a$ divides $b$ as $a\divides b$.
   \item True or false: $7 \divides 0$.
   \item True or false: $0 \divides 7$.
   \item True or false: $0 \divides 0$.
+  \item For which values of $a$ does $a \divides 0$?
+  \item For which values of $b$ does $0 \divides b$?
+  \item The textbook does not allow $a=0$ in the expression $a\divides b$.
+  But there is no harm in saying that $0\divides 0$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Divisors and multiples}
+
+\begin{itemize}
+  \item Suppose that $a\divides b$, so there is some $c$ such that $b = ac$.
+  \item We also say that $a$ is a \emph{divisor} of $b$.
+  \item And we also say that $b$ is a \emph{multiple} of $a$.
+  \item Example: Because $24 = 6 \times 4$, 24 is a multiple of 6 and 6 is
+  a divisor of 24 and $6\divides 24$.
+  \item Example: Find all of the positive divisors of 12.
+  \item Solution: 1,2,3,4,6,12.
+  \item Example: Find all of the divisors of 12.
+  \item Solution: $\pm 1, \pm 2, \pm 3, \pm 4, \pm 6, \pm 12$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{$a/b \in \Z$}
+
+\begin{itemize}
+  \item \textbf{Fact:} Let $a,b\in\Z$ with $a\not=0$.
+  \item Then $a\divides b$ iff $b / a \in \Z$.
+  \item Example: $4 \divides 12$ because $12/4 \in \Z$.
+  \item Example $5 \ndivides 12$ because $12/5 \in \Q \setminus \Z$.
+  \item \textbf{proof:} If $a\divides b$ then there is a $c$ such that
+  $b = ac$.
+  \item So then $b / a = c$ so $b/a \in \Z$.
+  \item Conversely, suppose $b/a \in \Z$.
+  \item Then, letting $c = b/a$ we have $b = a c$ so $a\divides b$.
+  \item $\qed$
+  \item Note the logical structure of the proof of an ``iff'' statement.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Properties of divisibility}
+
+\begin{itemize}
+  \item True or false? For all $a,b,c\in\Z$, if
+  $a\divides b$ and $b\divides c$ then $a\divides c$.
+  \item How could we decide if a statement like this is true or false?
+  \item Since the statement is about all integers, in order to see that it
+  is true, it does \emph{not} suffice to give an example.
+  \item To see that the statement is true we need to give a proof.
+  \item On the other hand, to see that the statement is false it suffices
+  to give a single counterexample.
+  \item In this case, the statement is true.
+  \item proof: If $a\divides b$ then there is a $d$ such that $b=ad$.
+  \item If $b\divides c$ there is an $e$ such that $c = b e$.
+  \item So $c = (a d) e = a (de)$, so $a\divides c$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Properties of divisibility, 2}
+
+\begin{itemize}
+  \item True or false? For all $a,b,c\in\Z$, if $a\divides bc$ then
+  $a\divides b$ or $a\divides c$?
+  \item This is false. To prove this we only need to give one counterexample.
+  \item $6\divides (3\times 4)$ but $6\ndivides 3$ and $6\ndivides 4$.
+  \item Notice that I could also give an example where this is true.
+  \item $3 \divides 12$ and $12 = 6 \times 2$ and $3\divides 6$.
+  \item But one example is not sufficient to prove that a property is true
+  for all integers.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Integer Linear Combinations}
+
+\begin{itemize}
+  \item \textbf{Definition} Let $a,b\in\Z$. Then an
+  \emph{integer linear combination} of $a$ and $b$ is any integer of the
+  form $xa + yb$ where $x,y\in\Z$.
+  \item $-3\times 4 + 2\times 7 = 2$ so 2 is an integer linear combination
+  of 4 and 7.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Properties of divisibility, 3}
+
+\begin{itemize}
+  \item True or false? For all $a,b,c\in\Z$, if $a\divides b$ and $a\divides c$
+  then $a$ divides every integer linear combination of $b$ and $c$.
+  \item True. Proof: Suppose $a\divides b$ and $a\divides c$.
+  \item So there are $n,m\in\Z$ so that $b=na$ and $c=ma$.
+  \item Let $r$ be an integer linear combination of $b$ and $c$.
+  \item So there are $x,y\in\Z$ such that $r=xb+yc$.
+  \item So $r=xna + yma = (xn + ym)a$.
+  \item So $r$ is a multiple of $a$, i.e. $a\divides r$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Reading assignment}
+
+\begin{itemize}
+  \item Beginning of \emph{Divisibility}, section 5.1 of Rosen. The bottom
+  of page 36 and the top of page 37. Stop before Theorem 1.10,
+  \emph{The Division Algorithm}.
 \end{itemize}
 
 \end{frame}
