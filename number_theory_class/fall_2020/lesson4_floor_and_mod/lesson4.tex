@@ -1,0 +1,243 @@
+% $Header$
+
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 4 \\ Floor and Mod}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2020 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}{The Floor Function}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $x$ be any real number. Then $\floor{x}$ is the greatest integer less than or equal to $x$.
+  \item $\floor{x}$ is pronounced ``floor of $x$''.
+  \item Our textbook uses the notation $[x]$ instead of $\floor{x}$. You can use either notation.
+  \item Example: What is $\floor{3.14159}$?
+  \item $\floor{3.14159} = 3$.
+  \item Example: What is $\floor{-3.14159}$?
+  \item $\floor{-3.14159} = -4$.
+  \item Example: What is $\floor{411}$?
+  \item $\floor{411} = 411$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Quotient and Remainder}
+
+\begin{itemize}
+  \item Let $a$ and $b$ be integers with $b>0$. Let $q$ and $r$ be the quotient
+  and remainder when $a$ is the dividend and $b$ is the divisor.
+  \item So $a = bq + r$ and $0\leq r < b$.
+  \item Then $q = \floor{\frac{a}{b}}$.
+  \item Example: Let $a = 17$ and $b=5$.
+  \item $17 = 5 \times 3 + 2$ so $q=3$.
+  \item $3 = \floor{\frac{17}{5}}$.
+  \item $\frac{17}{5} = 3.4$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{More Quotient and Remainder Examples}
+
+\begin{itemize}
+  \item Find the quotient and remainder when the divided is $a=987654321$
+  and the divisor is $b=123456789$.
+  \item  987654321/123456789 = 8.0000000729
+  \item $\floor{987654321/123456789} = 8$.
+  \item So $q=8$.
+  \item How do we find $r$?
+  \item $987654321 = 123456789 \times 8 + r$.
+  \item $123456789 \times 8 = 987654312$.
+  \item So $r=987654321 - 987654312 = 9$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{More Quotient and Remainder Examples}
+
+\begin{itemize}
+  \item Find the quotient and remainder when the divided is $a=-17$
+  and the divisor is $b=5$.
+  \item $\frac{-17}{5} = -3.4$.
+  \item $\floor{-3.4} = -4$.
+  \item So $q=-4$.
+  \item How do we find $r$?
+  \item $-17 = 5 \times (-4) + r$.
+  \item $r=3$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The mod function}
+
+\begin{itemize}
+ \item \textbf{Definition.} Let $a$ and $b$ be integers with $b>0$.
+ Then $a\bmod b$ is the remainder when $a$ is divided by $b$
+ (as given by the quotient and remainder theorem.)
+ \item Example: Find $17 \bmod 5$.
+ \item $17 = 5 \times 3 + 2$. So $17 \bmod 5 = 2$
+ \item Example: Find $987654321 \bmod 123456789$.
+ \item $987654321 = 123456789 \times 8 + 9$.
+ \item So $987654321 \bmod 123456789 = 9$.
+ \item Example: Find $-17 \bmod 5$.
+ \item $-17 = 5 \times -4 + 3$. So $-17 \bmod 5 = 3$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Modulus}
+
+\begin{itemize}
+ \item It is common to fix some integer $n>1$ and then consider $x\bmod n$
+ for various integers $x$.
+ \item When we do this we call $n$ the \emph{modulus}.
+ \item Example: Let's use $n=3$ as the modulus.
+ \item Compute $x\bmod 3$ for $x = 0,1,2,3,4,5,-1,-2,-3,-4,-5$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{$x\bmod n$}
+
+\begin{itemize}
+ \item Fix an integer $n>1$ to use as a modulus.
+ \item Let $x$ be any integer. What are the possible values of $x\bmod n$?
+ \item Answer: $0,1,2\cdots n-1$.
+ \item What are the possible values of $x\bmod 3$?
+ \item Answer: 0,1,2.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Generalization of Even}
+
+\begin{itemize}
+ \item Let $x$ be any integer. What is $x\bmod 2$?
+ \item Answer: $x\bmod 2 = 0$ if $x$ is even and $x\bmod 2 = 1$ if $x$ is odd.
+ \item Let $n>1$ be an integer.
+ \item Quotient and Remainder theorem gives $x=kn+r$.
+ \item where $r=x\bmod n$.
+ \item Example with $n=3$. Every integer can be written in exactly one of the following forms:
+ \item $3k$
+ \item $3k+1$
+ \item $3k+2$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{$x=kn + r$.}
+
+\begin{itemize}
+ \item Let $x,n$ be integers with $n>1$.
+ \item Quotient and Remainder theorem gives $x=kn+r$.
+ \item where $r=x\bmod n$.
+ \item Example with $n=3$. Every integer can be written in exactly one of the following forms:
+ \item $3k$
+ \item $3k+1$
+ \item $3k+2$.
+ \item You can think of this as a generalization of odd and even.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example Exercise}
+
+\begin{itemize}
+  \item \textbf{Example:} Suppose I tell you the following:
+  \item I have an integer $x$. I square $x$ to get $x^2$. Then
+  I divide the result by 3 and get a remainder of 2.
+  \item How do you know I am not telling the truth?
+  \item Solution: $x$ must be of the form $3k$, $3k+1$ or $3k+2$.
+  \item $(3k)^2=9k^2= 3(3k^2)$. So $(3k)^2 \bmod 3 = 0$.
+  \item $(3k+1)^2 = 9k^2 + 6k + 1 = 3(3k^2 + 2k) + 1$.
+  \item So $(3k+1)^2 \bmod 3 = 1$.
+  \item $(3k+2)^2 = 9k^2 + 12k + 4 = 9k^2 + 12k + 3 + 1$.
+  \item $=3(3k^2 + 4k + 1) + 1$. So $(3k+2)^2 \bmod 3 = 1$.
+  \item Conclusion: For all integers $x$, $x^2\bmod 3 = 0,1$. $x^2\bmod 3 \neq 2$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example Exercise}
+
+\begin{itemize}
+  \item \textbf{Example:} How many positive integers less than 1000 are divisible
+  by 7?
+  \item Solution: An integer is divisible by 7 if it is of the form $7k$.
+  \item So how many positive integers of the form $7k$ are less than 1000?
+  \item $7, 7\times 2, 7\times 3, 7\times 4, \cdots$.
+  \item $1000/7 = 142.857142857$. So $\floor{\frac{100}{7}} = 142$.
+  \item $7\times 142 = 994$. So $1000 = 7 \times 142 + 6$.
+  \item So $7k < 1000$ for $k=1,2,\cdots 142$.
+  \item So the answer is 142.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Reading assignment}
+
+\begin{itemize}
+  \item More of \emph{Divisibility}, section 5.1 of Rosen. From the end
+  of the proof of Theorem 1.10 in the middle of page 38
+  through the top of page 39. Stop when you get to
+  \emph{Greatest Common Divisors}.
+\end{itemize}
+
+\end{frame}
+
+\end{document}
+
+
+
+\end{document}
