@@ -1,0 +1,138 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 5 \\ GCD}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2020 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}{GCD}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $a,b$ be any integers.
+  \item Then $x$ is a \emph{common divisor} of $a$ and $b$ iff $x\divides a$ and $x\divides b$.
+  \item Example: $4$ is a common divisor of 16 and 12 because $4\divides 16$ and $4\divides 12$.
+\end{itemize}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $a,b$ be any integers, not both zero.
+  \item Then the \emph{greatest common divisor} of $a$ and $b$ is the largest integer that divides both $a$ and $b$.
+  \item We will always say ``GCD'' instead of ``greatest common divisor".
+  \item This is written $\gcd(a,b)$.
+  \item Because $\gcd$ is so important in number theory this is often abbreviated to $(a,b)$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{GCD Examples}
+
+\begin{itemize}
+  \item Example: Find $\gcd(12,18)$.
+  \item Example: Find $(5, 30)$.
+  \item Example: Find $(-4, 6)$.
+  \item Example: Find $\gcd(9, 10)$.
+  \item Example: Find $\gcd(1, 30)$.
+  \item Example: Find $\gcd(0,30)$.
+  \item Example: Find $\gcd(0,0)$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{$\gcd(0,0)$}
+
+\begin{itemize}
+  \item \textbf{Definition.} We define $\gcd(0,0)=0$.
+  \item This may seem arbitrary. But later we will give a more
+  sophisticated definition of GCD where this will naturally fall out.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Relatively Prime}
+
+\begin{itemize}
+  \item \textbf{Definition.} Two non-zero integers $a$ and $b$ are called
+  \emph{relatively prime} iff $\gcd(a,b)=1$.
+  \item Example: $\gcd(9,25) = 1$ so 9 and 25 are relatively prime.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sneak Peak}
+
+\begin{itemize}
+  \item We will study GCD more in later lessons. Here is a sneak peak at two
+  things we will learn about it.
+  \item \textbf{FACT:} Suppose $a$ and $b$ are relatively prime. Then there
+  is an integer linear combination of $a$ and $b$ that equals 1.
+  \item  Example: We saw that 9 and 25 are relatively prime. So there is an
+  integer linear combination of 9 and 25 that equals 1.
+  \item There are integers $x$ and $y$ such that $9x + 25y = 1$.
+  \item $x=-11, y=4$.
+  \item In fact it is an iff:
+  \item \textbf{FACT:} $a$ and $b$ are relatively prime iff 1 can be expressed
+  as an integer linear combination of $a$ and $b$.
+  \item Example: Are 789,567,345 and 54321 relatively prime?
+  \item How would you go about computing this?
+  \item We will learn an algorithm that allows us to compute this efficiently.
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}
+
+
+
+\end{document}

@@ -1,0 +1,164 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 6 \\ Properties of GCD}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2020 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}{Positive Integer Linear Combinations}
+
+\begin{itemize}
+  \item Let $a,b$ be any integers, not both zero.
+  \item Consider the set of all positive integer linear combinations of $a$ and $b$.
+  \item $PLC_{a,b}=\setof{ax+by}{ax+by > 0\text{ and }x,y\in\Z}$.
+  \item Example: Find a few of the elements in $PLC_{4,6}$.
+  \item Note that $PLC_{a,b}\not=\emptyset$.
+  \item $\pm a\in PLC_{a,b}$, $\pm b\in PLC_{a,b}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Characterization of GCD}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $a,b$ be integers, not both zero, and let $d=\gcd(a,b)$.
+  \item Then $d$ is the least element of $PLC_{a,b}$.
+  \item Furthermore $d$ divides every element of $PLC_{a,b}$.
+  \item The positive linear combinations of $a$ and $b$ are the positive multiples of $d$.
+  \item Example: $\gcd(4,6) = 2$.
+  \item The positive linear combinations of $4$ and $6$ are just the positive even numbers.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof}
+
+\begin{itemize}
+  \item \textbf{proof.} Let $a,b$ be integers, not both zero.
+  \item $PLC_{a,b}$ is a non-empty set of positive integers. So it has a least element,  $d$.
+  \item We want to see that $d=\gcd(a,b)$. So we want to see that
+  \item (i) $d\divides a$ and $d\divides b$.
+  \item (ii) Every other common divisor of $a$ and $b$ is less than $d$.
+  \item To see $d\divides a$, write $a = qd + r$ with $0\leq r < d$.  We will show that $r=0$.
+  \item Notice that $a$ and $qd$ are both integer linear combinations of $a$ and $b$.
+  \item So $r=a-qd$ is also an integer linear combination of $a$ and $b$.
+  \item If $r\not=0$ it is positive and so $r\in PLC_{a,b}$.
+  \item This is impossible since $r<d$ and $d$ is the least element of $PLC_{a,b}$.
+  \item So $r=0$ and $d\divides a$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof, page 2}
+
+\begin{itemize}
+  \item By the same argument $d\divides b$.
+  \item So now we have $d$ is a common divisor of $a$ and $b$ and we need to see it is the greatest.
+  \item Let $\dprime$ be a common divisor of $a$ and $b$. We will show that $\dprime \leq d$.
+  \item Because $\dprime \divides a$ and $\dprime \divides b$, $\dprime$ divides every integer
+  linear combination of $a$ and $b$.
+  \item In particular $\dprime \divides d$. So $\dprime \leq d$.
+  \item So we have shown that $d=\gcd(a,b)$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof, page 3}
+
+\begin{itemize}
+  \item For the ``Furthermore'' part of the theorem we need to show that $d$ divides every element
+  of $PLC_{a,b}$ and that the elements of $PLC_{a,b}$ are just the positive multiples of $d$.
+  \item Since $d\divides a$ and $d\divides b$, $d$ divides every integer linear combination of $a$ and $b$.
+  \item So every element of $PLC_{a,b}$ is a multiple of $d$.
+  \item Conversely, since $d$ is an integer linear combination of $a$ and $b$, every multiple of $d$
+  is also an integer linear combination of $a$ and $b$.
+  \item So we have proved that the positive linear combinations of $a$ and $b$ are the positive multiples of $d$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Bezout's Theorem}
+
+\begin{itemize}
+  \item \textbf{Bezout's Theorem.} If $a$ and $b$ are integers, then there are integers $x,y$ such
+  that $xa + yb = \gcd(a,b)$.
+  \item This is part of what we proved above. (The case $a=b=0$ is trivial.)
+  \item Example: $\gcd(9,15) = 3$. So there is some integer linear combination of 9 and 15 that yields 3. Find it.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Relatively Prime}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $a$ and $b$ be integers. Then $a$ and $b$ are relatively prime iff there is an
+  integer linear combination of $a$ and $b$ that equals 1.
+  \item proof: If $\gcd(a,b) = 1$ then by the previous theorem there is an integer linear combination of
+  $a$ and $b$ that equals 1.
+  \item Conversely, suppose we have integers $x,y$ such that $xa+yb=1$.
+  \item To see that $\gcd(a,b)=1$ it suffices to see that the only positive common divisor of $a$ and $b$ is 1.
+  \item Let $d$ be a positive integer and suppose $d\divides a$ and $d\divides b$.
+  \item But then $d\divides 1$. So $d=1$. $\qed$.
+  \item  Example: 9 and 25 are relatively prime.
+  \item So there are integers $x$ and $y$ such that $9x + 25y = 1$.
+  \item $x=-11, y=4$.
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}
