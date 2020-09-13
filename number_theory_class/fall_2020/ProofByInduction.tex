@@ -1,0 +1,156 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 7 \\ Primes}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2020 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}{Prime Numbers}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $n>1$ be an integer. Then $n$ is \emph{prime} iff its only positive divisors are 1 and itself.
+  \item If $n>1$ is not prime it is called \emph{composite}.
+  \item Example: 11 is prime. 12 is composite.
+  \item Notice that 1 and 0 are special cases. They are not considered prime or composite.
+  \item We could define prime and composite for negative integers less than -1 but we will not.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{The Fundamental Theorem of Arithmetic}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Every integer greater than 1 can be expressed as a product of primes.
+  \item This \emph{prime decomposition} or \emph{prime factorization} is unique up to the order of the primes.
+  \item Example: $12 = 2\cdot 2 \cdot 3$ is the unique prime factorization of 12 up to the order of the primes.
+  \item What does up to the order of the primes mean?
+  \item $12 = 2 \cdot 3 \cdot 2$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The Fundamental Theorem of Arithmetic}
+
+\begin{itemize}
+  \item We can extend the theorem to all non-zero integers by allowing an initial factor of $\pm 1$.
+  \item If we say the primes have to be in increasing ordering we can get rid of ``up to the order of the primes.''
+  \item \textbf{Theorem.} Let $n$ be a non-zero integer. Then $n$ has a unique prime decomposition:
+  \item $n=\pm1 \cdot p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k}$
+  \item where each $p_i$ is prime and $p_1<p_2<\cdots < p_k$
+  \item and each $e_i$ is a positive integer.
+  \item Example: $12 = 1 \times 2^2 \times 3^1$.
+  \item We will prove the Fundamental Theorem of Arithmetic over the course of the next few slides.
+  \item This is an existence and uniqueness proof so there will be two directions. First we
+  will prove that every integer has some prime decomposition.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof By Induction}
+
+\begin{itemize}
+  \item Suppose $\sigma$ is a statement that we want to prove about all positive integers $\geq N$.
+  \item Then it suffices to do the following two steps:
+  \item (i) Show that $\sigma(N)$ holds.
+  \item (ii) Fix $n > N$. Assume that $\sigma(k)$ holds for all integers $k$ with $N\leq k < n$.  Show that $\sigma(n)$ holds.
+  \item For example, we want to show that for all integers $n\geq 2$, $n$ has a prime decomposition.
+  \item Let $\sigma(n)$ be the statement ``$n$ has a prime decomposition''.
+  \item Then it suffices to do the following:
+  \item (i) Show that 2 has a prime decomposition.
+  \item (ii) Fix $n>2$. Assume that for all $k$ with $2\leq k < n$, $k$ has a prime decomposition. Then prove that $n$ has a
+  prime decomposition.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof By Induction}
+
+\begin{itemize}
+  \item Proof that proof by induction is valid:
+  \item Suppose that
+  \item (i) $\sigma(N)$ holds and
+  \item (ii) For all $n>N$, if $\sigma(k)$ holds for all $k$ with $N\leq k < n$ then $\sigma(n)$ holds.
+  \item We must show that $\sigma(n)$ holds for all $n\geq N$.
+  \item Suppose otherwise.
+  \item Let $S=\setof{n\geq N}{\sigma(n)\text{ does not hold}}$. $S\not=\emptyset$.
+  \item Let $n$ be the least element of $S$. (Using the wellordering property.)
+  \item By (i) $\sigma(N)$ holds so $N\notin S$ so $n>N$.
+  \item For all $k$ with $N\leq k < n$, $k\notin S$, so $\sigma(k)$ holds.
+  \item By (ii), $\sigma(n)$ holds. Contradiction. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Fundamental Theorem of Algebra: Existence}
+
+\begin{itemize}
+  \item Proof that proof by induction is valid:
+  \item Suppose that
+  \item (i) $\sigma(N)$ holds and
+  \item (ii) For all $n>N$, if $\sigma(k)$ holds for all $k$ with $N\leq k < n$ then $\sigma(n)$ holds.
+  \item We must show that $\sigma(n)$ holds for all $n\geq N$.
+  \item Suppose otherwise.
+  \item Let $S=\setof{n\geq N}{\sigma(n)\text{ does not hold}}$. $S\not=\emptyset$.
+  \item Let $n$ be the least element of $S$. (Using the wellordering property.)
+  \item By (i) $\sigma(N)$ holds so $N\notin S$ so $n>N$.
+  \item For all $k$ with $N\leq k < n$, $k\notin S$, so $\sigma(k)$ holds.
+  \item By (ii), $\sigma(n)$ holds. Contradiction. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+
+
+\end{document}
