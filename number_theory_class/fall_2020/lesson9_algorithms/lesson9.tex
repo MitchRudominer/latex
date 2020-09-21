@@ -1,0 +1,219 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 9 \\ Number Theory Algorithms}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2020 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Factoring Algorithms}
+
+\begin{itemize}
+  \item Given an integer $n$, how can you determine whether or not $n$ is prime?
+  \item An algorithm that does this is called a \emph{primality test.}
+  \item Given an integer $n$ how can you find its prime factorization?
+  \item An algorithm that does this is called a factoring algorithm.
+  \item Example: Let $n=187,272,000$. Is $n$ prime? Give its prime factorization.
+  \item How would you figure this out?
+  \item The method of \emph{trial division}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Prime Factors and Square Root}
+
+\begin{itemize}
+  \item \textbf{Lemma.} Let $n$ be composite integer. Then $n$ has a prime factor less than or equal to $\sqrt{n}$.
+  \item \textbf{proof.} Let $n=p_1 p_2 \cdots p_k$ be the prime factorization of $n$
+  \item with $p_1 \leq p_2 \leq p_3 \cdots$.
+  \item We are assuming $n$ is composite so $k>1$.
+  \item This means that $p_1 \cdot p_1 \leq p_1 p_2 \cdots p_k$.
+  \item i.e. that $p_1^2 \leq n$.
+  \item So $p_1 \leq \sqrt{n}.$ $\qed$.
+  \item This lemma tells us that when using the method of trial division we only
+  have to search through $\sqrt{n}$ to determine if $n$ is prime.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+\begin{itemize}
+  \item \textbf{Example.} Is $149$ prime?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Divisibility Tests}
+\begin{itemize}
+  \item Let $n$ be a positive integer.
+  \item $n$ is divisible by 2 iff the last digit if $n$ is even.
+  \item \textbf{proof.} Write $n=10k + d$ with $0\leq d < 10$.
+  \item Then $d$ is the last digit of $n$.
+  \item Since $2\divides 10$, we have that $2\divides n$ iff $2\divides d$. $\qed$.
+  \item Let $n$ be a positive integer.
+  \item $n$ is divisible by 5 iff the last digit if $n$ is 5 or 0.
+  \item \textbf{proof.} Write $n=10k + d$ with $0\leq d < 10$.
+  \item Then $d$ is the last digit of $n$.
+  \item Since $5\divides 10$, we have that $5\divides n$ iff $5\divides d$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Some Modular Arithmetic}
+\begin{itemize}
+  \item Next we want a test for divisibility by 3. That will take a little pre-work.
+  \item Let $a,b,n$ be integers with $n>1$.
+  \item Suppose $n\divides a$.
+  \item Then $(a+b) \bmod n = b \bmod n$.
+  \item \textbf{proof.} Write $a=xn$ and $b=yn+r$ with $0\leq r < n$. So $b \bmod n = r$.
+  \item Then $a+b = (x+y)n + r$. So $(a+b) \bmod n = r$. $\qed$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Some Modular Arithmetic}
+\begin{itemize}
+  \item Let $a,b,n$ be integers with $n>1$.
+  \item Then $(a+b) \bmod n = \left((a\mod n) + (b\mod n)\right) \bmod n$.
+  \item And $(ab) \bmod n = \left ( (a\bmod n)(b \bmod n) \right) \bmod n$.
+  \item \textbf{proof.} Write $a=xn+s, b=yn+t$, with $0\leq s,t < n$.
+  \item So $a\bmod n = s$ and $b\bmod n = t$.
+  \item Then $(a+b) \bmod n = \left((x +y)n  + s+t\right) \bmod n$
+  \item $= (s+t)\bmod n = (a\bmod n + b \bmod n) \bmod n$.
+  \item Also $(ab)\bmod n = (xn\cdot yn + xn\cdot t + yn\cdot s + st) \bmod n$
+  \item $=st \bmod n = (a\bmod n \cdot b \bmod n) \bmod n.$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof by Induction}
+\begin{itemize}
+  \item Suppose I want to prove that a certain statement is true about all positive integers greater than  or equal to $N$.
+  \item Then it suffices to do the following two things:
+  \item \textbf{The base step:} Prove that the statement is true about $N$.
+  \item \textbf{The Inductive step:} Prove this implication: For all $n\geq N$, if the statement holds of $n$ then it holds of $n+1$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof of  Proof by Induction}
+\begin{itemize}
+  \item \textbf{Proof that proof by induction works:} Suppose we have performed the base step and inductive step.
+  \item Now we want to see that the statement holds for all integers $n\geq N$. Suppose towards a contradiction that it does not.
+  \item Let $S$ be the set of integers greater than or equal to $N$ for which the statement does not hold.
+  \item We are assuming towards a contradiction that $S$ is not empty. So $S$ has a least element $m$.
+  \item $m$ cannot be $N$ because of the base step. So $m>N$. So $m=n+1$ with $n\geq N$.
+  \item Since $n<m$, the statement holds for $n$. But then by the inductive step the statement holds for $m$. Contradiction.
+  \item This means that for all $n\geq N$ the statement holds. $\qed$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Modular arithmetic with 10 and 3}
+\begin{itemize}
+  \item Notice that $10 \bmod 3 = 1$.
+  \item By what we learned above about modular arithmetic, $10^2 \bmod 3 = 1$.
+  \item Similarly $10^3 \bmod 3 = 1$.
+  \item \textbf{Claim.} For all $k\geq 1$, $10^k \bmod 3 = 1$.
+  \item \textbf{proof.} By induction. We just proved the base step.
+  \item For the inductive step, suppose $10^k \bmod 3 = 1$.
+  \item Then $10^{k+1}\bmod 3 = \left(10\bmod 3 \cdot 10^k \bmod 3 \right) \bmod 3 = (1\cdot 1) \bmod 3 = 1.$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Test for divisibility by 3}
+\begin{itemize}
+  \item Let $n$ be a positive integer.
+  \item $n$ is divisible by 3 iff the sum of the digits of $n$ is divisible by 3.
+  \item \textbf{proof.} Write $n=d_0 + 10d_1 + 100 d_2 + \cdots + 10^k d_k$.
+  \item Then the digits of $n$ are $d_0,d_1,\cdots d_k$.
+  \item $n\bmod 3 = (d_0 + 10d_1 + 100 d_2 + \cdots + 10^k d_k)\bmod 3$
+  \item  $=\left(d_0\bmod 3 + 10d_1\bmod 3 + \cdots + 10^k d_k \bmod 3 \right) \bmod 3$
+  \item  $=\big(d_0\bmod 3 + (10\bmod 3)(d_1\bmod 3) + \cdots $
+  \item  $  \cdots + (10^k\bmod 3) (d_k \bmod 3) \big) \bmod 3$
+  \item  $=\left(d_0\bmod 3 + d_1\bmod 3 + \cdots + d_k \bmod 3 \right) \bmod 3$
+  \item  $=\left(d_0 + d_1 + \cdots + d_k  \right) \bmod 3$. $\qed$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Example}
+\begin{itemize}
+  \item Suppose you are given all the digits of a 10-digit number except the right-most digit:
+  \item $n=3,980,110,52_{\_}$.
+  \item If $n$ is divisible by 3, what are the possibilities for the final digit?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Primality test for large numbers}
+\begin{itemize}
+  \item Suppose you are given a 200 digit integer  and you want to determine if it is prime.
+  \item How might you do it? How might a computer do it?
+  \item Trial division: Try every prime number less than $\sqrt{n}$ to see if it divides $n$.
+  \item How long will this take on a very fast computer?
+  \item Play around with Colab to try factoring integers of different sizes.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{How Big is Googol?}
+\begin{itemize}
+  \item To get a sense of how long it would take to factor a 200 digit integer using trial division,
+  let's muse about how ``big'' the number $10^{100}$ is.
+  \item Question: Which is bigger: (a) $10^{100}$ or (b) The number of grains of sand on an average beach?
+  \item Put these in order: (a) $10^{100}$ (b) Grains of sand on a beach
+  (c) Atoms in the Earth.
+  \item Put these in order: (a) $10^{100}$ (b) Grains of sand on a beach
+  (c) Atoms in the Earth (d) Elementary particles in the universe.
+  \item See \href{https://en.wikipedia.org/wiki/Elementary_particle\#Cosmic_abundance_of_elementary_particles}{Wikipedia article on Elementary Particles}
+  \item Which is larger: $10^{100}$ or the number of seconds the universe has existed so far?
+  \item Conclusion: Any algorithm that requires $10^{100}$ steps will not terminate soon enough to be useful. (understatement)
+\end{itemize}
+\end{frame}
+
+
+
+\end{document}
