@@ -1,7 +1,7 @@
 % $Header$
 
-\documentclass{beamer}
-%\documentclass[handout]{beamer}
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
 \usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
 \input{mathdefs}
 
@@ -195,7 +195,9 @@
   \item How might you do it? How might a computer do it?
   \item Trial division: Try every prime number less than $\sqrt{n}$ to see if it divides $n$.
   \item How long will this take on a very fast computer?
-  \item Play around with Colab to try factoring integers of different sizes.
+  \item Let's play around with Colab to try factoring integers of different sizes.
+  \item Notice that Colab is able to find the GCD for integers much larger than it can factor.
+  How does it do that?
 \end{itemize}
 \end{frame}
 
@@ -211,6 +213,17 @@
   \item See \href{https://en.wikipedia.org/wiki/Elementary_particle\#Cosmic_abundance_of_elementary_particles}{Wikipedia article on Elementary Particles}
   \item Which is larger: $10^{100}$ or the number of seconds the universe has existed so far?
   \item Conclusion: Any algorithm that requires $10^{100}$ steps will not terminate soon enough to be useful. (understatement)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Seive of Eratoshenes}
+\begin{itemize}
+  \item Factoring very large integers is intractable.
+  \item Primality testing for very large integers using trial division is intractable.
+  \item There are some clever tricks to make primality testing faster. Today there are
+  algorithms that can test primality for a 1000-digit integer in a few minutes.
+  \item The Seive of Eratoshenes is a clever method for finding the set of all
+  primes below a given integer.
 \end{itemize}
 \end{frame}
 
