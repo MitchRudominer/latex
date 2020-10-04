@@ -1,0 +1,309 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 11 \\ Congruence}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2020 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Congruence}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $a,b,m$ be integers with $m>1$.
+  \item Then we say that $a$ is congruent to $b$ modulo $m$ iff $a\bmod m = b\bmod m$.
+  \item We write this as $a\equiv b \pmod m$.
+  \item If $a$ is not congruent to $b$ modulo $m$ we write $a\not\equiv b \pmod m$.
+  \item \textbf{Example.} $13\bmod 5 = 3$.
+  \item $33 \bmod 5 = 3$.
+  \item So $13 \equiv 33 \pmod 3$.
+  \item \textbf{Example.} $13 \bmod 7 = 6$
+  \item $33 \bmod 7 = 5$.
+  \item So $13 \not\equiv 33 \bmod 7$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Two different uses of ``mod''}
+
+\begin{itemize}
+  \item Notice the two different ways of using the symbol ``mod''.
+  \item When we write $13\bmod 5 = 3$ the symbol ``mod'' is being used as a function.
+  \item The expression ``$13\bmod 5$'' has a value that is an integer. (The value is 3.)
+  \item When we write $13 \equiv 33 \pmod 3$ the pair of symbols $\equiv$ and ``mod'' are being
+  used together to represent a relation.
+  \item The expression ``$13 \equiv 33 \pmod 3$'' has a value that is either true or false. (The value is true.)
+  \item You can always tell which meaning of ``mod'' is intended by checking for the $\equiv$ and
+  also checking for parentheses around  ``mod'' next to a number.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{More examples ``mod''}
+
+\begin{itemize}
+  \item Give the value of each expression:
+  \item \textbf{(a)} $16 \bmod 6$.
+  \item \textbf{Answer:} 4
+  \item \textbf{(b)} $26 \bmod 6$
+  \item \textbf{Answer:} 2
+  \item \textbf{(c)} $8 \bmod 6$.
+  \item \textbf{Answer:} 2
+  \item \textbf{(d)} $16 \equiv 26 \pmod 6$.
+  \item \textbf{Answer:} False
+  \item \textbf{(e)} $8 \equiv 26 \pmod 6$.
+  \item \textbf{Answer:} True
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Slots in Blocks}
+
+\begin{itemize}
+  \item  You can visualize congruence in terms of ``slots in blocks.''
+  \item Take congruence mod 3 for example.
+  \item We can divide the integers into infinitely many blocks of size 3.
+  \item $\singleton{0,1,2}$, $\singleton{3,4,5}$, $\singleton{6,7,8}$, $\cdots$
+  \item Every integer is in exactly one block.
+  \item For example 7 is in the block $\singleton{6,7,8}$.
+  \item Each block has three slots: slot 0, slot 1, slot 2.
+  \item 7 is in slot 1 of it's block. (i.e. $7\bmod 3 = 1$)
+  \item 4 is also in slot 1 of it's block.
+  \item So $4\equiv 7 \pmod 3$.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Another characterization of congruence}
+
+\begin{itemize}
+  \item  Let $a,b,m$ be integers with $m>1$.
+  \item Then $a\equiv b \pmod m$ iff $m \divides (a-b)$.
+  \item Example: Suppose we want to know whether or not $26 \equiv 8 \pmod 6$.
+  \item $26 - 8 = 18$.
+  \item $6\divides 18$.
+  \item So $26 \equiv 8 \pmod 6$.
+  \item Proof of the new characterization:
+  \item Write $a=q_1 m + r_1$, $b=q_2 m + r_2$, with $0\leq r_1,r_2 < m$.
+  \item $a -b = (q_1-q_2) m + (r_1 - r_2)$.
+  \item $a\equiv b \pmod m$ iff $r_1 = r_2$ iff $a-b$ is a multiple of $m$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Finding other things congruent to $a$.}
+
+\begin{itemize}
+  \item  Question: Suppose you have an integer $a$ and you want
+  a different integer $b$ such that $a\equiv b \pmod m$.
+  \item How would you go about finding $b$?
+  \item Answer: You would add a multiple of $m$.
+  \item Example: Find several integers $b$ such that $7\equiv b \pmod 3$.
+  \item Solution: Try 10, 13, 16, 19.
+  \item Why? Because $a\equiv b \pmod m$ iff $b=a + qm$ for some $q$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Congruence classes}
+
+\begin{itemize}
+  \item  Let $a,m$ be integers with $m>1$.
+  \item The congruence class of $a$ mod $m$ is the set of all integers $b$ such that $a\equiv b \bmod m$.
+  \item We will write $\ConCl(a)_m$.
+  \item Example. Find the congruence class of 4 mod 7.
+  \item $\ConCl(4)_7 = \singleton{\cdots -24, -17, -10, -3, 4, 11, 18, 25, 32, \cdots}$.
+  \item Example. Find the congruence class of 11 mod 7.
+  \item $\ConCl(11)_7 = \singleton{\cdots -24, -17, -10, -3, 4, 11, 18, 25, 32, \cdots}$..
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Congruence is transitive}
+
+\begin{itemize}
+  \item  Let $a,b,c,m$ be integers with $m>1$.
+  \item Suppose $a\equiv b \pmod m$ and $b \equiv c \pmod m$.
+  \item Then $a\equiv c \pmod m$.
+  \item Example: $1 \equiv 4 \pmod 3$.
+  \item $4 \equiv 7 \pmod 3$.
+  \item So $1 \equiv 7 \pmod 3$.
+  \item Proof: If $a \bmod m = b \bmod m$
+  \item and $b \bmod m = c \bmod m$,
+  \item then $a\bmod m = c \bmod m$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Congruence is symmetric}
+
+\begin{itemize}
+  \item  Let $a,b,m$ be integers with $m>1$.
+  \item Suppose $a\equiv b \pmod m$.
+  \item Then $b\equiv a \pmod m$.
+  \item Proof: If $a \bmod m = b \bmod m$,
+  \item then $b\bmod m = a \bmod m$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Congruence is reflexive}
+
+\begin{itemize}
+  \item  Let $a, m$ be integers with $m>1$.
+  \item Then $a\equiv a \pmod m$.
+  \item Proof: If $a \bmod m = a \bmod m$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Congruence is an equivalence relation}
+
+\begin{itemize}
+  \item  Congruence is transitive, symmetric and reflexive.
+  \item This makes it an equivalence relation.
+  \item This means that the congruence classes mod $m$ partition the integers into $m$ pieces.
+  \item Example: There are three congruence classes mod 3.
+  \item They partition the integers into three disjoint infinite sets.
+  \item $\ConCl(0)_3 = \singleton{\cdots -9, -6, -3, 0, 3, 6, 9,\cdots}$
+  \item $\ConCl(1)_3 = \singleton{\cdots -8, -5, -2, 1, 4, 7, 10,\cdots}$
+  \item $\ConCl(2)_3 = \singleton{\cdots -7, -4, -1, 2, 5, 8, 11,\cdots}$
+  \item Every integer is in exactly one of those sets.
+  \item In terms of slots in blocks, we have partitioned the integers into slot 0 integers,
+  slot 1 integers, and slot 2 integers.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Congruence vs Congruence Classes}
+
+\begin{itemize}
+  \item  $a\equiv b \bmod m$ iff $\ConCl(a)_m = \ConCl(b)_m$
+  \item iff $a\in\ConCl(b)_m$ iff $b\in\ConCl(a)_m$.
+  \item Example:
+  \item $\ConCl(0)_3 = \singleton{\cdots -9, -6, -3, 0, 3, 6, 9,\cdots} = \ConCl(9)_3$
+  \item $\ConCl(1)_3 = \singleton{\cdots -8, -5, -2, 1, 4, 7, 10,\cdots} = \ConCl(10)_3$
+  \item $\ConCl(2)_3 = \singleton{\cdots -7, -4, -1, 2, 5, 8, 11,\cdots} = \ConCl(11)_3$
+  \item $1 \equiv 10 \bmod 3$
+  \item $\ConCl(1)_3 = \ConCl(10)_3$
+  \item $10\in\ConCl(1)_3$
+  \item $1\in\ConCl(10)_3$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{A complete system of residues}
+
+\begin{itemize}
+  \item  A \emph{complete system of residues}  mod $m$ is a set of integers that
+  chooses exactly one integer from each of the congruence classes mod $m$.
+  \item Example. Give a complete system of residues mod $3$.
+  \item $\ConCl(0)_3 = \singleton{\cdots -9, -6, -3, 0, 3, 6, 9,\cdots}$
+  \item $\ConCl(1)_3 = \singleton{\cdots -8, -5, -2, 1, 4, 7, 10,\cdots}$
+  \item $\ConCl(2)_3 = \singleton{\cdots -7, -4, -1, 2, 5, 8, 11,\cdots}$
+  \item Therefore each of the following are a complete system of residues mod 3.
+  \item (a) $\singleton{0,1,2}$.
+  \item (b) $\singleton{-3,-2,-1}$.
+  \item (c) $\singleton{0,1,-1}$.
+  \item (d) $\singleton{-9,7,5}$.
+  \item In all cases the system consists of 3 mutually non-congruent integers.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Least non-negative residues}
+
+\begin{itemize}
+  \item  The \emph{least non-negative residues} modulo $m$ is the complete set of residues
+  consisting of the least non-negative integer from each congruence class.
+  \item Example. Find the least non-negative residues mod $3$.
+  \item $\ConCl(0)_3 = \singleton{\cdots -9, -6, -3, 0, 3, 6, 9,\cdots}$
+  \item $\ConCl(1)_3 = \singleton{\cdots -8, -5, -2, 1, 4, 7, 10,\cdots}$
+  \item $\ConCl(2)_3 = \singleton{\cdots -7, -4, -1, 2, 5, 8, 11,\cdots}$
+  \item Therefore the least non-negative residues modulo 3 are:
+  \item $\singleton{0,1,2}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Absolute least residues}
+
+\begin{itemize}
+  \item  The \emph{absolute least residues} modulo $m$ is the complete set of residues
+  consisting of the element of each congruence class of smallest absolute value.
+  \item Example. Find the absolute least residues mod $3$.
+ \item $\ConCl(0)_3 = \singleton{\cdots -9, -6, -3, 0, 3, 6, 9,\cdots}$
+  \item $\ConCl(1)_3 = \singleton{\cdots -8, -5, -2, 1, 4, 7, 10,\cdots}$
+  \item $\ConCl(2)_3 = \singleton{\cdots -7, -4, -1, 2, 5, 8, 11,\cdots}$
+  \item Therefore the absolute residues modulo 3 are:
+  \item $\singleton{0,1,-1}$.
+  \item Usually we will write this as $\singleton{-1,0,1}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example}
+
+\begin{itemize}
+  \item  Give the set of least non-negative residues mod 5.
+  \item Answer: $\singleton{0,1,2,3,4}$.
+  \item Every integer is congruent mod 5 to exactly one of these.
+  \item Give the set of absolute least residues mod 5.
+  \item Answer: $\singleton{-2,-1,0,1,2}$.
+  \item Every integer is congruent mod 5 to exactly one of these.
+\end{itemize}
+
+\end{frame}
+
+
+
+\end{document}
