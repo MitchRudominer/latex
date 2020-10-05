@@ -1,0 +1,258 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 12 \\ Modular Arithmetic}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2020 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Doing the same thing to both sides}
+
+\begin{itemize}
+  \item We can do some simple algebra with congruences.
+  \item Suppose $x,y,c,m$ are integers with $m>1$.
+  \item Suppose $x\equiv y \pmod m$.
+  \item Then you can conclude that:
+  \item $x+c\equiv y+c \pmod m$
+  \item $x-c\equiv y-c \pmod m$
+  \item $cx \equiv cy \pmod m$.
+  \item For example, suppose $x\equiv y \pmod {37}$.
+  \item Then $x+111\equiv y+111 \pmod {37}$.
+  \item $7x \equiv 7y \pmod {37}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Justification}
+
+\begin{itemize}
+  \item Why is this simple algebra justified?
+  \item Suppose $x\equiv y \pmod m$.
+  \item So $m \divides (x-y)$.
+  \item So $m \divides \big( (x+c) - (y+c) \big)$.
+  \item And $m \divides (cx - cy)$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example}
+
+\begin{itemize}
+  \item True or false: $7,953 \equiv  4,953 \pmod 3$?
+  \item $7\equiv 4  \pmod 3$.
+  \item So $7000 \equiv 4000 \pmod 3$.
+  \item $7,953 \equiv  4,953 \pmod 3$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{What about cancellation?}
+
+\begin{itemize}
+  \item True or false:
+  \item If $cx \equiv cy \pmod m$ then $x\equiv y \pmod m$.
+  \item Example: $20 \equiv 35 \pmod {15}$.
+  \item $5\cdot 4 \equiv 5 \cdot 7 \pmod {15}$
+  \item Does it follow that $4 \equiv 7 \pmod {15}$?
+  \item No.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Cancellation when $c$ and $m$ are relatively prime.}
+\begin{itemize}
+  \item \textbf{Lemma.} Suppose $x,y,c,m$ are integers with $m>1$.
+  \item Suppose that $\gcd(c, m) = 1$.
+  \item Suppose that $cx \equiv cy \pmod m$.
+  \item Then $x\equiv y \pmod m$.
+  \item Example: $35 \equiv 50 \pmod 3$.
+  \item $5\cdot 7 \equiv 5 \cdot 10 \pmod 3$.
+  \item Because $\gcd(5,3) = 1$ we can cancel the 5.
+  \item Conclude: $7\equiv 10 \pmod 3$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof}
+\begin{itemize}
+  \item Suppose that $cx \equiv cy \pmod m$.
+  \item So $m \divides c(x-y)$.
+  \item In general we cannot conclude that $m \divides (x-y)$.
+  \item But, if $\gcd(m,c) = 1$ then we can conclude that $m\divides (x-y)$.
+  \item So $x\equiv y \pmod m$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Factoring the modulus}
+\begin{itemize}
+  \item Suppose that $x\equiv y \pmod {cm}$.
+  \item Then $x\equiv y \pmod m$.
+  \item Example: If $x\equiv y \pmod 9$,
+  \item Then $x\equiv y \pmod 3$.
+  \item Saying that $x\equiv y \pmod 9$ is \emph{stronger} than saying that $x\equiv y \pmod 3$.
+  \item Proof: If $cm \divides (x-y)$ then $m\divides (x-y)$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cancellation and Factoring the modulus}
+\begin{itemize}
+  \item Example: $20 \equiv 35 \pmod {15}$.
+  \item $5\cdot 4 \equiv 5 \cdot 7 \pmod {15}$
+  \item It does \emph{not} follow that $4 \equiv 7 \pmod {15}$
+  \item But:  $5\cdot 4 \equiv 5 \cdot 7 \pmod {5\cdot3}$
+  \item Then:  $5\cdot 4 \equiv 5 \cdot 7 \pmod {\cdot3}$
+  \item Then:  $4 \equiv  7 \pmod {\cdot3}$
+  \item \textbf{Lemma.} Suppose $x,y,c,m$ are integers with $m>1$.
+  \item Let $d=\gcd(c,m)$.
+  \item If $cx\equiv cy \pmod m$.
+  \item Then $x\equiv y \pmod {m/d}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+\begin{itemize}
+  \item Example: $18 \equiv 30 \pmod {12}$.
+  \item $6 \cdot 3 \equiv 6 \cdot 5 \pmod {6\cdot 2}$.
+  \item We cannot conclude that $3\equiv 5 \pmod {12}$.
+  \item But we can conclude that $3\equiv 5 \pmod 2$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+\begin{itemize}
+  \item Example: $12 \equiv 30 \pmod {9}$.
+  \item $6 \cdot 2 \equiv 6 \cdot 5 \pmod {9}$.
+  \item We cannot conclude that $2\equiv 5 \pmod {9}$.
+  \item But $\gcd(6,9) = 3$.
+  \item We can conclude that $2\equiv 5 \pmod {9/3}$.
+  \item $2\equiv 5 \pmod 3$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Modular addition and multiplication}
+\begin{itemize}
+  \item \textbf{Lemma.} Suppose $a \equiv \aprime \pmod {m}$.
+  \item and $b  \equiv \bprime \pmod {m}$.
+  \item Then $a+b \equiv \aprime + \bprime \pmod {m}$
+  \item and $a \cdot b \equiv \aprime \cdot \bprime \pmod {m}$.
+  \item Example: $6 \equiv 11 \pmod 5$ and $13\equiv 23 \pmod 5$.
+  \item So $(6+13) \equiv (11 +23) \pmod 5$
+  \item and  $6\cdot 13 \equiv 11\cdot 23 \pmod 5$.
+  \item Interpretation using ``slots and blocks'':
+  \item If you only want to know the slot
+  of the result you only need to know the slots of the arguments.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof}
+\begin{itemize}
+  \item We have already seen something equivalent to this lemma.
+  \item Recall that $(a+b)\bmod m = \big( (a\bmod m) + (b\bmod m) \big) \bmod m$,
+  \item and $(a\cdot b)\bmod m = \big( (a\bmod m) \cdot (b\bmod m) \big) \bmod m$.
+  \item But this means that to compute the sum or product mod $m$, the only thing that
+  matters about $a$ and $b$ are their values mod $m$.
+  \item So $a$ can be replaced by
+  $\aprime$ and $b$ can be replaced by $\bprime$ without changing the value of
+  the sum or product mod $m$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+\begin{itemize}
+  \item Compute $(1! + 2! + 3! + \cdots + 100!) \pmod 9$.
+  \item Solution: Notice that $9\divides n!$ for $n\geq 6$.
+  \item So we can reduce to $(1! + 2! + 3! + 4! + 5!) \pmod 9$.
+  \item $2! \bmod 9 = 2$
+  \item $3! \bmod 9 = 6$
+  \item $4! \bmod 9 = 24 \bmod 9 = 6$.
+  \item $5! = 5 \cdot 4! \equiv 5 \cdot 6 \equiv 30 \equiv 3 \pmod 9$.
+  \item So we want $(1 + 2 + 6 + 6 + 3) \bmod 9$.
+  \item $=(9+9) \equiv 0 \pmod 9$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Example: Fast exponentiation by repeated squaring}
+\begin{itemize}
+  \item Compute $101^{500} \bmod 7$.
+  \item Step 1. $101 = 14\cdot 7 + 3$. So $101\bmod 7 = 3$.
+  \item Reduce to $3^{500} \bmod 7$.
+  \item Step 2. Start squaring and reducing mod 7.
+  \item $3^2 \equiv 9 \equiv 2 \pmod 7$.
+  \item $3^4 = (3^2)^2 \equiv 2^2 \equiv 4 \pmod 7$.
+  \item $3^{8} = (3^4)^2 \equiv 4^2 \equiv 16 \equiv 2 \pmod 7$.
+  \item $3^{16} = (3^{8})^2 \equiv 2^2 \equiv 4 \pmod 7$.
+  \item $3^{32} = (3^{16})^2 \equiv 4^2 \equiv 16 \equiv 2 \pmod 7$.
+  \item $3^{64} = (3^{32})^2 \equiv 2^2 \equiv 4 \pmod 7$.
+  \item $3^{128} = (3^{64})^2 \equiv 4^2 \equiv 16 \equiv 2 \pmod 7$.
+  \item $3^{256} = (3^{128})^2 \equiv  2^2 \equiv 4 \pmod 7$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example: Fast exponentiation by repeated squaring}
+\begin{itemize}
+  \item Step 3. Express 500 as a sum of powers of 2.
+  \item $500 = 256+128+64+32+16+4$.
+  \item Step 4. Plug in the values computed above.
+  \item $3^{500} = 3^{256+128+64+32+16+4} = 3^{256} \cdot 3^{128} \cdot 3^{64} \cdot 3^{32} \cdot 3^{16} \cdot 3^4$
+  \item $\equiv 4 \cdot 2 \cdot 4 \cdot 2 \cdot 4 \cdot 4 \pmod 7$
+  \item Step 5. Compute that product, incrementally reducing mod 7.
+  \item $4\cdot 2 \equiv 1 \pmod 7$.
+  \item $4\cdot 4 \equiv 2 \pmod 7$.
+  \item So $101^{500} \bmod 7 = 2$.
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\end{document}
