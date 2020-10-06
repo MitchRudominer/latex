@@ -1,7 +1,7 @@
 % $Header$
 
-\documentclass{beamer}
-%\documentclass[handout]{beamer}
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
 \usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
 \input{mathdefs}
 
@@ -144,25 +144,16 @@
 
 \begin{frame}{Cancellation and Factoring the modulus}
 \begin{itemize}
-  \item Example: $20 \equiv 35 \pmod {15}$.
-  \item $5\cdot 4 \equiv 5 \cdot 7 \pmod {15}$
-  \item It does \emph{not} follow that $4 \equiv 7 \pmod {15}$
-  \item But:  $5\cdot 4 \equiv 5 \cdot 7 \pmod {5\cdot3}$
-  \item Then:  $5\cdot 4 \equiv 5 \cdot 7 \pmod {\cdot3}$
-  \item Then:  $4 \equiv  7 \pmod {\cdot3}$
+  \item Example: $28 \equiv 48 \pmod {10}$.
+  \item $4\cdot 7 \equiv 4 \cdot 12 \pmod {10}$
+  \item It does \emph{not} follow that $7 \equiv 12 \pmod {10}$
+  \item But:  $4\cdot 7 \equiv 4 \cdot 12 \pmod {2\cdot 5}$
+  \item Then:  $4\cdot 7 \equiv 4 \cdot 12 \pmod {5}$, and $\gcd(4,5) = 1$
+  \item So:  $7 \equiv  12 \pmod {5}$
   \item \textbf{Lemma.} Suppose $x,y,c,m$ are integers with $m>1$.
   \item Let $d=\gcd(c,m)$.
   \item If $cx\equiv cy \pmod m$.
   \item Then $x\equiv y \pmod {m/d}$.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Example}
-\begin{itemize}
-  \item Example: $18 \equiv 30 \pmod {12}$.
-  \item $6 \cdot 3 \equiv 6 \cdot 5 \pmod {6\cdot 2}$.
-  \item We cannot conclude that $3\equiv 5 \pmod {12}$.
-  \item But we can conclude that $3\equiv 5 \pmod 2$.
 \end{itemize}
 \end{frame}
 
@@ -174,6 +165,15 @@
   \item But $\gcd(6,9) = 3$.
   \item We can conclude that $2\equiv 5 \pmod {9/3}$.
   \item $2\equiv 5 \pmod 3$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+\begin{itemize}
+  \item Example: $18 \equiv 30 \pmod {12}$.
+  \item $6 \cdot 3 \equiv 6 \cdot 5 \pmod {6\cdot 2}$.
+  \item We cannot conclude that $3\equiv 5 \pmod {12}$.
+  \item But we can conclude that $3\equiv 5 \pmod 2$.
 \end{itemize}
 \end{frame}
 
@@ -222,32 +222,31 @@
 
 \begin{frame}{Example: Fast exponentiation by repeated squaring}
 \begin{itemize}
-  \item Compute $101^{500} \bmod 7$.
-  \item Step 1. $101 = 14\cdot 7 + 3$. So $101\bmod 7 = 3$.
-  \item Reduce to $3^{500} \bmod 7$.
-  \item Step 2. Start squaring and reducing mod 7.
-  \item $3^2 \equiv 9 \equiv 2 \pmod 7$.
-  \item $3^4 = (3^2)^2 \equiv 2^2 \equiv 4 \pmod 7$.
-  \item $3^{8} = (3^4)^2 \equiv 4^2 \equiv 16 \equiv 2 \pmod 7$.
-  \item $3^{16} = (3^{8})^2 \equiv 2^2 \equiv 4 \pmod 7$.
-  \item $3^{32} = (3^{16})^2 \equiv 4^2 \equiv 16 \equiv 2 \pmod 7$.
-  \item $3^{64} = (3^{32})^2 \equiv 2^2 \equiv 4 \pmod 7$.
-  \item $3^{128} = (3^{64})^2 \equiv 4^2 \equiv 16 \equiv 2 \pmod 7$.
-  \item $3^{256} = (3^{128})^2 \equiv  2^2 \equiv 4 \pmod 7$.
+  \item Compute $130^{90} \bmod 127$.
+  \item Step 1. $130 \equiv 3 \pmod {127}$
+  \item Reduce to $3^{90} \bmod 127$.
+  \item Step 2. Start squaring and reducing mod 127.
+  \item $3^2 = 9$.
+  \item $3^4 = (3^2)^2 = 81$.
+  \item $3^{8} = (3^4)^2 = 81^2 = 6561   \equiv 84  \pmod {127}$.
+  \item $3^{16} = (3^{8})^2 \equiv 84^2  \equiv 71  \pmod {127}$.
+  \item $3^{32} = (3^{16})^2 \equiv 71^2 \equiv 88  \pmod {127}$.
+  \item $3^{64} = (3^{32})^2 \equiv 88^2 \equiv 124 \pmod {127}$.
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Example: Fast exponentiation by repeated squaring}
 \begin{itemize}
-  \item Step 3. Express 500 as a sum of powers of 2.
-  \item $500 = 256+128+64+32+16+4$.
+  \item Step 3. Express 90 as a sum of powers of 2.
+  \item $90 = 64+16+8+2$.
   \item Step 4. Plug in the values computed above.
-  \item $3^{500} = 3^{256+128+64+32+16+4} = 3^{256} \cdot 3^{128} \cdot 3^{64} \cdot 3^{32} \cdot 3^{16} \cdot 3^4$
-  \item $\equiv 4 \cdot 2 \cdot 4 \cdot 2 \cdot 4 \cdot 4 \pmod 7$
-  \item Step 5. Compute that product, incrementally reducing mod 7.
-  \item $4\cdot 2 \equiv 1 \pmod 7$.
-  \item $4\cdot 4 \equiv 2 \pmod 7$.
-  \item So $101^{500} \bmod 7 = 2$.
+  \item $3^{90} = 3^{64+16+8+2} = 3^{64} \cdot 3^{16} \cdot 3^{8} \cdot 3^{2}$
+  \item $\equiv 124 \cdot 71 \cdot 84 \cdot 9  \pmod {127}$
+  \item Step 5. Compute that product, incrementally reducing mod 127.
+  \item $124 \cdot 71 \bmod 127 = 41$.
+  \item $41 \cdot 84 \bmod 127 = 15$.
+  \item $15 \cdot 9 \bmod 127 = 8$.
+  \item So $130^{90} \bmod 127 = 8$.
 \end{itemize}
 \end{frame}
 
