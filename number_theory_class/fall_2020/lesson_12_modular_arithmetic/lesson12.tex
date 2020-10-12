@@ -1,7 +1,7 @@
 % $Header$
 
-%\documentclass{beamer}
-\documentclass[handout]{beamer}
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
 \usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
 \input{mathdefs}
 
@@ -87,7 +87,7 @@
 \begin{frame}{Example}
 
 \begin{itemize}
-  \item True or false: $7,953 \equiv  4,953 \pmod 3$?
+  \item Show that $7,953 \equiv  4,953 \pmod 3$?
   \item $7\equiv 4  \pmod 3$.
   \item So $7000 \equiv 4000 \pmod 3$.
   \item $7,953 \equiv  4,953 \pmod 3$.
@@ -131,18 +131,34 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Factoring the modulus}
+\begin{frame}{Cancelling from the modulus}
 \begin{itemize}
   \item Suppose that $x\equiv y \pmod {cm}$.
   \item Then $x\equiv y \pmod m$.
-  \item Example: If $x\equiv y \pmod 9$,
+  \item Example: If $x\equiv y \pmod 6$,
   \item Then $x\equiv y \pmod 3$.
-  \item Saying that $x\equiv y \pmod 9$ is \emph{stronger} than saying that $x\equiv y \pmod 3$.
   \item Proof: If $cm \divides (x-y)$ then $m\divides (x-y)$.
+  \item The converse is not true.
+  \item $2\equiv 5 \pmod 3$ but $2\not\equiv 5 \pmod 6$.
+  \item Saying that $x\equiv y \pmod 9$ is \emph{stronger} than saying that $x\equiv y \pmod 3$.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Cancellation and Factoring the modulus}
+\begin{frame}{Cancelling from both sides and the modulus}
+\begin{itemize}
+  \item $x\equiv y \pmod m$ iff $cx \equiv cy \pmod {cm$}.
+  \item Here $c\not=0$.
+  \item Notice that multiplying $x$ and $y$ be $c$ makes the statement weaker
+  but multiplying $m$ by $c$ makes the statement stronger. Doing both makes the
+  statement equivalent.
+  \item Proof: If $cm \divides c(x-y)$ iff $m\divides (x-y)$.
+  \item Example. The following two things are equivalent:
+  \item $30 \equiv 80 \pmod {25}$.
+  \item $6\equiv 16 \pmod 5$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cancelling until relatively prime}
 \begin{itemize}
   \item Example: $28 \equiv 48 \pmod {10}$.
   \item $4\cdot 7 \equiv 4 \cdot 12 \pmod {10}$
@@ -165,15 +181,6 @@
   \item But $\gcd(6,9) = 3$.
   \item We can conclude that $2\equiv 5 \pmod {9/3}$.
   \item $2\equiv 5 \pmod 3$.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Example}
-\begin{itemize}
-  \item Example: $18 \equiv 30 \pmod {12}$.
-  \item $6 \cdot 3 \equiv 6 \cdot 5 \pmod {6\cdot 2}$.
-  \item We cannot conclude that $3\equiv 5 \pmod {12}$.
-  \item But we can conclude that $3\equiv 5 \pmod 2$.
 \end{itemize}
 \end{frame}
 
