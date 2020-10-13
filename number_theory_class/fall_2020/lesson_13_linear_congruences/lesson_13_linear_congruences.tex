@@ -265,9 +265,159 @@
  with $0\leq x_0 < \frac{n}{d}$.
   \item All of the other integer solutions to the two congruences are of the form
   \item $x=x_0+k\frac{n}{d}$ for some integer $k$.
-  \item The solutions with $0\leq x < n$ are those with $0\leq k < d$. $\qed$
+  \item These are all congruent mod $\frac{n}{d}$ but they are not all congruent mod $n$.
+  \item To find the complete set of solutions mod $n$, we look for those $x$ such that $0\leq x < n$.
+  \item $0\leq x_0+k\frac{n}{d} < n$ exactly for $k=0,1,\cdots d-1$.
+  \item So those are the $d$ incongruent solutions.
+  \item $\qed$
 \end{itemize}
 \end{frame}
+
+\begin{frame}{Euclidean Algorithm For Finding Modular Inverses}
+\begin{itemize}
+  \item Example: Find the multiplicative inverse of 17 mod 73.
+  \item 17 is prime and $17\not\divides 73$. So $\gcd(17,73)=1$.
+  \item This means that 17 has a multiplicative inverse mode 73.
+  \item That is, a solution to $17x\equiv 1 \pmod{73}$.
+  \item How can we find $x$?
+  \item Because $\gcd(17,31)=1$ there are integers $x,y$ such that $17x + 73y = 1$.
+  \item Then $17x - 1 = -73y$.
+  \item So $73\divides (17x-1)$.
+  \item So $17x\equiv 1 \pmod{73}$.
+  \item Strategy: Use the extended Euclidean algorithm to find $s,t$ such that $17s + 73t = 1$.
+  \item Then $s$ is a multiplicative inverse of 17 mod 73. (We don't need $t$.)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Find the multiplicative inverse of 17 mod 73: $j=0$}
+
+Note: It actually works fine to use $r_0=17$ , $r_1=73$ even though $17<73$.
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  17         &  73       &    0      &   17      &  1    &   0   \\ \hline
+1     &             &           &           &           &  0    &   1   \\ \hline
+2     &             &           &           &           &       &       \\ \hline
+3     &             &           &           &           &       &       \\ \hline
+4     &             &           &           &           &       &       \\ \hline
+5     &             &           &           &           &       &       \\ \hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Find the multiplicative inverse of 17 mod 73: $j=1$}
+
+Note: It actually works fine to use $r_0=17$ , $r_1=73$ even though $17<73$.
+Then we get $r_1=73$, $r_2=17$ and we can continue from there.
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  17         &  73       &    0      &   17      &  1    &   0   \\ \hline
+1     &  73         &  17       &    4      &    5      &  0    &   1   \\ \hline
+2     &             &           &           &           &       &       \\ \hline
+3     &             &           &           &           &       &       \\ \hline
+4     &             &           &           &           &       &       \\ \hline
+5     &             &           &           &           &       &       \\ \hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Find the multiplicative inverse of 17 mod 73: $j=1$}
+
+Note: It actually works fine to use $r_0=17$ , $r_1=73$ even though $17<73$.
+Then we get $r_1=73$, $r_2=17$ and we can continue from there.
+The $r_j$ will be decreasing from that point on.
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  17         &  73       &    0      &   17      &  1    &   0   \\ \hline
+1     &  73         &  17       &    4      &    5      &  0    &   1   \\ \hline
+2     &  17         &   5       &    3      &    2      &  1     &  0     \\ \hline
+3     &             &           &           &           &       &       \\ \hline
+4     &             &           &           &           &       &       \\ \hline
+5     &             &           &           &           &       &       \\ \hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Find the multiplicative inverse of 17 mod 73: $j=1$}
+
+Note: It actually works fine to use $r_0=17$ , $r_1=73$ even though $17<73$.
+Then we get $r_1=73$, $r_2=17$ and we can continue from there.
+The $r_j$ will be decreasing from that point on.
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  17         &  73       &    0      &   17      &  1    &   0   \\ \hline
+1     &  73         &  17       &    4      &    5      &  0    &   1   \\ \hline
+2     &  17         &   5       &    3      &    2      &  1    &   0   \\ \hline
+3     &   5         &   2       &    2      &    1      & -4    &   1   \\ \hline
+4     &             &           &           &           &       &       \\ \hline
+5     &             &           &           &           &       &       \\ \hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Find the multiplicative inverse of 17 mod 73: $j=1$}
+
+Note: It actually works fine to use $r_0=17$ , $r_1=73$ even though $17<73$.
+Then we get $r_1=73$, $r_2=17$ and we can continue from there.
+The $r_j$ will be decreasing from that point on.
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  17         &  73       &    0      &   17      &  1    &   0   \\ \hline
+1     &  73         &  17       &    4      &    5      &  0    &   1   \\ \hline
+2     &  17         &   5       &    3      &    2      &  1    &   0   \\ \hline
+3     &   5         &   2       &    2      &    1      & -4    &   1   \\ \hline
+4     &   2         &   1       &    2      &    0      & 13    &  -3   \\ \hline
+5     &             &           &           &           &       &       \\ \hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Find the multiplicative inverse of 17 mod 73: $j=1$}
+
+Note: It actually works fine to use $r_0=17$ , $r_1=73$ even though $17<73$.
+Then we get $r_1=73$, $r_2=17$ and we can continue from there.
+The $r_j$ will be decreasing from that point on.
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  17         &  73       &    0      &   17      &  1    &   0   \\ \hline
+1     &  73         &  17       &    4      &    5      &  0    &   1   \\ \hline
+2     &  17         &   5       &    3      &    2      &  1    &   0   \\ \hline
+3     &   5         &   2       &    2      &    1      & -4    &   1   \\ \hline
+4     &   2         &   1       &    2      &    0      & 13    &  -3   \\ \hline
+5     &   1         &           &           &           &-30    &   7   \\ \hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Euclidean Algorithm For Finding Modular Inverses}
+\begin{itemize}
+  \item So we computed that $17\cdot (-30) + 73\cdot(7) = 1$.
+  \item This means that $-30$ is a multiplicative inverse of 17 mod 73.
+  \item We want the least non-negative residue.
+  \item $-30 \bmod 73 = 43$.
+  \item So $43$ is the multiplicative inverse of 17 mod 73 we are looking for.
+  \item Check: $17\cdot 43 = 731$.
+  \item $731 \bmod  73  = 1$.
+\end{itemize}
+\end{frame}
+
 
 
 \end{document}
