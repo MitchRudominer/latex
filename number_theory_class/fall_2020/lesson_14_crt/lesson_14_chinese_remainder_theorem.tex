@@ -1,0 +1,439 @@
+% $Header$
+
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 14 \\ Chinese Remainder Theorem}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2020 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Multiple moduli simultaneously}
+
+\begin{itemize}
+  \item In this lesson we will consider two or more moduli at once.
+  \item For example, Solve for $x$:
+  \item $x \equiv 2 \pmod 5$
+  \item $x \equiv 3 \pmod 6$
+  \item In this lesson we will prove that there is a unique solution mod 30.
+  \item We will learn how to find the solution.
+  \item For now, you can check that $x=27$ is a solution.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Multiple divisors simultaneously}
+
+\begin{itemize}
+  \item True or false:
+  \item Suppose $n \divides x$ and $m\divides x$.
+  \item Then: $nm \divides x$.
+  \item Example $6\divides 90$ and $10\divides 90$.
+  \item But $60 \not\divides 90$.
+  \item So the statement is false. What similar statement is true?
+  \item If $n \divides x$ and $m \divides x$ then $\lcm(n,m) \divides x$.
+  \item Example $6\divides 90$ and $10\divides 90$.
+  \item $\lcm(6,10) = 30$
+  \item $30\divides 90$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Multiple relatively prime divisors simultaneously}
+
+\begin{itemize}
+  \item True or false:
+  \item Suppose $n \divides x$ and $m\divides x$.
+  \item Suppose $\gcd(n,m) = 1$.
+  \item Then: $nm \divides x$.
+  \item True. Because $\lcm(n,m) = nm$.
+  \item Example: If $5\divides x$ and $6\divides x$
+  \item then $30 \divides x$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Multiple moduli simultaneously}
+
+\begin{itemize}
+  \item True or false:
+  \item Suppose $x\equiv y \pmod n$ and $x\equiv y \pmod m$.
+  \item Then: $x\equiv y \pmod {nm}$.
+  \item False.
+  \item $n \divides (x-y)$ and $m \divides (x-y)$ does not imply $nm \divides (x-y)$.
+  \item Example: $31 \equiv 1 \pmod 6$ and $31 \equiv 1 \pmod {10}$.
+  \item $31 \not\equiv 1 \pmod {60}$.
+  \item True of false: $x\equiv y \pmod n$ and $x\equiv y \pmod m$ implies $x\equiv y \pmod {\lcm(nm)}$.
+  \item True
+  \item $n \divides (x-y)$ and $m \divides (x-y)$ implies $\lcm(nm) \divides (x-y)$.
+  \item Example: $31 \equiv 1 \pmod 6$ and $31 \equiv 1 \pmod {10}$.
+  \item $31 \equiv 1 \pmod {30}$.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Multiple relatively prime moduli simultaneously}
+
+\begin{itemize}
+  \item True or false:
+  \item Suppose $x\equiv y \pmod n$ and $x\equiv y \pmod m$.
+  \item Suppose $\gcd(n,m) = 1$.
+  \item Then: $x\equiv y \pmod {nm}$.
+  \item True. Because $\lcm(n,m) = nm$.
+  \item Example: If $x\equiv y \pmod 5$ and $x\equiv y \pmod 6$
+  \item then $x\equiv y \pmod {30}$.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{It's an equivalence}
+
+\begin{itemize}
+  \item True or false:
+  \item Let $h = \lcm(n,m)$. Suppose $x\equiv y \pmod h$.
+  \item Then: $x\equiv y \pmod n$ and $x\equiv y \pmod n$.
+  \item True. $h$ is a common multiple of $n$ and $m$.
+  \item $h = n\nprime$ and $h = m\mprime$.
+  \item If $x\equiv y \pmod {n\nprime$} then $x\equiv y \pmod n$.
+  \item If $x\equiv y \pmod {m\mprime$} then $x\equiv y \pmod m$.
+  \item So we have an equivalence:
+  \item (a) $x\equiv y \pmod n$ and $x\equiv y \pmod m$
+  \item (b) $x\equiv y \pmod {\lcm(n,m)}$.
+  \item Example. Let $x,y$ be  integers. The following two things are equivalent.
+  \item (a) $x\equiv y \pmod 6$ and $x \equiv y \pmod {10}$
+  \item (b) $x\equiv y \pmod {30}$.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{It's an equivalence with relatively prime moduli}
+
+\begin{itemize}
+  \item Suppose $\gcd(n,m) = 1$. Let $x,y$ be two integers.
+  \item The following two things are equivalent:
+  \item (a) $x\equiv y \pmod n$ and $x\equiv y \pmod m$
+  \item (b) $x\equiv y \pmod {nm}$.
+  \item Example. Let $x,y$ be  integers. The following two things are equivalent.
+  \item (a) $x\equiv y \pmod 6$ and $x \equiv y \pmod 5$
+  \item (b) $x\equiv y \pmod {30}$.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Back to original example}
+
+\begin{itemize}
+  \item Solve for $x$:
+  \item $x \equiv 2 \pmod 5$
+  \item $x \equiv 3 \pmod 6$
+  \item We saw that that $x=27$ is a solution.
+  \item Suppose that $y$ is any other integer solution.
+  \item Then $x\equiv y \pmod 5$ and $x\equiv y \pmod 6$.
+  \item Since $\gcd(5,6)=1$, $x\equiv y \pmod {30}$.
+  \item So 27 is the unique solution $x$ with $0\leq x < 30$.
+  \item $x = 27 + 30k$ for $k$ any integer is also a solution.
+  \item Because then $x\equiv 27 \pmod {30}$.
+  \item So $x\equiv 27 \pmod 5$ and $x\equiv 27 \pmod 6$.
+  \item But we consider these to be equivalent to $x=27$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Pairwise relatively prime}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $m_1, m_2, \cdots m_r$  be integers.
+  \item We say that the $m_i$ are \emph{pairwise relatively prime}
+  \item iff $\gcd(m_i,m_j)=1$ for all $i,j$ with $1\leq i < j \leq r$.
+  \item Example: 3, 10, 77 are pairwise relatively prime.
+  \item Example 6, 10, 77 are not pairwise relatively prime.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{More than two moduli}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $m_1, m_2, \cdots m_r$  be pairwise relatively prime.
+  \item Let $M= m_1 m_2 \cdots m_r$.
+  \item Let $x,y$ be any two integers.
+  \item The following are equivalent:
+  \item (a) $x\equiv y \pmod {m_1}, x\equiv y \pmod {m_2}, \cdots x\equiv y \pmod {m_r}$
+  \item (b) $x\equiv y \pmod M$.
+  \item Example: 3, 10, 77 are pairwise relatively prime.
+  \item $3\cdot 10 \cdot 77 = 2310$.
+  \item Let $x,y$ be any two integers.
+  \item The following are equivalent:
+  \item (a) $x\equiv y \pmod {3}, x\equiv y \pmod {10}, x\equiv y \pmod {77}$
+  \item (b) $x\equiv y \pmod {2310}$.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{The Chinese Remainder Theorem}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $m_1, m_2, \cdots m_r$  be pairwise relatively prime.
+  \item Consider the following problem. Solve for $x$:
+  \item $x \equiv a_1 \pmod {m_1}$
+  \item $x \equiv a_2 \pmod {m_2}$
+  \item $\vdots$
+  \item $x \equiv a_r \pmod {m_r}$
+  \item Then there is a unique solution $x$ with $0\leq x < M$,
+  \item where $M=m_1 m_2 \cdots m_r$.
+  \item Every $y$ congruent to $x$ mod $M$ is also a solution.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example}
+
+\begin{itemize}
+  \item Consider the following problem:
+  \item $x \equiv 1 \pmod 3$
+  \item $x \equiv 3 \pmod 5$
+  \item $x \equiv 5 \pmod 7$
+  \item $3\cdot 5 \cdot 7 = 105$.
+  \item The Chinese Remainder Theorem says the problem has a unique solution $x$
+  \item such that $0\leq x < 105$.
+  \item If $x$ is the solution and $y\equiv x \pmod {105}$ then $y$ is also a solution.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof}
+
+\begin{itemize}
+  \item We already know the uniqueness part. That is what we discussed in the first part of this lesson.
+  \item We will describe a procedure for finding a solution and that will prove existence.
+  \item Let $M_i = M/{m_i}$.
+  \item Then for each $i$,
+  \item $\gcd(M_i, m_i) = 1$
+  \item and $M_i \equiv 0 \pmod {m_j}$, for $j\not= i$.
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof, page 2}
+
+\begin{itemize}
+  \item Using our example problem:
+  \item $x \equiv 1 \pmod 3$
+  \item $x \equiv 3 \pmod 5$
+  \item $x \equiv 5 \pmod 7$
+  \item Then $M_1 = 5\cdot 7 = 35, M_2 = 3\cdot 7 = 21, M_3 = 3\cdot 5 = 15$.
+  \item $\gcd(M_1, m_1) = 1$ and $M_1 \equiv 0 \pmod {m_2}$ and $M_1 \equiv 0 \pmod {m_3}$.
+  \item $\gcd(35,3) = 1$ and $35\equiv 0 \pmod 5$ and $35 \equiv 0 \pmod 7$.
+  \item Also $\gcd(21,5) = 1$ and $21\equiv 0 \pmod 3$ and $21 \equiv 0 \pmod 7$.
+  \item Also $\gcd(15,7) = 1$ and $15\equiv 0 \pmod 3$ and $15 \equiv 0 \pmod 5$.
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Proof, page 3}
+
+\begin{itemize}
+  \item For each $i$ because $\gcd(M_i, m_i)=1$, $M_i$ has a unique multiplicative inverse mod $m_i$.
+  \item Recall this means, there is a unique solution to
+  \item $M_i x \equiv 1 \pmod {m_i}$.
+  \item Let us call this unique multiplicative inverse $y_i$.
+  \item So $M_i y_i \equiv 1 \pmod {m_i}$.
+  \item To find $y_i$ we can try every value from 1 to $m_i-1$, or we can use the Euclidean algorithm.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof, page 4}
+
+\begin{itemize}
+  \item Using our example problem:
+  \item $x \equiv 1 \pmod 3$
+  \item $x \equiv 3 \pmod 5$
+  \item $x \equiv 5 \pmod 7$
+  \item we have $M_1 = 5\cdot 7 = 35, M_2 = 3\cdot 7 = 21, M_3 = 3\cdot 5 = 15$.
+  \item Then $y_1$ is the multiplicative inverse of $35$ mod $3$,
+  \item $y_2$ is the multiplicative inverse of $21$ mod $5$,
+  \item and $y_3$ is the multiplicative inverse of $15$ mod $7$.
+  \item $35 \bmod 3 =2$ and $2\cdot 2 \equiv 1 \pmod 3$. So $y_1 = 2$.
+  \item $21 \bmod 5 = 1$ and  $1\cdot 1 \equiv 1 \pmod 5$. So $y_2 = 1$.
+  \item $15 \bmod 7 = 1$ and $1\cdot 1 \equiv 1 \pmod 7$. So $y_3 = 1$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof, page 5}
+
+\begin{itemize}
+  \item Let $x = a_1 M_1 y_1 + a_2 M_2 y_2 + \cdots + a_r M_r y_r$.
+  \item Let us focus on one fixed $i$.
+  \item For $j\not=i$, $a_j M_j y_j \equiv 0 \pmod {m_i}$,
+  \item while $a_i M_i y_i \equiv a_i \pmod {m_i}$.
+  \item So $x \equiv a_i \pmod {m_i}$.
+  \item So $x$ is a solution.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof, page 6}
+
+\begin{itemize}
+  \item Using our example problem:
+  \item $x \equiv 1 \pmod 3$
+  \item $x \equiv 3 \pmod 5$
+  \item $x \equiv 5 \pmod 7$
+  \item we computed $y_1 = 2, y_2 = 1, y_3 = 1$.
+  \item Let $x = a_1 M_1 y_1 + a_2 M_2 y_2 + a_3 M_3 y_3$,
+  \item $x = 1 \cdot 35 \cdot 2 + 3 \cdot 21 \cdot 1 + 5 \cdot 15 \cdot 1$.
+  \item $1 \cdot 35 \cdot 2 \equiv 1 \pmod 3$,
+  \item $3 \cdot 21 \cdot 1 \equiv 0 \pmod 3$,
+  \item $5 \cdot 15 \cdot 1 \equiv 0 \pmod 3$,
+  \item So $x \equiv 1 \pmod 3$.
+  \item So $x$ satisfies the first congruence.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof, page 7}
+
+\begin{itemize}
+  \item $x \equiv 1 \pmod 3$
+  \item $x \equiv 3 \pmod 5$
+  \item $x \equiv 5 \pmod 7$
+  \item Let $x = 1 \cdot 35 \cdot 2 + 3 \cdot 21 \cdot 1 + 5 \cdot 15 \cdot 1$.
+  \item $1 \cdot 35 \cdot 2 \equiv 0 \pmod 5$,
+  \item $3 \cdot 21 \cdot 1 \equiv 3 \pmod 5$,
+  \item $5 \cdot 15 \cdot 1 \equiv 0 \pmod 5$,
+  \item So $x \equiv 3 \pmod 5$.
+  \item So $x$ satisfies the second congruence.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof, page 8}
+
+\begin{itemize}
+  \item $x \equiv 1 \pmod 3$
+  \item $x \equiv 3 \pmod 5$
+  \item $x \equiv 5 \pmod 7$
+  \item $x = 1 \cdot 35 \cdot 2 + 3 \cdot 21 \cdot 1 + 5 \cdot 15 \cdot 1$.
+  \item $1 \cdot 35 \cdot 2 \equiv 0 \pmod 7$,
+  \item $3 \cdot 21 \cdot 1 \equiv 0 \pmod 7$,
+  \item $5 \cdot 15 \cdot 1 \equiv 5 \pmod 7$,
+  \item So $x \equiv 5 \pmod 7$.
+  \item So $x$ satisfies all three congruences.
+  \item So $x$ is a solution to our problem.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof, page 8}
+
+\begin{itemize}
+  \item $x \equiv 1 \pmod 3$
+  \item $x \equiv 3 \pmod 5$
+  \item $x \equiv 5 \pmod 7$
+  \item $x = 1 \cdot 35 \cdot 2 + 3 \cdot 21 \cdot 1 + 5 \cdot 15 \cdot 1$.
+  \item $x = 70 + 63 + 75 = 208$.
+  \item So $208$ is a solution to our problem.
+  \item But we want to express the answer mod 105.
+  \item $208 \bmod 105 = 103$.
+  \item So $x=103$ is the unique solution with $0\leq x < 105$.
+  \item Check: $103 \bmod 3 = 1$, $103 \bmod  5 = 3$, $103\bmod 7 = 5$.
+  \item $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example}
+
+\begin{itemize}
+  \item Find the unique $x$ with $0\leq x < 315$ such that
+  \item $x \equiv 1 \pmod 5$
+  \item $x \equiv 3 \pmod 7$
+  \item $x \equiv 5 \pmod 9$
+  \item $M_1 = 63$. Find $y_1$.
+  \item $63 \bmod 5 = 3$ and $3\cdot 2 \equiv 1 \pmod 5$ so $y_1 = 2$.
+  \item $M_2 = 45$. Find $y_2$.
+  \item $45 \bmod 7 = 3$ and  $3 \cdot 5 \equiv 1 \pmod 7$ so  $y_2 = 5$.
+  \item $M_3 = 35$. Find $y_3$.
+  \item $35 \bmod 9 = 8$ and $8 \cdot 8 \equiv 1 \pmod 9$ so $y_3 = 8$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example, continued}
+
+\begin{itemize}
+  \item $x \equiv 1 \pmod 5$
+  \item $x \equiv 3 \pmod 7$
+  \item $x \equiv 5 \pmod 9$
+  \item $M_1 = 63$. $y_1 = 2$
+  \item $M_2 = 45$. $y_2 = 5$.
+  \item $M_3 = 35$. $y_3 = 8$.
+  \item $x = 1 \cdot 63 \cdot 2 + 3 \cdot 45 \cdot 5 + 5 \cdot 35 \cdot 8 $
+  \item $= 126 + 675 + 1400 = 2201$.
+  \item The problem said we were supposed to find $x$ with $0\leq x < 315$.
+  \item $2201\bmod 315 = 311$. $x=311$ is the final answer.
+  \item Check: $311 \bmod 5 = 1$ ; $311 \bmod 7 = 3$ ; $311 \bmod 9 = 5$.
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+
+\end{document}
