@@ -1,0 +1,323 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 15 \\ $\Z_n$}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2020 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{$\Z_n$}
+
+\begin{itemize}
+  \item Let $n>1$ be an integer.
+  \item $\Z_n$ is pronounced $\Z$-mod-n.
+  \item It is also written $\Z/(n)$.
+  \item It consists of the  set of integers from $0$ to $n-1$.
+  \item But in their role as the least non-negative residues.
+  \item In other words in their role as ``slots'' in ``blocks'' of size $n$.
+  \item To indicate this, will write square brackets around each integer.
+  \item  $\Z_n=\singleton{[0],[1],[2],\cdots,[n-1]}$.
+  \item For example:
+  \item  $\Z_6=\singleton{[0],[1],[2],[3],[4],[5]}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Addition in $\Z_n$}
+
+\begin{itemize}
+  \item We define addition in $\Z_n$ as follows:
+  \item $[a] + [b] = [(a+b) \bmod n]$.
+  \item For example, letting $n=6$, addition in $\Z_6$ is defined as:
+  \item $[a] + [b] = [(a+b) \bmod 6]$.
+  \item $[3] + [0] = [3]$.
+  \item $[3] + [1] = [4]$.
+  \item $[3] + [2] = [5]$.
+  \item $[3] + [3] = [0]$.
+  \item $[3] + [4] = [1]$.
+  \item $[3] + [5] = [2]$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Multiplication in $\Z_n$}
+
+\begin{itemize}
+  \item We define multiplication in $\Z_n$ as follows:
+  \item $[a] \cdot [b] = [(a\cdot b) \bmod n]$.
+  \item For example, letting $n=6$, multplication in $\Z_6$ is defined as:
+  \item $[a] \cdot [b] = [(a\cdot b) \bmod 6]$.
+  \item $[3] \cdot [0] = [0]$.
+  \item $[3] \cdot [1] = [3]$.
+  \item $[3] \cdot [2] = [0]$.
+  \item $[3] \cdot [3] = [3]$.
+  \item $[3] \cdot [4] = [0]$.
+  \item $[3] \cdot [5] = [3]$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Self-contained arithmetic universe}
+
+\begin{itemize}
+  \item This is all just another way of thinking about ideas we already learned.
+  \item Let's continue to work in $\Z_6$.
+  \item $[3] + [5] = [2]$.
+  \item This is just another way of looking at: $3+5 \equiv 2 \pmod 6$.
+  \item $[3] \cdot [5] = [3]$.
+  \item This is just another way of looking at: $3\cdot 5 \equiv 3 \pmod 6$.
+  \item What's new is that we are now thinking of $\Z_6$ as a closed, self-contained universe.
+  \item It is a set of six elements. When you add or multiply two elements of the
+  set you get another element of the set.
+  \item We don't need the rest of the integers when we think about this.
+  \item The arithmetic is just that of ``wrapping around.''
+  \item i.e. $[5] + [1] = [0]$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{How to indicate the modulus}
+\begin{itemize}
+  \item If there is any chance of confusion about which modulus $n$ we mean, we will write it as a subscript.
+  \item For example:
+  \item  $\Z_6=\singleton{[0]_6,[1]_6,[2]_6,[3]_6,[4]_6,[5]_6}$.
+  \item  $\Z_3=\singleton{[0]_4,[1]_4,[2]_4,[3]_4}$.
+  \item So $[3]_6 \cdot [3]_6 = [3]_6$, whereas $[3]_4 \cdot [3]_4 = [1]_4$.
+   \item We will never try to add or multiply one element from $\Z_n$ and one element from $\Z_m$ when $n\not=m$.
+  \item This does not make sense: $[3]_6 + [3]_4$.
+  \item Because $[3]_6\in\Z_6$ and $[3]_4\in\Z_4$. They are in different ``universes.''
+  \item Usually, instead of the subscripts we will make it clear from the context what the modulus $n$ is.
+  \item We will say, for example, ``We are working in $\Z_6$''.
+  \item or ``Using arithmetic in $\Z_6$...''
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exponents}
+\begin{itemize}
+  \item If $[a]\in\Z_n$ and $k$ is a positive integer, then $[a]^k$ means
+  \item $[a]\cdot[a]\cdots[a]$, where there are $k$ terms.
+  \item Working in $\Z_5$...
+  \item $[4]^6=[4]\cdot[4]\cdot[4]\cdot[4]\cdot[4]\cdot[4]$
+  \item $=[1]\cdot[4]\cdot[4]\cdot[4]\cdot[4]$
+  \item $=[1]\cdot[1]\cdot[4]\cdot[4]$
+  \item $=[1]\cdot[1]\cdot[1]$
+  \item $=[1]$
+  \item Notice the exponent 6 is not in $\Z_5$. It is just a regular integer.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Additive Inverses}
+\begin{itemize}
+  \item If $[a]$ and $[b]$ are in $\Z_n$
+  \item and $[a]+[b] = [0]$
+  \item then we say that $[a]$ and $[b]$ are additive inverses.
+  \item We write $[a] = -[b]$ and $[b] = -[a]$.
+  \item For example, working in $\Z_7$...
+  \item $[3] = -[4]$ and $[4] = -[3]$.
+  \item In general, it is easy to see that, working in $\Z_n$,
+  \item $-[a] = [n-a]$.
+  \item Notice that $-(-[a]) = [a]$.
+  \item Important: $-[a]$ is not an additional element of $\Z_n$. It is another name for one of the elements.
+  \item For example, in $\Z_7$, $-[4]$ is another name for $[3]$. It's not an additional element.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Subtraction}
+\begin{itemize}
+  \item We can also define subtraction in $\Z_n$.
+  \item $[a] - [b] = [(a-b) \bmod n]$.
+  \item This is equivalent to
+  \item $[a] - [b] = [a] + (-[b])$.
+  \item For example, working in $\Z_9$...
+  \item $[5] - [8] = [6]$.
+  \item We can see this a few different ways:
+  \item Explanation 1: $[5]-[8] = [5-8 \bmod 9] = [-3 \bmod 9] = [6]$
+  \item Explanation 2: $[5] - [8] = [5] + (-[8]) = [5] + [1] = [6]$.
+  \item Explanation 3: $[5] - [8] = -([8] - [5]) = -[3] = [6]$.
+  \item Notice that arithmetic in $\Z_n$ ``wraps around'' the bottom as well as the top.
+  \item i.e. working in $\Z_9$, $[0] - [1] = [8]$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$\Z_n$ is a commutative ring}
+\begin{itemize}
+  \item $[0]$ is an additive identity
+  \item Every element has an additive inverse.
+  \item Addition is commutative: $[a]+[b]=[b]+[a]$.
+  \item Addition is associative: $([a]+[b])+[c]=[a]+([b]+[c])$.
+  \item $[1]$ is a multiplicative identity.
+  \item Multiplication is commutative: $[a]\cdot[b]=[b]\cdot[a]$.
+  \item Multiplication is associative: $([a]\cdot[b])\cdot[c]=[a]\cdot([b]\cdot[c])$.
+  \item Distributive law: $[a]\cdot([b]+[c]) = ([a]\cdot[b])+([a]\cdot [c])$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Multiplying with negatives}
+\begin{itemize}
+  \item Multiplying with negatives works the same way it does with integers.
+  \item $(-[a])\cdot [b] = -([a]\cdot [b])$
+  \item For example, working in $\Z_5$...
+  \item Compute $-[2] \cdot [3]$.
+  \item $-[2] \cdot [3] = -([2]\cdot[3]) = -[1] = [4]$
+  \item Another way to see it: $-[2] = [3]$, $[3]\cdot[3] = [4]$.
+  \item Compute $-[2]\cdot-[3]$.
+  \item Solution: $-[2]\cdot-[3] = -([2]\cdot (-[3])) = --([2]\cdot[3]) = [1]$.
+  \item Another way to see it: $-[2] = [3]$ and $-[3]=[2]$. So $-[2]\cdot-[3] = [3]\cdot[2] = [1]$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Negative one}
+\begin{itemize}
+  \item In any $\Z_n$, $-[1] = [n-1]$.
+  \item For example, in $\Z_{100}$, $-[1] = [99]$.
+  \item We can use arithmetic in $\Z_n$ to help us understand modular arithmetic in the integers.
+  \item \textbf{Theorem.} Let $n>1$. Then $(n-1)^2 \equiv 1 \pmod n$.
+  \item Example: $99^2 \equiv 1 \pmod {100}$.
+  \item We can see this must be true using $\Z_n$ because $-[1]\cdot-[1] = [1]$.
+  \item We could also prove it directly using congruence on the integers, without resorting to $\Z_n$:
+  \item $(n-1)^2 = n^2 -2n + 1 \equiv 1 \pmod n$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Multiplicative Inverses}
+\begin{itemize}
+  \item If $[a]$ and $[b]$ are in $\Z_n$
+  \item and $[a]\cdot [b] = [1]$
+  \item then $[a]$ and $[b]$ are called multiplicative inverses.
+  \item We write $[a] = [b]^{-1}$ and $[b] = [a]^{-1}$.
+  \item For example, working in $\Z_7$...
+  \item $[2]\cdot[4] = [1]$.
+  \item $[2]^{-1} = [4]$ and $[4]^{-1} = [2]$.
+  \item It's always true in any $\Z_n$ that $[1]\cdot[1] = [1]$,
+  \item and that $-[1]\cdot-[1] = [1]$.
+  \item So $[1]^{-1} = [1]$ and $(-[1])^{-1} = -[1]$.
+  \item Working in $\Z_{100}$, $[99]^{-1}=[99]$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Units}
+\begin{itemize}
+  \item Sometimes $[a]^{-1}$ doesn't exist.
+  \item If $[a]$ has a multiplicative inverse it is called a \emph{unit}.
+  \item For example, working in $\Z_9$...
+  \item $[4]\cdot [7] = [1]$ so $[4]^{-1} = [7]$ and $[7]^{-1} = [4]$.
+  \item So in $\Z_9$, $[4]$ and $[7]$ are units.
+  \item But $[3]$ doesn't have a multiplicative inverse in $\Z_9$.
+  \item So $[3]$ is not a unit.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Which are the units?}
+\begin{itemize}
+  \item Question: Which elements of $\Z_9$ are units?
+  \item Notice that $[a]\cdot[x] = [1]$ in $\Z_9$ is the same as
+  \item $ax \equiv 1 \pmod 9$.
+  \item We know when there is a solution to this congruence.
+  \item Answer: When $a$ is relatively prime to $9$.
+  \item So the units of $\Z_9$ are: $[1],[2],[4],[5],[7],[8]$.
+  \item In general:
+  \item \textbf{Theorem.} $[a]$ is a unit of $\Z_n$ iff $\gcd(a, n) = 1$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Zero Divisors}
+\begin{itemize}
+  \item We work in $\Z_9$...
+  \item Notice that $[3] \cdot [6] = [0]$.
+  \item \textbf{Definition.} In any $\Z_n$ suppose $[a]$ and $[b]$ are non-zero
+  \item and $[a]\cdot [b] = [0]$. Then $[a]$ and $[b]$ are called \emph{zero-divisors}.
+  \item Which are the zero-divisors of $\Z_n$?
+  \item $[a]$ is a zero-divisor of $\Z_n$ iff $a\not=0$ and
+  \item there is a non-zero solution to $ax \equiv 0 \pmod n$.
+  \item Let $d=\gcd(a,n)$. $d\divides 0$. So there are solutions.
+  \item $x=0$ is one solution. $[a]$ is a zero-divisor iff there is a second solution.
+  \item There are $d$ solutions. $[a]$ is a zero-divisor iff $d\not=1$.
+  \item \textbf{Theorem.} $[a]$ is a zero-divisor of $\Z_n$ iff $a\not=0$ and $\gcd(a, n) \not= 1$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Zero Divisors and Units}
+\begin{itemize}
+  \item So every non-zero element of $\Z_n$ is either a unit or a zero-divisor.
+  \item We work in $\Z_9$...
+  \item $[1]$ is a unit. ($[1]$ is a unit in $\Z_n$ for every $n$.)
+  \item $[2]$ is a unit. $[2]\cdot [5] = [1]$.
+  \item $[3]$ is a zero-divisor. $[3]\cdot[6] = [0]$.
+  \item $[4]$ is a unit. $[4]\cdot [7] = [1]$
+  \item $[5]$ is a unit. $[5]\cdot [2] = [1]$
+  \item $[6]$ is a zero-divisor. $[6]\cdot [3] = [0]$
+  \item $[7]$ is a unit. $[7]\cdot [4] = [1]$
+  \item $[8]$ is a unit. $[8]\cdot [8] = [1]$
+  \item $[8] = -[1]$ and $-[1]$ is a unit in every $\Z_n$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Units and Zero-Divisors of $\Z$?}
+\begin{itemize}
+  \item The idea of units also makes sense for the integers.
+  \item An integer $x$ is a \emph{unit} iff there is another integer $y$ such
+  that $x\cdot y = 1$.
+  \item Here we are using multiplication in $\Z$ (i.e. ordinary integer multiplication.)
+  \item Which are the units of $\Z$?
+  \item An integer $x$ is a zero-divisor of $\Z$ iff $x\not=0$ and there is a $y\not=0$
+  such that $x\cdot y = 0$.
+  \item Which are the zero-divisors of $\Z$?
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+\end{document}
