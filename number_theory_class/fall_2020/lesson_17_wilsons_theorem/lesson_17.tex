@@ -1,0 +1,178 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 17 \\ Wilson's Theorem}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2020 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{$(n-1)! \bmod n$}
+
+\begin{itemize}
+  \item In this lesson we are going to study
+  \item $(n-1)! \bmod n$
+  \item for $n$ a positive integer.
+  \item For example, $10! \bmod 11$
+  \item $1\cdot 2\cdot 3 \cdot 4 \cdot 5 \cdot 6 \cdot 7 \cdot 8 \cdot 9 \cdot 10 \bmod 11$
+  \item or $99! \bmod 100$
+  \item $1\cdot 2 \cdot 3 \cdots 98 \cdot 99 \bmod 100$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Examples}
+
+\begin{itemize}
+  \item Consider this table of the values of $(n-1)! \bmod n$.
+  \item https://en.wikipedia.org/wiki/Wilson\%27s\_theorem\#Example
+  \item From these examples, let's try to devise some theorems.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Wilson's Theorem}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $p$ be prime. Then $(p-1)! \bmod p = p-1$.
+  \item Example: $10! \bmod 11 = 10$.
+  \item Example: $22! \bmod 23 = 22$.
+  \item Example: $100! \bmod 101 = 100$.
+  \item Another way of looking at this:
+  \item \textbf{Theorem.} Let $p$ be prime. Then $p \divides ((p-1)! + 1)$.
+  \item Example: $11 \divides (10!+1)$.
+  \item Example: $23 \divides (22!+1)$.
+  \item Example: $101 \divides (100! + 1)$.
+  \item Another way of looking at this:
+  \item \textbf{Wilson's Theorem.} Let $p$ be prime. Then $(p-1)! \equiv -1 \pmod p$.
+  \item Example: $10! \equiv -1  \pmod {11}$.
+  \item Example: $22! \equiv -1  \pmod {23}$.
+  \item Example: $100! \equiv -1 \pmod {101}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{When $n$ is not prime}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $n>1$ and suppose $(n-1)! \equiv -1 \pmod n$.
+  \item Then $n$ is prime.
+  \item Equivalently:
+  \item \textbf{Theorem.} Let $n>1$ be composite. Then $(n-1)! \not\equiv -1 \pmod n$.
+  \item $3! \bmod 4 = 2$.
+  \item If $n \geq 6$ and $n$ is composite...
+  \item then $(n-1)! \bmod n = 0$.
+  \item i.e. $n \divides (n-1)!$
+  \item For example $100\divides 99!$.
+  \item $99! \bmod 100 = 0$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof of composite case}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $n \geq 6$ be composite.
+  \item then $n \divides (n-1)!$
+  \item For example $100\divides 99!$.
+  \item \textbf{proof.} Since $n$ is composite, $n=ab$ with $1< a \leq b < n$.
+  \item For example $100 = 5\cdot 20$.
+  \item If $a<b$ then $(n-1)! = 1\cdot 2 \cdots a \cdots b \cdots (n-1)$.
+  \item So $n=ab \divides (n-1)!$.
+  \item For example $100 = 5\cdot 20 \divides 99!$.
+  \item If $n$ cannot be written as $ab$ with $a<b$ then $n=p^2$ for some odd prime $p$.
+  \item Then $2p < n$ so $(n-1)! = 1\cdot 2 \cdots p \cdots 2p \cdots n-1$.
+  \item So $n=p^2 \divides (n-1)!$ $\qed$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof of Wilson's Theorem}
+
+\begin{itemize}
+  \item \textbf{Wilson's Theorem.} Let $p$ be prime. Then $(p-1)! \equiv -1 \pmod p$.
+  \item \textbf{proof}. Consider what this means in the language of $\Z_p^*$.
+  \item It means that the product of all of the elements of $\Z_p^*$ is $-[1]$.
+  \item For example, let $p=7$. Wilson's Theorem says that in $\Z_7^*$,
+  \item $[1][2][3][4][5][6] = -[1] = [6]$.
+  \item Every element of $\Z_p^*$ has a multiplicative inverse in $\Z_p^*$.
+  \item For example in $\Z_7^*$,
+  \item $[1][1]=[1], [2][4]=[1],[3][5]=[1]$ and $[6][6] = [1]$.
+  \item So in $\Z_7^*$, $[1][2][3][4][5][6] = [1][6] = [6]$.
+  \item In general, when we take the product of all of the elements of $\Z_p^*$,
+  \item every element will cancel with its multiplicative inverse
+  \item except for $[1]$ and $-[1]$.
+  \item These two are their own multiplicative inverses.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof of Wilson's Theorem, page 2}
+\begin{itemize}
+  \item So to prove Wilson's theorem we need the following
+  \item \textbf{Lemma.} Let $p$ be prime. In $\Z_p^*$,
+  \item $[1]$ and $-[1]$ are the only two elements that are their own multiplicative inverse.
+  \item In other words, these are the only two square-roots of $[1]$.
+  \item \textbf{proof.} Let $1<a<(p-1)$. We need to prove that $[a]^2 \neq [1]$ in $\Z_p^*$.
+  \item i.e. we need to prove that $a^2 \not\equiv 1 \pmod p$.
+  \item We need to prove that $p\ndivides (a^2 - 1)$.
+  \item But $a^2 - 1 = (a-1)(a+1)$ and $a\leq(a-1)<(a+1)<p$.
+  \item So $p\ndivides (a-1)$ and $p\ndivides (a+1)$.
+  \item Since $p$ is prime, $p\ndivides (a-1)(a+1)$.$\qed$.
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+\end{document}
