@@ -171,8 +171,71 @@
 
 \end{frame}
 
+\begin{frame}{Square Roots in $\Z_p^*$}
+\begin{itemize}
+  \item \textbf{Corollary.} Let $p$ be prime. In $\Z_p^*$ every element has at most two square roots.
+  \item If $[b]^2 = [a]$ and $[c]^2 = [a]$ then $[c]=\pm [b]$.
+  \item \textbf{proof.} Suppose $[b]^2=[c]^2$. Multiply both sides by $([c]^{-1})^2$.
+  \item $([b][c]^{-1})^2 = [1]$. So $[b][c]^{-1}$ is a square-root of $[1]$.
+  \item By the previous lemma, $[b][c]^{-1}=\pm[1]$.
+  \item Multiply both sides by $[c]$.
+  \item $[b]=\pm[c]$. $\qed$.
+  \item Example. In $\Z_{101}^*$ find all square roots of $[20]$.
+  \item $11^2=121\equiv 20 \pmod{101}$.
+  \item So $[11]$ and $-[11]=[90]$ are two square roots of $[20]$ in $\Z_{101}^*$.
+  \item $121$ is prime so these are the only two square roots.
+\end{itemize}
+\end{frame}
 
+\begin{frame}{Examples}
+\begin{itemize}
+  \item \textbf{Example:} Find $42! \bmod 43$.
+  \item Solution: 42.
+  \item \textbf{Example:} Find $41! \bmod 43$.
+  \item Solution: $41! = 42!/42$. Working in $\Z_{43}^* \cdots$
+  \item $[1][2]\cdots[41] = -[1][42]^{-1}=-[1](-[1])^{-1} = [1]$.
+  \item So $41! \bmod 43 = 1$.
+  \item \textbf{Corollary.} Let $p$ be prime. Then $(p-2)! \equiv 1 \pmod{p}$.
+  \item \textbf{Example:} Find $40!  \bmod 43$.
+  \item Solution: $40! = 42!/(41\cdot 42)$. Working in $\Z_{43}^* \cdots$
+  \item $[1][2]\cdots[40] = -[1][41]^{-1}[42]^{-1}=-[1](-[2])^{-1}(-[1])^{-1} = (-[2])^{-1}$
+  \item $= -[2]^{-1} = -[22] = [21]$.
+  \item So $40! \bmod 43=21$.
+\end{itemize}
+\end{frame}
 
+\begin{frame}{More Complicated Example}
+\begin{itemize}
+  \item \textbf{Example:} Find $58! \bmod 3599$.
+  \item Solution: Find the prime factorization of 3,599.
+  \item Since the problem contains $58!$ and 59 is prime and
+  \item this lesson is about Wilson's theorem, guess that $59\divides 3,599$.
+  \item $3,599 = 59 \cdot 61$.
+  \item Idea: Find $58! \bmod 59$ and $58! \bmod 61$ and then use the Chinese Remainder Theorem.
+  \item $58! \bmod 59 = -1$. $58!\bmod 61$ is found by working in $\Z_{61}^* \cdots$
+  \item $-[2]^{-1}=-[31]=[30]$.
+  \item Let $x=58! \bmod 3599$. Then $x$ satisfies:
+  \item $x \equiv -1 \pmod {59}$
+  \item $x \equiv 30 \pmod {61}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{More Complicated Example, Continued}
+\begin{itemize}
+  \item \textbf{Example:} Find $58! \bmod 3599$.
+  \item Solve
+  \item $x \equiv -1 \pmod {59}$
+  \item $x \equiv 30 \pmod {61}$.
+  \item $M_1 = 61$. Find $y_1$, the multiplicative inverse of 61 mod 59.
+  \item $61 \bmod 59 = 2$ and $2\cdot 30 \equiv 1 \pmod {59}$ so $y_1=30$.
+  \item $M_2 = 59$. Find $y_2$, the multiplicative inverse of 59 mod 61.
+  \item $59 \equiv -2 \pmod{61}$ and $(-2)\cdot(-31) \equiv 1 \pmod {61}$.
+  \item $y_2 = (-31) \bmod 61 = 30$.
+  \item $x = \left( (-1)(61)(30) + (30)(59)(30) \right) \bmod 3599=$
+  \item $=884$.
+  \item So $58! \bmod 3599 = 884$
+\end{itemize}
+\end{frame}
 
 
 \end{document}
