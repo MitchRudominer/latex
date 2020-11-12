@@ -1,7 +1,7 @@
 % $Header$
 
-\documentclass{beamer}
-%\documentclass[handout]{beamer}
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
 \usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
 \input{mathdefs}
 
@@ -164,7 +164,7 @@
   \item \textbf{proof.} Let $1<a<(p-1)$. We need to prove that $[a]^2 \neq [1]$ in $\Z_p^*$.
   \item i.e. we need to prove that $a^2 \not\equiv 1 \pmod p$.
   \item We need to prove that $p\ndivides (a^2 - 1)$.
-  \item But $a^2 - 1 = (a-1)(a+1)$ and $a\leq(a-1)<(a+1)<p$.
+  \item But $a^2 - 1 = (a-1)(a+1)$ and $(a-1)<(a+1)<p$.
   \item So $p\ndivides (a-1)$ and $p\ndivides (a+1)$.
   \item Since $p$ is prime, $p\ndivides (a-1)(a+1)$.$\qed$.
 \end{itemize}
