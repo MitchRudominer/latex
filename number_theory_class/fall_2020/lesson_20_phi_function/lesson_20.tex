@@ -1,0 +1,223 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 20 \\ $\phi(n)$}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2020 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{$\phi(n)$}
+
+\begin{itemize}
+  \item Recall...
+  \item \textbf{Definition.} Let $n>1$ be an integer.
+  \item $\phi(n)$ is the number of positive integers less than $n$ and relatively prime to $n$.
+  \item Equavlanetly, $\phi(n)$ is the number of elements of $\Z_n^*$.
+  \item Example: Let $n=10$. The positive integers less than 10 and relatively prime to 10 are:
+  \item 1,3,7,9
+  \item The elements of $\Z_{10}^*$ are: $[1], [3], [7], [9]$.
+  \item So $\phi(10) = 4$.
+  \item Question: If $p$ is prime what is $\phi(p)$?
+  \item Answer: $p-1$.
+  \item If $n$ is composite then $1<\phi(n)<n-1$.
+  \item In this lesson we are going to learn how to compute $\phi(n)$ for all $n>1$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Multiplicative Arithmetic Functions}
+
+\begin{itemize}
+  \item The key idea for being able to compute $\phi(n)$ for all $n>1$ is
+  \item \textbf{Theorem.} If $n,m>1$ and $\gcd(n,m)=1$ then
+  \item $\phi(nm) = \phi(n)\phi(m)$.
+  \item We say that $\phi$ is a multiplicative arithmetic function.
+  \item Example: 9 and 25 are relatively prime. $9\cdot 25 = 225$.
+  \item So $\phi(225) = \phi(9) \cdot \phi(25)$.
+  \item How does the theorem help us to compute $\phi(n)$ for all $n>1$?
+  \item Use the prime decomposition: $n=p_1^{r_1}p_2^{r_2}\cdots p_k^{r_k}$.
+  \item For $1\leq i < j \leq k$, $p_i^{r_i}$ and $p_j^{r_j}$ are relatively prime.
+  \item So  $\phi(n)=\phi(p_1^{r_1})\phi(p_2^{r_2})\cdots \phi(p_k^{r_k})$.
+  \item We have reduced the problem to finding $\phi(x)$ for $x$ a prime power.
+  \item For example $\phi(3^2\cdot 5^2) = \phi(3^2) \cdot \phi(5^2)$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Powers of Primes}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $p$ be prime and $k\geq 1$ and integer.
+  \item Then $\phi(p^k) = p^{k-1} (p-1)$.
+  \item Example: Let $p=3$.
+  \item For $k=1$, $\phi(3^1) = 3^0\cdot 2 = 2$.
+  \item For $k=2$, $\phi(3^2) = 3^1\cdot 2 = 6$.
+  \item For $k=3$, $\phi(3^3) = 3^2\cdot 2 = 18$.
+  \item \textbf{proof.} If $1\leq x < p^k$, then
+  \item $x$ is \emph{not} relatively prime to $p^k$ iff $p\divides x$.
+  \item  Count the number of multiples of $p$ less than $p^k$.
+  \item There are $p^{k-1}$ such multiples.
+  \item So $\phi(p^k) = p^k - p^{k-1} = p^{k-1}(p-1)$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof that $\phi$ is multiplicative}
+
+\begin{itemize}
+  \item Now we turn to the proof of the main
+  \item \textbf{Theorem.} If $n,m>1$ and $\gcd(n,m)=1$ then
+  \item $\phi(nm) = \phi(n)\phi(m)$.
+  \item \textbf{proof}. Use as example $n=4, m=3$.
+  \item We'll see $\phi(12) = \phi(4)\phi(3)$.
+  \item Main idea: $\Z_{nm}^* \isomorphic \Z_n^* \times \Z_m^*$.
+  \item For example: $\Z_{12}^* \isomorphic \Z_4^* \times \Z_3^*$.
+  \item What does $\times$ mean? It means the cartesian product.
+  \item $\Z_4^* \times \Z_3^*$ is the set
+  of ordered pairs $(a,b)$ such that $a\in\Z_4^*$ and $b\in\Z_3^*$.
+  \item What does $\isomorphic$ mean? It means the two sides are isomorphic as groups.
+  \item For our purposes we only care that the two sides have the same size.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof page 2}
+
+\begin{itemize}
+  \item $|\Z_4^* \times \Z_3^*| = |\Z_4^*| \cdot |\Z_3^*| = \phi(3) \phi(4)$.
+  \item So if we can show that $|\Z^*_{12}| =  |\Z_4^* \times \Z_3^*|$ then
+  \item we will have seen that $\phi(12) = \phi(3)\phi(4)$.
+  \item In general,  $|\Z_n^* \times \Z_m^*| = |\Z_n^*| \cdot |\Z_m^*| = \phi(n) \phi(m)$.
+  \item So if we can show that $|\Z_{nm}^*| = |\Z_n^* \times \Z_m^*|$ then
+  \item we will have seen that $\phi(nm) = \phi(n)\phi(m)$.
+  \item We start by defining a function $f:\Z_{nm}\map \Z_n \times \Z_m$
+  \item such that $f$ is one-to-one and onto.
+  \item For $[x]\in\Z_{nm}$, define $f([x]) = \left([x \bmod n], [x \bmod m] \right)$.
+  \item For example with $n=4, m=3$, for $[x]\in\Z_{12}$,
+  \item $f([x]) = \left([x \bmod 4], [x \bmod 3] \right)$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof page 3}
+
+\begin{itemize}
+  \item By the Chinese Remainder Theorem, for every two integers $a,b$ such that
+  \item $0\leq a < n$ and
+  \item $0\leq b <m$,
+  \item there is a unique integer $x$ with $0\leq x < nm$ such that
+  \item $x \equiv a \pmod n$ and
+  \item $x\equiv b \pmod m$.
+  \item This says that $f:\Z_{nm}\map \Z_n \times \Z_m$ is one-to-one and onto.
+  \item For example, for every $a,b$ with $0\leq a < 4$, $0\leq b < 3$,
+  \item there is a unique integer $x$ with $0\leq x < 12$ such that
+  \item $x \equiv a \pmod 4$ and
+  \item $x\equiv b \pmod 3$.
+  \item This says that $f:\Z_{12}\map \Z_4 \times \Z_3$ is one-to-one and onto.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof page 4}
+
+\begin{itemize}
+  \item To finish the proof we will show that
+  \item $[x] \in \Z_{nm}^*$ iff $f([x]) \in \Z_n^* \times \Z_m^*$.
+  \item This will show that the restriction of $f$ to $\Z_{nm}^*$
+  \item is a one-to-one function from $\Z_{nm}^*$ onto $\Z_n^* \times \Z_m^*$.
+  \item And so $|\Z_{nm}^*| = |\Z_n^* \times \Z_m^*|$.
+  \item For example, $[x] \in \Z_{12}^*$ iff $f([x]) \in \Z_4^* \times \Z_3^*$.
+  \item So the restriction of $f$ to $\Z_{12}^*$
+  \item is a one-to-one function from $\Z_{12}^*$ onto $\Z_4^* \times \Z_3^*$.
+  \item And so $|\Z_{12}^*| = |\Z_4^* \times \Z_3^*|$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof page 5}
+
+\begin{itemize}
+  \item Let $x,y$ be two integers with $0\leq x,y < nm$.
+  \item Because $\gcd(n,m)=1$
+  \item $xy \equiv 1 \pmod {nm}$ iff
+  \item (i) $xy \equiv 1 \pmod n$ and
+  \item (ii) $xy \equiv 1 \pmod m$.
+  \item This says, $[x][y] = [1]$ in $\Z_{nm}$ iff
+  \item (i) $[x \bmod n] [y\bmod n] = [1]$ in $\Z_{n}$ and
+  \item (i) $[x \bmod m] [y\bmod m] = [1]$ in $\Z_{m}$.
+  \item So $[x]\in \Z_{nm}^*$ iff
+  \item (i) $[x \bmod n] \in \Z_n^*$ and
+  \item (ii) $[x \bmod m] \in \Z_m^*$.
+  \item iff $f([x])\in \Z_n^* \times \Z_m^*$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Examples}
+
+\begin{itemize}
+  \item Example: Find $\phi(675)$.
+  \item Solution: $675 = 3^3 \cdot 5^2$.
+  \item So $\phi(675) = \phi(3^3)\phi(5^2)$
+  \item $=3^2\cdot 2 \cdot 5 \cdot 4 = 360$.
+  \item Example: Find $7^{722} \bmod 675$.
+  \item 7 is relatively prime to 675.
+  \item By Euler's Theorem $7^{360} \bmod 675 = 1$.
+  \item So $7^{720} \bmod 675 = 1$.
+  \item So $7^{722} \equiv 7^2 \pmod {675}$.
+  \item So $7^{722} \bmod 675 = 49$
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}

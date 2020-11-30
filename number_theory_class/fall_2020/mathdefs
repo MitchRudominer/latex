@@ -1,8 +1,0 @@
-$$
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Zpos}{\Z^{+}}
-\newcommand{\Znonneg}{\Z^{\geq 0}}
-$$
-
