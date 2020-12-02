@@ -1,0 +1,233 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 21 \\ Primitive Roots}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2020 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{The Order and Orbit of an element of $\Z_n^*$}
+
+\begin{itemize}
+  \item Recall...
+  \item Let $[a]\in\Z^*_n$. The \emph{orbit} of $[a]$ is
+  the set of powers of $[a]$.
+  \item The \emph{order} of $[a]$ is
+  the least integer $k>0$ such that $[a]^k=[1]$.
+  \item Equivalently, the order of $[a]$ is the size of the orbit of $[a]$.
+  \item Example: Work in $\Z^*_7$...
+  \item $[2]^1 = 2$, $[2]^2 = 4$, $[2]^3=[1]$.
+  \item So the orbit of $[2]$ is $\singleton{[1],[2],[4]}$.
+  \item And the order of $[2]$ is $3$.
+  \item $[3]^1=[3]$, $[3]^2=[2]$, $[3]^3=[6]$, $[3]^4=[4]$
+  \item $[3]^5=[5]$, $[3]^6=[1]$.
+  \item So the orbit of $[3]$ is all of $\Z^*_7$.
+  \item And the order of $[3]$ is $6$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Generators of $\Z_n^*$}
+
+\begin{itemize}
+  \item Let $[a]\in\Z^*_n$.
+  \item Then $[a]$ is a \emph{generator} of $\Z_n^*$ iff
+  \item the orbit of $[a]$ is all of $\Z_n^*$.
+  \item Equivalently, iff the order of $[a]$ is $\phi(n)$.
+  \item Example: Work in $\Z^*_7$...
+  \item The orbit of $[2]$ is $\singleton{[1],[2],[4]}$.
+  \item And the order of $[2]$ is $3$.
+  \item So $[2]$ is not a generator.
+  \item The orbit of $[3]$ is all of $\Z^*_7$.
+  \item The order of $[3]$ is $6 = \phi(7)$.
+  \item So $[3]$ is a generator.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Cyclic Groups}
+
+\begin{itemize}
+  \item Not all $\Z_n^*$ have generators.
+  \item If $\Z_n^*$ has a generator then we say that $\Z_n^*$ is \emph{cyclic}.
+  \item $[3]$ is a generator of $\Z_7^*$ so $\Z_7^*$ is cyclic.
+  \item But $\Z_8^*$ does not have any generators, so $\Z_8^*$ is not cyclic.
+  \item To see this, recall that all elements of $\Z_8^*$ are square-roots of $[1]$.
+  \item $[1]^2 = [3]^2 = [5]^2 = [7]^2 = [1]$.
+  \item So every element of $\Z_8^*$ has order 2 or 1.
+  \item So no element of $\Z_8^*$ has order $4 = \phi(8)$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The order of $a$ mod $n$.}
+
+\begin{itemize}
+  \item Let's recast all of the above in the language of congruence over the integers rather than the language of $\Z_n^*$.
+  \item \textbf{Definition.} Let $n>1$ be an integer. Let $a$ be an integer relatively prime to $n$.
+  \item The \emph{order of $a$ modulo $n$}, denoted $\ord_n a$,
+  \item is the order of $[a \mod n]$ in $\Z_n^*$.
+  \item Equivalently, $\ord_n a$ is the least positive integer $k$ such that $a^k \equiv 1 \pmod n$.
+  \item Example: Since the order of $[2]$ in $\Z_7^*$ is 3,
+  \item $\ord_7 2 = 3$.
+  \item Also $\ord_7 9 = 3$, $\ord_7 16 = 3$, $\ord_7 -5 = 3$.
+  \item Notice that $9^3 \equiv 1 \pmod 7$.
+   \item Example: Since the order of $[3]$ in $\Z_7^*$ is 6,
+  \item $\ord_7 3 = 6$.
+  \item Also $\ord_7 10 = 6$, $\ord_7 17 = 6$, $\ord_7 -4 = 6$.
+  \item Notice that $10^6 \equiv 1 \pmod 7$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Primitive Roots}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $n>1$ be an integer. Let $a$ be an integer relatively prime to $n$.
+  \item Then $a$ is a \emph{primitive root of $n$}
+  \item iff $\ord_n a = \phi(n)$.
+  \item Equivalently, iff $[a \bmod n]$ is a generator of $\Z_n^*$.
+  \item Example: $[3]$ is a generator of $\Z_7^*$ and $[2]$ is not.
+  \item Therefore $3$ is a primitive root of $7$ and $2$ is not.
+  \item Also $10, 17, -4$ are primitive roots of $7$,
+  \item and $9, 16, -5$ are not primitive roots of $7$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Not all $n$ have Primitive Roots}
+
+\begin{itemize}
+  \item $n$ has a primitive root iff $\Z_n^*$ is cyclic.
+  \item $\Z_7^*$ is cyclic, so $7$ has a primitive root.
+  \item $\Z_8^*$ is not cyclic, so $8$ does not have any primitive roots.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Other solutions to $[a]^k = [1]$.}
+
+\begin{itemize}
+  \item The order of $[a]$ in $\Z_n^*$ is the least positive integer $k$ such that
+  $[a]^k = [1]$.
+  \item But is it possible for $[a]^k = [1]$ for other values of $k$ also?
+  \item Example: Work in $\Z_7^*$.
+  \item The order of $[2] = 3$ so $[2]^3 = [1]$.
+  \item Does $[2]^k = [1]$ for other values of $k$ besides $k=3$?
+  \item $[2]^6 = [1]$.
+  \item $[2]^9 = [1]$.
+  \item $[2]^k = [1]$ for all $k$ such that $k$ is a multiple of 3.
+  \item Question: Are there any other values of $k$ such that $[2]^k = [1]$?
+  \item Answer: No.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Solutions to $[a]^k = [1]$}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $[a]\in\Z^*_n$.
+  \item Let $r$ be the order of $[a]$.
+  \item Let $k$ be a positive integer.
+  \item Then $[a]^k = [1]$ iff $k$ is a multiple of $r$.
+  \item Phrased in the language of congruence over the integers...
+  \item \textbf{Theorem.} Let $a,n$ be integers with $n>1$ and $\gcd(a,n)=1$.
+  \item Let $k$ be a positive integer.
+  \item Then $a^k \equiv 1 \pmod n$ iff $k$ is a multiple of $\ord_n a$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+
+\begin{itemize}
+  \item True or false: $2^{21} \equiv 1 \pmod 7$.
+  \item Since $\ord_7 2 = 3$ and $3\divides 21$ the answer is true.
+  \item True or false: $2^{35} \equiv 1 \pmod 7$.
+  \item Since $\ord_7 2 = 3$ and $3\ndivides 35$ the answer is false.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof}
+
+\begin{itemize}
+  \item \textbf{proof.} Let $[a]\in\Z^*_n$.
+  \item Let $r$ be the order of $[a]$.
+  \item Let $k=qr$ be a multiple of $r$.
+  \item Then $[a]^{k} = ([a]^r)^q = [1]^q = [1]$.
+  \item Conversely, suppose $[a]^k=[1]$. We want to see that $r\divides k$.
+  \item Write $k=qr + b$ with $0\leq b < r$.
+  \item Then $[1] = [a]^k = [a]^{qr}[a]^b = [a]^b$.
+  \item But $b<r$ and $r$ is the order of $[a]$.
+  \item So $b=0$ and $r\divides k$. $\qed$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Order and $\phi(n)$}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $n>1$ be an integer. Let $a$ be an integer relatively prime to $n$.
+  \item Then $\left( \ord_n a \right) \divides \phi(n)$.
+  \item Phrased in the language of $\Z_n^*$...
+  \item \textbf{Theorem.} Let $[a]\in\Z_n^*$. Then the order of $[a]$ divides $\phi(n)$.
+  \item \textbf{proof.} By Euler's Theorem, $[a]^{\phi(n)}=[1]$.
+  \item So $\phi(n)$ must be a multiple of the order of $[a]$.
+  \item Example: Are there any elements in $\Z_{100}^*$ of order 6?
+  \item Solution: $100=2^2\cdot 5^2$.
+  \item So $\phi(100) = 2^1\cdot 1 \cdot 5^1 \cdot  4 = 40$.
+  \item $6\ndivides 40$. So there are no elements of $\Z_{100}^*$ of order 6.
+  \item The only possible orders for an element of $\Z_{100}^*$ are:
+  \item 1,2,4,5,8,10,20,40
+\end{itemize}
+\end{frame}
+
+
+
+\end{document}
