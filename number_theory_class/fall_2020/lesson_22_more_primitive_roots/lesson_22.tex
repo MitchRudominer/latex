@@ -1,0 +1,287 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref,changepage}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 22 \\ More about Primitive Roots}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2020 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{The Order of a power of an element.}
+
+\begin{itemize}
+  \item Work in $\Z_7^*$...
+  \item $[3]^1=[3]$, $[3]^2=[2]$, $[3]^3=[6]$, $[3]^4=[4]$
+  \item $[3]^5=[5]$, $[3]^6=[1]$.
+  \item The order of $[3]$ is $6$. ($\ord_7 3 = 6$.)
+  \item $[3]$ is a generator of $\Z_7^*$. (3 is a primitive root of 7.)
+  \item What is the order $[3]^2$ in $\Z_7^*$. (What is $\ord_7 3^2$?)
+  \item $([3]^2)([3]^2)([3]^2)=[1]$.
+  \item $([3]^2)^3 = [1]$ and $([3]^2)^k\not=[1]$ for $k<3$.
+  \item So $\ord_7 3^2 = 3$.
+  \item What can we say in general about the order of a power of an element?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The Order of a power of an element.}
+
+\begin{itemize}
+  \item Work in $\Z_n^*$...
+  \item Suppose the order of $[a]$ is $t$. What is the order of $[a]^u$?
+  \item We want the least $r$ such that $([a]^u)^r = [1]$.
+  \item We want the least $r$ such that $[a]^{ru} = [1]$.
+  \item We want the least $r$ such that $ru$ is a multiple of $t$.
+  \item We want $r$ such that $ru = \lcm(u,t) = \frac{ut}{\gcd(u,t)}$.
+  \item Solution: $r=\frac{t}{\gcd(u,t)}$.
+  \item \textbf{Theorem.} If $[a]$ is in $\Z_n^*$ and $t$ is the order of $[a]$.
+  \item Then the order of $[a]^u$ in $\Z_n^*$ is $\frac{t}{\gcd(u,t)}$.
+  \item \textbf{Theorem.} If $n>1$ and $\gcd(a,n)=1$ and $\ord_n a = t$,
+  \item then $\ord_n a^u = \frac{t}{\gcd(u,t)}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Examples}
+
+\begin{itemize}
+  \item Example: Suppose $\ord_n a = 36$.
+  \item Find $\ord_n a^{24}$.
+  \item $\ord_n a^{24} = \frac{36}{\gcd(24,36)} = \frac{36}{12} = 3$.
+  \item Check: $a^{24} \not\equiv 1 \pmod{36}$, $(a^{24})^2=a^{48} \not\equiv 1 \pmod{36}$
+  \item $(a^{24})^3=a^{72} \equiv 1 \pmod{36}$.
+  \item Find $\ord_n a^{6}$.
+  \item $\ord_n a^{6} = \frac{36}{\gcd(6,36)} = \frac{36}{6} = 6$.
+  \item Find $\ord_n a^{7}$.
+  \item $\ord_n a^{7} = \frac{36}{\gcd(7,36)} = \frac{36}{1} = 36$.
+  \item Notice: If $u$ is relatively prime to $\ord_n a$ then $\ord_n a^u = \ord_n a$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{All the primitive roots}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Suppose $[a]$ is a generator of $\Z_n^*$. Then
+  \item $[a]^u$ is also a generator iff $\gcd(u,\phi(n)) = 1$.
+  \item \textbf{Theorem.} Suppose $a$ is a primitive root of $n$. Then
+  \item $a^u$ is also a primitive root of $n$ iff $\gcd(u,\phi(n))=1$.
+  \item Example $[3]$ is a generator of $\Z_7^*$. $\phi(7) = 6$.
+  \item $[3]^2 = [2], [3]^3 = [6], [3]^4=[4], [3]^6=[1]$ are not generators.
+  \item $[3]^5=[4]$ is a generator.
+  \item In the language of congruence: $3$ is a primitive root of $7$.
+  \item $3^2, 3^3, 3^4, 3^6$ are not primitive roots of $7$.
+  \item $3^5$ is also a primitive root of $7$.
+  \item $3^5 \equiv 4 \pmod 7$.
+  \item $4$ is also a primitive root of $7$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Number of primitive roots}
+
+\begin{itemize}
+  \item \textbf{Theorem.} If $\Z_n^*$ is cyclic then
+  \item the number of generators of $\Z_n^*$ is $\phi(\phi(n))$.
+  \item Example: $\Z_7^*$ is cyclic with generator $[3]$.
+  \item $\phi(\phi(7)) = \phi(6) = 2$.
+  \item $[3]$ and $[3]^5 = [4]$ are the two generators.
+  \item In the language of congruence:
+  \item \textbf{Theorem.} Let $n>1$ be an integer. Suppose $n$ has a primitive root.
+  \item Then $n$ has $\phi(\phi(n))$ incongruent primitive roots.
+  \item Example: $3$ is a primitive root of $7$.
+  \item $3^5$ is also a primitive root of $7$.
+  \item $3^5 \equiv 4 \pmod 7$
+  \item $7$ has two incongruent primitive roots: $3$ and $4$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Number of primitive roots}
+
+\begin{itemize}
+  \item Example: $\Z_{11}^*$ is cyclic with generator $[2]$.
+  \item $\phi(\phi(11)) = \phi(10) = 4$.
+  \item So $\Z_{11}^*$ must have 4 generators.
+  \item $[2],[2]^3=[8], [2]^7=[7], [2]^9 = [6]$ are the four generators.
+  \item In the language of congruence: $2$ is a primitive root of $11$.
+  \item $2^3,2^7,2^9$ are also primitive roots of $11$.
+  \item $2^3 = 8, 2^7 \equiv 7 \pmod{11}, 2^9 \equiv 6 \pmod {11}$.
+  \item $11$ has four incongruent primitive roots: 2,6,7,8
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Which integers have primitive roots?}
+\begin{adjustwidth}{-2em}{-2em}
+\small
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}\hline
+$2$           &  $3$         & $4$           &   $5$         & $6$            & $7$   & $8$          & $9$         & $10$            & $11$       \\ \hline
+$2$           &  $3$         & $2\cdot2$     &   $5$         & $2\cdot3$      & $7$   & $2^3$        & $3^2$       & $2\cdot 5$      & $11$       \\ \hline
+yes           &  yes         &  yes          &   yes         & yes            & yes   & no           & yes         & yes             & yes        \\ \hline\hline
+$12$          &  $13$        & $14$          &   $15$        & $16$           & $17$  & $18$         & $19$        & $20$            & $21$       \\ \hline
+$2^2\cdot3$   &  $13$        & $2\cdot7$     &   $3\cdot 5$  & $2^4$          & $17$  & $2\cdot 3^2$ & $19$        & $2^2\cdot 5$    & $3\cdot 7$ \\ \hline
+no            &  yes         &  yes          &   no          & no             & yes   & yes          & yes         & no              & no         \\ \hline\hline
+$22$          &  $23$        & $24$          &   $25$        & $26$           & $27$  & $28$         & $29$        & $30$            & $31$       \\ \hline
+$2\cdot11$    &  $23$        & $2^3\cdot 3$  &   $5^2$       & $2\cdot 13$    & $3^3$ & $2^2\cdot 7$ & $29$        & $2\cdot3\cdot5$ & $31$       \\ \hline
+yes           &  yes         &  no           &   yes         & yes            & yes   & no           & yes         & no              & yes        \\ \hline\hline
+$32$          &  $33$        & $34$          &   $35$        & $36$           & $37$  & $38$         & $39$        & $40$            & $41$       \\ \hline
+$2^5$         &  $3\cdot 11$ & $2\cdot 17$   &   $5\cdot 7$  & $2^2\cdot 3^2$ & $37$  & $2\cdot 19$  & $3\cdot 13$ & $2^3\cdot 5$    & $41$       \\ \hline
+no            &  no          &  yes          &   no          & no             & yes   & yes          & no          & no              & yes        \\ \hline
+\end{tabular}
+\normalsize
+\end{adjustwidth}
+
+\end{frame}
+
+\begin{frame}{Primitive Root Theorem}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $n>1$ be an integer. Then
+  \item $n$ has a primitive root iff one of the following is true:
+  \item (a) $n$ is a power of an odd prime. $n=p^k$, $k\geq 1$.
+  \item (b) $n$ is twice a power of an odd prime. $n=2p^k$, $k\geq 1$.
+  \item (c) $n=2$ or $n=4$.
+  \item In other words, $n$ does \emph{not} have a primitive root iff one of the following is true:
+  \item (d) $n$ is divisible by two distinct odd primes.
+  \item (e) $n$ is divisible by $4$ but not equal to $4$.
+  \item In other words, $n$ does \emph{not} have a primitive root iff one of the following is true:
+  \item (f) $n=ab$ where $\gcd(a,b)=1$ and $a,b>2$.
+  \item (g) $n=2^k$ with $k\geq 3$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example}
+
+\begin{itemize}
+  \item Example: How many incongruent primitive roots does 56 have?
+  \item Answer: Zero because $8\divides 56$.
+  \item Example: How many incongruent primitive roots does 77 have?
+  \item Answer: Zero because 77 is divisible by two odd primes.
+  \item Example: How many incongruent primitive roots does 50 have?
+  \item Answer: $50=2\cdot 5^2$. So 50 has a primitive root.
+  \item The number of incongruent primitive roots is $\phi(\phi(50))=$
+  \item $\phi(50)= 1\cdot4\cdot 5 = 20$.
+  \item $\phi(\phi(50))=\phi(20)=\phi(2^2\cdot 5)=1\cdot 2\cdot 4 = 8$.
+  \item 50 has 8 incongruent primitive roots.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example}
+
+\begin{itemize}
+  \item Example: Given that 3 is a primitive root of 50, find 7 other incongruent primitive roots expressed as a power of 3.
+  \item Answer: We want $3^k$ with $1\leq k < \phi(50)=20$, and $\gcd(k,20)=1$.
+  \item $3^1,3^3,3^7,3^9,3^{11},3^13,3^{17},3^{19}$.
+  \item If we want we could reduce mod 50 and get: 3, 13, 17, 23, 27, 33, 37, 47
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Applications of Primitive Roots}
+
+\begin{itemize}
+  \item Why do we care about primitive roots?
+  \item One reason is that the subject is interesting mathematically in its own right.
+  \item Another reason is that if $n$ has a primitive root, it is much easier for us to
+  analyze congruence mod n.
+  \item In other words, if $\Z_n^*$ is cyclic it is much easier for us to analyze $\Z_n^*$.
+  \item This is because if $[a]$ is a generator of $\Z_n^*$ then the elements of
+  $\Z_n^*$ are $[a]$, $[a]^2$, $[a]^3\cdots$ so it is easier to answer questions about these elements. For example...
+  \item \textbf{Theorem.} If $\Z_n^*$ is cyclic then it has only two square-roots of $[1]$.
+  \item (The two square roots of $[1]$ are $[1]$ and $-[1] = [n-1]$.)
+  \item In the language of congruence...
+  \item \textbf{Theorem.} If $n$ has a primitive root, then there are only two integers, up to congruence, that are congruent to $1$ modulo $n$. (They are $1$ and $n-1$.)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof}
+
+\begin{itemize}
+  \item \textbf{Theorem.} If $\Z_n^*$ is cyclic then it has only two square-roots of $[1]$.
+  \item \textbf{proof.} Let $[a]$ be a generator of $\Z_n^*$.
+  \item The elements of $\Z_n^*$ are $[a],[a]^2,\cdots [a]^{\phi(n)} = [1]$.
+  \item The question is, for which values of $k$  is $([a]^k)^2=[1]$?
+  \item $[a]^{2k}=[1]$ iff $\phi(n)\divides 2k$.
+  \item So, for which values of $k$, with $1\leq k \leq \phi(n)$ does $\phi(n)\divides 2k$?
+  \item If $1\leq k \leq \phi(n)$, then $2\leq 2k \leq 2\phi(n)$.
+  \item So $\phi(n)\divides 2k$ iff $2k = \phi(n)$ or $2k = 2\phi(n)$.
+  \item So there are exactly two values, namely $k=\phi(n)$ and $k=\frac{\phi(n)}{2}$.
+  \item So there are exactly two elements of $\Z_n^*$ that are square-roots of $[1]$:
+  \item $[a]^{\phi(n)}=[1]$ and $[a]^{\frac{\phi(n)}{2}}.\qed$.
+  \item Note that in the proof above, $[a]^{\frac{\phi(n)}{2}}=-[1]$
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Example}
+
+\begin{itemize}
+  \item Example: Suppose you are told that $11$ is a primitive root of $118$.
+  \item Problem: Express $117$ as a power of $11$ mod $118$.
+  \item i.e. find $k$ so that $11^k \equiv 117 \pmod {118}$.
+  \item Solution: $118=2\cdot 59$. So $\phi(118) = 58$.
+  \item The elements of $\Z_{118}^*$ are $[11],[11]^2,\cdots[11]^{58} = [1]$.
+  \item $\Z_{118}^*$ has two square roots of $[1]$:
+  \item $[11]^{58}$ and $[11]^{29}$.
+  \item $[11]^{58} = [1]$ so $[11]^{29} = -[1] = [117]$.
+  \item So $117 \equiv 11^{29} \pmod {118}$.
+\end{itemize}
+
+\end{frame}
+
+
+
+\end{document}
