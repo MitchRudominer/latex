@@ -116,12 +116,12 @@
   \item $a^u$ is also a primitive root of $n$ iff $\gcd(u,\phi(n))=1$.
   \item Example $[3]$ is a generator of $\Z_7^*$. $\phi(7) = 6$.
   \item $[3]^2 = [2], [3]^3 = [6], [3]^4=[4], [3]^6=[1]$ are not generators.
-  \item $[3]^5=[4]$ is a generator.
+  \item $[3]^5=[5]$ is a generator.
   \item In the language of congruence: $3$ is a primitive root of $7$.
   \item $3^2, 3^3, 3^4, 3^6$ are not primitive roots of $7$.
   \item $3^5$ is also a primitive root of $7$.
-  \item $3^5 \equiv 4 \pmod 7$.
-  \item $4$ is also a primitive root of $7$.
+  \item $3^5 \equiv 5 \pmod 7$.
+  \item $5$ is also a primitive root of $7$.
 \end{itemize}
 
 \end{frame}
@@ -133,14 +133,14 @@
   \item the number of generators of $\Z_n^*$ is $\phi(\phi(n))$.
   \item Example: $\Z_7^*$ is cyclic with generator $[3]$.
   \item $\phi(\phi(7)) = \phi(6) = 2$.
-  \item $[3]$ and $[3]^5 = [4]$ are the two generators.
+  \item $[3]$ and $[3]^5 = [5]$ are the two generators.
   \item In the language of congruence:
   \item \textbf{Theorem.} Let $n>1$ be an integer. Suppose $n$ has a primitive root.
   \item Then $n$ has $\phi(\phi(n))$ incongruent primitive roots.
   \item Example: $3$ is a primitive root of $7$.
   \item $3^5$ is also a primitive root of $7$.
-  \item $3^5 \equiv 4 \pmod 7$
-  \item $7$ has two incongruent primitive roots: $3$ and $4$.
+  \item $3^5 \equiv 5 \pmod 7$
+  \item $7$ has two incongruent primitive roots: $3$ and $5$.
 \end{itemize}
 
 \end{frame}
@@ -222,8 +222,12 @@ no            &  no          &  yes          &   no          & no             & 
 \begin{itemize}
   \item Example: Given that 3 is a primitive root of 50, find 7 other incongruent primitive roots expressed as a power of 3.
   \item Answer: We want $3^k$ with $1\leq k < \phi(50)=20$, and $\gcd(k,20)=1$.
-  \item $3^1,3^3,3^7,3^9,3^{11},3^13,3^{17},3^{19}$.
-  \item If we want we could reduce mod 50 and get: 3, 13, 17, 23, 27, 33, 37, 47
+  \item $3^1,3^3,3^7,3^9,3^{11},3^{13},3^{17},3^{19}$.
+  \item The above is the solution. We were not asked to do this, but if we want we could also reduce the expressions mod 50 and get
+  the eight incongruent primitive roots of 50 are:
+  \item 3, 13, 17, 23, 27, 33, 37, 47
+  \item Note that in the line above we listed the primitive roots in increasing numerical order. They are not in the same order as their
+  equivalent expressions in the form $3^k$. For example $3^3 = 27$.
 \end{itemize}
 
 \end{frame}
@@ -241,7 +245,8 @@ no            &  no          &  yes          &   no          & no             & 
   \item \textbf{Theorem.} If $\Z_n^*$ is cyclic then it has only two square-roots of $[1]$.
   \item (The two square roots of $[1]$ are $[1]$ and $-[1] = [n-1]$.)
   \item In the language of congruence...
-  \item \textbf{Theorem.} If $n$ has a primitive root, then there are only two integers, up to congruence, that are congruent to $1$ modulo $n$. (They are $1$ and $n-1$.)
+  \item \textbf{Theorem.} If $n$ has a primitive root, then there are only two integers, up to congruence,
+  whose squares are congruent to $1$ modulo $n$. (They are $1$ and $n-1$.)
 \end{itemize}
 
 \end{frame}
