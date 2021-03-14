@@ -45,6 +45,60 @@ set theorem just past projective.
 We work in $\ZFC+\AD(\LofR)$ for convenience. We need much less determinacy
 than this, just a bit past $\PD$.
 
+\section{Something}
+\label{secion:something}
+
+Suppose that $(S)^{\Mladder}$ is truly-wellfounded and $(T)^{\Mladder}$ is
+wellfounded but not truly-wellfounded. We want to see that
+$\rank((S)^{\Mladder}) < \rank((T)^{\Mladder})$.
+
+Let $(y,\phi(y))$ be a branch of $T^V$.
+
+
+We are going to arrange the following situation:
+
+\begin{equation}
+\label{big-setup}
+\Mladder \xrightarrow{\pi_0} \Mprime \xrightarrow{\pi_1} \Mstar
+\end{equation}
+
+where
+
+\begin{enumerate}
+\item $\pi_0$ and $\pi_1$ are both $\Sigma_1$-elementary embeddings.
+\item $\Mprime$ is a countable ladder mouse.
+\item Letting $\alpha=(\omega_1)^{\Mprime}$ and $\delta=\ord(\Mprime)$ we have,
+\item $\Mstar$ is is illfounded, $\delta$ is in the wellfounded part of $\Mstar$,
+\item $\crit(\pi_1) = \alpha$ and $\pi_1(\alpha)=\delta$
+\item $\Mprime \subset \Mstar$.
+\item $(\delta^1_\omega)^{\Mstar}$ is in the wellfounded part of $\Mstar$.
+\end{enumerate}
+
+$(\pi_0, \Mprime)$ is going to come from a sequence of genericity iterations using
+the initial segments of $\Mladder$ and $(\pi_1,\Mstar)$
+is going to come from a stationary tower generic ultrapower of $\Mprime$.
+
+Since $(S)^{\Mstar} \subset \omega^{<\omega}\times ((\delta^1_\omega)^{\Mstar})^{<\omega}$,
+and
+$(T)^{\Mstar} \subset \omega^{<\omega}\times ((\delta^1_\omega)^{\Mstar})^{<\omega}$
+$(S)^{\Mstar}$ and $(T)^{\Mstar}$ are both in the wellfounded part of $\Mstar$.
+
+By elementarity it suffices to show that $\Mstar \models \rank(S) < \rank(T)$.
+
+Since $S^V$ is wellfounded, $S^{\Mstar}$ is wellfouned and so $(\rank(S))^{\Mstar}$ is in the
+wellfounded part of $\Mstar$. We will show that $T^{\Mstar}$
+is illfounded in $V$ and so $(\rank(T))^{\Mstar}$ is not in the wellfounded part of $\Mstar$.
+
+We will show that for all $n$, $\phi_n(y)$ is in the range of $\theta^{\Mstar}$ and,
+letting $f\in ((\delta^1_\omega)^{\Mstar})^{\omega}$ be such that for all $n$,
+$\theta^{\Mstar}(f(n)) = \phi_n(y)$, we have that $(y,f)$ is a branch of $T^{\Mstar}$.
+
+Thus it suffices to prove
+
+\begin{lemma}
+For all $n$, there is a $y_n\in \Mstar$ such that $y_n\restr n = y \restr n$ and
+for all $i,j < n$, $\psi^i_j(y_n) = \psi^i_j(y)$.
+\end{lemma}
 
 
 \end{document}
