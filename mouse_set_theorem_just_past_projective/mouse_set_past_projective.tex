@@ -45,8 +45,76 @@ set theorem just past projective.
 We work in $\ZFC+\AD(\LofR)$ for convenience. We need much less determinacy
 than this, just a bit past $\PD$.
 
-\section{Something}
-\label{secion:something}
+\section{Something A}
+\label{section:somethinga}
+
+\begin{definition}
+Let $\PiOneOmega$ be the pointclass of recursive intersections of infinitely many (lightface) projective sets.
+In more detail, fix for the remainder of this paper, for $n\in\omega$, $G^n\subset\omega\times\Bairespace$
+a universal $\Pi^1_{2n+1}$ set, uniformly in $n$.
+
+A $\PiOneOmega$ \emph{code} is a total recursive function $h:\omega\to\omega$. If $h$ is a $\PiOneOmega$ code then
+$A^h=\setof{x\in\Bairespace}{\forall n, G^n\left(h(n),x\right)}$. $A\subseteq\Bairespace$ is $\PiOneOmega$ iff
+$A=A^h$ for some $\PiOneOmega$ code $h$.
+
+Similarly we define $\PiOneOmega$ subsets of $\omega^s\times(\Bairespace)^t$ for $s,t\in\omega$.
+
+Then we define $\SigmaOneOmega = \neg\PiOneOmega$, $\SigmaOneOmegaPlusOne=\exists^{\R}\PiOneOmega$,
+$\PiOneOmegaPlusOne = \forall^{\R}\SigmaOneOmega$ and
+$\DeltaOneOmegaPlusOne = \SigmaOneOmegaPlusOne \intersect \PiOneOmegaPlusOne$.
+\end{definition}
+
+\begin{definition}
+Let $Q_{\omega+1} = \setof{x\in\R}{x\text{ is }\DeltaOneOmegaPlusOne\text{ in a countable ordinal}}$. More precisely,
+let $x\subseteq\omega$. Then $x\in Q_{\omega+1}$ iff there exists a $\PiOneOmega$ code $h$ and an $\alpha<\omega_1$ such that
+for all $w\in\WO$ coding $\alpha$, $x=\setof{k\in\omega}{A^h(k,w)}$.
+\end{definition}
+
+\section{Something B}
+\label{section:somethingb}
+\begin{theorem}
+$Q_{\omega+1} = \R \intersect \Mladder$.
+\end{theorem}
+
+\section{Something C}
+\label{section:somethingac}
+
+Let $\delta^1_{\omega} = \sup_n \delta^1_n$.
+
+\begin{definition}
+Let $h$ be a $\PiOneOmega$ code for a subset of $\Bairespace$.
+Then there is a natural tree $T^{h}$ on $\omega\times\delta^1_{\omega}$ that projects to $A^h$.
+
+For $n,e\in\omega$, let $G^n_e = \setof{x\in\Bairespace}{G^n(e, x)}$ and
+let $\varphi^n_e = \sequence{\varphi^n_{e,i}}{i\in\omega}$ be a $\Pi^1_{2n+1}$ scale on $G^n_e$ uniformly in $n$ and $e$,
+with each of the norms $\varphi^n_{e,i}$ being regular.
+Let $<^n_{e,i}$ be the prewellorder on $\Bairespace$ associated with $\varphi^n_{e,i}$. So ``$x,y\in G^n_e$ and $x <^n_{e,i} y$'' is
+$\Pi^1_{2n+1}$, uniformly in $n,e,i$, and $\varphi^n_{e,i}(x) = $ the rank of $x$ in $<^n_{e,i}$.
+
+Furthermore, $G^n_e$ is the projection of the tree on $\omega \times \delta_1^{\omega}$ whose branches are
+$$\setof{\left(x,\sequence{\varphi^n_{e,i}(x)}{i\in\omega}\right)}{x\in G^n_e}.$$
+
+Fix a recursive coding of pairs of integers by integers, $i\to\angles{i_0,i_1}$,
+with the property that $i_0,i_1\leq i$ for $i\in\omega$.
+
+Fix a $\PiOneOmega$ code $h$. Now we define the tree $T^h$. Roughly speaking, $T^h$ is the tree of attempts to
+build a pair $(x,f) \in \Bairespace \times \pre{(\delta^1_{\omega})}{\omega}$ such that for all $n,k\in\omega$, $x\in G^n_{h(n)}$
+and $f(\angles{n,k}) = \varphi^n_{h(n),k}(x)$.
+
+
+Let $(s,t) \in \omega^n\times(\delta^1_{\omega})^n$ for some $n\in\omega$. Then $(s,t)\in T^h$ iff there is an
+$x\in\Bairespace$ extending $s$ such that for all $i<n$, $x\in G^i_{h(i)}$ and $\varphi^{i_0}_{h(i_0),i_1} = t(i)$.
+\end{definition}
+
+The properties of $T^h$ that we need are
+\begin{enumerate}
+\item $T^h$ is a tree on $\omega\times\delta^1_{\omega}$ that projects to $A^h$
+\item The first $n$ levels of $T^h$ are simply definable from $\sequence{G^i_{h(i)}}{i<n}$ and
+the norms $\sequence{\varphi^i_{h(i), j}}{i,j<n}$, all of which are $\Pi^1_{2n+1}$.
+\end{enumerate}
+
+\section{Something D}
+\label{section:somethingd}
 
 Suppose that $(S)^{\Mladder}$ is truly-wellfounded and $(T)^{\Mladder}$ is
 wellfounded but not truly-wellfounded. We want to see that
