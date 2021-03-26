@@ -47,16 +47,16 @@ than this, just a bit past $\PD$.
 
 Throughout this paper we write $\R$ to mean $\Bairespace$ and we call elements of $\Bairespace$ \emph{reals}.
 
-\section{Something A}
-\label{section:somethinga}
+\section{Project-like Pointclasses Just Past Projective}
+\label{section:projectlikepointclasses}
 
 \begin{definition}
 Let $\PiOneOmega$ be the pointclass of recursive intersections of infinitely many (lightface) projective sets.
+
 In more detail, fix for the remainder of this paper, for $n\in\omega$, $G^n\subset\omega\times\R$
 a universal $\Pi^1_{2n+1}$ set, uniformly in $n$.
-
 A $\PiOneOmega$ \emph{code} is a total recursive function $h:\omega\to\omega$. If $h$ is a $\PiOneOmega$ code then
-$A^h=\setof{x\in\R}{(\forall n) G^n\left(h(n),x\right)}$. $A\subseteq\R$ is $\PiOneOmega$ iff
+$A^h=\setof{x\in\R}{(\forall n)\, G^n(h(n),x)}$. Say $A\subseteq\R$ is $\PiOneOmega$ iff
 $A=A^h$ for some $\PiOneOmega$ code $h$.
 
 Similarly we define $\PiOneOmega$ subsets of $\omega^s\times(\R)^t$ for $s,t\in\omega$.
@@ -66,11 +66,33 @@ $\PiOneOmegaPlusOne = \forall^{\R}\SigmaOneOmega$ and
 $\DeltaOneOmegaPlusOne = \SigmaOneOmegaPlusOne \intersect \PiOneOmegaPlusOne$.
 \end{definition}
 
+The following remarks follow from \cite{Scales_In_LofR}.
+\begin{remarks} \
+\begin{itemize}
+\item $\SigmaOneOmega = \Sigma_1(\JofR{2}) \intersect \Powerset(\R)$
+\item $\PiOneOmega = \Pi_1(\JofR{2}) \intersect \Powerset(\R)$
+\item $\SigmaOneOmegaPlusOne = \Sigma_2(\JofR{2}) \intersect \Powerset(\R)$
+\item $\PiOneOmegaPlusOne = \Pi_2(\JofR{2}) \intersect \Powerset(\R)$
+\item Assuming $\Det(\JofR{3})$, $\SigmaOneOmega$ and $\PiOneOmegaPlusOne$
+are scaled pointclasses.
+\end{itemize}
+\end{remarks}
+
+We consider $\PiOneOmegaPlusOne$ to be analogous to $\Pi^1_3$.
+
 \begin{definition}
 We say that $x\in\R$ is $\DeltaOneOmegaPlusOne$ in a countable ordinal iff there is an $\alpha<\omega_1$ such
 that for all $w\in\WO$ with $|w|=\alpha$, $\singleton{x}$ is $\DeltaOneOmegaPlusOne(w)$.
 Let $Q_{\omega+1} = \setof{x\in\R}{x\text{ is }\DeltaOneOmegaPlusOne\text{ in a countable ordinal}}$.
 \end{definition}
+
+We consider $Q_{\omega+1}$ to be analogous to $Q_3$. See \cite{Q_Theory}.
+
+\begin{remark}
+Assuming $\Det(\JofR{3})$, $Q_{\omega+1}$ is the largest countable
+$\DeltaOneOmegaPlusOne$ set closed downwards under
+$\DeltaOneOmegaPlusOne$-degrees.
+\end{remark}
 
 \section{Something B}
 \label{section:somethingb}
@@ -170,5 +192,7 @@ For all $n$, there is a $y_n\in \Mstar$ such that $y_n\restr n = y \restr n$ and
 for all $i,j < n$, $\psi^i_j(y_n) = \psi^i_j(y)$.
 \end{lemma}
 
+\bibliographystyle{amsalpha}
+\bibliography{math}
 
 \end{document}
