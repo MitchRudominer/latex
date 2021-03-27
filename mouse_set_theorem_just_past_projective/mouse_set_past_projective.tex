@@ -64,6 +64,10 @@ Similarly we define $\PiOneOmega$ subsets of $\omega^s\times(\R)^t$ for $s,t\in\
 Then we define $\SigmaOneOmega = \neg\PiOneOmega$, $\SigmaOneOmegaPlusOne=\exists^{\R}\PiOneOmega$,
 $\PiOneOmegaPlusOne = \forall^{\R}\SigmaOneOmega$ and
 $\DeltaOneOmegaPlusOne = \SigmaOneOmegaPlusOne \intersect \PiOneOmegaPlusOne$.
+
+Finally we define as usual the relativized and bold-face
+pointclasses $\PiOneOmega(x)$
+and $\bPi^1_{\omega}$ etc.
 \end{definition}
 
 The following remarks follow from \cite{Scales_In_LofR}.
@@ -73,12 +77,12 @@ The following remarks follow from \cite{Scales_In_LofR}.
 \item $\PiOneOmega = \Pi_1(\JofR{2}) \intersect \Powerset(\R)$
 \item $\SigmaOneOmegaPlusOne = \Sigma_2(\JofR{2}) \intersect \Powerset(\R)$
 \item $\PiOneOmegaPlusOne = \Pi_2(\JofR{2}) \intersect \Powerset(\R)$
-\item Assuming $\Det(\JofR{3})$, $\SigmaOneOmega$ and $\PiOneOmegaPlusOne$
+\item $\SigmaOneOmega$ and $\PiOneOmegaPlusOne$
 are scaled pointclasses.
+(Recall we are assuming $\AD(\LofR)$. $\Det(\JofR{3})$ suffices here. )
 \end{itemize}
 \end{remarks}
 
-We consider $\PiOneOmegaPlusOne$ to be analogous to $\Pi^1_3$.
 
 \begin{definition}
 We say that $x\in\R$ is $\DeltaOneOmegaPlusOne$ in a countable ordinal iff there is an $\alpha<\omega_1$ such
@@ -86,36 +90,154 @@ that for all $w\in\WO$ with $|w|=\alpha$, $\singleton{x}$ is $\DeltaOneOmegaPlus
 Let $Q_{\omega+1} = \setof{x\in\R}{x\text{ is }\DeltaOneOmegaPlusOne\text{ in a countable ordinal}}$.
 \end{definition}
 
-We consider $Q_{\omega+1}$ to be analogous to $Q_3$. See \cite{Q_Theory}.
+By way of intuition, we consider $\PiOneOmegaPlusOne$ to be analogous to
+$\Pi^1_1$ or $\Pi^1_3$ and we consider $Q_{\omega+1}$ to be analogous to
+$Q_1$ or $Q_3$. See \cite{Q_Theory}.
 
-\begin{remark}
-Assuming $\Det(\JofR{3})$, $Q_{\omega+1}$ is the largest countable
+Recall that $Q_3 = \R \intersect M_1^{\sharp}$. In the next section we will
+define a mouse $\Mladder$ such that $Q_{\omega+1} = \R\intersect\Mladder$.
+
+\begin{remarks} \
+\begin{enumerate}
+\item $x\in Q_{\omega+1}$ iff there is a $\SigmaOneOmegaPlusOne$ relation $R$ and
+a countable ordinal $\alpha$ such that for all $w\in\WO$ with $|w|=\alpha$,
+and for all reals $y$, $R(w,y) \Iff y=x$.
+\item $x\in Q_{\omega+1}$ iff there is a $\SigmaOneOmegaPlusOne$ relation $R$
+and a countable ordinal $\alpha$ such
+that for all $w\in\WO$ with $|w|=\alpha$, and all $i,j\in\omega$,
+$x(i)=j \Iff R(w,i,j)$.
+\item $Q_{\omega+1}$ is the largest countable
 $\DeltaOneOmegaPlusOne$ set closed downwards under
 $\DeltaOneOmegaPlusOne$-degrees.
-\end{remark}
+(Recall we are assuming $\AD(\LofR)$. $\Det(\JofR{3})$ suffices here. )
+\end{enumerate}
+\end{remarks}
 
-\section{Something B}
-\label{section:somethingb}
+
+
+\section{Ladder Mice}
+\label{section:laddermice}
+\begin{definition}
+Let $M$ be a premouse, in the sense of \cite{FSIT}. A \emph{ladder over $M$}
+is a sequence of ordinals $\sequence{\delta_n,\gamma_n}{n\in\omega}$ such that
+for all $n$:
+\begin{enumerate}
+\item $\delta_n < \gamma_n < \delta_{n+1} < \ord(M)$,
+\item $\delta_n$ is a cardinal of $M$,
+\item $\delta_n$ is Woodin in $J^M_{\gamma_n}$,
+\item $\gamma_n$ is the least $\gamma$ such that $\cJ^M_{\gamma}$ is active and
+$\cJ^M_{\gamma}\models$ there are $n$ Woodin cardinals greater than $\delta_n$.
+\end{enumerate}
+
+A ladder $\sequence{\delta_n,\gamma_n}{n\in\omega}$ over $M$ is \emph{cofinal}
+iff the $\gamma_n$ are cofinal in $\ord(M)$.
+
+$M$ is a \emph{ladder mouse} iff there is a ladder over $M$ and a
+\emph{cofinal ladder mouse} iff there is a cofinal ladder over $M$.
+
+$M$ is a \emph{minimal ladder mouse} iff $M$ is a ladder mouse but no initial
+segment of $M$ is.
+
+$\Mladder$ is the least fully-iterable ladder mouse, if it exists. If
+$\Mladder$ exists it is obviously a minimal ladder mouse (and so a cofinal
+ladder mouse), and $\Mladder$ projects to $\omega$ and so it is an $\omega$-mouse
+in the sense of \cite{Proj_WO_In_Mod}.
+\end{definition}
+
+\begin{remarks} \
+\begin{enumerate}
+\item Because we are assuming $\AD(\LofR)$, $\Mladder$ exists.
+\item $\Mladder$ is projectively correct and so $\PiOneOmega$ correct.
+\item Let $\sequence{\delta_n,\gamma_n}{n\in\omega}$ be a cofinal ladder over $\Mladder$.
+For even $n$, $J^{\Mladder}_{\gamma_n}[G]$ is $\Sigma^1_{n+2}$-correct,
+where $G$ is $J^{\Mladder}_{\gamma_n}$-generic over $\Col(\omega,\delta_n)$.
+\item Let $\sequence{\delta_n,\gamma_n}{n\in\omega}$ be a ladder over $M$.
+$\delta_n$ is not necessarily fully Woodin in $M$, but $\delta_n$ is Woodin in $M$
+with respect to functions in $J^M_{\gamma_n}$.
+\item By the previous two items, we can characterize $\Mladder$ as the least mouse
+$M$ such that for every $n\in\omega$ there is a cardinal $\delta$ of $M$ such
+that $\delta$ is $\Sigma^1_n$-Woodin in $M$.
+\end{enumerate}
+\end{remarks}
+
+We can now state the main theorem of the paper:
+
 \begin{theorem}
 $Q_{\omega+1} = \R \intersect \Mladder$.
 \end{theorem}
 
-\section{Something C}
-\label{section:somethingac}
+We are assuming $\AD(\LofR)$ in this paper but $\Det(\JofR{3})$ is sufficient for
+this theorem.
 
-Let $\bdelta^1_{\omega} = \sup_n \bdelta^1_n$.
+We divide the above theorem up into its two directions:
+
+\begin{theorem}
+\label{MRealsAreDefinable}
+$\R \intersect \Mladder \subseteq Q_{\omega+1}$.
+\end{theorem}
+
+\begin{theorem}
+\label{DefinableRealsAreInM}
+$Q_{\omega+1} \subseteq \Mladder$.
+\end{theorem}
+
+Theorem \ref{MRealsAreDefinable} was proven more than 25 years ago in
+\cite{My_Thesis} and \cite{Mouse_Sets}. We give a sketch of the proof later
+in section \ref{ProofThatMRealsAreDefinable}. The proof follows the same
+line of reasoning as the proof that every real in $L$ is $\Delta^1_2$ in a
+countable ordinal and the proof that every real in $M_1$ is $\Delta^1_3$ in
+a countable ordinal. Namely we show that every initial segment of $\Mladder$
+that projects to $\omega$ is $\PiOneOmega$ definable from its ordinal height.
+
+But 25 years ago the first author was not able to prove Theorem \ref{DefinableRealsAreInM}.
+That was proven in the summer of 2019 by Woodin, and giving that proof is the
+main goal of this paper.
+
+$\Mladder$ is $\PiOneOmega$-correct but not $\SigmaOneOmegaPlusOne$-correct.
+Let $A\subset\R^2$ be $\PiOneOmega$ and let $x\in\R\intersect\Mladder$. It may
+happen that there is a $y\in \R$ such that $A(x,y)$ but there is no such $y$
+in $\Mladder$. But we will show that even if $\Mladder\not\models(\exists y) A(x,y)$,
+$\Mladder$ can still determine whether or not the statement
+``$(\exists y) A(x,y)$'' is true. This is similar to the situation with $M_1$ and
+$\Sigma^1_3$. $M_1$ is not $\Sigma^1_3$ correct, but $M_1$ can still tell whether
+or not $\Sigma^1_3$ statements are true. Let $A\subset\R^2$ be $\Sigma^1_3$ and
+let $x\in M_1$ and suppose there is a $y\in\R$ such that $A(x,y)$. Then
+it may not be true that $M_1\models(\exists y) A(x,y)$. But
+$M_1\models 1\force{\Coll(\omega,\delta)}$ ``$(\exists y) A(x,y)$'',
+where $\delta$ is the Woodin of $M_1$.
+
+Now let $a\subset\omega$ be $\SigmaOneOmegaPlusOne$. Because $\Mladder$ can tell
+when $\SigmaOneOmegaPlusOne$ statements are true, $a\in\Mladder$. Thus the
+heart of the proof of Theorem \ref{DefinableRealsAreInM} will be to show that
+$\Mladder$ can tell when $\SigmaOneOmegaPlusOne$ statements are true.
+
+
+We now develop the ideas that will allow us to prove this. We
+start in the next section with a Suslin representation for $\PiOneOmega$ sets.
+
+\section{A Suslin Representation for $\PiOneOmega$}
+\label{section:suslinrep}
+
+In this section Projective Determinacy is sufficient.
+
+Let $\bdelta^1_{\omega} = \sup_n \bdelta^1_n$. In this section we show how to
+express a $\PiOneOmega$ set as the projection
+of a tree on $\omega\times \bdelta^1_{\omega}$.
 
 \begin{definition}
 Let $h$ be a $\PiOneOmega$ code for a subset of $\R$.
 Then there is a natural tree $T^{h}$ on $\omega\times\bdelta^1_{\omega}$ that projects to $A^h$.
+
+Recall that $G^n\subset\omega\times\R$ is a universal $\Pi^1_{2n+1}$ set, uniformly in $n$.
 
 For $n,e\in\omega$, let $G^n_e = \setof{x\in\R}{G^n(e, x)}$ and
 let $\varphi^n_e = \sequence{\varphi^n_{e,i}}{i\in\omega}$ be a $\Pi^1_{2n+1}$ scale on $G^n_e$ uniformly in $n$ and $e$,
 with each of the norms $\varphi^n_{e,i}$ being regular.
 Let $<^n_{e,i}$ be the prewellorder on $\R$ associated with $\varphi^n_{e,i}$. So ``$x,y\in G^n_e$ and $x <^n_{e,i} y$'' is
 $\Pi^1_{2n+1}$, uniformly in $n,e,i$, and $\varphi^n_{e,i}(x) = $ the rank of $x$ in $<^n_{e,i}$.
+$\varphi^n_{e,i} : G^n_e \map \bdelta^1_{2n+1}$.
 
-Furthermore, $G^n_e$ is the projection of the tree on $\omega \times \bdelta^1_{\omega}$ whose branches are
+Furthermore, $G^n_e$ is the projection of the tree on $\omega \times \bdelta^1_{2n+1}$ whose branches are
 $$\setof{\left(x,\sequence{\varphi^n_{e,i}(x)}{i\in\omega}\right)}{x\in G^n_e}.$$
 
 Fix a recursive coding of pairs of integers by integers, $i\to\angles{i_0,i_1}$,
@@ -126,8 +248,10 @@ build a pair $(x,f) \in \R \times \pre{(\bdelta^1_{\omega})}{\omega}$ such that 
 and $f(\angles{n,k}) = \varphi^n_{h(n),k}(x)$.
 
 
-Let $(s,t) \in \omega^n\times(\bdelta^1_{\omega})^n$ for some $n\in\omega$. Then $(s,t)\in T^h$ iff there is an
-$x\in\R$ extending $s$ such that for all $i<n$, $x\in G^i_{h(i)}$ and $\varphi^{i_0}_{h(i_0),i_1} = t(i)$.
+Let $(s,u) \in \omega^n\times(\bdelta^1_{\omega})^n$ for some $n\in\omega$. Then $(s,u)\in T^h$ iff there is an
+$x\in\R$ extending $s$ such that for all $i<n$, $x\in G^i_{h(i)}$ and $\varphi^{i_0}_{h(i_0),i_1} = u(i)$.
+
+Say that $T$ is a $\PiOneOmega$ tree iff $T=T^h$ for some $\PiOneOmega$ code $h$.
 \end{definition}
 
 The properties of $T^h$ that we need are
@@ -136,6 +260,26 @@ The properties of $T^h$ that we need are
 \item The first $n$ levels of $T^h$ are simply definable from $\sequence{G^i_{h(i)}}{i<n}$ and
 the norms $\sequence{\varphi^i_{h(i), j}}{i,j<n}$, all of which are $\Pi^1_{2n+1}$.
 \end{enumerate}
+
+Let $M$ be a countable transitive model of $\ZFC$ that is $\Pi^1_{2n+1}$ correct.
+Let $A\subset\R$ be $\Pi^1_{2n+1}$, and let $\varphi:A\map\bdelta^1_{2n+1}$ be a regular
+$\Pi^1_{2n+1}$ norm on $A$ with associated pre-wellorder $<_\varphi$.
+Then there is a natural way to interpret $\varphi$ in $M$.
+$\varphi^M:A\intersect M \map (\bdelta^1_{2n+1})^M$
+is given by $\varphi^M(x) = $ the rank of $x$ in $<_\varphi \intersect M$.
+
+\begin{definition}
+In the situation described in the previous paragraph, we define
+$\sigma^M_{\varphi}:\range(\varphi^M)\map\bdelta^1_{2n+1}$ by
+$\sigma^M_{\varphi}(\varphi^M(x))=\varphi(x)$ for all $x\in A \intersect M$.
+This is well-defined and order preserving since for $x,y\in A\intersect M$,
+$\varphi^M(x)=\varphi^M(y)$ iff $\varphi(x)=\varphi(y)$ and
+$\varphi^M(x)<\varphi^M(y)$ iff $\varphi(x)<\varphi(y)$.
+\end{definition}
+
+Now let $M$ be a countable transitive model of $\ZFC$ that is projectively correct.
+Let $h$ be a $\PiOneOmega$ code. We want to study the relationship between
+$(T^h)^M$ and $T^h$.
 
 \section{Something D}
 \label{section:somethingd}
