@@ -59,7 +59,7 @@ A $\PiOneOmega$ \emph{code} is a total recursive function $h:\omega\to\omega$. I
 $A^h=\setof{x\in\R}{(\forall n)\, G^n(h(n),x)}$. Say $A\subseteq\R$ is $\PiOneOmega$ iff
 $A=A^h$ for some $\PiOneOmega$ code $h$.
 
-Similarly we define $\PiOneOmega$ subsets of $\omega^s\times(\R)^t$ for $s,t\in\omega$.
+Similarly we define $\PiOneOmega$ subsets of $\omega^s\times \R^t$ for $s,t\in\omega$.
 
 Then we define $\SigmaOneOmega = \neg\PiOneOmega$, $\SigmaOneOmegaPlusOne=\exists^{\R}\PiOneOmega$,
 $\PiOneOmegaPlusOne = \forall^{\R}\SigmaOneOmega$ and
@@ -109,10 +109,8 @@ $x(i)=j \Iff R(w,i,j)$.
 \item $Q_{\omega+1}$ is the largest countable
 $\DeltaOneOmegaPlusOne$ set closed downwards under
 $\DeltaOneOmegaPlusOne$-degrees.
-(Recall we are assuming $\AD(\LofR)$. $\Det(\JofR{3})$ suffices here. )
 \end{enumerate}
 \end{remarks}
-
 
 
 \section{Ladder Mice}
@@ -147,16 +145,18 @@ in the sense of \cite{Proj_WO_In_Mod}.
 \begin{remarks} \
 \begin{enumerate}
 \item Because we are assuming $\AD(\LofR)$, $\Mladder$ exists.
-\item $\Mladder$ is projectively correct and so $\PiOneOmega$ correct.
-\item Let $\sequence{\delta_n,\gamma_n}{n\in\omega}$ be a cofinal ladder over $\Mladder$.
-For even $n$, $J^{\Mladder}_{\gamma_n}[G]$ is $\Sigma^1_{n+2}$-correct,
-where $G$ is $J^{\Mladder}_{\gamma_n}$-generic over $\Col(\omega,\delta_n)$.
+\item For every $n\in\omega$, $\Mladder$ has a rank initial segment that satisfies
+$\ZFC$+$\exists n$ Woodin cardinals.  By \cite{Proj_WO_In_Mod}, $\Mladder$ is projectively correct and so $\PiOneOmega$-correct.
+\item Let $\sequence{\delta_n,\gamma_n}{n\in\omega}$ be a ladder over $\Mladder$.
+For even $n$, $J^{\Mladder}_{\gamma_n}[g]$ is $\Sigma^1_{n+2}$-correct,
+where $g$ is $J^{\Mladder}_{\gamma_n}$-generic over $\Coll(\omega,\delta_n)$.
 \item Let $\sequence{\delta_n,\gamma_n}{n\in\omega}$ be a ladder over $M$.
 $\delta_n$ is not necessarily fully Woodin in $M$, but $\delta_n$ is Woodin in $M$
 with respect to functions in $J^M_{\gamma_n}$.
-\item By the previous two items, we can characterize $\Mladder$ as the least mouse
+\item By the previous two items, we can, at lest informally, think of
+$\Mladder$ as the least mouse
 $M$ such that for every $n\in\omega$ there is a cardinal $\delta$ of $M$ such
-that $\delta$ is $\Sigma^1_n$-Woodin in $M$.
+that $\delta$ is ``$\Sigma^1_n$-Woodin'' in $M$.
 \end{enumerate}
 \end{remarks}
 
@@ -165,9 +165,6 @@ We can now state the main theorem of the paper:
 \begin{theorem}
 $Q_{\omega+1} = \R \intersect \Mladder$.
 \end{theorem}
-
-We are assuming $\AD(\LofR)$ in this paper but $\Det(\JofR{3})$ is sufficient for
-this theorem.
 
 We divide the above theorem up into its two directions:
 
@@ -193,32 +190,64 @@ But 25 years ago the first author was not able to prove Theorem \ref{DefinableRe
 That was proven in the summer of 2019 by Woodin, and giving that proof is the
 main goal of this paper.
 
-$\Mladder$ is $\PiOneOmega$-correct but not $\SigmaOneOmegaPlusOne$-correct.
+Theorem \ref{DefinableRealsAreInM} will follow from a quasi-correctness theorem
+for $\Mladder$. $\Mladder$ is $\PiOneOmega$-correct but not $\SigmaOneOmegaPlusOne$-correct.
 Let $A\subset\R^2$ be $\PiOneOmega$ and let $x\in\R\intersect\Mladder$. It may
 happen that there is a $y\in \R$ such that $A(x,y)$ but there is no such $y$
 in $\Mladder$. But we will show that even if $\Mladder\not\models(\exists y) A(x,y)$,
 $\Mladder$ can still determine whether or not the statement
 ``$(\exists y) A(x,y)$'' is true. This is similar to the situation with $M_1$ and
-$\Sigma^1_3$. $M_1$ is not $\Sigma^1_3$ correct, but $M_1$ can still tell whether
-or not $\Sigma^1_3$ statements are true. Let $A\subset\R^2$ be $\Sigma^1_3$ and
-let $x\in M_1$ and suppose there is a $y\in\R$ such that $A(x,y)$. Then
-it may not be true that $M_1\models(\exists y) A(x,y)$. But
-$M_1\models 1\force{\Coll(\omega,\delta)}$ ``$(\exists y) A(x,y)$'',
+$\Sigma^1_3$. $M_1$ is not $\Sigma^1_3$-correct, but $M_1$ can still tell whether
+or not $\Sigma^1_3$ statements are true. Let $A\subset\R^2$ be $\Pi^1_2$ and
+let $x\in M_1$. Then $(\exists y\in\R)\, A(x,y)$ iff
+$$M_1\models 1\force{\Coll(\omega,\delta)} (\exists y) A(x,y),$$
 where $\delta$ is the Woodin of $M_1$.
 
-Now let $a\subset\omega$ be $\SigmaOneOmegaPlusOne$. Because $\Mladder$ can tell
-when $\SigmaOneOmegaPlusOne$ statements are true, $a\in\Mladder$. Thus the
-heart of the proof of Theorem \ref{DefinableRealsAreInM} will be to show that
-$\Mladder$ can tell when $\SigmaOneOmegaPlusOne$ statements are true.
+Next we state the
+$\SigmaOneOmegaPlusOne$-quasi-correctness for $\Mladder$ precisely and
+we show how
+Theorem \ref{DefinableRealsAreInM} follows from it.
+
+If $z$ is a real, then by a \emph{mouse over $z$} we mean a mouse in the
+sense of the theory of \cite{FSIT} augmented to use $z$ as an additional predicate.
+
+\begin{theorem}
+\label{QuasiCorrectness}
+There is a formula $\psi$ in the language of Set Theory such that, for all
+reals $z$, for all $M$ a countable, iterable, ladder-mouse over $z$,
+for all reals $x$ in $M$,
+for all $\PiOneOmega$ codes $h$,
+$$(\exists y) A^h(x,y) \Iff J^M_{\omega_2^M} \models \psi[h,x].$$
+\end{theorem}
+
+Now, assuming Theorem \ref{QuasiCorrectness}, we prove Theorem \ref{DefinableRealsAreInM}.
+
+\begin{proof}[proof of Theorem \ref{DefinableRealsAreInM}]
+Let $x\in Q_{\omega+1}$. We need to show that $x\in\Mladder$.
+Fix a $\PiOneOmega$ code $h$ and a countable ordinal $\alpha$ such that for
+all $w\in\WO$ with $|w|=\alpha$, and all $i,j\in\omega$,
+$$x(i)=j \Iff (\exists y\in\R)A^h(i,j,w,y).$$
+Let $\Mprime$ be the $(\alpha+1)$-th iterate of $\Mladder$ by its least
+measurable cardinal. So $\Mprime$ is a countable, iterable ladder mouse with
+a ladder whose $\delta_0$ is greater than $\alpha$. Let $g$ be $\Mprime$-generic
+for $\Coll(\omega,\alpha$). It suffices to see that $x\in\Mprime[g]$.
+
+Let $z$ be a real coding $g$. We can rearrange $\Mprime[g]$ as a mouse over $z$,
+which we call $M$. $M$ is a countable, iterable ladder-mouse over $z$ and there
+is a real $w\in M\intersect\WO$ with $|w|=\alpha$.
+
+Let $\psi$ be the formula given by Theorem \ref{QuasiCorrectness}. Then for all
+$i,j\in\omega$,
+$$x(i)=j \Iff (\exists y\in\R)A^h(i,j,w,y) \Iff J^M_{\omega_2^M} \models \psi[h,i,j,w].$$
+So $x\in M$.
+\end{proof}
 
 
-We now develop the ideas that will allow us to prove this. We
+We now develop the ideas that will allow us to prove theorem \ref{QuasiCorrectness}. We
 start in the next section with a Suslin representation for $\PiOneOmega$ sets.
 
 \section{A Suslin Representation for $\PiOneOmega$}
 \label{section:suslinrep}
-
-In this section Projective Determinacy is sufficient.
 
 Let $\bdelta^1_{\omega} = \sup_n \bdelta^1_n$. In this section we show how to
 express a $\PiOneOmega$ set as the projection
@@ -261,7 +290,7 @@ The properties of $T^h$ that we need are
 the norms $\sequence{\varphi^i_{h(i), j}}{i,j<n}$, all of which are $\Pi^1_{2n+1}$.
 \end{enumerate}
 
-Let $M$ be a countable transitive model of $\ZFC$ that is $\Pi^1_{2n+1}$ correct.
+Let $M$ be a countable transitive model of $\ZFC$ that is $\Pi^1_{2n+1}$-correct.
 Let $A\subset\R$ be $\Pi^1_{2n+1}$, and let $\varphi:A\map\bdelta^1_{2n+1}$ be a regular
 $\Pi^1_{2n+1}$ norm on $A$ with associated pre-wellorder $<_\varphi$.
 Then there is a natural way to interpret $\varphi$ in $M$.
