@@ -266,79 +266,51 @@ Let $<^n_{e,i}$ be the prewellorder on $\R$ associated with $\varphi^n_{e,i}$. S
 $\Pi^1_{2n+1}$, uniformly in $n,e,i$, and $\varphi^n_{e,i}(x) = $ the rank of $x$ in $<^n_{e,i}$.
 $\varphi^n_{e,i} : G^n_e \map \bdelta^1_{2n+1}$.
 
-Let $T^n_e$ be the tree for the scale $\varphi^n_e$. So
-$$[T^n_e] = \setof{\left(x,\sequence{\varphi^n_{e,i}(x)}{i\in\omega}\right)}{x\in G^n_e},$$
-$T^n_e$ is the set of all initial segments of its branches, and $G^n_e=p[T^n_e]$.
+Let $T^n_e$ be the tree for the scale $\varphi^n_e$:
+$$T^n_e = \setof{\left(x\restr k,\sequence{\varphi^n_{e,i}(x)}{i<k}\right)}{x\in G^n_e \text{ and } k\in\omega}.$$
+$G^n_e=p[T^n_e]$.
 
 Fix some recursive coding of pairs of integers by integers, $i\to\angles{i_0,i_1}$,
 with the property that $i_0,i_1\leq i$ for $i\in\omega$.
 
 Now fix a $\PiOneOmega$ code $h$ and we will define the tree $T^h$.
 Let $(s,u) \in \omega^n\times(\bdelta^1_{\omega})^n$ for some $n\in\omega$. Then $(s,u)\in T^h$ iff there is an
-$x\in\R$ extending $s$ such that $(\forall i<n)\, x\in G^{i_0}_{h(i_0)}$ and
+$x\in\R$ extending $s$ such that $(\forall i<n)\, x\in G^{i}_{h(i)}$ and
 $u(i)=\varphi^{i_0}_{h(i_0),i_1}(x)$.
+
+We say that $T$ is a $\PiOneOmega$-tree iff $T=T^h$ for some $\PiOneOmega$ code $h$.
 \end{definition}
 
 Our coding of pairs of integers by integers induces a coding of $\omega$-sequences of $\omega$-sequences
 by $\omega$-sequences, $f\to\sequence{f_n}{n\in\omega}$ given by $f_n(i) = f(\angles{n,i})$.
 
 \begin{proposition}
-$(x,f) \in [T^h]$ iff $\forall n \, (x,f_n)\in[T^n_{h(n)}]$.
+$A^h = p[T^h]$.
 \end{proposition}
 \begin{proof}
-Suppose $(x,f) \in [T^h]$ and let $m > k > n \in \omega$
+Let $x\in A^h = \Intersection{n} G^n_{h(n)}$. Let $f:\omega\to\bdelta^1_{\omega}$
+be given by $f(i)=\varphi^{i_0}_{h(i_0),i_1}(x)$. Then $(x,f)\in [T^h]$.
+
+Conversely, suppose $(x,f)\in [T^h]$. We claim that $\forall n \, (x,f_n)\in[T^n_{h(n)}]$.
+Let $m > k > n \in \omega$
 be such that $\angles{n,i}<m$ for all $i<k$. Let $\xprime$ be a real
 such that $\xprime\restr m = x \restr m$ and $\xprime$ witness that
 $(x\restr m, f\restr m)\in T^h$. Then $\xprime\in G^n_{h(n)}$
-and $(\forall i < k)\, f_n(i)=\varphi^{n}_{h(n),i}(\xprime)$.
-So $(x\restr k, f_n\restr k)\in T^n_{h(n)}$.
+and $(\forall i < k)\, f_n(i)=f(\angles{n,i})=\varphi^{n}_{h(n),i}(\xprime)$.
+So $\xprime$ witnesses that $(x\restr k, f_n\restr k)\in T^n_{h(n)}$.
 As $n,k$ were arbitrary, $\forall n \, (x,f_n)\in[T^n_{h(n)}]$.
 
-Conversely, suppose $\forall n \, (x,f_n)\in[T^n_{h(n)}]$.
-Then for all $n,m$ with $n<m$, $x\in G^{n_0}_{h(n_0)}$ and $f(\angles{n_0,n_1}) = \varphi^{n_0}_{h(n_0),n_1}(x)$.
-So $(x\restr m, f\restr m) \in T^h$. As $m$ was arbitrary, $(x,f) \in [T^h]$.
 \end{proof}
+
 
 \begin{remark}
-So $p[T^h] = \Intersection{n} p[T^n_{h(n)}] = \Intersection{n} G^n_{h(n)} = A^h$.
-\end{remark}
-
-\begin{remarks} \
-\begin{itemize}
-\item $(x,f) \in [T^h]$ iff $\forall n \, (x,f_n)\in[T^n_{h(n)}]$.
-\item So $p[T^h] = \Intersection{n} p[T^n_{h(n)}] = \Intersection{n} G^n_{h(n)} = A^h$.
-\end{itemize}
-\end{remarks}
-\begin{proof}
-Let $(x,f)\in[T^h]$ and fix $n > k > m\in\omega$ such that $\angles{m,i} < n$ for all $i<k$.
-Since $(x\restr n, f\restr n) \in T^h$,
-there is an $\xprime\in\R$ such that $\xprime\restr n = x\restr n$, $\xprime\in G^m_{h(m)}$,
-and for $i<k$, $f(\angles{m,i}) = \varphi^{m}_{h(m),i}(\xprime)$.
-So $\left(x\restr k, \sequence{f(\angles{m,i})}{i<k}\right)
-=\left(\xprime\restr k, \sequence{\varphi^m_{h(m),i}(\xprime)}{i<k}\right)\in T^m_{h(m)}$.
-Since $k>m$ was arbitrary, $x\in p[T^m_{h(m)}] = G^m_{h(m)}$.
-Since $m\in\omega$ was arbitrary, $x\in A^h = \Intersection{m} G^m_{h(m)}$.
-
-For $n > m$ let $x_n$ extending $x\restr n$ witness that
-$(x\restr n, f\restr n) \in T^h$. Then each $x_n\in G^m_{h(m)}$, and $x_n\rightarrow x_m$ and
-
-
-Then $(x,f) \in \R \times \pre{(\bdelta^1_{\omega})}{\omega}$
-and for all $n,k\in\omega$, $x\in G^n_{h(n)}$ and $f(\angles{n,k}) = \varphi^n_{h(n),k}(x)$.
-\end{proof}
-
-
-
-
-Say that $T$ is a $\PiOneOmega$ tree iff $T=T^h$ for some $\PiOneOmega$ code $h$.
-
-
 The properties of $T^h$ that we need are
 \begin{enumerate}
 \item $T^h$ is a tree on $\omega\times\bdelta^1_{\omega}$ that projects to $A^h$
 \item The first $n$ levels of $T^h$ are simply definable from $\sequence{G^i_{h(i)}}{i<n}$ and
 the norms $\sequence{\varphi^i_{h(i), j}}{i,j<n}$, all of which are $\Pi^1_{2n+1}$.
 \end{enumerate}
+\end{remark}
 
 Let $M$ be a countable transitive model of $\ZFC$ that is $\Pi^1_{2n+1}$-correct.
 Let $A\subset\R$ be $\Pi^1_{2n+1}$, and let $\varphi:A\map\bdelta^1_{2n+1}$ be a regular
