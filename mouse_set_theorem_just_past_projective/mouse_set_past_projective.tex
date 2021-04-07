@@ -19,20 +19,25 @@
 \keywords{large cardinals, descriptive set theory, inner model theory}
 
 \begin{abstract}
-We will describe a natural mouse $M$ and show that $\R\intersect M = Q_{\omega+1}$
+We describe a natural mouse $\Mladder$, the minimal ladder mouse,
+ and show that $\R\intersect \Mladder = Q_{\omega+1}$
 where $Q_{\omega+1}$  is the set of reals that are
 $\Delta^1_{\omega+1}$ in a countable ordinal. Thus $Q_{\omega+1}$
 is a mouse set.
 
-This is analogous to the fact that $\R\intersect M_1 = Q_3$ where $M_1$ is the
-canonical inner model with a Woodin cardinal, and $Q_3$ is the set of reals
+This is analogous to the fact that $\R\intersect M^{\sharp}_1 = Q_3$ where $M^{\sharp}_1$ is the
+the sharp for the minimal inner model with a Woodin cardinal, and $Q_3$ is the set of reals
 that are $\Delta^1_3$ in a countable ordinal.
 
-More generally $\R\intersect M_{2n+1} = Q_{2n+3}$.
-The pointclass $\Delta_{\omega+1}$  we consider in this paper is the next natural
-pointclass to consider in this series of results. It is the analogue of
-the $\Delta^1_{2n+3}$ just past projective. Thus we are proving the mouse
+More generally $\R\intersect M^{\sharp}_{2n+1} = Q_{2n+3}$.
+The set $Q_{\omega+1}$  we consider in this paper is the next natural
+one to consider in this series of results. Thus we are proving the mouse
 set theorem just past projective.
+
+Some of this is not new. $\R\intersect \Mladder \subseteq Q_{\omega+1}$ was
+know in the 1990's. But a proof that $Q_{\omega+1} \subseteq \Mladder$ wasn't known
+until Woodin found it in 2018. The main goal of this paper is to give
+Woodin's proof.
 \end{abstract}
 
 \maketitle
@@ -42,10 +47,45 @@ set theorem just past projective.
 \section{Introduction}
 \label{section:intro}
 
-We work in $\ZFC+\AD(\LofR)$ for convenience. We need much less determinacy
-than this, just a bit past $\PD$.
+We work in $\ZFC+\AD(\LofR)$ for easy quoting. The determinacy of all games
+in $J_3(\R)$ is sufficient for most of the results.
 
 Throughout this paper we write $\R$ to mean $\Bairespace$ and we call elements of $\Bairespace$ \emph{reals}.
+
+In the 1990's Martin, Steel and Woodin proved that, assuming large cardinals or determinacy,
+$\R\intersect M_n^{\sharp} = $ the set of reals that are $\Delta^1_n$ in a countable ordinal.
+For even $n\geq 2$, $\R\intersect M_n^{\sharp} = C_n$, the largest countable $\Sigma^1_n$ set.
+For odd $n\geq 3$, $\R\intersect M_n^{\sharp} = Q_n$, the largest countable $\Pi^1_n$
+set closed downwards under $\Delta^1_3$ degrees. See \cite{Proj_WO_In_Mod}.
+
+In 1995 Rudominer extended this work to pointclasses beyond the projective
+and achieved partial results, proving the mouse set theorem for some pointclasses
+and getting partial results for others. See \cite{My_Thesis} and \cite{Mouse_Sets}.
+But even at the very first step past projective the full mouse set theorem was open.
+
+Let $\Sigma^1_{\omega}$
+be the pointclass consisting of recursive unions of Projective sets. Consider
+the projective hierarchy built over $\Sigma^1_{\omega}$:
+$\Pi^1_{\omega} = \neg \Sigma^1_{\omega}$,
+$\Sigma^1_{\omega+1} = \exists^{\R} \Pi^1_{\omega}$, etc.
+By \cite{Scales_In_LofR}, $\Sigma^1_{\omega+n} = \Powerset(\R)\intersect \Sigma_{n+1}(J_2(\R))$
+and we get the Second Periodicity Theorem: $\Sigma^1_{\omega+2n}$ and $\Pi^1_{\omega+2n+1}$ are scaled pointclasses.
+$\Sigma^1_{\omega}$ is not closed under $\forall^{\omega}$ and so is not a perfect analog of $\Sigma^1_1$.
+But $\Pi^1_{\omega+1}$ is closed under $\exists^{\omega}$ and is a good analog of $\Pi^1_1$ or $\Pi^1_3$.
+Let $Q_{\omega+1}$ be the set of reals that are $\Delta^1_{\omega+1}$ in a countable ordinal.
+In \cite{My_Thesis}, Rudominer defined the minimal ladder mouse $\Mladder$ and showed that
+$\R\intersect\Mladder\subseteq Q_{\omega+1}$. ($\Mladder$ is the minimal iterable mouse $M$ such
+that for each $n\in\omega$ there is a cardinal $\delta_n$ of $M$ and an initial segment $P_n \initseg M$
+such that $\delta_n$ is Woodin in $P_n$ and $P_n$ is not $n$-small above $\delta_n$.)
+
+But the other direction, $Q_{\omega+1} \subseteq \Mladder$, remained open until
+Woodin found a proof in the summer of 2018. Woodin transmitted the proof to Steel who fleshed it out
+in some hand-written notes. Rudominer distilled those notes into this paper.
+
+No new technology is involved in the proof and it could have been discovered in the 1990's. The main ingredients
+of the proof are stationary tower forcing, genericity iterations, and a theorem of Hjorth stating that
+all generic extensions of an appropriate model meet the same equivalence classes of a thin, definable equivalence
+relation.
 
 \section{Project-like Pointclasses Just Past Projective}
 \label{section:projectlikepointclasses}
@@ -54,7 +94,8 @@ Throughout this paper we write $\R$ to mean $\Bairespace$ and we call elements o
 Let $\PiOneOmega$ be the pointclass of recursive intersections of infinitely many (lightface) projective sets.
 
 In more detail, fix for the remainder of this paper, for $n\in\omega$, $G^n\subset\omega\times\R$
-a universal $\Pi^1_{2n+1}$ set, uniformly in $n$.
+a universal $\Pi^1_{2n+1}$ set, uniformly in $n$. (``Uniformly in $n$'' here and below
+means there is a recursive sequence of formula with the $n$-th formula defining the $n$-th relation.)
 A $\PiOneOmega$ \emph{code} is a total recursive function $h:\omega\to\omega$. If $h$ is a $\PiOneOmega$ code then
 $A^h=\setof{x\in\R}{(\forall n)\, G^n(h(n),x)}$. Say $A\subseteq\R$ is $\PiOneOmega$ iff
 $A=A^h$ for some $\PiOneOmega$ code $h$.
@@ -79,7 +120,6 @@ The following remarks follow from \cite{Scales_In_LofR}.
 \item $\PiOneOmegaPlusOne = \Pi_2(\JofR{2}) \intersect \Powerset(\R)$
 \item $\SigmaOneOmega$ and $\PiOneOmegaPlusOne$
 are scaled pointclasses.
-(Recall we are assuming $\AD(\LofR)$. $\Det(\JofR{3})$ suffices here. )
 \end{itemize}
 \end{remarks}
 
@@ -186,9 +226,7 @@ countable ordinal and the proof that every real in $M_1$ is $\Delta^1_3$ in
 a countable ordinal. Namely we show that every initial segment of $\Mladder$
 that projects to $\omega$ is $\PiOneOmega$ definable from its ordinal height.
 
-But 25 years ago the first author was not able to prove Theorem \ref{DefinableRealsAreInM}.
-That was proven in the summer of 2019 by Woodin, and giving that proof is the
-main goal of this paper.
+As mentioned in the introduction, the main goal of this paper is to give Woodin's proof of Theorem \ref{DefinableRealsAreInM}.
 
 Theorem \ref{DefinableRealsAreInM} will follow from a quasi-correctness theorem
 for $\Mladder$. $\Mladder$ is $\PiOneOmega$-correct but not $\SigmaOneOmegaPlusOne$-correct.
@@ -215,9 +253,10 @@ sense of the theory of \cite{FSIT} augmented to use $z$ as an additional predica
 \label{QuasiCorrectness}
 There is a formula $\psi$ in the language of Set Theory such that, for all
 reals $z$, for all $M$ a countable, iterable, ladder-mouse over $z$,
+there is an ordinal parameter $\theta<\omega_2^M$ such that
 for all reals $x$ in $M$,
 for all $\PiOneOmega$ codes $h$,
-$$(\exists y) A^h(x,y) \Iff J^M_{\omega_2^M} \models \psi[h,x].$$
+$$(\exists y) A^h(x,y) \Iff J^M_{\omega_2^M} \models \psi[\theta, h,x].$$
 \end{theorem}
 
 Now, assuming Theorem \ref{QuasiCorrectness}, we prove Theorem \ref{DefinableRealsAreInM}.
@@ -236,9 +275,10 @@ We can rearrange $\Mprime[g]$ as a mouse over $z$, where $z$ is some real coding
 Let $M$ be this mouse over $z$. $M$ is a countable, iterable ladder-mouse over $z$ and there
 is a real $w\in M\intersect\WO$ with $|w|=\alpha$.
 
-Let $\psi$ be the formula given by Theorem \ref{QuasiCorrectness}. Then for all
+Let $\psi$ and $\theta$ be the formula and parameter given by Theorem \ref{QuasiCorrectness}
+for $M$. Then for all
 $i,j\in\omega$,
-$$x(i)=j \Iff (\exists y\in\R)A^h(i,j,w,y) \Iff J^M_{\omega_2^M} \models \psi[h,i,j,w].$$
+$$x(i)=j \Iff (\exists y\in\R)A^h(i,j,w,y) \Iff J^M_{\omega_2^M} \models \psi[\theta,h,i,j,w].$$
 So $x\in M$.
 \end{proof}
 
@@ -304,13 +344,12 @@ As $n,k$ were arbitrary, $\forall n \, (x,f_n)\in[T^n_{h(n)}]$.
 
 
 \begin{remark}
-The properties of $T^h$ that we need are
-\begin{enumerate}
-\item $T^h$ is a tree on $\omega\times\bdelta^1_{\omega}$ that projects to $A^h$
-\item The first $n$ levels of $T^h$ are simply definable from $\sequence{G^i_{h(i)}}{i<n}$ and
+\item The definition of the first $n$ levels of $T^h$ depends only on
+ $\sequence{G^i_{h(i)}}{i<n}$ and
 the norms $\sequence{\varphi^i_{h(i), j}}{i,j<n}$, all of which are $\Pi^1_{2n+1}$.
-\end{enumerate}
 \end{remark}
+
+Next we want to consider the version of $T^h$ inside of a countable, transitive model.
 
 Let $M$ be a countable transitive model of $\ZFC$ that is $\Pi^1_{2n+1}$-correct.
 Let $A\subset\R$ be $\Pi^1_{2n+1}$, and let $\varphi:A\map\bdelta^1_{2n+1}$ be a regular
@@ -328,9 +367,45 @@ $\varphi^M(x)=\varphi^M(y)$ iff $\varphi(x)=\varphi(y)$ and
 $\varphi^M(x)<\varphi^M(y)$ iff $\varphi(x)<\varphi(y)$.
 \end{definition}
 
+If $M$ is projectively correct then $\sigma^M_{\varphi}$ does not depend on the norm $\varphi$.
+We don't actually need this fact but we will use it because it simplifies the
+notation, allowing us to drop the subscript in $\sigma^M_{\varphi}$.
+
+\begin{lemma}
+Let $M$ be a countable transitive model of $\ZFC$ that is projectively correct.
+Let $A,B$ be two $\Pi^1_{2n+1}$ sets of reals and let $\varphi_A:A\to\bdelta^1_{2n+1}$
+and $\varphi_B:B\to\bdelta^1_{2n+1}$ be $\Pi^1_{2n+1}$ norms on $A$ and $B$ respectively.
+Let $\alpha < \min(\ran(\varphi^M_A),\ran(\varphi^M_B))$. Then
+$\sigma^M_{\varphi_A}(\alpha) = \sigma^M_{\varphi_B}(\alpha)$.
+\end{lemma}
+\begin{proof}
+If $x\in A$ and $y\in B$ and $\varphi^M_A(x) = \varphi^M_B(x)$, then
+$\varphi_A(x)=\varphi_B(y)$. This is because
+by Theorem 3.3.2 of \cite{HarringtonKechris}, the relation
+``$\varphi_A(x)=\varphi_B(y)$'' is $\Delta^1_{2n+3}$ and so absolute for $M$.
+\end{proof}
+
+
+\begin{definition}
+Let $M$ be a countable transitive model of $\ZFC$ that is projectively correct.
+Then $\sigma^M:(\bdelta^1_{\omega})^M\to\bdelta^1_{\omega}$ is the union of all
+functions $\sigma^M_{\varphi}$ where $\varphi$ is a projective norm on a projective set.
+
+Let $h$ be a $\Pi^1_{\omega}$ code. We extend $\sigma^M$ to the function
+$\sigma^M:(T^h)^M\to T^h$ given by
+$$\sigma^M\left( (\angles{n_0,\cdots, n_k}, \angles{\alpha_0, \cdots, \alpha_k}  ) \right) =
+(\angles{n_0,\cdots, n_k}, \angles{\sigma^M(\alpha_0), \cdots, \sigma^M(\alpha_k)}  )$$
+\end{definition}
+
 Now let $M$ be a countable transitive model of $\ZFC$ that is projectively correct.
-Let $h$ be a $\PiOneOmega$ code. We want to study the relationship between
-$(T^h)^M$ and $T^h$.
+Let $h$ be a $\PiOneOmega$ code for a $\PiOneOmega$ set $A\subset\R^2$.
+Suppose $x\in\R\intersect M$. Consider the the $\SigmaOneOmegaPlusOne$ statement
+``$\exists y A(x,y)$''. This statement is true iff $T^h(x)$ is illfounded.
+Similarly $M\models \exists y A(x,y)$ iff $(T^h(x))^M$ is illfounded.
+Now if $(T^h(x))^M$ is illfounded
+then $T^h(x)$ is illfounded and $\exists y A(x,y)$. But if $M$ is not
+$\SigmaOneOmegaPlusOne$-correct then it may happen that $(T^h(x))^M$ is wellfounded
+and so $M\models \neg\exists y A(x,y)$ but yet $T^h(x)$ is illfounded and $\exists y A(x,y)$.
 
 \section{Something D}
 \label{section:somethingd}
