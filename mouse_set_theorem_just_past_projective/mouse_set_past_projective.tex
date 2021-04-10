@@ -98,9 +98,10 @@ a universal $\Pi^1_{2n+1}$ set, uniformly in $n$. (``Uniformly in $n$'' here and
 means there is a recursive sequence of formula with the $n$-th formula defining the $n$-th relation.)
 A $\PiOneOmega$ \emph{code} is a total recursive function $h:\omega\to\omega$. If $h$ is a $\PiOneOmega$ code then
 $A^h=\setof{x\in\R}{(\forall n)\, G^n(h(n),x)}$. Say $A\subseteq\R$ is $\PiOneOmega$ iff
-$A=A^h$ for some $\PiOneOmega$ code $h$.
+$A=A^h$ for some $\PiOneOmega$ code $h$. In this case we will also say that $h$
+is a $\PiOneOmega$ code \emph{for} $A$.
 
-Similarly we define $\PiOneOmega$ subsets of $\omega^s\times \R^t$ for $s,t\in\omega$.
+Similarly we define $\PiOneOmega$ codes and $\PiOneOmega$ subsets of $\omega^s\times \R^t$ for $s,t\in\omega$.
 
 Then we define $\SigmaOneOmega = \neg\PiOneOmega$, $\SigmaOneOmegaPlusOne=\exists^{\R}\PiOneOmega$,
 $\PiOneOmegaPlusOne = \forall^{\R}\SigmaOneOmega$ and
@@ -319,6 +320,8 @@ $x\in\R$ extending $s$ such that $(\forall i<n)\, x\in G^{i}_{h(i)}$ and
 $u(i)=\varphi^{i_0}_{h(i_0),i_1}(x)$.
 
 We say that $T$ is a $\PiOneOmega$-tree iff $T=T^h$ for some $\PiOneOmega$ code $h$.
+
+Similarly we define $\PiOneOmega$-trees $T^h$ for $h$ a $\PiOneOmega$ subset of $\R^k$ for $k\in\omega$.
 \end{definition}
 
 Our coding of pairs of integers by integers induces a coding of $\omega$-sequences of $\omega$-sequences
@@ -372,24 +375,25 @@ We don't actually need this fact but we will use it because it simplifies the
 notation, allowing us to drop the subscript in $\sigma^M_{\varphi}$.
 
 \begin{lemma}
-Let $M$ be a countable transitive model of $\ZFC$ that is projectively correct.
+Let $M$ be a countable, transitive, projectively correct model of $\ZFC$.
 Let $A,B$ be two $\Pi^1_{2n+1}$ sets of reals and let $\varphi_A:A\to\bdelta^1_{2n+1}$
 and $\varphi_B:B\to\bdelta^1_{2n+1}$ be $\Pi^1_{2n+1}$ norms on $A$ and $B$ respectively.
 Let $\alpha < \min(\ran(\varphi^M_A),\ran(\varphi^M_B))$. Then
 $\sigma^M_{\varphi_A}(\alpha) = \sigma^M_{\varphi_B}(\alpha)$.
 \end{lemma}
 \begin{proof}
-If $x\in A$ and $y\in B$ and $\varphi^M_A(x) = \varphi^M_B(x)$, then
-$\varphi_A(x)=\varphi_B(y)$. This is because
+If $x\in A$ and $y\in B$ and $\varphi^M_A(x) = \varphi^M_B(y)$, then
+$\varphi_A(x)=\varphi_B(y)$. This is because,
 by Theorem 3.3.2 of \cite{HarringtonKechris}, the relation
 ``$\varphi_A(x)=\varphi_B(y)$'' is $\Delta^1_{2n+3}$ and so absolute for $M$.
 \end{proof}
 
 
 \begin{definition}
-Let $M$ be a countable transitive model of $\ZFC$ that is projectively correct.
+Let $M$ be a countable, transitive, projectively correct model of $\ZFC$.
 Then $\sigma^M:(\bdelta^1_{\omega})^M\to\bdelta^1_{\omega}$ is the union of all
-functions $\sigma^M_{\varphi}$ where $\varphi$ is a projective norm on a projective set.
+functions $\sigma^M_{\varphi}$ where $\varphi$ is a (lightface) projective norm on a
+(lightface) projective set.
 
 Let $h$ be a $\Pi^1_{\omega}$ code. We extend $\sigma^M$ to the function
 $\sigma^M:(T^h)^M\to T^h$ given by
@@ -397,15 +401,80 @@ $$\sigma^M\left( (\angles{n_0,\cdots, n_k}, \angles{\alpha_0, \cdots, \alpha_k} 
 (\angles{n_0,\cdots, n_k}, \angles{\sigma^M(\alpha_0), \cdots, \sigma^M(\alpha_k)}  )$$
 \end{definition}
 
-Now let $M$ be a countable transitive model of $\ZFC$ that is projectively correct.
-Let $h$ be a $\PiOneOmega$ code for a $\PiOneOmega$ set $A\subset\R^2$.
-Suppose $x\in\R\intersect M$. Consider the the $\SigmaOneOmegaPlusOne$ statement
-``$\exists y A(x,y)$''. This statement is true iff $T^h(x)$ is illfounded.
-Similarly $M\models \exists y A(x,y)$ iff $(T^h(x))^M$ is illfounded.
-Now if $(T^h(x))^M$ is illfounded
-then $T^h(x)$ is illfounded and $\exists y A(x,y)$. But if $M$ is not
-$\SigmaOneOmegaPlusOne$-correct then it may happen that $(T^h(x))^M$ is wellfounded
-and so $M\models \neg\exists y A(x,y)$ but yet $T^h(x)$ is illfounded and $\exists y A(x,y)$.
+\begin{lemma}
+Let $M$ be a countable, transitive, projectively correct model of $\ZFC$.
+Let $h$ be a $\PiOneOmega$ code.
+Let $\sigma^M$ be as defined above. Then $\sigma^M:(T^h)^M\to T^h$ is a tree isomorphism
+onto a subtree of $T^h$.
+\end{lemma}
+\begin{proof}
+If $(s,u) = (\angles{n_0,\cdots, n_k}, \angles{\alpha_0, \cdots, \alpha_k}  ) \in (T^h)^M$
+then there is a real $x\in M \intersect G^0_{h(0)} \intersect \cdots \intersect G^k_{h(k)}$ such
+that $x(i)=n_i$ and $\alpha_i=(\varphi^{i_0}_{h(i_0),i_1}(x))^M$  for $0\leq i \leq k$.
+So $\sigma^M(\alpha_i) = \varphi^{i_0}_{h(i_0),i_1}(x)$ for $0\leq i \leq k$ and so
+$x$ witnesses that  $\sigma^M(s,u)\in T^h$.
+
+That $\sigma^M$ is injective, preserves the lengths of finite sequences and sequence extension
+is obvious.
+\end{proof}
+
+\begin{definition}
+If $T$ is a tree on $\omega\times U$ and $x$ is a real then $T(x)$ is the tree through $x$:
+$$T(x) = \setof{u}{(x\restr \lh(u), u) \in T}.$$
+
+If $T$ is a $\PiOneOmega$ tree for a subset of $\R^2$ and $x\in\R$
+we say that $T(x)$ is a $\PiOneOmega(x)$-tree
+and a $\bPi^1_{\omega}$-tree.
+\end{definition}
+
+\begin{remarks}
+Let $M$ be a countable, transitive, projectively correct model of $\ZFC$.
+$M$ is $\PiOneOmega$-correct, but not necessarily $\SigmaOneOmegaPlusOne$-correct.
+Let $h$ be a $\PiOneOmega$ code for $A\subset\R^2$.
+Let $x\in\R\intersect M$.
+\begin{enumerate}
+\item $\exists y A(x,y) \Iff T^h(x)$ is illfounded.
+\item $M\models \exists y A(x,y) \Iff (T^h)^M(x)$ is illfounded.
+\item $M\models \exists y A(x,y) \Implies \exists y A(x,y)$.
+\item $\exists y A(x,y) \not\Implies M\models \exists y A(x,y)$.
+\item $(y,f)\in[(T^h)^M] \Implies (y, \sigma^M[f]) \in [T^h]$.
+\end{enumerate}
+\end{remarks}
+
+\begin{definition}
+Let $M$ be a countable, transitive, projectively correct model of $\ZFC$.
+Suppose $T\in M$ and $M\models ``T$ is a wellfounded $\bPi^1_{\omega}$ tree.''
+We say that $T$ is \emph{correctly wellfounded} iff $T=(T^h(x))^M$ for some
+$\PiOneOmega$ code $h$ and real $x\in M$, and $T^h(x)$ is wellfounded. (In this
+case we say $T$ is correctly wellfounded with respect to $h$ and $x$.)
+We say that $T$ is \emph{incorrectly wellfounded} iff $T=(T^h(x))^M$ for some
+$\PiOneOmega$ code $h$ and real $x\in M$, and $T^h(x)$ is illfounded. (In this
+case we say $T$ is incorrectly wellfounded with respect to $h$ and $x$.)
+\end{definition}
+
+The key to our proof that $\Mladder$ is quasi-$\SigmaOneOmegaPlusOne$-correct is:
+we will show that if $T$ is a $\bPi^1_{\omega}$-tree in $\Mladder$ then
+$\Mladder$ is able to determine whether or not $T$ is correctly wellfounded.
+
+\begin{theorem}
+\label{CorrectBelowIncorrect}
+Let $z$ be a real and $M$ a countable, iterable, ladder-mouse over $z$.
+Suppose $M\models ``T_1$ and $T_2$ are $\Pi^1_{\omega}$ trees'' and
+suppose $T_1$ is correctly wellfounded and
+$T_2$ is incorrectly wellfounded. Then $\rank(T_1) < rank(T_2)$.
+\end{theorem}
+
+Now, assuming Theorem \ref{CorrectBelowIncorrect}, we prove Theorem
+\ref{QuasiCorrectness}.
+
+\begin{proof}[proof of Theorem \ref{QuasiCorrectness}]
+Let $z$ be a real and $M$ a countable, iterable, ladder-mouse over $z$.
+Let $\theta$ be the minimum of the ranks of all incorrectly wellfounded
+$\bPi^1_{\omega}$ trees in $M$. Let $x\in\R\intersect M$ and let $h$ be a
+$\PiOneOmega$ code. Then
+$$(\exists y) A^h(x,y) \Iff M\models \rank(T^h(x)) \geq \theta.$$
+\end{proof}
+
 
 \section{Something D}
 \label{section:somethingd}
