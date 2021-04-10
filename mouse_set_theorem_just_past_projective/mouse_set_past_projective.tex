@@ -443,25 +443,29 @@ Let $x\in\R\intersect M$.
 
 \begin{definition}
 Let $M$ be a countable, transitive, projectively correct model of $\ZFC$.
-Suppose $T\in M$ and $M\models ``T$ is a wellfounded $\bPi^1_{\omega}$ tree.''
-We say that $T$ is \emph{correctly wellfounded} iff $T=(T^h(x))^M$ for some
+Suppose $T\in M$ and $M\models ``T$ is a $\bPi^1_{\omega}$ tree.''
+We say that $T$ is \emph{correctly wellfounded} for $M$  iff $T$ is wellfounded and
+$T=(T^h(x))^M$ for some
 $\PiOneOmega$ code $h$ and real $x\in M$, and $T^h(x)$ is wellfounded. (In this
-case we say $T$ is correctly wellfounded with respect to $h$ and $x$.)
-We say that $T$ is \emph{incorrectly wellfounded} iff $T=(T^h(x))^M$ for some
+case we say $T$ is correctly wellfounded for $M$ with respect to $h$ and $x$.)
+We say that $T$ is \emph{incorrectly wellfounded} for $M$ iff $T$ is wellfounded and $T=(T^h(x))^M$ for some
 $\PiOneOmega$ code $h$ and real $x\in M$, and $T^h(x)$ is illfounded. (In this
-case we say $T$ is incorrectly wellfounded with respect to $h$ and $x$.)
+case we say $T$ is incorrectly wellfounded for $M$ with respect to $h$ and $x$.)
+
+We also extend this definition to the case where $M$ itself is not a model of all of $\ZFC$ but
+$M$ has a rank initial segment that is a model of $\ZFC$.
 \end{definition}
 
-The key to our proof that $\Mladder$ is quasi-$\SigmaOneOmegaPlusOne$-correct is:
-we will show that if $T$ is a $\bPi^1_{\omega}$-tree in $\Mladder$ then
+The key to our proof that $\Mladder$ is quasi-$\SigmaOneOmegaPlusOne$-correct is this:
+We will show that if $T$ is a $\bPi^1_{\omega}$-tree in $\Mladder$ then
 $\Mladder$ is able to determine whether or not $T$ is correctly wellfounded.
 
 \begin{theorem}
 \label{CorrectBelowIncorrect}
 Let $z$ be a real and $M$ a countable, iterable, ladder-mouse over $z$.
-Suppose $M\models ``T_1$ and $T_2$ are $\Pi^1_{\omega}$ trees'' and
-suppose $T_1$ is correctly wellfounded and
-$T_2$ is incorrectly wellfounded. Then $\rank(T_1) < rank(T_2)$.
+Suppose $M\models ``T_1$ and $T_2$ are $\bPi^1_{\omega}$-trees'' and
+suppose $T_1$ is correctly wellfounded for $M$ and
+$T_2$ is incorrectly wellfounded for $M$. Then $\rank(T_1) < rank(T_2)$.
 \end{theorem}
 
 Now, assuming Theorem \ref{CorrectBelowIncorrect}, we prove Theorem
@@ -469,11 +473,56 @@ Now, assuming Theorem \ref{CorrectBelowIncorrect}, we prove Theorem
 
 \begin{proof}[proof of Theorem \ref{QuasiCorrectness}]
 Let $z$ be a real and $M$ a countable, iterable, ladder-mouse over $z$.
-Let $\theta$ be the minimum of the ranks of all incorrectly wellfounded
-$\bPi^1_{\omega}$ trees in $M$. Let $x\in\R\intersect M$ and let $h$ be a
+Let $\theta$ be the minimum of the ranks of all
+$\bPi^1_{\omega}$ trees in $M$ that are  incorrectly wellfounded for $M$.
+If all wellfounded $\bPi^1_{\omega}$ trees in $M$ are correctly wellfounded
+then $M$ is $\Sigma^1_{\omega+1}$-correct and in this case let $\theta=0$.
+
+$M$ is a model of $\PD$ and also is a strongly acceptable model $\GCH$.
+So $(\omega_1)^M<(\bdelta^1_{\omega})^M < (\omega_2)^M$.
+So all $\bPi^1_{\omega}$ trees in $M$ are in $J^M_{(\omega_2)^M}$ and either have a branch
+in $J^M_{(\omega_2)^M}$ or have rank less than $(\omega_2)^M$.
+So $\theta < (\omega_2)^M$.
+
+
+Let $x\in\R\intersect M$ and let $h$ be a
 $\PiOneOmega$ code. Then
-$$(\exists y) A^h(x,y) \Iff M\models \rank(T^h(x)) \geq \theta.$$
+$$(\exists y) A^h(x,y) \Iff J^M_{(\omega_2)^M}\models T^h(x) \text{ is illfounded} \,\OR\, (\theta>0 \,\AND\, \rank(T^h(x)) \geq \theta.)$$
 \end{proof}
+
+Previously we proved Theorem \ref{DefinableRealsAreInM} based on
+Theorem \ref{QuasiCorrectness}. But it is also possible to give a proof
+of Theorem \ref{DefinableRealsAreInM} based on Theorem \ref{CorrectBelowIncorrect}
+without going through Theorem \ref{DefinableRealsAreInM} and thus avoiding
+mentioning the parameter $\theta$.
+
+\begin{proof}[alternate proof of Theorem \ref{DefinableRealsAreInM}]
+Let $x\in Q_{\omega+1}$. We need to show that $x\in\Mladder$.
+
+For $i\in\omega$ let $\ibar=\angles{i,0,0,\cdots}\in\R$. Thus we are representing integers as reals.
+This allows us to avoid having to define what we mean by the tree through $i$, $T(i)$, when $T$ is a tree and $i$ an integer.
+
+
+Fix two $\PiOneOmega$ codes $h_1,h_2$ and a countable ordinal $\alpha$ such that for
+all $w\in\WO$ with $|w|=\alpha$, and all $i,j\in\omega$,
+$$x(i)=j \Iff (\exists y\in\R)A^{h_1}(\ibar,\jbar,w,y) \Iff (\forall y\in\R)\neg A^{h_2}(\ibar,\jbar,w,y).$$
+Let $\Mprime$ be the $(\alpha+1)$-th iterate of $\Mladder$ by its least
+measurable cardinal. So $\Mprime$ is a countable, iterable ladder mouse with
+a ladder whose $\delta_0$ is greater than $\alpha$. Let $g$ be $\Mprime$-generic
+for $\Coll(\omega,\alpha$). It suffices to see that $x\in\Mprime[g]$.
+
+We can rearrange $\Mprime[g]$ as a mouse over $z$, where $z$ is some real coding $g$.
+Let $M$ be this mouse over $z$. $M$ is a countable, iterable ladder-mouse over $z$ and there
+is a real $w\in M\intersect\WO$ with $|w|=\alpha$.
+
+Then for all
+$i,j\in\omega$,
+$$x(i)=j \Iff  M \models T^{h_1}(\ibar,\jbar,w) \text{ illfounded } \,\OR\, \rank(T^{h_2}(\ibar,\jbar,w)) < \rank(T^{h_1}(\ibar,\jbar,w)).$$
+So $x\in M$.
+
+\end{proof}
+
+In the next section we turn to the proof of Theorem \ref{CorrectBelowIncorrect}.
 
 
 \section{Something D}
