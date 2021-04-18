@@ -190,7 +190,7 @@ in the sense of \cite{Proj_WO_In_Mod}.
 $\ZFC$+$\exists n$ Woodin cardinals.  By \cite{Proj_WO_In_Mod}, $\Mladder$ is projectively correct and so $\PiOneOmega$-correct.
 \item Let $\sequence{\delta_n,\gamma_n}{n\in\omega}$ be a ladder over $\Mladder$.
 For even $n$, $J^{\Mladder}_{\gamma_n}[g]$ is $\Sigma^1_{n+2}$-correct,
-where $g$ is $J^{\Mladder}_{\gamma_n}$-generic over $\Coll(\omega,\delta_n)$.
+where $g$ is $J^{\Mladder}_{\gamma_n}$-generic over $\Col(\omega,\delta_n)$.
 \item Let $\sequence{\delta_n,\gamma_n}{n\in\omega}$ be a ladder over $M$.
 $\delta_n$ is not necessarily fully Woodin in $M$, but $\delta_n$ is Woodin in $M$
 with respect to functions in $J^M_{\gamma_n}$.
@@ -239,7 +239,7 @@ $\Mladder$ can still determine whether or not the statement
 $\Sigma^1_3$. $M_1$ is not $\Sigma^1_3$-correct, but $M_1$ can still tell whether
 or not $\Sigma^1_3$ statements are true. Let $A\subset\R^2$ be $\Pi^1_2$ and
 let $x\in M_1$. Then $(\exists y\in\R)\, A(x,y)$ iff
-$$M_1\models 1\force{\Coll(\omega,\delta)} (\exists y) A(x,y),$$
+$$M_1\models 1\force{\Col(\omega,\delta)} (\exists y) A(x,y),$$
 where $\delta$ is the Woodin of $M_1$.
 
 Next we state the
@@ -270,7 +270,7 @@ $$x(i)=j \Iff (\exists y\in\R)A^h(i,j,w,y).$$
 Let $\Mprime$ be the $(\alpha+1)$-th iterate of $\Mladder$ by its least
 measurable cardinal. So $\Mprime$ is a countable, iterable ladder mouse with
 a ladder whose $\delta_0$ is greater than $\alpha$. Let $g$ be $\Mprime$-generic
-for $\Coll(\omega,\alpha$). It suffices to see that $x\in\Mprime[g]$.
+for $\Col(\omega,\alpha$). It suffices to see that $x\in\Mprime[g]$.
 
 We can rearrange $\Mprime[g]$ as a mouse over $z$, where $z$ is some real coding $g$.
 Let $M$ be this mouse over $z$. $M$ is a countable, iterable ladder-mouse over $z$ and there
@@ -390,6 +390,7 @@ by Theorem 3.3.2 of \cite{HarringtonKechris}, the relation
 
 
 \begin{definition}
+\label{norm_embedding_def}
 Let $M$ be a countable, transitive, projectively correct model of $\ZFC$.
 Then $\sigma^M:(\bdelta^1_{\omega})^M\to\bdelta^1_{\omega}$ is the union of all
 functions $\sigma^M_{\varphi}$ where $\varphi$ is a (lightface) projective norm on a
@@ -402,6 +403,7 @@ $$\sigma^M\left( (\angles{n_0,\cdots, n_k}, \angles{\alpha_0, \cdots, \alpha_k} 
 \end{definition}
 
 \begin{lemma}
+\label{tree_embedding_lemma}
 Let $M$ be a countable, transitive, projectively correct model of $\ZFC$.
 Let $h$ be a $\PiOneOmega$ code.
 Let $\sigma^M$ be as defined above. Then $\sigma^M:(T^h)^M\to T^h$ is a tree isomorphism
@@ -465,7 +467,7 @@ $\Mladder$ is able to determine whether or not $T$ is correctly wellfounded.
 Let $z$ be a real and $M$ a countable, iterable, ladder-mouse over $z$.
 Suppose $M\models ``T_1$ and $T_2$ are $\bPi^1_{\omega}$-trees'' and
 suppose $T_1$ is correctly wellfounded for $M$ and
-$T_2$ is incorrectly wellfounded for $M$. Then $\rank(T_1) < rank(T_2)$.
+$T_2$ is incorrectly wellfounded for $M$. Then $\rank(T_1) < \rank(T_2)$.
 \end{theorem}
 
 Now, assuming Theorem \ref{CorrectBelowIncorrect}, we prove Theorem
@@ -509,7 +511,7 @@ $$x(i)=j \Iff (\exists y\in\R)A^{h_1}(\ibar,\jbar,w,y) \Iff (\forall y\in\R)\neg
 Let $\Mprime$ be the $(\alpha+1)$-th iterate of $\Mladder$ by its least
 measurable cardinal. So $\Mprime$ is a countable, iterable ladder mouse with
 a ladder whose $\delta_0$ is greater than $\alpha$. Let $g$ be $\Mprime$-generic
-for $\Coll(\omega,\alpha$). It suffices to see that $x\in\Mprime[g]$.
+for $\Col(\omega,\alpha$). It suffices to see that $x\in\Mprime[g]$.
 
 We can rearrange $\Mprime[g]$ as a mouse over $z$, where $z$ is some real coding $g$.
 Let $M$ be this mouse over $z$. $M$ is a countable, iterable ladder-mouse over $z$ and there
@@ -525,60 +527,138 @@ So $x\in M$.
 In the next section we turn to the proof of Theorem \ref{CorrectBelowIncorrect}.
 
 
-\section{Something D}
-\label{section:somethingd}
+\section{Main Proof}
+\label{section:mainproof}
 
-Suppose that $(S)^{\Mladder}$ is truly-wellfounded and $(T)^{\Mladder}$ is
-wellfounded but not truly-wellfounded. We want to see that
-$\rank((S)^{\Mladder}) < \rank((T)^{\Mladder})$.
+This section is devoted to a proof of Theorem \ref{CorrectBelowIncorrect}.
 
-Let $(y,\phi(y))$ be a branch of $T^V$.
+Let $z$ be a real and $M$ a countable, iterable, ladder-mouse over $z$.
+Suppose $M\models ``T_1$ and $T_2$ are $\bPi^1_{\omega}$-trees'' and
+suppose $T_1$ is correctly wellfounded for $M$ and
+$T_2$ is incorrectly wellfounded for $M$. We want to prove that
+$\rank(T_1) < \rank(T_2)$. To simplify the notation in this section we will
+assume $z=0$. The proof
+with arbitrary $z$ is the same, but relativized to $z$.
 
-
-We are going to arrange the following situation:
-
-\begin{equation}
-\label{big-setup}
-\Mladder \xrightarrow{\pi_0} \Mprime \xrightarrow{\pi_1} \Mstar
-\end{equation}
-
-where
-
-\begin{enumerate}
-\item $\pi_0$ and $\pi_1$ are both $\Sigma_1$-elementary embeddings.
-\item $\Mprime$ is a countable ladder mouse.
-\item Letting $\alpha=(\omega_1)^{\Mprime}$ and $\delta=\ord(\Mprime)$ we have,
-\item $\Mstar$ is is illfounded, $\delta$ is in the wellfounded part of $\Mstar$,
-\item $\crit(\pi_1) = \alpha$ and $\pi_1(\alpha)=\delta$
-\item $\Mprime \subset \Mstar$.
-\item $(\bdelta^1_\omega)^{\Mstar}$ is in the wellfounded part of $\Mstar$.
-\end{enumerate}
-
-$(\pi_0, \Mprime)$ is going to come from a sequence of genericity iterations using
-the initial segments of $\Mladder$ and $(\pi_1,\Mstar)$
-is going to come from a stationary tower generic ultrapower of $\Mprime$.
-
-Since $(S)^{\Mstar} \subset \omega^{<\omega}\times ((\bdelta^1_\omega)^{\Mstar})^{<\omega}$,
-and
-$(T)^{\Mstar} \subset \omega^{<\omega}\times ((\bdelta^1_\omega)^{\Mstar})^{<\omega}$
-$(S)^{\Mstar}$ and $(T)^{\Mstar}$ are both in the wellfounded part of $\Mstar$.
-
-By elementarity it suffices to show that $\Mstar \models \rank(S) < \rank(T)$.
-
-Since $S^V$ is wellfounded, $S^{\Mstar}$ is wellfouned and so $(\rank(S))^{\Mstar}$ is in the
-wellfounded part of $\Mstar$. We will show that $T^{\Mstar}$
-is illfounded in $V$ and so $(\rank(T))^{\Mstar}$ is not in the wellfounded part of $\Mstar$.
-
-We will show that for all $n$, $\phi_n(y)$ is in the range of $\theta^{\Mstar}$ and,
-letting $f\in ((\bdelta^1_\omega)^{\Mstar})^{\omega}$ be such that for all $n$,
-$\theta^{\Mstar}(f(n)) = \phi_n(y)$, we have that $(y,f)$ is a branch of $T^{\Mstar}$.
-
-Thus it suffices to prove
+Theorem \ref{CorrectBelowIncorrect} will follow from the following three lemmas.
 
 \begin{lemma}
-For all $n$, there is a $y_n\in \Mstar$ such that $y_n\restr n = y \restr n$ and
-for all $i,j < n$, $\psi^i_j(y_n) = \psi^i_j(y)$.
+\label{generic_over_all_windows}
+Let $M$ be a countable, iterable, ladder-mouse
+with $\sequence{\delta_n,\gamma_n}{n\in\omega}$ a ladder over $M$.
+Let $y\in\R$.
+Then there is a non-dropping iteration $\pi:M\to \Mprime$ such that,
+letting $\sequence{\deltaprime_n,\gammaprime_n}{n\in\omega}$ be the image under $\pi$
+of the ladder, we have that $\Mprime$ is a countable, iterable ladder-mouse
+with $\sequence{\deltaprime_n,\gammaprime_n}{n\in\omega}$ a ladder over $\Mprime$
+and for each $n\in\omega$ there is a $g_n$ such that $g_n$
+is $\Col(\omega,\deltaprime_n)$-generic over
+$J^{\Mprime}_{\gammaprime_n}$ and $y\in J^{\Mprime}_{\gammaprime_n}[g_n]$.
 \end{lemma}
+
+The iteration described in the previous lemma will come from performing a
+Woodin genericity iteration over each of the levels of the ladder sequentially.
+
+\begin{lemma}[Hjorth]
+\label{hjorthlemma}
+Let $M$ be a countable, transitive, $\Sigma^1_n$-correct model of $\ZFC$.
+Let $\delta>\omega$ be a cardinal of $M$, and let $g_1$ and $g_2$ be $M$-generic
+for $\Col(\omega, \delta)$. Let $E\subset\R^2$ be a $\Sigma^1_n$, thin equivalence relation.
+Then $M[g_1]$ and $M[g_2]$ meet the same $E$-equivalence classes.
+\end{lemma}
+
+\begin{lemma}
+\label{stationary_tower_construction}
+Let $M$ be a countable, iterable ladder-mouse
+with $\sequence{\delta_n,\gamma_n}{n\in\omega}$ a ladder over $M$ and
+$\gamma=\sup\setof{\gamma_n}{n\in\omega}$. Then there is a countable,
+not-necessarily-wellfounded model $\Mstar$ and a $\Sigma_0$-elementary-embedding
+$$\pi:M\to\Mstar$$
+such that
+\begin{itemize}
+\item $\crit(\pi) = (\omega_1)^M$.
+\item $\pi((\omega_1)^M) = \gamma \in \wfp(\Mstar)$.
+\item $\Mstar$ is projectively correct.
+\item $J^{M}_{\gamma_n}\in\Mstar$, for each $n$.
+\end{itemize}
+\end{lemma}
+
+The embedding described in the previous lemma will come from taking a Stationary Tower
+ultrapower.
+
+Now, assuming Lemmas \ref{generic_over_all_windows}, \ref{hjorthlemma} and
+\ref{stationary_tower_construction}, we will give a proof of Theorem \ref{CorrectBelowIncorrect}.
+
+\begin{proof}[proof of Theorem \ref{CorrectBelowIncorrect}]
+As mentioned at the top of the section, we will assume that the real parameter
+$z=0$ to simplify the notation.
+Let $M$ be a countable, iterable ladder-mouse.
+Suppose $M\models ``T_1$ and $T_2$ are $\bPi^1_{\omega}$-trees'' and
+suppose $T_1$ is correctly wellfounded for $M$ and
+$T_2$ is incorrectly wellfounded for $M$. We want to prove that
+$\rank(T_1) < \rank(T_2)$.
+
+To simplify the notation again, we will ignore the real parameters
+in the
+$\bPi^1_{\omega}$ definitions associated with $T_1$ and $T_2$
+(these are reals in $M$)
+and assume that
+$T_1$ and $T_2$ are lightface $\Pi^1_{\omega}$-trees in $M$.
+Let $h_1$ an $h_2$ be $\Pi^1_{\omega}$
+codes such that $T_1=(T^{h_1})^M$, $T_2=(T^{h_2})^M$.
+
+By assumption, in $V$, $T^{h_1}$ is wellfounded and $T^{h_2}$ is illfounded. Let
+$y\in p[T^{h_2}] = A^{h_2} = \Intersection{n} G^n_{h_2(n)}$.
+So then
+$$\left(y,\sequence{\varphi^{n_0}_{h_2(n_0),n_1}(y)}{n\in\omega} \right)\in[T^{h_2}].$$
+
+Let $\sequence{\delta_n,\gamma_n}{n\in\omega}$ be a ladder over $M$.
+By applying Lemma \ref{generic_over_all_windows} and replacing $M$ with the $\Mprime$ of
+that lemma, we may assume that we have, for each $n$, $g_n$
+$\Col(\omega,\delta_n)$-generic over $J^M_{\gamma_n}$ such that $y\in J^M_{\gamma_n}[g_n]$.
+
+Now we apply Lemma \ref{stationary_tower_construction} to obtain $\pi:M\to\Mstar$ as in
+the lemma.
+Let $T_1^* = \pi(T_1), T_2^* = \pi(T_2)$.
+It suffices to see that $\Mstar\models\text{``}\rank(T_1^*) < \rank(T_2^*)$''.
+
+Since $\Mstar$ is projectively correct, it follows that $(\bdelta^1_n)^{M^*}\in\wfp(M^*)$
+for each $n$, and so $(\bdelta^1_{\omega})^{\Mstar}\in\wfp(\Mstar)$. So
+$T_1^*,T_2^*\in\wfp(\Mstar)$ and $T_1^* = (T^{h_1})^{\Mstar}$
+and $T_2^* = (T^{h_2})^{\Mstar}$.
+
+In Definition \ref{norm_embedding_def} and
+Lemma \ref{tree_embedding_lemma} we assumed that $M$ was a countable, transitive, projectively correct model of $\ZFC$. But these notions work also for $\Mstar$ even though $\Mstar$ is not
+necessarily wellfounded. Also $\Mstar$ is not necesarily a model of $\ZFC$ but it has
+rank initial segments that are. Thus we have
+$\sigma^{\Mstar}:(\bdelta^1_{\omega})^{\Mstar}\to\bdelta^1_{\omega}$, and
+we have that the extensions
+$\sigma^{\Mstar}:T_1^*\map T^{h_1}$ and $\sigma^{\Mstar}:T_2^*\map T^{h_2}$ are tree
+embeddings.
+
+$\Mstar\models \text{``}T_1^* \text{ and } T_2^*$ are wellfounded''. But $\Mstar$ is not
+necessarily wellfounded so it doesn't necessarily follow that $T_1^*$ and $T_2^*$ are really wellfounded.
+Now $T^{h_1}$ is wellfounded and since we have $\sigma^{\Mstar}:T_1^*\map T^{h_1}$,
+we \emph{do} know that $T_1^*$ is wellfounded. This implies that
+$\rank(T_1^*)\in\wfp(\Mstar)$.
+To see that $\Mstar\models\text{``}\rank(T_1^*) < \rank(T_2^*)$'' it suffices to
+see that $\rank(T_2^*)\notin\wfp(\Mstar)$, or equivalently that $T_2^*$ is not wellfounded.
+We will show that $y\in p[T_2^*]$. (Thus we are also showing that in the present
+circumstance, $M^*$ is necessarily illfounded.)
+This follows from the following
+
+\begin{claim}
+For all $n$, there is a $y_n\in \R\intersect\Mstar$ such that $y_n\restr n = y \restr n$,
+$y_n \in  \Intersection{i<n} G^i_{h_2(i)}$,
+and for all $i < n$, $\varphi^{i_0}_{h_2(i_0),i_1}(y_n) = \varphi^{i_0}_{h_2(i_0),i_1}(y)$.
+\end{claim}
+
+Assuming the claim, $\varphi^{i_0}_{h_2(i_0),i_1}(y)\in\ran(\sigma^{\Mstar})$ for all $i$
+and letting $\alpha_i$ be such that $\sigma^{\Mstar}(\alpha_i)=\varphi^{i_0}_{h_2(i_0),i_1}(y)$
+we have that
+$$\left(y, \sequence{\alpha_i}{i\in\omega} \right)\in[T^*_2].$$
+\end{proof}
+
 
 \bibliographystyle{amsalpha}
 \bibliography{math}
