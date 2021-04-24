@@ -652,15 +652,51 @@ circumstance, $M^*$ is necessarily illfounded.)
 This follows from the following
 
 \begin{claim}
-For all $n$, there is a $y_n\in \R\intersect\Mstar$ such that $y_n\restr n = y \restr n$,
+For all $n>0$, there is a $y_n\in \R\intersect\Mstar$ such that $y_n\restr n = y \restr n$,
 $y_n \in  \Intersection{i<n} G^i_{h_2(i)}$,
 and for all $i < n$, $\varphi^{i_0}_{h_2(i_0),i_1}(y_n) = \varphi^{i_0}_{h_2(i_0),i_1}(y)$.
 \end{claim}
 
 Assuming the claim, $\varphi^{i_0}_{h_2(i_0),i_1}(y)\in\ran(\sigma^{\Mstar})$ for all $i$
 and letting $\alpha_i$ be such that $\sigma^{\Mstar}(\alpha_i)=\varphi^{i_0}_{h_2(i_0),i_1}(y)$
-we have that
+we have that for all $n$,
+$$\left(y\restr n, \sequence{\alpha_i}{i<n} \right)=
+\left(y_n\restr n, \sequence{(\varphi^{i_0}_{h_2(i_0),i_1}(y_n))^{M^*}}{i<n} \right)\in[T^*_2]$$
+and so
 $$\left(y, \sequence{\alpha_i}{i\in\omega} \right)\in[T^*_2].$$
+
+To finish the proof of Theorem \ref{CorrectBelowIncorrect} we give the
+
+\begin{subproof}[proof of the claim]
+Fix $n>0$ and consider the binary relation $E$ on $\R^2$ given by
+\begin{align*}
+E(z,w) \Iff &z,w\notin \Intersection{i<n} G^i_{h_2(i)} \OR \Bigg( z,w \in \Intersection{i<n} G^i_{h_2(i)} \, \AND  \\
+&\left( z\restr n, \sequence{\varphi^{i_0}_{h_2(i_0),i_1}(z)}{i<n}\right) = \left( w\restr n, \sequence{\varphi^{i_0}_{h_2(i_0),i_1}(w)}{i<n}\right) \Bigg).
+\end{align*}
+
+Clearly $E$ is a $\Sigma^1_{2n+4}$ equivalence relation on $\R$.
+
+We claim that $E$ is thin. To see this, suppose towards a contradiction that $S$ is a perfect set of $E$-inequivalent reals.
+There is a natural wellorder $<$ on $S$ defined by
+
+\begin{align*}
+z<w \Iff &z\in \Intersection{i<n} G^i_{h_2(i)} \AND \Bigg( w \notin \Intersection{i<n} G^i_{h_2(i)} \, \OR   \bigg[w \in \Intersection{i<n} G^i_{h_2(i)} \, \AND\\
+&\left( z\restr n, \sequence{\varphi^{i_0}_{h_2(i_0),i_1}(z)}{i<n}\right) \lexless \left( w\restr n, \sequence{\varphi^{i_0}_{h_2(i_0),i_1}(w)}{i<n}\right) \bigg]\Bigg).
+\end{align*}
+
+Since $<$ is projectively definable and $S$ is perfect, this gives a projectively definable wellorder of $\R$. But that
+contradicts $\PD$. So $E$ is thin.
+
+Since $J^M_{\gamma_{2n+2}}$ is $\Sigma^1_{2n+4}$-correct, and $y\in J^M_{\gamma_{2n+2}}[g_{2n+2}]$,
+we may now apply Hjorth's Lemma \ref{hjorthlemma} to conclude that if $g$ is any $\Col(\omega,\delta_{2n+2})$-generic over $J^M_{\gamma_{2n+2}}$,
+then there is a $\yprime\in J^M_{\gamma_{2n+2}}[g]$ such that $E(y,\yprime)$.
+
+
+Since $J^M_{\gamma_{2n+2}}$ is countable in $M^*$, there is such a $\yprime\in M^*$. This is
+the $y_n$ we were looking for to prove the claim.
+
+\end{subproof}
+
 \end{proof}
 
 
