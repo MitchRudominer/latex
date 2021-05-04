@@ -83,10 +83,10 @@ Woodin found a proof in the summer of 2018. Woodin transmitted the proof to Stee
 in some hand-written notes. Rudominer distilled those notes into this paper.
 
 No new technology is involved in the proof and it could have been discovered in the 1990's. The main ingredients
-of the proof are stationary tower forcing, genericity iterations, and a theorem of Hjorth stating that
-all generic extensions of a sufficiently correct, countable, transitive model of Set Theory
+of the proof are stationary tower forcing, genericity iterations, and a lemma stating that
+all small generic extensions of a sufficiently correct, countable, transitive model of Set Theory
 meet the same equivalence classes of a thin, definable equivalence
-relation.
+relation. (See Lemma \ref{hjorthlemma}.)
 
 \section{Project-like Pointclasses Just Past Projective}
 \label{section:projectlikepointclasses}
@@ -562,12 +562,13 @@ $J^{\Mprime}_{\gammaprime_n}$ and $y\in J^{\Mprime}_{\gammaprime_n}[g_n]$.
 The iteration described in the previous lemma will come from performing a
 Woodin genericity iteration over each of the levels of the ladder sequentially.
 
-\begin{lemma}[Hjorth]
+\begin{lemma}
 \label{hjorthlemma}
-Let $M$ be a countable, transitive model of $\ZFC$ and  $\delta>\omega$ a cardinal of $M$. Let $n>1$ be an integer.
+Let $\Gamma$ be a pointclass.
+Let $M$ be a countable, transitive model of $\ZFC$ and  $\delta>\omega$ a cardinal of $M$.
 Suppose that whenever $\P\in V^M_{\delta+1}$ is a poset and $g$ is $\P$-generic over $M$, then
-$M[g]$ is $\Sigma^1_n$-correct. Let $g_1$ and $g_2$ be $\Col(\omega, \delta)$-generic over $M$.
-Let $E\subset\R^2$ be a $\Sigma^1_n$, thin equivalence relation.
+$M[g]$ is $\Gamma$-correct. Let $g_1$ and $g_2$ be $\Col(\omega, \delta)$-generic over $M$.
+Let $E\subset\R^2$ be a $\Gamma$, thin equivalence relation.
 Then $M[g_1]$ and $M[g_2]$ meet the same $E$-equivalence classes.
 \end{lemma}
 
@@ -691,7 +692,7 @@ Let $N=J^M_{\gamma_{2n+2}}$. $N$ has $2n+2$ Woodin cardinals above $\delta_{2n+2
 so if $\P\in N$ is a poset with $\P\subset V^N_{\delta_{2n+2}}$ and $g$ is $\P$-generic over $N$, then $N[g]$
 is $\Sigma^1_{2n+4}$-correct.
 Since $y\in N[g_{2n+2}]$,
-we may now apply Hjorth's Lemma \ref{hjorthlemma} to conclude that if $g$ is any $\Col(\omega,\delta_{2n+2})$-generic over $N$,
+we may now apply Lemma \ref{hjorthlemma} to conclude that if $g$ is any $\Col(\omega,\delta_{2n+2})$-generic over $N$,
 then there is a $\yprime\in N[g]$ such that $E(y,\yprime)$.
 Since $N$ is countable in $M^*$, there is such a $\yprime\in M^*$. This is
 the $y_n$ we were looking for to prove the claim.
@@ -706,11 +707,47 @@ In the remainder of this section we discharge our obligation to give the proofs 
 Lemmas \ref{generic_over_all_windows}, \ref{hjorthlemma} and
 \ref{stationary_tower_construction}.
 
+\begin{proof}[sketch of proof of Lemma \ref{generic_over_all_windows}]
+Lemma \ref{generic_over_all_windows} is not a new result: it was essentially
+proven in Section 4 of \cite{Mouse_Sets}. We give only a sketch here.
+
+Since $\delta_0$ is Woodin in $J^M_{\gamma_0}$,
+we can perform the usual genericity iteration on $J^M_{\gamma_0}$, yielding
+$\pibar_0:J^M_{\gamma_0}\to P_1$ such that
+there is a $g$, $\Col(\omega,\pibar_0(\delta_0))$-generic over $P_1$ such that $y\in P_1[g]$.
+
+Since $\gamma_0$ a cardinal in $M$, a total extender over $J^M_{\gamma_0}$ is total
+over $M$. So the $\pibar_0$-iteration of $J^M_{\gamma_0}$ induces a corresponding iteration on all of $M$
+yielding a non-dropping iteration $\pi_0:M\to \Mprime_1$ such that
+letting $\sequence{\delta_{n,1},\gamma_{n,1}}{n\in\omega}$ be the image under $\pi_0$
+of the ladder of $M$, we have that $\Mprime_1$ is a countable, iterable ladder-mouse
+with $\sequence{\delta_{n,1},\gamma_{n,1}}{n\in\omega}$ a ladder over $\Mprime_1$
+and there is a $g_0$ such that $g_0$
+is $\Col(\omega,\delta_{0,1})$-generic over
+$J^{\Mprime_1}_{\gamma_{0,1}}$ and $y\in J^{\Mprime_1}_{\gamma_{0,1}}[g_0]$.
+
+Now we repeat the argument of the previous two paragraphs using $\Mprime_1$ instead of $M$
+and using $\delta_{1,1}$ in place of $\delta_0$. This yields a non-dropping iteration
+$\pi_1:\Mprime_1\to\Mprime_2$. We can take the critical point of $\pi_1$ to be
+greater than $\gamma_{0,1}$. Then,
+letting $\sequence{\delta_{n,2},\gamma_{n,2}}{n\in\omega}$ be the image under $\pi_1$
+of the ladder of $\Mprime_1$, we have that $\Mprime_2$ is a countable, iterable ladder-mouse
+with $\sequence{\delta_{n,2},\gamma_{n,2}}{n\in\omega}$ a ladder over $\Mprime_2$
+and for $n=0,1$ there is a $g_n$ such that $g_n$
+is $\Col(\omega,\delta_{n,2})$-generic over
+$J^{\Mprime_2}_{\gamma_{n,2}}$ and $y\in J^{\Mprime_2}_{\gamma_{n,2}}[g_n]$.
+
+We continue this process yielding $\pi_n:\Mprime_n\to\Mprime_{n+1}$ and
+let $\pi:M\to\Mprime$ be the direct limit.
+
+\end{proof}
+
 \begin{proof}[proof of Lemma \ref{hjorthlemma}]
-Let $M$ be a countable, transitive model of $\ZFC$ and  $\delta>\omega$ a cardinal of $M$. Let $n>1$ be an integer.
+Let $\Gamma$ be a pointclass.
+Let $M$ be a countable, transitive model of $\ZFC$ and  $\delta>\omega$ a cardinal of $M$.
 Suppose that whenever $\P\in V^M_{\delta+1}$ is a poset and $g$ is $\P$-generic over $M$, then
-$M[g]$ is $\Sigma^1_n$-correct. Let $g_1$ and $g_2$ be $\Col(\omega, \delta)$-generic over $M$.
-Let $E\subset\R^2$ be a $\Sigma^1_n$, thin equivalence relation.
+$M[g]$ is $\Gamma$-correct. Let $g_1$ and $g_2$ be $\Col(\omega, \delta)$-generic over $M$.
+Let $E\subset\R^2$ be a $\Gamma$, thin equivalence relation.
 We wish to prove that $M[g_1]$ and $M[g_2]$ meet the same $E$-equivalence classes.
 
 We may assume that $g_1\times g_2$ is $\Col(\omega, \delta)\times \Col(\omega, \delta)$-generic over $M$.
@@ -728,7 +765,7 @@ with $h_1\times h_2$ $\Col(\omega, \delta)\times \Col(\omega, \delta)$-generic o
 $\neg E(\tau^{h_1},\tau^{h_2})$.
 \end{claim}
 \begin{subproof}[proof of Claim 1]
-Let $\tau\in M$ be such that $x=\tau^{g_1}$. By hypothesis $M[g_1\times g_2]$ is $\Sigma^1_n$-correct
+Let $\tau\in M$ be such that $x=\tau^{g_1}$. By hypothesis $M[g_1\times g_2]$ is $\Gamma$-correct
 so $M[g_1\times g_2]\models \neg E(\tau^{g_1},\tau^{g_2})$.
 
 Let $\dot{g}_{\text{left}}$ and $\dot{g}_{\text{right}}$
@@ -738,7 +775,7 @@ Then $\check{\tau}$, $\dot{g}_{\text{left}}$ and $\dot{g}_{\text{right}}$ are al
 Since $\Col(\omega, \delta)\times \Col(\omega, \delta)$ is homogeneous
 $$1\forcein{\Col(\omega, \delta)\times \Col(\omega, \delta)}{M} \neg E(\check{\tau}^{\dot{g}_{\text{left}}},\check{\tau}^{\dot{g}_{\text{right}}}).$$
 Let $h_1,h_2$ be such that $h_1\times h_2$ is $\Col(\omega, \delta)\times \Col(\omega, \delta)$-generic over $M$.
-Then $M[h\times h_2]\models \neg E(\tau^{h_1},\tau^{h_2})$ and $M[h\times h_2]$ is $\Sigma^1_n$-correct so $\neg E(\tau^{h_1},\tau^{h_2})$.
+Then $M[h\times h_2]\models \neg E(\tau^{h_1},\tau^{h_2})$ and $M[h\times h_2]$ is $\Gamma$-correct so $\neg E(\tau^{h_1},\tau^{h_2})$.
 \end{subproof}
 
 To obtain a contradiction and prove the lemma we will show
@@ -777,10 +814,10 @@ Sine $x\to \tau^{h_x}$ is a continuous injection from Cantor space, $\setof{\tau
 
 By Claims 1 and 2 there is a perfect set of $E$-inequivalent reals, contradicting the fact that $E$ is thin.
 
-A similar argument appears in the proof of Lemma 3.1 of \cite{Schlict_Thin_Equivalence_Relations}.
-
 \end{proof}
 
+The proof of Lemma \ref{hjorthlemma} is based on similar arguments by Greg Hjorth, Lemma 2.2 from \cite{Hjorth_applications_of_course_imt}, and Foreman and Magidor, Theorem 3.4 of \cite{Foreman_and_Magidor}.
+See also Lemma 3.1 from \cite{Schlict_Thin_Equivalence_Relations}.
 
 \bibliographystyle{amsalpha}
 \bibliography{math}
