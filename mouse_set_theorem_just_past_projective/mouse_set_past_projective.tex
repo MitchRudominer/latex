@@ -19,9 +19,9 @@
 \keywords{large cardinals, descriptive set theory, inner model theory}
 
 \begin{abstract}
-We describe a natural mouse $\Mladder$, the minimal ladder mouse,
- and show that $\R\intersect \Mladder = Q_{\omega+1}$
-where $Q_{\omega+1}$  is the set of reals that are
+We identify a particular mouse, $\Mladder$, the minimal ladder mouse,
+ and show that $\R\intersect \Mladder = Q_{\omega+1}$,
+ the set of reals that are
 $\Delta^1_{\omega+1}$ in a countable ordinal. Thus $Q_{\omega+1}$
 is a mouse set.
 
@@ -58,8 +58,8 @@ For even $n\geq 2$, $\R\intersect M_n^{\sharp} = C_n$, the largest countable $\S
 For odd $n\geq 3$, $\R\intersect M_n^{\sharp} = Q_n$, the largest countable $\Pi^1_n$
 set closed downwards under $\Delta^1_3$ degrees. See \cite{Proj_WO_In_Mod}.
 
-In 1995 Rudominer extended this work to pointclasses beyond the projective
-and achieved partial results, proving the mouse set theorem for some pointclasses
+In 1995 Rudominer partially extended this work to pointclasses beyond the projective,
+proving the mouse set theorem for some pointclasses
 and getting partial results for others. See \cite{My_Thesis} and \cite{Mouse_Sets}.
 But even at the very first step past projective the full mouse set theorem was open.
 
@@ -712,35 +712,42 @@ Lemma \ref{generic_over_all_windows} is not a new result: it was essentially
 proven in Section 4 of \cite{Mouse_Sets}. We give only a sketch here.
 
 Since $\delta_0$ is Woodin in $J^M_{\gamma_0}$,
-we can perform the usual genericity iteration on $J^M_{\gamma_0}$, yielding
+we can perform the usual genericity iteration on $J^M_{\gamma_0}$
+(see Theorem 7.14 from \cite{Outline}), yielding
 $\pibar_0:J^M_{\gamma_0}\to P_1$ such that
 there is a $g$, $\Col(\omega,\pibar_0(\delta_0))$-generic over $P_1$ such that $y\in P_1[g]$.
 
 Since $\gamma_0$ a cardinal in $M$, a total extender over $J^M_{\gamma_0}$ is total
-over $M$. So the $\pibar_0$-iteration of $J^M_{\gamma_0}$ induces a corresponding iteration on all of $M$
+over $M$. A similar fact is true about the image of $\gamma_0$ under non-dropping
+iterations of $M$.
+Therefore the $\pibar_0$-iteration of $J^M_{\gamma_0}$ induces a corresponding iteration on all of $M$
 yielding a non-dropping iteration $\pi_0:M\to \Mprime_1$ such that
-letting $\sequence{\delta_{n,1},\gamma_{n,1}}{n\in\omega}$ be the image under $\pi_0$
+letting $\sequence{\delta^{(1)}_n,\gamma^{(1)}_n}{n\in\omega}$ be the image under $\pi_0$
 of the ladder of $M$, we have that $\Mprime_1$ is a countable, iterable ladder-mouse
-with $\sequence{\delta_{n,1},\gamma_{n,1}}{n\in\omega}$ a ladder over $\Mprime_1$
+with $\sequence{\delta^{(1)}_n,\gamma^{(1)}_n}{n\in\omega}$ a ladder over $\Mprime_1$
 and there is a $g_0$ such that $g_0$
-is $\Col(\omega,\delta_{0,1})$-generic over
-$J^{\Mprime_1}_{\gamma_{0,1}}$ and $y\in J^{\Mprime_1}_{\gamma_{0,1}}[g_0]$.
+is $\Col(\omega,\delta^{(1)}_0)$-generic over
+$J^{\Mprime_1}_{\gamma^{(1)}_0}$ and $y\in J^{\Mprime_1}_{\gamma^{(1)}_0}[g_0]$.
 
 Now we repeat the argument of the previous two paragraphs using $\Mprime_1$ instead of $M$
-and using $\delta_{1,1}$ in place of $\delta_0$. This yields a non-dropping iteration
+and using $\delta^{(1)}_1$ in place of $\delta_0$. This yields a non-dropping iteration
 $\pi_1:\Mprime_1\to\Mprime_2$. We can take the critical point of $\pi_1$ to be
-greater than $\gamma_{0,1}$. Then,
-letting $\sequence{\delta_{n,2},\gamma_{n,2}}{n\in\omega}$ be the image under $\pi_1$
+greater than $\gamma^{(1)}_0$. Then,
+letting $\sequence{\delta^{(2)}_n,\gamma^{(2)}_n}{n\in\omega}$ be the image under $\pi_1$
 of the ladder of $\Mprime_1$, we have that $\Mprime_2$ is a countable, iterable ladder-mouse
-with $\sequence{\delta_{n,2},\gamma_{n,2}}{n\in\omega}$ a ladder over $\Mprime_2$
+with $\sequence{\delta^{(2)}_n,\gamma^{(2)}_n}{n\in\omega}$ a ladder over $\Mprime_2$
 and for $n=0,1$ there is a $g_n$ such that $g_n$
-is $\Col(\omega,\delta_{n,2})$-generic over
-$J^{\Mprime_2}_{\gamma_{n,2}}$ and $y\in J^{\Mprime_2}_{\gamma_{n,2}}[g_n]$.
+is $\Col(\omega,\delta^{(2)}_n)$-generic over
+$J^{\Mprime_2}_{\gamma^{(2)}_n}$ and $y\in J^{\Mprime_2}_{\gamma^{(2)}_n}[g_n]$.
 
 We continue this process yielding $\pi_n:\Mprime_n\to\Mprime_{n+1}$ and
 let $\pi:M\to\Mprime$ be the direct limit.
 
 \end{proof}
+
+Next we turn to the proof of Lemma \ref{hjorthlemma}.
+The proof is based on similar arguments by Greg Hjorth (see Lemma 2.2 from \cite{Hjorth_applications_of_course_imt}) and Foreman and Magidor (see Theorem 3.4 of \cite{Foreman_and_Magidor}.)
+See also Lemma 3.1 from \cite{Schlict_Thin_Equivalence_Relations}.
 
 \begin{proof}[proof of Lemma \ref{hjorthlemma}]
 Let $\Gamma$ be a pointclass.
@@ -816,8 +823,27 @@ By Claims 1 and 2 there is a perfect set of $E$-inequivalent reals, contradictin
 
 \end{proof}
 
-The proof of Lemma \ref{hjorthlemma} is based on similar arguments by Greg Hjorth, Lemma 2.2 from \cite{Hjorth_applications_of_course_imt}, and Foreman and Magidor, Theorem 3.4 of \cite{Foreman_and_Magidor}.
-See also Lemma 3.1 from \cite{Schlict_Thin_Equivalence_Relations}.
+Finally we turn to the proof of Lemma \ref{stationary_tower_construction}. This proof uses
+Stationary Tower Forcing. See \cite{Larson_Book}.
+
+\begin{proof}[proof of Lemma \ref{stationary_tower_construction}.]
+Let $M$ be a countable, iterable ladder-mouse
+with $\sequence{\delta_n,\gamma_n}{n\in\omega}$ a ladder over $M$ and
+$\gamma=\sup\setof{\gamma_n}{n\in\omega}$. We will construct a countable,
+not-necessarily-wellfounded model $\Mstar$ and a $\Sigma_0$-elementary-embedding
+$$\pi:M\to\Mstar$$
+such that
+\begin{itemize}
+\item $\crit(\pi) = (\omega_1)^M$.
+\item $\pi((\omega_1)^M) = \gamma \in \wfp(\Mstar)$.
+\item $\Mstar$ is projectively correct.
+\item $J^{M}_{\gamma_n}\in\Mstar$, for each $n$.
+\end{itemize}
+
+$\pi:M\to\Mstar$ will be a stationary tower ultrapower.
+
+
+\end{proof}
 
 \bibliographystyle{amsalpha}
 \bibliography{math}
