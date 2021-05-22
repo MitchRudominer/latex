@@ -824,7 +824,7 @@ By Claims 1 and 2 there is a perfect set of $E$-inequivalent reals, contradictin
 \end{proof}
 
 Finally we turn to the proof of Lemma \ref{stationary_tower_construction}. This proof uses
-Stationary Tower Forcing. See \cite{Larson_Book}.
+Stationary Tower Forcing. See \cite{Larson_Book} for background.
 
 \begin{proof}[proof of Lemma \ref{stationary_tower_construction}.]
 Let $M$ be a countable, iterable ladder-mouse
@@ -834,13 +834,94 @@ not-necessarily-wellfounded model $\Mstar$ and a $\Sigma_0$-elementary-embedding
 $$\pi:M\to\Mstar$$
 such that
 \begin{itemize}
-\item $\crit(\pi) = (\omega_1)^M$.
-\item $\pi((\omega_1)^M) = \gamma \in \wfp(\Mstar)$.
+\item $\crit(\pi) = \omega_1^M$.
+\item $\pi(\omega_1^M) = \gamma \in \wfp(\Mstar)$.
 \item $\Mstar$ is projectively correct.
 \item $J^{M}_{\gamma_n}\in\Mstar$, for each $n$.
 \end{itemize}
 
 $\pi:M\to\Mstar$ will be a stationary tower ultrapower.
+
+For $n<\omega$, let
+$$\Q_{<\delta_n}^M=\setof{a\in J^M_{\delta_n}}{M\models a\subset \Powerset_{\omega_1}(J^M_{\delta_n}) \text{ and } a \text{ is stationary.}}$$
+For $a,b\in \Q_{<\delta_n}^M$, say that $b\leq a$ iff $\union a \subseteq \union b$ and $\bar{b} \subseteq a$ where $\bar{b}=\setof{x\intersect\union a}{x\in b}$.
+$\big(\Q_{<\delta_n}^M, <\big)$ is the countable stationary tower forcing up to $\delta_n$ in $M$. Also let $\Q_{<\gamma}^M=\Union{n<\omega}\Q_{<\delta_n}^M$.
+
+\begin{claim}[Claim 1]
+\
+There is a $G\subset \Q_{<\gamma}^M$ such that for $n\in\omega$, $G\intersect J^M_{\delta_n}$ is $\Q_{<\delta_n}^M$-generic over $J^M_{\gamma_n}$.
+\end{claim}
+
+If $G$ is as in Claim 1 and $A$ is an infinite set in $J^M_{\gamma}$, let
+$$G\restr A = G \intersect  \Powerset(\Powerset_{\omega_1}(A))^M = \setof{a\in G}{\union a = A}.$$
+
+It follows from Claim 1 that $G\restr A$ is an $M$-ultrafilter on $\Powerset_{\omega_1}(A)^M$.
+
+We form the ultrapower $\Ult(M,G)$ by taking all functions $f\in J^M_{\gamma}$ with $\dom(f)=\Powerset_{\omega_1}(A)^M$ for some infinite set $A\in J^M_{\gamma}$.
+If $\dom(f)=\Powerset_{\omega_1}(A)^M$ and  $\dom(g)=\Powerset_{\omega_1}(B)^M$ we say that $f\sim g$ iff
+$$\setof{x\in \Powerset_{\omega_1}(A\union B)^M}{f(x\intersect A) = g(x\intersect B)} \in G$$
+and we say that $[f] E [g]$ iff
+$$\setof{x\in \Powerset_{\omega_1}(A\union B)^M}{f(x\intersect A) \in g(x\intersect B)} \in G.$$
+We have $\Sigma_0$ \L{}os's Theorem for $\Ult(M,G)$.
+We let $\Mstar=\Ult(M,G)$, identifying the well-founded part of $\Mstar$ with the transitive set to which it is isomorphic.
+
+Letting $\pi:M\to\Mstar$ be given by $\pi(x)=[c_x]$, where $c_x$ is the constant $x$ function, we have that $\pi$ is $\Sigma_0$-elementary.
+
+If $A$ is any infinite set in $J^M_{\gamma}$, the identity function on $\Powerset_{\omega_1}(A)^M$ represents $\pi[A]$ and so $A\in \Mstar$.
+Thus $J^{M}_{\gamma_n}\in\Mstar$, for each $n$ and $\gamma\subseteq\wfp(\Mstar)$.
+
+If $\alpha<\gamma$ is any ordinal, the function $f$ with domain $\Powerset_{\omega_1}(\alpha)^M$ given by $f(x)=\ot(x)$ represents $\alpha$. It
+follows that $\alpha$ is countable in $\Mstar$. So $\crit(\pi)=\omega_1^M$ and $\pi(\omega_1^M)\geq \gamma$.
+
+\begin{claim}[Claim 2]
+$\pi(\omega_1^M)=\gamma$
+\end{claim}
+\begin{subproof}
+Let $f$ represent a countable ordinal in $\Ult(M,G)$. We will show that $[f]_G < \gamma$. Let $A=\union\dom(f)$ so that
+$f:\Powerset_{\omega_1}^M(A)\to\omega_1^M$. We will find a $\kappa < \gamma$ such that
+$f\in J^M_{\kappa}$, and such that
+$$\setof{x\in\Powerset_{\omega_1}^M(J^M_{\kappa})}{f(x\intersect A)\leq \ot(x\intersect \kappa)}\in G.$$
+Since the function $g$ given by $g(x)=\ot(x\intersect \kappa)$ represents $\kappa$ in $\Ult(M,G)$,
+we will have that $[f]_G \leq \kappa$.
+
+Fix $n\in\omega$ so that $A,f,a\in J^M_{\delta_n}$. Work in $J^M_{\gamma_n}$, where $\delta_n$ is Woodin.
+In particular, $\delta_n$ is a limit of completely J\'{o}nsson cardinals.
+
+Fix an arbitrary $a\in \Q^M_{\delta_n}$.
+
+
+Let $\kappa<\delta_n$ be such
+that $\kappa$ is completely J\'{o}nsson in $J^M_{\gamma_n}$ and $A,f,a\in J^M_{\kappa}$. Let $b$ be the set of
+countable $X\subset J^M_{\kappa}$ such that
+\begin{itemize}
+\item $X\intersect (\union a) \in a$
+\item $f(X\intersect A) \leq \ot(X\intersect \kappa)$.
+\end{itemize}
+The proof of Theorem 2.7.8 of \cite{Larson_Book} shows that $b$ is stationary.
+Thus $b\leq a$.
+
+Since $a$ was arbitrary in $\Q^M_{\delta_n}$ and $G\intersect J^M_{\delta_n}$ is $J^M_{\gamma_n}$-generic,
+there is such a $\kappa$ and $b$ with $b\in G\intersect J^M_{\delta_n}$. For this
+$\kappa$, $[f]_G \leq \kappa$.
+\end{subproof}
+
+
+So $\gamma\in\wfp(\Mstar)$.
+
+\begin{claim}[Claim 3]
+$\Mstar$ is projectively correct.
+\end{claim}
+\begin{subproof}
+This follows from the fact that
+$$\R\intersect \Mstar = \Union{n}\R\intersect \Ult(J^M_{\gamma_n},G\intersect J^M_{\delta_n}) = \Union{n} \R\intersect J^M_{\gamma_n}[G\intersect J^M_{\delta_n}]$$
+and the fact that $J^M_{\gamma_{2n}}[G\intersect J^M_{\delta_{2n}}]$ is $\Sigma^1_{2n+1}$-correct.
+\end{subproof}
+
+
+
+
+
+
 
 
 \end{proof}
