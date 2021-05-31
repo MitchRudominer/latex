@@ -30,13 +30,13 @@ the sharp for the minimal inner model with a Woodin cardinal, and $Q_3$ is the s
 that are $\Delta^1_3$ in a countable ordinal.
 
 More generally $\R\intersect M^{\sharp}_{2n+1} = Q_{2n+3}$.
-The set $Q_{\omega+1}$  we consider in this paper is the next natural
-one to consider in this series of results. Thus we are proving the mouse
+The mouse $\Mladder$ and the set $Q_{\omega+1}$  compose the next natural
+pair to consider in this series of results. Thus we are proving the mouse
 set theorem just past projective.
 
 Some of this is not new. $\R\intersect \Mladder \subseteq Q_{\omega+1}$ was
-know in the 1990's. But a proof that $Q_{\omega+1} \subseteq \Mladder$ wasn't known
-until Woodin found it in 2018. The main goal of this paper is to give
+know in the 1990's. But $Q_{\omega+1} \subseteq \Mladder$ was open
+until Woodin found a proof in 2018. The main goal of this paper is to give
 Woodin's proof.
 \end{abstract}
 
@@ -87,6 +87,19 @@ of the proof are stationary tower forcing, genericity iterations, and a lemma st
 all small generic extensions of a sufficiently correct, countable, transitive model of Set Theory
 meet the same equivalence classes of a thin, definable equivalence
 relation. (See Lemma \ref{hjorthlemma}.)
+
+One of the key technical ideas of the paper is that, even though
+the $\delta_n$ of $\Mladder$ are only Woodin over an initial segment $P_n$
+of $\Mladder$ as opposed to all of $\Mladder$, because they are
+cardinals in $\Mladder$ we can recover some of the same properties
+that we would have if $\angles{\delta_n}$ were an $\omega$-sequence
+of Woodins in $\Mladder$. A primary example of this idea is Lemma
+\ref{LadderGeneric} which gives us a filter $G$ for the countable
+Stationary Tower of $\Mladder$ such that for all $n$,
+$G\intersect J^{\Mladder}_{\delta_n}$ is $\Q_{<\delta_n}^M$-generic over $P_n$, and this implies
+that the ultrapower $\Ult(\Mladder, G)$ has some of the same properties as an
+ultrapower by the Stationary tower up to the supremum
+of $\omega$ Woodin cardinals.
 
 \section{Project-like Pointclasses Just Past Projective}
 \label{section:projectlikepointclasses}
@@ -573,7 +586,7 @@ Then $M[g_1]$ and $M[g_2]$ meet the same $E$-equivalence classes.
 \end{lemma}
 
 \begin{lemma}
-\label{stationary_tower_construction}
+\label{m_star_existence}
 Let $M$ be a countable, iterable ladder-mouse
 with $\sequence{\delta_n,\gamma_n}{n\in\omega}$ a ladder over $M$ and
 $\gamma=\sup\setof{\gamma_n}{n\in\omega}$. Then there is a countable,
@@ -592,7 +605,7 @@ The embedding described in the previous lemma will come from taking a Stationary
 ultrapower.
 
 Now, assuming Lemmas \ref{generic_over_all_windows}, \ref{hjorthlemma} and
-\ref{stationary_tower_construction}, we will give a proof of Theorem \ref{CorrectBelowIncorrect}.
+\ref{m_star_existence}, we will give a proof of Theorem \ref{CorrectBelowIncorrect}.
 
 \begin{proof}[proof of Theorem \ref{CorrectBelowIncorrect}]
 As mentioned at the top of the section, we will assume that the real parameter
@@ -622,7 +635,7 @@ By applying Lemma \ref{generic_over_all_windows} and replacing $M$ with the $\Mp
 that lemma, we may assume that we have, for each $n$, $g_n$
 $\Col(\omega,\delta_n)$-generic over $J^M_{\gamma_n}$ such that $y\in J^M_{\gamma_n}[g_n]$.
 
-Now we apply Lemma \ref{stationary_tower_construction} to obtain $\pi:M\to\Mstar$ as in
+Now we apply Lemma \ref{m_star_existence} to obtain $\pi:M\to\Mstar$ as in
 the lemma.
 Let $T_1^* = \pi(T_1), T_2^* = \pi(T_2)$.
 It suffices to see that $\Mstar\models\text{``}\rank(T_1^*) < \rank(T_2^*)$''.
@@ -705,7 +718,7 @@ And that completes the proof of Theorem \ref{CorrectBelowIncorrect}.
 
 In the remainder of this section we discharge our obligation to give the proofs of
 Lemmas \ref{generic_over_all_windows}, \ref{hjorthlemma} and
-\ref{stationary_tower_construction}.
+\ref{m_star_existence}.
 
 \begin{proof}[sketch of proof of Lemma \ref{generic_over_all_windows}]
 Lemma \ref{generic_over_all_windows} is not a new result: it was essentially
@@ -823,13 +836,33 @@ By Claims 1 and 2 there is a perfect set of $E$-inequivalent reals, contradictin
 
 \end{proof}
 
-Finally we turn to the proof of Lemma \ref{stationary_tower_construction}. This proof uses
+Finally we turn to the proof of Lemma \ref{m_star_existence}. This proof uses
 Stationary Tower Forcing. See \cite{Larson_Book} for background.
 
-\begin{proof}[proof of Lemma \ref{stationary_tower_construction}.]
+Let $M$ be a countable ladder-mouse
+with $\sequence{\delta_n,\gamma_n}{n\in\omega}$ a ladder over $M$ and
+$\gamma=\sup\setof{\gamma_n}{n\in\omega}$.
+
+For $n<\omega$, let
+$$\Q_{<\delta_n}^M=\setof{a\in J^M_{\delta_n}}{M\models a\subset \Powerset_{\omega_1}(J^M_{\delta_n}) \text{ and } a \text{ is stationary.}}$$
+For $a,b\in \Q_{<\delta_n}^M$, say that $b\leq a$ iff $\union a \subseteq \union b$ and $\bar{b} \subseteq a$ where $\bar{b}=\setof{x\intersect\union a}{x\in b}$.
+$\big(\Q_{<\delta_n}^M, <\big)$ is the countable stationary tower forcing up to $\delta_n$ in $M$. Also let $\Q_{<\gamma}^M=\Union{n<\omega}\Q_{<\delta_n}^M$.
+
+\begin{lemma}
+\label{LadderGeneric}
+Let $M$ be a countable ladder-mouse
+with $\sequence{\delta_n,\gamma_n}{n\in\omega}$ a ladder over $M$ and
+$\gamma=\sup\setof{\gamma_n}{n\in\omega}$.
+There is a $G\subset \Q_{<\gamma}^M$ such that for $n\in\omega$, $G\intersect J^M_{\delta_n}$ is $\Q_{<\delta_n}^M$-generic over $J^M_{\gamma_n}$.
+\end{lemma}
+
+First we show how Lemma \ref{m_star_existence} follows from Lemma
+\ref{LadderGeneric}
+
+\begin{proof}[proof of Lemma \ref{m_star_existence}.]
 Let $M$ be a countable, iterable ladder-mouse
 with $\sequence{\delta_n,\gamma_n}{n\in\omega}$ a ladder over $M$ and
-$\gamma=\sup\setof{\gamma_n}{n\in\omega}$. We will construct a countable,
+$\gamma=\sup\setof{\gamma_n}{n\in\omega}$. We need to construct a countable,
 not-necessarily-wellfounded model $\Mstar$ and a $\Sigma_0$-elementary-embedding
 $$\pi:M\to\Mstar$$
 such that
@@ -842,20 +875,12 @@ such that
 
 $\pi:M\to\Mstar$ will be a stationary tower ultrapower.
 
-For $n<\omega$, let
-$$\Q_{<\delta_n}^M=\setof{a\in J^M_{\delta_n}}{M\models a\subset \Powerset_{\omega_1}(J^M_{\delta_n}) \text{ and } a \text{ is stationary.}}$$
-For $a,b\in \Q_{<\delta_n}^M$, say that $b\leq a$ iff $\union a \subseteq \union b$ and $\bar{b} \subseteq a$ where $\bar{b}=\setof{x\intersect\union a}{x\in b}$.
-$\big(\Q_{<\delta_n}^M, <\big)$ is the countable stationary tower forcing up to $\delta_n$ in $M$. Also let $\Q_{<\gamma}^M=\Union{n<\omega}\Q_{<\delta_n}^M$.
+Let $G$ be as in Lemma \ref{LadderGeneric}.
 
-\begin{claim}[Claim 1]
-\
-There is a $G\subset \Q_{<\gamma}^M$ such that for $n\in\omega$, $G\intersect J^M_{\delta_n}$ is $\Q_{<\delta_n}^M$-generic over $J^M_{\gamma_n}$.
-\end{claim}
-
-If $G$ is as in Claim 1 and $A$ is an infinite set in $J^M_{\gamma}$, let
+If $A$ is an infinite set in $J^M_{\gamma}$, let
 $$G\restr A = G \intersect  \Powerset(\Powerset_{\omega_1}(A))^M = \setof{a\in G}{\union a = A}.$$
 
-It follows from Claim 1 that $G\restr A$ is an $M$-ultrafilter on $\Powerset_{\omega_1}(A)^M$.
+$G\restr A$ is an $M$-ultrafilter on $\Powerset_{\omega_1}(A)^M$.
 
 We form the ultrapower $\Ult(M,G)$ by taking all functions $f\in J^M_{\gamma}$ with $\dom(f)=\Powerset_{\omega_1}(A)^M$ for some infinite set $A\in J^M_{\gamma}$.
 If $\dom(f)=\Powerset_{\omega_1}(A)^M$ and  $\dom(g)=\Powerset_{\omega_1}(B)^M$ we say that $f\sim g$ iff
@@ -873,7 +898,7 @@ Thus $J^{M}_{\gamma_n}\in\Mstar$, for each $n$ and $\gamma\subseteq\wfp(\Mstar)$
 If $\alpha<\gamma$ is any ordinal, the function $f$ with domain $\Powerset_{\omega_1}(\alpha)^M$ given by $f(x)=\ot(x)$ represents $\alpha$. It
 follows that $\alpha$ is countable in $\Mstar$. So $\crit(\pi)=\omega_1^M$ and $\pi(\omega_1^M)\geq \gamma$.
 
-\begin{claim}[Claim 2]
+\begin{claim}[Claim 1]
 $\pi(\omega_1^M)=\gamma$
 \end{claim}
 \begin{subproof}
@@ -906,23 +931,145 @@ $\kappa$, $[f]_G \leq \kappa$.
 \end{subproof}
 
 
-So $\gamma\in\wfp(\Mstar)$.
+In particular, $\gamma$ is definable in $\Mstar$ and so $\gamma\in\wfp(\Mstar)$.
 
-\begin{claim}[Claim 3]
+\begin{claim}[Claim 2]
 $\Mstar$ is projectively correct.
 \end{claim}
 \begin{subproof}
-This follows from the fact that
-$$\R\intersect \Mstar = \Union{n}\R\intersect \Ult(J^M_{\gamma_n},G\intersect J^M_{\delta_n}) = \Union{n} \R\intersect J^M_{\gamma_n}[G\intersect J^M_{\delta_n}]$$
-and the fact that $J^M_{\gamma_{2n}}[G\intersect J^M_{\delta_{2n}}]$ is $\Sigma^1_{2n+1}$-correct.
+Let $x=[f]_G$ be a real in $\Ult(M,G)$ with $f\in J^M_{\gamma}$.
+ Let $A=\union\dom(f)$ so that
+$f:\Powerset_{\omega_1}^M(A)\to\R$. Let $n$ be such that $f\in J^M_{\delta_n}$.
+Then $f$ also represents $x$ in
+$\Ult(J^M_{\gamma_n},G\intersect J^M_{\delta_n})$.
+
+Since $\delta_n$ is Woodin in $J^M_{\gamma_n}$,
+$$\R\intersect\Ult(J^M_{\gamma_n},G\intersect J^M_{\delta_n}) = \R\intersect J^M_{\gamma_n}[G\intersect J^M_{\delta_n}].$$
+
+So we have that
+$$\R\intersect \Mstar =  \Union{n} \R\intersect J^M_{\gamma_n}[G\intersect J^M_{\delta_n}].$$
+
+Since $M$ is iterable, $J^M_{\gamma_{2n}}[G\intersect J^M_{\delta_{2n}}]$ is
+$\Sigma^1_{2n+1}$-correct.
+
+Since correctness is a closure property, it follows that
+$\R\intersect\Mstar$ is projectively correct.
 \end{subproof}
 
 
+This completes the proof of Lemma \ref{m_star_existence} assuming Lemma
+\ref{LadderGeneric}.
 
+\end{proof}
 
+Finally we give the proof of Lemma \ref{LadderGeneric}, which completes the
+proof of Lemma \ref{m_star_existence}, and thus the proof of
+Theorem \ref{CorrectBelowIncorrect}, and thus the proof of
+Theorem \ref{QuasiCorrectness} and thus the proof of Theorem \ref{DefinableRealsAreInM}.
 
+\begin{proof}[proof of Lemma  \ref{LadderGeneric}]
+Let $M$ be a countable ladder-mouse
+with $\sequence{\delta_n,\gamma_n}{n\in\omega}$ a ladder over $M$ and
+$\gamma=\sup\setof{\gamma_n}{n\in\omega}$.
+We must show that
+there is a $G\subset \Q_{<\gamma}^M$ such that for $n\in\omega$,
+$G\intersect J^M_{\delta_n}$ is $\Q_{<\delta_n}^M$-generic over $J^M_{\gamma_n}$.
 
+\begin{claim}[Claim 1]
+Fix $n\in\omega$ and $a\in \Q_{<\delta_n}^M$.
+Working in $M$, let $b=\{x \prec V_{\delta_n+1} \mid x $ is countable and
+$x\intersect\union a \in a$ and $\forall D\in x\intersect J^M_{\gamma_n}$ such that $D$ is a dense subset of $\Q_{<\delta_n}^M$, $x$ captures $D \}$.
+Then $M\models b$ is stationary.
+\end{claim}
+\begin{proof}[proof of Claim 1.]
+Work in $M$. Let $f:V_{\delta_n+1}^{<\omega}\map V_{\delta_n+1}$, and we will
+construct an $x\in b$ closed under $f$.
 
+Fix some wellorder of the set of all dense subsets of
+$\Q_{<\delta_n}$ in $J^M_{\gamma_n}$.
+
+We will define by induction on $j$, a sequence $\sequence{D_j}{j\in\omega}$
+of dense subsets of
+$\Q_{<\delta_n}$ in $J^M_{\gamma_n}$, and a sequence
+$\sequence{e_j}{j\in\omega}$ with $e_j\in D_j$, and
+an increasing sequence
+of countable elementary submodels of $V_{\delta_n+1}$,
+$\sequence{x_j}{j\in\omega}$, such that $x_j$ is closed under $f$,
+$x_j\intersect \union a \in a$, and for $i<j$, $x_j$ captures
+$D_i$ at $e_i$. Then we will let $x=\union_j x_j$.
+
+Let $x_0 \prec V^M_{\delta_n+1}$ be countable, closed under $f$, and such that $x\intersect \union a \in a$.
+
+Suppose we have $x_j\prec V_{\delta_n+1}$ countable, closed under $f$, such that
+$x_j\intersect \union a \in a$, and such that for $i<j$, $x_j$ captures
+$D_i$ at $e_i$.
+Let $D_j$ be the least
+dense subset $D$ of
+$\Q_{<\delta_n}$ in $J^M_{\gamma_n}$ under our fixed wellorder such that $D\in x_j$ and $x_j$ does
+not capture $D$. (If there is no such $D$ let $x_{j+1}=x_j$.)
+
+Since $\delta_n$
+is Woodin in $J^M_{\gamma_n}$ there are cofinally many inaccessible cardinals
+$\kappa<\delta_n$ such
+that $D_j\intersect V_{\kappa}$ is dense and semi-proper in $\Q_{<\kappa}$.
+Fix such a $\kappa$ with
+$a, e_0,\cdots e_{j-1}\in V_{\kappa}$. Then there is a countable
+$x_{j+1} \prec V_{\delta_n+1}$
+with $x_j\subseteq x_{j+1}$ such that $x_{j+1}$ is closed under $f$ and
+$x_{j+1}$ end-extends $x_j\intersect V_{\kappa}$ and $x_{j+1}$ captures $D_j\intersect V_{\kappa}$ at some $e_j$.
+Because $a\in V_{\kappa}$, $x_{j+1}\intersect \union a \in a$. Because
+$e_0,\cdots e_{j-1} \in V_{\kappa}$, $x_{j+1}$ captures $D_i$ at $e_i$ for
+$i=0,\cdots e_{j-1}$.
+
+Now let $x=\union_j x_j$. Then
+$x \prec V_{\delta_n+1}$, $x$ is countable,
+$x\intersect\union a \in a$, and $x$ is closed under  $f$. To see that $x\in b$,
+ suppose towards a contradiction that there is a $D\in x\intersect J^M_{\gamma_n}$ such that $D$ is a dense subset of $\Q_{<\delta_n}^M$ and $x$ does not capture
+$D$ and let $D$ be the least such set under our fixed wellorder. Let $j$ be least such that $D\in x_j$. But then $x_j$ does not capture $D$ so $D=D_j$ and so by our construction $x_{j+1}$ caputures
+$D_j$ at $e_j$ and since $x$ end-extends $x_{j+1}\intersect V_{\kappa}$ for some $\kappa$
+with $e_j\in V_{\kappa}$, $x$ captures $D$.
+\end{proof}
+
+\begin{claim}[Claim 2]
+For $n\in\omega$, for each $a\in \Q_{<\delta_n}^M$ there is a $b\in \Q_{<\delta_{n+1}}^M$ such
+that $b < a$ and
+$$b\forces\Gdot\intersect \Q_{<\deltacheck_n}\text{ is } J^M_{\gammacheck_n}\text{ generic.}$$
+More precisely,
+for all $D\in J^M_{\gamma_n}$ such that $D$ is a dense
+subset of $\Q_{<\delta_n}^M$, and for all $c\in \Q_{<\gamma}^M$ with
+$c\leq b$, there is a $d\subseteq c$, $d\in \Q_{<\gamma}^M$, and
+there is an $e\in D$ such that $d < e$.
+\end{claim}
+\begin{subproof}[proof of Claim 2.]
+Fix $n\in\omega$ and $a\in \Q_{<\delta_n}^M$. Let $b$ be as in Claim 1.
+Then $b\in \Q_{<\delta_{n+1}}^M$ and
+$b<a$. Fix $D\in J^M_{\gamma_n}$ such that $D$ is a dense
+subset of $\Q_{<\delta_n}^M$, and fix $c\in \Q_{<\gamma}^M$ with
+$c\leq b$.
+
+Let $\dprime=\setof{x\in c}{D\in x}$. Then $\dprime$ is stationary
+and for all $x\in\dprime$, since $x\intersect V^M_{\delta_n+1}\in b$,
+$x$ captures $D$. There is an $e\in D$ such that, letting
+$d=\setof{x\in\dprime}{x \text{ captures } D \text{ at } e}$, $d$ is stationary.
+So $d<e$.
+\end{subproof}
+
+To finish the proof of Lemma  \ref{LadderGeneric}, let
+$\sequence{D^n_k}{k\in\omega}$ enumerate the dense subsets of
+$\Q_{<\delta_n}^M$ in $J^M_{\gamma_n}$, for each $n$. Define by induction on
+$n$ a sequence of conditions $a_n\in\Q_{<\gamma}^M$ such that
+\begin{itemize}
+\item $a_n\in\Q^M_{<\delta_n}$,
+\item $a_{n+1} < a_n$,
+\item For $m,k \leq n$, there is an $e\in D^m_k$ such that $a_{n+1}<e$.
+\end{itemize}
+Claim 2 lets us construct such a sequence. (Notice that when defining
+$a_{n+1}$ we have an obligation to ensure that $a_{n+1}<e$ for some
+$e\in D^m_n$, for $m<n$, not only for $m=n$. But Claim 2 is strong enough
+to allow this.)
+Let $G=\setof{a\in \Q_{<\gamma}^M}{a\geq a_n \text{ for some } n}$.
+Then for $n\in\omega$,
+$G\intersect J^M_{\delta_n}$ is $\Q_{<\delta_n}^M$-generic over $J^M_{\gamma_n}$.
 
 \end{proof}
 
