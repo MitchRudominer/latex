@@ -20,7 +20,8 @@
 
 \begin{abstract}
 We identify a particular mouse, $\Mladder$, the minimal ladder mouse,
- and show that $\R\intersect \Mladder = Q_{\omega+1}$,
+that sits in the mouse order just past $M_n^{\sharp}$ for all $n$,
+ and we show that $\R\intersect \Mladder = Q_{\omega+1}$,
  the set of reals that are
 $\Delta^1_{\omega+1}$ in a countable ordinal. Thus $Q_{\omega+1}$
 is a mouse set.
@@ -61,7 +62,7 @@ set closed downwards under $\Delta^1_3$ degrees. See \cite{Proj_WO_In_Mod}.
 In 1995 Rudominer partially extended this work to pointclasses beyond the projective,
 proving the mouse set theorem for some pointclasses
 and getting partial results for others. See \cite{My_Thesis} and \cite{Mouse_Sets}.
-But even at the very first step past projective the full mouse set theorem was open.
+But even at the very first step past projective the full mouse set theorem was left open.
 
 Let $\Sigma^1_{\omega}$
 be the pointclass consisting of recursive unions of Projective sets. Consider
@@ -69,7 +70,7 @@ the projective hierarchy built over $\Sigma^1_{\omega}$:
 $\Pi^1_{\omega} = \neg \Sigma^1_{\omega}$,
 $\Sigma^1_{\omega+1} = \exists^{\R} \Pi^1_{\omega}$, etc.
 By \cite{Scales_In_LofR}, $\Sigma^1_{\omega+n} = \Powerset(\R)\intersect \Sigma_{n+1}(J_2(\R))$
-and we get the Second Periodicity Theorem: $\Sigma^1_{\omega+2n}$ and $\Pi^1_{\omega+2n+1}$ are scaled pointclasses.
+and we get a Second Periodicity Theorem: $\Sigma^1_{\omega+2n}$ and $\Pi^1_{\omega+2n+1}$ are scaled pointclasses.
 $\Sigma^1_{\omega}$ is not closed under $\forall^{\omega}$ and so is not a perfect analog of $\Sigma^1_1$.
 But $\Pi^1_{\omega+1}$ is closed under $\exists^{\omega}$ and is a good analog of $\Pi^1_1$ or $\Pi^1_3$.
 Let $Q_{\omega+1}$ be the set of reals that are $\Delta^1_{\omega+1}$ in a countable ordinal.
@@ -83,22 +84,22 @@ Woodin found a proof in the summer of 2018. Woodin transmitted the proof to Stee
 in some hand-written notes. Rudominer distilled those notes into this paper.
 
 No new technology is involved in the proof and it could have been discovered in the 1990's. The main ingredients
-of the proof are stationary tower forcing, genericity iterations, and a lemma stating that
+of the proof are Stationary Tower forcing, genericity iterations, and a lemma stating that
 all small generic extensions of a sufficiently correct, countable, transitive model of Set Theory
 meet the same equivalence classes of a thin, definable equivalence
 relation. (See Lemma \ref{hjorthlemma}.)
 
-One of the key technical ideas of the paper is that, even though
+One of the key technical themes of the paper is that, even though
 the $\delta_n$ of $\Mladder$ are only Woodin over an initial segment $P_n$
 of $\Mladder$ as opposed to all of $\Mladder$, because they are
 cardinals in $\Mladder$ we can recover some of the same properties
 that we would have if $\angles{\delta_n}$ were an $\omega$-sequence
-of Woodins in $\Mladder$. A primary example of this idea is Lemma
+of Woodins in $\Mladder$. A good example of this theme is Lemma
 \ref{LadderGeneric} which gives us a filter $G$ for the countable
 Stationary Tower of $\Mladder$ such that for all $n$,
 $G\intersect J^{\Mladder}_{\delta_n}$ is $\Q_{<\delta_n}^M$-generic over $P_n$, and this implies
 that the ultrapower $\Ult(\Mladder, G)$ has some of the same properties as an
-ultrapower by the Stationary tower up to the supremum
+ultrapower by the Stationary Tower up to the supremum
 of $\omega$ Woodin cardinals.
 
 \section{Project-like Pointclasses Just Past Projective}
@@ -207,7 +208,7 @@ where $g$ is $J^{\Mladder}_{\gamma_n}$-generic over $\Col(\omega,\delta_n)$.
 \item Let $\sequence{\delta_n,\gamma_n}{n\in\omega}$ be a ladder over $M$.
 $\delta_n$ is not necessarily fully Woodin in $M$, but $\delta_n$ is Woodin in $M$
 with respect to functions in $J^M_{\gamma_n}$.
-\item By the previous two items, we can, at lest informally, think of
+\item By the previous two items, we can, at least informally, think of
 $\Mladder$ as the least mouse
 $M$ such that for every $n\in\omega$ there is a cardinal $\delta$ of $M$ such
 that $\delta$ is ``$\Sigma^1_n$-Woodin'' in $M$.
@@ -234,7 +235,7 @@ $Q_{\omega+1} \subseteq \Mladder$.
 
 Theorem \ref{MRealsAreDefinable} was proven more than 25 years ago in
 \cite{My_Thesis} and \cite{Mouse_Sets}. We give a sketch of the proof later
-in section \ref{ProofThatMRealsAreDefinable}. The proof follows the same
+in Section \ref{section:beyond_first_pointclass}. The proof follows the same
 line of reasoning as the proof that every real in $L$ is $\Delta^1_2$ in a
 countable ordinal and the proof that every real in $M_1$ is $\Delta^1_3$ in
 a countable ordinal. Namely we show that every initial segment of $\Mladder$
@@ -1061,7 +1062,7 @@ $n$ a sequence of conditions $a_n\in\Q_{<\gamma}^M$ such that
 \begin{itemize}
 \item $a_n\in\Q^M_{<\delta_n}$,
 \item $a_{n+1} < a_n$,
-\item For $m,k \leq n$, there is an $e\in D^m_k$ such that $a_{n+1}<e$.
+\item For $m,k  n$, there is an $e\in D^m_k$ such that $a_{n+1}<e$.
 \end{itemize}
 Claim 2 lets us construct such a sequence. (Notice that when defining
 $a_{n+1}$ we have an obligation to ensure that $a_{n+1}<e$ for some
@@ -1072,6 +1073,129 @@ Then for $n\in\omega$,
 $G\intersect J^M_{\delta_n}$ is $\Q_{<\delta_n}^M$-generic over $J^M_{\gamma_n}$.
 
 \end{proof}
+
+
+\section{Eliminating the ordinal parameter}
+\label{section:eliminate_ordinal_parameterS}
+
+\section{Beyond the first pointclass}
+\label{section:beyond_first_pointclass}
+
+We believe that by combining the ideas of this paper with those from
+\cite{Mouse_Sets}, it should be possible to prove the mouse set theorem
+for projective-like pointclasses beyond $\Pi^1_{\omega+1}$.
+
+Recall that $\Sigma^1_{\omega+n} = \Powerset(\R)\intersect \Sigma_{n+1}(J_2(\R))$.
+In \cite{Mouse_Sets}, the pointclasses were named differently. In that paper
+the following pointclasses were defined. For $\alpha\geq 2$,
+$$\Sa{0}=\Powerset(\R)\intersect \Sigma_{1}(J_{\alpha}(\R)),$$
+and for $n\geq 0$
+\begin{align*}
+\Pan &= \neg \San, \\
+\Dan &= \San \intersect \Pan, \\
+\Sa{n+1} &= \exists^{\R} \Pan.
+\end{align*}
+
+The $\Sigma^1_{\omega}$ of this paper is equal
+to the $\Sigma_{(2,0)}$ of \cite{Mouse_Sets}, and the
+$\Pi^1_{\omega+1}$ of this paper is
+equal to the $\Pi_{(2,1)}$ of \cite{Mouse_Sets}.
+
+The pointclasses $\San,\Pan,\Dan$ are only interesting for $\alpha$ such that
+$\alpha$ begins a $\Sigma_1$-gap and $\JalphaR$ is not admissible. In
+\cite{Mouse_Sets} such $\alpha$ were called \emph{projective-like}.
+
+For $\alpha=2$, $\Sigma_{(2,n)}=\Powerset(\R)\intersect \Sigma_{n+1}(J_2(\R))$,
+but for arbitrary projective-like  $\alpha$ it is not necessarily true that
+$\San = \Powerset(\R)\intersect \Sigma_{n+1}(\JalphaR)$.
+
+For $\alpha$ projective-like and $n\geq 1$, \cite{Mouse_Sets} defines
+
+$$\Aan\defeq\setof{x\in\R}{\exists \xi<\omega_1\, x\in \Dan(\xi)}$$
+
+and defines
+
+$$\Aa{0} = \Union{\beta<\alpha} \OD^{\JofR{\beta}}.$$
+
+The $Q^1_{\omega+1}$ of this paper is equal to the $A_{(2,1)}$ of \cite{Mouse_Sets}.
+
+In \cite{Mouse_Sets} also the mice were named differently. In that paper
+a hierarchy of mouse-smallness properties called $(\alpha,n)$-petite, for $\alpha\geq 1$
+and $n\in\omega$ was defined. The $\Mladder$ of this paper is equal to the least mouse
+$M$ that is not $(2,1)$-petite.
+
+Theorem 7.16 of \cite{Mouse_Sets} gives a comparison theorem for
+$(\alpha,n)$-petite premice.  Corollary 7.17 of \cite{Mouse_Sets} uses the comparison
+theorem to show that if $M$ is iterable and $(\alpha,n)$-petite, then
+$\R\intersect M \subseteq A_{(\alpha,n)}$. Taking $\alpha=2$ and $n=1$, and translating into the language of the current paper, we get that
+$\R\intersect \Mladder \subseteq Q^1_{\omega+1}$, which is Theorem \ref{MRealsAreDefinable} of this paper. We now present a sketch of the proof of this theorem.
+The interested reader can consult \cite{Mouse_Sets} for details.
+
+\begin{proof}[Sketch of proof of Theorem \ref{MRealsAreDefinable}]
+Let $M$ be a countable premouse. Say that $M$ is \emph{$\Pi^1_{\omega}$-iterable}
+iff $M$ is $n$-iterable for all $n$.
+\end{proof}
+
+To formulate a mouse set theorem for larger pointclasses, one must give a definition
+of the appropriate mouse for each pointclass. In \cite{Mouse_Sets} that was done
+via the recursive definition of $(\alpha,n)$-petite.  \cite{Mouse_Sets} develops
+the recursive machinery only up through the ordinal $\alpha=\omega_1^{\omega_1}$.
+We believe, but we haven't checked carefully, that by combining the ideas of
+this paper with those from
+\cite{Mouse_Sets}, it should be possible to prove the following conjecture:
+
+\begin{conjecture}
+\label{PetiteIsRight}
+Assume $\AD^{\LofR}$. Suppose that
+$(2,0) \lexleq (\alpha,n) \lexleq (\omega_1^{\omega_1}, 0)$.
+Let $M$ be the least fully iterable mouse that is not $(\alpha, n)$-petite.
+Then $\R\intersect M = \Aan$.
+\end{conjecture}
+
+Corollary 7.17 of \cite{Mouse_Sets} gives $\R\intersect M \subseteq \Aan$
+and Theorem 8.1 of \cite{Mouse_Sets} gives $\Aan \subseteq \R\intersect M$
+in the case that $\cof(\alpha)>\omega$ or $n=0$. What was missing from the
+induction in \cite{Mouse_Sets} was a proof that $\Aan\subseteq \R \intersect M$
+in the case that $\cof(\alpha)=\omega$ (or $\alpha$ a successor ordinal) and $n>0$.
+The ideas of the current paper
+should be able to be generalized to fill that gap.
+
+A warning for readers of \cite{Mouse_Sets}: That paper contains some material which, with the benefit of hindsight,
+we now know is off-point. Because it was unknown whether or not
+$\Aan\subseteq \R\intersect M$, where $M$ is the least mouse that is not
+$(\alpha,n)$-petite, \cite{Mouse_Sets} defines a second hierarchy of mouse
+smallness properties called $(\alpha,n)$-small. The least mouse that is not
+$(\alpha,n)$-small is greater in the mouse hierarchy than the least mouse that
+is not $(\alpha,n)$-petite. For example, the least mouse that is not
+$(2,1)$-petite is $\Mladder$, but the least mouse that is not
+$(2,1)$-small is $M^{\text{lda}}$, the minimal \emph{admissible} ladder mouse,
+i.e. the minimal mouse $M$ such that $M$ is a ladder-mouse and
+$M$ is admissible. Thus $\Mladder\properseg M^{\text{lda}}$.
+
+In
+\cite{Mouse_Sets} it was shown that
+$\R\intersect \Mladder \subseteq Q_{\omega+1}\subseteq \R\intersect M^{\text{lda}}$, and in general that $\R \intersect M \subseteq \Aan\subseteq \R\intersect\Mprime$, where $M$ is the least mouse that is not
+$(\alpha,n)$-petite and $\Mprime$ is the least mouse that is not
+$(\alpha,n)$-small. It was then conjectured that
+$\Aan=\R\intersect \Mprime$, where $\Mprime$ is the least mouse that is not
+$(\alpha,n)$-small. But we now know that this conjecture was incorrect. The
+current
+paper shows that $Q_{\omega+1}=\R\intersect\Mladder$ and so the conjecture
+that $Q_{\omega+1}=\R\intersect M^{\text{lda}}$ is false. In this paper we
+replace the false conjecture with Conjecture \ref{PetiteIsRight}.
+
+The reader of \cite{Mouse_Sets} should be warned that they will encounter
+material about $(\alpha,n)$-\emph{big} premice
+(i.e. premice which are not $(\alpha,n)$-small) which should essentially
+be ignored as this material was introduced in support of the false conjecture.
+In other words, because it was not know how to prove that $Q_{\omega+1}$
+was contained in the minimal ladder mouse, \cite{Mouse_Sets} introduced the
+notion of the minimal admissible ladder mouse and proved that
+$Q_{\omega+1}$ was contained in that mouse. But the current paper gives a
+proof that $Q_{\omega+1}$ is contained in the minimal ladder mouse and
+that indicates
+that the introduction of the minimal admissible ladder mouse was an
+unnecessary distraction.
 
 \bibliographystyle{amsalpha}
 \bibliography{math}
