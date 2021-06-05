@@ -1081,8 +1081,8 @@ $G\intersect J^M_{\delta_n}$ is $\Q_{<\delta_n}^M$-generic over $J^M_{\gamma_n}$
 \section{Beyond the first pointclass}
 \label{section:beyond_first_pointclass}
 
-We believe that by combining the ideas of this paper with those from
-\cite{Mouse_Sets}, it should be possible to prove the mouse set theorem
+By combining the ideas of this paper with those from
+\cite{Mouse_Sets}, we believe that it should be possible to prove the mouse set theorem
 for projective-like pointclasses beyond $\Pi^1_{\omega+1}$.
 
 Recall that $\Sigma^1_{\omega+n} = \Powerset(\R)\intersect \Sigma_{n+1}(J_2(\R))$.
@@ -1102,7 +1102,8 @@ $\Pi^1_{\omega+1}$ of this paper is
 equal to the $\Pi_{(2,1)}$ of \cite{Mouse_Sets}.
 
 The pointclasses $\San,\Pan,\Dan$ are only interesting for $\alpha$ such that
-$\alpha$ begins a $\Sigma_1$-gap and $\JalphaR$ is not admissible. In
+$\alpha$ begins a $\Sigma_1$-gap (see \cite{Scales_In_LofR})
+and $\JalphaR$ is not admissible. In
 \cite{Mouse_Sets} such $\alpha$ were called \emph{projective-like}.
 
 For $\alpha=2$, $\Sigma_{(2,n)}=\Powerset(\R)\intersect \Sigma_{n+1}(J_2(\R))$,
@@ -1120,7 +1121,7 @@ $$\Aa{0} = \Union{\beta<\alpha} \OD^{\JofR{\beta}}.$$
 The $Q^1_{\omega+1}$ of this paper is equal to the $A_{(2,1)}$ of \cite{Mouse_Sets}.
 
 In \cite{Mouse_Sets} also the mice were named differently. In that paper
-a hierarchy of mouse-smallness properties called $(\alpha,n)$-petite, for $\alpha\geq 1$
+a hierarchy of mouse-smallness properties called $(\alpha,n)$-\emph{petite}, for $\alpha\geq 1$
 and $n\in\omega$ was defined. The $\Mladder$ of this paper is equal to the least mouse
 $M$ that is not $(2,1)$-petite.
 
@@ -1128,12 +1129,83 @@ Theorem 7.16 of \cite{Mouse_Sets} gives a comparison theorem for
 $(\alpha,n)$-petite premice.  Corollary 7.17 of \cite{Mouse_Sets} uses the comparison
 theorem to show that if $M$ is iterable and $(\alpha,n)$-petite, then
 $\R\intersect M \subseteq A_{(\alpha,n)}$. Taking $\alpha=2$ and $n=1$, and translating into the language of the current paper, we get that
-$\R\intersect \Mladder \subseteq Q^1_{\omega+1}$, which is Theorem \ref{MRealsAreDefinable} of this paper. We now present a sketch of the proof of this theorem.
+$\R\intersect \Mladder \subseteq Q^1_{\omega+1}$, which is Theorem \ref{MRealsAreDefinable} of this paper.
+Below we present a sketch of the proof of this theorem.
 The interested reader can consult \cite{Mouse_Sets} for details.
 
-\begin{proof}[Sketch of proof of Theorem \ref{MRealsAreDefinable}]
-Let $M$ be a countable premouse. Say that $M$ is \emph{$\Pi^1_{\omega}$-iterable}
-iff $M$ is $n$-iterable for all $n$.
+\begin{definition}
+A countable premouse $M$ is $n$-iterable iff
+player II wins the weak iteration
+game on $M$ of length $n$. (See \cite{Many_Woodins}.)
+\end{definition}
+
+
+\begin{remarks}
+\quad
+\begin{itemize}
+\item Let $P(x) \iff x\in\R $ codes a countable premouse $M$ and $M$ is $n$-iterable.
+Then $P$ is projective.
+\item By \cite{Proj_WO_In_Mod}, if $M$ and $N$ are $n$-small premice that project to $\omega$
+and $M$ is fully iterable and $N$ is $n$-iterable, then $M\initseg N$ or $N\initseg M$.
+\end{itemize}
+\end{remarks}
+
+
+\begin{definition}
+A premouse $M$ is \emph{$\Pi^1_{\omega}$-iterable} iff $M$ is $n$-iterable for all $n$.
+\end{definition}
+
+\begin{remarks}
+\quad
+\begin{itemize}
+\item  Let $P(x) \iff x\in\R $ codes a countable premouse $M$ and $M$ is $\Pi^1_{\omega}$-iterable.
+Then $P$ is $\Pi^1_{\omega}$.
+\item $\Pi^1_{\omega}$-iterable was called $\Pi_{(2,0)}$-iterable in \cite{Mouse_Sets}.
+\end{itemize}
+\end{remarks}
+
+\begin{definition}
+A premouse $M$ is \emph{ladder-small} iff no initial segment of $M$ is a ladder mouse.
+\end{definition}
+
+\begin{remark}
+Ladder-small is the same as $(2,1)$-petite from \cite{Mouse_Sets}.
+\end{remark}
+
+
+\begin{lemma}
+\label{comparison_lemma}
+Suppose $M$ and $N$ are countable premice that project to $\omega$ and $M$ is
+ladder-small and fully iterable and $N$ is $\Pi^1_{\omega}$-iterable.
+Then $M\initseg N$ or $N\initseg M$.
+\end{lemma}
+\begin{proof}[sketch of proof]
+This is essentially part (3) of Theorem 7.16 of \cite{Mouse_Sets}, with $(\alpha,n)=(2,0)$
+and $\delta=0$.
+Here we give only a sketch.
+
+Compare $M$ and $N$ forming iteration trees $\cT$ on $M$
+and $\cU$ on $N$. On the $M$ side, at limits, choose branches by iterability.
+On the $N$ side, at limits, choose the unique cofinal, wellfounded
+branch $b$ such that $Q(b,\cU)$ is $\Pi^1_{\omega}$-iterable above $\delta(b,\cU)$,
+if there is a unique such branch. If it ever occurs that there is not a
+unique such branch, then we can show that for each $n$, there must be a maximal
+branch $b_n$ such that $Q(b_n,\cU)$ is not $n$-small above $\delta(b_n,\cU)$.
+Since $\delta(b_n, \cU)$ remains a cardinal, the process has generated a ladder.
+This is a contradiction since we assumed that $M$ is ladder-small.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{MRealsAreDefinable}]
+Let $x\in\R\intersect\Mladder$ and we will show that $x\in Q_{\omega+1}$. Let $\xi$
+be the rank of $x$ in the order of construction of $\Mladder$. Let $N\initseg\Mladder$
+be the $\initseg$-least initial segment of $M$ that contains $x$ and projects
+to $\omega$. By Lemma \ref{comparison_lemma}, if $\Nprime$ is any mouse that
+projects to $\omega$ and is $\Pi^1_{\omega}$-iterable, then $N\initseg\Nprime$
+or $\Nprime\initseg N$. Thus $x$ is the unique real such that there is some
+$\Pi^1_{\omega}$-iterable mouse $\Nprime$ projecting to $\omega$ such that
+$x$ is the $\xi$th real in the order of construction of $\Nprime$. This gives
+a definition for $\singleton{x}$ that is $\Sigma^1_{\omega+1}$ in any code
+for $\xi$. So $x$ is $\Delta^1_{\omega+1}(\xi)$, so $x\in Q_{\omega+1}$.
 \end{proof}
 
 To formulate a mouse set theorem for larger pointclasses, one must give a definition
