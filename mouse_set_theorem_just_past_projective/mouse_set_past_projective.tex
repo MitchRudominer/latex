@@ -87,7 +87,8 @@ in some hand-written notes. Rudominer distilled those notes into this paper.
 No new technology is involved in the proof and it could have been discovered in the 1990's. The main ingredients
 of the proof are Stationary Tower forcing, genericity iterations, and a lemma stating that
 all small generic extensions of a sufficiently correct, countable, transitive model of Set Theory
-meet the same equivalence classes of a thin, definable equivalence
+meet the same equivalence classes of a thin, sufficiently
+definable equivalence
 relation. (See Lemma \ref{hjorthlemma}.)
 
 One of the key technical themes of the paper is that, even though
@@ -1291,60 +1292,85 @@ a ladder over $M$.
 \end{definition}
 
 \begin{theorem}
+\label{theta_is_definable}
 Fix $z\in\R$, let  $\theta_z<\omega_2^{\Mladder(z)}$ be the
 minimum of the ranks of all
 $\bPi^1_{\omega}$ trees in $\Mladder(z)$ that are  incorrectly wellfounded for $\Mladder(z)$.
-Then $\theta_z$ is definable in $J^{\Mladder(z)}_{\omega_2^{\Mladder(z)}}$ without parameters.
+Then $\theta_z$ is definable in $J^{\Mladder(z)}_{\omega_2^{\Mladder(z)}}$, uniformly in $z$,
+without parameters (other than the extender sequence of the mouse).
 \end{theorem}
-\begin{proof}
-For simplicity we will ignore the ordinal parameter $z$ and prove the theorem for $\Mladder$.
 
-Let $\thetaprime=$ the supremum of the ranks of all
-$\bPi^1_{\omega}$ trees in $\Mladder$ that are correctly wellfounded for $\Mladder$. We
-will give a definition for $\thetaprime$. This suffices since $\theta$ is the
-minimum rank of a wellfounded $\bPi^1_{\omega}$ tree $T\in \Mladder$ with $\rank(T)>\thetaprime$.
+The $\theta_z$ from Theorem \ref{theta_is_definable} is exactly the ordinal parameter
+from the proof of theorem \ref{QuasiCorrectness}.
+
+For simplicity we will ignore the real parameter $z$ and prove the theorem for $\Mladder$.
 
 
+\begin{definition}
 Let $\sequence{\sigma_n}{n\in\omega}$ enumerate the sentences in the language of premice.
 
 For $n\in\omega$ and $w\in\WO$, let
 $S_{n,w}=\big\{x\in \R \,\mid\, x$  codes a $\Pi^1_{\omega}$-iterable,
 ladder-small $\omega$-mouse $M$ such that $\ord(M)=|w|$ and  $M\models\sigma_n\big\}$.
 
-$S_{n,w}$ is $\Pi^1_{\omega}(w)$. Let $T_{n,w}$ be a $\Pi^1_{\omega}(w)$-tree
-for $S_{n,w}$.
+$S_{n,w}$ is $\Pi^1_{\omega}(w)$.
 
-\begin{claim}[Claim 1]
+For $n\in\omega$ and $w\in\WO$, uniformly, fix $h_{n,w}$ a $\Pi^1_{\omega}(w)$-code for $S_{n,w}$
+and let $T_{n,w}=T^{h_{n,w}}$.
+\end{definition}
+
+\begin{lemma}
+\label{T_n_w_correctly_wellfounded}
 Let $P\properseg J^{\Mladder}_{\omega_1^{\Mladder}}$ be an $\omega$-mouse. Let $w\in\WO$ with
 $|w|=\ord(P)$. Fix $n\in\omega$
-and suppose that $P\models \neg \sigma_n$. Then $T_{n,w}$ is wellfounded.
-\end{claim}
-\begin{subproof}[proof of Claim 1.]
+and suppose that $P\models \neg \sigma_n$. Then $T_{n,w}$ is wellfounded (in $V$.)
+\end{lemma}
+\begin{proof}
 $p[T_{n,w}]=S_{n,w} = \emptyset$ because if $M$ is a $\Pi^1_{\omega}$-iterable $\omega$-mouse with
 $\ord(M) = \ord(P)$, then by Lemma \ref{comparison_lemma}, $M=P$, so $M\not\models\sigma_n$.
-\end{subproof}
+\end{proof}
 
-For any mouse $M$ such that $M\models \omega_1$ exists,
+\begin{definition}
+For any projectively correct mouse $M$ such that $M\models \omega_1$ exists,
 let $\NSat^M=\big\{ (n,w) \, \mid \, n\in\omega$ and $w\in\WO$ with $|w|<\omega_1^{M}$ and
-for $P=J^M_{|w|}$, $P$ is an $\omega$-mouse and $P\models \neg \sigma_n \big\}$.
+for $P=\cJ^M_{|w|}$, $P$ is an $\omega$-mouse and $P\models \neg \sigma_n \big\}$.
 
-By Claim 1, if $(n,w)\in \NSat^{\Mladder}$ then $T^{\Mladder}_{n,w}$ is correctly wellfounded for
-$\Mladder$.
+If $T=T^M_{n,w}$ for $(n,w)\in\NSat^M$ then we say that $T$ is an $\NSat$ tree of $M$.
+\end{definition}
 
+By Lemma \ref{T_n_w_correctly_wellfounded}, all of the $\NSat$ trees of $\Mladder$
+are correctly wellfounded for $\Mladder$. The key to the proof of Theorem
+ \ref{theta_is_definable} is that the ranks of the $\NSat$ trees in $\Mladder$ are cofinal
+ in the supremum of the ranks of all correctly wellfounded trees in $\Mladder$.
 
-\begin{claim}[Claim 2]
+\begin{lemma}
+\label{Nsat_trees_are_cofinal}
 Let $T\in\Mladder$ be a $\bPi^1_{\omega}$-tree that is correctly wellfounded for $\Mladder$.
 Then there is an $(n,w)\in \NSat^{\Mladder}$ such that $\rank(T) < \rank(T^{\Mladder}_{n,w})$.
-\end{claim}
+\end{lemma}
 
-This suffices to prove the theorem because then
-$$\thetaprime=\sup\setof{\rank(T^{\Mladder}_{n,w})}{(n,w)\in \NSat^{\Mladder}}.$$
+First we give the proof of Theorem \ref{theta_is_definable} assuming Lemma
+\ref{Nsat_trees_are_cofinal}.
 
-Since $\NSat^{\Mladder}$ is definable without parameters in
-$J^{\Mladder}_{\omega_2^{\Mladder}}$, this gives us the desired definition for $\thetaprime$.
+\begin{proof}[proof of Theorem \ref{theta_is_definable}]
+As mentioned above, for simplicity we will ignore the real parameter $z$ and prove
+the theorem for $\Mladder$.
 
-\begin{subproof}[proof of Claim 2.]
-\end{subproof}
+Let $\thetaprime = $ the supremum of the ranks of all $\bPi^1_{\omega}$-trees
+in $\Mladder$ that are correctly wellfounded for $\Mladder$. By Lemmas
+\ref{T_n_w_correctly_wellfounded} and \ref{Nsat_trees_are_cofinal}, $\thetaprime =$
+the supremum of the ranks of the $\NSat$ trees in $\Mladder$.
+Since $\NSat^{\Mladder}$
+is definable without parameters in $J^{\Mladder}_{\omega_2^{\Mladder}}$,
+this gives a definition of $\thetaprime$ that is also
+so definable. Then $\theta^{\Mladder}$ is the minimum rank of a wellfounded
+$\bPi^1_{\omega}$-tree $T\in\Mladder$ with $\rank(T)>\thetaprime$.
+\end{proof}
+
+
+
+Now we turn to the proof of Lemma \ref{Nsat_trees_are_cofinal}.
+
 Let $\pi:\Mladder\to\Mstar$ be given Lemma \ref{m_star_existence}.
 
 Let $T^* = \pi(T)$. It suffices to show that
@@ -1354,7 +1380,6 @@ Notice that $\Mstar\models\text{``}T_{n,w}$ is wellfounded for all $(n,w)\in \NS
 since $\Mladder$ satisfies that sentence.
 
 [THIS PROOF IS NOT YET COMPLETE]
-\end{proof}
 
 \bibliographystyle{amsalpha}
 \bibliography{math}
