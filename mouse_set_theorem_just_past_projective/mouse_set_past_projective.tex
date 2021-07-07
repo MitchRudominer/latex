@@ -1285,6 +1285,8 @@ unnecessary distraction.
 In this section we show that the ordinal parameter $\theta$ in Theorem
 \ref{QuasiCorrectness} can be eliminated in the case that $M=\Mladder$.
 
+The ideas and results in this section are due to John Steel.
+
 \begin{definition}
 If $z\in\R$ then $\Mladder(z)$ refers to the $z$-mouse which is like $\Mladder$ but built over $z$.
 That is, $\Mladder(z)$ is the $\initseg$-least fully-iterable $z$-mouse $M$ for which there is
@@ -1370,16 +1372,61 @@ $\bPi^1_{\omega}$-tree $T\in\Mladder$ with $\rank(T)>\thetaprime$.
 
 
 Now we turn to the proof of Lemma \ref{Nsat_trees_are_cofinal}.
-
-Let $\pi:\Mladder\to\Mstar$ be given Lemma \ref{m_star_existence}.
-
-Let $T^* = \pi(T)$. It suffices to show that
+Let $T\in\Mladder$ be a $\bPi^1_{\omega}$-tree that is correctly wellfounded for $\Mladder$.
+Let $\pi:\Mladder\to\Mstar=\Ult(M,G)$ be the Stationary Tower embedding given by
+the proof Lemma \ref{m_star_existence}. Let $T^* = \pi(T)$. It suffices to show that
 $\Mstar\models\text{``}\rank(T^*) < \rank(T_{n,w})$ for some $(n,w)\in \NSat^{\Mstar}$''.
 
+Since $T$ is correctly wellfounded for $\Mladder$, $T^*$ is correctly wellfounded for $\Mstar$.
 Notice that $\Mstar\models\text{``}T_{n,w}$ is wellfounded for all $(n,w)\in \NSat$''
-since $\Mladder$ satisfies that sentence.
+since $\Mladder$ satisfies that sentence. To find an $n,w\in M^*$ such that
+$\Mstar\models\text{``}\rank(T^*) < \rank(T_{n,w})$'', we will look for an
+$(n,w)\in \NSat^{\Mstar}$
+such that $(T_{n,w})^{\Mstar}$ is incorrectly wellfounded for $\Mstar$.
+We can accomplish this because Lemma \ref{T_n_w_correctly_wellfounded} is not
+true if we repalce $\Mladder$ with $\Mstar$. That is, $\Mstar$ has non-standard
+countable initial segments.
 
-[THIS PROOF IS NOT YET COMPLETE]
+Let $\Pstar$ be the least initial segment of $\Mstar$ such that
+$\omega_1^{\Mladder}\in\Pstar$ and
+and $\Pstar$ projects to $\omega$. There is such a $\Pstar$ since
+$\ord(\Mladder)=\omega_1^{\Mstar}$. Notice that $\Pstar$ is ladder-small and
+$\Pi^1_{\omega}$-iterable since every countable initial segment of $\Mladder$
+has that property and $\Mstar$ is $\Pi^1_{\omega}$-correct.
+
+\begin{lemma}
+\label{taller_mice_are_nonstandard}
+Let $P$ be a  $\Pi^1_{\omega}$-iterable,
+ladder-small $\omega$-mouse with $\omega_1^{\Mladder}\in P$.
+Let $w\in\WO$ be such that $|w|=\ord(P)$.
+Then there is an $n$ such that $P\models \neg\sigma_n$ and $T_{n,w}$ is illfounded.
+\end{lemma}
+\begin{proof}
+If the statement of the lemma were not true, then we would have that for all $n$,
+the following are equivalent
+\begin{enumerate}
+\item[(a)] $P\models\sigma_n$
+\item[(b)] There is a $\Pi^1_{\omega}$-iterable, ladder small $\omega$-mouse $N$,
+with $\ord(N)=|w|$, such that $N\models\sigma_n$.
+\item[(b)] For all $\Pi^1_{\omega}$-iterable, ladder small $\omega$-mice $N$,
+with $\ord(N)=|w|$, $N\models\sigma_n$.
+\end{enumerate}
+This means that the theory of $P$ is $\DeltaOneOmegaPlusOne(w)$. By Theorem
+\ref{DefinableRealsAreInM}, the theory of $P$ is in $\Mladder$. But $P$ is
+sound and projects to $\omega$ so it is coded by its theory. So
+$P\in\Mladder$. This is a contradiction since $P$ would be countable in
+$\Mladder$ but $\omega_1^{\Mladder}\in P$.
+\end{proof}
+
+Let $w\in\WO\intersect\Mstar$ with $|w|=\ord(\Pstar)$ and let
+$n$ be given by Lemma \ref{taller_mice_are_nonstandard}. Then
+$(n,w)\in \NSat^{\Mstar}$ and
+$(T_{n,w})^{\Mstar}$ is incorrectly wellfounded for $\Mstar$. If we could apply
+Theorem \ref{CorrectBelowIncorrect} to $\Mstar$ we could now conclude
+that $\rank(T^*) < \rank(T_{n,w})^{\Mstar}$. But the proof of
+Theorem \ref{CorrectBelowIncorrect} does not apply to $\Mstar$ because it is
+not an iterable ladder-mouse.
+
 
 \bibliographystyle{amsalpha}
 \bibliography{math}
