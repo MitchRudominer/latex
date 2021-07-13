@@ -1425,7 +1425,61 @@ $(T_{n,w})^{\Mstar}$ is incorrectly wellfounded for $\Mstar$. If we could apply
 Theorem \ref{CorrectBelowIncorrect} to $\Mstar$ we could now conclude
 that $\rank(T^*) < \rank(T_{n,w})^{\Mstar}$. But the proof of
 Theorem \ref{CorrectBelowIncorrect} does not apply to $\Mstar$ because it is
-not an iterable ladder-mouse.
+not an iterable ladder-mouse. Nevertheless it turns out that
+Theorem \ref{CorrectBelowIncorrect} is also true for $\Mstar$.
+
+\begin{lemma}
+\label{StarCorrectBelowIncorrect}
+Let $G$ be given by Lemma \ref{LadderGeneric} for $\Mladder$. That is,
+let $\gamma=\ord(\Mladder)$ and let $G\subset \Q_{<\gamma}^{\Mladder}$ be such that for
+$n\in\omega$, $G\intersect J^{\Mladder}_{\delta_n}$ is
+$\Q_{<\delta_n}^{\Mladder}$-generic over $J^{\Mladder}_{\gamma_n}$.
+Let $\pi:\Mladder\to\Mstar$ be the stationary tower ultrapower.
+Let $T,S\in\wfp(\Mstar)$ be $\bPi^1_{\omega}$-trees in $\Mstar$.
+Suppose that $T$ is correctly wellfounded for $\Mstar$ and
+$S$ is incorrectly wellfounded for $\Mstar$. Then $\rank(T) < \rank(S)$, (or $S$ is illfounded).
+\end{lemma}
+
+Towards a proof of Lemma \ref{StarCorrectBelowIncorrect},
+let $h_1,h_2$ be $\PiOneOmega$ codes and let $x_1,x_2\in\R$ be such that
+$T=(T^{h_1}(x_1))^{\Mstar}$ and $S=(T^{h_2}(x_2))^{\Mstar}$.
+If $x_1,x_2\in\Mladder$ then $T=\pi((T^{h_1}(x_1))^{\Mladder})$ and
+$S=\pi((T^{h_2}(x_2))^{\Mladder})$. $(T^{h_1}(x_1))^{\Mladder}$ is correctly wellfounded for $\Mladder$,
+and $(T^{h_2}(x_2))^{\Mladder}$ is incorrectly wellfounded for $\Mladder$, so
+$\rank((T^{h_1}(x_1))^{\Mladder})<\rank((T^{h_2}(x_2))^{\Mladder})$. So
+$\Mstar\models \rank(T) < \rank(S)$. So $\rank(T) < \rank(S)$ or $S$ is illfounded.
+But it is not necessarily true that $x_1,x_2\in\Mladder$. However it is true that
+$x_1,x_2$ are in a generic extension of $\Mladder$ and that is enough to prove Lemma \ref{StarCorrectBelowIncorrect}.
+For suppose $x_1,x_2\in\Mladder[g]$ with $g\in\Mstar$. We can form the stationary tower ultrapower
+$\psi:\Mladder[g]\to\Nstar$. By the argument above,
+$\Nstar\models\rank((T^{h_1}(x_1))^{\Nstar})<\rank((T^{h_2}(x_2))^{\Nstar})$. To complete the proof
+we will show that $T^{h_i}(x_i))^{\Nstar}=T^{h_i}(x_i))^{\Mstar}$ for $i=1,2$.
+
+\begin{lemma}
+Let $G$ be given by Lemma \ref{LadderGeneric} for $\Mladder$. That is,
+let $\gamma=\ord(\Mladder)$ and let $G\subset \Q_{<\gamma}^{\Mladder}$ be such that for
+$n\in\omega$, $G\intersect J^{\Mladder}_{\delta_n}$ is
+$\Q_{<\delta_n}^{\Mladder}$-generic over $J^{\Mladder}_{\gamma_n}$.
+Let $\pi:\Mladder\to\Mstar$ be the stationary tower ultrapower.
+
+Fix $m\in\omega$ and let $g\in \Mstar$ be $\Col(\omega,\delta_m)$-generic over $\Mladder$.
+
+Let $z\in\R\intersect \Mladder[g]$ code $g$ so that $\Mladder[g]$ can be re-organized
+as a $z$-mouse, that we call $N$.
+
+Let $H$ be given by Lemma \ref{LadderGeneric} (relativized to $z$) for $N$. That is,
+let $H\subset \Q_{<\gamma}^{N}$ be such that for
+$n>m$, $H\intersect J^{N}_{\delta_n}$ is
+$\Q_{<\delta_n}^N$-generic over $J^{N}_{\gamma_n}$.
+Let $\psi:N\to\Nstar$ be the stationary tower ultrapower.
+
+Let $x\in\R\intersect N$. Let $h$ be a $\PiOneOmega$-code for a subset of $\R^2$.
+Then $(T_h(x))^{\Mstar} = (T_h(x))^{\Nstar}$.
+\end{lemma}
+
+
+
+
 
 
 \bibliographystyle{amsalpha}
