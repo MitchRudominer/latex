@@ -421,9 +421,9 @@ Then $\sigma^M:(\bdelta^1_{\omega})^M\to\bdelta^1_{\omega}$ is the union of all
 functions $\sigma^M_{\varphi}$ where $\varphi$ is a (lightface) projective norm on a
 (lightface) projective set.
 
-Let $h$ be a $\Pi^1_{\omega}$ code. We extend $\sigma^M$ to the function
-$\sigma^M:(T^h)^M\to T^h$ given by
-$$\sigma^M\left( (\angles{n_0,\cdots, n_k}, \angles{\alpha_0, \cdots, \alpha_k}  ) \right) =
+Let $h$ be a $\Pi^1_{\omega}$ code. Then we define
+$\sigma^{M,h}:(T^h)^M\to T^h$ by
+$$\sigma^{M,h}\left( (\angles{n_0,\cdots, n_k}, \angles{\alpha_0, \cdots, \alpha_k}  ) \right) =
 (\angles{n_0,\cdots, n_k}, \angles{\sigma^M(\alpha_0), \cdots, \sigma^M(\alpha_k)}  )$$
 \end{definition}
 
@@ -431,7 +431,7 @@ $$\sigma^M\left( (\angles{n_0,\cdots, n_k}, \angles{\alpha_0, \cdots, \alpha_k} 
 \label{tree_embedding_lemma}
 Let $M$ be a countable, transitive, projectively correct model of $\ZFC$.
 Let $h$ be a $\PiOneOmega$ code.
-Let $\sigma^M$ be as defined above. Then $\sigma^M:(T^h)^M\to T^h$ is a tree isomorphism
+Then $\sigma^{M,h}:(T^h)^M\to T^h$ is a tree isomorphism
 onto a subtree of $T^h$.
 \end{lemma}
 \begin{proof}
@@ -439,9 +439,9 @@ If $(s,u) = (\angles{n_0,\cdots, n_k}, \angles{\alpha_0, \cdots, \alpha_k}  ) \i
 then there is a real $x\in M \intersect G^0_{h(0)} \intersect \cdots \intersect G^k_{h(k)}$ such
 that $x(i)=n_i$ and $\alpha_i=(\varphi^{i_0}_{h(i_0),i_1}(x))^M$  for $0\leq i \leq k$.
 So $\sigma^M(\alpha_i) = \varphi^{i_0}_{h(i_0),i_1}(x)$ for $0\leq i \leq k$ and so
-$x$ witnesses that  $\sigma^M(s,u)\in T^h$.
+$x$ witnesses that  $\sigma^{M,h}(s,u)\in T^h$.
 
-That $\sigma^M$ is injective, preserves the lengths of finite sequences and sequence extension
+That $\sigma^{M,h}$ is injective, preserves the lengths of finite sequences and sequence extension
 is obvious.
 \end{proof}
 
@@ -702,12 +702,12 @@ necessarily wellfounded and $\Mstar$ is not necesarily a model of $\ZFC$, but ra
 rank initial segments that are. Thus we have
 $\sigma^{\Mstar}:(\bdelta^1_{\omega})^{\Mstar}\to\bdelta^1_{\omega}$, and
 we have that the extensions
-$\sigma^{\Mstar}:T_1^*\map T^{h_1}$ and $\sigma^{\Mstar}:T_2^*\map T^{h_2}$ are tree
+$\sigma^{\Mstar,h_1}:T_1^*\map T^{h_1}$ and $\sigma^{\Mstar,h_2}:T_2^*\map T^{h_2}$ are tree
 embeddings.
 
 $\Mstar\models \text{``}T_1^* \text{ and } T_2^*$ are wellfounded''. But $\Mstar$ is not
 necessarily wellfounded so it doesn't necessarily follow that $T_1^*$ and $T_2^*$ are really wellfounded.
-Now $T^{h_1}$ is wellfounded and since we have $\sigma^{\Mstar}:T_1^*\map T^{h_1}$,
+Now $T^{h_1}$ is wellfounded and since we have $\sigma^{\Mstar,h_1}:T_1^*\map T^{h_1}$,
 we \emph{do} know that $T_1^*$ is wellfounded. This implies that
 $\rank(T_1^*)\in\wfp(\Mstar)$.
 To see that $\Mstar\models\text{``}\rank(T_1^*) < \rank(T_2^*)$'' it suffices to
@@ -1314,24 +1314,24 @@ In this section we show that the ordinal parameter $\theta$ in Theorem
 The ideas and results in this section are due to John Steel.
 
 \begin{definition}
-If $z\in\R$ then $\Mladder(z)$ refers to the $z$-mouse which is like $\Mladder$ but built over $z$.
-That is, $\Mladder(z)$ is the $\initseg$-least fully-iterable $z$-mouse $M$ for which there is
+If $z\in\R$ then $\Mladder_z$ refers to the $z$-mouse which is like $\Mladder$ but built over $z$.
+That is, $\Mladder_z$ is the $\initseg$-least fully-iterable $z$-mouse $M$ for which there is
 a ladder over $M$.
 \end{definition}
 
 \begin{theorem}
 \label{theta_is_definable}
-For $z\in\R$, let  $\theta_z<\omega_2^{\Mladder(z)}$ be the
+Fix $z\in\R$, let $M = \Mladder_z$, and let  $\theta<\omega_2^M$ be the
 minimum of the ranks of all
-$\bPi^1_{\omega}$ trees in $\Mladder(z)$ that are  incorrectly wellfounded for $\Mladder(z)$.
-Then $\theta_z$ is definable in $J^{\Mladder(z)}_{\omega_2^{\Mladder(z)}}$, uniformly in $z$,
-without parameters (other than the extender sequence of the mouse).
+$\bPi^1_{\omega}$ trees in $M$ that are  incorrectly wellfounded for $M$.
+Then $\theta$ is definable in $J^M_{\omega_2^M}$, uniformly in $z$,
+without parameters (other than the extender sequence of $M$.)
 \end{theorem}
 
-The $\theta_z$ from Theorem \ref{theta_is_definable} is exactly the ordinal parameter
+The $\theta$ from Theorem \ref{theta_is_definable} is exactly the ordinal parameter
 from the proof of theorem \ref{QuasiCorrectness}.
 
-For simplicity we will ignore the real parameter $z$ and prove the theorem for $\Mladder$.
+For simplicity we will ignore the real parameter $z$ and prove the theorem for $M=\Mladder$.
 
 
 \begin{definition}
@@ -1397,20 +1397,20 @@ $\bPi^1_{\omega}$-tree $T\in\Mladder$ with $\rank(T)>\thetaprime$.
 
 
 \begin{definition}
-Fix $z\in\R$ and let $G$ be given by Lemma \ref{LadderGeneric} for $\Mladder(z)$. That is,
-let $\gamma=\ord(\Mladder(z))$ and let $G\subset \Q_{<\gamma}^{\Mladder(z)}$ be such that for
-$n\in\omega$, $G\intersect J^{\Mladder(z)}_{\delta_n}$ is
-$\Q_{<\delta_n}^{\Mladder(z)}$-generic over $J^{\Mladder(z)}_{\gamma_n}$.
-Let $\pi:\Mladder(z)\to\Mstar$ be the stationary tower ultrapower.
-We will capture this setting by saying that  $\pi:\Mladder(z)\to\Mstar=\Mladder(z)[G]$
+Fix $z\in\R$ and let $G$ be given by Lemma \ref{LadderGeneric} for $\Mladder_z$. That is,
+let $\gamma=\ord(\Mladder_z)$ and let $G\subset \Q_{<\gamma}^{\Mladder_z}$ be such that for
+$n\in\omega$, $G\intersect J^{\Mladder_z}_{\delta_n}$ is
+$\Q_{<\delta_n}^{\Mladder_z}$-generic over $J^{\Mladder_z}_{\gamma_n}$.
+Let $\pi:\Mladder_z\to\Mstar$ be the stationary tower ultrapower.
+We will capture this setting by saying that  $\pi:\Mladder_z\to\Mstar=\Ult(\Mladder_z,G)$
 is a \emph{ladder stationary tower embedding.}
 
-Let $g$ be $\Col(\omega,\delta)$-generic over $\Mladder(z)$ for some
-$\delta\in\Mladder(z)$.
-$\Mladder(z)[g]$ can be re-organized as $\Mladder(\zprime)$ for some $\zprime\in\R$.
-Let $\psi:\Mladder(\zprime)\to\Nstar=\Mladder(\zprime)[H]$ be the ladder Stationary Tower embedding.
+Let $g$ be $\Col(\omega,\delta)$-generic over $\Mladder$ for some
+$\delta\in\Mladder$.
+$\Mladder[g]$ can be reorganized as $\Mladder_z$ for some $z\in\R$.
+Let $\psi:\Mladder_z\to\Nstar=\Mladder_z[H]$ be a ladder Stationary Tower embedding.
 We will capture this setting by saying that
-$\psi:\Mladder(z)[g]\to\Nstar=\Mladder(\zprime)[g][H]$ is a ladder stationary tower embedding \emph{above $g$}.
+$\psi:\Mladder[g]\to\Nstar=\Ult(\Mladder[g],H)$ is a ladder stationary tower embedding \emph{above $g$}.
 \end{definition}
 
 Now we turn to a discussion of the proof of Lemma \ref{Nsat_trees_are_cofinal}.
@@ -1488,7 +1488,7 @@ $\Mstar\models T$ is wellfounded and $T^h(x)$ is illfounded. In this case $T$ mi
 
 \begin{lemma}
 \label{StarCorrectBelowIncorrect}
-Let $\pi:\Mladder\to\Mstar=\Mladder[G]$ be a ladder stationary tower embedding.
+Let $\pi:\Mladder\to\Mstar=\Ult(\Mladder,G)$ be a ladder stationary tower embedding.
 Let $T,S\in\wfp(\Mstar)$ be $\bPi^1_{\omega}$-trees in $\Mstar$.
 Suppose that $T$ is correctly wellfounded for $\Mstar$ and
 $S$ is incorrectly wellfounded for $\Mstar$. Suppose further that $T$ is $\PiOneOmega(x)$
@@ -1496,11 +1496,24 @@ and $S$ is $\PiOneOmega(y)$ for $x,y\in\R\intersect\Mladder[g]$,
 where $g$ is $\Col(\omega,\delta)$ generic over $\Mladder$ for some $\delta\in\Mladder$.
 Then $\rank(T) < \rank(S)$, (or $S$ is illfounded).
 \end{lemma}
-\begin{proof}
-Fix $\PiOneOmega$ codes $h_1, h_2$ and $x,y\in\R$ such that $T=(T^{h_1}(x))^{\Mstar}$ and
-$S=(T^{h_2}(y))^{\Mstar}$ and $x,y\in\Mladder[g]$
-where $g$ is $\Col(\omega,\delta)$ generic over $\Mladder$ for some $\delta\in\Mladder$.
-\end{proof}
+
+Towards a proof of Lemma \ref{StarCorrectBelowIncorrect},
+fix $\PiOneOmega$ codes $h_1, h_2$ and $x,y\in\R$ such that $T=(T^{h_1}(x))^{\Mstar}$ and
+$S=(T^{h_2}(y))^{\Mstar}$ and $x,y\in\Mladder[g]$. Since $T$ is correctly wellfounded
+for $\Mstar$ and $S$ is incorrectly wellfounded for $\Mstar$, $(T^{h_1}(x))^{\Mladder[g]}$
+is correctly wellfounded for $\Mladder[g]$ and
+$(T^{h_2}(y))^{\Mladder[g]}$
+is incorrectly wellfounded for $\Mladder[g]$ (or illfounded).
+Because $\Mladder[g]$ can be rearranged as $\Mladder_z$ for some $z\in\R$,
+we can apply Theorem \ref{CorrectBelowIncorrect} to conclude that
+$\Mladder[g]\models \text{``}\rank((T^{h_1}(x))) < \rank((T^{h_2}(y)))$".
+Let $\psi:\Mladder[g]\map\Nstar=\Ult(\Mladder[g],H)$ be a ladder stationary tower embeddding
+above $g$. Then $\Nstar\models \text{``}\rank((T^{h_1}(x))) < \rank((T^{h_2}(y)))$".
+We want to see that $\Mstar\models \text{``}\rank((T^{h_1}(x))) < \rank((T^{h_2}(y)))$".
+This turns out to be true because $(T^{h_1}(x))^{\Nstar}=(T^{h_1}(x))^{\Mstar}$
+and $(T^{h_2}(y))^{\Nstar}=(T^{h_2}(y))^{\Mstar}$. To see that this is true, we
+now turn to an alternative characterization of these trees that is independent
+of stationary tower extensions and depends only on symmetric collapses.
 
 \begin{lemma}
 \label{applyhjorthcorollary}
@@ -1508,12 +1521,15 @@ Let $M$ be a countable, transitive model of $\ZFC$ and  $\delta>\omega$ a cardin
 Suppose that whenever $\P\in V^M_{\delta+1}$ is a poset and $g$ is $\P$-generic over $M$, then
 $M[g]$ is projectively-correct. Let $g_1$ and $g_2$ be $\Col(\omega, \delta)$-generic over $M$.
 
-Let $h$ be a $\PiOneOmega$ code.
+Let $h$ be a $\PiOneOmega$ code. Then $(T^h)^{M[g_1]}=(T^h)^{M[g_2]}$.
 
-Then $(T^h)^{M[g_1]}=(T^h)^{M[g_2]}$.
+Furthermore $(\bdelta^1_{\omega})^{M[g_1]}=(\bdelta^1_{\omega})^{M[g_2]}$ and
+$\sigma^{M[g_1]}=\sigma^{M[g_2]}$ where
+$\sigma^{M[g_i]}:(\bdelta^1_{\omega})^{M[g_i]}\map \bdelta^1_{\omega}$ is from
+Definition \ref{norm_embedding_def}.
 
-Furthermore $\sigma^{M[g_1]} = \sigma^{M[g_2]}$ where
-$\sigma^{M[g_i]}:(T^h)^{M[g_i]}\map(T^h)^V$ is the tree embedding from
+Furthermore $\sigma^{M[g_1],h} = \sigma^{M[g_2],h}$ where
+$\sigma^{M[g_i],h}:(T^h)^{M[g_i]}\map(T^h)^V$ is the tree embedding from
 Definition \ref{norm_embedding_def}.
 \end{lemma}
 \begin{proof}
@@ -1540,33 +1556,47 @@ $\varphi(x_1)=\varphi(x_2)$. It follows that $\sigma^{M[g_1]} = \sigma^{M[g_2]}$
 
 \begin{definition}
 \label{T_at_delta}
-Let $M$ be a countable transitive model of $\ZFC$ - Replacement + ``There are cofinally many inaccessible cardinals.'' Suppose that every set-generic extension of $M$ is projectively correct.
+Let $M$ be a countable transitive model of
+$$\ZFC - \text{ Replacement } +
+\text{ ``} \exists \text{ cofinally many inaccessible cardinals.'' }$$
+Suppose that every set-generic extension of $M$ is projectively correct.
 
 Let $h$ be a $\PiOneOmega$ code for a subset
 of $\R^2$ and let $x\in\R\intersect M$.
-
 Let $\delta$ be an ordinal of $M$.
 
 Then we define $(T^h(x))^{M,\delta}=(T^h(x))^{M[g]}$ where $g$ is any
 $\Col(\omega,\delta)$-generic over $M$.
 
-We also define $\sigma^{M,\delta}:(T^h(x))^{M,\delta} \map (T^h(x))^V$ by
-$\sigma^{M,\delta}=\sigma^{M[g]}$ from Definition \ref{norm_embedding_def},
+We also define
+$$\sigma^{M,\delta}:(\bdelta^1_{\omega})^{M[g]}\map \bdelta^1_{\omega}$$
+by
+$$\sigma^{M,\delta}=\sigma^{M[g]}$$
+and
+$$\sigma^{M,\delta,h}:(T^h(x))^{M,\delta} \map (T^h(x))^V$$
+ by
+$$\sigma^{M,\delta,h}=\sigma^{M[g],h}$$
 where $g$ is any
 $\Col(\omega,\delta)$-generic over $M$.
 
-The definitions makes sense because by Lemma \ref{applyhjorthcorollary}, relatized to $x$
+The definitions makes sense because by Lemma \ref{applyhjorthcorollary}, relativized to $x$
 and applied to a rank initial segment of $M$,
 $(T^h(x))^{M[g]}$ and $\sigma^{M[g]}$ don't depend on the choice of $g$.
 
-If $\delta_1<\delta_2$ then $\ran(\sigma^{M,\delta_1})\subseteq \ran(\sigma^{M,\delta_2})$.
+Notice that $(T^h(x))^{M,\delta}\in M$.
 
-We define $\sigma^{M,\delta_1,\delta_2} = (\sigma^{M,\delta_2})^{-1}\circ\sigma^{M,\delta_1}$
+If $\delta_1<\delta_2$ then $\ran(\sigma^{M,\delta_1})\subseteq \ran(\sigma^{M,\delta_2})$
+and $\sigma^{M,\delta_i}$ is the inverse of the transitive collapse of its range.
+We define
+$$\sigma^{M,(\delta_1,\delta_2)} = (\sigma^{M,\delta_2})^{-1}\circ\sigma^{M,\delta_1}$$
+and
+$$\sigma^{M,(\delta_1,\delta_2),h} = (\sigma^{M,\delta_2,h})^{-1}\circ\sigma^{M,\delta_1,h}.$$
+Then
+$$\sigma^{M,(\delta_1,\delta_2),h}:(T^h(x))^{M,\delta_1}\map (T^h(x))^{M,\delta_2}$$
+is a tree embedding and $\sigma^{M,(\delta_1,\delta_2),h}\in M.$
 \end{definition}
 
-\begin{remark}
-$(T^h(x))^{M,\delta}\in M$.
-\end{remark}
+
 
 
 
