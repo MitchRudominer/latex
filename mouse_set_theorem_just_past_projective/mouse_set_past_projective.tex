@@ -1498,8 +1498,9 @@ Then $\rank(T) < \rank(S)$, (or $S$ is illfounded).
 \end{lemma}
 
 Towards a proof of Lemma \ref{StarCorrectBelowIncorrect},
-fix $\PiOneOmega$ codes $h_1, h_2$ and $x,y\in\R$ such that $T=(T^{h_1}(x))^{\Mstar}$ and
-$S=(T^{h_2}(y))^{\Mstar}$ and $x,y\in\Mladder[g]$. Since $T$ is correctly wellfounded
+fix $\PiOneOmega$ codes $h_1, h_2$ and $x,y\in\R\intersect \Mladder[g]$
+such that $T=(T^{h_1}(x))^{\Mstar}$ and
+$S=(T^{h_2}(y))^{\Mstar}$. Since $T$ is correctly wellfounded
 for $\Mstar$ and $S$ is incorrectly wellfounded for $\Mstar$, $(T^{h_1}(x))^{\Mladder[g]}$
 is correctly wellfounded for $\Mladder[g]$ and
 $(T^{h_2}(y))^{\Mladder[g]}$
@@ -1521,37 +1522,52 @@ Let $M$ be a countable, transitive model of $\ZFC$ and  $\delta>\omega$ a cardin
 Suppose that whenever $\P\in V^M_{\delta+1}$ is a poset and $g$ is $\P$-generic over $M$, then
 $M[g]$ is projectively-correct. Let $g_1$ and $g_2$ be $\Col(\omega, \delta)$-generic over $M$.
 
-Let $h$ be a $\PiOneOmega$ code. Then $(T^h)^{M[g_1]}=(T^h)^{M[g_2]}$.
+Let $x\in\R\intersect M$ and let $\varphi$ be a $\Sigma^1_n(x)$ norm for some $n$.
+Let $y_1\in\R\intersect M[g_1]$. Then there is a $y_2\in\R\intersect M[g_2]$ such
+that $\varphi(y_1)=\varphi(y_2)$, and $\varphi^{M[g_1]}(y_1)=\varphi^{M[g_2]}(y_2)$.
 
-Furthermore $(\bdelta^1_{\omega})^{M[g_1]}=(\bdelta^1_{\omega})^{M[g_2]}$ and
-$\sigma^{M[g_1]}=\sigma^{M[g_2]}$ where
-$\sigma^{M[g_i]}:(\bdelta^1_{\omega})^{M[g_i]}\map \bdelta^1_{\omega}$ is from
-Definition \ref{norm_embedding_def}.
+Furthermore $\sigma^{M[g_1]} =\sigma^{M[g_2]}$ where
+$$\sigma^{M[g_i]}:(\bdelta^1_{\omega})^{M[g_i]}\map \bdelta^1_{\omega}$$
+is given by Definition \ref{norm_embedding_def}.
 
-Furthermore $\sigma^{M[g_1],h} = \sigma^{M[g_2],h}$ where
-$\sigma^{M[g_i],h}:(T^h)^{M[g_i]}\map(T^h)^V$ is the tree embedding from
+Let $h$ be a $\PiOneOmega$ code. Then $(T^h(x))^{M[g_1]}=(T^h(x))^{M[g_2]}$
+and $\sigma^{M[g_1],h} = \sigma^{M[g_2],h}$ where
+$$\sigma^{M[g_i],h}:(T^h)^{M[g_i]}\map(T^h)^V$$
+is the tree embedding from
 Definition \ref{norm_embedding_def}.
 \end{lemma}
 \begin{proof}
-Suppose $(s,u)\in (T^h)^{M[g_1]}$. Let $n=\length(s)=\length(u)$. Then there
-$x\in\R\intersect M[g_1]$ extending $s$ such that $(\forall i<n)\, x\in G^{i}_{h(i)}$ and
-$u(i)=\varphi^{i_0}_{h(i_0),i_1}(x)$.
+All of this follows easily from Corollary \ref{hjorthcorollary} and its proof.
 
-By Corollary \ref{hjorthcorollary} there is an $\xprime\in\R\intersect M[g_2]$ such that
+Let $y_1\in\R\intersect M[g_1]$ be as in the statement of the Lemma. The proof of
+Corollary \ref{hjorthcorollary} gives us a
+$y_2\in\R\intersect M[g_2]$ such that $\varphi(y_1)=\varphi(y_2)$.
+
+Since this is true for all projective norms $\varphi^{\prime}$
+we have that
+$\ran(\sigma^{M[g_1]})= \ran(\sigma^{M[g_2]})$
+and since $\sigma^{M[g_i]}$ is the inverse of the transitive collapse of its range, we have that
+$\sigma^{M[g_1]}=\sigma^{M[g_2]}$ and so $\varphi^{M[g_1]}(y_1)=\varphi^{M[g_2]}(y_2)$.
+
+
+Suppose $(s,u)\in (T^h)^{M[g_1]}$. Let $n=\length(s)=\length(u)$. Then there is
+$y_1\in\R\intersect M[g_1]$ extending $s$ such that $(\forall i<n)\, x\in G^{i}_{h(i)}$ and
+$u(i)=(\varphi^{i_0}_{h(i_0),i_1})^{M[g_1]}(y_1)$.
+
+By Corollary \ref{hjorthcorollary} there is a $y_2\in\R\intersect M[g_2]$ such that
 \begin{itemize}
-\item $\xprime \restr n = x \restr n$
-\item $\xprime\in \Intersection{i<n} G^i_{h(i)}$.
-\item For $i<n$, $\varphi^{i_0}_{h(i_0),i_1}(\xprime) = \varphi^{i_0}_{h(i_0),i_1}(x)$
+\item $y_2 \restr n = y_1 \restr n$
+\item $y_2\in \Intersection{i<n} G^i_{h(i)}$.
+\item For $i<n$, $\varphi^{i_0}_{h(i_0),i_1}(y_2) = \varphi^{i_0}_{h(i_0),i_1}(y_1)$
 \end{itemize}
 
+So then for $i<n$, $(\varphi^{i_0}_{h(i_0),i_1})^{M[g_2]}(y_2) =
+(\varphi^{i_0}_{h(i_0),i_1}(y_1))^{M[g_1]}$.
 So $(s,u)\in (T^h)^{M[g_2]}$. We have shown that $(T^h)^{M[g_1]}\subseteq(T^h)^{M[g_2]}$
 and the same argument shows that
 $(T^h)^{M[g_2]}\subseteq(T^h)^{M[g_1]}$.
 
-The proof of Corollary \ref{hjorthcorollary} shows that for every projective norm
-$\varphi$, for every $x_1\in M[g_1]$ there is an $x_2\in M[g_2]$ such that
-$\varphi(x_1)=\varphi(x_2)$. It follows that $\sigma^{M[g_1]} = \sigma^{M[g_2]}$.
-
+That $\sigma^{M[g_1],h} = \sigma^{M[g_2],h}$ now follows immediately.
 \end{proof}
 
 \begin{definition}
@@ -1565,35 +1581,35 @@ Let $h$ be a $\PiOneOmega$ code for a subset
 of $\R^2$ and let $x\in\R\intersect M$.
 Let $\delta$ be an ordinal of $M$.
 
-Then we define $(T^h(x))^{M,\delta}=(T^h(x))^{M[g]}$ where $g$ is any
-$\Col(\omega,\delta)$-generic over $M$.
-
-We also define
-$$\sigma^{M,\delta}:(\bdelta^1_{\omega})^{M[g]}\map \bdelta^1_{\omega}$$
-by
-$$\sigma^{M,\delta}=\sigma^{M[g]}$$
-and
-$$\sigma^{M,\delta,h}:(T^h(x))^{M,\delta} \map (T^h(x))^V$$
- by
-$$\sigma^{M,\delta,h}=\sigma^{M[g],h}$$
+Then we define $T^h(x)^{M,\delta}=(T^h(x))^{M[g]}$ , and
+$\sigma^{M,\delta}=\sigma^{M[g]}$, and
+$\sigma^{M,\delta,h}=\sigma^{M[g],h}$
 where $g$ is any
 $\Col(\omega,\delta)$-generic over $M$.
 
-The definitions makes sense because by Lemma \ref{applyhjorthcorollary}, relativized to $x$
-and applied to a rank initial segment of $M$,
+The definitions makes sense because by Lemma \ref{applyhjorthcorollary},
+applied to a rank initial segment of $M$,
 $(T^h(x))^{M[g]}$ and $\sigma^{M[g]}$ don't depend on the choice of $g$.
 
-Notice that $(T^h(x))^{M,\delta}\in M$.
+Let $\bar{T}^h(x)^{M,\delta}=\ran(\sigma^{M,\delta,h})$. Then $\bar{T}^h(x)^{M,\delta}$
+is a subtree of $(T^h(x))^{V}.$  $\bar{T}^h(x)^{M,\delta}=\big\{(s,u)\in (T^h(x))^{V} \, \mid \,
+\exists g \Col(\omega,\delta)$-generic over $M$ and $\exists y \in \R\intersect M[g]$ s.t.
+$y$ extends $s$ and $(\forall i<\length(u))\, y\in G^{i}_{h(i)}$ and
+$u(i)=(\varphi^{i_0}_{h(i_0),i_1})(y) \big\}$.
+
 
 If $\delta_1<\delta_2$ then $\ran(\sigma^{M,\delta_1})\subseteq \ran(\sigma^{M,\delta_2})$
-and $\sigma^{M,\delta_i}$ is the inverse of the transitive collapse of its range.
-We define
-$$\sigma^{M,(\delta_1,\delta_2)} = (\sigma^{M,\delta_2})^{-1}\circ\sigma^{M,\delta_1}$$
-and
-$$\sigma^{M,(\delta_1,\delta_2),h} = (\sigma^{M,\delta_2,h})^{-1}\circ\sigma^{M,\delta_1,h}.$$
-Then
-$$\sigma^{M,(\delta_1,\delta_2),h}:(T^h(x))^{M,\delta_1}\map (T^h(x))^{M,\delta_2}$$
-is a tree embedding and $\sigma^{M,(\delta_1,\delta_2),h}\in M.$
+and $\bar{T}^h(x)^{M,\delta_1}\subseteq \bar{T}^h(x)^{M,\delta_2}$.
+
+
+Let $\sigma^{M,\infty}$ be the inverse of the transitive collapse of
+$$\bigcup\setof{\ran(\sigma^{M,\delta})}{\delta\in M}.$$
+
+Let
+$$\bar{T}^h(x)^{M,\infty} = \bigcup \setof{\bar{T}^h(x)^{M,\delta}}{\delta\in M}.$$
+
+Let
+$$T^h(x)^{M,\infty}=\setof{(s,u)}{(s,\sigma^{M,\infty}\circ u)\in \bar{T}^h(x)^{M,\infty} }.$$
 \end{definition}
 
 
