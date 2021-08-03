@@ -126,7 +126,7 @@ $\DeltaOneOmegaPlusOne = \SigmaOneOmegaPlusOne \intersect \PiOneOmegaPlusOne$.
 
 Finally we define as usual the relativized and bold-face
 pointclasses $\PiOneOmega(x)$
-and $\bPi^1_{\omega}$ etc.
+and $\bPiOneOmega$ etc.
 \end{definition}
 
 The following remarks follow from \cite{Scales_In_LofR}.
@@ -451,7 +451,7 @@ $$T(x) = \setof{u}{(x\restr \lh(u), u) \in T}.$$
 
 If $T$ is a $\PiOneOmega$ tree for a subset of $\R^2$ and $x\in\R$
 we say that $T(x)$ is a $\PiOneOmega(x)$-tree
-and a $\bPi^1_{\omega}$-tree.
+and a $\bPiOneOmega$-tree.
 \end{definition}
 
 \begin{remarks}
@@ -470,29 +470,29 @@ Let $x\in\R\intersect M$.
 
 \begin{definition}
 Let $M$ be a countable, transitive, projectively correct model of $\ZFC$.
-Suppose $T\in M$ and $M\models ``T$ is a $\bPi^1_{\omega}$ tree.''
-We say that $T$ is \emph{correctly wellfounded} for $M$  iff $T$ is wellfounded and
+Suppose $T\in M$ and $M\models ``T$ is a $\bPiOneOmega$ tree.''
+We say that $T$ is \emph{correctly wellfounded} iff $T$ is wellfounded and
 $T=(T^h(x))^M$ for some
 $\PiOneOmega$ code $h$ and real $x\in M$, and $T^h(x)$ is wellfounded. (In this
-case we say $T$ is correctly wellfounded for $M$ with respect to $h$ and $x$.)
-We say that $T$ is \emph{incorrectly wellfounded} for $M$ iff $T$ is wellfounded and $T=(T^h(x))^M$ for some
+case we say $T$ is correctly wellfounded for $(h,x)$.)
+We say that $T$ is \emph{incorrectly wellfounded} iff $T$ is wellfounded and $T=(T^h(x))^M$ for some
 $\PiOneOmega$ code $h$ and real $x\in M$, and $T^h(x)$ is illfounded. (In this
-case we say $T$ is incorrectly wellfounded for $M$ with respect to $h$ and $x$.)
+case we say $T$ is incorrectly wellfounded for $(h,x)$.)
 
 We also extend this definition to the case where $M$ itself is not a model of all of $\ZFC$ but
 $M$ has a rank initial segment that is a model of $\ZFC$.
 \end{definition}
 
 The key to our proof that $\Mladder$ is quasi-$\SigmaOneOmegaPlusOne$-correct is this:
-We will show that if $T$ is a $\bPi^1_{\omega}$-tree in $\Mladder$ then
+We will show that if $T$ is a $\bPiOneOmega$-tree in $\Mladder$ then
 $\Mladder$ is able to determine whether or not $T$ is correctly wellfounded.
 
 \begin{theorem}
 \label{CorrectBelowIncorrect}
 Let $z$ be a real and $M$ a countable, iterable, ladder-mouse over $z$.
-Suppose $M\models ``T_1$ and $T_2$ are $\bPi^1_{\omega}$-trees'' and
-suppose $T_1$ is correctly wellfounded for $M$ and
-$T_2$ is incorrectly wellfounded for $M$. Then $\rank(T_1) < \rank(T_2)$.
+Suppose $M\models ``T_1$ and $T_2$ are $\bPiOneOmega$-trees'' and
+suppose $T_1$ is correctly wellfounded and
+$T_2$ is incorrectly wellfounded. Then $\rank(T_1) < \rank(T_2)$.
 \end{theorem}
 
 Now, assuming Theorem \ref{CorrectBelowIncorrect}, we prove Theorem
@@ -501,13 +501,13 @@ Now, assuming Theorem \ref{CorrectBelowIncorrect}, we prove Theorem
 \begin{proof}[proof of Theorem \ref{QuasiCorrectness}]
 Let $z$ be a real and $M$ a countable, iterable, ladder-mouse over $z$.
 Let $\theta$ be the minimum of the ranks of all
-$\bPi^1_{\omega}$ trees in $M$ that are  incorrectly wellfounded for $M$.
-If all wellfounded $\bPi^1_{\omega}$ trees in $M$ are correctly wellfounded
+$\bPiOneOmega$ trees in $M$ that are  incorrectly wellfounded.
+If all wellfounded $\bPiOneOmega$ trees in $M$ are correctly wellfounded
 then $M$ is $\Sigma^1_{\omega+1}$-correct and in this case let $\theta=0$.
 
 $M$ is a model of $\PD$ and also is a strongly acceptable model of $\GCH$.
 So $(\omega_1)^M<(\bdelta^1_{\omega})^M < (\omega_2)^M$.
-So all $\bPi^1_{\omega}$ trees in $M$ are in $J^M_{(\omega_2)^M}$ and either have a branch
+So all $\bPiOneOmega$ trees in $M$ are in $J^M_{(\omega_2)^M}$ and either have a branch
 in $J^M_{(\omega_2)^M}$ or have rank less than $(\omega_2)^M$.
 So $\theta < (\omega_2)^M$.
 
@@ -558,9 +558,9 @@ In the next section we turn to the proof of Theorem \ref{CorrectBelowIncorrect}.
 This section is devoted to a proof of Theorem \ref{CorrectBelowIncorrect}.
 
 Let $z$ be a real and $M$ a countable, iterable, ladder-mouse over $z$.
-Suppose $M\models ``T_1$ and $T_2$ are $\bPi^1_{\omega}$-trees'' and
-suppose $T_1$ is correctly wellfounded for $M$ and
-$T_2$ is incorrectly wellfounded for $M$. We want to prove that
+Suppose $M\models ``T_1$ and $T_2$ are $\bPiOneOmega$-trees'' and
+suppose $T_1$ is correctly wellfounded and
+$T_2$ is incorrectly wellfounded. We want to prove that
 $\rank(T_1) < \rank(T_2)$. To simplify the notation in this section we will
 assume $z=0$. The proof
 with arbitrary $z$ is the same, but relativized to $z$.
@@ -662,14 +662,14 @@ Now, assuming Lemmas \ref{generic_over_all_windows}, \ref{hjorthlemma} and
 As mentioned at the top of the section, we will assume that the real parameter
 $z=0$ to simplify the notation.
 Let $M$ be a countable, iterable ladder-mouse.
-Suppose $M\models ``T_1$ and $T_2$ are $\bPi^1_{\omega}$-trees'' and
-suppose $T_1$ is correctly wellfounded for $M$ and
-$T_2$ is incorrectly wellfounded for $M$. We want to prove that
+Suppose $M\models ``T_1$ and $T_2$ are $\bPiOneOmega$-trees'' and
+suppose $T_1$ is correctly wellfounded and
+$T_2$ is incorrectly wellfounded. We want to prove that
 $\rank(T_1) < \rank(T_2)$.
 
 To simplify the notation again, we will ignore the real parameters
 in the
-$\bPi^1_{\omega}$ definitions associated with $T_1$ and $T_2$
+$\bPiOneOmega$ definitions associated with $T_1$ and $T_2$
 (these are reals in $M$)
 and assume that
 $T_1$ and $T_2$ are lightface $\Pi^1_{\omega}$-trees in $M$.
@@ -1323,7 +1323,7 @@ a ladder over $M$.
 \label{theta_is_definable}
 Fix $z\in\R$, let $M = \Mladder_z$, and let  $\theta<\omega_2^M$ be the
 minimum of the ranks of all
-$\bPi^1_{\omega}$ trees in $M$ that are  incorrectly wellfounded for $M$.
+$\bPiOneOmega$ trees in $M$ that are  incorrectly wellfounded.
 Then $\theta$ is definable in $J^M_{\omega_2^M}$, uniformly in $z$,
 without parameters (other than the extender sequence of $M$.)
 \end{theorem}
@@ -1367,13 +1367,13 @@ If $T=T^M_{n,w}$ for $(n,w)\in\NSat^M$ then we say that $T$ is an $\NSat$ tree o
 \end{definition}
 
 By Lemma \ref{T_n_w_correctly_wellfounded}, all of the $\NSat$ trees of $\Mladder$
-are correctly wellfounded for $\Mladder$. The key to the proof of Theorem
+are correctly wellfounded. The key to the proof of Theorem
  \ref{theta_is_definable} is that the ranks of the $\NSat$ trees in $\Mladder$ are cofinal
  in the supremum of the ranks of all correctly wellfounded trees in $\Mladder$.
 
 \begin{lemma}
 \label{Nsat_trees_are_cofinal}
-Let $T\in\Mladder$ be a $\bPi^1_{\omega}$-tree that is correctly wellfounded for $\Mladder$.
+Let $T\in\Mladder$ be a $\bPiOneOmega$-tree that is correctly wellfounded.
 Then there is an $(n,w)\in \NSat^{\Mladder}$ such that $\rank(T) < \rank(T^{\Mladder}_{n,w})$.
 \end{lemma}
 
@@ -1384,26 +1384,28 @@ First we give the proof of Theorem \ref{theta_is_definable} assuming Lemma
 As mentioned above, for simplicity we will ignore the real parameter $z$ and prove
 the theorem for $\Mladder$.
 
-Let $\thetaprime = $ the supremum of the ranks of all $\bPi^1_{\omega}$-trees
-in $\Mladder$ that are correctly wellfounded for $\Mladder$. By Lemmas
+Let $\thetaprime = $ the supremum of the ranks of all $\bPiOneOmega$-trees
+in $\Mladder$ that are correctly wellfounded. By Lemmas
 \ref{T_n_w_correctly_wellfounded} and \ref{Nsat_trees_are_cofinal}, $\thetaprime =$
 the supremum of the ranks of the $\NSat$ trees in $\Mladder$.
 Since $\NSat^{\Mladder}$
 is definable without parameters in $J^{\Mladder}_{\omega_2^{\Mladder}}$,
 this gives a definition of $\thetaprime$ that is also
 so definable. Then $\theta^{\Mladder}$ is the minimum rank of a wellfounded
-$\bPi^1_{\omega}$-tree $T\in\Mladder$ with $\rank(T)>\thetaprime$.
+$\bPiOneOmega$-tree $T\in\Mladder$ with $\rank(T)>\thetaprime$.
 \end{proof}
 
 
 \begin{definition}
+\label{LadderStationaryTowerEmbedding}
 Fix $z\in\R$ and let $G$ be given by Lemma \ref{LadderGeneric} for $\Mladder_z$. That is,
 let $\gamma=\ord(\Mladder_z)$ and let $G\subset \Q_{<\gamma}^{\Mladder_z}$ be such that for
 $n\in\omega$, $G\intersect J^{\Mladder_z}_{\delta_n}$ is
-$\Q_{<\delta_n}^{\Mladder_z}$-generic over $J^{\Mladder_z}_{\gamma_n}$.
+$\Q_{<\delta_n}^{\Mladder_z}$-generic over $J^{\Mladder_z}_{\gamma_n}$, where
+$\sequence{\delta_n,\gamma_n}{n\in\omega}$ is a ladder over $\Mladder$.
 Let $\pi:\Mladder_z\to\Mstar$ be the stationary tower ultrapower.
 We will capture this setting by saying that  $\pi:\Mladder_z\to\Mstar=\Ult(\Mladder_z,G)$
-is a \emph{ladder stationary tower embedding.}
+is a \emph{ladder stationary tower embedding} (for $\sequence{\delta_n,\gamma_n}{n\in\omega}$.)
 
 Let $g$ be $\Col(\omega,\delta)$-generic over $\Mladder$ for some
 $\delta\in\Mladder$.
@@ -1414,17 +1416,17 @@ $\psi:\Mladder[g]\to\Nstar=\Ult(\Mladder[g],H)$ is a ladder stationary tower emb
 \end{definition}
 
 Now we turn to a discussion of the proof of Lemma \ref{Nsat_trees_are_cofinal}.
-Let $T\in\Mladder$ be a $\bPi^1_{\omega}$-tree that is correctly wellfounded for $\Mladder$.
+Let $T\in\Mladder$ be a $\bPiOneOmega$-tree that is correctly wellfounded.
 Let $\pi:\Mladder\to\Mstar=\Ult(M,G)$ be a ladder stationary tower embedding.
 Let $T^* = \pi(T)$. It suffices to show that
 $\Mstar\models\text{``}\rank(T^*) < \rank(T_{n,w})$ for some $(n,w)\in \NSat^{\Mstar}$''.
 
-Since $T$ is correctly wellfounded for $\Mladder$, $T^*$ is correctly wellfounded for $\Mstar$.
+Since $T$ is correctly wellfounded, $T^*$ is correctly wellfounded.
 Notice that $\Mstar\models\text{``}T_{n,w}$ is wellfounded for all $(n,w)\in \NSat$''
 since $\Mladder$ satisfies that sentence. To find an $(n,w)\in \NSat^{\Mstar}$ such that
 $\Mstar\models\text{``}\rank(T^*) < \rank(T_{n,w})$'', we will look for an
 $(n,w)\in \NSat^{\Mstar}$
-such that $(T_{n,w})^{\Mstar}$ is incorrectly wellfounded for $\Mstar$.
+such that $(T_{n,w})^{\Mstar}$ is incorrectly wellfounded.
 We can accomplish this because Lemma \ref{T_n_w_correctly_wellfounded} is not
 true if we repalce $\Mladder$ with $\Mstar$. That is, $\Mstar$ has non-standard
 countable initial segments.
@@ -1463,16 +1465,16 @@ $\Mladder$ but $\omega_1^{\Mladder}\in P$.
 Let $w\in\WO\intersect\Mstar$ with $|w|=\ord(\Pstar)$ and let
 $n$ be given by Lemma \ref{taller_mice_are_nonstandard}. Then
 $(n,w)\in \NSat^{\Mstar}$ and
-$(T_{n,w})^{\Mstar}$ is incorrectly wellfounded for $\Mstar$. If we could apply
+$(T_{n,w})^{\Mstar}$ is incorrectly wellfounded. If we could apply
 Theorem \ref{CorrectBelowIncorrect} to $\Mstar$ we could now conclude
 that $\rank(T^*) < \rank(T_{n,w})^{\Mstar}$. But the proof of
 Theorem \ref{CorrectBelowIncorrect} does not apply to $\Mstar$ because it is
 not an iterable ladder-mouse.
 
-Suppose $T,S$ are $\bPi^1_{\omega}$-trees in $\Mstar$ and $T$ is correctly wellfounded for $\Mstar$
-and $S$ is incorrectly wellfounded for $\Mstar$. If $T,S\in\ran(\pi)$, say
-$T=\pi(\bar{T}),S=\pi(\bar{S})$, then $\bar{T}$ is correctly wellfounded for $\Mladder$ and
-$\bar{S}$ is incorrectly wellfounded for $\Mladder$ so $\rank(\bar{T})<\rank(\bar{S})$ so
+Suppose $T,S$ are $\bPiOneOmega$-trees in $\Mstar$ and $T$ is correctly wellfounded
+and $S$ is incorrectly wellfounded. If $T,S\in\ran(\pi)$, say
+$T=\pi(\bar{T}),S=\pi(\bar{S})$, then $\bar{T}$ is correctly wellfounded and
+$\bar{S}$ is incorrectly wellfounded so $\rank(\bar{T})<\rank(\bar{S})$ so
 then we can conclude that $\rank(T)<\rank(S)$.
 
 Now $T^*\in\range(\pi)$ but $T_{n,w}\not\in\range(\pi)$ because $w\not\in\Mladder$. However
@@ -1480,31 +1482,35 @@ $w$ can be chosen to be generic over $\Mladder$ and it turns out that is enough 
 $\rank(T^*)<\rank(T_{n,w})$.
 
 Because $\Mstar$ is not wellfounded, we need to clarify what we mean by correctly and incorrectly wellfounded
-for $\Mstar$. Suppose $T\in\wfp(\Mstar)$ is a $\bPi^1_{\omega}$-tree in $\Mstar$. Let $h$ be a $\PiOneOmega$ code for
-a subset of $\R^2$, let $x\in\R\intersect\Mstar$ and let $T=(T^h(x))^{\Mstar}$. $T$ is correctly wellfounded
-for $\Mstar$ means that $\Mstar\models T$ is wellfounded and $T^h(x)$ is wellfounded. This implies that
-$T$ is wellfounded. $T$ is incorrectly wellfounded for $\Mstar$ means that
-$\Mstar\models T$ is wellfounded and $T^h(x)$ is illfounded. In this case $T$ might be wellfounded or illfounded.
+for $\bPiOneOmega$-trees in $\Mstar$.
+Let $h$ be a $\PiOneOmega$ code for
+a subset of $\R^2$, let $x\in\R\intersect\Mstar$ and let  $T=(T^h(x))^{\Mstar}$.
+Recall that $T\in\wfp(\Mstar)$.
+$T$ is correctly wellfounded means that $T$ is wellfounded and $T^h(x)$ is wellfounded.
+$T$ is incorrectly wellfounded means $T$ is wellfounded and $T^h(x)$ is illfounded.
+In both of these cases $\Mstar\models T$ is wellfounded. Because $\Mstar$ is not wellfounded there is also
+the possibility that $\Mstar\models T$ is wellfounded, but $T$ is illfounded. In this case we do not
+call $T$ correctly or incorrectly wellfounded.
 
 \begin{lemma}
 \label{StarCorrectBelowIncorrect}
 Let $\pi:\Mladder\to\Mstar=\Ult(\Mladder,G)$ be a ladder stationary tower embedding.
-Let $T,S\in\wfp(\Mstar)$ be $\bPi^1_{\omega}$-trees in $\Mstar$.
-Suppose that $T$ is correctly wellfounded for $\Mstar$ and
-$S$ is incorrectly wellfounded for $\Mstar$. Suppose further that $T$ is $\PiOneOmega(x)$
+Let $T,S$ be $\bPiOneOmega$-trees in $\Mstar$.
+Suppose that $T$ is correctly wellfounded and
+$S$ is incorrectly wellfounded. Suppose further that $T$ is $\PiOneOmega(x)$
 and $S$ is $\PiOneOmega(y)$ for $x,y\in\R\intersect\Mladder[g]$,
 where $g$ is $\Col(\omega,\delta)$ generic over $\Mladder$ for some $\delta\in\Mladder$.
-Then $\rank(T) < \rank(S)$, (or $S$ is illfounded).
+Then $\rank(T) < \rank(S)$.
 \end{lemma}
 
 Towards a proof of Lemma \ref{StarCorrectBelowIncorrect},
-fix $\PiOneOmega$ codes $h_1, h_2$ and $x,y\in\R\intersect \Mladder[g]$
+fix $\PiOneOmega$ codes $h_1, h_2$
 such that $T=(T^{h_1}(x))^{\Mstar}$ and
 $S=(T^{h_2}(y))^{\Mstar}$. Since $T$ is correctly wellfounded
-for $\Mstar$ and $S$ is incorrectly wellfounded for $\Mstar$, $(T^{h_1}(x))^{\Mladder[g]}$
-is correctly wellfounded for $\Mladder[g]$ and
+and $S$ is incorrectly wellfounded, $(T^{h_1}(x))^{\Mladder[g]}$
+is correctly wellfounded and
 $(T^{h_2}(y))^{\Mladder[g]}$
-is incorrectly wellfounded for $\Mladder[g]$ (or illfounded).
+is incorrectly wellfounded, or illfounded.
 Because $\Mladder[g]$ can be rearranged as $\Mladder_z$ for some $z\in\R$,
 we can apply Theorem \ref{CorrectBelowIncorrect} to conclude that
 $\Mladder[g]\models \text{``}\rank((T^{h_1}(x))) < \rank((T^{h_2}(y)))$".
@@ -1573,7 +1579,7 @@ That $\sigma^{M[g_1],h,x} = \sigma^{M[g_2],h,x}$ now follows immediately.
 \end{proof}
 
 \begin{definition}
-\label{T_at_delta}
+\label{TInfinity}
 Let $M$ be a countable transitive model of
 $$\ZFC - \text{ Replacement } +
 \text{ ``} \exists \text{ cofinally many inaccessible cardinals.'' }$$
@@ -1605,7 +1611,7 @@ $\bar{T}^{h,x,M,\delta}\subset (T^h(x))^{V}$, namely
 $\bar{T}^{h,x,M,\delta}=\big\{(s,u)\in (T^h(x))^{V} \, \mid \,
 \exists g\, \Col(\omega,\delta)$-generic over $M$ and $\exists y \in \R\intersect M[g]$ s.t.
 $y$ extends $s$ and $(\forall i<\length(u))\, (y,x)\in G^{i}_{h(i)}$ and
-$u(i)=(\varphi^{i_0}_{h(i_0),i_1})(y,x) \big\}$.
+$u(i)=\varphi^{i_0}_{h(i_0),i_1}(y,x) \big\}$.
 
 
 If $\delta_1<\delta_2$ then $X^{M,\delta_1}\subset X^{M,\delta_2}$ and
@@ -1622,8 +1628,140 @@ Let
 $$T^{h,x,M,\infty}=\setof{(s,u)}{(s,\sigma^{M,\infty}\circ u)\in \bar{T}^{h,x,M,\infty}}.$$
 \end{definition}
 
+Very roughly speaking $T^{h,x,M,\infty}$ is ``the version of $T^h(x)$ in the symmetric collapse
+over $M$ of the ordinals of $M$.''
+
+One example of a model $M$ that satisfies the hypotheses of Definition \ref{TInfinity} is
+$\Mladder[g]$ for some generic $g$. The next lemma states that in this case
+a $\PiOneOmega(x)$-tree in the stationary tower ultrapower is equal to
+$T^{h,x,\Mladder[g],\infty}$.
+
+\begin{lemma}
+\label{TStarIsTInfinity}
+Let $\pi:\Mladder\to\Mstar=\Ult(\Mladder,G)$ be a ladder stationary tower embedding.
+Let $g\in\Mstar$ be $\Col(\omega,\delta)$-generic over $\Mladder$ for some cardinal $\delta\in\Mladder$.
+Let $h$ be a $\PiOneOmega$ code for a subset
+of $\R^2$ and let $x\in\R\intersect \Mladder[g]$.
+Then $(T^h(x))^{\Mstar} = T^{h,x,\Mladder[g],\infty}$.
+\end{lemma}
+\begin{proof}
+Let $\sequence{\delta_n,\gamma_n}{n\in\omega}$ be  ladder over $\Mladder$ such that
+$\pi:\Mladder\to\Mstar=\Ult(\Mladder,G)$ is a ladder stationary tower embedding for $\sequence{\delta_n,\gamma_n}{n\in\omega}$.
+
+Fix $m\in\omega$ and let  $y\in\R\intersect\Mstar$ be such that
+$(y,x)\in \Intersection{i<m} G^i_{h(i)}$.
+
+Let $n$ be even and large enough that $2m+1 < n$, $\delta < \delta_n$ and $g,y,x\in \Ult(J^{\Mladder}_{\gamma_n},G\intersect J^{\Mladder}_{\delta_n})$.
+There is such an $n$ by the proof of Claim 2 in the proof of Lemma \ref{m_star_existence} where we showed that $\Mstar$ is projectively correct.
+
+There is a $k$, $\Col(\omega,\delta_n)$-generic over $J^{\Mladder}_{\gamma_n}$ such that $g,y,x\in J^{\Mladder}_{\gamma_n}[k]$.
+By general forcing theory there is a $k_1$ such that $J^{\Mladder}_{\gamma_n}[k]=J^{\Mladder}_{\gamma_n}[g][k_1]$ with $k_1$
+$\Col(\omega,\delta_n)$-generic over $J^{\Mladder}_{\gamma_n}[g]$.
+
+Let $k_2$ be
+$\Col(\omega,\delta_n)$-generic over $\Mladder[g]$. In particular $k_2$ is
+$\Col(\omega,\delta_n)$-generic over $J^{\Mladder}_{\gamma_n}[g]$.
+
+By Corollary \ref{hjorthcorollary}, applied to $J^{\Mladder}_{\gamma_n}[g]$, and relativized to $x$,
+there is a $y_2\in J^{\Mladder}_{\gamma_n}[g][k_2]$ such that
+\begin{itemize}
+\item $y_2 \restr m = y \restr m$,
+\item $(y_2,x)\in \Intersection{i<m} G^i_{h(i)}$, and
+\item for $i<m$, $\varphi^{i_0}_{h(i_0),i_1}(y_2,x) = \varphi^{i_0}_{h(i_0),i_1}(y,x)$.
+\end{itemize}
+
+Since $y_2\in \Mladder[g][k_2]$,
+we have shown that $\ran(\sigma^{\Mstar,h,x})\subseteq \bar{T}^{h,x,\Mladder[g],\infty}$.
+
+Conversely, suppose that $k$ is $\Col(\omega,\delta)$-generic over $\Mladder[g]$ for some cardinal $\delta$ of $\Mladder[g]$ and
+$y\in\R\intersect \Mladder[g][k]$ with $(y,x)\in \Intersection{i<m} G^i_{h(i)}$. Let $k_2\in\Mstar$ be
+$\Col(\omega,\delta)$-generic over $\Mladder[g]$. Then there is a $y_2\in \Mladder[g][k_2]$ such that
+\begin{itemize}
+\item $y_2 \restr m = y \restr m$,
+\item $(y_2,x)\in \Intersection{i<m} G^i_{h(i)}$, and
+\item for $i<m$, $\varphi^{i_0}_{h(i_0),i_1}(y_2,x) = \varphi^{i_0}_{h(i_0),i_1}(y,x)$.
+\end{itemize}
 
 
+Since $y_2\in \Mstar$,
+we have shown that $\ran(\sigma^{\Mstar,h,x}) = \bar{T}^{h,x,\Mladder[g],\infty}$.
+
+Since the previous argument may be applied to any projective norm $\varphi$ we also have that
+$\ran(\sigma^{\Mstar}) =X^{\Mladder[g],\infty}$.
+
+So then we get that $(T^h(x))^{\Mstar} = T^{h,x,\Mladder[g],\infty}$.
+
+\end{proof}
+
+\begin{corollary}
+\label{TInMstarIsTInNstar}
+Let $\pi:\Mladder\to\Mstar=\Ult(\Mladder,G)$ be a ladder stationary tower embedding.
+Let $g\in\Mstar$ be $\Col(\omega,\delta)$-generic over $\Mladder$ for some cardinal $\delta\in\Mladder$.
+Let $h$ be a $\PiOneOmega$ code for a subset
+of $\R^2$ and let $x\in\R\intersect \Mladder[g]$.
+
+Let $\psi:\Mladder[g]\to\Nstar=\Ult(\Mladder[g],H)$ be a ladder stationary tower embedding above $g$.
+
+Then $(T^h(x))^{\Mstar} = (T^h(x))^{\Nstar}$.
+\end{corollary}
+\begin{proof}
+We can apply Lemma \ref{TStarIsTInfinity} twice to conclude that $(T^h(x))^{\Mstar} = T^{h,x,\Mladder[g],\infty} = (T^h(x))^{\Nstar}$.
+\end{proof}
+
+As we suggested above, we can use Corollary \ref{TInMstarIsTInNstar} to show that the rank of a correctly wellfounded tree is less
+than the rank of an incorrectly wellfounded tree in $\Mstar$.
+
+\begin{proof}[Proof of Lemma \ref{StarCorrectBelowIncorrect}]
+Let $\pi:\Mladder\to\Mstar=\Ult(\Mladder,G)$ be a ladder stationary tower embedding.
+Let $g\in\Mstar$ be $\Col(\omega,\delta)$-generic over $\Mladder$ for some cardinal $\delta\in\Mladder$.
+Let $h_1$ and $h_2$ be $\PiOneOmega$ codes for a subsets
+of $\R^2$ and let $x,y\in\R\intersect \Mladder[g]$. Suppose that
+$(T^{h_1})^{\Mstar}(x)$ is correctly wellfounded and $(T^{h_2})^{\Mstar}(y)$ is incorrectly wellfounded.
+We must show that $\rank((T^{h_1})^{\Mstar}(x))<\rank((T^{h_2})^{\Mstar}(y))$.
+
+
+$(T^{h_1}(x))^{\Mladder[g]}$
+is correctly wellfounded and
+$(T^{h_2}(y))^{\Mladder[g]}$
+is incorrectly wellfounded, or illfounded. (It will follow from our proof that it is not illfounded.)
+Because $\Mladder[g]$ can be rearranged as $\Mladder_z$ for some $z\in\R$,
+we can apply Theorem \ref{CorrectBelowIncorrect} to conclude that
+$\Mladder[g]\models \text{``}\rank(T^{h_1}(x)) < \rank(T^{h_2}(y))$". (For convenience we take the previous
+sentence to include the possibility that $\rank(T^{h_2}(y)=\infty$.)
+Let $\psi:\Mladder[g]\map\Nstar=\Ult(\Mladder[g],H)$ be a ladder stationary tower embeddding
+above $g$. Then $\Nstar\models \text{``}\rank(T^{h_1}(x)) < \rank(T^{h_2}(y))$" and
+so $\rank((T^{h_1})^{\Nstar}(x)) < \rank((T^{h_2})^{\Nstar}(y))$.
+By Corollary \ref{TInMstarIsTInNstar},$(T^{h_1})^{\Nstar}(x)=(T^{h_1})^{\Mstar}(x)$ and
+$(T^{h_2})^{\Nstar}(y)=(T^{h_2})^{\Mstar}(y)$.
+So $\rank((T^{h_1})^{\Mstar}(x))<\rank((T^{h_2})^{\Mstar}(y))$.
+\end{proof}
+
+What remains in this section is to give the
+\begin{proof}[Proof of Lemma \ref{Nsat_trees_are_cofinal}]
+The proof was essentially given already in the discussion following Definition
+\ref{LadderStationaryTowerEmbedding}.
+
+Let $T\in\Mladder$ be a $\bPiOneOmega$-tree that is correctly wellfounded.
+We need to find an $(n,w)\in \NSat^{\Mladder}$ such that $\rank(T) < \rank(T^{\Mladder}_{n,w})$.
+
+Let $\pi:\Mladder\to\Mstar=\Ult(M,G)$ be a ladder stationary tower embedding.
+Let $T^* = \pi(T)$. It suffices to show that
+$\Mstar\models\text{``}\rank(T^*) < \rank(T_{n,w})$ for some $(n,w)\in \NSat^{\Mstar}$''.
+
+By Lemma \ref{StarCorrectBelowIncorrect} it suffices to find
+$(n,w)\in \NSat^{\Mladder}$ such that $(T_{n,w})^{\Mstar}$ is incorrectly wellfounded.
+
+
+Let $\Pstar$ be the least initial segment of $\Mstar$ such that
+$\omega_1^{\Mladder}\in\Pstar$ and
+and $\Pstar$ projects to $\omega$.
+Let $w\in\WO\intersect\Mstar$ with $|w|=\ord(\Pstar)$ and with $w\in \Mladder[g]$ for
+some $g$ that is $\Col(\omega,\delta)$-generic over $\Mladder$ for some cardinal $\delta$ of $\Mladder$.
+Let
+$n$ be given by Lemma \ref{taller_mice_are_nonstandard}. Then
+$(n,w)\in \NSat^{\Mstar}$ and
+$(T_{n,w})^{\Mstar}$ is incorrectly wellfounded.
+\end{proof}
 
 
 \bibliographystyle{amsalpha}
