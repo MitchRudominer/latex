@@ -1521,8 +1521,9 @@ of stationary tower extensions and depends only on symmetric collapses.
 Let $M$ be a countable, transitive model of $\ZFC$ and  $\delta>\omega$ a cardinal of $M$.
 Suppose that whenever $\P\in V^M_{\delta+1}$ is a poset and $g$ is $\P$-generic over $M$, then
 $M[g]$ is projectively-correct. Let $g_1$ and $g_2$ be $\Col(\omega, \delta)$-generic over $M$.
+Let $x\in\R\intersect M$.
 
-Let $x\in\R\intersect M$ and let $\varphi$ be a $\Sigma^1_n(x)$ norm for some $n$.
+Let $\varphi$ be a $\Sigma^1_n(x)$ norm for some $n$.
 Let $y_1\in\R\intersect M[g_1]$. Then there is a $y_2\in\R\intersect M[g_2]$ such
 that $\varphi(y_1)=\varphi(y_2)$, and $\varphi^{M[g_1]}(y_1)=\varphi^{M[g_2]}(y_2)$.
 
@@ -1530,9 +1531,10 @@ Furthermore $\sigma^{M[g_1]} =\sigma^{M[g_2]}$ where
 $$\sigma^{M[g_i]}:(\bdelta^1_{\omega})^{M[g_i]}\map \bdelta^1_{\omega}$$
 is given by Definition \ref{norm_embedding_def}.
 
-Let $h$ be a $\PiOneOmega$ code. Then $(T^h(x))^{M[g_1]}=(T^h(x))^{M[g_2]}$
-and $\sigma^{M[g_1],h} = \sigma^{M[g_2],h}$ where
-$$\sigma^{M[g_i],h}:(T^h)^{M[g_i]}\map(T^h)^V$$
+Let $h$ be a $\PiOneOmega$ code for a subset
+of $\R^2$. Then $(T^h(x))^{M[g_1]}=(T^h(x))^{M[g_2]}$
+and $\sigma^{M[g_1],h,x} = \sigma^{M[g_2],h,x}$ where
+$$\sigma^{M[g_i],h,x}:(T^h(x))^{M[g_i]}\map(T^h(x))^V$$
 is the tree embedding from
 Definition \ref{norm_embedding_def}.
 \end{lemma}
@@ -1550,24 +1552,24 @@ and since $\sigma^{M[g_i]}$ is the inverse of the transitive collapse of its ran
 $\sigma^{M[g_1]}=\sigma^{M[g_2]}$ and so $\varphi^{M[g_1]}(y_1)=\varphi^{M[g_2]}(y_2)$.
 
 
-Suppose $(s,u)\in (T^h)^{M[g_1]}$. Let $n=\length(s)=\length(u)$. Then there is
-$y_1\in\R\intersect M[g_1]$ extending $s$ such that $(\forall i<n)\, x\in G^{i}_{h(i)}$ and
-$u(i)=(\varphi^{i_0}_{h(i_0),i_1})^{M[g_1]}(y_1)$.
+Suppose $(s,u)\in (T^h(x))^{M[g_1]}$. Let $n=\length(s)=\length(u)$. Then there is
+$y_1\in\R\intersect M[g_1]$ extending $s$ such that $(\forall i<n)\, (y_1,x)\in G^{i}_{h(i)}$ and
+$u(i)=(\varphi^{i_0}_{h(i_0),i_1}(y_1,x))^{M[g_1]}$.
 
-By Corollary \ref{hjorthcorollary} there is a $y_2\in\R\intersect M[g_2]$ such that
+By Corollary \ref{hjorthcorollary}, relativized to $x$, there is a $y_2\in\R\intersect M[g_2]$ such that
 \begin{itemize}
-\item $y_2 \restr n = y_1 \restr n$
-\item $y_2\in \Intersection{i<n} G^i_{h(i)}$.
-\item For $i<n$, $\varphi^{i_0}_{h(i_0),i_1}(y_2) = \varphi^{i_0}_{h(i_0),i_1}(y_1)$
+\item $y_2 \restr n = y_1 \restr n$,
+\item $(y_2,x)\in \Intersection{i<n} G^i_{h(i)}$, and
+\item for $i<n$, $\varphi^{i_0}_{h(i_0),i_1}(y_2,x) = \varphi^{i_0}_{h(i_0),i_1}(y_1,x)$.
 \end{itemize}
 
-So then for $i<n$, $(\varphi^{i_0}_{h(i_0),i_1})^{M[g_2]}(y_2) =
-(\varphi^{i_0}_{h(i_0),i_1}(y_1))^{M[g_1]}$.
-So $(s,u)\in (T^h)^{M[g_2]}$. We have shown that $(T^h)^{M[g_1]}\subseteq(T^h)^{M[g_2]}$
+So then for $i<n$, $(\varphi^{i_0}_{h(i_0),i_1}(y_2,x))^{M[g_2]} =
+(\varphi^{i_0}_{h(i_0),i_1}(y_1,x))^{M[g_1]}$.
+So $(s,u)\in (T^h(x))^{M[g_2]}$. We have shown that $(T^h(x))^{M[g_1]}\subseteq(T^h(x))^{M[g_2]}$
 and the same argument shows that
-$(T^h)^{M[g_2]}\subseteq(T^h)^{M[g_1]}$.
+$(T^h(x))^{M[g_2]}\subseteq(T^h(x))^{M[g_1]}$.
 
-That $\sigma^{M[g_1],h} = \sigma^{M[g_2],h}$ now follows immediately.
+That $\sigma^{M[g_1],h,x} = \sigma^{M[g_2],h,x}$ now follows immediately.
 \end{proof}
 
 \begin{definition}
@@ -1579,40 +1581,46 @@ Suppose that every set-generic extension of $M$ is projectively correct.
 
 Let $h$ be a $\PiOneOmega$ code for a subset
 of $\R^2$ and let $x\in\R\intersect M$.
-Let $\delta$ be an ordinal of $M$.
 
-Then we define $T^h(x)^{M,\delta}=(T^h(x))^{M[g]}$ , and
-$\sigma^{M,\delta}=\sigma^{M[g]}$, and
-$\sigma^{M,\delta,h}=\sigma^{M[g],h}$
+
+Let $\delta$ be a cardinal of $M$. Then we define
+\begin{itemize}
+\item $X^{M,\delta} = \ran(\sigma^{M[g]})$
+\item $\bar{T}^{h,x,M,\delta}=\ran(\sigma^{M[g],h,x})$
+\end{itemize}
 where $g$ is any
 $\Col(\omega,\delta)$-generic over $M$.
 
 The definitions makes sense because by Lemma \ref{applyhjorthcorollary},
 applied to a rank initial segment of $M$,
-$(T^h(x))^{M[g]}$ and $\sigma^{M[g]}$ don't depend on the choice of $g$.
-
-Let $\bar{T}^h(x)^{M,\delta}=\ran(\sigma^{M,\delta,h})$. Then $\bar{T}^h(x)^{M,\delta}$
-is a subtree of $(T^h(x))^{V}.$  $\bar{T}^h(x)^{M,\delta}=\big\{(s,u)\in (T^h(x))^{V} \, \mid \,
-\exists g \Col(\omega,\delta)$-generic over $M$ and $\exists y \in \R\intersect M[g]$ s.t.
-$y$ extends $s$ and $(\forall i<\length(u))\, y\in G^{i}_{h(i)}$ and
-$u(i)=(\varphi^{i_0}_{h(i_0),i_1})(y) \big\}$.
+$\sigma^{M[g]}$ and $\sigma^{M[g],h,x}$ don't depend on the choice of $g$.
 
 
-If $\delta_1<\delta_2$ then $\ran(\sigma^{M,\delta_1})\subseteq \ran(\sigma^{M,\delta_2})$
-and $\bar{T}^h(x)^{M,\delta_1}\subseteq \bar{T}^h(x)^{M,\delta_2}$.
+$X^{M,\delta}\subset \bdelta^1_{\omega}$, namely
+$X^{M,\delta}=\big\{ \varphi(y)\, \mid \, \varphi$ is a projective norm and $y\in\R\intersect M[g]$ for
+some $g\, \Col(\omega,\delta)$-generic over $M \big\}$.
 
 
-Let $\sigma^{M,\infty}$ be the inverse of the transitive collapse of
-$$\bigcup\setof{\ran(\sigma^{M,\delta})}{\delta\in M}.$$
+$\bar{T}^{h,x,M,\delta}\subset (T^h(x))^{V}$, namely
+$\bar{T}^{h,x,M,\delta}=\big\{(s,u)\in (T^h(x))^{V} \, \mid \,
+\exists g\, \Col(\omega,\delta)$-generic over $M$ and $\exists y \in \R\intersect M[g]$ s.t.
+$y$ extends $s$ and $(\forall i<\length(u))\, (y,x)\in G^{i}_{h(i)}$ and
+$u(i)=(\varphi^{i_0}_{h(i_0),i_1})(y,x) \big\}$.
+
+
+If $\delta_1<\delta_2$ then $X^{M,\delta_1}\subset X^{M,\delta_2}$ and
+$\bar{T}^{h,x,M,\delta_1}\subset \bar{T}^{h,x,M,\delta_2}$.
 
 Let
-$$\bar{T}^h(x)^{M,\infty} = \bigcup \setof{\bar{T}^h(x)^{M,\delta}}{\delta\in M}.$$
+
+$$X^{M,\infty}=\bigcup\setof{X^{M,\delta}}{\delta\in M}$$
+$$\bar{T}^{h,x,M,\infty}=\bigcup\setof{\bar{T}^{h,x,M,\delta}}{\delta\in M}.$$
+
+Let $\sigma^{M,\infty}$ be the inverse of the transitive collapse of $X^{M,\infty}$.
 
 Let
-$$T^h(x)^{M,\infty}=\setof{(s,u)}{(s,\sigma^{M,\infty}\circ u)\in \bar{T}^h(x)^{M,\infty} }.$$
+$$T^{h,x,M,\infty}=\setof{(s,u)}{(s,\sigma^{M,\infty}\circ u)\in \bar{T}^{h,x,M,\infty}}.$$
 \end{definition}
-
-
 
 
 
