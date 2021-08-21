@@ -1,0 +1,154 @@
+% $Header$
+
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 1 \\ The Integers}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2021 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}{Number Systems}
+
+  \begin{itemize}
+  \item Number theory is the theory of numbers.
+  \item But what is a number?
+  \item $\Z = \singleton{\cdots -3,-2,-1,0,1,2,3,\cdots} = $ the integers
+  \item $\Q = \setof{\frac{n}{m}}{n,m\in \Z, m\not= 0} = $ the rationals
+  \item $\R = $ the reals
+  \item $\Q = \setof{x\in\R}{\text{decimal expansion of $x$ is terminating or repeating}}$
+  \item $\C = $ the complex numbers
+  \item Number theory is the theory of the integers, $\Z$.
+  \end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{Number Systems: Example}
+\begin{itemize}
+  \item  Give an example of an $x\in \Q \setminus \Z$.
+  \item $x=1/2$.
+  \item  Give an example of an $x\in \R \setminus \Q$.
+  \item $x=\sqrt{2}$, $x=\pi$.
+  \item Give an example of $x\in\C \setminus \R$.
+  \item $x=2i+3$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{The well-ordering property}
+
+\begin{itemize}
+  \item Let $S$ be any non-empty set of positive integers. Then $S$ contains
+  a least element.
+  \item This is not true of $\Q,\R$.
+  \item This is not true if you drop either ``non-empty'' or ``positive''.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof by Induction}
+\begin{itemize}
+  \item Suppose $P$ is some \emph{property} about positive integers.
+  \item For example $P(n)$ might be the property ``$n$ has a unique prime decomposition.''
+  \item Or $P(n)$ might be the property ``either $n$ is even or $n+1$ is even.``
+  \item Suppose we want to prove that property $P$ is true of all positive integers.
+  \item We can do this by proving two things:
+  \item \textbf{The base step:} Prove that $P(1)$ holds.
+  \item \textbf{The Inductive step:} Prove that for all $n\geq 1$, $P(n) \Implies P(n+1)$.
+  \item Today we are not going to do any proofs by induction.
+  \item Instead we are going to justify the technique of proof by induction.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof of  Proof by Induction}
+\begin{itemize}
+  \item \textbf{Proof that proof by induction works:} Suppose we have proven the base step and the inductive step.
+  \item We want to see that $P(n)$ holds for all positive integers $n$.
+  \item Suppose $P(n)$ doesn't hold for some positive integers, and we will derive a contradiction.
+  \item Let $S$ be the set of positive integers $n$ for which $P(n)$ does not hold.
+  \item We are assuming that $S$ is not empty.
+  \item $S$ is a non-empty set of positive integers.
+  \item By the well-ordering property, $S$ has a least element, $m$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof of  Proof by Induction, continued}
+\begin{itemize}
+  \item $m$ is the least element of $S$.
+  \item $m$ cannot be $1$ because by the base step $P(1)$ holds so $1\notin S$.
+  \item Since $m>1$, $m=n+1$ for some positive integer $n$.
+  \item Since $n<m$, $n\notin S$. So $P(n)$ holds.
+  \item By the inductive step, $P(n+1)$ holds, i.e. $P(m)$ holds.
+  \item This contradicts our assumption that $m$ is the least element of $S$.
+  \item Since we derived a contradiction, our assumption that $S\not=\emptyset$ must be wrong.
+  \item So $S=\emptyset$, i.e. $P(n)$ holds for all positive integers $n$. $\qed$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof by Contradiction}
+\begin{itemize}
+\item The preceding proof was an example of \emph{proof by contradiction}.
+\item Here is how such a proof works.
+\item Suppose we want to prove a statement $\sigma$.
+\item We start by assuming the \emph{negation} of $\sigma$, i.e. we assume
+that $\sigma$ is not true.
+\item Then we derive a \emph{contradiction}. This means we prove that some
+sentence is both true and false.
+\item Of course its impossible for a sentence to be both true and false.
+\item We derived this impossible thing by assuming that $\sigma$ was false.
+\item Thus our assumption that $\sigma$ was false must have been wrong.
+\item So $\sigma$ is true.
+\end{itemize}
+\end{frame}
+
+
+\end{document}
