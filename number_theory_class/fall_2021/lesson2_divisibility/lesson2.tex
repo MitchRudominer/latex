@@ -1,0 +1,228 @@
+% $Header$
+
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 2 \\ Divisibility}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2021 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Divisibility}
+
+
+\begin{itemize}
+  \item \textbf{Definition:} Let $a,b\in\Z$. Then we say that $a$ \emph{divides}
+  $b$ iff there is a $c\in\Z$ such that $b = a c$.
+  \item We write this as $a\divides b$.
+  \item If $a$ doesn't divide $b$ we write $a\ndivides b$.
+  \item Example: $5 \divides 15$ because $15 = 5 \cdot 3$.
+  \item Example: $5 \ndivides 16$ because there is no integer $c$ such that
+  $16 = 5  c$.
+  \item Be careful not to confuse the notations $a\divides b$ with $a / b$.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Divisibility Examples}
+
+\begin{itemize}
+  \item True or false: $14 \divides 7$.
+  \item True or false: $7 \divides 14$.
+  \item True or false: $-7 \divides 14$.
+  \item True or false: $7 \divides -14$.
+  \item True or false: $7 \divides 0$.
+  \item True or false: $0 \divides 7$.
+  \item True or false: $0 \divides 0$.
+  \item For which values of $a$ does $a \divides 0$?
+  \item For which values of $b$ does $0 \divides b$?
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Divisibility Facts}
+
+\begin{itemize}
+  \item \textbf{Fact.} If $a\divides b$ then $|a|\leq |b|$.
+  \item \textbf{proof.} If $a\divides b$ then $b = a c$ for some $c\in\Z$.
+  \item $|b| = |a| \cdot |c| \geq |a|$. $\qed$.
+  \item \textbf{Fact.} $n \divides 0$ for every integer $n$.
+  \item \textbf{proof.} $0 = n \cdot 0$. $\qed$.
+  \item \textbf{Fact.} $0 \divides n$ if and only if $n=0$.
+  \item \textbf{proof.} $n = 0 \cdot c$ iff $n=0$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Divisors and multiples}
+
+\begin{itemize}
+  \item Suppose that $a\divides b$, so there is some $c$ such that $b = ac$.
+  \item We also say that $a$ is a \emph{divisor} of $b$.
+  \item We also say that $a$ is a \emph{factor} of $b$.
+  \item And we also say that $b$ is a \emph{multiple} of $a$.
+  \item Example: Because $24 = 6 \times 4$, 24 is a multiple of 6 and 6 is
+  a divisor of 24 and $6\divides 24$.
+  \item Example: Find all of the positive divisors of 12.
+  \item Solution: 1,2,3,4,6,12.
+  \item Example: Find all of the divisors of 12.
+  \item Solution: $\pm 1, \pm 2, \pm 3, \pm 4, \pm 6, \pm 12$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{$a/b \in \Z$}
+
+\begin{itemize}
+  \item \textbf{Fact:} Let $a,b\in\Z$ with $a\not=0$.
+  \item Then $a\divides b$ iff $\frac{b}{a} \in \Z$.
+  \item Example: $4 \divides 12$ because $\frac{12}{4} \in \Z$.
+  \item Example $5 \ndivides 12$ because $\frac{12}{5} \in \Q \setminus \Z$.
+  \item \textbf{proof:} If $a\divides b$ then there is a $c\in\Z$ such that
+  $b = ac$.
+  \item So then $\frac{b}{a} = c$ so $\frac{b}{a} \in \Z$.
+  \item Conversely, suppose $\frac{b}{a} \in \Z$.
+  \item Then, letting $c = \frac{b}{a}$ we have $b = a c$ so $a\divides b$.
+  \item $\qed$
+  \item Note the logical structure of the proof of an ``iff'' statement.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example using Colab}
+
+\begin{itemize}
+  \item True or false? $4769852489520051 \divides 588866908946187416256$
+  \item We need to calculate $588866908946187416256 / 4769852489520051$ and see if the result is an integer.
+  \item See the \href{https://colab.research.google.com/drive/17OJwKVBMd3lXX7huLPVGk2j2cjjXzyRy?usp=sharing}{Colab notebook}.
+  \item $588866908946187416256 / 4769852489520051 = 123456.0 \in \Z$
+  \item True. $4769852489520051 \divides 588866908946187416256$
+  \item True or false? $4769852489520051 \divides 788866908946187416256$
+  \item $788866908946187416256 / 4769852489520051 = 165386.01784424664 \notin \Z$
+  \item $4769852489520051 \ndivides 788866908946187416256$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Divisibility is transitive}
+
+\begin{itemize}
+  \item \textbf{Fact.} For all $a,b,c\in\Z$, if
+  $a\divides b$ and $b\divides c$ then $a\divides c$.
+  \item \textbf{proof:} If $a\divides b$ then there is a $d$ such that $b=ad$.
+  \item If $b\divides c$ there is an $e$ such that $c = b e$.
+  \item So $c = (a d) e = a (de)$, so $a\divides c$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{$a\divides bc \implies (a\divides b \textbf{ or } a\divides c$)?}
+\begin{itemize}
+  \item Is the following statement true or false?
+  \item \textbf{Statement.} For all $a,b,c\in\Z$, if $a\divides bc$ then
+  $a\divides b$ or $a\divides c$?
+  \item \textbf{Example.} $3 \divides 12 = 2 \times 6$. $3\ndivides 2$. But $3\divides 6$.
+  \item Is that a proof of the statement?
+  \item No. To prove a ``For all" statement it is not good enough to give an example.
+  \item $6\divides 12 = 3\times 4$. But $6\ndivides 3$ and $6\ndivides 4$.
+  \item The statement is false.
+  \item To prove that a ``For all" statement is false, we only need to give one counter-example.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Integer Linear Combinations}
+
+\begin{itemize}
+  \item \textbf{Definition} Let $a,b\in\Z$. Then an
+  \emph{integer linear combination} of $a$ and $b$ is any integer of the
+  form $xa + yb$ where $x,y\in\Z$.
+  \item $-3\times 4 + 2\times 7 = 2$ so 2 is an integer linear combination
+  of 4 and 7.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Divisibility and Integer Linear Combinations}
+
+\begin{itemize}
+  \item \textbf{Fact.} For all $a,b,c\in\Z$, if $a\divides b$ and $a\divides c$
+  then $a$ divides every integer linear combination of $b$ and $c$.
+  \item \textbf{Proof:} Suppose $a\divides b$ and $a\divides c$.
+  \item So there are $n,m\in\Z$ so that $b=na$ and $c=ma$.
+  \item Let $r$ be an integer linear combination of $b$ and $c$.
+  \item So there are $x,y\in\Z$ such that $r=xb+yc$.
+  \item So $r=xna + yma = (xn + ym)a$.
+  \item So $r$ is a multiple of $a$, i.e. $a\divides r$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\end{document}

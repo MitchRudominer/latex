@@ -1,0 +1,252 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 3 \\ Quotients and Remainders}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2021 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}{The Quotient-Remainder Theorem}
+
+
+\begin{itemize}
+  \item \textbf{Theorem:} Let $a$ and $b$ be integers with $b>0$.
+  \item Then there are unique integers $q$ and $r$ such that
+  \item $a=bq+r$ and
+  \item $0\leq r < b$.
+  \item Example: Let $a=20$ and $b=3$.
+  \item $20 = 3 \times 6 + 2$
+  \item So $q=6$ and $r=2$.
+  \item ``3 goes into 20 6 times with 2 left over.''
+  \item $q$ is the \emph{quotient}, $r$ is the \emph{remainder}.
+  \item Sometimes people call this theorem \emph{The Division Algorithm}.
+  But this is a misnomer because we are not describing any algorithm. Only
+  a theorem.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Negatives in the Quotient-Remainder Theorem}
+
+
+\begin{itemize}
+  \item The theorem says: Let $a$ and $b$ be integers with $b>0$.
+  \item Then there are unique integers $q$ and $r$ such that
+  $a=bq+r$ and $0\leq r < b$.
+  \item So $b$ is positive and $r$ is non-negative. But $a$ and $q$ can be negative.
+  \item Example: Find $q$ and $r$ if $a=-20$ and $b=3$.
+  \item $-20 = 3 \times -7 + 1$.
+  \item So $q=-7$ and $r=1$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Remainder can be zero}
+
+
+\begin{itemize}
+  \item Let $a$ and $b$ be integers with $b>0$.
+  \item Let $q$ and $r$ be the quotient and remainder from the theorem.
+  \item Then $b\divides a$ iff $r=0$.
+  \item Example: Let $a=20$ and $b=3$.
+  \item Then $20 = 3 \times 6 + 2$.
+  \item Since $r=2$, $3\ndivides 20$.
+  \item Example: Let $a=35$ and $b=5$.
+  \item $35 = 5 \times 7 + 0$.
+  \item So $r=0$ and $5\divides 35$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The Floor Function}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $x$ be any real number. Then $\floor{x}$ is the greatest integer less than or equal to $x$.
+  \item $\floor{x}$ is pronounced ``floor of $x$''.
+  \item Some authors use the notation $[x]$ instead of $\floor{x}$. You can use either notation.
+  \item Example: What is $\floor{3.14159}$?
+  \item $\floor{3.14159} = 3$.
+  \item Example: What is $\floor{-3.14159}$?
+  \item $\floor{-3.14159} = -4$.
+  \item Example: What is $\floor{411}$?
+  \item $\floor{411} = 411$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{How do you find $q$?}
+
+\begin{itemize}
+  \item Let $a$ and $b$ be integers with $b>0$.
+  \item Let $q$ and $r$ be the quotient
+  and remainder when $a$ is divided by $b$.
+  \item So $a = bq + r$ and $0\leq r < b$.
+  \item Then $q = \floor{\frac{a}{b}}$.
+  \item Example: Let $a = 17$ and $b=5$.
+  \item $17 = 5 \times 3 + 2$ so $q=3, r=2$.
+  \item $\frac{17}{5} = 3  + \frac{2}{5} = 3.4$
+  \item $3 = \floor{3.4} = \floor{\frac{17}{5}}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{How do you find negative $q$?}
+
+\begin{itemize}
+  \item Example: Let $a = -17$ and $b=5$.
+  \item $-17 = 5 \times (-4) + 3$ so $q=-4, r=3$.
+  \item $\frac{-17}{5} = -4  + \frac{3}{5} = -3.4$
+  \item $-4 = \floor{-3.4} = \floor{\frac{-17}{5}}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The mod function}
+
+\begin{itemize}
+ \item \textbf{Definition.} Let $a$ and $b$ be integers with $b>0$.
+ \item Then $a\bmod b$ is the remainder when $a$ is divided by $b$
+ \item That is $a\bmod b =r$
+ \item where $a = bq + r$ and $0\leq r < b$.
+ \item Example: Find $17 \bmod 5$.
+ \item $17 = 5 \times 3 + 2$. So $17 \bmod 5 = 2$
+ \item Example: Find $-17 \bmod 5$.
+ \item $-17 = 5 \times -4 + 3$. So $-17 \bmod 5 = 3$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{How do you find $a\bmod b$?}
+
+\begin{itemize}
+\item Let $a$ and $b$ be integers with $b>0$.
+\item Let $q$ and $r$ be the quotient
+  and remainder when $a$ is divided by $b$.
+ \item So $a = bq + r$ and $0\leq r < b$.
+ \item Then $r = a - bq$.
+ \item So $a\bmod b =  a - b \floor{\frac{a}{b}}$.
+ \item Example: Find $987654321 \bmod 123456789$.
+ \item Want $q,r$ such that $987654321 = 123456789 q + r$.
+ \item $q = \floor{\frac{987654321}{123456789}} = 8$.
+ \item $r = 987654321 - 123456789 \cdot 8 = 9$.
+ \item $987654321 = 123456789 \times 8 + 9$.
+ \item So $987654321 \bmod 123456789 = 9$.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Proof of the Quotient-Remainder Theorem}
+
+
+\begin{itemize}
+  \item \textbf{Proof:} Let $a$ and $b$ be integers with $b>0$.
+  \item Let $S = \setof{a-tb}{t\in\Z\text{ and }a-tb\geq 0}$.
+  \item By definition $S$ is a set of non-negative integers. We want to use
+  the wellordering property get the least element of $S$.
+  \item First we need to see that $S\not=\emptyset$.
+  \item If $a\geq 0$ then letting $t=0$ we have $a-tb = a \geq 0$ so $a-tb\in S$.
+  \item If $a < 0$ then letting $t=a$ we have $a-tb=a-ab = a (1-b) \geq 0$. So $a-tb\in S$.
+  \item So $S$ is not empty. Let $r$ be the least element of $S$ and let $q$ be such that $r=a-qb$.
+  \item So $a=bq+r$ as we are aiming for. We must see that $0\leq r < b$. We have $r\geq 0$ by definition since $r\in S$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Existence proof continued}
+
+
+\begin{itemize}
+  \item Summary: $S = \setof{a-tb}{t\in\Z\text{ and }a-tb\geq 0}$.
+  \item $r$ is the least element of $S$. $r=a-qb$.
+  \item To see that $r < b$, suppose $r \geq b$ and let $\rprime = r -b \geq 0$.
+  \item Now $\rprime  = (a-qb) -b = a-(q+1)b$. So $\rprime \in S$.
+  \item This contradicts the choice of $r$ as the least element of $S$.
+  \item So $r < b$. This proves existence.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Uniqueness proof}
+
+
+\begin{itemize}
+  \item To prove uniqueness, suppose we had $q_1, q_2, r_1, r_2$ such that
+  \item $a = b q_1 + r_1$ and $a = b q_2 + r_2$ and
+  \item $0\leq r_1 < b$ and $0 \leq r_2 < b$.
+  \item Then $b q_1 + r_1 = b q_2 + r_2$.
+  \item WLOG assume $r_1 \leq r_2$.
+  \item Now $r_2 - r_1 = b (q_1 - q_2)$.
+  \item So $b \divides (r_2 - r_1)$.
+  \item But $0\leq (r_2 - r_1) < b$. So $r_2 - r_1 = 0$, i.e. $r_2 = r-1$.
+  \item Since $b (q_1 - q_2) = (r_2 - r_1) = 0$, by cancellation $q_1 - q_2 = 0$ so $q_1 = q_2$.
+  \item This proves uniqueness. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Existence and Uniqueness Proofs}
+
+
+\begin{itemize}
+  \item The previous proof was an example of an \emph{existence and uniqueness} proof.
+  \item This is a proof of a statement of the form \emph{there exists a unique x such that ...}.
+  \item In order to prove such a statement there are always two parts to the proof.
+  \item In the existence part of the proof we must show that there is \emph{at least one x such that ...}
+  \item In the uniqueness part of the proof we showed that there is \emph{not more than one}.
+\end{itemize}
+
+\end{frame}
+
+\end{document}
