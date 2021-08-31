@@ -1,0 +1,275 @@
+% $Header$
+
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 4 \\ GCD}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2021 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{GCD}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $a,b$ be any integers.
+  \item Then $x$ is a \emph{common divisor} of $a$ and $b$ iff $x\divides a$ and $x\divides b$.
+  \item Example: $4$ is a common divisor of 16 and 12 because $4\divides 16$ and $4\divides 12$.
+  \item Notice: For all integers $a,b$, 1 is a common divisor of $a$ and $b$.
+\end{itemize}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $a,b$ be any integers, not both zero.
+  \item Then the \emph{greatest common divisor} of $a$ and $b$ is the greatest integer that divides both $a$ and $b$.
+  \item This is written $\gcd(a,b)$.
+  \item $\gcd(a,b)$ always exists because $1$ is always a common divisor and if $x$ is any common divisor then
+  $x\leq\max(|a|,|b|)$.
+  \item Because $\gcd$ is so important in number theory, some authors write it as $(a,b)$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{GCD Examples}
+
+\begin{itemize}
+  \item Example: Find $\gcd(12,18)$.
+  \item The positive divisors of 12 are 1,2,3,4,6,12.
+  \item The positive divisors fo 18 are 1,2,3,4,6,9,18
+  \item $\gcd(12,18) = 6$.
+  \item Why did we only need to consider the positive divisors?
+  \item Example: Find $\gcd(5, 30)$.
+  \item Example: Find $\gcd(-4, 6)$.
+  \item Example: Find $\gcd(9, 10)$.
+  \item Example: Find $\gcd(1, 30)$.
+  \item Example: Find $\gcd(0,30)$.
+  \item Example: Find $\gcd(9,9)$.
+  \item Example: Find $\gcd(0,0)$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{$\gcd(0,0)$}
+
+\begin{itemize}
+  \item Example: Find $\gcd(0,0)$.
+  \item Every integer is a divisor of zero.
+  \item So every integer is a common divisor of zero and zero.
+  \item So there is no greatest common divisor.
+  \item \textbf{Definition.} We define $\gcd(0,0)=0$.
+  \item This may seem arbitrary. But later we will see why it is natural.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Relatively Prime}
+
+\begin{itemize}
+  \item \textbf{Definition.} Two non-zero integers $a$ and $b$ are called
+  \emph{relatively prime} iff $\gcd(a,b)=1$.
+  \item Example: $\gcd(9,25) = 1$ so 9 and 25 are relatively prime.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Characterization of GCD}
+
+\begin{itemize}
+  \item \textbf{Theorem 1.} Let $a,b$ be integers, not both zero, and let $d=\gcd(a,b)$.
+  \item Then $d$ is the least integer linear combination of $a$ and $b$ that is greater than zero.
+  \item \textbf{Example.} Let $a=4$, $b=6$. Find the integer linear combinations of $a$ and $b$.
+  \item Some integer linear combinations: 4, 6, 2, 10, -4, -6, 0, 12, 8
+  \item The least positive integer linear combination of 4 and 6 is 2.
+  \item $\gcd(4,6)=2$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Further Characterization of GCD}
+
+\begin{itemize}
+  \item \textbf{Theorem 2.} Let $a,b$ be integers, not both zero, and let $d=\gcd(a,b)$.
+  \item Then the multiples of $d$ are the same as the integer linear combinations of $a$ and $b$.
+  \item \textbf{Example.} Let $a=4$, $b=6$. Find the integer linear combinations of $a$ and $b$.
+  \item Some integer linear combinations: 4, 6, 2, 10, -4, -6, 0, 12, 8
+  \item $\gcd(4,6)=2$.
+  \item The integer linear combinations of $4$ and $6$ are the positive and negative even numbers and zero.
+  \item This is the same as the multiples of 2.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{$\gcd(0,0)$}
+
+\begin{itemize}
+  \item Now we can see why we defined $\gcd(0,0)=0$.
+  \item The multiples of 0 are the same as the integer linear combinations of 0 and 0.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bezout's Theorem}
+
+\begin{itemize}
+  \item \textbf{Bezout's Theorem.} If $a$ and $b$ are integers, then there are integers $x,y$ such
+  that $xa + yb = \gcd(a,b)$.
+  \item Example: $\gcd(9,15) = 3$. So there is some integer linear combination of 9 and 15 that yields 3. (Can you find it?)
+  \item If $a=b=0$ then $\gcd(0,0)=0$ and 0 is an integer linear combination of 0 and 0.
+  \item Otherwise $a$ and $b$ are not both zero and then Bezout's Theorem is just a special case of Theorem 2.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Relatively Prime}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $a$ and $b$ be integers. Then $a$ and $b$ are relatively prime iff there is an
+  integer linear combination of $a$ and $b$ that equals 1.
+  \item proof: $\gcd(a,b)$ is the least integer linear combination of $a$ and $b$ greater than 0.
+  \item So $\gcd(a,b) =  1$ iff 1 is an integer linear combination of $a$ and $b$. $\qed$.
+  \item  Example: 9 and 25 are relatively prime.
+  \item So there are integers $x$ and $y$ such that $9x + 25y = 1$.
+  \item $x=-11, y=4$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Measuring with sticks}
+
+\begin{itemize}
+  \item \textbf{Example} Suppose you are in a room and all you have is a pencil, a 5-inch straight edge and a 12-inch straight edge.
+  \item How do you measure exactly one inch?
+  \item Answer: $\gcd(5,12)=1$ so there is an integer linear combination of 5 and 12 that equals 1.
+  \item $5\times 5 - 2 \times 12 = 1$.
+  \item Using the 5-inch straight edge measure 25 inches to the right. Then using the 12-inch straight edge
+  come back 24 inches to the left.
+  \item \textbf{Example} Suppose you are in a room and all you have is a pencil, a 6-inch straight edge and a 9-inch straight edge.
+  \item Can you measure exactly one inch?
+  \item $\gcd(6,9) = 3$. So it is not possible. There are no integers $x,y$ such that $6x + 9y = 1$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof of Theorems 1 and 2}
+
+\begin{itemize}
+  \item \textbf{proof.} Let $a,b$ be integers, not both zero.
+  \item Theorem 1 says that $\gcd(a,b)$ is the least integer linear combination of $a$ and $b$ that is greater than 0.
+  \item There are integer linear combinations of $a$ and $b$ that are positive. Let $d$ be the least one.
+  \item We want to see that $d=\gcd(a,b)$. So we want to see that
+  \item (i) $d\divides a$ and $d\divides b$.
+  \item (ii) Every other common divisor of $a$ and $b$ is less than $d$.
+  \item To see $d\divides a$, write $a = qd + r$ with $0\leq r < d$.  We will show that $r=0$.
+  \item Since $d$ is an integer linear combination of $a$ and $b$,
+  \item $r=a-qd$ is also an integer linear combination of $a$ and $b$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof, page 2}
+
+\begin{itemize}
+  \item $r=a-qd$ is also an integer linear combination of $a$ and $b$.
+  \item Since $0\leq r < d$, if $r\not=0$ it is positive.
+  \item This is impossible since $r<d$ and $d$ is the least positive integer linear combination of $a$ and $b$.
+  \item So $r=0$ and $d\divides a$.
+  \item By the same argument $d\divides b$.
+  \item So now we have $d$ is a common divisor of $a$ and $b$ and we need to see it is the greatest.
+  \item Let $\dprime$ be a common divisor of $a$ and $b$. We will show that $\dprime \leq d$.
+  \item Because $\dprime \divides a$ and $\dprime \divides b$, $\dprime$ divides every integer
+  linear combination of $a$ and $b$.
+  \item In particular $\dprime \divides d$. So $\dprime \leq d$.
+  \item So we have shown that $d=\gcd(a,b)$.
+  \item This proves Theorem 1.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Proof, page 3}
+
+\begin{itemize}
+  \item Theorem 2 says that the multiples of $d$ are the same as the integer linear combinations of $a$ and $b$.
+  \item Since $d$ is an integer linear combination of $a$ and $b$, so is every multiple of $d$.
+  \item Conversely, suppose $x$ is an integer linear combination of $a$ and $b$.
+  \item Since $d\divides a$ and $d\divides b$, $d\divides x$. So $x$ is a multiple of $d$. $\qed$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\end{document}
+
+
+
+\end{document}
