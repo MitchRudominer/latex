@@ -1,0 +1,269 @@
+% $Header$
+
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 5 \\ The Fundamental Theorem of Arithmethic}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2021 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}{Prime Numbers}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $n>1$ be an integer. Then $n$ is \emph{prime} iff its only positive divisors are 1 and itself.
+  \item If $n>1$ is not prime it is called \emph{composite}.
+  \item Example: The positive divisors of 11 are 1,11. So 11 is prime.
+  \item Example: The positive divisors of 12 are 1,2,3,4,6,12. So 12 is composite.
+  \item Let $n>1$ be an integer. Then $n$ is composite iff $n=ab$ with $1<a,b<n$.
+  \item Example: $12 = 3 \times 4$ and $1<3,4<12$. So 12 is composite.
+  \item Notice that 1 and 0 are special cases. They are not considered prime or composite.
+  \item In this class if we use the terms \emph{prime} or \emph{composite} we are
+  referring to positive integers.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Prime and Relatively Prime}
+
+\begin{itemize}
+  \item Let $p$ be a prime and $b$ an integer greater than 1.
+  \item Then exactly one of the following two things holds:
+  \item (i) $p \divides b$, or
+  \item (ii) $\gcd(p,b) = 1$ ($p$ and $b$ are relatively prime.)
+  \item \textbf{proof.} If $p\divides b$ then $\gcd(p,b) = p$.
+  \item If $p\ndivides b$
+  then, since the only positive divisors of $p$ are 1 and $p$, the only common
+  divisor of $p$ and $b$ is 1.
+  \item So $\gcd(p,b) = 1. \qed$.
+  \item Example: 11 is prime. Since $11\ndivides 16$, 11 and 16 are relatively prime.
+  \item Example: 12 is not prime. $12\ndivides 16$, but 12 and 16 are not relatively prime.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Corollaries}
+
+\begin{itemize}
+  \item \textbf{Fact.} Every two different primes are relatively prime.
+  \item \textbf{proof.} Suppose $p<q$ are two primes. Since $q$ is prime $p\ndivides q$.
+  \item So $\gcd(p,q)=1$. $\qed$
+  \item \textbf{Fact.} If $p$ and $q$ are primes and $p\divides q$ then $p=q$.
+  \item \textbf{proof.} The only divisors of $q$ are $q$ and 1. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Towards another characterization of prime}
+\begin{itemize}
+  \item Recall that the following statement is \emph{not} true.
+  \item Let $a,b,c$ be integers. Suppose $a\divides bc$. Then $a\divides b$ or $a\divides c$.
+  \item Counter-example: Let $a=6, b=2, c=3$.
+  \item However it turns out that the statement \emph{is} true if $a$ is prime.
+  \item In fact this turns out to be a defining characteristic of primes.
+  \item First we examine the case where $a$ is relatively prime to $b$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Relative Prime Divisor}
+
+\begin{itemize}
+  \item \textbf{Lemma.} Let $a,b,c$ be integers. Suppose $a\divides bc$ and $\gcd(a,b)=1$. Then $a\divides c$.
+  \item Example: Let $a=6$, $b=5$, $c=12$.
+  \item $6\divides 30 = 5\cdot 12$.
+  \item $\gcd(6,5) = 1$
+  \item The lemma tells us that $6\divides 12$.
+  \item \textbf{proof.} Since $\gcd(a,b)=1$ there are integers $x$ and $y$ such that $xa + yb = 1$.
+  \item Multiplying by $c$ we get that $xac + ybc = c$.
+  \item Since $a\divides xac$ and $a\divides ybc$, $a\divides c$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Another characterization of prime}
+\begin{itemize}
+  \item Let $a>1$ be an integer. Then the following are equivalent:
+  \item (i) $a$ is prime
+  \item (ii) For all integers $b,c$, if $a\divides bc$ then $a\divides b$ or $a\divides c$.
+  \item \textbf{proof.} Suppose $a$ is prime. Let $b,c$ be any integers.
+  \item If $a\ndivides b$ then $\gcd(a,b)=1$ so $a\divides c$.
+  \item Conversely suppose $a$ is is composite. Then $a=bc$ with $1<b,c<a$.
+  \item We have $a\divides bc$ but $a\ndivides b$ and $a\ndivides c$. $\qed$.
+  \item Example: If $bc$ is even then either $b$ is even or $c$ is even.
+  \item Example: If $bc$ is a multiple of 3 then either $b$ is a multiple of 3 or $c$ is a multiple of 3.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Prime Dividing a Product}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Suppose $p$ is prime and $b_1,b_2,\cdots b_k$ are positive integers.
+  \item Suppose $p \divides (b_1 b_2 \cdots b_k)$.
+  \item Then $p \divides b_1$ or $p\divides b_2$ or $\cdots$ $p\divides b_k$.
+  \item \textbf{proof:} If $k=2$ this is true from the previous slide.
+  \item Let $k$ be least so that the Theorem fails to be true. So $k\geq 3$.
+  \item $p\divides b_1(b_2\cdots b_k)$. So $p\divides b_1$ or $p\divides (b_2\cdots b_k)$.
+  \item If $p\divides b_1$ we are done.
+  \item Suppose $p\divides (b_2\cdots b_k)$.
+  \item Since there are $k-1$ terms on the right and $k$ was
+  least so that the Theorem failed, $p\divides b_2$ or $\cdots$ $p\divides b_k$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Prime Dividing Product of Primes}
+
+\begin{itemize}
+  \item \textbf{Corollary.} Suppose $p, q_1, q_2, \cdots q_k$ are all primes.
+  \item Suppose $p \divides (q_1 q_2 \cdots q_k)$.
+  \item Then $p = q_1$ or $p=q_2$ or $\cdots$ $p=q_k$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{frame}{The Fundamental Theorem of Arithmetic}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Every integer greater than 1 can be expressed as a product of primes.
+  \item This \emph{prime decomposition} or \emph{prime factorization} is unique up to the order of the primes.
+  \item Example: $12 = 2\cdot 2 \cdot 3$ is the unique prime factorization of 12 up to the order of the primes.
+  \item What does up to the order of the primes mean?
+  \item $12 = 2 \cdot 3 \cdot 2$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The Fundamental Theorem of Arithmetic}
+
+\begin{itemize}
+  \item We can extend the theorem to all non-zero integers by allowing an initial factor of $\pm 1$.
+  \item If we say the primes have to be in increasing ordering we can get rid of ``up to the order of the primes.''
+  \item \textbf{Theorem.} Let $n$ be a non-zero integer. Then $n$ has a unique prime decomposition:
+  \item $n=\pm1 \cdot p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k}$
+  \item where each $p_i$ is prime and $p_1<p_2<\cdots < p_k$
+  \item and each $e_i$ is a positive integer.
+  \item Example: $12 = 1 \times 2^2 \times 3^1$.
+  \item We will prove the Fundamental Theorem of Arithmetic over the course of the next few slides.
+  \item This is an existence and uniqueness proof so there will be two directions. First we
+  will prove that every integer has some prime decomposition.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Fundamental Theorem of Arithmetic: Existence}
+
+\begin{itemize}
+  \item Every integer greater than 1 has some prime decomposition.
+  \item \textbf{proof.} Towards a contradiction, suppose there are some integers greater than 1 that do not have a prime decomposition.
+  \item Let $n$ be the least such integer. (There is a least such integer by the wellordering property.)
+  \item Now $n$ cannot be prime because then $n=n$ is already a prime decomposition. So $n$ is composite.
+  \item So $n = ab$ with $1<a<n$ and $1<b<n$.
+  \item Since $a,b < n$, each of $a$ and $b$ have a prime decomposition.
+  \item But $n=ab$ so the prime decomposition of $a$ followed by the prime decomposition of $b$ is a prime decomposition of $n$.
+  \item Contradiction. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Fundamental Theorem of Arithmetic: Proof of Uniqueness}
+\begin{itemize}
+  \item If $n$ is an integer greater than 1, let's say that two different prime decompositions of $n$
+  \item $n=p_1 p_2 \cdots p_s = q_1 q_2 \cdots q_t$
+  \item are \emph{equivalent} if one is just a re-arrangement of the other.
+  \item That is, if $s=t$ and the $p_i$ and $q_i$ are the same up to reordering.
+  \item We want to show that for all integers $n>1$, $n$ does not have two different inequivalent prime decompositions.
+  \item Suppose towards a contradiction that this were not true.
+  \item Let $n$ be the least positive integer which has two inequivalent prime decompositions.
+  \item $n=p_1 p_2 \cdots p_s = q_1 q_2 \cdots q_t$
+  \item and the $p_i$ are not just a re-ordering of the $q_i$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof, continued}
+\begin{itemize}
+  \item $n=p_1 p_2 \cdots p_s = q_1 q_2 \cdots q_t$.
+  \item Notice that $p_1 \divides (q_1 q_2 \cdots q_t)$.
+  \item So $p_1 = q_i$ for some $i$ with $1\leq i \leq t$.
+  \item For notational simplicity suppose $p_1=q_1$.
+  \item Dividing both sides of the equation by $p_1 = q_1$ we get
+  \item $p_2 \cdots p_s = q_2 \cdots q_t$.
+  \item Since we cancelled a common term, the remaining $p_i$ are not a re-ordering of the remaining $q_i$.
+  \item Let $\nprime = p_2 \cdots p_s = q_2 \cdots q_t$.
+  \item Then we have just written two inequivalent prime decompositions of $\nprime$.
+  \item But $\nprime<n$ and $n$ was the least positive integer with two inequivalent prime decompositions.
+  \item This is a contradiction so our original assumption that there were some integer $n$ with two
+  inequivalent prime decompositions must have been wrong. $\qed$.
+\end{itemize}
+\end{frame}
+
+\end{document}
