@@ -1,7 +1,7 @@
 % $Header$
 
-\documentclass{beamer}
-%\documentclass[handout]{beamer}
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
 
 \usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx}
 \input{mathdefs}
@@ -202,6 +202,128 @@
 
 \end{frame}
 
+\begin{frame}{Divisibility Tests}
+\begin{itemize}
+  \item \textbf{Fact.} Let $n$ be a positive integer.
+  \item $n$ is divisible by 2 iff the last digit if $n$ is even.
+  \item \textbf{proof.} Write $n=10k + d$ with $0\leq d < 10$.
+  \item Then $d$ is the last digit of $n$.
+  \item Since $2\divides 10$, we have that $2\divides n$ iff $2\divides d$. $\qed$.
+  \item \textbf{Fact.}  Let $n$ be a positive integer.
+  \item $n$ is divisible by 5 iff the last digit if $n$ is 5 or 0.
+  \item \textbf{proof.} Write $n=10k + d$ with $0\leq d < 10$.
+  \item Then $d$ is the last digit of $n$.
+  \item Since $5\divides 10$, we have that $5\divides n$ iff $5\divides d$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Test for divisibility by 3}
+\begin{itemize}
+  \item \textbf{Fact.} Let $n$ be a positive integer.
+  \item $n$ is divisible by 3 iff the sum of the digits of $n$ is divisible by 3.
+  \item \textbf{proof.} Write $n=d_0 + 10d_1 + 100 d_2 + \cdots + 10^k d_k$.
+  \item where the digits of $n$ are $d_0,d_1,\cdots d_k$.
+  \item $n\bmod 3 = (d_0 + 10d_1 + 100 d_2 + \cdots + 10^k d_k)\bmod 3$
+  \item  $=\left(d_0\bmod 3 + 10d_1\bmod 3 + \cdots + 10^k d_k \bmod 3 \right) \bmod 3$
+  \item  $=\big(d_0\bmod 3 + (10\bmod 3)(d_1\bmod 3) + \cdots $
+  \item  $  \cdots + (10^k\bmod 3) (d_k \bmod 3) \big) \bmod 3$
+  \item  $=\left(d_0\bmod 3 + d_1\bmod 3 + \cdots + d_k \bmod 3 \right) \bmod 3$
+  \item  $=\left(d_0 + d_1 + \cdots + d_k  \right) \bmod 3$. $\qed$
+  \item \textbf{Note:} You will have to wait until a later lesson on modular arithmetic
+  to understand why the above steps are valid.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Factoring Algorithms}
+
+\begin{itemize}
+  \item Given an integer $n$, how can you determine whether or not $n$ is prime?
+  \item An algorithm that does this is called a \emph{primality test.}
+  \item More generally, given an integer $n$ how can you find its prime factorization?
+  \item An algorithm that does this is called a factoring algorithm.
+  \item Example: Let $n=187,272,000$. Is $n$ prime? Give its prime factorization.
+  \item How would you figure this out?
+  \item The method of \emph{trial division}:
+  \item Iterate through the primes $p$ and start trying to divide $n$ by $p$.
+  \item First we notice that $187,272,000$ is divisible by 1000.
+  \item $187,272,000 = 187,272 \times 1000 $
+  \item $= 187,272 \times 10^3$
+  \item $= 187,272 \times 2^3 \times 5^3$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example Trial Division}
+
+\begin{itemize}
+  \item $187,272,000 = 187,272 \times 2^3 \times 5^3$
+  \item(Factor out 2) $ = 93636 \times 2^4 \times 5^3$
+  \item(Factor out 2) $ = 46818 \times 2^5 \times 5^3$
+  \item(Factor out 2) $ = 23409 \times 2^6 \times 5^3$
+  \item(Factor out 3) $ = 7803 \times 2^6 \times 3  \times 5^3$
+  \item(Factor out 3) $ = 2601 \times 2^6 \times 3^2  \times 5^3$
+  \item(Factor out 3) $ = 867 \times 2^6 \times 3^3  \times 5^3$
+  \item(Factor out 3) $ = 289 \times 2^6 \times 3^4  \times 5^3$
+  \item(Not divisible by 5)
+  \item(Try to factor out 7: nope)
+  \item(Try to factor out 11: nope)
+  \item(Try to factor out 13: nope)
+  \item(Try to factor out 17) $ = 2^6 \times 3^4  \times 5^3 \times 17^2$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Prime Factors and Square Root}
+
+\begin{itemize}
+  \item \textbf{Lemma.} Let $n$ be a composite integer. Then $n$ has a prime factor less than or equal to $\sqrt{n}$.
+  \item \textbf{proof.} Since $n$ is composite, $n=ab$ with $1<a\leq b < n$.
+  \item $a^2 \leq ab = n$ so $a \leq \sqrt{n}$.
+  \item Let $p$ be a prime factor of $a$.
+  \item Then $p$ is a prime factor of $n$ and $p\leq a \leq \sqrt{n}$. $\qed$.
+  \item This lemma tells us that when using the method of trial division we only
+  have to search through $\sqrt{n}$ to determine if $n$ is prime.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+\begin{itemize}
+  \item \textbf{Example.} Is $149$ prime?
+  \item $11^2 = 121 < 149 < 169 = 13^2$.
+  \item So we only need to check primes through 11.
+  \item By inspection, 149 is not divisible by 2,3 or 5.
+  \item Try 7. No $7\ndivides 149$.
+  \item Try 11. No $11\ndivides 149$.
+  \item So 149 is prime.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Primality test for large numbers}
+\begin{itemize}
+  \item Suppose you are given a 200 digit integer  and you want to determine if it is prime.
+  \item How might you do it? How might a computer do it?
+  \item Trial division: Try every prime number less than $\sqrt{n}$ to see if it divides $n$.
+  \item How long will this take on a very fast computer?
+  \item Let's play around with Colab to try factoring integers of different sizes.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{How Big is Googol?}
+\begin{itemize}
+  \item To get a sense of how long it would take to factor a 200 digit integer using trial division,
+  let's muse about how ``big'' the number $10^{100}$ is.
+  \item Question: Which is bigger: (a) $10^{100}$ or (b) The number of grains of sand on an average beach?
+  \item Put these in order: (a) $10^{100}$ (b) Grains of sand on a beach
+  (c) Atoms in the Earth.
+  \item Put these in order: (a) $10^{100}$ (b) Grains of sand on a beach
+  (c) Atoms in the Earth (d) Elementary particles in the universe.
+  \item See \href{https://en.wikipedia.org/wiki/Elementary_particle\#Cosmic_abundance_of_elementary_particles}{Wikipedia article on Elementary Particles}
+  \item Which is larger: $10^{100}$ or the number of seconds the universe has existed so far?
+  \item Conclusion: Any algorithm that requires $10^{100}$ steps will not terminate soon enough to be useful. (understatement)
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Distribution of Primes}
 
 \begin{itemize}
@@ -241,6 +363,18 @@
   \item $(k+1)! + 2$ is divisible by 2, so it is not prime.
   \item $(k+1)! + 3$ is divisible by 3, so it is not prime.
   \item etc. So we have exhibited $k$ consecutive composite integers. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Twin Prime Conjecture}
+
+\begin{itemize}
+  \item \textbf{Statement.} There are infinitely many integers $n$ such that
+  both $n$ and $n+2$ are prime.
+  \item Is this statement true or false?
+  \item It is an open question. We don't know if it is true or false.
+  \item We believe it is probably true.
 \end{itemize}
 
 \end{frame}
