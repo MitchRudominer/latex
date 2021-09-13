@@ -1,0 +1,656 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 7 \\ The Euclidean Algorithm}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2021 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{An Efficient Algorithm for GCD}
+
+\begin{itemize}
+  \item Given two positive integers $a,b$ how do you compute $\gcd(a,b)$? How could a computer do it?
+  \item One way: First compute the prime factorizations of $a$ and $b$ and then use the minimum exponent rule.
+  \item Example: Find $\gcd(72, 108)$.
+  \item $72=2^3\cdot 3^2$, $108=2^2\cdot 3^3$.
+  \item $\gcd(72,108) = 2^2\cdot 3^2 = 36$.
+  \item The problem is that finding the prime factorization of a large integer is intractable.
+  \item That algorithm will not work to find the GCD of two 200-digit integers.
+  \item But there is a different algorithm that allows us to efficiently compute GCD of two large integers.
+  \item Example: \href{https://colab.research.google.com/drive/1itrO4ePMS6PxUmBhbTBumrgoafyIglD7}{Use Colab to find the GCD of two 200-digit integers.}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Key Reduction Step}
+
+\begin{itemize}
+  \item The key ingredient of the efficient algorithm is the following
+  \item \textbf{Lemma} Suppose $a,b$ are integers with $a>b>1$.
+  \item Write $a = bq + r$ with $0\leq r < b$.
+  \item Then $\gcd(a,b) = \gcd(b,r)$.
+  \item Example: $75 = 20\cdot 3 + 15$.
+  \item So $\gcd(75, 20) = \gcd(20, 15)$.
+  \item \textbf{proof.} Notice that $r$ is an integer linear combination of
+  $a$ and $b$. So any common divisor of $a$ and $b$ is a common divisor of $b$ and $r$.
+  \item Also $a$ is an integer linear combination of $b$ and $r$ so any common divisor
+  of $b$ and $r$ is a common divisor of $a$ and $b$.
+  \item So the pair $a,b$ has the same set of common divisors as the pair $b,r$.
+  \item So $\gcd(a,b)=\gcd(b,r)$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The Euclidean Algorithm}
+
+\begin{itemize}
+  \item We turn the key reduction step into an algorithm by repeating it.
+  \item Example: Find $\gcd(75, 20)$.
+  \item $75 = 20\cdot 3 + 15$ so $\gcd(75, 20) = \gcd(20, 15)$.
+  \item $20 = 15 \cdot 1 + 5$ so $\gcd(20, 15) = \gcd(15, 5)$.
+  \item $15 = 5 \cdot 3 + 0$ so $\gcd(15, 5) = \gcd(5, 0) = 5$.
+  \item So $\gcd(75, 20) = 5$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The Euclidean Algorithm: General Procedure}
+
+\begin{itemize}
+  \item Let $a,b$ be positive integers with $a>b$.
+  \item To find $\gcd(a,b)$ we do the following.
+  \item Let $r_0 = a, r_1 = b$.
+  \item At stage $j$ of the algorithm, with $j\geq 0$, we will
+  have two integers $r_j, r_{j+1}$ with $r_j > r_{j+1} > 0$.
+  \item Use Quotient-Remainder Theorem to write $r_j=r_{j+1} \cdot q_{j+1} + r_{j+2}$.
+  \item $0\leq r_{j+2} < r_{j+1}$.
+  \item For example with $j=0$, $r_0 = r_{1} \cdot q_{1} + r_2$, and $0\leq r_2 < r_1$.
+  \item $\gcd(r_j, r_{j+1}) = \gcd(r_{j+1}, r_{j+2})$.
+  \item Because the $r_j$ are decreasing, eventually we must reach a stage $j$ such that $r_{j+2} = 0$.
+  \item Then $\gcd(r_{j+1}, r_{j+2}) = r_{j+1}$ and we are done.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The Euclidean Algorithm: Example General Procedure}
+
+\begin{itemize}
+  \item Example: Find $\gcd(a, b)$ with $a=75, b=20$.
+  \item $r_0 = 75, r_1 = 20$.
+  \item $75 = 20\cdot 3 + 15$.
+  \item $q_1 = 3, r_2 = 15$.
+  \item $r_0 = r_1 \cdot q_1 + r_2$. $\gcd(r_0, r_1) = \gcd(r_1, r_2)$.
+  \item $20 = 15 \cdot 1 + 5$.
+  \item $q_2 = 1, r_3 = 5$.
+  \item $r_1 = r_2 \cdot q_2 + r_3$. $\gcd(r_1, r_2) = \gcd(r_2, r_3)$.
+  \item $15 = 5 \cdot 3 + 0$.
+  \item $r_2 = r_3 \cdot q_3 + r_4$. $r_4 = 0$.
+  \item So $\gcd(a,b) = r_3 = 5$.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Euclidean Algorithm in table form}
+
+Example: Find $\gcd(a, b)$ with $a=75, b=20$.
+
+\begin{tabular}{|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ \\ \hline\hline
+0     &  75         &  20       &    3      &   15      \\ \hline
+1     &             &           &           &           \\ \hline
+2     &             &           &           &           \\ \hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Euclidean Algorithm in table form, $j=1$}
+
+\begin{tabular}{|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ \\ \hline\hline
+0     &  75         &  20       &    3      &   15      \\ \hline
+1     &  20         &  15       &    1      &   5       \\ \hline
+2     &             &           &           &           \\ \hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Euclidean Algorithm in table form, $j=2$}
+
+\begin{tabular}{|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ \\ \hline\hline
+0     &  75         &  20       &    3      &   15      \\ \hline
+1     &  20         &  15       &    1      &   5       \\ \hline
+2     &  15         &  5        &    3      &   0       \\ \hline
+\end{tabular}
+
+\vspace{0.5in}
+
+So $\gcd(75, 20) = 5$.
+
+\end{frame}
+
+\begin{frame}{Another example}
+
+\begin{itemize}
+\item Find $\gcd(51, 87)$.
+\item Let $a=87, b=51$. We want $a>b$.
+\end{itemize}
+
+\pause
+
+\begin{tabular}{|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ \\ \hline\hline
+0     &  87         &  51       &    1      &   36      \\ \hline
+1     &             &           &           &           \\ \hline
+2     &             &           &           &           \\ \hline
+3     &             &           &           &           \\ \hline
+4     &             &           &           &           \\ \hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Another example, $j=1$}
+
+\begin{tabular}{|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ \\ \hline\hline
+0     &  87         &  51       &    1      &   36      \\ \hline
+1     &  51         &  36       &    1      &   15      \\ \hline
+2     &             &           &           &           \\ \hline
+3     &             &           &           &           \\ \hline
+4     &             &           &           &           \\ \hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Another example, $j=2$}
+
+\begin{tabular}{|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ \\ \hline\hline
+0     &  87         &  51       &    1      &   36      \\ \hline
+1     &  51         &  36       &    1      &   15      \\ \hline
+2     &  36         &  15       &    2      &   6       \\ \hline
+3     &             &           &           &           \\ \hline
+4     &             &           &           &           \\ \hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Another example, $j=3$}
+
+\begin{tabular}{|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ \\ \hline\hline
+0     &  87         &  51       &    1      &   36      \\ \hline
+1     &  51         &  36       &    1      &   15      \\ \hline
+2     &  36         &  15       &    2      &   6       \\ \hline
+3     &  15         &   6       &    2      &   3       \\ \hline
+4     &             &           &           &           \\ \hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Another example, $j=4$}
+
+\begin{tabular}{|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ \\ \hline\hline
+0     &  87         &  51       &    1      &   36      \\ \hline
+1     &  51         &  36       &    1      &   15      \\ \hline
+2     &  36         &  15       &    2      &   6       \\ \hline
+3     &  15         &   6       &    2      &   3       \\ \hline
+4     &   6         &   3       &    2      &   0       \\ \hline
+\end{tabular}
+
+\vspace{1em}
+
+So $\gcd(87,51) = 3$.
+
+\end{frame}
+
+\begin{frame}{Algorithm For Bezout's Theorem}
+
+\begin{itemize}
+\item Recall Bezout's Theorem.
+\item Let $a$ and $b$ be integers. Let $d=\gcd(a,b)$.
+\item Then there are integers $s,t$ such that $as +bt = d$.
+\item Suppose you are given two positive integers $a, b$ with $a>b$.
+\item The Euclidean algorithm let's you find $d=\gcd(a,b)$.
+\item But how can you find $s,t$ such that $as +bt = d$?
+\item The Euclidean Algorithm can be extended to find $s$ and $t$ also.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Back-substitution in the Euclidean Algorithm}
+
+\begin{itemize}
+  \item Example: Find $s$ and $t$ so that $75s+20t = \gcd(75, 20)$.
+  \item $75 = 20\cdot 3 + 15$.
+  \item $20 = 15 \cdot 1 + 5$.
+  \item $15 = 5 \cdot 3 + 0$.
+  \item So $\gcd(75, 20) = 5$.
+  \item $5= 20 - 15 \cdot 1$.
+  \item $15 = 75 -20 \cdot 3$.
+  \item $5=20 - (75 - 20\cdot 3) \cdot 1$.
+  \item $5 = 75 \cdot (-1) + 20 \cdot 4$.
+  \item $s=-1, t=4$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The extended Euclidean Algorithm}
+
+\begin{itemize}
+  \item The previous technique is called back-substitution.
+  \item It works but there is a more efficient technique that doesn't require
+  working backwards through the whole table of values after you are done.
+  \item Instead we compute $s$ and $t$ while working forwards through the table.
+  \item We add two more columns to our table labeled $s_j$ and $t_j$.
+  \item We will also add one more row to the table.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The extended Euclidean Algorithm, continued}
+
+\begin{itemize}
+  \item For the first two rows we always use:
+  \item  $s_0=1, t_0=0$
+  \item  $s_1=0, t_1=1$.
+  \item For $j\geq 2$, $s_j=s_{j-2} - q_{j-1}s_{j-1}$ \quad $t_j=t_{j-2} - q_{j-1}t_{j-1}$
+  \item For each row $j$ we will have $a \cdot s_j + b \cdot t_j = r_j$.
+  \item Eventually we will reach a row $j$ so that $r_j = d$.
+  \item For that $j$, $s=s_j$ and $t=t_j$.
+  \item Example: Find $s$ and $t$ so that $75s+20t = \gcd(75, 20)$.
+\end{itemize}
+
+\end{frame}
+
+\beamerdefaultoverlayspecification{}
+
+\begin{frame}{Extended Euclidean Algorithm}
+
+\begin{itemize}
+  \item Example: Find $s$ and $t$ so that $75s+20t = \gcd(75, 20)$.
+  \item Notes:
+  \begin{itemize}
+    \item For $j\geq0$, $a \cdot s_j + b \cdot t_j = r_j$.
+    \item For $j\geq 2$, $s_j=s_{j-2} - q_{j-1}s_{j-1}$ \quad $t_j=t_{j-2} - q_{j-1}t_{j-1}$
+  \end{itemize}
+\end{itemize}
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  75         &  20       &    3      &   15      &  1    &   0   \\ \hline
+1     &             &           &           &           &  0    &   1   \\ \hline
+2     &             &           &           &           &       &       \\ \hline
+3     &             &           &           &           &       &       \\ \hline
+\end{tabular}
+
+\vspace{1em}
+
+\begin{itemize}
+  \item $r_0 = 75, s_0=1, t_0=0$.
+  \item $75\cdot 1 + 20 \cdot 0 = 75$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Extended Euclidean Algorithm, $j=1$}
+
+\begin{itemize}
+  \item Example: Find $s$ and $t$ so that $75s+20t = \gcd(75, 20)$.
+  \item Notes:
+  \begin{itemize}
+    \item For $j\geq0$, $a \cdot s_j + b \cdot t_j = r_j$.
+    \item For $j\geq 2$, $s_j=s_{j-2} - q_{j-1}s_{j-1}$ \quad $t_j=t_{j-2} - q_{j-1}t_{j-1}$
+  \end{itemize}
+\end{itemize}
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  75         &  20       &    3      &   15      &  1    &   0   \\ \hline
+1     &  20         &  15       &    1      &    5      &  0    &   1   \\ \hline
+2     &             &           &           &           &       &       \\ \hline
+3     &             &           &           &           &       &       \\ \hline
+\end{tabular}
+
+\vspace{1em}
+
+\begin{itemize}
+  \item $r_1 = 20, s_1=0, t_1=1$.
+  \item $75\cdot 0 + 20 \cdot 1 = 20$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Extended Euclidean Algorithm, $j=2$}
+
+\begin{itemize}
+  \item Example: Find $s$ and $t$ so that $75s+20t = \gcd(75, 20)$.
+  \item Notes:
+  \begin{itemize}
+    \item For $j\geq0$, $a \cdot s_j + b \cdot t_j = r_j$.
+    \item For $j\geq 2$, $s_j=s_{j-2} - q_{j-1}s_{j-1}$ \quad $t_j=t_{j-2} - q_{j-1}t_{j-1}$
+  \end{itemize}
+\end{itemize}
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  75         &  20       &    3      &   15      &  1    &   0   \\ \hline
+1     &  20         &  15       &    1      &    5      &  0    &   1   \\ \hline
+2     &  15         &   5       &    3      &    0      &  1    &  -3   \\ \hline
+3     &             &           &           &           &       &       \\ \hline
+\end{tabular}
+
+\vspace{1em}
+
+\begin{itemize}
+  \item $s_2 = s_0 - q_1 \cdot s_1, t_2 = t_0 - q_1 \cdot t_1$.
+  \item $s_2 =1 - 3 \cdot 0 = 1, t_2 = 0 - 3 \cdot 1 = -3$.
+  \item $75\cdot 1 + 20 \cdot (-3) = 15 = r_2$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Extended Euclidean Algorithm, $j=3$}
+
+\begin{itemize}
+  \item Example: Find $s$ and $t$ so that $75s+20t = \gcd(75, 20)$.
+  \item Notes:
+  \begin{itemize}
+    \item For $j\geq0$, $a \cdot s_j + b \cdot t_j = r_j$.
+    \item For $j\geq 2$, $s_j=s_{j-2} - q_{j-1}s_{j-1}$ \quad $t_j=t_{j-2} - q_{j-1}t_{j-1}$
+  \end{itemize}
+\end{itemize}
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  75         &  20       &    3      &   15      &  1    &   0   \\ \hline
+1     &  20         &  15       &    1      &    5      &  0    &   1   \\ \hline
+2     &  15         &   5       &    3      &    0      &  1    &  -3   \\ \hline
+3     &   5         &           &           &           & -1    &   4   \\ \hline
+\end{tabular}
+
+\vspace{1em}
+
+\begin{itemize}
+  \item $s_3 = s_1 - q_2 \cdot s_2, t_3 = t_1 - q_2 \cdot t_2$.
+  \item $s_3 =0 - 1 \cdot 1 = -1, t_3 = 1 - 1 \cdot (-3) = 4$.
+  \item $75\cdot (-1) + 20 \cdot (4) = 5 = r_3$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Extended Euclidean Algorithm, Conclusion}
+
+\begin{itemize}
+  \item Example: Find $s$ and $t$ so that $75s+20t = \gcd(75, 20)$.
+  \item Notes:
+  \begin{itemize}
+    \item For $j\geq0$, $a \cdot s_j + b \cdot t_j = r_j$.
+    \item For $j\geq 2$, $s_j=s_{j-2} - q_{j-1}s_{j-1}$ \quad $t_j=t_{j-2} - q_{j-1}t_{j-1}$
+  \end{itemize}
+\end{itemize}
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  75         &  20       &    3      &   15      &  1    &   0   \\ \hline
+1     &  20         &  15       &    1      &    5      &  0    &   1   \\ \hline
+2     &  15         &   5       &    3      &    0      &  1    &  -3   \\ \hline
+3     &   5         &           &           &           & -1    &   4   \\ \hline
+\end{tabular}
+
+\begin{itemize}
+  \item $d = \gcd(75, 20) = 5$.
+  \item $s=-1, t=4$.
+  \item $75\cdot(-1) + 20 \cdot 4 = 5$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Another example}
+
+Example: Find $s$ and $t$ so that $87s+51t = \gcd(87, 51)$.
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  87         &  51       &    1      &   36      &  1    &   0   \\ \hline
+1     &             &           &           &           &  0    &   1   \\ \hline
+2     &             &           &           &           &       &       \\ \hline
+3     &             &           &           &           &       &       \\ \hline
+4     &             &           &           &           &       &       \\ \hline
+5     &             &           &           &           &       &       \\ \hline
+\end{tabular}
+
+\vspace{1em}
+
+\begin{itemize}
+  \item $s_0 = 1, t_0 = 0$.
+  \item Check: $87\cdot 1 + 51\cdot 0 = 87$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Another example, $j=1$}
+
+Example: Find $s$ and $t$ so that $87s+51t = \gcd(87, 51)$.
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  87         &  51       &    1      &   36      &  1    &   0   \\ \hline
+1     &  51         &  36       &    1      &   15      &  0    &   1   \\ \hline
+2     &             &           &           &           &       &       \\ \hline
+3     &             &           &           &           &       &       \\ \hline
+4     &             &           &           &           &       &       \\ \hline
+5     &             &           &           &           &       &       \\ \hline
+\end{tabular}
+
+\vspace{1em}
+
+\begin{itemize}
+  \item $s_1 = 0, t_1 = 1$.
+  \item Check: $87\cdot 0 + 51\cdot 1 = 51$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Another example, $j=2$}
+
+Example: Find $s$ and $t$ so that $87s+51t = \gcd(87, 51)$.
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  87         &  51       &    1      &   36      &  1    &   0   \\ \hline
+1     &  51         &  36       &    1      &   15      &  0    &   1   \\ \hline
+2     &  36         &  15       &    2      &    6      &  1    &  -1   \\ \hline
+3     &             &           &           &           &       &       \\ \hline
+4     &             &           &           &           &       &       \\ \hline
+5     &             &           &           &           &       &       \\ \hline
+\end{tabular}
+
+\vspace{1em}
+
+\begin{itemize}
+  \item $s_2 = 1 - 1\cdot 0 = 1, t_2 = 0 - 1\cdot 1 = -1$.
+  \item Check: $87\cdot 1 + 51\cdot (-1) = 36$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Another example, $j=3$}
+
+Example: Find $s$ and $t$ so that $87s+51t = \gcd(87, 51)$.
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  87         &  51       &    1      &   36      &  1    &   0   \\ \hline
+1     &  51         &  36       &    1      &   15      &  0    &   1   \\ \hline
+2     &  36         &  15       &    2      &    6      &  1    &  -1   \\ \hline
+3     &  15         &   6       &    2      &    3      & -1    &   2   \\ \hline
+4     &             &           &           &           &       &       \\ \hline
+5     &             &           &           &           &       &       \\ \hline
+\end{tabular}
+
+\vspace{1em}
+
+\begin{itemize}
+  \item $s_3 = 0 - 1\cdot 1 = -1, t_3 = 1 - 1\cdot (-1) = 2$.
+  \item Check: $87\cdot (-1) + 51\cdot 2 = 15$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Another example, $j=4$}
+
+Example: Find $s$ and $t$ so that $87s+51t = \gcd(87, 51)$.
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  87         &  51       &    1      &   36      &  1    &   0   \\ \hline
+1     &  51         &  36       &    1      &   15      &  0    &   1   \\ \hline
+2     &  36         &  15       &    2      &    6      &  1    &  -1   \\ \hline
+3     &  15         &   6       &    2      &    3      & -1    &   2   \\ \hline
+4     &   6         &   3       &    2      &    0      &  3    &  -5   \\ \hline
+5     &             &           &           &           &       &       \\ \hline
+\end{tabular}
+
+\vspace{1em}
+
+\begin{itemize}
+  \item $\gcd(87,51) = 3$
+  \item $s_4 = 1 - 2\cdot (-1) = 3, t_4 = -1 - 2\cdot 2 = -5$.
+  \item Check: $87\cdot 3 + 51\cdot (-5) = 6$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Another example, $j=5$}
+
+Example: Find $s$ and $t$ so that $87s+51t = \gcd(87, 51)$.
+
+\vspace{1em}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$j$   &  $r_{j}$    & $r_{j+1}$ & $q_{j+1}$ & $r_{j+2}$ & $s_j$ & $t_j$ \\ \hline\hline
+0     &  87         &  51       &    1      &   36      &  1    &   0   \\ \hline
+1     &  51         &  36       &    1      &   15      &  0    &   1   \\ \hline
+2     &  36         &  15       &    2      &    6      &  1    &  -1   \\ \hline
+3     &  15         &   6       &    2      &    3      & -1    &   2   \\ \hline
+4     &   6         &   3       &    2      &    0      &  3    &  -5   \\ \hline
+5     &   3         &           &           &           & -7    &  12   \\ \hline
+\end{tabular}
+
+\vspace{1em}
+
+\begin{itemize}
+  \item $\gcd(87,51) = 3$
+  \item $s_5 = -1 - 2\cdot 3 = -7, t_5 = 2 - 2\cdot (-5) = 12$.
+  \item Check: $87\cdot (-7) + 51\cdot 12 = 3$
+  \item $s=-7, t=12$.
+\end{itemize}
+
+
+\end{frame}
+
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{frame}{Why does it work?}
+\begin{itemize}
+\item Why do the formulas  $s_j=s_{j-2} - q_{j-1}s_{j-1}$ \quad $t_j=t_{j-2} - q_{j-1}t_{j-1}$ work?
+\item Let's consider the case $j=2$. $s_2=s_0 - q_1s_1$ \quad $t_2=t_0 - q_1t_1$.
+\item We know that $a s_0+bt_0 = r_0$ and $a s_1 + b t_1 = r_1$ and we want to see that $as_2+bt_2=r_2$.
+\item $r_0 = r_1 q_1 + r_2$.
+\item So $r_2 = r_0 - r_1 q_1$.
+\item So $r_2 = (a s_0+bt_0) - (a s_1 + b t_1)q_1 = a(s_0 - q_1 s_1) + b(t_0 - q_1 t_1)$
+\item = $as_2 + b t_2$.
+\item Formally, the proof is by induction on $j$.
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Is it more efficient?}
+\begin{itemize}
+\item Remember that the reason why the Euclidean algorithm is interesting to us is that it is much more
+efficient than factoring.
+\item Suppose $a$ and $b$ are two 200-digit positive integers and you want to compute $\gcd(a,b)$.
+\item To attempt to do this by factoring $a$ and $b$ using brute-force trial division would
+take on the order of $10^{100}$ steps.
+\item This would take longer than the age of the universe, as we discussed previously.
+\item So how many steps does it take to compute $\gcd(a,b)$ using the Euclidean algorithm?
+\item Answer: In the worst case, fewer than 300 million basic computer steps.
+\item A fast modern computer can compute this in less than one second.
+
+\end{itemize}
+\end{frame}
+
+\end{document}

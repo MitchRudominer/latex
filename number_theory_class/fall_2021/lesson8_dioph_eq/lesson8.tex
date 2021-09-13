@@ -1,0 +1,317 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 8 \\ Linear Diophantine Equations}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2021 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Linear Diophantine Equations}
+
+\begin{itemize}
+  \item A linear Diophantine equation is an equation of the following form:
+  \item $ax + by = c$
+  \item where $a,b,c$ are integer constants, and $x,y$ are integer variables.
+  \item To \emph{solve} the above equation means
+  \item to find all integers $x,y$ that make the equation true.
+  \item \textbf{Example.} $12x + 18y = 30$.
+  \item This is a linear Diophantine equation.
+  \item The goal is to find all integers $x,y$ that make the equation true.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Solution Sets}
+
+\begin{itemize}
+  \item The \emph{solution set} to the linear Diophantine equation $ax + by = c$
+  \item is the set of all ordered pairs $(x,y)$ such that
+  \item $x$ and $y$ are integers and the equation holds.
+  \item The solution set might be empty. There may be no solutions.
+  \item If there are any solutions, we will see that the solution set is infinite. i.e. there are
+  infinitely many solutions.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{When do solutions exist?}
+
+\begin{itemize}
+  \item \textbf{Theorem.} The linear Diophantine equation $ax+by=c$ has a solution
+  \item iff $d\divides c$, where $d=\gcd(a,b)$.
+  \item \textbf{Example.} $12x + 18y = 30$ has a solution.
+  \item Because $\gcd(12,18) = 6$ and $6\divides 30$.
+  \item \textbf{Example.} $12x + 18y = 20$ has no solutions.
+  \item Because $\gcd(12,18) = 6$ and $6\ndivides 20$.
+  \item \textbf{proof.} Let $d=\gcd(a,b)$.
+  \item Recall that the set of multiples of $d$ is the same as the set of
+  integer linear combinations of $a$ and $b$.
+  \item $ax + by = c$ has a solution iff $c$ is an integer linear combination
+  of $a$ and $b$.
+  \item So $ax + by = c$ has a solution iff $c$ is a multiple of $d$. $\qed$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Homogeneous Equations}
+
+\begin{itemize}
+  \item The linear Diophantine equation $ax+by=c$ is called \emph{homogeneous}
+  \item iff $c=0$.
+  \item Otherwise it is called \emph{inhomogeneous.}
+  \item \textbf{Example.} $12x + 18y = 0$ is a homogeneous linear Diophantine equation.
+  \item \textbf{Example.} $12x + 18y = 30$ is an inhomogeneous linear Diophantine equation.
+  \item \textbf{Fact.} Homogeneous linear Diophantine equations always have a solution.
+  \item $x=y=0$ is always one solution.
+  \item We can also see this from the previous theorem because $d\divides 0$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Solving Homogeneous Equations, Example}
+
+\begin{itemize}
+  \item \textbf{Example.} Solve $12x + 18y = 0$.
+  \item $2x + 3y = 0$  (cancelled the gcd of 12 and 18)
+  \item One solution: $x=3, y=-2$.
+  \item General solution $x=3k,y=-2k$, $k\in\Z$.
+  \item Proof that these are the only solutions: Since $2x = -3y$, we know $3\divides 2x$.
+  \item Since $\gcd(3,2)=1$ we know $3\divides x$ i.e. $x=3k$ for some $k\in Z$.
+  \item Plug in $x=3k$ into $2x + 3y = 0$. We get $6k + 3y = 0$.
+  \item Solving for $y$ we get $y=-2k$. $\qed$
+  \item Solution set = $\setof{(3k, -2k)}{k\in\Z}$.
+  \item Some of the solutions: $(0,0), (3,-2), (-3, 2), (6, -4), (-6, 4), (12, -8)$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Solving Homogeneous Equations}
+
+\begin{itemize}
+  \item \textbf{Theorem.} The solution set for the homogeneous linear Diophantine equation
+  $ax + by =0$ is
+  \item $S = \setof{(\bbar k, -\abar k)}{k\in \Z}$
+  \item where $d=\gcd(a,b)$, $a=\abar d$, $b = \bbar d$.
+  \item (Recall that $\gcd(\abar,\bbar)=1$.)
+  \item \textbf{proof of Theorem.} First let $(x,y)\in S$ and let's check that $ax+by=0$.
+  \item $a \bbar k + b(-\abar k) = d\abar\bbar k  - d\bbar\abar k = 0$.
+  \item So every element of $S$ is a solution.
+  \item Conversely if $(x,y)$ is a solution then $ax+by=0$
+  \item so $d\abar x + d \bbar y = 0$ so $\abar x + \bbar y = 0$.
+  \item Since $\abar x = -\bbar y$ we know that $\bbar \divides \abar x$.
+  \item Since $\gcd(\abar,\bbar) = 1$ we know  $\bbar\divides x$, so $x=\bbar k$ for some $k\in\Z$.
+  \item Plugging in $x=\bbar k$ into $\abar x + \bbar y = 0$ we get
+  \item $\abar \bbar k + \bbar y = 0$ so $y=-\abar k$. $\qed$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Homogeneous Linear Diophantine Equation, Example}
+
+\begin{itemize}
+  \item Find the solution set of $10x - 25y = 0$.
+  \item $d = \gcd(10, -25) = 5$.
+  \item $\abar = 2, \bbar = -5$.
+  \item $2x - 5y = 0$.
+  \item General solution: $x=-5k, y=-2k$.
+  \item Or equivalently $x=5k, y=2k$.
+  \item Solution set = $\setof{(5k, 2k)}{k\in\Z}$.
+  \item Some example solutions: $(0,0), (5,2),(-5,-2), (10,4), (15, 6)$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Particular and General Solution}
+
+\begin{itemize}
+  \item Given any \emph{particular} solution $(x_0,y_0)$ to the inhomogeneous linear Diophantine equation $ax+by=c$
+  \item we can obtain the \emph{general} solution by adding to $(x_0,y_0)$ the general solution to the
+  corresponding \emph{homogeneous} equation.
+  \item \textbf{Theorem.} If $(x_0, y_0)$ is a particular solution to the linear Diophantine
+  equation $ax+by=c$,
+  \item and if $T$ is the solution set for
+  $ax + by = 0$,
+  \item then the general solution to $ax+by=c$ is given by
+  \item $S=\setof{(x_0 + u, y_0 + v)}{(u,v) \in T}$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Particular and General Solution, Proof}
+
+\begin{itemize}
+  \item \textbf{proof} If $(u,v)\in T$ then $au+bv = 0$ so $a(x_0 +u) + b(y_0 +v) = (ax_0 + by_0) + (au + bv)
+  =c +0 =c$ so $(x_0+u, y_0+v)$ is a solution.
+  \item Conversely suppose $(x,y)$ is any solution so $ax + by = c$ and let $u=x-x_0, v=y-y_0$ so that $x=x_0+u, y=y_0+v$.
+  \item Then $au + bv = a(x-x_0) + b(y-y_0) = (ax + by) - (ax_0 + by_0) = c-c = 0$ so $(u,v)\in T$. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Particular and General Solution, Example}
+
+\begin{itemize}
+  \item \textbf{Example.} Find the general solution to the inhomogeneous linear Diophantine equation
+  $10x - 25y = 5$.
+  \item Solution: A particular solution is $x_0=3, y_0 = 1$.
+  \item The general solution to the homogeneous equation $10x - 25y = 0$ is
+  \item $T=\setof{(5k, 2k)}{k\in\Z}$.
+  \item So the general solution to the inhomogeneous equation is
+  \item $S = \setof{(3 + 5k, 1 + 2k)}{k\in\Z}$.
+  \item Some example solutions are: $(3,1), (8,3), (-2, -1), (13, 5)$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Finding a particular solution}
+
+\begin{itemize}
+  \item Three techniques for finding a particular solution to an inhomogeneous linear Diophantine equation
+  $ax+by=c$.
+  \item Technique 1: Trial and error.
+  \item Example: Find a particular solution to $10x - 25y = 5$.
+  \item Solution: I can see that 30 - 25 = 5 so letting $x_0=3, y_0 = 1$ works.
+  \item Technique 2: Use the extended Euclidean algorithm to find $d=\gcd(a,b)$
+  and $s,t$ such that $as + bt = d$.
+  \item If $d\ndivides c$ there is no solution.
+  \item Suppose $d\divides c$ and write $c=d w$ for some $w\in Z$.
+  \item Then $asw + btw = dw = c$. So $x_0 = sw, y_0 = tw$ is a particular solution.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Finding a particular solution: Extended Euclidean Algorithm}
+
+\begin{itemize}
+  \item Example: Find a particular solution to $87x + 51y = 6$.
+  \item Solution: Last class we used the extended Euclidean to compute
+  \item $d=\gcd(87, 51) = 3$ and
+  \item $87\cdot (-7) + 51 \cdot 12 = 3$. \quad $(\dagger)$
+  \item $3\divides 6$ so there are solutions to $87x + 51y = 6$.
+  \item Multiplying equation $(\dagger)$ above by 2 we get
+  \item $87\cdot (-14) + 51 \cdot 24 = 6$.
+  \item So one particular solution is $(-14, 24)$.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Finding a particular solution: Variant technique}
+\begin{itemize}
+  \item Technique 3: Variant of technique 2.
+  \item Suppose you can easily find $d=\gcd(a,b)$ but you don't yet know $s,t$
+  such tht $as + bt = d$.
+  \item Let $\abar=\frac{a}{d}$, $\bbar=\frac{b}{d}$.
+  \item $\gcd(\abar,\bbar)=1$. It may be easier to find $s,t$ such that $\abar s + \bbar t = 1$.
+  \item Then multiply by $d$ to get $a s + b t = d$.
+  \item Then proceed as in technique 2.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Example of Variant technique}
+\begin{itemize}
+  \item Example: Find a particular solution to $27x + 51y = 6$.
+  \item $27=3^3$, $51 =17 \cdot 3$, so $d = \gcd(27, 51) = 3$.
+  \item $3\divides 6$ so there are solutions.
+  \item Let $\abar=\frac{a}{d} = \frac{27}{3} = 9$, $\bbar=\frac{b}{d} = \frac{51}{3} = 17$.
+  \item $\gcd(\abar,\bbar)=1$. \item Solve $9x + 17y = 1$.
+  \item Solution: $9 \cdot (2) + 17 \cdot (-1) = 1$.
+  \item Multiply by $d$: $27\cdot (2) + 51 \cdot (-1) = 3$.
+  \item Proceed as in technique 2: $27\cdot (4) + 51 \cdot (-2) = 6$.
+  \item So one particular solution is $(4,-2)$.
+\end{itemize}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Geometric Representation}
+
+\begin{itemize}
+  \item In pre-Calculus we learn that the graph of the equation $ax+by = c$
+  \item is a line in the plane. (Here $a,b,c,x,y$ are allowed to be real numbers, not only integers.)
+  \item If $c=0$, the graph of $ax+by=0$ is a line through the origin.
+  \item If $a,b,c$ are integers, then the solution to the linear Diophantine equation $ax+by=c$
+  \item are the points $(x,y)$ on the line with integer coordinates.
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}
