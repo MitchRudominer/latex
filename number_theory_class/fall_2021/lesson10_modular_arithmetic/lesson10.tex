@@ -1,0 +1,296 @@
+% $Header$
+
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 10 \\ Modular Arithmetic}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2021 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Doing the same thing to both sides}
+
+\begin{itemize}
+  \item We can do some simple algebra with congruences.
+  \item Suppose $x,y,c,m$ are integers with $m>1$.
+  \item Suppose $x\equiv y \pmod m$.
+  \item Then you can conclude that:
+  \item $x+c\equiv y+c \pmod m$
+  \item $x-c\equiv y-c \pmod m$
+  \item $cx \equiv cy \pmod m$.
+  \item For example, suppose $x\equiv y \pmod {37}$.
+  \item Then $x+111\equiv y+111 \pmod {37}$.
+  \item $7x \equiv 7y \pmod {37}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Justification}
+
+\begin{itemize}
+  \item Why is this simple algebra justified?
+  \item Suppose $x\equiv y \pmod m$.
+  \item So $m \divides (x-y)$.
+  \item So $m \divides \big( (x+c) - (y+c) \big)$.
+  \item And $m \divides (cx - cy)$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example}
+
+\begin{itemize}
+  \item Show that $7,953 \equiv  4,953 \pmod 3$?
+  \item $7\equiv 4  \pmod 3$.
+  \item So $7000 \equiv 4000 \pmod 3$.
+  \item $7,953 \equiv  4,953 \pmod 3$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{What about cancellation?}
+
+\begin{itemize}
+  \item True or false:
+  \item If $cx \equiv cy \pmod m$ then $x\equiv y \pmod m$.
+  \item Example: $20 \equiv 35 \pmod {15}$.
+  \item $5\cdot 4 \equiv 5 \cdot 7 \pmod {15}$
+  \item Does it follow that $4 \equiv 7 \pmod {15}$?
+  \item No.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Cancellation when $c$ and $m$ are relatively prime.}
+\begin{itemize}
+  \item \textbf{Lemma.} Suppose $x,y,c,m$ are integers with $m>1$.
+  \item Suppose that $\gcd(c, m) = 1$.
+  \item Suppose that $cx \equiv cy \pmod m$.
+  \item Then $x\equiv y \pmod m$.
+  \item Example: $35 \equiv 50 \pmod 3$.
+  \item $5\cdot 7 \equiv 5 \cdot 10 \pmod 3$.
+  \item Because $\gcd(5,3) = 1$ we can cancel the 5.
+  \item Conclude: $7\equiv 10 \pmod 3$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof}
+\begin{itemize}
+  \item Suppose that $cx \equiv cy \pmod m$.
+  \item So $m \divides c(x-y)$.
+  \item In general we cannot conclude that $m \divides (x-y)$.
+  \item But, if $\gcd(m,c) = 1$ then we can conclude that $m\divides (x-y)$.
+  \item So $x\equiv y \pmod m$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cancelling from the modulus}
+\begin{itemize}
+  \item Suppose that $x\equiv y \pmod {cm}$.
+  \item Then $x\equiv y \pmod m$.
+  \item Example: If $x\equiv y \pmod 6$,
+  \item Then $x\equiv y \pmod 3$.
+  \item Proof: If $cm \divides (x-y)$ then $m\divides (x-y)$.
+  \item The converse is not true.
+  \item $2\equiv 5 \pmod 3$ but $2\not\equiv 5 \pmod 6$.
+  \item Saying that $x\equiv y \pmod 9$ is \emph{stronger} than saying that $x\equiv y \pmod 3$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cancelling from both sides and the modulus}
+\begin{itemize}
+  \item $x\equiv y \pmod m$ iff $cx \equiv cy \pmod {cm$}.
+  \item Here $c\not=0$.
+  \item Notice that multiplying $x$ and $y$ by $c$ makes the statement weaker
+  but multiplying $m$ by $c$ makes the statement stronger. Doing both makes the
+  statement equivalent.
+  \item Proof: If $cm \divides c(x-y)$ iff $m\divides (x-y)$.
+  \item Example. The following two things are equivalent:
+  \item $30 \equiv 80 \pmod {25}$.
+  \item $6\equiv 16 \pmod 5$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cancelling until relatively prime}
+\begin{itemize}
+  \item Example: $28 \equiv 48 \pmod {10}$.
+  \item $4\cdot 7 \equiv 4 \cdot 12 \pmod {10}$
+  \item It does \emph{not} follow that $7 \equiv 12 \pmod {10}$
+  \item But:  $4\cdot 7 \equiv 4 \cdot 12 \pmod {2\cdot 5}$
+  \item Then:  $4\cdot 7 \equiv 4 \cdot 12 \pmod {5}$, and $\gcd(4,5) = 1$
+  \item So:  $7 \equiv  12 \pmod {5}$
+  \item \textbf{Lemma.} Suppose $x,y,c,m$ are integers with $m>1$.
+  \item Let $d=\gcd(c,m)$.
+  \item If $cx\equiv cy \pmod m$.
+  \item Then $x\equiv y \pmod {m/d}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+\begin{itemize}
+  \item Example: $12 \equiv 30 \pmod {9}$.
+  \item $6 \cdot 2 \equiv 6 \cdot 5 \pmod {9}$.
+  \item We cannot conclude that $2\equiv 5 \pmod {9}$.
+  \item But $\gcd(6,9) = 3$.
+  \item We can conclude that $2\equiv 5 \pmod {9/3}$.
+  \item $2\equiv 5 \pmod 3$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Modular addition and multiplication}
+\begin{itemize}
+  \item \textbf{Lemma.} Suppose $a \equiv \aprime \pmod {m}$.
+  \item and $b  \equiv \bprime \pmod {m}$.
+  \item Then $a+b \equiv \aprime + \bprime \pmod {m}$
+  \item and $a \cdot b \equiv \aprime \cdot \bprime \pmod {m}$.
+  \item Example: $6 \equiv 11 \pmod 5$ and $13\equiv 23 \pmod 5$.
+  \item So $(6+13) \equiv (11 +23) \pmod 5$
+  \item and  $6\cdot 13 \equiv 11\cdot 23 \pmod 5$.
+  \item Interpretation using ``slots and blocks'':
+  \item If you only want to know the slot
+  of the result you only need to know the slots of the arguments.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof}
+\begin{itemize}
+  \item If $a\equiv \aprime \pmod m$ then $\aprime = a + sm$.
+  \item If $b \equiv \bprime \pmod m$ then $\bprime = b + tm$.
+  \item Then $\aprime+\bprime = a+b + (sm + tm) = a+b +(s+t)m$.
+  \item So $\aprime + \bprime \equiv a+b \pmod m$.
+  \item $\aprime\bprime = (a+sm)(b+tm) = ab + (atm + smb + stm^2) = ab + (at+sb+stm)m$.
+  \item So $\aprime\bprime \equiv ab \pmod m$. $\qed$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Corollaries}
+\begin{itemize}
+  \item \textbf{Lemma} $(a\bmod n)\bmod n = a\bmod n$.
+  \item Example $(67 \bmod 5)\bmod 5 = 67 \bmod 5$.
+  \item \textbf{proof} $0\leq a \bmod n < n$. $\qed$.
+  \item \textbf{Corollary.} $(a\equiv a\bmod n) \pmod n$.
+  \item Example $(67 \equiv 67 \bmod 5) \pmod 5$.
+  \item \textbf{Corollary.} $(a+b)\bmod n = (a\bmod n + b\bmod n) \bmod n$.
+  \item And $(ab)\bmod n = \left((a\bmod n)(b\bmod n)\right)\bmod n$.
+  \item Example. $(67 + 63) \bmod 3 = (67 \bmod 3 + 63 \bmod 3) \bmod 3 = (1+0)\bmod 3 = 1$.
+  \item Example. $(67 \cdot 63) \bmod 3 = (67 \bmod 3 \cdot 63 \bmod 3) \bmod 3 = (1\cdot 0)\bmod 3 = 0$.
+  \item This allows us to justify the proof from Lesson 6 of the rule for divisibility by 3.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Test for divisibility by 3}
+\begin{itemize}
+  \item \textbf{Fact.} Let $n$ be a positive integer.
+  \item $n$ is divisible by 3 iff the sum of the digits of $n$ is divisible by 3.
+  \item \textbf{Lemma} Let $n$ be a positive integer. Then $n\bmod 3$ is equal to the
+  sum of the digits of $n$ $\bmod 3$.
+  \item \textbf{proof.} Write $n=d_0 + 10d_1 + 100 d_2 + \cdots + 10^k d_k$.
+  \item where the digits of $n$ are $d_0,d_1,\cdots d_k$.
+  \item $n\bmod 3 = (d_0 + 10d_1 + 100 d_2 + \cdots + 10^k d_k)\bmod 3$
+  \item  $=\left(d_0\bmod 3 + 10d_1\bmod 3 + \cdots + 10^k d_k \bmod 3 \right) \bmod 3$
+  \item  $=\big(d_0\bmod 3 + (10\bmod 3)(d_1\bmod 3) + \cdots $
+  \item  $  \cdots + (10^k\bmod 3) (d_k \bmod 3) \big) \bmod 3$
+  \item  $=\left(d_0\bmod 3 + d_1\bmod 3 + \cdots + d_k \bmod 3 \right) \bmod 3$
+  \item  $=\left(d_0 + d_1 + \cdots + d_k  \right) \bmod 3$. $\qed$
+  \item \textbf{Note:} You will have to wait until a later lesson on modular arithmetic
+  to understand why the above steps are valid.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Application}
+\begin{itemize}
+  \item Compute $(1! + 2! + 3! + \cdots + 100!) \pmod 9$.
+  \item Solution: Notice that $9\divides n!$ for $n\geq 6$.
+  \item So we can reduce to $(1! + 2! + 3! + 4! + 5!) \pmod 9$.
+  \item $2! \bmod 9 = 2$
+  \item $3! \bmod 9 = 6$
+  \item $4! \bmod 9 = 24 \bmod 9 = 6$.
+  \item $5! = 5 \cdot 4! \equiv 5 \cdot 6 \equiv 30 \equiv 3 \pmod 9$.
+  \item So we want $(1 + 2 + 6 + 6 + 3) \bmod 9$.
+  \item $=(9+9) \equiv 0 \pmod 9$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Application: Fast exponentiation by repeated squaring}
+\begin{itemize}
+  \item Compute $130^{90} \bmod 127$.
+  \item Step 1. $130 \equiv 3 \pmod {127}$
+  \item Reduce to $3^{90} \bmod 127$.
+  \item Step 2. Start squaring and reducing mod 127.
+  \item $3^2 = 9$.
+  \item $3^4 = (3^2)^2 = 81$.
+  \item $3^{8} = (3^4)^2 = 81^2 = 6561   \equiv 84  \pmod {127}$.
+  \item $3^{16} = (3^{8})^2 \equiv 84^2  \equiv 71  \pmod {127}$.
+  \item $3^{32} = (3^{16})^2 \equiv 71^2 \equiv 88  \pmod {127}$.
+  \item $3^{64} = (3^{32})^2 \equiv 88^2 \equiv 124 \pmod {127}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example: Fast exponentiation by repeated squaring}
+\begin{itemize}
+  \item Step 3. Express 90 as a sum of powers of 2.
+  \item $90 = 64+16+8+2$.
+  \item Step 4. Plug in the values computed above.
+  \item $3^{90} = 3^{64+16+8+2} = 3^{64} \cdot 3^{16} \cdot 3^{8} \cdot 3^{2}$
+  \item $\equiv 124 \cdot 71 \cdot 84 \cdot 9  \pmod {127}$
+  \item Step 5. Compute that product, incrementally reducing mod 127.
+  \item $124 \cdot 71 \bmod 127 = 41$.
+  \item $41 \cdot 84 \bmod 127 = 15$.
+  \item $15 \cdot 9 \bmod 127 = 8$.
+  \item So $130^{90} \bmod 127 = 8$.
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\end{document}
