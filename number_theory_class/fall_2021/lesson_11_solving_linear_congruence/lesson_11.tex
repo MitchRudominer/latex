@@ -1,0 +1,322 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 11 \\ Solving Linear Congruences}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2021 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Linear congruence}
+\begin{itemize}
+  \item A \emph{linear congruence} problem is a problem of the following kind:
+  \item Solve for $x$:
+  \item $ax \equiv b \pmod n$
+  \item where $a,b,n$ are integers,  $n>1$.
+  \item The \emph{solution set} is a maximal set of \emph{incongruent} integers $\singleton{x_0,x_1,\cdots x_m}$ that makes the congruence true.
+  \item Notice that if $x_0$ is a solution then $x_0+kn$ is also a solution for all $k$, because $x_0\equiv x_0+kn \pmod n$.
+  \item The solutions $x_0+kn$ are all congruent, so we don't consider them different solutions to this congruence problem.
+  \item All elements of $[x_0]_n$ only count as a single solution. The goal is to find other solutions that are incongruent.
+  \item We will learn how to solve all problems of this kind.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Example Linear Congruence Problem}
+
+\begin{itemize}
+  \item Solve for $x$:
+  \item $2x  \equiv 4 \mod 6$.
+  \item $x_0=2$ is clearly one solution. Are there any other solutions?
+  \item $x=8$ and $x=-4$ are also solutions. Check this.
+  \item Notice $8\equiv 2 \pmod 6$ and $-4\equiv 2\pmod 6$. All elements of $[2]_6$ are solutions. So there are infinitely many solutions.
+  \item But once we found that $x_0=2$ is a solution, the other elements of $[2]_6$ are not considered different solutions.
+  \item We want to find all \emph{incongruent solutions.}
+  \item Equivalently, we want to find all solutions $x$ with $0\leq x < 6$. (Why is this equivalent?)
+  \item Are there any other incongruent solutions?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Find all incongruent solutions}
+\begin{itemize}
+  \item Find all incongruent solutions to
+  \item $2x  \equiv 4 \mod 6$.
+  \item Equivalently, find all solutions $x$ in the range $[0..5]$.
+  \item $x_0=2$ is a solution. Are there any others?
+  \item The technique of trial and error: Compute $2x \bmod 6$ for $x=0,1,2,3,4,5$.
+  \item i.e. find the multiples of 2 modulo 6
+  \item Answer: 0,2,4,0,2,4
+  \item So $2\cdot 5 \equiv 4 \pmod 6$ and $x_1=5$ is another solution.
+  \item \textbf{Solution Set:} There are two incongruent solutions, their \emph{least non-negative residues} are: $2,5$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Modular Inverses}
+\begin{itemize}
+  \item Now we look at the special case when $b=1$.
+  \item $ax\equiv 1 \pmod n$.
+  \item \textbf{Definition.} $x$ is called a \emph{multiplicative inverse}  of $a$ modulo $n$
+  \item iff $ax \equiv 1 \pmod n$.
+  \item We also call $x$ a \emph{modular inverse} of $a$ (if $n$ is understood.)
+  \item Notice that in modular arithmetic $x$ plays the role of a multiplicative inverse of $a$ since when you multiply it by $a$ you get 1.
+  \item \textbf{Theorem.} $a$ has a multiplicative inverse mod $n$ iff $\gcd(a,n)=1$.
+  \item If $\gcd(a,n) = 1$ then $a$ has a unique multiplicative inverse, up to congruence.
+  \item That means there is exactly one solution to $ax\equiv 1 \pmod n$ with $0\leq x < n$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Examples of Modular Inverses}
+\begin{itemize}
+  \item Let $n=9$.
+  \item $\gcd(4,9)=1$. So $4$ has a unique multiplicative inverse mod 9, $x$ in $[0..8]$.  Find it.
+  \item One technique for finding modular inverses: Trial and error:
+  \item Compute $4x \bmod 9$ for $x=0,1,2,3,4,5,6,7,8$.
+  \item The multiples of 4 mod 9 are: 0,4,8,3,7,2,6,1,5.
+  \item So $4\cdot 7 \equiv 1 \pmod 9$ and so $x=7$ is the unique solution in $[0..8]$.
+  \item 7 is the unique multiplicative inverse of 4, modulo 9, up to congruence.
+  \item $\gcd(6,9) \not= 1$.
+  \item So 6 should not have a multiplicative inverse mod 9. Check this.
+  \item Compute $6x\bmod 9$ for $x=0,1,2,3,4,5,6,7,8$.
+  \item The multiples of 6 mod 9 are: 0,6,3,0,6,3,0,6,3.
+  \item So 6 does not have a multiplicative inverse mod 9.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof of Modular Inverses Theorem}
+\begin{itemize}
+  \item \textbf{proof.} $\gcd(a,n)=1$ iff
+  \item there are $x,y$ such that $ax + ny = 1$ iff
+  \item there are $x,y$ such that $ax - 1 = -ny$ iff
+  \item there is an $x$ such that $n\divides (ax -1)$ iff
+  \item there is an $x$ such that $ax \equiv 1 \pmod n$ iff
+  \item $a$ has a multiplicative inverse mod n.
+  \item For uniqueness, suppose $ax \equiv a\xprime \pmod n$.
+  \item Since $\gcd(a, n)=1$, we can cancel the $a$ to conclude
+  \item $x\equiv \xprime \pmod n$.
+  \item So there is only one solution, up to congruence. $\qed$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Solutions when $\gcd(a,n)=1$}
+\begin{itemize}
+  \item \textbf{Theorem.} Consider the congruence $ax\equiv b \pmod n$.
+  \item Suppose $\gcd(a,n) = 1$.
+  \item Then there is a unique solution, up to congruence, i.e. there is a unique solution in $[0..n-1]$.
+  \item \textbf{proof.} Let $\aprime$ be the unique multiplicative inverse
+  of $a$ mod $n $.
+  \item Since $\aprime$ has $a$ as a multiplicative inverse, $\gcd(\aprime,n)=1$.
+  \item Then $ax\equiv b \pmod n$ iff
+  \item $a\aprime x\equiv b\aprime \pmod n$ iff
+  \item $x \equiv b\aprime \pmod n$.
+  \item So $x=b\aprime$ is the unique solution, up to congruence. $\qed$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example when $\gcd(a,n)=1$}
+\begin{itemize}
+  \item Solve $4x \equiv 5 \pmod 9$.
+  \item $\gcd(4,9) = 1$ so there is a unique solution, up to congruence.
+  \item One technique for finding the unique solution to $ax\equiv b \pmod n$ when $\gcd(a,n)=1$:
+  Multiply both sides of the congruence by the modular inverse of $a$.
+  \item Recall from the previous problem that, modulo 9, the multiplicative inverse of 4 is 7.
+  \item $4x \equiv 5 \pmod 9$ iff $7\cdot 4 x  \equiv 7\cdot 5  \pmod 9$
+  \item iff $x \equiv 35 \pmod 9$.
+  \item So  $x=35$ is a solution. But we we want to express the solution as the least non-negative residue.
+  \item $35\bmod 9 = 8$, So we say $x=8$ is the solution.
+  \item Check $4\cdot 8 = 32 \equiv 5 \pmod 9$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Another example when $\gcd(a,n)=1$}
+\begin{itemize}
+  \item Solve $3x \equiv 2 \pmod 5$.
+  \item $\gcd(3,5)=1$ so there is a unique solution in $[0..4]$.
+  \item Another technique for finding the unique solution to $ax\equiv b \pmod n$ when $\gcd(a,n)=1$:
+  \item Trial and error: Compute all multiples of $a$ until you find the solution.
+  \item The multiples of 3 mod 5 are: $3,1,4,2$.
+  \item So $3\cdot 4 \equiv 2 \pmod 5$.
+  \item So $x=4$ is the unique solution in $[0..4]$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{General Theorem}
+\begin{itemize}
+  \item \textbf{Theorem} Consider the congruence $ax\equiv b \pmod n$.
+  \item Let $d=\gcd(a,n)$.
+  \item If $d\not\divides b$ then there are no solutions.
+  \item If $d\divides b$ then there are $d$ incongruent solutions.
+  \item If $x_0$ is any solution then the $d$ incongruent solutions are
+  \item $x_0 + k\frac{n}{d}$ for $k=0,1,2,\cdots d-1$.
+  \item To find the first solution, $x_0$,  we solve
+  \item $\frac{a}{d}x \equiv \frac{b}{d} \pmod {\frac{n}{d}}$.
+  \item This congruence has a unique solution $x_0$ with $0\leq x_0 < \frac{n}{d}$.
+  \item $x_0$ is also a solution to the original congruence.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+\begin{itemize}
+  \item Solve $14x \equiv 15 \pmod {35}$.
+  \item Let $d=\gcd(14,35) = 7$.
+  \item $7\not\divides 15$. So there are no solutions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+\begin{itemize}
+  \item Solve $10x \equiv 15 \pmod {35}$.
+  \item Let $d=\gcd(10,35) = 5$.
+  \item $5\divides 15$. So there are 5 incongruent solutions.
+  \item To find one solution, solve $2x \equiv 3 \pmod 7$.
+  \item $\gcd(2,7) = 1$ so there is a unique solution in $\singleton{0,1,2,3,4,5,6}$.
+  \item We find it by the method of trial-and-error.
+  \item The multiples of 2 mod 7 are: 0,2,4,6,1,3,5
+  \item So $2\cdot 5 \equiv 3 \pmod 7$.
+  \item So $x_0=5$ is a solution to $2x \equiv 3 \pmod 7$ and also a solution to the original congruence,
+  $10x \equiv 15 \pmod {35}$.
+  \item Check: $10\cdot 5 = 50 \equiv 15 \pmod {35}$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Example Continued}
+\begin{itemize}
+  \item We are solving $10x \equiv 15 \pmod {35}$.
+  \item We found $x_0=5$ is one solution.
+  \item We have $d=\gcd(10,35) = 5$.
+  \item $5\divides 15$. So there are 5 incongruent solutions:
+  \item $x_0 + k\frac{n}{d}$ for $k=0,1,2,\cdots d-1$, i.e.
+  \item $5 + 7k$, for $k=0,1,2,3,4$.
+  \item The solutions are $x=5,12,19,26,33$.
+  \item Check.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof of General Theorem}
+\begin{itemize}
+  \item \textbf{proof.} Let $d=\gcd(a,n)$.
+  \item There is a solution to $ax\equiv b \pmod n$ iff
+  \item there is an $x$ such that $n\divides (ax - b)$ iff
+  \item there are $x,y$ such that $ax-b = ny$ iff
+  \item there are $x,y$ such that $ax - ny = b$ iff
+  \item $b$ is an integer linear combination of $a$ and $n$ iff
+  \item $d\divides b$.
+  \item So if $d\not\divides b$ there are no solutions.
+  \item Now suppose that $d\divides b$.
+  \item $ax\equiv b \pmod n$ iff
+  \item $\frac{a}{d}x \equiv \frac{b}{d} \pmod {\frac{n}{d}}$.
+  \item The two congruences have the same integer solutions.
+  \item Now $\gcd(\frac{a}{d},\frac{n}{d}) = 1$.
+  \item So there is a unique solution $x_0$ to the two congruences with
+  $0\leq x_0 < \frac{n}{d}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof of General Theorem, continued}
+\begin{itemize}
+  \item Let $x_0$ be the unique solution to the two congruences with
+ with $0\leq x_0 < \frac{n}{d}$.
+  \item All of the other integer solutions to the two congruences are of the form
+  \item $x=x_0+k\frac{n}{d}$ for some integer $k$.
+  \item These are all congruent mod $\frac{n}{d}$ but they are not all congruent mod $n$.
+  \item To find the complete set of solutions mod $n$, we look for those $x$ such that $0\leq x < n$.
+  \item $0\leq x_0+k\frac{n}{d} < n$ exactly for $k=0,1,\cdots d-1$.
+  \item So those are the $d$ incongruent solutions.
+  \item $\qed$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Another Example}
+\begin{itemize}
+  \item Solve $12x \equiv 30 \pmod {18}$.
+  \item Let $d=\gcd(12,18) = 6$.
+  \item $6\divides 30$. So there are 6 incongruent solutions that differ by $18/6=3$.
+  \item To find one solution, solve $2x \equiv 5 \pmod 3$.
+  \item $\gcd(2,3) = 1$ so there is a unique solution in $\singleton{0,1,2}$.
+  \item To find it we notice that $5\bmod3 = 2$. So One solution is $x=1$.
+  \item $x=1$ is then also a solution to $12x \equiv 30 \pmod {18}$.
+  \item Notice that $30\bmod 18 = 12$. We could have started by reducing the original equation to $12x \equiv 12 \pmod {18}$.
+  \item The full set of solutions are $1,4,7,10,13,16$. Check these.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bezout's Theorem For Finding Modular Inverses}
+\begin{itemize}
+  \item Suppse $a$ and $n$ are relatively prime, with $n>1$.
+  \item By Bezout's Theorem, there are integers $x,y$ such that $ax+ny = 1$.
+  \item \textbf{Fact.} Modulo $n$, $x$ is a multiplicative inverse of $a$. (We don't care about $y$.)
+  \item \textbf{proof.} $ax -1 = -ny$ so $n\divides (ax-1)$ so $ax \equiv 1 \pmod n$. $\qed$.
+  \item This gives us a new technique for finding modular inverses
+  (and thus a new technique for finding the first solution to a linear congruence problem.)
+  \item How do we find $x$? Either the extended Euclidean algorithm, or a Bezout calculator.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example Bezout's Theorem For Finding Modular Inverses}
+\begin{itemize}
+  \item Example: Find the multiplicative inverse of 17 modulo 73.
+  \item 17 is prime and $17\not\divides 73$. So $\gcd(17,73)=1$.
+  \item So 17 has a multiplicative inverse modulo 73, i.e. there is a solution to $17x\equiv 1 \pmod{73}$.
+  \item Trying to find $x$ by trial-and-error would take too long to do by hand.
+  \item By Bezout's Theorem there are integers $x,y$ such that $17x+73y = 1$.
+  \item $x$ is our modular inverse.
+  \item We can perform the extended Euclidean algorithm to find $x$ and $y$ and then discard $y$.
+  \item Or we can use a Bezout calculator: $17(-30) + 73(7) = 1$.
+  \item Modulo 73, $x=-30$ is a multiplicative inverse of 17.
+  \item We want to represent the answer as the least non-negative reside: $x=43$.
+  \item Check: $17 \times 43 = 731 \equiv 1 \pmod {73}$.
+\end{itemize}
+\end{frame}
+
+
+\end{document}

@@ -1,7 +1,7 @@
 % $Header$
 
-%\documentclass{beamer}
-\documentclass[handout]{beamer}
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
 \usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
 \input{mathdefs}
 
@@ -310,6 +310,80 @@
   \item Give the set of absolute least residues mod 5.
   \item Answer: $\singleton{-2,-1,0,1,2}$.
   \item Every integer is congruent mod 5 to exactly one of these.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Characterization of a complete system of residues}
+
+\begin{itemize}
+  \item  \textbf{Lemma} Let $m>1$ be an integer. Let $S$ be a finite set of integers.
+  \item Then $S$ is a complete system of residues modulo $m$ iff
+  \item (a) $S$ contains $m$ elements.
+  \item (b) The elements of $S$ are mutually incongruent.
+  \item \textbf{proof} If $S$ is a complete system of residues then it contains exactly
+  one element from each of the $m$ congruence classes.
+  \item So it contains $m$ mutually incongruent elements.
+  \item Conversely, suppose $S$ contains $m$ mutually incongruent elements.
+  \item Since the elements are mutually incongruent, they come from different congruence classes.
+  \item Since there are $m$ of them they must represent all $m$ of the congruence classes. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example problem: Is a complete system of residues?}
+
+\begin{itemize}
+  \item  Example: Is $S=\singleton{0, -10, 31, 15}$ a complete system of residues modulo 6?
+  \item Answer: No, it contains only 4 elements.
+  \item  Example: Is $S=\singleton{0,-10,31,  15, 3, 11}$ a complete system of residues modulo 6?
+  \item Answer: No, 15 and 3 are congruent modulo 6.
+  \item Example: Is $S=\singleton{0, -10,31, 15, 22, 11}$ a complete system of residues modulo 6?
+  \item Answer: Yes
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Consecutive Complete Systems}
+
+\begin{itemize}
+  \item  \textbf{Lemma} Let $m>1$ be an integer. Then every set of $m$ consecutive integers is
+  a complete system of residues modulo $m$.
+  \item \textbf{proof} Let $S=\singleton{x, x+1, x+2, \cdots ,x+(m-1)}$.
+  \item Then every two elements of $S$ are non-congruent mod $m$ because their difference is less than $m$. $\qed$.
+  \item Example: The following are all complete systems of residues mod 7
+  \item $\singleton{14,15,16,17,18,19, 20}$
+  \item $\singleton{-103, -102, -101, -100, -99, -98, -97}$.
+  \item $\singleton{0,1,2,3,4,5, 6}$. (The least non-negative residues.)
+  \item $\singleton{-3,-2,-1,0,1,2,3}$. (The absolute least residues.)
+  \item It is useful to understand this in terms of slots and blocks.
+  \item The \emph{standard} blocks are lined up so the slots yield the least non-negative residues.
+  \item But we can consider non-standard blocks that are shifted relative to the standard blocks.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Residue Of an Integer}
+
+\begin{itemize}
+  \item  \textbf{Definition} Let $a, m \in\Z$ with $m>1$.
+  \item The least non-negative residue of $a$ mod $m$ is just $a\mod m$.
+  \item The absolute least residue of $a$ mod $m$ is the unique element $x$ of
+  the set of absolute least residues mod $m$ such that $x\equiv a \pmod m$.
+  \item Example: Find the least non-negative residue of 39 mod 7.
+  \item Answer: 4
+  \item Example: Find the absolute least residue of 39 mod 7.
+  \item Answer: $-3$.
+  \item Why: Because $-3\equiv 4 \equiv 39 \pmod 7$ and $-3$ is an absolute least residue mod 7.
+  Note that 4 is not an absolute least residue mod 7.
 \end{itemize}
 
 \end{frame}
