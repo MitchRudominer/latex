@@ -1,0 +1,331 @@
+% $Header$
+
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 16 \\ $\phi(n)$}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2021 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{$\phi(n)$}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $n>1$ be an integer.
+  \item $\phi(n)$ is the number of positive integers less than $n$ and relatively prime to $n$.
+  \item Equavlanetly, $\phi(n)$ is the number of elements of $\Z_n^*$.
+  \item Example: Let $n=10$. The positive integers less than 10 and relatively prime to 10 are:
+  \item 1,3,7,9
+  \item The elements of $\Z_{10}^*$ are: $[1], [3], [7], [9]$.
+  \item So $\phi(10) = 4$.
+  \item Question: If $p$ is prime what is $\phi(p)$?
+  \item Answer: $p-1$.
+  \item If $n$ is composite then $1<\phi(n)<n-1$.
+  \item In this lesson we are going to learn how to compute $\phi(n)$ for all $n>1$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Multiplicative Arithmetic Functions}
+
+\begin{itemize}
+  \item The key idea for being able to compute $\phi(n)$ for all $n>1$ is
+  \item \textbf{Theorem.} If $n,m>1$ and $\gcd(n,m)=1$ then
+  \item $\phi(nm) = \phi(n)\phi(m)$.
+  \item We say that $\phi$ is a \emph{multiplicative arithmetic function}.
+  \item Example: 9 and 25 are relatively prime. $9\cdot 25 = 225$.
+  \item So $\phi(225) = \phi(9) \cdot \phi(25)$.
+  \item How does the theorem help us to compute $\phi(n)$ for all $n>1$?
+  \item Use the prime decomposition: $n=p_1^{r_1}p_2^{r_2}\cdots p_k^{r_k}$.
+  \item For $1\leq i < j \leq k$, $p_i^{r_i}$ and $p_j^{r_j}$ are relatively prime.
+  \item So  $\phi(n)=\phi(p_1^{r_1})\phi(p_2^{r_2})\cdots \phi(p_k^{r_k})$.
+  \item We have reduced the problem to finding $\phi(x)$ for $x$ a prime power.
+  \item For example $\phi(3^2\cdot 5^2) = \phi(3^2) \cdot \phi(5^2)$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Powers of Primes}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $p$ be prime and $k\geq 1$ and integer.
+  \item Then $\phi(p^k) = p^{k-1} (p-1)$.
+  \item Example: Let $p=3$.
+  \item For $k=1$, $\phi(3^1) = 3^0\cdot 2 = 2$.
+  \item For $k=2$, $\phi(3^2) = 3^1\cdot 2 = 6$.
+  \item For $k=3$, $\phi(3^3) = 3^2\cdot 2 = 18$.
+  \item \textbf{proof.} If $1\leq x < p^k$, then
+  \item $x$ is \emph{not} relatively prime to $p^k$ iff $p\divides x$.
+  \item  Count the number of multiples of $p$ less than $p^k$.
+  \item There are $p^{k-1}$ such multiples.
+  \item So $\phi(p^k) = p^k - p^{k-1} = p^{k-1}(p-1)$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof that $\phi$ is multiplicative}
+
+\begin{itemize}
+  \item Now we turn to the proof of the main
+  \item \textbf{Theorem.} If $n,m>1$ and $\gcd(n,m)=1$ then
+  \item $\phi(nm) = \phi(n)\phi(m)$.
+  \item \textbf{proof}. Use as example $n=3, m=4$.
+  \item We'll see $\phi(12) = \phi(3)\phi(4)$.
+  \item Main idea: $\Z_{nm}^* \isomorphic \Z_n^* \times \Z_m^*$.
+  \item For example: $\Z_{12}^* \isomorphic \Z_3^* \times \Z_4^*$.
+  \item What does $\times$ mean? It means the cartesian product.
+  \item $\Z_3^* \times \Z_4^*$ is the set
+  of ordered pairs $(a,b)$ such that $a\in\Z_3*$ and $b\in\Z_4^*$.
+  \item What does $\isomorphic$ mean? It means the two sides are isomorphic as groups.
+  \item For our purposes we only care that the two sides have the same size.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{$\phi$ is multiplicative, page 2}
+
+\begin{itemize}
+  \item $|\Z_3^* \times \Z_4^*| = |\Z_3^*| \cdot |\Z_4^*| = \phi(3) \phi(4)$.
+  \item So if we can show that $|\Z^*_{12}| =  |\Z_3^* \times \Z_4^*|$ then
+  \item we will have seen that $\phi(12) = \phi(3)\phi(4)$.
+  \item In general,  $|\Z_n^* \times \Z_m^*| = |\Z_n^*| \cdot |\Z_m^*| = \phi(n) \phi(m)$.
+  \item So if we can show that $|\Z_{nm}^*| = |\Z_n^* \times \Z_m^*|$ then
+  \item we will have seen that $\phi(nm) = \phi(n)\phi(m)$.
+  \item We start by defining a function $\pi:\Z_{nm}\map \Z_n \times \Z_m$
+  \item such that $\pi$ is one-to-one and onto.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The Chinese Remainder Map}
+
+\begin{itemize}
+  \item \textbf{Definition:} Suppose $n,m >1$ are integers and $\gcd(n,m)=1$.
+  \item The Chinese Remainder Map from $\Z_{nm}$ to $\Z_n\times \Z_m$ is
+  \item the function $\pi:\Z_{nm} \map \Z_n\times \Z_m$ given by
+  \item $\pi([x]_{nm}) = \left( [x\bmod n]_n, [x\bmod m]_m\right)$.
+  \item For example the Chinese Remainder Map from $\Z_{12}$ to $\Z_3\times \Z_4$ is
+  \item the function $\pi:\Z_{12} \map \Z_3\times \Z_4$ given by
+  \item $\pi([x]_{12}) = \left( [x\bmod 3]_3, [x\bmod 4]_4\right)$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{$\pi:\Z_{12} \map \Z_3\times \Z_4$}
+
+\begin{columns}
+\begin{column}{0.33\textwidth}
+
+\begin{tabular}{|c||c|c|}\hline
+$\Z_{12}$   &  $\Z_3$ & $\Z_4$ \\ \hline\hline
+11          &   2     &  3     \\ \hline
+10          &   1     &  2     \\ \hline
+9           &   0     &  1     \\ \hline
+8           &   2     &  0     \\ \hline
+7           &   1     &  3     \\ \hline
+6           &   0     &  2     \\ \hline
+5           &   2     &  1     \\ \hline
+4           &   1     &  0     \\ \hline
+3           &   0     &  3     \\ \hline
+2           &   2     &  2     \\ \hline
+1           &   1     &  1     \\ \hline
+0           &   0     &  0     \\ \hline
+\end{tabular}
+
+\end{column}
+
+\begin{column}{0.67\textwidth}
+
+\begin{itemize}
+  \item For each element $[a]\in\Z_{12}$ in the first column,
+  \item $\pi([a])$ is given by the pair of elements in the second and third columns.
+  \item For example $\pi([7]) = \left([1], [3] \right)$
+  \item $\pi([10]) = \left([1],[2]\right)$.
+  \item Notice that each element of $\Z_3\times \Z_4$ occurs exactly once in the table.
+  \item This means that $\pi$ is one-to-one and onto.
+\end{itemize}
+
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{The Chinese Remainder Map is a Bijection}
+
+\begin{itemize}
+  \item \textbf{Lemma:} Suppose $n,m >1$ are integers and $\gcd(n,m)=1$.
+  \item Let $\pi:\Z_{nm} \map \Z_n\times \Z_m$ be the Chinese Remainder Map.
+  \item Then $\pi$ is a bijection (aka a one-to-one correspondence.)
+  \item i.e. $\pi$ is one-to-one and onto.
+  \item \textbf{proof.} Let $a,b$ be such that $0\leq a < n$ and $0\leq b < m$.
+  \item By the Chinese Remainder Theorem there is a unique $x$ with $0\leq x < nm$
+  \item such that $x \equiv a \pmod n$ and $x\equiv b \pmod m$.
+  \item So there is a unique $[x]\in\Z_{nm}$ such that $\pi([x]) = \left([a],[b]\right)$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{$\pi:\Z^*_{12} \map \Z^*_3\times \Z^*_4$}
+
+\begin{columns}
+\begin{column}{0.33\textwidth}
+
+\begin{tabular}{|c||c|c|}\hline
+$\Z_{12}$   &  $\Z_3$ & $\Z_4$ \\ \hline\hline
+\textcolor{red}{11} &   \textcolor{blue}{2}  &   \textcolor{blue}{3}   \\ \hline
+10                  &   \textcolor{blue}{1}  &   2                     \\ \hline
+9                   &   0                    &   \textcolor{blue}{1}   \\ \hline
+8                   &   \textcolor{blue}{2}  &   0                     \\ \hline
+\textcolor{red}{7}  &   \textcolor{blue}{1}  &   \textcolor{blue}{3}   \\ \hline
+6                   &   0                    &   2                     \\ \hline
+\textcolor{red}{5}  &   \textcolor{blue}{2}  &   \textcolor{blue}{1}   \\ \hline
+4                   &   \textcolor{blue}{1}  &   0                     \\ \hline
+3                   &   0                    &   \textcolor{blue}{3}   \\ \hline
+2                   &   \textcolor{blue}{2}  &   2                     \\ \hline
+\textcolor{red}{1}  &   \textcolor{blue}{1}  & \textcolor{blue}{1}     \\ \hline
+0                   &   0                    &   0                     \\ \hline
+\end{tabular}
+
+\end{column}
+
+\begin{column}{0.67\textwidth}
+
+\begin{itemize}
+  \item For each element $[a]\in\Z_{12}$ in the first column,
+  \item $a$ is colored \textcolor{red}{red} iff $[a]\in\Z^*_{12}$.
+  \item For each element $[b]\in\Z_{3}$ in the second column, $b$ is colored \textcolor{blue}{blue}
+  iff $[b]\in\Z^*_3$.
+  \item For each element $[c]\in\Z_{4}$ in the third column, $c$ is colored \textcolor{blue}{blue}
+  iff $[c]\in\Z^*_4$.
+  \item You can see that $[a]\in\Z^*_{12}$ iff $[b]\in\Z^*_3$ and $[c]\in\Z^*_4$.
+  \item So $\pi:\Z^*_{12} \map \Z^*_3\times \Z^*_4$ is a bijection.
+\end{itemize}
+
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{$\pi:\Z^*_{nm}\map \Z^*_n\times \Z^*_m$}
+
+\begin{itemize}
+  \item \textbf{Lemma:} Suppose $n,m >1$ are integers and $\gcd(n,m)=1$.
+  \item Let $\pi:\Z_{nm} \map \Z_n\times \Z_m$ be the Chinese Remainder Map.
+  \item Let $[a]\in\Z_{nm}$. Then $[a]\in \Z^*_{nm}$ iff $\pi([a])\in \Z^*_n\times \Z^*_m$.
+  \item So $\pi:\Z^*_{nm}\map \Z^*_n\times \Z^*_m$ is also a bijection.
+  \item We call this the Chinese Remainder Map from $\Z^*_{nm}$ to $\Z^*_n\times \Z^*_m$.
+  \item \textbf{proof.} Suppose $[a]\in\Z^*_{nm}$.
+  \item Then there is an $[x]$ such that $[a][x]=[1]$.
+  \item $ax \equiv 1 \pmod {nm}$ so $ax \equiv 1 \pmod{n}$ an $ax \equiv 1 \pmod{m}$.
+  \item So $a$ is also a unit mod $n$ and mod $m$.
+  \item So $\pi([a]) \in \Z^*_n\times \Z^*_m$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{$\pi:\Z^*_{nm}\map \Z^*_n\times \Z^*_m$, continued}
+
+\begin{itemize}
+  \item Conversely suppose $\pi([a]) \in \Z^*_n\times \Z^*_m$.
+  \item Then there are $x_1$ and $x_2$ such that $ax_1 \equiv 1 \pmod n$ and $ax_2 \equiv 1 \pmod m$.
+  \item By the Chinese Remainder Theorem, let $x$ be such that $x\equiv x_1 \pmod n$ and $x\equiv x_2 \pmod m$.
+  \item Then $ax \equiv 1 \pmod n$ and $ax\equiv 1 \pmod m$ so $ax\equiv 1 \pmod {nm}$.
+  \item So $a$ is a unit mod $nm$.
+  \item So $[a]\in\Z^*_{nm}$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof that $\phi$ is multiplicative}
+
+\begin{itemize}
+  \item Now we finish the proof of the main Theorem.
+  \item Let $n,m>1$ with $\gcd(n,m)=1$.
+  \item We want to show that $\phi(nm) = \phi(n)\phi(m)$.
+  \item Since the Chinese Remainder Map function $\pi:\Z^*_{nm}\map \Z^*_n\times \Z^*_m$ is a bijection,
+  \item $|\Z^*_{nm}| = |\Z^*_n\times \Z^*_m|$.
+  \item So $\phi(nm) = \phi(n)\phi(m)$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example}
+
+\begin{itemize}
+  \item Example: Find $\phi(675)$.
+  \item Solution: $675 = 3^3 \cdot 5^2$.
+  \item So $\phi(675) = \phi(3^3)\phi(5^2)$
+  \item $=3^2\cdot 2 \cdot 5 \cdot 4 = 360$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example}
+
+\begin{itemize}
+  \item Find all positive integers $n$ such that $\phi(n) = 4$.
+  \item Solution. Write $n=2^{e_2}\times 3^{e_3} \times 5^{e_5} \times 7^{e_7}\times \cdots$
+  \item where for each prime $p$, $e_p\geq 0$.
+  \item If $e_7\geq 1$ then since $\phi(7^{e_7})=6\cdot 7^{e_7-1}$, $6\divides \phi(n)$. So $e_7=0$ and similarly $e_p=0$ for $p\geq 7$.
+  \item If $e_5 \geq 2$ then $5\divides \phi(n)$. So $e_5 \leq 1$.
+  \item If $e_3 \geq 2$ then $3\divides \phi(n)$. So $e_3 \leq 1$.
+  \item If $e_2 \geq 4$ then $8 \divides \phi(n)$. So $e_2 \leq 3$.
+  \item $\phi(2)=1$, $\phi(4)=2$, $\phi(8) = 4$.
+  \item $\phi(3) = 2$.
+  \item $\phi(5) = 4$.
+  \item So $\phi(5) = \phi(8) = \phi(2\cdot 5) = \phi(4\dot 3) = 4$.
+  \item The values of $n$ that work are $n=5,8,10,12$.
+\end{itemize}
+
+\end{frame}
+
+
+
+\end{document}
