@@ -1,0 +1,229 @@
+% $Header$
+
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 17 \\ Euler's Theorem and Fermat's Little Theorem}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2021 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Euler's Theorem}
+
+\begin{itemize}
+  \item \textbf{Euler's Theorem.} Let $n>1$ be an integer. Let $a$ be relatively prime to $n$.
+  \item Then $a^{\phi(n)} \equiv 1 \pmod n$.
+  \item \textbf{Example.} Let $n=10$.
+  \item $\phi(10)=4$.
+  \item Suppose $\gcd(a,10)=1$.
+  \item Euler's Thereom says that $a^4 \equiv 1 \pmod{10}$.
+  \item \textbf{Examples.} 3,7, 9 are all relatively prime to 10.
+  \item $3^4=81$.
+  \item $7^4=201$
+  \item $9^4 = 6561$.
+  \item All of these are congruent to 1 mod 10.
+  \item $2^4 = 16 \not\equiv 1 \pmod{10}$.
+  \item But 2 is not relatively prime to 10 so this does not violate Euler's Theorem.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{More Euler's Theorem Examples}
+
+\begin{itemize}
+  \item \textbf{Example.} Let $n=9$.
+  \item $\phi(9)=6$.
+  \item Suppose $a$ is relatively prime to $9$.
+  \item Euler's Thereom says that $a^6 \equiv 1 \pmod{9}$.
+  \item \textbf{Examples.} 2 and 5 are relatively prime to 9.
+  \item $2^6 = 64$
+  \item $9\cdot 7 = 63$.
+  \item So  $2^6 \equiv 1 \pmod 9$.
+  \item $5^6=15,625$
+  \item $9\cdot 1736 = 15,624$
+  \item So $5^6\equiv 1\pmod 9$.
+  \item $3^6 = 729$.
+  \item $9\ndivides 728$.
+  \item But $\gcd(3,9)\not=1$ so this does not violate Euler's Theorem.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example}
+\begin{itemize}
+\item Example: Find the last digit in the decimal expansion of $7^{4000000002}$.
+\item Solution: If $n$ is any positive integer, the last digit in the decimal
+expansion of $n$ is $n\bmod 10$.
+\item So we must find $7^{4000000002} \bmod 10$.
+\item 7 is relatively prime to 10 so we can apply Euler's Theorem.
+\item $\phi(10) = 4$, so $7^4 \bmod 10 = 1$.
+\item $7^{4000000000} = (7^4)^{1000000000}$.
+\item $7^{4000000002} = 7^{400000000} \cdot 7^2$.
+\item So $7^{4000000002} \equiv 7^2 \pmod{10}$.
+\item $7^{4000000002} \bmod 10 = 7^2 \bmod 10 = 49 \bmod 10 = 9$.
+\item So the last digit in the decimal expansion of $7^{4000000002}$ is 9.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Fermat's Little Theorem}
+
+\begin{itemize}
+  \item When $p$ is prime, $\phi(p)=p-1$. As a special case of Euler's Theorem we have:
+  \item \textbf{Fermat's Little Theorem.} Let $p$ be prime. Let $a$ be an integer not divisible by $p$.
+  \item Then $a^{p-1}\equiv 1 \pmod{p}$.
+  \item \textbf{Example.} Let $p=11$. Let $a$ be an integer such that $11\ndivides a$. Then $a^{10} \equiv 1 \pmod{11}$.
+  \item $2^{10} = 1024$ and $1023 = 11 \cdot 93$.
+  \item $3^{10} = 59049$ and $59048 = 11 \cdot 5368$.
+  \item $4^{10} = 1048576$ and $1048575 = 11 \cdot 95325$.
+  \item $15^{10} = 576650390625$ and  $576650390624 = 11 \cdot 52422762784$.
+  \item What happens if $p\divides a$?
+  \item $22^{10} = 26559922791424$.
+  \item Since $11\divides 22$, $11\divides (22^{10})$.
+  \item If $p\divides a$ then $a^{p-1} \equiv 0 \pmod p$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{More Fermat's Little Theorem}
+
+\begin{itemize}
+  \item Let $p=5$. Consider integers of the form $a^4$.
+  \item $2^4=16$, $3^4=81$, $4^4=256$, $5^4=625$
+  \item $6^4=1296$,  $7^4=2401$, $8^4=4096$.
+  \item What do you notice about the above values?
+  \item For all of the $a$ other than $a=5$, $a^4$ is a multiple of 5 plus one.
+  \item In other words $a^4 \equiv 1 \pmod 5$.
+  \item $5^4 \equiv 0 \pmod {5}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Euler's Theorem in terms of $\Z_n^*$.}
+\begin{itemize}
+  \item \textbf{Theorem.} Let $n>1$ be an integer. Let $[a]\in\Z_n^*$.
+  \item Then $[a]^{\phi(n)} = [1]$.
+  \item \textbf{Example.} Let $[a]\in\Z_{10}^*$.
+  \item Then $[a]^4 = [1]$.
+  \item $\Z^*_{10} = \singleton{[1],[3],[7],[9]}$. Working in $\Z^*_{10}$...
+  \item $[1]^4=[1], [3]^4=[1], [7]^4 = [1], [9]^4 = [1]$.
+  \item ``Any element of the group raised to the power of the cardinality of the group equals one.''
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Fermat's Little Theorem in terms of $\Z_n^*$.}
+\begin{itemize}
+  \item \textbf{Theorem.} Let $p$ be prime. Let $[a]\in\Z_p^*$.
+  \item Then $[a]^{p-1} = [1]$.
+  \item \textbf{Example.} Let $[a]\in\Z_{11}^*$.
+  \item Then $[a]^{10} = [1]$.
+  \item Work in $\Z^*_{11}$. Then...
+  \item $[1]^{10}=[2]^{10}=[3]^{10} = [4]^{10} = [5]^{10}=[6]^{10}=[7]^{10}=[8]^{10} = [9]^{10}=[10]^{10} = [1]$.
+  \item ``Any element of the group raised to the power of the cardinality of the group equals one.''
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Proof of Euler's Theorem}
+
+\begin{itemize}
+  \item \textbf{proof.} Let $[a] \in \Z_n^*$. Consider the set of all multiples of $[a]$ in $\Z_n^*$.
+  \item $S=\setof{[x][a]}{[x]\in\Z^*_n}$.
+  \item $S=\singleton{[1][a], \cdots, [x][a],[y][a], \cdots, [n-1][a]}$.
+  \item For example, consider $\Z^*_{10} = \singleton{[1],[3],[7],[9]}$.
+  \item Consider the set $S$ of all multiples of $[3]$ in $\Z_{10}^*$:
+  \item $S = \singleton{[1][3],[3][3],[7][3],[9][3]}$.
+  \item $[1][3]=[3], [3][3]=[9], [7][3]=[1], [9][3] = [7]$.
+  \item So $S = \singleton{[3],[9],[1],[7]} = \Z^*_{10}$.
+  \item That is, the elements of $S$ are all of the elements of $Z^*_{10}$.
+  \item They are just presented in a different order.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof of Euler's Theorem, Continued}
+
+\begin{itemize}
+  \item \textbf{Claim.}  Let $[a] \in \Z_n^*$.
+  \item Let $S=\setof{[x][a]}{[x]\in\Z^*_n}$ be the set of multiples of $[a]$ in $\Z^*_n$.
+  \item Then $S=\Z^*_n$.
+  \item \textbf{proof of Claim.} Notice that there are $\phi(n)$ multiples of $[a]$, one for each
+  $[x]\in\Z^*_n$.
+  \item So we just need to show they are all different.
+  \item Suppose $[i][a]=[j][a]$. Multiplying both sides by $[a]^{-1}$ we get $[i]=[j]$.
+  \item In other words, if $[i]\not=[j]$, then $[i][a]\not=[j][a]$.
+  \item So all $\phi(n)$ multiples of $[a]$ in $\Z_n^*$ are different.
+  \item So the set of multiples of $[a]$ runs through all of the elements of $\Z_n^*$. $\diamondsuit$.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Proof of Euler's Theorem continued}
+
+\begin{itemize}
+  \item Now consider what happens when we multiply all of the elements of $\Z^*_n$ together.
+  \item Let $[b]$ be the product of all of the elements of $\Z^*_n$.
+  \item For example, the product of all of the elements of $\Z^*_{10}$ is
+  \item $[b] = [1][3][7][9]$.
+  \item In general, $[b]=[1]\cdots[x]\cdot[y] \cdots [n-1]$.
+  \item By the claim, $[b]$ is also equal to the product of all of the multiples of $[a]$:
+  \item $[b]=[1][a]\cdot \cdots[x][a]\cdot[y][a] \cdots [n-1][a]$
+  \item  $=[a]^{\phi(n)}([1]\cdots[x]\cdot[y] \cdots [n-1])$
+  \item $=[a]^{\phi(n)}[b]$.
+  \item That is, $[b] = [a]^{\phi(n)} [b]$.
+  \item Canceling $[b]$, we get $[a]^{\phi(n)}=[1]$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\end{document}
