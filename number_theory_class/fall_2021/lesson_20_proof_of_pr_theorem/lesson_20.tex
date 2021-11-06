@@ -1,0 +1,231 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref,changepage}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 20 \\ Proof of the Primitve Root Theorem}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2021 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Primitive Root Theorem}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $n>1$ be an integer. Then
+  \item $n$ has a primitive root iff one of the following is true:
+  \item (a) $n$ is a power of an odd prime. $n=p^k$, $k\geq 1$.
+  \item (b) $n$ is twice a power of an odd prime. $n=2p^k$, $k\geq 1$.
+  \item (c) $n=2$ or $n=4$.
+  \item In other words, $n$ does \emph{not} have a primitive root iff one of the following is true:
+  \item (d) $n$ is divisible by two distinct odd primes.
+  \item (e) $n$ is divisible by $4$ but not equal to $4$.
+  \item In other words, $n$ does \emph{not} have a primitive root iff one of the following is true:
+  \item (f) $n=ab$ where $\gcd(a,b)=1$ and $a,b>2$.
+  \item (g) $n=2^k$ with $k\geq 3$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Powers of 2}
+
+\begin{itemize}
+  \item We will prove some parts of the theorem. Beginning with...
+  \item \textbf{Theorem.} Let $n=2^k$ with $k\geq 3$.
+  \item Then $n$ does not have any primitive roots.
+  \item \textbf{proof.} We will show that there are more than two incongruent square-roots of 1 modulo $n$.
+  \item In the previous lesson we learned that if $n$ has a primitive root, then it has only two square-roots of 1, so this will show that $n$ does not have any primitive roots.
+  \item $1$ and $n-1 \equiv -1 \pmod n$ are always two square-roots of 1 modulo $n$, for any $n$,
+  so it suffices for us to find any other square-root of 1 modulo $n$.
+  \item We claim that $2^{k-1}+1$ is a square-root of 1 modulo $n$.
+  \item $(2^{k-1}+1)^2 = 2^{2k-2} + 2^k + 1$.
+  \item Since $k\geq 3$, $2k-2 \geq k$, so $2^k \divides (2^{2k-2} + 2^k)$.
+  \item So $(2^{k-1}+1)^2 \equiv 1 \pmod n$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Divisible by two odd primes}
+
+\begin{itemize}
+  \item Next we prove another of the negative cases...
+  \item \textbf{Theorem.} Let $n=ab$ where $\gcd(a,b)=1$ and $a,b>2$.
+  \item Then $n$ does not have any primitive roots.
+  \item \textbf{proof.} Again we will find a third square-root of 1 modulo $n$.
+  \item Consider this system of congruences:
+  \item $x\equiv 1 \pmod a$.
+  \item $x\equiv -1 \pmod b$
+  \item By the Chinese Remainder Theorem there is a unique $x$ with $0\leq x < n$
+  that satisfies both of these congruences.
+  \item Clearly $x\not=1$. Also $x\not=n-1$ because then $x\equiv -1 \pmod n$ and
+  so $x\equiv -1 \pmod a$.
+  \item But $a>2$ so $1\not\equiv -1 \pmod a$.
+  \item For this $x$, $x^2 \equiv 1 \pmod a$ and $x^2 \equiv 1 \pmod b$.
+  \item So $x^2\equiv 1 \mod n$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The proof for primes.}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $p$ be prime. Then $p$ has a primitive root.
+  \item \textbf{proof.} Trivially 1 is a primitive root of 2. So assume $p>2$. We will work in $\Z_p^*$.
+  \item We will show that $\Z_p^*$ is cyclic.
+  \item We will show that there is an $[a]\in\Z_p^*$ of order $\phi(p)=p-1$.
+  \item Write the prime decomposition $p-1 = q_1^{m_1}q_2^{m_2}\cdots q_k^{m_k}$.
+  \item For each $j$ with $1\leq j \leq k$, we will find an $[a_j]$ of order $q_j^{m_j}$.
+  \item Then we will let $[a]=[a_1][a_2]\cdots[a_k]$.
+  \item $[a]$ will have order $q_1^{m_1}q_2^{m_2}\cdots q_k^{m_k}=p-1$.
+  \item This is true because of the following...
+  \item \textbf{Lemma.} If the order of $[a]$ and the order of $[b]$ are relatively prime, then
+  the order of $[a][b]$ is equal to the order of $[a]$ times the order of $[b]$.
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{proof of lemma}
+
+\begin{itemize}
+  \item \textbf{proof of lemma.} Let $s$ be the order of $[a]$ and $t$ the order of $[b]$.
+  \item Let $r$ be the order of $[a][b]$. We want to see that $r=st$.
+  \item Since $([a][b])^{st}=[1]$, $r\divides (st)$.
+  \item So we want to show that $st\divides r$.
+  \item Now $([a][b])^{rs}= (([a][b])^r)^s = [1]$.
+  \item So $[1] = [a]^{rs}[b]^{rs}=[1][b]^{rs} = [b]^{rs}$.
+  \item So $t\divides (rs)$.
+  \item Since $\gcd(s,t)=1$, we have $t\divides r$.
+  \item Similarly $s\divides r$.
+  \item So $st=\gcd(s,t) \divides r$. $\diamondsuit$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The proof for primes, continued}
+
+\begin{itemize}
+  \item So fix $j$ with $1\leq j \leq k$.
+  \item To simplify notation, let $q=q_j$ and $m={m_j}$. We will find an element of order $q^m$.
+  \item Let $z=\frac{p-1}{q^m}$. So $p-1 = q^mz$ and $\gcd(q,z)=1$.
+  \item If $[a]$ is any element of $\Z_p^*$ then the order of $[a]$ divides $q^mz$.
+  \item \textbf{Notice:} Suppose the order of $[a]$ is a multiple of $q^m$.
+  \item Then the order of $[a]$ is $q^mx$ with $x\divides z$ and so $\gcd(q,x)=1$.
+  \item Then the order of $[a]^x=q^m$.
+  \item So it suffices for us to find an $[a]$ whose order is divisible by $q^m$.
+  \item Equivalently, it suffices for us to find an $[a]$ whose order does not divide $q^{m-1}z$.
+  \item Therefore it suffices for us to prove the following theorem...
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The proof for primes, continued}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Suppose $1\leq n \leq p-1$.
+  \item Then there are at most $n$ elements $[a]$ of $\Z_p$ such that $[a]^n = [1]$.
+  \item Equivalently, there are at most $n$ elements $[a]$ of $\Z_p$ whose order divides $n$.
+  \item This theorem is enough to complete our argument from the previous slide.
+  \item By this Theorem there are only $q^{m-1}z$ elements whose order divides $q^{m-1}z$.
+  \item So there must be at least one element whose order does not divide $q^{m-1}z$.
+  \item This is what we said we wanted on the previous slide.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Polynomials over $\Z_p$}
+
+\begin{itemize}
+  \item We can rephrase the Theorem from the previous slide in terms of polynomials.
+  \item Let $1\leq n \leq p-1$. We want to see that there are at most $n$ solutions
+  \item to the polynomial equation $x^n-[1] = [0]$.
+  \item Notice that $x^n-[1]$ is a polynomial of degree $n$.
+  \item We will actually prove a a more general theorem...
+  \item \textbf{Polynomial Theorem.} Let $p$ be prime.
+  \item Let $1\leq n \leq p-1$.
+  \item Let $f(x)$ be a polynomial of degree $n$ with coefficients in $\Z_p$.
+  \item Then there are at most $n$ elements $[a]$ of $\Z_p$ that are solutions to
+  the equation $f([a])=[0]$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof of Polynomial Theorem}
+
+\begin{itemize}
+  \item \textbf{proof.} By induction in $n$.
+  \item For the base case, let $n=1$. Let $f(x)$ be a polynomial of degree 1 with coefficients in $\Z_p$.
+  \item So $f(x) = [b]x + [c]$ with $[b],[c]\in\Z_p$, $[b]\not=[0]$.
+  \item Suppose $[a]\in\Z_p$ and $f([a]) = [0]$.
+  \item So $[b][a]+[c]=[0]$.
+  \item So $[a] = -[c][b]^{-1}$.
+  \item So $f(x)$ has exactly one root.
+  \item Now for the inductive step. Let $n>1$ and assume the theorem is true for all $\nprime < n$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Inductive step.}
+
+\begin{itemize}
+  \item Let $f(x)$ be a polynomial of degree $n$ with coefficients in $\Z_p$.
+  \item We want to show $f(x)$ has at most $n$ roots. By multiplying $f$ by the inverse of its first coefficient, we
+  may assume that the leading coefficient of $f$ is $[1]$.
+  \item Suppose $f$ has $n$ roots in $\Z_p$ and we will show it does not have $n+1$ roots.
+  \item Let $[a_1],[a_2],\cdots[a_n]$ be the $n$ different roots.
+  \item Let $g(x) = f(x) - (x-[a_1])(x-[a_2])\cdots(x-[a_n])$.
+  \item Then $g(x)$ is a polynomial of degree less than $n$, and $[a_1],[a_2],\cdots,[a_n]$ are $n$ different roots of $g$.
+  \item By induction, the degree of $g$ cannot be any $\nprime$ with $1\leq\nprime < n$. So $g$ must be the zero polynomial.
+  \item That is, we have shown that $f(x) = (x-[a_1])(x-[a_2])\cdots(x-[a_n])$.
+  \item It is then clear that $[a_1],[a_2],\cdots[a_n]$ are the only roots of $f$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}
