@@ -1,0 +1,299 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref,changepage}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 21 \\ Quadratic Residues}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2021 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Quadratic Residues}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $n>1$ be an integer. Let $x$ be relatively prime to $n$.
+  \item Then $x$ is a \emph{quadratic residue} of $n$ iff
+  \item there is an integer $y$ such that $y^2 \equiv x \pmod n$.
+  \item i.e. $x$ is a perfect square mod $n$.
+  \item Otherwise $x$ is a \emph{quadratic nonresidue} of $n$.
+  \item We will study quadratic residues mod $p$, for $p$ prime.
+  \item \textbf{Example} Work in $\Z^*_5$.
+  \item $[1]^2 = [1], [2]^2 = [4], [3]^2 = [4], [4]^2 = [1]$.
+  \item The perfect squares in $\Z^*_5$ are $[1], [4]$.
+  \item $[2]$ and $[3]$ are not perfect squares.
+  \item So 1 and 4 are quadratic residues of 5. So are 6,9,11,14,-1,-4
+  \item 2 and 3 are quadratic nonresidues of 5. So are 7,8,12,13,-2,-3
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Quadratic Residues and Primitive Roots}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $p$ be an odd prime and $a$ a primitive root of $p$.
+  \item Then $a^k$ is a quadratic residue of $p$ iff $k$ is even.
+  \item \textbf{proof.} First suppose $a^k$ is a quadratic residue.
+  \item Then there is some $s$ such that $a^k \equiv (a^s)^2 = a^{2s} \pmod p$.
+  \item So $k\equiv 2s \pmod {p-1}$. So $p-1 \divides (k-2s)$. Since $p-1$ and $2s$ are even, $k$ is even.
+  \item Conversely, suppose $k=2s$. Then $a^k = (a^s)^2$. $\qed$.
+  \item \textbf{Example.} $2$ is a primitive root of $11$. So $2^2, 2^4, 2^6, 2^8, 2^{10}$ are quadratic
+  residues of $11$, and $2, 2^3, 2^5, 2^7, 2^9$ are quadratic nonresidues of 11.
+  \item \textbf{Corollary.} Let $p$ be an odd prime and $a$ a primitive root of $p$.
+  \item Then $a$ is a quadratic nonresidue of $p$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Half of the elements are quadratic residues}
+
+\begin{itemize}
+  \item \textbf{Corollary.} Let $p$ be an odd prime.
+  \item Then exactly half of the integers $1,2,\cdots p-1$ are quadratic residues of $p$.
+  \item \textbf{proof.} Let $a$ be a primitive root of $p$. The integers $1,2,\cdots p-1$ are congruent mod $p$
+  \item to the integers $a^k$, for $k=1,2,\cdots p-1$. Exactly half of these $k$ are even. $\qed$.
+  \item \textbf{Example.} Earlier we saw that 1,4 are quadratic residues and 2,3 are quadratic nonresidues of 5.
+  \item \textbf{Example.} Work in $\Z^*_7$.
+  \item $[1]^2=[1], [2]^2=[4], [3]^2=[2], [4]^2 = [2], [5]^2=[4], [6]^2=[1]$.
+  \item $[1],[2],[4]$ are perfect squares. $[3],[5],[6]$ are not.
+  \item $1,2,4$ are quadratic residues and $3,5,6$ are quadratic nonresidues of $7$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Legendre Symbol}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $p$ be an odd prime and $a$ an integer not divisible by $p$.
+  \item The \emph{Legendrea symbol} $(\frac{a}{p})$ is defined by
+  \item $(\frac{a}{p}) = 1$ if $a$ is a quadratic residue of $p$;
+  \item $(\frac{a}{p}) = -1$ if $a$ is a quadratic nonresidue of $p$.
+  \item \textbf{Examples} $(\frac{1}{7}) = 1$,$(\frac{2}{7}) = 1$,$(\frac{4}{7}) = 1$
+  \item \textbf{Examples} $(\frac{3}{7}) = -1$,$(\frac{5}{7}) = -1$,$(\frac{6}{7}) = -1$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Euler's Criterion}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $p$ be an odd prime and $a$ an integer not divisible by $p$. Then
+  \item $(\frac{a}{p}) \equiv a^{(p-1)/2} \pmod p$.
+  \item Notice that the theorem implies that $a^{(p-1)/2} \bmod p$ is always equal to 1 or -1.
+  \item \textbf{Example.} Let $p=11$. Let $1\leq a \leq 10$.
+  \item If $a$ is a quadratic residue of 11 then $a^5 \bmod 11 = 1$.
+  \item If $a$ is a quadratic nonresidue of 11 then $a^5 \bmod 11 = -1$.
+  \item $9$ is a quadratic residue of 11. So $9^5 \bmod 11 = 1$.
+  \item $8$ is a quadratic nonresidue of 11. So $8^5 \bmod 11 = -1$.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Proof of Euler's Criterion}
+
+\begin{itemize}
+  \item \textbf{Proof.} Let $p$ be an odd prime and $[a]\in\Z^*_p$. Work in $\Z^*_p$.
+  \item Let $[b]=[a]^{(p-1)/2}$.
+  \item Notice that $[b]^2 = [a]^{p-1} = [1]$ by Fermat's Little Theorem.
+  \item So $[b]$ is a square-root of $[1]$.
+  \item So $[b] = [1]$ or $[b] = -[1]$. We want to see that $[b]=[1]$ iff $[a]$ is a perfect square.
+  \item First suppose $[a]$ is a perfect square. Say $[a] = [c]^2$.
+  \item Then $[b]= ([c]^2)^{(p-1)/2}=[c]^{p-1}=[1]$ by Fermat's Little Theorem.
+  \item Now suppose $[a]$ is not a perfect square.
+  \item Notice that for each $[c]\in\Z^*_p$ there is a unique $[\cprime]\in\Z^*_p$ such that $[c][\cprime] = [a]$.
+  \item Namely, $[\cprime] = [a][c]^{-1}$.
+  \item Also, $[\cprime]\not= [c]$ because $[a]$ is not a perfect square.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof of Euler's Criterion, page 2}
+
+\begin{itemize}
+  \item Now consider the product of all of the elements of $\Z^*_p$.
+  \item By Wilson's Theorem we have
+  \item $[1][2][3]\cdots[c]\cdots[\cprime]\cdots[p-1] = -[1]$.
+  \item But each $[c]$ in the product has a partner $[\cprime]$ in the product
+  so that $[c][\cprime] = [a]$.
+  \item There are $(p-1)/2$ such pairs of $[c], [\cprime]$.
+  \item So the product may be seen to be equal to $[a]^{(p-1)/2}$.
+  \item So $[a]^{(p-1)/2}= -[1]$. $\qed$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{When is -1 a quadratic residue?}
+
+\begin{itemize}
+  \item \textbf{Theorem.}  Let $p$ be an odd prime. Then
+  \item $(\frac{-1}{p}) = 1$ iff $p\bmod 4 = 1$.
+  \item Notice that if $p$ is any odd number then $p \bmod 4$ is 1 or 3.
+  \item \textbf{Example.} $11\bmod 4 = 3$. So $-1$ is not a quadratic residue of 11.
+  \item \textbf{Example.} $13\bmod 4 = 1$. So $-1$ is a quadratic residue of 13. Find a square-root of -1 mod 13.
+  \item $5^2 = 25 \equiv -1 \pmod {13}$.
+  \item \textbf{proof.} By Euler's Criterion, $(\frac{-1}{p}) \equiv (-1)^{(p-1)/2} \pmod p$.
+  \item So $(\frac{-1}{p}) = 1$ iff $(p-1)/2$ is even iff $p-1$ is divisible by 4. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Guass's Lemma}
+
+\begin{itemize}
+  \item \textbf{Theorem.}  Let $p$ be an odd prime and $a$ an integer not divisible by $p$.
+  \item Consider the least positive residues mod $p$ of $a, 2a, 3a, \cdots \frac{p-1}{2} a$.
+  \item Let $s$ be the number of these that are greater than $(p-1)/2$. Then
+  \item $(\frac{a}{p}) = (-1)^s$.
+  \item \textbf{Example.} Let $p=11$ and $a=3$. Consider the least positive residues mod 11 of:
+  $3, 6, 9, 12, 15$.
+  \item These are: $1, 3, 4, 6, 9$.
+  \item $s=2$ because 6 and 9 are greater than 5.
+  \item So  $(\frac{3}{11}) = (-1)^2 = 1$. So 3 is a quadratic residue mod 11.
+  \item Find a square-root of 3 mod 11.
+  \item $5^2 \equiv 3 \pmod {11}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof of Guass's Lemma}
+
+\begin{itemize}
+  \item \textbf{Proof.} Let $p$ be an odd prime and $[a]\in\Z^*_p$. Work in $\Z^*_p$.
+  \item Consider the multiples $[a],[2][a],[3][a],\cdots[\frac{p-1}{2}][a]$.
+  \item Notice that no two of them are equal because if $[x][a]=[y][a]$ then $[x]=[y]$.
+  \item But also notice that if $x\not=y$ then $[x][a] \not= -[y][a]$, because
+  $[x][a] = -[y][a] \Implies [x]=-[y]$ but $1\leq x,y\leq \frac{p-1}{2}$.
+  \item For $[x]\in \Z^*_p$ let $|[x]| = [x]$ if $1\leq x \leq \frac{p-1}{2}$ and
+  let $|[x]| = -[x] = [p-x]$ if $x>\frac{p-1}{2}$.
+  \item So for all $[x]\in\Z^*_p$, $|[x]|\in \singleton{[1],[2],\cdots [\frac{p-1}{2}]}$.
+  \item $\singleton{|[a]|,|[2a]|,\cdots |[\frac{p-1}{2}a]|}$ contains $(p-1)/2$ distinct values.
+  \item So $\singleton{|[a]|,|[2a]|,\cdots |[\frac{p-1}{2}a]|} = \singleton{[1],[2],\cdots [\frac{p-1}{2}]}.$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof of Gauss's Lemma, page 2}
+
+\begin{itemize}
+  \item Let $s$ be the number of $[xa]$ with $1\leq x \leq \frac{p-1}{2}$ such that $|[xa]| = - [xa]$.
+  \item Let $u=[1]\times[2]\cdots \times [\frac{p-1}{2}]$.
+  \item Then $[a]\times[2][a]\times[3][a]\cdots \times [\frac{p-1}{2}][a] = [a]^{(p-1)/2} u$.
+  \item But also $[a]\times[2][a]\times[3][a]\cdots \times [\frac{p-1}{2}][a] = (-1)^s u$.
+  \item So $[a]^{(p-1)/2}=[(-1)^s]$.
+  \item By Euler's Criterion, $(\frac{a}{p}) = 1$ iff $[a]^{(p-1)/2} = [1]$.
+  \item So $(\frac{a}{p}) = 1$ iff $(-1)^s = 1$. $\qed$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{When is 2 a quadratic residue?}
+
+\begin{itemize}
+  \item \textbf{Theorem.}  Let $p$ be an odd prime. Then
+  \item $(\frac{2}{p}) = 1$ iff $p\bmod 8 = 1$ or $p\bmod 8 = 7$.
+  \item Notice that if $p$ is any odd number then $p \bmod 8$ is 1,3,5 or 7.
+  \item \textbf{Example.} $11\bmod 8 = 3$. So $2$ is not a quadratic residue of 11.
+  \item \textbf{Example.} $13\bmod 8 = 5$. So $2$ is not a quadratic residue of 13.
+  \item \textbf{Example.} $17\bmod 8 = 1$. So $2$ is a quadratic residue of 17. Find a square-root of 2 mod 17.
+  \item $6^2 = 36 \equiv 2 \pmod {17}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof of when 2 is a quadratic residue}
+
+\begin{itemize}
+  \item \textbf{proof.}  Let $p$ be an odd prime.
+  \item Consider the the first $(p-1)/2$ multiples of $2$:
+  \item  $2, 4, 6, 8, \cdots p-1$.
+  \item Let $s$ be the number of such multiples that are greater than $(p-1)/2$.
+  \item By Gauss's Lemma, $2$ is a quadratic residue of $p$ just in $s$ is even.
+  \item We claim that $s$ is even just in case $p\bmod 8 = 1$ or $p\bmod 8 = 7$.
+  \item Notice the following facts:
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Proof of when is 2 is a quadratic residue, page 2}
+
+\begin{enumerate}
+\item[(i)] Every sequence of 4 consecutive integers contains an even number of even integers.
+\item[(ii)] A sequence of 3 consecutive integers contains an even number of even integers iff the first element of the sequence is even.
+\item[(iii)] A sequence of 2 consecutive integers contains an odd number of even integers
+\item[(iv)] A sequence of 1 integer contains an even number of even integers iff the single integer in the sequence is odd.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Proof of when is 2 is a quadratic residue, page 3}
+
+Now let $I=\setof{x\in\Z}{(p-1)/2 < x < p}$. So $|I|=(p-1)/2$ and the first element of $I$ is $(p-1)/2 + 1$.
+We want to know if there are an even or odd number of even numbers in $I$.
+Consider four cases:
+
+\begin{itemize}
+\item $p\bmod 8 = 1$. Then $(p-1)/2$ is a multiple of 4 and so there are an even number of evens in $I$ by (i) above.
+\item $p\bmod 8 = 3$. Then $(p-1)/2 \bmod 4 = 1$ and the first element of $I$ is even so $I$ contains an odd number of evens by (i) and (iv) above.
+\item $p\bmod 8 = 5$. Then $(p-1)/2 \bmod 4 = 2$ so $I$ contains an odd number of evens by (i) and (iii) above.
+\item $p\bmod 8 = 7$. Then $(p-1)/2 \bmod 4 = 3$ and the first element of $I$ is even so $I$ contains an even number of evens by (i) and (ii) above. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+\end{document}
