@@ -1,0 +1,172 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref,changepage}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 22 \\ Quadratic Reciprocity}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2021 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Working with Quadratic Residues (i)}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $p$ be an odd prime and $a$ and $b$ integers not divisible by $p$. Then
+  \item \textbf{(i)} If $a\equiv b \pmod p$ then $(\frac{a}{p})=(\frac{b}{p})$.
+  \item \textbf{Example (i)} $(\frac{16}{7}) = (\frac{2}{7}) = 1$.
+  \item \textbf{proof (i).} {(i)} Suppose $a\equiv b \pmod p$. Then $a$ is congruent to a square mod $p$ iff $b$ is congruent to a square mod $p$. $\qed$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Working with Quadratic Residues (ii)}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $p$ be an odd prime and $a$ and $b$ integers not divisible by $p$. Then
+  \item \textbf{(ii)}$(\frac{ab}{p})=(\frac{a}{p})(\frac{b}{p})$.
+  \item \textbf{Example (ii)} $(\frac{2}{7})=1$ and $(\frac{3}{7})=-1$ so $(\frac{6}{7})=-1$.
+  \item The product of two quadratic residues is a quadratic residue.
+  \item The product of two quadratic nonresidues is a quadratic residue.
+  \item The product of a quadratic residue and a quadratic nonresidue is a quadratic nonresidue.
+  \item \textbf{proof (ii).} Let $x$ be a primitive root of $p$. Let $k,m$ be exponents such that $a\equiv x^k \pmod p$ and $b\equiv x^m \pmod p$.
+  Then $ab \equiv x^{k+m} \pmod p$.
+  \item $(\frac{ab}{p})=1$ iff $ab$ is a quadratic residue iff $k+m$ is even iff $k,m$ are both even
+  or $k,m$ are both odd iff $(\frac{a}{p})=(\frac{b}{p}) = 1$ or $(\frac{a}{p})=(\frac{b}{p}) = -1$. $\qed$
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Working with Quadratic Residues (iii)}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $p$ be an odd prime and $a$ and $b$ integers not divisible by $p$. Then
+  \item \textbf{(i)} If $a\equiv b \pmod p$ then $(\frac{a}{p})=(\frac{b}{p})$.
+  \item \textbf{(ii)}$(\frac{ab}{p})=(\frac{a}{p})(\frac{b}{p})$.
+  \item \textbf{(iii)} $(\frac{a^2}{p})=1$.
+  \item \textbf{Example (iii)} $(\frac{11}{7}) = (\frac{4}{7})=1$.
+  \item \textbf{proof.} \textbf{(iii)} Clearly $a^2$ is a quadratic residue. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Law of Quadratic Reciprocity}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $p,q$ be two different odd primes.
+  \item If $p\bmod 4 = 1$ or $q\bmod 4 = 1$ then $(\frac{p}{q}) = (\frac{q}{p})$.
+  \item If $p\bmod 4 = 3$ and $q\bmod 4 = 3$ then $(\frac{p}{q}) = -1 \times (\frac{q}{p})$.
+  \item \textbf{Example.} Compute $(\frac{13}{17})$.
+  \item $(\frac{13}{17}) = (\frac{17}{13})$ (By the Law of Quadratic Reciprocity, since $13\bmod4=1$.)
+  \item $(\frac{17}{13}) = (\frac{4}{13})$ (Since $17\equiv 4 \pmod {13}$.)
+  \item $(\frac{4}{13}) = 1$ (Since $4=2^2$.)
+  \item So $(\frac{13}{17}) = 1$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Law of Quadratic Reciprocity example 2}
+
+\begin{itemize}
+  \item \textbf{Example.} Compute $(\frac{7}{19})$.
+  \item $(\frac{7}{19}) = -1\times(\frac{19}{7})$ (By the Law of Quadratic Reciprocity, since $7\bmod4=3$ and $19\mod4 = 3$.)
+  \item $= -1\times(\frac{5}{7})$ (Since $19\equiv 5 \pmod {7}$.)
+  \item $= -1\times(\frac{7}{5})$ (quadratic reciprocity, since $5\equiv 1 \pmod 4$)
+  \item $= -1\times(\frac{2}{5})$ (Theorem on when 2 is a quadratic residue)
+  \item $= -1\times-1 = 1.$
+  \item So $(\frac{7}{19}) = 1$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Law of Quadratic Reciprocity example 3}
+
+\begin{itemize}
+  \item \textbf{Example.} Compute $(\frac{713}{1009})$.
+  \item $(\frac{713}{1009}) = (\frac{23}{1009})(\frac{31}{1009})$ (Since $713 = 23\times 31$)
+  \item $= (\frac{1009}{23})(\frac{1009}{31})$ (quadratic reciprocity twice, $1009 \bmod 4 = 1$.)
+  \item $= (\frac{20}{23})(\frac{17}{31})$
+  \item $= (\frac{4}{23})(\frac{5}{23})(\frac{31}{17})$ (Since $17\bmod 4 = 1$.)
+  \item $= 1 \times (\frac{23}{5})(\frac{14}{17})$ (Since $5\bmod 4 = 1$.)
+  \item $=(\frac{3}{5})(\frac{2}{17})(\frac{7}{17})$
+  \item $=(\frac{5}{3})\times 1 \times (\frac{17}{7})$ (Since $(\frac{2}{17}) = 1$)
+  \item $=(\frac{2}{3}) (\frac{3}{7})$ (Since $5 \bmod 4 = 1$.)
+  \item $=-1 \times -1\times(\frac{7}{3})$ (Since $(\frac{2}{3})=-1$ and $7 \bmod 4 = 3$.)
+  \item $=(\frac{7}{3})=(\frac{4}{3}) = 1$
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Proof coming soon}
+
+\begin{itemize}
+  \item In the next lesson will give a proof of the Law of Quadratic Reciprocity.
+  \item It is one of the most widely studied theorems in mathematics.
+  \item In the last three hundred years their have been hundreds of different proofs found.
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
