@@ -1,0 +1,208 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref,changepage}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Lesson 23 \\ Proof of the Law of Quadratic Reciprocity}
+\subtitle{Math 310, Elementary Number Theory \\ Fall 2021 \\ SFSU}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Law of Quadratic Reciprocity}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $p,q$ be two different odd primes.
+  \item If $p\bmod 4 = 1$ or $q\bmod 4 = 1$ then $(\frac{p}{q}) = (\frac{q}{p})$.
+  \item If $p\bmod 4 = 3$ and $q\bmod 4 = 3$ then $(\frac{p}{q}) = -1 \times (\frac{q}{p})$.
+  \item In this lesson we will prove the theorem.
+  \item We start with a Lemma.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Eisenstein's Lemma}
+
+\begin{itemize}
+  \item \textbf{Lemma.} Let $p$ be an odd prime and $a$ an odd integer not divisible by $p$.
+  \item Then $\left ( \frac{a}{p}\right) = (-1)^T$, where
+  \item $T = \sum_{j=1}^{(p-1)/2} \floor{ja/p}$.
+  \item \textbf{Example.} Let $p=11, a=7$. Then $\left ( \frac{7}{11}\right) = (-1)^T$, where
+  \item $T = \floor{7/11} + \floor{2\cdot7/11} + \floor{3\cdot7/11}  + \floor{4\cdot7/11}  + \floor{5\cdot7/11}$.
+  \item $= 0 + 1 + 1 +2 +3 = 7$.
+  \item So  $\left ( \frac{7}{11}\right) = (-1)^7 = -1$
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Proof of Eisenstein's Lemma}
+
+\begin{itemize}
+  \item \textbf{Sketch of proof.}
+  \item Let $s$ be as in Gauss's Lemma.
+  \item $s$ is the number of multiples of $a$ whose absolute least residue mod $p$ is negative.
+  \item We will show that $T \equiv s \pmod 2$.
+  \item So $(-1)^T = (-1)^s = (\frac{a}{p})$.
+  \item We illustrate the proof using $p=11, a=7$.
+  \item $7 = 0\times 11 + 7$
+  \item $14 = 1\times 11 + 3$
+  \item $21 = 1\times 11 + 10$
+  \item $28 = 2\times 11 + 6$
+  \item $35 = 3\times 11 + 2$.
+  \item $T = 0 + 1 + 1 + 2 + 3$.
+  \item The remainders are $7,3,10,6,2$.
+  \item The ones with negative absolute least residues are: 7, 10, 6.
+  \item $s=3$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Proof of Eisenstein's Lemma, page 2}
+
+\begin{itemize}
+  \item $7 = 0\times 11 + 7$
+  \item $14 = 1\times 11 + 3$
+  \item $21 = 1\times 11 + 10$
+  \item $28 = 2\times 11 + 6$
+  \item $35 = 3\times 11 + 2$.
+  \item $T = 0 + 1 + 1 + 2 + 3$.
+  \item $s=3$.
+  \item $7+14+21+28+35=11T + (3 + 2) + (7 + 10 + 6)$
+  \item $7(1+2+3+4+5)=11T + (3 + 2) + (7 + 10 + 6)$
+  \item Let $u_1, u_2, \cdots u_s$ be those remainders with negative absolute least residues.
+  \item $7 + 10+ 6 = u_1 + u_2 + u_3 $.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof of Eisenstein's Lemma, page 3}
+
+\begin{itemize}
+  \item $7(1+2+3+4+5)=11T + (3 + 2) + (7 + 10 + 6)$
+  \item As in the proof of Gauss's Lemma, the absolute values of the absolute least residues of
+  $a,2a,\cdots, 5a$ are just $1,2,3,4,5$.
+  \item $1 + 2 + 3 + 4 + 5 = (3 + 2) + (11 - 7) + (11 - 10) + (11 - 6)$.
+  \item $= 11\times 3 + (3 + 2) - (7 + 10 + 6)$.
+  \item Subtracting this last equation from the top equation we get
+  \item $6(1 + 2 + 3 + 4 + 5) = 11T - 11\times 3 + 2 (7 + 10 + 6)$.
+  \item $(a-1)\sum_{j=1}^{(p-1)/2}j = pT - ps + 2 \sum_{j=1}^{s}{u_j}$.
+  \item Take mod 2 of both sides of the above equation using $a,p$ are odd:
+  \item $0 \equiv T -s \pmod 2$.
+  \item $T \equiv s \pmod 2$.
+  \item So $(-1)^T = (-1)^s = (\frac{a}{p})$. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof of Quadratic Reciprocity}
+
+\begin{itemize}
+  \item \textbf{Sketch of proof.} Let $p,q$ be two different odd primes.
+  \item Let $N = \frac{(p-1)}{2}\frac{(q-1)}{2}$.
+  \item We will show that $(\frac{p}{q})(\frac{q}{p}) = (-1)^N$.
+  \item For example, let $p=7, q=11$.
+  \item Then $(\frac{7}{11})(\frac{11}{7}) = (-1)^{3\times5}$.
+  \item Since $3\times 5$ is odd, $(\frac{7}{11})(\frac{11}{7}) = -1$.
+  \item Equivalently, $(\frac{7}{11}) = -1 \times (\frac{11}{7})$.
+  \item Notice that for any odd integer $n$, $\frac{(n-1)}{2}$ is even just in case $n\equiv 1 \pmod 4$.
+  \item So in general $\frac{(p-1)}{2}\frac{(q-1)}{2}$ is even just in case $p\equiv 1 \pmod 4$ or $q\equiv 1 \pmod 4$.
+  \item So we will get that $(\frac{p}{q})=(\frac{q}{p})$ just in case $p\equiv 1 \pmod 4$ or $q\equiv 1 \pmod 4$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Proof of Quadratic Reciprocity, page 2}
+
+\begin{itemize}
+  \item Let $S$ be the set of all pairs of integers $(x,y)$ such that
+  $1\leq x \leq (p-1)/2$ and $1\leq y \leq (q-1)/2$.
+  \item It is useful to picture $S$ as a rectangular grid of points in the $x,y$ plane.
+  \item We illustrate the proof with $p=7, q=11$.
+  \item Then $S$ is the the set of all pairs of integers $(x,y)$ such that
+  $1\leq x \leq 3$ and $1\leq y \leq 5$.
+  \item Notice that there are $N = \frac{(p-1)}{2}\frac{(q-1)}{2}$ points in $S$.
+  \item With $p=7, q=11$ there are 15 points in $S$.
+  \item We divide $S$ into two pieces $S = S_1 \union S_2$.
+  \item Let $S_1 = \setof{(x,y)\in S}{py < qx}$.
+  \item Let $S_2 = \setof{(x,y)\in S}{py > qx}$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof of Quadratic Reciprocity, page 3}
+
+\begin{itemize}
+  \item With $p=7, q=11$ we have,
+  \item $S_1 = \setof{(x,y)\in S}{7y < 11x}$.
+  \item $S_2 = \setof{(x,y)\in S}{7y > 11x}$.
+  \item Notice that $S= S_1 \union S_2$ because there are no $(x,y)\in S$ such that $py = qx$.
+  \item This is because if $py=qx$ then $p\divides qx$. But $p\ndivides q$ and $p\ndivides x$ since $1\leq x \leq (p-1)/2$.
+  \item We can picture $S_1$ and $S_2$ as the portions of the grid $S$ below and above the line $y=\frac{q}{p} x$.
+  \item For example with $p=7, q=11$,
+  \item $S_1 = $ the points in $S$ below the line $y=\frac{11}{7}x$.
+  \item $S_2 = $ the points in $S$ above the line $y=\frac{11}{7}x$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+\end{document}
