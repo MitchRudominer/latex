@@ -13,9 +13,6 @@
 
 \title{The Mouse Set Theorem Just Past Projective}
 \author{Mitch Rudominer}
-\author{John R. Steel}
-\author{W. Hugh Woodin}
-
 
 \keywords{large cardinals, descriptive set theory, inner model theory}
 
@@ -37,7 +34,7 @@ pair to consider in this series of results. Thus we are proving the mouse
 set theorem just past projective.
 
 Some of this is not new. $\R\intersect \Mladder \subseteq Q_{\omega+1}$ was
-know in the 1990's. But $Q_{\omega+1} \subseteq \Mladder$ was open
+known in the 1990's. But $Q_{\omega+1} \subseteq \Mladder$ was open
 until Woodin found a proof in 2018. The main goal of this paper is to give
 Woodin's proof.
 \end{abstract}
@@ -55,12 +52,15 @@ in $J_3(\R)$ is sufficient for most of the results.
 Throughout this paper we write $\R$ to mean $\Bairespace$ and we call elements of $\Bairespace$ \emph{reals}.
 
 In the 1990's Martin, Steel and Woodin proved that, assuming large cardinals or determinacy,
-$\R\intersect M_n^{\sharp} = $ the set of reals that are $\Delta^1_n$ in a countable ordinal.
-For even $n\geq 2$, $\R\intersect M_n^{\sharp} = C_n$, the largest countable $\Sigma^1_n$ set.
-For odd $n\geq 3$, $\R\intersect M_n^{\sharp} = Q_n$, the largest countable $\Pi^1_n$
-set closed downwards under $\Delta^1_3$ degrees. See \cite{Proj_WO_In_Mod}.
+$\R\intersect M_n = $ the set of reals that are $\Delta^1_{n+2}$ in a countable ordinal,
+where $M_n$ is the standard, minimal proper-class inner model with $n$ Woodin cardinals (including the case $M_0=L$.)
+For even $n$, $\R\intersect M_n = C_{n+2}$, the largest countable $\Sigma^1_{n+2}$ set.
+For odd $n$, $\R\intersect M_n = Q_{n+2}$, the largest countable $\Pi^1_{n+2}$
+set closed downwards under $\Delta^1_{n+2}$ degrees. See \cite{Proj_WO_In_Mod}.
+If one wishes to work with countable mice rather than proper class models, one may substitute
+$M_n^{\sharp}$ for $M_n$ above since the two models have the same reals.
 
-In \cite{My_Thesis} and \cite{Mouse_Sets} Rudominer explored an extension of this theory
+In \cite{My_Thesis} and \cite{Mouse_Sets} we explored an extension of this theory
 to projective-like pointclasses beyond the projective and achieved partial results.
 But even at the very first step past projective the full mouse set theorem was left open.
 
@@ -75,14 +75,17 @@ $\Sigma^1_{\omega}$ is not closed under $\forall^{\omega}$ and so is not a perfe
 But $\Pi^1_{\omega+1}$ is closed under $\exists^{\omega}$ and is a good analog of $\Pi^1_1$ or $\Pi^1_3$.
 Let $Q_{\omega+1}$ be the set of reals that are $\Delta^1_{\omega+1}$ in a countable ordinal.
 
-In \cite{My_Thesis}, Rudominer defined the minimal ladder mouse $\Mladder$ and showed that
+In \cite{My_Thesis}, we defined the minimal ladder mouse $\Mladder$ and showed that
 $\R\intersect\Mladder\subseteq Q_{\omega+1}$. ($\Mladder$ is the minimal iterable mouse $M$ such
 that for each $n\in\omega$ there is a cardinal $\delta_n$ of $M$ and an initial segment $P_n \initseg M$
 such that $\delta_n$ is Woodin in $P_n$ and $P_n$ is not $n$-small above $\delta_n$.)
 
 But the other direction, $Q_{\omega+1} \subseteq \Mladder$, remained open until
 Woodin found a proof in the summer of 2018. Woodin transmitted the proof to Steel who fleshed it out
-in some hand-written notes. Rudominer refined those notes into this paper.
+and extended it in some hand-written notes \cite{Mouse_Pairs_and_Suslin_Cardinals}.
+The author refined the relevant sections of those notes into this paper.
+Woodin and Steel have elected to not appear as co-authors of this paper,
+but the mathematical provenance of the ideas contained in the paper should be clear from this paragraph.
 
 No new technology is involved in the proof and it could have been discovered in the 1990's. The main ingredients
 of the proof are Stationary Tower forcing, genericity iterations, and a lemma stating that
