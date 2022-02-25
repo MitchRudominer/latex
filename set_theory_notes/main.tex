@@ -996,6 +996,49 @@ $\alpha$, not just $\alpha$ in an arbitrary domain.
 
 \section{Descriptive Set Theory}
 
+\begin{theorem} Let $A$ and $B$ be subsets of Baire Space. Suppose that $A$ is both the union of an open
+set and a closed set and also the intersection of an open set and a closed set. Suppose that $B$ is neither open nor closed.
+Then $A \Wadgeleq B$.
+\end{theorem}
+\begin{proof}
+We will define a continuous function $f:\Bairespace\to\Bairespace$ such that $A=f^{-1}[B]$.
+
+Since $B$ is neither open nor closed there are points $\singleton{x_0,x_1,x_2,\cdots} \subset B$ and
+$\singleton{y_0,y_1,y_2,\cdots}\subset \neg B$ such that $x_i \to y_0$ and $y_i \to x_0$.
+
+Let $G$ and $\Gprime$ be open sets and $F$ and $\Fprime$ be closed sets such that
+$A=G\union F$ and $\neg A = \Gprime \union \Fprime$.
+
+For $z\in\Bairespace$ define $f(z)$ as follows:
+\begin{enumerate}
+\item If $z\in A$ and $\distance(z,F) \leq d(z, \Fprime)$ then $f(z) = x_0$.
+\item If $z\in A$ and $\distance(z,\Fprime) < d(z, F)$ then $f(z) = x_n$ where $\distance(z,\Fprime) = 2^{-n}$.
+\item If $z\in \neg A$ and $\distance(z,\Fprime) \leq d(z, F)$ then $f(z) = y_0$.
+\item If $z\in \neg A$ and $\distance(z,F) < d(z, \Fprime)$ then $f(z) = y_n$ where $\distance(z,F) = 2^{-n}$.
+\end{enumerate}
+
+Clearly $A=f^{-1}[B]$ so we need to show that $f$ is continuous. Fix $z\in\Bairespace$ and we will show that $f$ is continuous
+at $z$.
+
+\textbf{Case 1.} $z\in A$ and $\distance(z,F) \leq \distance(z, \Fprime)$. So $f(z) = x_0$.
+Let $w_i \to z$ and we will show that $f(w_i) \to x_0$.
+
+\textbf{Subcase 1a.} $z\in F$. Then $0 = \distance(z,F) < \distance(z, \Fprime)$.
+$\distance(w_i, F) \to 0$ and there is an $N\in\omega$ such that for all $i>N$, $\distance(w_i, F) < \distance(w_i, \Fprime)$.
+For $i>N$, if $w_i\in A$ then $f(w_i) = x_0$ and if $w_i\not\in A$
+then $f(w_i) = y_n$ where $\distance(w_i, F) = 2^{-n}$. Thus $f(w_i) \to x_0$.
+
+\textbf{Subcase 1b.} $z\in A\setminus F$. Since $A\setminus F$ is open, there is is an $N\in\omega$ such that for all $i>N$, $w_i\in A\setminus F$
+and $\distance(w_i, F) \leq \distance(w_i, \Fprime)$. So for all $i>N$, $f(w_i) = x_0$.
+
+\textbf{Case 2.} $z\in A$ and $\distance(z,\Fprime) < \distance(z, F)$. Let $n\in\omega$ be such that $\distance(z,\Fprime) = 2^{-n}$.
+So $f(z) = x_n$.
+Let $w_i \to z$ and we will show that $f(w_i) \to x_n$. Notice $z\in A\setminus F$ and $A\setminus F$ is open so there is an $N\in\omega$
+such that for all $i>N$, $w_i \in A\setminus F$ and $\distance(w_i, \Fprime) = n < \distance(w_i, F)$. Thus for all $i>N$,
+$f(w_i) = x_n$.
+
+\end{proof}
+
 \begin{lemma}[Exercise 7.2 from \cite{Kechris_CDST}] Let $X$ be a second-countable, zero-dimensional space.
 Let $A$ and $B$ be disjoint closed sets. Then they can be separated by clopen sets.
 \end{lemma}
