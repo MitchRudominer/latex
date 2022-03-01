@@ -996,8 +996,47 @@ $\alpha$, not just $\alpha$ in an arbitrary domain.
 
 \section{Descriptive Set Theory}
 
-\begin{theorem} Let $A$ and $B$ be subsets of Baire Space. Suppose that $A$ is both the union of an open
-set and a closed set and also the intersection of an open set and a closed set. Suppose that $B$ is neither open nor closed.
+\begin{definition}
+Let $(S,\distance)$ be a metric space, let $x\in S$ and $A\subset S$.
+Then we define $\distance(x,A) = \inf\setof{\distance(x,y)}{y\in A}$.
+\end{definition}
+
+\begin{lemma}
+Let $(S,\distance)$ be a metric space. Let $F$ be a closed subset of $S$ and let $x\in S\setminus F$.
+Then $\distance(x,F) > 0$.
+\end{lemma}
+\begin{proof}
+$\distance(x,F) = 0$ is equivalent to $x\in\cl(F)$.
+\end{proof}
+
+\begin{lemma}
+Fix as our metric space $S$ either $S = \Bairespace$ or $S = \R^n$. Let $F\subset S$ be closed and let $x\in S\setminus F$.
+Then there is a $y\in F$ such that $\distance(x,F) = \distance(x,y)$.
+\end{lemma}
+\begin{proof}
+If $S=\Bairespace$ then there is some $n\in\omega$ and there is a $y\in F$ such that $x\restr n = y\restr n$ and for all $z\in F$,
+$x\restr(n+1) \not= z\restr(n+1)$. So $\distance(x,F) = \distance(x,y)$.
+
+This argument works for any metric space $(S,\distance)$ such that for all $\epsilon>0$ there are only finitely many
+values of $\distance$ greater than $\epsilon$.
+
+Suppose instead that $S=\R^n$. Then $S$ has the Heine-Borel property: every closed bounded set is compact.
+Let $\sequence{y_i}{i\in\omega}$ be such that $\distance(x, y_i) \to \distance(x, F)$. Since there is a compact set that contains
+the $y_i$, the set of $y_i$ has some limit point $y$.  Then $\distance(x,F) = \distance(x,y)$.
+
+This argument works for any metric space $(S,\distance)$ that has the Heine-Borel property.
+\end{proof}
+
+\begin{definition}
+Let $D_2(\bSigma^0_1)$ be the pointclass consisting of differences of two open sets. Equivalently $D_2(\bSigma^0_1)$
+is the pointclass consisting of the intersection of an open set and a closed set.
+
+Let $\hat{D}_2(\bSigma^0_1)$ be the dual pointclass consisting of the union of an open set and a closed set.
+
+Let $\Delta_2(\bSigma^0_1) = D_2(\bSigma^0_1) \intersect \hat{D}_2(\bSigma^0_1)$.
+\end{definition}
+
+\begin{theorem} Let $A,B\subset\Bairespace$. Suppose that $A\in \Delta_2(\bSigma^0_1)$ and $B$ is neither open nor closed.
 Then $A \Wadgeleq B$.
 \end{theorem}
 \begin{proof}
@@ -1029,7 +1068,10 @@ For $i>N$, if $w_i\in A$ then $f(w_i) = x_0$ and if $w_i\not\in A$
 then $f(w_i) = y_n$ where $\distance(w_i, F) = 2^{-n}$. Thus $f(w_i) \to x_0$.
 
 \textbf{Subcase 1b.} $z\in A\setminus F$. Since $A\setminus F$ is open, there is is an $N\in\omega$ such that for all $i>N$, $w_i\in A\setminus F$
-and $\distance(w_i, F) \leq \distance(w_i, \Fprime)$. So for all $i>N$, $f(w_i) = x_0$.
+and $\distance(w_i, F) \leq \distance(w_i, \Fprime)$. (If $\distance(z,F) < \distance(z,\Fprime)$ this is easy to see. If
+$\distance(z,F) = \distance(z,\Fprime)$, then there is some $n\in\omega$ and some $u\in F$ and $v\in\Fprime$ such that $z\restr n = u \restr n = v\restr n$
+and for all $t\in F$, $z\restr(n+1)\not=t\restr(n+1)$ and for all $t\in\Fprime$, $z\restr(n+1)\not=t\restr(n+1)$. So then for sufficiently large $i$
+the same is true for $w_i$ in place of $z$.) So for all $i>N$, $f(w_i) = x_0$.
 
 \textbf{Case 2.} $z\in A$ and $\distance(z,\Fprime) < \distance(z, F)$. Let $n\in\omega$ be such that $\distance(z,\Fprime) = 2^{-n}$.
 So $f(z) = x_n$.
