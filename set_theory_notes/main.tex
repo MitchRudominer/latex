@@ -134,9 +134,9 @@ $I(s) =  \left(a(s), b(s) \right)$ with $I(s)\subseteq (0,1)$ with the following
 \item[(a)] The function $I$ is one-to-one.
 \item[(b)] $I(\emptyset) = (0,1)$.
 \item[(c)] $D = \setof{a(s), b(s)}{\length(s) > 0}$.
-\item[(d)] For each $n\in\omega$, $\setof{I(s)}{\length(s) = n}$ is a set of disjoint intervals
-each of length less then $1/n$ and the closure of the union of all of those intervals is $[0,1]$.
-\item[(e)] If $s \subsetneqq t$ then the closure of $I(t)$ is contained in $I(s)$.
+\item[(d)] For each $n\in\omega$, $\setof{I(s)}{\length(s) = n}$ is a set of disjoint open intervals
+each of length less than $\frac{1}{n+1}$ and the union of all of those intervals is contained in $(0,1)$ and covers $(0,1) - D$.
+\item[(e)] If $s \subsetneqq t$ than the closure of $I(t)$ is contained in $I(s)$.
 \end{itemize}
 
 First suppose we have such a function $I$ and we will show how to use it to complete the proof.

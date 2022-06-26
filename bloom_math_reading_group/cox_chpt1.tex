@@ -1,0 +1,176 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Ideals, Varieties and Algorithms \\ Chapter 1}
+\subtitle{Bloom Math Reading Group \\ June 26, 2022 \\ Google}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Polynomials in several variables}
+
+
+\begin{itemize}
+  \item Theme: Polynomials in several variables are harder to work with than polynomials in one variable.
+  \item Polynomial in one variable: $7x^3 + 2x - 1$.
+  \item Polynomial in several variables: $7x^3y - 3y^2z^2 + xyz -2x - 4$.
+  \item In this session will study some abstract algebra to understand the difference between polynomials in one variable vs several variables.
+  \item It will boil down to this: In one variable we have the Euclidean algorithm and in several variables we do not.
+  \item In the next session we will study Gr\"{o}bner bases.
+  \item This is a computational tool to allow us to work with several variables despite the fact that we don't have the Euclidean algorithm.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Ring Theory}
+
+\begin{itemize}
+  \item A \textbf{ring} is an algebraic structure with two operations: addition and multiplication.
+  \item The operations are associative and commutative and multiplication distributes over addition.
+  \item There is an element $0$ that is an additive identity and an element $1$ that is a multiplicative identity.
+  \item We don't necessarily have division.
+  \item To be precise this is a \emph{commutative ring with unit}. But we will call it a ring.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Examples of Rings}
+
+\begin{itemize}
+  \item $\Z$, the set of integers, with addition and multiplication.
+  \item $\Z_n$, the set of integers mod $n$, with addition and multiplication mod $n$.
+  \item $\R[x]$, the set of polynomials in one variable with real coefficients, with addition and multiplication of polynomials.
+  \item $\R[x,y,z]$, the set of polynomials in three variables with real coefficients, with addition and multiplication of polynomials.
+  \item $\Z[\alpha]$. Here $\alpha$ is some fixed complex number. The ring consists of all complex numbers of the form $a+b\alpha$ where
+  $a,b\in\Z$.
+  \item A \textbf{field} is a ring where we also have division.
+  \item Examples of fields: $\Q, \R, \C$.
+  \item $\Z_p$ where $p$ is prime is a field.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Units}
+
+\begin{itemize}
+  \item \textbf{Definition} Let $R$ be a ring. An element $u\in R$ is called a \textbf{unit} iff there is a $v\in R$ such that $uv=1$.
+  \item Here we write $1$ to mean the unique multiplicative identity element of $R$.
+  \item i.e a unit is an element that has a multiplicative inverse.
+  \item Examples: In $\Z$ the only units are $1$ and $-1$.
+  \item In $\Z_{10}$, $3\times 7 = 1$. So $3$ and $7$ are multiplicative inverses. So $3$ and $7$ are units.
+  \item In $\Z_{10}$, there is no $x$ such that $4\times x = 1$. So $4$ is not a unit.
+  \item In $R[x]$ and $R[x,y,z]$ the only units are the polynomials of order zero, i.e. the real numbers.
+  \item In a field, all non-zero elements are units.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Zero-divisors}
+
+\begin{itemize}
+  \item \textbf{Definition} Let $R$ be a ring. An element $a\not=0\in R$ is called a \textbf{zero-divisor} iff there is a $b\not=0\in R$ such that $ab=0$.
+  \item \textbf{Definition} An \textbf{integral domain} is a ring that has no zero-divisors.
+  \item All of our example rings are Integral Domains except $\Z_n$ where $n$ is not prime.
+  \item For example in $\Z_{10}$, $4\times 5 = 0$. So $4$ and $5$ are zero-divisors and $\Z_{10}$ is not an integral domain.
+  \item In all of our other examples, if $a,b\not=0$ then $ab \not = 0$.
+  \item For example, the product of two non-zero polynomials is non-zero.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Cancellation}
+
+\begin{itemize}
+  \item \textbf{Lemma} Let $R$ be an integral domain. Suppose $a\not=0$ and $ab = ac$.
+  \item Then $b=c$.
+  \item \textbf{proof}. $ab - ac = 0$ so $a(b-c) = 0$.
+  \item Since $a\not=0$ and $R$ is an integral domain, $b-c=0$, so $b=c$. $\qed$.
+  \item Notice in $\Z_{10}$ we do not have cancellation.
+  \item $4\times 7 = 4 \times 2$, but $7\not= 2$.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Irreducible Elements}
+
+\begin{itemize}
+  \item \textbf{Definition} Let $R$ be an integral domain. An element $a\not=0\in R$ is called  \textbf{irreducible} iff it is not possible to write $a=bc$ where
+  $b$ and $c$ are both non-units.
+  \item Examples: In $\Z$ $a$ is irreducible iff it is a prime number. For example $6$ is not irreducible because $6=2\times 3$ and $2$ and $3$ are not units.
+  \item In $\Z$, $2$ is irreducible because if $2=ab$ then either $a=\pm1$ or $=\pm1$.
+  \item In $\R[x]$ the irreducibles are the polynomials that cannot be factored into the product of two polynomials of order greater than zero.
+  \item For example $2x^2 + 2$ is irreducible. $2x^2 + 2 = 2 (x^2 + 1)$. But $2$ is a unit in $\R[x]$.
+  \item In $\C[x]$, $2x^2+2$ is not irreducible because $2x^2+2= 2(x+i)(x-i)$.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
