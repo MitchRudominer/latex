@@ -1,7 +1,7 @@
 % $Header$
 
-\documentclass{beamer}
-%\documentclass[handout]{beamer}
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
 
 \usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
 \input{mathdefs}
@@ -65,9 +65,9 @@
   \item Polynomial in one variable: $7x^3 + 2x - 1$.
   \item Polynomial in several variables: $7x^3y - 3y^2z^2 + xyz -2x - 4$.
   \item In this session will study some abstract algebra to understand the difference between polynomials in one variable vs several variables.
-  \item It will boil down to this: In one variable we have the Euclidean algorithm and in several variables we do not.
+  \item It will boil down to this: In one variable we have the Euclidean algorithm and B\'{e}zout's identity. In several variables we do not.
   \item In the next session we will study Gr\"{o}bner bases.
-  \item This is a computational tool to allow us to work with several variables despite the fact that we don't have the Euclidean algorithm.
+  \item This is a computational tool to allow us to work with several variables despite the fact that we don't have the Euclidean algorithm and B\'{e}zout's identity.
 \end{itemize}
 
 \end{frame}
@@ -107,6 +107,18 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}{Diagram: The different types of rings}
+
+\begin{center}
+\includegraphics[width=\textwidth]{Intro}
+\end{center}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}{Units}
 
 \begin{itemize}
@@ -116,8 +128,10 @@
   \item Examples: In $\Z$ the only units are $1$ and $-1$.
   \item In $\Z_{10}$, $3\times 7 = 1$. So $3$ and $7$ are multiplicative inverses. So $3$ and $7$ are units.
   \item In $\Z_{10}$, there is no $x$ such that $4\times x = 1$. So $4$ is not a unit.
-  \item In $R[x]$ and $R[x,y,z]$ the only units are the polynomials of order zero, i.e. the real numbers.
-  \item In a field, all non-zero elements are units.
+  \item In $\R[x]$ and $\R[x,y,z]$ the only units are the polynomials of degree zero, i.e. the real numbers.
+  \item \textbf{Definition} A \textbf{field} is a ring in which all non-zero elements are units.
+  \item $\Q, \R, \C$ are fields.
+  \item $\Z_p$, where $p$ is prime, is a field.
 \end{itemize}
 
 \end{frame}
@@ -133,10 +147,10 @@
   \item For example in $\Z_{10}$, $4\times 5 = 0$. So $4$ and $5$ are zero-divisors and $\Z_{10}$ is not an integral domain.
   \item In all of our other examples, if $a,b\not=0$ then $ab \not = 0$.
   \item For example, the product of two non-zero polynomials is non-zero.
+  \item An element cannot be both a zero-divisor and a unit. So a field is an integral domain.
 \end{itemize}
 
 \end{frame}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -156,6 +170,17 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}{Diagram: Integral Domains}
+
+\begin{center}
+\includegraphics[width=\textwidth]{integral-domains}
+\end{center}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}{Irreducible Elements}
 
 \begin{itemize}
@@ -163,12 +188,334 @@
   $b$ and $c$ are both non-units.
   \item Examples: In $\Z$ $a$ is irreducible iff it is a prime number. For example $6$ is not irreducible because $6=2\times 3$ and $2$ and $3$ are not units.
   \item In $\Z$, $2$ is irreducible because if $2=ab$ then either $a=\pm1$ or $=\pm1$.
-  \item In $\R[x]$ the irreducibles are the polynomials that cannot be factored into the product of two polynomials of order greater than zero.
+  \item In $\R[x]$ the irreducibles are the polynomials that cannot be factored into the product of two polynomials of degree greater than zero.
   \item For example $2x^2 + 2$ is irreducible. $2x^2 + 2 = 2 (x^2 + 1)$. But $2$ is a unit in $\R[x]$.
   \item In $\C[x]$, $2x^2+2$ is not irreducible because $2x^2+2= 2(x+i)(x-i)$.
 \end{itemize}
 
 \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Associates}
+
+\begin{itemize}
+  \item \textbf{Definition} Let $R$ be an integral domain. Two elements $a,b$ are called \textbf{associates} iff there is a unit $u$ such that $a=ub$.
+  \item Examples: In $\Z$, $5$ and $-5$ are associates because $-1$ is a unit.
+  \item In $\R[x]$, $x^2+1$ and $3x^2 +3$ are associates because $3$ is a unit.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Unique Factorization Domains}
+
+\begin{itemize}
+  \item \textbf{Definition} A Unique Factorization Domain, or \textbf{UFD} is an integral domain in which every non-zero element can be factored into a product of irreducibles and units, and the the factorization is unique, up to order of the factors and associates.
+  \item Examples: $\Z$ is a unique factorization domain. (The fundamental theorem of arithmetic.)
+  \item $18 = 3^2 \times 2$, $3$ and $2$ are irreducible.
+  \item ``up to order of the factors and associates": $18 = (-2)(-3) (3)$.
+  \item A field is trivially a UFD since all non-zero elements are units.
+  \item Example of an integral domain that is not a UFD: $\Z[\sqrt{-5}]$.
+  \item $6 = 2\times 3 = (1+\sqrt{-5})(1-\sqrt{-5})$.
+  \item $2,3,(1+\sqrt{-5}),(1-\sqrt{-5})$ are all irreducible.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Polynomial Rings}
+
+\begin{itemize}
+  \item \textbf{Definition} If $R$ is any ring then $R[x]$ is the ring of polynomials in the variable $x$ with coefficients in $R$.
+  \item \textbf{Theorem} If $R$ is a UFD then so is $R[x]$.
+  \item \textbf{Corollary} $\R[x]$ is a UFD.
+  \item $4x^2 -4 = 4(x-1)(x+1)$. $4$ is a unit. $(x-1),(x+1)$ are irreducible.
+  \item ``up to order of the factors and associates": $4x^2 -4 = (2x-2)(2x+2)$
+  \item \textbf{Corollary} $\R[x,y,z]$ is a UFD.
+  \item \textbf{proof:} $\R[x,y,z] = \left( (\R[x])[y] \right ) [z]$. $\qed$
+  \item $x^2yz +xy +xz +1 = (xy+1)(xz+1)$
+  \item $(xy+1), (xz+1)$ are irreducible.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Diagram: Unique Factorization Domains}
+
+\begin{center}
+\includegraphics[width=\textwidth]{ufds}
+\end{center}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{GCDs}
+
+\begin{itemize}
+  \item If $R$ is a ring and $a,d\in R$ we say that $d$ \emph{divides} $a$, or $d$ is a \emph{divisor} of $a$, or $a$ is a \emph{multiple} of $d$ iff
+  \item there is a $b\in R$ such that $a=db$.
+  \item Examples: In $\Z$, $6$ is a divisor of $30$ because $30 = 6\times 5$.
+  \item In $\R[x]$, $(x+1)$ is a divisor of $x^2-1$ because $x^2-1 = (x+1)(x-1)$.
+  \item If $d$ divides $a$ and $d$ divides $b$ then $d$ is a \emph{common divisor} of $a$ and $b$.
+  \item \textbf{Definition} Suppose $R$ is an integral domain. $d$ is a \emph{greatest common divisor} of $a$ and $b$ iff $d$ is a
+  common divisor of $a$ and $b$ and whenever $c$ is a common divisor of $a$ and $b$, $c$ divides $d$.
+  We write $d=\gcd(a,b)$.
+  \item If $\gcd(a,b)$ exists it is unique up to associates. If $d=\gcd(a,b)$ and $e=\gcd(a,b)$ then $d$ and $e$ are associates.
+  \item \textbf{proof.} $d$ and $e$ divide each other. This is equivalent to $d$ and $e$ being associates. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{More GCDs. Relatively Prime}
+
+\begin{itemize}
+  \item In $\Z$, $6 = \gcd(30, 42)$. (Technically also $-6=\gcd(30,42)$ but nobody would write this.)
+  \item In $\R[x]$, $(x+1) = \gcd(x^2-1, x^2+2x+1)$. Also $2(x+1)= \gcd(x^2-1, x^2+2x+1)$.
+  \item If $\gcd(a,b) = 1$ then we say that $a$ and $b$ are \emph{relatively prime.}
+  \item Examples: In $\Z$, $9$ and $10$ are relatively prime because $\gcd(9,10) = 1$.
+  \item In $\R[x]$, $x^2-1$ and $x^2 -4$ are relatively prime.
+\end{itemize}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{GCDs in UFDs}
+
+\begin{itemize}
+  \item \textbf{Theorem.} If $R$ is a UFD then for all $a,b\in R$, $\gcd(a,b)$ exists.
+  \item \textbf{Idea of proof:} $360 = 2^3  \cdot 3^2  \cdot 5$.
+  \item $756 = 2^2 \cdot 3^3 \cdot 7$.
+  \item $\gcd(360,756) = 2^2 \cdot 3^2 = 36$.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Linear Combinations and the B\'{e}zout Property}
+
+\begin{itemize}
+  \item Let $R$ be a ring and $a,b\in R$. An $R$-linear combination of $a$ and $b$ is an element of $R$ of the form
+  $xa+yb$ where $x,y\in R$.
+  \item Examples: In $\Z$, $32$ is a linear combination of $6$ and $10$ because $32 = (7)6 + (-1)10$.
+  \item In $\R[x,y]$, $x^2 + x + y^2 +y$ is a linear combination of $x$ and $y$ because it is equal to $(x+1)x + (y+1)y$.
+  \item We extend the definition of linear combination also to more than two elements.
+  \item A ring $R$ has the B\'{e}zout Property iff for all $a,b\in R$, $\gcd(a,b)$ exists and $\gcd(a,b)$ is an $R$-linear
+  combination of $a$ and $b$.
+  \item B\'{e}zout's formula: $\gcd(a,b) = xa + yb$, for some $x,y\in R$.
+  \item Example: $\Z$ has the B\'{e}zout Property: For example $\gcd(6,10) = 2$ and $2=(2)6 - 10$.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{$R[x,y]$ and the B\'{e}zout Property}
+
+\begin{itemize}
+  \item Later we will show that $\Z$ and $\R[x]$ have the B\'{e}zout Property.
+  \item \textbf{Theorem.} $\R[x,y]$ does not have the the B\'{e}zout Property.
+  \item \textbf{proof.} $\gcd(x,y) = 1$.
+  \item This is clear because the divisors of $x$ are $r$ and $rx$ with $r\in\R$.
+  \item Similarly the divisors of $y$ are $r$ and $ry$ with $r\in\R$.
+  \item So the only common divisors of $x$ and $y$ are the units.
+  \item But $1$ is not a linear combination of $x$ and $y$.
+  \item Suppose $f,g\in\R[x,y]$ and consider $fx + gy$.
+  \item Every term of that polynomial is either divisible by $x$ or divisible by $y$.
+  \item So there are no non-zero constant terms. So it cannot equal $1$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Ideals}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $R$ be a ring and $I\subset R$. Then $I$ is an \emph{ideal} iff
+  \item (a) $0\in I$
+  \item (b) Whenever $x,y\in I$, $x+y\in I$.
+  \item (c) Whenever $x\in I$ and $y\in R$, $xy\in I$.
+  \item \textbf{Definition.} Let $a_1,a_2,\cdots a_n \in R$. Then the \emph{ideal generated by} $a_1,a_2,\cdots a_n$ is the set
+  of linear combinations of $a_1,a_2,\cdots a_n$. This is written $(a_1,a_2, \cdots a_n)$.
+  \item Check that this is an ideal.
+  \item Example: In $Z[x,y]$ consider the ideal $(x,y)$. This is the set of polynomials in $x$ and $y$ with zero constant term.
+  \item \textbf{Definition.} Let $I$ be an ideal. $I$ is called \emph{finitely generated} iff $I=(a_1,\cdots, a_n)$.
+  \item In this
+  case $a_1,\cdots, a_n$ are called \emph{generators} for $I$ or a \emph{basis} for $I$.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Principal Ideal Domains}
+
+\begin{itemize}
+  \item \textbf{Definition.} Let $R$ be a ring. An ideal $I$ is called \emph{principal} iff it is generated by a single element, i.e.
+  $I=(a)$ for some $a\in R$.
+  \item Notice that $(a)$ is the set of multiples of $a$. For example in $\Z$, $(2)$ is the set of even numbers.
+  \item \textbf{Definition.} An integral domain $R$ is called a \emph{principal ideal domain} or PID iff every ideal of $R$ is principal.
+  \item \textbf{Theorem.} $\Z$ is a PID.
+  \item \textbf{proof.} Let $I$ be an ideal of $\Z$. Let $a$ be the least positive element of $I$. We claim that $I=(a)$.
+  \item Trivially $(a) \subseteq I$. So we need to show that $I \subseteq (a)$, that is that every element of $I$ is a multiple of $a$.
+  \item Let $b\in I$. We want to see that $b$ is a multiple of $a$.
+  \item If $b$ is not a multiple of $a$ then $b=qa+r$ with a remainder $r$ such that $0<r <a$.
+  \item But $b\in I$ and $a\in I$ and $r = b -qa$ so $r\in I$. But $a$ was chosen to be the least positive element of $I$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{$\R[x]$ is a Principal Ideal Domain}
+
+\begin{itemize}
+  \item \textbf{Theorem.} $\R[x]$ is a PID.
+  \item \textbf{proof.} Let $I$ be an ideal of $\R[x]$. If $I = \singleton{0}$ then $I=(0)$ is principal. So suppose $I\not=\singleton{0}$.
+  \item Let $f\in I$ be a non-zero element of smallest degree. We claim that $I=(f)$.
+  \item Trivially $(f) \subseteq I$. So we need to show that $I \subseteq (f)$, that is that every element of $I$ is a multiple of $f$.
+  \item Let $g\in I$. We want to see that $g$ is a multiple of $f$.
+  \item If $g$ is not a multiple of $f$ then $g=qf+r$ with a remainder $r$ such that $\deg(r) < \deg(f)$.
+  \item $g\in I$ and $f\in I$ and $r=g-qf$. So $r\in I$.
+  \item But $f$ was chosen to have the smallest degree of any non-zero polynomial in $I$.
+  \item So we must have $r=0$. $\qed$.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{PIDs and B\'{e}zout Property}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $R$ be a PID. Then $R$ has the B\'{e}zout Property.
+  \item \textbf{proof.}  Let $a,b\in R$. We need to show that $\gcd(a,b)$ exists and also that $\gcd(a,b)$
+  can be written as a linear combination of $a$ and $b$.
+  \item Consider the ideal $(a,b)$. Since $R$ is a PID, this ideal is principal. So let $d$ be an element
+  such that $(a,b) = (d)$.
+  \item Since $d\in(a,b)$, $d$ is a linear combination of $a$ and $b$.
+  \item So it suffices to see that $d=\gcd(a,b)$.
+  \item Since $a,b \in (d)$, $d$ is a common divisor of $a$ and $b$.
+  \item Suppose $c$ is also a common divisor of $a$ and $b$. Then $a,b\in (c)$.
+  \item Then $(d) = (a,b) \subset (c)$.
+  \item So $d\in (c)$. So $c$ divides $d$.
+  \item So $d=\gcd(a,b)$. \qed
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{$\R[x,y]$ is not a PID}
+
+\begin{itemize}
+  \item \textbf{Corollary.} $\R[x,y]$ is not a PID.
+  \item \textbf{proof.} Previously we showed that $\R[x,y]$ does not have the B\'{e}zout Property.$\qed$
+  \item In fact our previous proof showed that in $\R[x,y]$ the ideal $(x,y)$ is not principal.
+  \item This is because $\gcd(x,y) = 1$. So if $(x,y)$ were principal we would have to have $(x,y) = (1) = \R[x,y]$.
+  \item But $(x,y)$ is the set of polynomials with zero constant term so it is not all of $\R[x,y]$.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Diagram: Principal Ideal Domains}
+
+\begin{center}
+\includegraphics[width=\textwidth]{pids}
+\end{center}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Quotient and Remainder}
+
+\begin{itemize}
+  \item \textbf{Theorem.} Let $a,b\in\Z$, $b\not=0$.
+  \item Then there exists unique integers $q$ and $r$ such that
+  \item $a = qb +r$ and $0\leq r < b$.
+  \item \textbf{Theorem.} Let $f,g\in\R[x]$, $g\not=0$.
+  \item Then there exists polynomials $q,r\in\R[x]$ such that
+  \item $f = qg +r$ and $0\leq \deg(r) < \deg(b)$.
+  \item $q$ and $r$ are unique up to multiplication by constants.
+  \item Notice the difference between the two theorems is in the function we used to measure the size of the remainder.
+  \item In the case of $\Z$ it was $|r|$ and in the case of $\R[x]$ it was $\deg(r)$.
+  \item A \emph{Euclidean Domain} is an integral domain where we can define an appropriate function like those and then have a similar quotient and remainder theorem. We will skip the precise definition.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Euclidean Domains}
+
+\begin{itemize}
+  \item \textbf{Theorem.} $\Z$ and $\R[x]$ are both Euclidean domains.
+  \item \textbf{Theorem.} A Euclidean domain is a PID.
+  \item \textbf{proof sketch.} If you look at our earlier proofs that $\Z$ and $\R[x]$
+  are PIDs, you will see that in both cases all we used is the quotient and remainder property
+  that comes from them being Euclidean domains.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Euclidean Algorithm}
+
+\begin{itemize}
+  \item Let $R$ be a Euclidean domain.
+  \item Let $a,b \in R$.
+  \item Since $R$ is a PID, $\gcd(a,b)$ exists and there are $x,y\in R$ such that $\gcd(a,b) = xa + yb$.
+  \item Additionally, because we have a quotient and remainder theorem, there is an efficient algorithm for
+  computing $\gcd(a,b)$ and for computing $x,y$.
+  \item The Euclidean algorithm is an efficient algorithm for computing $\gcd(a,b)$.
+  \item The extended Euclidean algorithm is an efficient algorithm for computing $x,y$.
+  \item The algorithm involves repeatedly reducing the problem to a smaller problem by taking remainders.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Diagram: Summary}
+
+\begin{center}
+\includegraphics[width=\textwidth]{summary}
+\end{center}
+
+\end{frame}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
