@@ -1,7 +1,7 @@
 % $Header$
 
-%\documentclass{beamer}
-\documentclass[handout]{beamer}
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
 
 \usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
 \input{mathdefs}
@@ -111,6 +111,18 @@
 
 \begin{center}
 \includegraphics[width=\textwidth]{Intro}
+\end{center}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Diagram: Noetherian rings}
+
+\begin{center}
+\includegraphics[width=\textwidth]{Intro-Noetherian}
 \end{center}
 
 \end{frame}
@@ -516,6 +528,61 @@
 
 \end{frame}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The status of $\R[x,y,z]$}
+
+\begin{itemize}
+  \item The previous slides explain why $\R[x,y,z]$ is harder to work with than $\R[x]$.
+  \item $\R[x,y,z]$ is not a PID so we don't have the Euclidean algorithm or the B\'{e}zout property.
+  \item Now let's turn to what we do have. Let's see how we can work with $\R[x,y,z]$ despite it not being as nice as $\R[x]$.
+  \item In the next session we will study Gr\"{o}bner bases which are especially nice bases for ideals of $\R[x,y,z]$.
+  \item For now, let's start by seeing that in $\R[x,y,z]$ ideals have a finite basis at all.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Noetherian Rings}
+
+\begin{itemize}
+  \item \textbf{Definition.} A ring $R$ is \emph{Noetherian} iff every ideal of $R$ is finitely generated.
+  \item In particular every PID is Noetherian.
+  \item \textbf{Hilbert Basis Theorem.} Let $R$ be a Noetherian ring. Then $R[x]$ is Noetherian.
+  \item \textbf{Corollary.} $\R[x,y,z]$ is Noetherian.
+  \item An example of a UFD that is non-Noetherian: $\R[x_1, x_2, \cdots]$.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Diagram: Noetherian Rings}
+
+\begin{center}
+\includegraphics[width=\textwidth]{noetherian}
+\end{center}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Ascending Chain Condition}
+
+\begin{itemize}
+  \item \textbf{Definition.} A ring $R$ has the \emph{ascending chain condition} iff it does not have and infinite
+  ascending chain of ideals:
+  \item $I_0 \subset  I_1 \subset I_2 \subset \cdots$
+  \item such that each $I_n$ is a proper subset of $I_{n+1}$.
+  \item \textbf{Theorem.} $R$ is Noetherian iff it has the ascending chain condition.
+\end{itemize}
+
+\end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

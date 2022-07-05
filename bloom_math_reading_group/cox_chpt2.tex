@@ -1,0 +1,395 @@
+% $Header$
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,graphicx,hyperref}
+\input{mathdefs}
+
+\graphicspath{{images/}}
+
+\newtheorem*{claim}{claim}
+\newtheorem*{observation}{Observation}
+\newtheorem*{warning}{Warning}
+\newtheorem*{question}{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{subproof}[1][Proof]
+{\begin{proof}[#1]}{\renewcommand{\qedsymbol}{$\diamondsuit$} \end{proof}}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+
+  \setbeamercovered{invisible}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title{Ideals, Varieties and Algorithms \\ Chapter 2}
+\subtitle{Bloom Math Reading Group \\ July 11, 2022 \\ Google}
+\author{Mitch Rudominer}
+\date{}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Review: Different types of rings}
+
+\begin{center}
+\includegraphics[width=\textwidth]{summary}
+\end{center}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Review: The status of $\R[x,y,z]$}
+
+\begin{itemize}
+  \item Last time we explained why $\R[x,y,z]$ is harder to work with than $\R[x]$.
+  \item $\R[x,y,z]$ is not a PID so we don't have the Euclidean algorithm or the B\'{e}zout property.
+  \item Now let's turn to what we do have. Let's see how we can work with $\R[x,y,z]$ despite it not being as nice as $\R[x]$.
+  \item We will study Gr\"{o}bner bases which are especially nice bases for ideals of $\R[x,y,z]$.
+  \item Let's start by seeing that in $\R[x,y,z]$ ideals have a finite basis at all.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Noetherian Rings}
+
+\begin{itemize}
+  \item \textbf{Definition.} A ring $R$ is \emph{Noetherian} iff every ideal of $R$ is finitely generated.
+  \item In particular every PID is Noetherian.
+  \item \textbf{Hilbert Basis Theorem.} Let $R$ be a Noetherian ring. Then $R[x]$ is Noetherian.
+  \item \textbf{Corollary.} $\R[x,y,z]$ is Noetherian.
+  \item An example of a UFD that is non-Noetherian: $\R[x_1, x_2, \cdots]$.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Diagram: Noetherian Rings}
+
+\begin{center}
+\includegraphics[width=\textwidth]{noetherian}
+\end{center}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Ascending Chain Condition}
+
+\begin{itemize}
+  \item \textbf{Definition.} A ring $R$ has the \emph{ascending chain condition} iff it does not have an infinite
+  ascending chain of ideals:
+  \item $I_0 \subset  I_1 \subset I_2 \subset \cdots$
+  \item such that each $I_n$ is a proper subset of $I_{n+1}$.
+  \item \textbf{Theorem.} $R$ is Noetherian iff it has the ascending chain condition.
+  \item \textbf{proof.} First suppose that $R$ is Noetherian and we will show it has the ACC.
+  \item  Suppose $I_0 \subseteq  I_1 \subseteq I_2 \subseteq \cdots$ is an ascending chain of ideals in $R$.
+  \item Let $I=\union_n I_n$. Since $R$ is Noetherian $I$ is finitely-generated.
+  \item Let $G$ be a finite set of generators of $I$. Let $n$ be large enough that every element of $G$ is in $I_n$.
+  \item Then $I_n=I$ so it is not the case that $I_n$ is a proper subset of $I_{n+1}$.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{proof continued}
+
+\begin{itemize}
+  \item Conversely, suppose that $R$ is not Noetherian and let $I$ be an ideal that is not finitely-generated.
+  \item Let $p_0$ be any elelemnt of $I$ and let $I_0=(p_0)\subset I$.
+  \item Since $I$ is not finitely-generated, $I_0\not= I$, so let $p_1 \in I\setminus I_0$ and let $I_1 = (p_0,p_1)$.
+  \item We have $I_0 \subset I_1 \subset I$ and since $I$ is not finitely-generated there is a $p_2\in I\setminus I_1$. Let $I_2=(p_0,p_1,p_2)$.
+  \item Continuing in this way we build an ascending chain $I_0 \subset  I_1 \subset I_2 \subset \cdots$
+  \item such that each $I_n$ is a proper subset of $I_{n+1}$. So $R$ does not have the ACC. $\qed$.
+
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Hilbert's Basis Theorem}
+
+\begin{itemize}
+  \item \textbf{Theorem} Let $R$ be a Noetherian ring. Then $R[x]$ is Noetherian.
+  \item \textbf{proof.} Suppose $R[x]$ is not Noetherian and we will show that $R$ is not.
+  \item Let $I$ be an ideal of $R[x]$ that is not finitely-generated.
+  \item Let $f_0$ be an element of $I$ of least possible degree.
+  \item Given $f_0,\cdots, f_k$, let $f_{k+1} \in I\setminus (f_1,\cdots f_k)$ be an element of least possible degree.
+  \item For each $k$ let $n_k$ be the degree and $a_k$ be the leading coefficient of $f_k$. $n_1 \leq n_2 \leq \cdots$ is a non-decreasing sequence of integers.
+  \item We claim that $(a_1) \subset (a_1, a_2) \subset (a_1, a_2, a_3) \subset \cdots$ is an ascending sequence of ideals of $R$
+  \item such that each ideal is a proper subset of the next one.
+  \item Proving this will show that $R$ does not have the ACC.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{proof continued}
+
+\begin{itemize}
+  \item For suppose that $(a_1,\cdots, a_k) = (a_1,\cdots, a_k, a_{k+1})$.
+  \item Then $a_{k+1} = \sum_{i=1}^k b_i a_i$ for some $b_i\in R$.
+  \item Let $g=f_{k+1} - \sum_{i=1}^kb_i x^{n_{k+1} - n_i} f_i$.
+  \item $g$ is a linear combination of the $f_i$ so $g\in I$.
+  \item $g \in I \setminus (f_1,\cdots,f_k)$, because $f_{k+1} \notin (f_1,\cdots,f_k)$.
+  \item But $g$ is of
+  lower degree than $f_{k+1}$, contradicting the choice of $f_{k+1}$.
+  \item For example suppose $n_1 = 1, n_2 =2, n_3 = 3$ and $(a_1,a_2,a_3) = (a_1, a_2)$.
+  \item Write $a_3 = b_1 a_1 + b_2 a_2$.
+  \item Let $g=f_3 - (b_1 x^2 f_1 + b_2 x f_2)$.
+  \item The $x^3$ terms cancel so $g$ is of degree 2.
+  \item But $g \in I \setminus (f_1, f_2)$ and $f_3$ was chosen to have least possible degree.
+  \item Contradiction. $\qed$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Change of basis for an ideal}
+
+\begin{itemize}
+  \item Let $f_1,\cdots f_n \in \R[x,y,z]$.
+  \item Let $I=(f_1, \cdots, f_n)$.
+  \item Let $g_1,\cdots g_m \in I$.
+  \item Then $(g_1,\cdots, g_m) \subseteq I$.
+  \item If $(g_1,\cdots, g_m) = I = (f_1, \cdots, f_n)$ then we say that $g_1,\cdots, g_m$ is a \emph{basis} for $I$.
+  \item Since $f_1,\cdots,f_n$ is also a basis for $I$ we can think of replacing $f_1,\cdots,f_n$ with $g_1,\cdots g_m$
+  as a change of basis.
+  \item A Gr\"{o}bner basis for $I$ is a basis that has a particular property we will define later.
+  \item The idea is that given an arbitrary $f_1, \cdots, f_n$ we will want to replace it with a Gr\"{o}bner basis $g_1,\cdots, g_m$
+  such that $(g_1,\cdots, g_m) = (f_1, \cdots, f_n)$.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Varieties}
+
+\begin{itemize}
+  \item A quick detour into the geometric side of algebraic geometry.
+  \item We just proved that $\R[x,y,z]$ is Noetherian so every ideal is finitely generated.
+  \item But the problem is that we have not given any examples of ideals besides $(f_1,\cdots, f_n)$. These are obviously finitely generated,
+  so the Hilbert Basis Theorem is not that interesting yet.
+  \item I want to give more examples of ideals and getting a little bit into algebraic geometry is a good way to do that.
+  \item \textbf{Definition.} Let $f_1,\cdots f_n \in \R[x,y,z]$. Then the \emph{variety} of $f_1,\cdots f_n$ is
+  \item $\mathbf{V}(f_1,\cdots,f_n) = \setof{p\in\R^3}{f_1(p)=0 \text{ and } f_2(p)=0 \text{ and } \cdots f_n(p)=0}$.
+  \item This is a surface in $\R^3$ or a curve or a finite set of points or the empty set or all of $\R^3$.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{More abut Varieties}
+
+\begin{itemize}
+  \item $\mathbf{V}(z-x^2-y)$ is a paraboloid.
+  \item $\mathbf{V}(x,y,z)$ is the origin.
+  \item $\mathbf{V}(x^2-1,y^2-1,z^2-1)$ consists of eight points.
+  \item $\mathbf{V}(x,y)$ is the $z$-axis
+  \item $\mathbf{V}(x^2 - 1,x^2 - 2)$ is the empty set
+  \item $\mathbf{V}(1)$ is the empty set
+  \item $\mathbf{V}(0)$ is all of $\R^3$.
+  \item The union and the intersection of two varieties is a variety.
+  \item In general, if someone gives us a list of polynomials, it is not trivial to look at the polynomials and
+  answer questions about the variety of those polynomials.
+  \item e.g. Is the variety infinite? If so what is its dimension?
+  \item Is the variety finite? If so what is its cardinality?
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Varieties and Ideals}
+
+\begin{itemize}
+  \item Let $I$ be an ideal of $\R[x,y,z]$. The variety of $I$ is
+  \item $\mathbf{V}(I) = \setof{p\in\R^3}{f(p)=0\text{ for all } f\in I}$.
+  \item \textbf{Claim.} $\mathbf{V}(f_1,\cdots,f_n) = \mathbf{V}(I)$ where $I = (f_1,\cdots,f_n)$.
+  \item In other words, the variety of a set of polynomials is the same as the variety of the ideal generated by those polynomials.
+  So we should really think about varieties as being associated with ideals as opposed to being associated with a particular finite list of polynomials.
+  \item So for example if $(f_1,\cdots,f_n) = (g_1,\cdots,g_m)$ then $\mathbf{V}(f_1,\cdots,f_n) = \mathbf{V}(g_1,\cdots,g_m)$.
+  \item i.e. Given $f_1,\cdots,f_n$, if we want to answer some questions about $\mathbf{V}(f_1,\cdots,f_n)$,
+  we can replace $f_1,\cdots,f_n$ with a different basis for the same ideal, $g_1,\cdots,g_m$, and use
+  $g_1,\cdots,g_m$ to answer questions about the variety.
+  \item It turns out that a Gr\"{o}bner basis is a good basis to use for understanding ideals.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{proof of claim}
+
+\begin{itemize}
+  \item This explains why Gr\"{o}bner bases are useful in algebraic geometry and gives another motivation for studying Gr\"{o}bner bases.
+  \item If $g_1,\cdots,g_m$ is a Gr\"{o}bner then it is easier to look at $g_1,\cdots,g_m$ and answer those questions I mentioned earlier
+  about $\mathbf{V}(g_1,\cdots,g_m)$.
+  \item \textbf{proof of claim.} Let $p\in\R^3$.
+  \item $p\in \textbf{V}(f_1,\cdots,f_n)$ iff $f_1(p) = \cdots = f_n(p) = 0$.
+  \item $p\in \textbf{V}(I)$ iff $f(p)=0$ whenever $f=c_1f_1 + c_2f_2 + \cdots + c_nf_n$ for any values of $c_1,\cdots,c_n$.
+  \item These two are obviously equivalent. $\qed$.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Towards Gr\"{o}bner}
+
+\begin{itemize}
+  \item We want to describe remainders in a more sophisticated way.
+  \item \textbf{Theorem.} Let $a,b\in\Z$, $b\not=0$.
+  \item Then there exists unique integers $q$ and $r$ such that
+  \item $a = qb +r$ and $0\leq r < b$.
+  \item Example: $17 = 3 \cdot 5 + 2$.
+  \item \textbf{Theorem.} Let $f,g\in\R[x]$, $g\not=0$.
+  \item Then there exists unique polynomials $q,r\in\R[x]$ such that
+  \item $f = qg +r$ and $0\leq \deg(r) < \deg(b)$.
+  \item Example: $x^3 + x^2 + 2 = (x+1)(x^2+1) + ( -x + 1)$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Congruence Classes}
+
+\begin{itemize}
+  \item Let $I$ be an ideal of the ring $R$. Then $I$ induces an equivalence relation and thus a partition of $R$.
+  \item \textbf{Definition.} Let $a,b\in R$. Then $a \equiv b \pmod I$ iff $a - b \in I$.
+  \item We say that $a$ and $b$ are congruent mod $I$. Like every equivalence relation, this induces a partition of
+  $R$. We call the equivalence classes \emph{congruence classes.}
+  \item Example: let $I\subset \Z$ be the ideal of multiples of 5. $I=(5)$.
+  \item If $a,b\in \Z$ then $a\equiv b \pmod I$ iff $a-b$ is divisible by 5.
+  \item Normally we write $a\equiv b \pmod 5$.
+  \item $a\bmod 5 = b \bmod 5$.
+  \item Example: because $17 = 3 \cdot 5 + 2$ we have $17 \equiv 2 \bmod 5$.
+  \item 2 is the least positive integer that is congruent to 17 mod 5.
+  \item Point: The remainder selects a canonical representative of each congruence class.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Diagram: Congruence Classes Mod 5}
+
+\begin{center}
+\includegraphics[width=\textwidth]{congruence-mod-5}
+\end{center}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Congruence Classes in $\R[x]$}
+
+\begin{itemize}
+  \item Let $I \subset \R[x]$ be the ideal of multiples of $h = x^2+1$.
+  \item $I = (x^2+1)$.
+  \item If $f,g\in\R[x]$ then $f\equiv g \pmod I$ iff $f-g$ is divisible by $h$.
+  \item Example: Because $x^3 + x^2 + 2 = (x+1)(x^2+1) + ( -x + 1)$, we have
+  \item $x^3 + x^2 + 2 \equiv -x +1 \pmod {h}$.
+  \item $(-x+1)$ is a polynomial of least degree that is congruent to $x^3 + x^2 + 2$ mod $h$.
+  \item Point: The remainder selects a canonical representative of each congruence class.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Diagram: Congruence Classes Mod $x^2 + 1$}
+
+\begin{center}
+\includegraphics[width=\textwidth]{congruence-mod-h}
+\end{center}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Canonical representative of each congruence class}
+
+\begin{itemize}
+  \item Notice that in the example of $(5)$, the remainder is the unique element of its congruence class that is in the set $\singleton{0,1,2,3,4}$.
+  \item \textbf{proof.} Suppose $a,b\in \singleton{0,1,2,3,4}$ and $a> b$. Then $a-b\in \singleton{1,2,3,4}$. So $a-b$ is not divisible by 5. $\qed$.
+  \item In the example of $(x^2+1)$, the remainder is the unique element of its congruence class whose degree is less than 2.
+  \item \textbf{proof.} Suppose $f\not=g\in\R[x]$ and have degree less than 2. Then $f-g$ has degree less than 2 and $f-g\not=0$. So $f-g$ is not divisible
+  by $(x^2+1)$.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{How to select a canonical representatives in $\R[x,y,z]$?}
+
+\begin{itemize}
+  \item Now let's consider the ring $\R[x,y,z]$. Let $I=(f_1,\cdots f_n)$ be an ideal. Consider this problem:
+  \item Let $g\in\R[x,y,z]$. We want some notion of ``the unique remainder when we divide $g$ by $f_1,\cdots, f_n$.".
+  \item $g = h_1 f_1 + h_2 f_2 + \cdots h_n f_n + r$.
+  \item How should we define the ``unique remainder'' $r$? How should we pick the canonical representative of each congruence class?
+  \item The remainder should satisfy some property such that if $r \not= s \in \R[x,y,z]$ and both satisfy the property, then $r-s\notin I$.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Diagram: Congruence Classes Mod $f_1,f_2,f_3,f_4$ in $\R[x,y,z]$}
+
+\begin{center}
+\includegraphics[width=\textwidth]{congruence-mod-fn}
+\end{center}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
