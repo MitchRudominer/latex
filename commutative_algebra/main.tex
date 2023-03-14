@@ -53,21 +53,21 @@ $\fp$ is not a minimal prime ideal.
 and $Y=\Spec(B)$. Notice that if $\fq\in Y$, then $\phi^{-1}[\fq]\in X$ so $\phi$ induces a mapping
 $\phistar:Y\map X$.
 \begin{enumerate}
-\item[(iii)] If $\fb$ is any ideal of $B$ then $\overline{\phistar[V(\fb)]} = V(\fb^c)$.
+\item[(iii)] If $\fV$ is any ideal of $B$ then $\overline{\phistar[V(\fV)]} = V(\fV^c)$.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
-(iii) Let $\fp\in \phistar[V(\fb)]$. Then there is $\fq\in V(\fb)$ s.t.
-$\fp=\phi^{-1}[\fq]$. So $\fp\in V(\fb^c)$. Since $V(\fb^c)$ is closed we have
-$\overline{\phistar[V(\fb)]} \subseteq V(\fb^c)$.
+(iii) Let $\fp\in \phistar[V(\fV)]$. Then there is $\fq\in V(\fV)$ s.t.
+$\fp=\phi^{-1}[\fq]$. So $\fp\in V(\fV^c)$. Since $V(\fV^c)$ is closed we have
+$\overline{\phistar[V(\fV)]} \subseteq V(\fV^c)$.
 
 Suppose towards a contradiction that the containment were proper.
 Then there is an $E\subseteq A$
-such that $\overline{\phistar[V(\fb)]} = V(E)$ and $r(\fb^c) \subsetneqq E$
-and $E\subseteq\fp$ for all $\fp$ in $\phistar[V(\fb)]$.
+such that $\overline{\phistar[V(\fV)]} = V(E)$ and $r(\fV^c) \subsetneqq E$
+and $E\subseteq\fp$ for all $\fp$ in $\phistar[V(\fV)]$.
 
-Let $a\in E - r(\fb^c)$. Then $\phi(a)\in\fq$ for all $\fq\in V(\fb)$. But this means that
-$\phi(a)\in r(\fb)$ and so $a\in r(\fb^c)$, contradiction.
+Let $a\in E - r(\fV^c)$. Then $\phi(a)\in\fq$ for all $\fq\in V(\fV)$. But this means that
+$\phi(a)\in r(\fV)$ and so $a\in r(\fV^c)$, contradiction.
 \end{proof}
 
 \begin{exercise}[exercise 22] Let $A = A_1 \otimes A_2$ be a direct product of rings.
@@ -105,7 +105,7 @@ for all $\fr\in\Spec(A_2)$, $(a,b)\in A_1 \times \fr$ iff $U_2 \intersect X_{(a,
 \subsection{Exercises}
 These are exercises from Chapter 1 of \cite{Kunz_Book}.
 
-\begin{exercise}[Section 1, exercice 5, page 9]
+\begin{exercise}[Section 1, exercise 5, page 9]
 Let $L/K$ be a normal field extension. Two points $(x_1,\cdots,x_n)$ and $(y_1,\cdots,y_n)$ in
 $\A^n(L)$ are called \emph{conjugate} over $K$ if there is a $K$-automorphism $\sigma$ of $L$
 such that $(\sigma(x_1),\cdots,\sigma(x_n))=(y_1,\cdots,y_n)$.
@@ -116,7 +116,98 @@ such that $(\sigma(x_1),\cdots,\sigma(x_n))=(y_1,\cdots,y_n)$.
 then it also contains all conjugates of $x$ over $K$, then $V$ is a $K$-variety.
 \end{exercise}
 \begin{proof}
-Blah blah blah blam blam thank you.
+(a) If $y$ is a conjugate of $x$ via the $K$-automorphism $\sigma$, and $f\in K[x_1,\cdots,x_n]$,
+and $f(x)=0$, then $f(y)=0$, because
+because the coefficients of $f$ are fixed by $\sigma$. $\qed$.
+
+(b) Given a point $a\in\A^n(L)$, let $V_a$ be the set of all conjugates of $a$. It suffices to see that
+for all $a$, $V_a$ is a $K$-variety. This is because every $V\subset\A^n(L)$ as in the statement of the
+exercise is the union of $V_a$ for $a\in V$, and the union of finitely many varieties is a variety.
+
+Since we don't yet know that $K[x_1,\cdots,x_n]$ is Noetherian, we need the following
+
+\begin{claim}[Claim 1]
+For all $a\in\A^n(L)$, $\fI(\singleton{a})$ is finitely-generated. 
+\end{claim}
+
+We will prove Claim 1 below. For now let's assume it.
+
+Fix $a=(a_1,\cdots,a_n)\in\A^n(L)$. We will show that $V_a = \fV(\fI(\singleton{a}))$
+and so $V_a$ is a $K$-variety.
+
+
+By part (a), $V_a\subseteq \fV(\fI(\singleton{a}))$.  So it suffices to see that if
+$b\in\fV(\fI(\singleton{a}))$, then $b$ is a conjugate of $a$.
+
+For $b=(b_1,\cdots,b_n)\in\A^n(L)$, let $\pi_b:K[x_1,\cdots,x_n]\map K(b_1,\cdots,b_n)$ be given by $\pi_b(f(x_1,\cdots x_n)) = f(b_1,\cdots,b_n)$.
+Then $\pi_b$ is a surjective homomorphism. Let $I_b=\ker(\pi_b)$. Then $I_b$ is a maximal ideal,
+since $K(b_1,\cdots,b_n)$ is a field. Clearly $I_b=\fI(\singleton{b})$.
+Let 
+$\bar{\pi_b}:(K[x_1,\cdots,x_n]/I_b)\map K(b_1,\cdots,b_n)$ be the induced isomorphism. 
+For $f\in K[x_1,\cdots,x_n]$, $\bar{\pi_b}([f]_{I_b}) = f(b_1,\cdots,b_n)$, where we have written
+$[f]_{I_b}$ to mean the coset of $f$ in $K[x_1,\cdots,x_n]/I_b$.
+
+\begin{claim}[Claim 2]
+If $b\in\fV(\fI(\singleton{a}))$, then $I_b=I_a$.
+\end{claim}
+\begin{subproof}
+Let $f\in I_a = \fI(\singleton{a})$. Then $f(b)=0$ so $f\in\fI(\singleton{b})=I_b$.
+So $I_a\subseteq I_b$. Since $I_a$ and $I_b$ are both maximal ideals, $I_a=I_b$.
+\end{subproof}
+
+\begin{claim}[Claim 3]
+If $b\in\fV(\fI(\singleton{a}))$, then $b$ is a conjugate of $a$.
+\end{claim}
+\begin{subproof}
+Let $b=(b_1,\cdots,b_n)\in\fV(\fI(\singleton{a}))$. 
+By Claim 2 and the paragraph preceding it, $\bar{\pi}_b\circ (\bar{\pi}_a)^{-1}$ is an isomorphism of $K(a_1,\cdots,a_n)$
+onto $K(b_1,\cdots,b_n)$ that fixes $K$ and such that 
+$\bar{\pi}_b\circ (\bar{\pi}_a)^{-1}(f(a_1,\cdots,a_n))=\bar{\pi}_b([f]_{I_a})=\bar{\pi}_b([f]_{I_b}) =f(b_1,\cdots,b_n)$ for all $f\in K[x_1,\cdots,x_n]$.
+Note that $\bar{\pi}_b\circ (\bar{\pi}_a)^{-1}(a_i)=b_i$ for $i=1,\cdots, n$.
+
+By Theorem 2.8 (section 2 of Chapter VII) on page 275 of \cite{Lang_Book}, there is an extension $\sigma$
+of $\bar{\pi}_b\circ (\bar{\pi}_a)^{-1}$ to an embedding of $L$ into the algebraic closure of $L$. Since
+$L/K$ is normal, $\sigma\restr L$ is an automorphism.
+\end{subproof}
+
+Finally we must prove Claim 1. Note that this would not be necessary if we had already proved the Hilbert Basis Theorem, but this exercise occurs in the textbook prior to that proof. The proof of Claim 1 is of independent interest.
+
+\begin{subproof}[Proof of Claim 1]
+Fix $a=(a_1,\cdots,a_n)\in\A^n(L)$. We will find $f_1,\cdots,f_n\in K[x_1,\cdots,x_n]$ such that
+$\fI(\singleton{a}) = (f_1,\cdots,f_n)$.
+
+Since $L/K$ is assumed to be normal, by definition each of the $a_i$ are algebraic over $K$. 
+
+
+Let $f_1 \in K[x_1]$ be the minimal polynomial of $a_1$ over $K$. Let $f_2\in K[x_1,x_2]$ be such that
+$\fbar_2(x_2)=f_2(a_1,x_2)$ is the minimal polynomial of $a_2$ over $K(a_1)$. In general, for $i=2,\cdots,n$,
+let $f_i\in K[x_1,\cdots, x_i]$ be such that $\fbar_i(x_i)=f_i(a_1,\cdots,a_{i-1},x_i)$ is the minimal polynomial of $a_i$
+over $K(a_1,\cdots,a_{i-1})$. 
+
+We claim that $\fI(\singleton{a}) = (f_1,\cdots,f_n)$. We prove this by induction on $n$. For $n=1$, it is
+standard that $K[x_1]$ is a PID and $\fI(\singleton{a_1}) = (f_1)$.
+Suppose it is true for $n$ and we will show it is true for $n+1$.
+Let $\pi:K[x_1,\cdots,x_n]\map K(a_1,\cdots, a_n)$ be given by $\pi(f(x_1,\cdots,x_n)) = f(a_1,\cdots,a_n)$.
+By induction, $\ker(\pi) = (f_1,\cdots,f_n)$. 
+
+We extend $\pi$ in the natural way to 
+$\pi^*:K[x_1,\cdots,x_n,x_{n+1}]\map K(a_1,\cdots, a_n)[x_{n+1}].$ Notice that  $\ker(\pi^*) = (f_1,\cdots,f_n)$ but now thinking of $(f_1,\cdots,f_n)$ as an
+ideal in $K[x_1,\cdots,x_n,x_{n+1}]$. To see this notice first that for $i=1,\cdots,n$,
+ $f_i\in\ker(\pi^*)$ since $f_i\in\ker(\pi)$. Conversely, suppose $f\in\ker(\pi^*)$.
+If we think of $f$ as a polynomial in $x_{n+1}$
+with coefficients in $K[x_1,\cdots,x_n]$, then each of the coefficients of $f$ is
+in $\ker(\pi)$ so each of the coefficients of $f$ are in $(f_1,\cdots,f_n)$, so $f$ is too.
+
+
+Let $\rho : K(a_1,\cdots,a_n)[x_{n+1}] \map K(a_1,\cdots,a_n,a_{n+1})$ be given by 
+$\rho(f(a_1,\cdots,a_n,x_{n+1})) = f(a_1,\cdots,a_n,a_{n+1})$. Then
+$\ker(\rho) = (\fbar_{n+1})$ where $\fbar_{n+1}=\pi^*(f_{n+1})$ is the minimal polynomial
+of $a_{n+1}$ over $K(a_1,\cdots,a_n)$. So $\ker(\rho\circ\pi^*)$ is the pullback
+under $\pi^*$ of $(\fbar_{n+1})$ which is $(f_1,\cdots,f_n,f_{n+1})$.
+\end{subproof}
+
+
+
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -57,8 +57,15 @@ where $M_n$ is the standard, minimal proper-class inner model with $n$ Woodin ca
 For even $n$, $\R\intersect M_n = C_{n+2}$, the largest countable $\Sigma^1_{n+2}$ set.
 For odd $n$, $\R\intersect M_n = Q_{n+2}$, the largest countable $\Pi^1_{n+2}$
 set closed downwards under $\Delta^1_{n+2}$ degrees. See \cite{Proj_WO_In_Mod}.
-If one wishes to work with countable mice rather than proper class models, one may substitute
-$M_n^{\sharp}$ for $M_n$ above since the two models have the same reals.
+
+Recall the definition of $n$-small (Definition 1.1 from \cite{Proj_WO_In_Mod}.) A premouse $M$ is $n$-small above $\delta$ 
+iff whenever $\kappa$ is the critical point of an extender on the $M$-sequence, and $\delta<\kappa$, then
+$$ \cJ^M_{\kappa}\not\models \text{there are } n \text{ Woodin cardinals } > \delta.$$
+We say that M is $n$-small iff $M$ is $n$-small above $0$.
+
+In the above-mentioned theorems, if one wishes to work with countable mice rather than proper class models, one may substitute
+$M_n^{\sharp}$ for $M_n$ since the two models have the same reals. Here $M_n^{\sharp}$ is the least sound, iterable mouse
+that is not $n$-small.
 
 In \cite{My_Thesis} and \cite{Mouse_Sets} we explored an extension of this theory
 to projective-like pointclasses beyond the projective and achieved partial results.
@@ -470,15 +477,13 @@ Let $x\in\R\intersect M$.
 \end{remarks}
 
 \begin{definition}
-Let $M$ be a countable, transitive, projectively correct model of $\ZFC$.
-Suppose $T\in M$ and $M\models ``T$ is a $\bPiOneOmega$ tree.''
-We say that $T$ is \emph{correctly wellfounded} iff $T$ is wellfounded and
-$T=(T^h(x))^M$ for some
-$\PiOneOmega$ code $h$ and real $x\in M$, and $T^h(x)$ is wellfounded. (In this
-case we say $T$ is correctly wellfounded for $(h,x)$.)
-We say that $T$ is \emph{incorrectly wellfounded} iff $T$ is wellfounded and $T=(T^h(x))^M$ for some
-$\PiOneOmega$ code $h$ and real $x\in M$, and $T^h(x)$ is illfounded. (In this
-case we say $T$ is incorrectly wellfounded for $(h,x)$.)
+Let $M$ be a countable, transitive, projectively correct model of $\ZFC$. 
+Let $h$ be a a $\PiOneOmega$ code and let $x\in \R\intersect M$.
+Let $T=(T^h(x))^M$, so that $T\in M$ and $M\models ``T$ is a $\bPiOneOmega$ tree.''
+Then we say that $T$ is \emph{correctly wellfounded} iff $T$ is wellfounded and
+and $(T^h(x))^V$ is wellfounded. 
+We say that $T$ is \emph{incorrectly wellfounded} iff $T$ is wellfounded and 
+and $(T^h(x))^V$ is illfounded. 
 
 We also extend this definition to the case where $M$ itself is not a model of all of $\ZFC$ but
 $M$ has a rank initial segment that is a model of $\ZFC$.
