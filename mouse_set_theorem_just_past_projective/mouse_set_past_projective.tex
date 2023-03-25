@@ -139,17 +139,36 @@ pointclasses $\PiOneOmega(x)$
 and $\bPiOneOmega$ etc.
 \end{definition}
 
-The following remarks follow from \cite{Scales_In_LofR}.
+The following remarks follow from \cite{Scales_In_LofR} and \cite{Mouse_Sets}.
+Here we are following \cite{Scales_In_LofR} in defining $\Sigma_n(\JofR{2})$ to 
+mean $\Sigma_n(\JofR{2},\singleton{V_{\omega+1}})$. Thus we are always allowed $V_{\omega+1}$
+(but not its elements) as a parameter.
 \begin{remarks} \
-\begin{itemize}
-\item $\SigmaOneOmega = \Sigma_1(\JofR{2}) \intersect \Powerset(\R)$
+\begin{enumerate}
+\item$\SigmaOneOmega = \Sigma_1(\JofR{2}) \intersect \Powerset(\R)$
 \item $\PiOneOmega = \Pi_1(\JofR{2}) \intersect \Powerset(\R)$
 \item $\SigmaOneOmegaPlusOne = \Sigma_2(\JofR{2}) \intersect \Powerset(\R)$
 \item $\PiOneOmegaPlusOne = \Pi_2(\JofR{2}) \intersect \Powerset(\R)$
-\item $\SigmaOneOmega$ and $\PiOneOmegaPlusOne$
-are scaled pointclasses.
-\end{itemize}
+\item $\SigmaOneOmega$ and $\PiOneOmegaPlusOne$ are scaled pointclasses.
+\end{enumerate}
 \end{remarks}
+\begin{proof}[proof sketch]
+(1) Let $A\subset\R$ be $\SigmaOneOmega$. Then there is a recursive sequence of formulae $\sequence{\varphi_n}{n\in\omega}$
+such that $x\in A \iff \exists n (V_{\omega+1},\epsilon)\models \varphi_n[x]$.
+Since the satisfaction relation is $\Delta_1$ definable in any rudimentarily closed, transitive set,
+$A\in \Sigma_1(\JofR{2})$.
+
+That $\Sigma_1(\JofR{2}) \intersect \Powerset(\R) \subseteq \SigmaOneOmega$ follows from Lemma 1.1 of \cite{Mouse_Sets}.
+
+(3) follows from Lemma 2.6 of \cite{Mouse_Sets} becase, using the terminology from that paper, $0$ is a good parameter
+for $\JofR{2}$. (As we elaborate on in section 6, the
+$\Sigma^1_{\omega+1}$ of this paper is
+equal to the $\Sigma_{(2,1)}$ of \cite{Mouse_Sets}.)
+
+(5) follows from Lemma 2.11 of \cite{Mouse_Sets}. (Again, the $\SigmaOneOmega$
+of this paper is equal to the $\Sigma_{(2,0)}$ of \cite{Mouse_Sets} and
+the $\PiOneOmegaPlusOne$ of this paper is equal to the $\Pi_{(2,1)}$ of \cite{Mouse_Sets}.)
+\end{proof}
 
 
 \begin{definition}
