@@ -179,26 +179,13 @@ Let $Q_{\omega+1} = \setof{x\in\R}{x\text{ is }\DeltaOneOmegaPlusOne\text{ in a 
 
 By way of intuition, we consider $\PiOneOmegaPlusOne$ to be analogous to
 $\Pi^1_1$ or $\Pi^1_3$ and we consider $Q_{\omega+1}$ to be analogous to
-$Q_1$ or $Q_3$. See \cite{Q_Theory}.
+$Q_1$ or $Q_3$. These types of sets have been much studied by
+descriptive set theorists and have many interesting properties.
+For example $Q_3$ is the largest $\Pi^1_3$ set of reals closed downwards
+under $\Delta^1_3$-degrees. See \cite{Q_Theory}.
 
 Recall that $Q_3 = \R \intersect M_1^{\sharp}$. In the next section we will
 define a mouse $\Mladder$ such that $Q_{\omega+1} = \R\intersect\Mladder$.
-
-\begin{remarks} \
-\begin{enumerate}
-\item $x\in Q_{\omega+1}$ iff there is a $\SigmaOneOmegaPlusOne$ relation $R$ and
-a countable ordinal $\alpha$ such that for all $w\in\WO$ with $|w|=\alpha$,
-and for all reals $y$, $R(w,y) \Iff y=x$.
-\item $x\in Q_{\omega+1}$ iff there is a $\SigmaOneOmegaPlusOne$ relation $R$
-and a countable ordinal $\alpha$ such
-that for all $w\in\WO$ with $|w|=\alpha$, and all $i,j\in\omega$,
-$x(i)=j \Iff R(w,i,j)$.
-\item $Q_{\omega+1}$ is the largest countable
-$\DeltaOneOmegaPlusOne$ set closed downwards under
-$\DeltaOneOmegaPlusOne$-degrees.
-\end{enumerate}
-\end{remarks}
-
 
 \section{Ladder Mice}
 \label{section:laddermice}
@@ -212,6 +199,14 @@ for all $n$:
 \item $\delta_n$ is Woodin in $J^M_{\gamma_n}$,
 \item $\gamma_n$ is the least $\gamma$ such that $\cJ^M_{\gamma}$ is not $n$-small above $\delta_n$.
 \end{enumerate}
+
+To remind the reader of some notation from \cite{FSIT} and \cite{Many_Woodins},
+$\cJ^M_{\gamma}$ is the model that includes a predicate for the 
+last extender, if there is one indexed at $\gamma$ on the $M$-sequence,
+whereas $J^M_{\gamma}$ does not include
+such a predicate. In the definition above we use $\cJ^M_{\gamma}$ in (4)
+because, by definition of $n$-small, the least mouse that is not $n$ small
+must be active.
 
 A ladder $\sequence{\delta_n,\gamma_n}{n\in\omega}$ over $M$ is \emph{cofinal}
 iff the $\gamma_n$ are cofinal in $\ord(M)$.
@@ -314,9 +309,10 @@ Now, assuming Theorem \ref{QuasiCorrectness}, we prove Theorem \ref{DefinableRea
 
 \begin{proof}[proof of Theorem \ref{DefinableRealsAreInM}]
 Let $x\in Q_{\omega+1}$. We need to show that $x\in\Mladder$.
-Fix a $\PiOneOmega$ code $h$ and a countable ordinal $\alpha$ such that for
-all $w\in\WO$ with $|w|=\alpha$, and all $i,j\in\omega$,
-$$x(i)=j \Iff (\exists y\in\R)A^h(i,j,w,y).$$
+Fix $\alpha<\omega_1$ such
+that for all $w\in\WO$ with $|w|=\alpha$, $\singleton{x}$ is 
+$\DeltaOneOmegaPlusOne(w)$.
+
 Let $\Mprime$ be the $(\alpha+1)$-th iterate of $\Mladder$ by its least
 measurable cardinal. So $\Mprime$ is a countable, iterable ladder mouse with
 a ladder whose $\delta_0$ is greater than $\alpha$. Let $g$ be $\Mprime$-generic
@@ -325,6 +321,11 @@ for $\Col(\omega,\alpha$). It suffices to see that $x\in\Mprime[g]$.
 We can rearrange $\Mprime[g]$ as a mouse over $z$, where $z$ is some real coding $g$.
 Let $M$ be this mouse over $z$. $M$ is a countable, iterable ladder-mouse over $z$ and there
 is a real $w\in M\intersect\WO$ with $|w|=\alpha$.
+
+Since $\singleton{x}$ is  $\SigmaOneOmegaPlusOne(w)$, it is also true that
+$x$ is a $\SigmaOneOmegaPlusOne(w)$ subset of $\omega\times\omega$.
+Fix a $\PiOneOmega$ code $h$ such that for all $i,j\in\omega$,
+$$x(i)=j \Iff (\exists y\in\R)A^h(i,j,w,y).$$
 
 Let $\psi$ and $\theta$ be the formula and parameter given by Theorem \ref{QuasiCorrectness}
 for $M$. Then for all
