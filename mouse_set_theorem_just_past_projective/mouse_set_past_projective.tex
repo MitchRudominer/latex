@@ -517,6 +517,7 @@ and a $\bPiOneOmega$-tree.
 \end{definition}
 
 \begin{remarks}
+\label{remarks-about-correctness}
 Let $M$ be a countable, transitive, projectively correct model of $\ZFC$.
 $M$ is $\PiOneOmega$-correct, but not necessarily $\SigmaOneOmegaPlusOne$-correct.
 Let $h$ be a $\PiOneOmega$ code for $A\subset\R^2$.
@@ -590,9 +591,9 @@ For $i\in\omega$ let $\ibar=\angles{i,0,0,\cdots}\in\R$. Thus we are representin
 This allows us to avoid having to define what we mean by the tree through $i$, $T(i)$, when $T$ is a tree and $i$ an integer.
 
 
-Fix two $\PiOneOmega$ codes $h_1,h_2$ and a countable ordinal $\alpha$ such that for
-all $w\in\WO$ with $|w|=\alpha$, and all $i,j\in\omega$,
-$$x(i)=j \Iff (\exists y\in\R)A^{h_1}(\ibar,\jbar,w,y) \Iff (\forall y\in\R)\neg A^{h_2}(\ibar,\jbar,w,y).$$
+Fix a countable ordinal $\alpha$ such that $x$ is $\DeltaOneOmegaPlusOne$ in every representative
+of $\alpha$.
+
 Let $\Mprime$ be the $(\alpha+1)$-th iterate of $\Mladder$ by its least
 measurable cardinal. So $\Mprime$ is a countable, iterable ladder mouse with
 a ladder whose $\delta_0$ is greater than $\alpha$. Let $g$ be $\Mprime$-generic
@@ -602,9 +603,30 @@ We can rearrange $\Mprime[g]$ as a mouse over $z$, where $z$ is some real coding
 Let $M$ be this mouse over $z$. $M$ is a countable, iterable ladder-mouse over $z$ and there
 is a real $w\in M\intersect\WO$ with $|w|=\alpha$.
 
-Then for all
-$i,j\in\omega$,
-$$x(i)=j \Iff  M \models T^{h_1}(\ibar,\jbar,w) \text{ illfounded } \,\OR\, \rank(T^{h_2}(\ibar,\jbar,w)) < \rank(T^{h_1}(\ibar,\jbar,w)).$$
+Fix two $\PiOneOmega$ codes $h_1,h_2$ such that for all $i,j\in\omega$,
+$$x(i)=j \Iff (\exists y\in\R)A^{h_1}(\ibar,\jbar,w,y) \Iff (\forall y\in\R)\neg A^{h_2}(\ibar,\jbar,w,y).$$
+
+\begin{claim}
+For all $i,j\in\omega$,
+$$x(i)=j \Iff  M \models T^{h_1}(\ibar,\jbar,w) \text{ is illfounded } \,\OR\, \rank(T^{h_2}(\ibar,\jbar,w)) < \rank(T^{h_1}(\ibar,\jbar,w)).$$
+\end{claim}
+\begin{subproof}[Proof of Claim.]
+First suppose $x(i)=j$. Then $T^{h_1}(\ibar,\jbar,w)$ is illfounded and 
+$T^{h_2}(\ibar,\jbar,w)$ is well-founded. By
+Remarks \ref{remarks-about-correctness}, $(T^{h_2}(\ibar,\jbar,w))^M$
+is correctly-wellfounded. If $M \not\models T^{h_1}(\ibar,\jbar,w) \text{ is illfounded }$, then $(T^{h_1}(\ibar,\jbar,w))^M$ is incorrectly-wellfounded
+and so by Theorem 
+\ref{CorrectBelowIncorrect}, 
+$\rank(T^{h_2}(\ibar,\jbar,w))^M < \rank(T^{h_1}(\ibar,\jbar,w))^M$.
+
+Conversely, suppose $x(i)\not=j$. Then $T^{h_1}(\ibar,\jbar,w)$ is well-founded and 
+$T^{h_2}(\ibar,\jbar,w)$ is illfounded. By Remarks \ref{remarks-about-correctness},
+$(T^{h_1}(\ibar,\jbar,w))^M$ is correctly well-founded and 
+$(T^{h_2}(\ibar,\jbar,w))^M$ is either illfounded or incorrectly well-founded.
+By Theorem \ref{CorrectBelowIncorrect}, 
+$M\not\models \rank(T^{h_2}(\ibar,\jbar,w)) < \rank(T^{h_1}(\ibar,\jbar,w))$.
+\end{subproof}
+
 So $x\in M$.
 
 \end{proof}
@@ -647,13 +669,18 @@ Woodin genericity iteration over each of the levels of the ladder sequentially.
 
 \begin{lemma}
 \label{hjorthlemma}
-Let $\Gamma$ be a pointclass.
+Let $\Gamma = \Sigma^1_n$ for some $n>0$.
 Let $M$ be a countable, transitive model of $\ZFC$ and  $\delta>\omega$ a cardinal of $M$.
 Suppose that whenever $\P\in V^M_{\delta+1}$ is a poset and $g$ is $\P$-generic over $M$, then
 $M[g]$ is $\Gamma$-correct (in $V$). Let $g_1$ and $g_2$ be $\Col(\omega, \delta)$-generic over $M$.
 Let $E\subset\R^2$ be a $\Gamma$, thin equivalence relation.
 Then $M[g_1]$ and $M[g_2]$ meet the same $E$-equivalence classes.
 \end{lemma}
+
+\begin{note} In the above Lemma we could replace $\Sigma^1_n$ with any
+pointclass $\Gamma$ for which we can make sense of the notion of
+$\Gamma$-correctness.
+\end{note}
 
 We will use Lemma \ref{hjorthlemma} via the following corollary.
 
@@ -825,8 +852,8 @@ we can perform the usual genericity iteration on $J^M_{\gamma_0}$
 $\pibar_0:J^M_{\gamma_0}\to P_1$ such that
 there is a $g$, $\Col(\omega,\pibar_0(\delta_0))$-generic over $P_1$ such that $y\in P_1[g]$.
 
-Since $\gamma_0$ a cardinal in $M$, a total extender over $J^M_{\gamma_0}$ is total
-over $M$. A similar fact is true about the image of $\gamma_0$ under non-dropping
+Since $\delta_0$ a cardinal in $M$, a total extender over $J^M_{\delta_0}$ is total
+over $M$. A similar fact is true about the image of $\delta_0$ under non-dropping
 iterations of $M$.
 Therefore the $\pibar_0$-iteration of $J^M_{\gamma_0}$ induces a corresponding iteration on all of $M$
 yielding a non-dropping iteration $\pi_0:M\to \Mprime_1$ such that
@@ -858,7 +885,7 @@ The proof is based on similar arguments by Greg Hjorth (see Lemma 2.2 from \cite
 See also Lemma 3.1 from \cite{Schlict_Thin_Equivalence_Relations}.
 
 \begin{proof}[proof of Lemma \ref{hjorthlemma}]
-Let $\Gamma$ be a pointclass.
+Let $\Gamma = \Sigma^1_n$ for some $n>0$.
 Let $M$ be a countable, transitive model of $\ZFC$ and  $\delta>\omega$ a cardinal of $M$.
 Suppose that whenever $\P\in V^M_{\delta+1}$ is a poset and $g$ is $\P$-generic over $M$, then
 $M[g]$ is $\Gamma$-correct. Let $g_1$ and $g_2$ be $\Col(\omega, \delta)$-generic over $M$.
@@ -932,7 +959,7 @@ By Claims 1 and 2 there is a perfect set of $E$-inequivalent reals, contradictin
 \end{proof}
 
 Finally we turn to the proof of Lemma \ref{m_star_existence}. This proof uses
-Stationary Tower Forcing. See \cite{Larson_Book} for background.
+Stationary Tower Forcing. See \cite{Larson_Book} and page 653, Section 34 of \cite{Jech_Book2} for background.
 
 Let $M$ be a countable ladder-mouse
 with $\sequence{\delta_n,\gamma_n}{n\in\omega}$ a ladder over $M$ and
@@ -1061,6 +1088,57 @@ Finally we give the proof of Lemma \ref{LadderGeneric}, which completes the
 proof of Lemma \ref{m_star_existence}, and thus the proof of
 Theorem \ref{CorrectBelowIncorrect}, and thus the proof of
 Theorem \ref{QuasiCorrectness} and thus the proof of Theorem \ref{DefinableRealsAreInM}.
+
+Here we will use more details about Stationary tower forcing.
+F or the reader's convenience we copy here some of the definitions and results from 
+\cite{Larson_Book} and Section 34 of \cite{Jech_Book2} 
+
+\begin{definition}
+Let $\kappa$ be inaccessible. Then
+$$\Q_{<\kappa}=\setof{a\in V_k}{a \text{ is stationary and } \forall x \in a, x \text{ is countable.}}$$
+\end{definition}
+
+
+\begin{definition}
+Let $\kappa$ be inaccessible and let $D\subset\Q_{<\kappa}$ be dense. Let $y$ be countable.
+We say that $y$ \emph{captures} $D$ iff there is a $p\in D$ such that $p\in y$ and $y\intersect\union p \in p$.
+\end{definition}
+
+\begin{definition}
+We say that $y$ \emph{end-extends} $x$ if $y\intersect V_{\rank(x)} = x$.
+\end{definition}
+
+\begin{definition}
+Let $\kappa$ be inaccessible and let $D\subset\Q_{<\kappa}$ be dense. Then $\semiproper(D) = $ the set of countable
+$x \prec V_{\kappa+1}$ such that there exists a countable
+ $y \prec V_{\kappa+1}$ such that $x\subseteq y, y \text{ end-extends } x \intersect V_{\kappa}$ and  $y \text{ captures } D.$
+\end{definition}
+
+\begin{definition}
+Let $\kappa$ be inaccessible and let $D\subset\Q_{<\kappa}$ be dense. We say that $D$ is \emph{semi-proper}
+if $\semiproper(D)$ contains a club.
+\end{definition}
+
+\begin{lemma}
+Let $\kappa$ be inaccessible and let $D\subset\Q_{<\kappa}$ be dense and semi-proper. 
+Let $\delta>\kappa$ be a limit ordinal.
+Then for any countable $x\prec V_{\delta+1}$ such that $D\in x$, $\exists y \prec V_{\delta+1}$
+s.t. $y$ is countable, $x\subseteq y, y \text{ end-extends } x \intersect V_{\kappa}$ and $ y \text{ captures } D$.
+\end{lemma}
+\begin{proof}
+(cf Lemma 2.5.4 of \cite{Larson_Book} and Lemma 34.12 of \cite{Jech_Book2}.)
+Let $x\prec V_{\delta+1}$ be countable with $D\in x$. Since $D$ is cofinal in $V_{\kappa}$, $\kappa\in x$.
+Since $D$ is semi-proper,
+there is an $f:[V_{\kappa+1}]^{<\omega}\map V_{\kappa+1}$ such that for all countable $z\subset V_{\kappa+1}$,
+if $z$ is closed under $f$ then $z\in\semiproper(D)$. Since $x\prec V_{\delta+1}$, there is such an $f\in x$. Fix such an $f$.
+Then $x\intersect V_{\kappa+1}$ is closed under $f$ so $x\intersect V_{\kappa+1} \in \semiproper(D)$. Let $\bar{y}$ witness this,
+i.e. $\bar{y}$ is countable, $\bar{y}\prec V_{\kappa+1}, x\intersect V_{\kappa+1}\subseteq \bar{y}, \bar{y} \text{ end-extends } x \intersect V_{\kappa}$ and $\bar{y} \text{ captures } D$.
+Let
+$$y=\setof{h(w)}{\dom(h)=V_{\kappa} \AND h\in x \AND w\in \bar{y}\intersect V_{\kappa}}.$$
+Then $y$ is countable,  $y \prec V_{\delta+1}$ and  $x\subset y$. Furthermore, since 
+$x\intersect V_{\kappa+1} \subset \bar{y}$, $y\intersect V_{\kappa} = \bar{y} \intersect V_{\kappa}$.
+So $y \text{ end-extends } x \intersect V_{\kappa}$ and $ y \text{ captures } D$.
+\end{proof}
 
 \begin{proof}[proof of Lemma  \ref{LadderGeneric}]
 Let $M$ be a countable ladder-mouse
