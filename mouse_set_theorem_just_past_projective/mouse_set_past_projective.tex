@@ -1150,53 +1150,6 @@ that $D\intersect V_{\kappa}$ is dense in $\Q_{<\kappa}$ and semi-proper.
 This is Lemma 34.13 of \cite{Jech_Book2} and also follows from Theorem 2.7.5 of \cite{Larson_Book}.
 \end{proof}
 
-\begin{lemma}
-\label{CorollaryOfWoodinGivesSemiProper}
-Let $\delta$ be a limit of strong inaccessibles. Let $\Sigma$ be a collection of dense sets $D\subset \Q_{<\delta}$.
-Suppose that for each $D\in\Sigma$
-there are cofinally many inaccessible $\kappa<\delta$ such
-that $D\intersect V_{\kappa}$ is dense in $\Q_{<\kappa}$ and semi-proper. Let $\mu > \delta$ be inaccessible.
-Let $x\prec V_{\mu}$ be countable. Let $\alpha < \delta$. Then there is an inaccessible $\kappa$ with $\alpha < \kappa < \delta$
-and there is a countable $y\prec V_{\mu}$ such that $x\subset y$, $y$ end-extends $x\intersect V_{\kappa}$, and for all
-$D\in x\intersect \Sigma$, $y$ captures $D$.
-\end{lemma}
-\begin{proof}
-Let $\sequence{D_i}{i=1,2,\cdots}$ enumerate $x\intersect \Sigma$. We will define an increasing sequence $x_0 \subset x_1 \subset \cdots$
-and let $y=\Union{i}x_i$. 
-
-Let $x_0=x$. Let $\kappa_1$ be inaccessible with $\alpha < \kappa_1 < \delta$ be such that
-$D_1\intersect V_{\kappa_1}$ is dense in $\Q_{<\kappa_1}$ and semi-proper. Apply Lemma \ref{SemiProperEquivalence} to get a countable $x_1\prec V_{\mu}$
-so that $x_0\subset x_1$, $x_1$ end-extends $x_0\intersect V_{\kappa_1}$, and $x_1$ captures $D_1\intersect V_{\kappa_1}$.
-In particular, $x_1$ captures $D_1$.
-
-Let $\kappa_2 > \kappa_1$ be inaccessible such that $D_2\intersect \kappa_2$ is dense in $\Q_{<\kappa_2}$ and semi-proper.
-Apply Lemma \ref{SemiProperEquivalence} again to get a countable $x_2\prec V_{\mu}$
-so that $x_1\subset x_2$, $x_2$ end-extends $x_1\intersect V_{\kappa_2}$, and $x_2$ captures $D_2\intersect V_{\kappa_2}$.
-In particular $x_2$ captures $D_2$.
-Because $x_2$ end-extends $x_1\intersect V_{\kappa_2}$, $x_2$ also captures $D_1$.
-
-Continuing in this we we define an increasing sequence of inaccessible cardinals $\alpha < \kappa_1 < \kappa_2 < \cdots < \delta$ and an increasing sequence of countable
-elementary submodels of $V_{\mu}$ $x = x_0 \subset x_1 \subset x_2 \subset \cdots$
-such that $x_{i+1}$ end-extends $x_i \intersect V_{\kappa_{i+1}}$ and $x_i$ captures $D_i\intersect V_{\kappa_i}$.
-
-Let $y=\Union{i}x_i$.  Then $y$ is countable, $y\prec V_{\mu}$, $x\subset y$. For all $i$, $y$ end-extends $x_i \intersect V_{\kappa_{i+1}}$,
-so $y$ captures $D_i$. Letting $\kappa = \kappa_1$, we have that $y$ end-extends $x\intersect V_{\kappa}$.
-\end{proof}
-
-The following lemma is identical to the previous one except for the last sentence. In the following lemma $y$ captures every $D$ in $y\intersect\Sigma$ whereas
-in the previous lemma $y$ captures every $D$ in $x\intersect\Sigma$.
-
-\begin{lemma}
-\label{CorollaryOfWoodinGivesSemiProper}
-Let $\delta$ be a limit of strong inaccessibles. Let $\Sigma$ be a collection of dense sets $D\subset \Q_{<\delta}$.
-Suppose that for each $D\in\Sigma$
-there are cofinally many inaccessible $\kappa<\delta$ such
-that $D\intersect V_{\kappa}$ is dense in $\Q_{<\kappa}$ and semi-proper. Let $\mu > \delta$ be inaccessible.
-Let $x\prec V_{\mu}$ be countable. Let $\alpha < \delta$. Then there is an inaccessible $\kappa$ with $\alpha < \kappa < \delta$
-and there is a countable $y\prec V_{\mu}$ such that $x\subset y$, $y$ end-extends $x\intersect V_{\kappa}$, and for all
-$D\in y\intersect \Sigma$, $y$ captures $D$.
-\end{lemma}
-
 \begin{proof}[proof of Lemma  \ref{LadderGeneric}]
 Let $M$ be a countable ladder-mouse
 with $\sequence{\delta_n,\gamma_n}{n\in\omega}$ a ladder over $M$ and
@@ -1212,99 +1165,76 @@ let  $b=\{x \prec V_{\lambda} \mid x $ is countable and
 $x\intersect\union a \in a$ and $\forall D\in x\intersect J^M_{\gamma_n}$ such that $D$ is a dense subset of $\Q_{<\delta_n}^M$, $x$ captures $D \}$.
 Then $M\models b$ is stationary.
 \end{claim}
-\begin{proof}[proof of Claim 1.]
+\begin{subproof}[proof of Claim 1.]
 Work in $M$. Let $f:V_{\lambda}^{<\omega}\map V_{\lambda}$, and we will
 construct an $x\in b$ closed under $f$.
 
-Let $\delta$ be the least inaccessible greater than $\delta_n$. Since $\delta_{n+1}$ is a limit
-of inaccessibles in $M$, we have $\delta_n < \lambda < \delta < \delta_{n+1}$. We will find a countable
-$x \prec V_{\delta}$ so that $f\in x$,
+Let $\mu$ be the least inaccessible greater than $\delta_n$. Since $\delta_{n+1}$ is a limit
+of inaccessibles in $M$, we have $\delta_n < \lambda < \mu < \delta_{n+1}$. We will find a countable
+$x \prec V_{\mu}$ so that $f\in x$,
 $x\intersect\union a \in a$ and $\forall D\in x\intersect J^M_{\gamma_n}$ such that $D$ is a dense subset of $\Q_{<\delta_n}^M$, $x$ captures $D$.
 Then $x\intersect V_{\lambda} \in b$ and $x\intersect V_{\lambda}$ is closed under $f$.
 
-We will construct $x$ as an increasing union $x = \Union{k} x_k$.
+We will construct $x$ as an increasing union $x = \Union{i} x_i$. 
 
-Let $x_0 \prec V^M_{\delta}$ be countable, with $f\in x_0$ and such that $x_0\intersect \union a \in a$.
-Let $\sequence{D_0^j}{j\in\omega} \in M$ enumerate the dense subsets of $\Q_{<\delta_n}^M$ in $x_0\intersect J^M_{\gamma_n}$.
+Let $x_0 \prec V^M_{\mu}$ be countable, with $f\in x_0$ and such that $x_0\intersect \union a \in a$.
 
-We will define $x_1$
-
-We will construct $x_1$ as an increasing union $x_1 = \Union{j} x_1^j$.
-Let $x_1^0 = x_0$.
-Suppose we have defined $x_1^0\cdots x_1^j$ countable elementary submodels of $V_{\delta}$ and we will define $x_1^{j+1}$.
-Assume that for $0\leq t < j$, $x_1^t \subset x_1^{t+1}$, that $x_1^{t+1}$ captures $D_0^t$ at $e_0^t\in D_0^t$,
-that $\kappa_0^t < \delta_n$ is an inaccessible such that $e_0^t\in V_{\kappa_0^t}$ and $a\in V_{\kappa_0^t}$,
-and that ...
+Let $\sequence{D_0^j}{j\in\omega}$ enumerate the dense subsets of $\Q_{<\delta_n}^M$ in $x_0\intersect J^M_{\gamma_n}$.
 
 
-
-
-such that $x_1^0 = x_0$, $x_1^j \subset x_1^{j+1}$, $x_1^{j+1}$ captures $D_0^j$ at $e_j$
-
-such that $x_1^0 = x_0$, $x_1^j \subset x_1^{j+1}$, $x_1^{j+1}$ end-extends $x_1^j\intersect V_{\kappa}$ for a suffiently
-big $\kappa < \delta_n$, and $x_1^{j+1}$ captures $D_t$ for $t=0\cdots j$.
-
-Let $x_1^0 = x_0$. Suppose we have defined $x_1^0\cdots x_1^j$ so that for $0\leq t <j$ we have that
-$x_1^t \subset x_1^{t+1}$, $x_1^{t+1}$ end-extends $x_1^t\intersect V_{\kappa}$, and $x_1^{t+1}$ captures 
-$D_s$ for $s=0\cdots t$. We will define $x_1^{j+1}$.
-
-Temporarily working in $J^M_{\gamma_n}$, since $\delta_n$
+Temporarily working in $J^M_{\gamma_n}$ where $\delta_n$
 is Woodin, Lemma \ref{WoodinGivesSemiProper} gives us that there are cofinally many inaccessible cardinals
 $\kappa<\delta_n$ such
 that $D^0_0\intersect V_{\kappa}$ is dense and semi-proper in $\Q_{<\kappa}$.
-Fix such a $\kappa_0^0$ with $a\in V_{\kappa_0^0}$.
+Fix such a $\kappa_0$ with $a\in V_{\kappa_0}$.
 
 As the definition of semi-proper is local, it remains true in the full $M$ that
-$\kappa$ is inaccessible and that $D^0_0\intersect V_{\kappa}$ is dense and semi-proper in $\Q_{<\kappa}$.
-Now working in the full $M$ we apply Lemma \ref{SemiProperEquivalence} to conclue that there is an 
-$x_1^1 \prec V_{\delta}$
-s.t. $x_1^1$ is countable, $x_1^0\subseteq x_1^1, x_1^1 \text{ end-extends } x_1^0 \intersect V_{\kappa}$ and $ x_1^1 \text{ captures } D_0^0$.
-Let $e_0^0\in D_0^0$ be such that $x_1^1 \text{ captures } D_0^0$ at $e_0^0$.
+$\kappa_0$ is inaccessible and that $D^0_0\intersect V_{\kappa_0}$ is dense and semi-proper in $\Q_{<\kappa_0}$.
+Now working in the full $M$ we apply Lemma \ref{SemiProperEquivalence} to conclude that there is a countable 
+$x_1 \prec V_{\mu}$
+s.t.  $x_0\subseteq x_1, x_1 \text{ end-extends } x_0 \intersect V_{\kappa_0}$ and $ x_1 \text{ captures } D_0^0 \intersect V_{\kappa_0}$.
 
+Let $\sequence{D_1^j}{j\in\omega}$ enumerate the dense subsets of $\Q_{<\delta_n}^M$ in $x_1\intersect J^M_{\gamma_n}$.
 
-$a, e_0,\cdots e_{j-1}\in V_{\kappa}$. Then there is a countable
-$x_{j+1} \prec V_{\delta}$
-with $x_j\subseteq x_{j+1}$ such that $x_{j+1}$ is closed under $f$ and
-$x_{j+1}$ end-extends $x_j\intersect V_{\kappa}$ and $x_{j+1}$ captures $D_j\intersect V_{\kappa}$ at some $e_j$.
-Because $a\in V_{\kappa}$, $x_{j+1}\intersect \union a \in a$. Because
-$e_0,\cdots e_{j-1} \in V_{\kappa}$, $x_{j+1}$ captures $D_i$ at $e_i$ for
-$i=0,\cdots e_{j-1}$.
+Let $\pi(n) = (\pi_0(n),\pi_1(n))$ be a bijection from $\omega$ to $\omega \times \omega$ such that for all $n$, $\pi_0(n)\leq n$,
+and $\pi(0)=(0,0)$.
 
+We will continue to define $x_i, \kappa_i$ by induction.
 
+Suppose that $t\geq 1$ and we have the following:
+\begin{enumerate}
+\item $x_0 \subseteq \cdots \subseteq x_t$, countable elementary submodels of $V_{\mu}$
+\item $\sequence{D_i^j}{j\in\omega}$ enumerates the dense subsets of $\Q_{<\delta_n}^M$ in $x_i\intersect J^M_{\gamma_n}$, for $i=0,\cdots,t$.
+\item $\kappa_i < \delta_n$ is inaccessible and $D_{\pi_0(i)}^{\pi_1(i)} \intersect V_{\kappa_i}$ is dense and semi-proper for $i < t$.
+\item $x_{i+1}$ captures $D_{\pi_0(i)}^{\pi_1(i)}\intersect V_{\kappa_i}$ for $i < t$.
+\item $x_{i+1}$ end-extends $x_i \intersect V_{\kappa_i}$ for $i<t$.
+\item $\kappa_i > \kappa_{i-1}$ for $0<i<t$.
+\end{enumerate}
 
-Fix some wellorder of the set of all dense subsets of
-$\Q_{<\delta_n}$ in $J^M_{\gamma_n}$.
+We will define $\kappa_t$, $x_{t+1}$, and $\sequence{D_{t+1}^j}{j\in\omega}$.
 
-We will define by induction on $j$, a sequence $\sequence{D_j}{j\in\omega}$
-of dense subsets of
-$\Q_{<\delta_n}$ in $J^M_{\gamma_n}$, and a sequence
-$\sequence{e_j}{j\in\omega}$ with $e_j\in D_j$, and
-an increasing sequence
-of countable elementary submodels of $V_{\delta}$,
-$\sequence{x_j}{j\in\omega}$, such that $x_j$ is closed under $f$,
-$x_j\intersect \union a \in a$, and for $i<j$, $x_j$ captures
-$D_i$ at $e_i$. Then we will let $x=\union_j x_j$.
+Temporarily working in $J^M_{\gamma_n}$ where $\delta_n$
+is Woodin, Lemma \ref{WoodinGivesSemiProper} gives us that there are cofinally many inaccessible cardinals
+$\kappa<\delta_n$ such
+that $D_{\pi_0(t)}^{\pi_1(t)}\intersect V_{\kappa}$ is dense and semi-proper in $\Q_{<\kappa}$.
+Fix such a $\kappa_t$ with $\kappa_t > \kappa_{t-1}$.
 
-Let $x_0 \prec V^M_{\delta_n+1}$ be countable, closed under $f$, and such that $x\intersect \union a \in a$.
+As the definition of semi-proper is local, it remains true in the full $M$ that
+$\kappa_t$ is inaccessible and that $D_{\pi_0(t)}^{\pi_1(t)}\intersect V_{\kappa_t}$ is dense and semi-proper in $\Q_{<\kappa_t}$.
+Now working in the full $M$ we apply Lemma \ref{SemiProperEquivalence} to conclude that there is a countable 
+$x_{t+1} \prec V_{\mu}$
+s.t.  $x_t\subseteq x_{t+1}, x_{t+1} \text{ end-extends } x_t \intersect V_{\kappa_t}$ and $x_{t+1} \text{ captures } D_{\pi_0(t)}^{\pi_1(t)} \intersect V_{\kappa_t}$.
 
-Suppose we have $x_j\prec V_{\delta}$ countable, closed under $f$, such that
-$x_j\intersect \union a \in a$, and such that for $i<j$, $x_j$ captures
-$D_i$ at $e_i$.
-Let $D_j$ be the least
-dense subset $D$ of
-$\Q_{<\delta_n}$ in $J^M_{\gamma_n}$ under our fixed wellorder such that $D\in x_j$ and $x_j$ does
-not capture $D$. (If there is no such $D$ let $x_{j+1}=x_j$.)
+Let $\sequence{D_{t+1}^j}{j\in\omega}$ enumerate the dense subsets of $\Q_{<\delta_n}^M$ in $x_{t+1}\intersect J^M_{\gamma_n}$.
 
-
-
-Now let $x=\union_j x_j$. Then
-$x \prec V_{\delta}$, $x$ is countable,
-$x\intersect\union a \in a$, and $x$ is closed under  $f$. To see that $x\in b$,
- suppose towards a contradiction that there is a $D\in x\intersect J^M_{\gamma_n}$ such that $D$ is a dense subset of $\Q_{<\delta_n}^M$ and $x$ does not capture
-$D$ and let $D$ be the least such set under our fixed wellorder. Let $j$ be least such that $D\in x_j$. But then $x_j$ does not capture $D$ so $D=D_j$ and so by our construction $x_{j+1}$ caputures
-$D_j$ at $e_j$ and since $x$ end-extends $x_{j+1}\intersect V_{\kappa}$ for some $\kappa$
-with $e_j\in V_{\kappa}$, $x$ captures $D$.
-\end{proof}
+Let $x = \Union{i} x_i$. $x$ is countable, $x \prec V_{\mu}$ and $f\in x$.
+$x$ end-extends $x_0\intersect V_{\kappa_0}$ so
+$x\intersect\union a \in a$.
+Let $D\in x\intersect J^M_{\gamma_n}$ be a dense subset of $\Q_{<\delta_n}^M$.
+Then $D=D_i^j$ for some $i,j$. Let $t$ be such that $\pi(t) = (i,j)$.
+Since $x_{t+1} \text{ captures } D \intersect V_{\kappa_t}$ and $\kappa_s > \kappa_t$ for $s>t$
+and $x_{s+1}$ end-extends $x_s\intersect V_{\kappa_s}$ for $s>t$, we have that $x_s$ captures $D\intersect V_{\kappa_t}$ for all $s\geq t$, so $x$ captures $D$.
+\end{subproof}
 
 \begin{claim}[Claim 2]
 For $n\in\omega$, for each $a\in \Q_{<\delta_n}^M$ there is a $b\in \Q_{<\delta_{n+1}}^M$ such
@@ -1324,7 +1254,7 @@ subset of $\Q_{<\delta_n}^M$, and fix $c\in \Q_{<\gamma}^M$ with
 $c\leq b$.
 
 Let $\dprime=\setof{x\in c}{D\in x}$. Then $\dprime$ is stationary
-and for all $x\in\dprime$, since $x\intersect V^M_{\delta_n+1}\in b$,
+and for all $x\in\dprime$, since $x\intersect V^M_{\lambda}\in b$, (where $\lambda = \delta_n + \omega$)
 $x$ captures $D$. There is an $e\in D$ such that, letting
 $d=\setof{x\in\dprime}{x \text{ captures } D \text{ at } e}$, $d$ is stationary.
 So $d<e$.
