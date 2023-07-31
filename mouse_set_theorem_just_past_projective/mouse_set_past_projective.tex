@@ -91,7 +91,7 @@ Woodin and Steel have elected to not appear as co-authors of this paper,
 but the mathematical provenance of the ideas contained in the paper should be clear from this paragraph.
 
 No new technology is involved in the proof and it could have been discovered in the 1990's. The main ingredients
-of the proof are Stationary Tower forcing, genericity iterations, and a lemma stating that
+of the proof are stationary tower forcing, genericity iterations, and a lemma stating that
 all small generic extensions of a sufficiently correct, countable, transitive model of Set Theory
 meet the same equivalence classes of a thin, sufficiently
 definable equivalence
@@ -104,10 +104,10 @@ cardinals in $\Mladder$ we can recover some of the same properties
 that we would have if $\angles{\delta_n}$ were an $\omega$-sequence
 of Woodins in $\Mladder$. A good example of this theme is Lemma
 \ref{LadderGeneric} which gives us a filter $G$ for the countable
-Stationary Tower of $\Mladder$ such that for all $n$,
+stationary tower of $\Mladder$ such that for all $n$,
 $G\intersect J^{\Mladder}_{\delta_n}$ is $\Q_{<\delta_n}^M$-generic over $P_n$, and this implies
 that the ultrapower $\Ult(\Mladder, G)$ has some of the same properties as an
-ultrapower by the Stationary Tower up to the supremum
+ultrapower by the stationary tower up to the supremum
 of $\omega$ Woodin cardinals.
 
 Beyond $\ZFC$, there are two necessary hypotheses for this paper:
@@ -739,7 +739,7 @@ such that
 \end{itemize}
 \end{lemma}
 
-The embedding described in the previous lemma will come from taking a Stationary Tower
+The embedding described in the previous lemma will come from taking a stationary tower
 ultrapower.
 
 Now, assuming Lemmas \ref{generic_over_all_windows}, \ref{hjorthlemma} and
@@ -959,7 +959,7 @@ By Claims 1 and 2 there is a perfect set of $E$-inequivalent reals, contradictin
 \end{proof}
 
 Finally we turn to the proof of Lemma \ref{m_star_existence}. This proof uses
-Stationary Tower Forcing. See \cite{Larson_Book} and page 653, Section 34 of \cite{Jech_Book2} for background.
+stationary tower Forcing. See \cite{Larson_Book} and page 653, Section 34 of \cite{Jech_Book2} for background.
 
 Let $M$ be a countable ladder-mouse
 with $\sequence{\delta_n,\gamma_n}{n\in\omega}$ a ladder over $M$ and
@@ -1089,7 +1089,7 @@ proof of Lemma \ref{m_star_existence}, and thus the proof of
 Theorem \ref{CorrectBelowIncorrect}, and thus the proof of
 Theorem \ref{QuasiCorrectness} and thus the proof of Theorem \ref{DefinableRealsAreInM}.
 
-Here we will use more details about Stationary tower forcing.
+Here we will use more details about stationary tower forcing.
 For the reader's convenience we copy here some of the definitions and results from 
 \cite{Larson_Book} and Section 34 of \cite{Jech_Book2} 
 
@@ -1309,10 +1309,6 @@ $\alpha$ begins a $\Sigma_1$-gap (see \cite{Scales_In_LofR})
 and $\JalphaR$ is not admissible. In
 \cite{Mouse_Sets} such $\alpha$ were called \emph{projective-like}.
 
-For $\alpha=2$, $\Sigma_{(2,n)}=\Powerset(\R)\intersect \Sigma_{n+1}(J_2(\R))$,
-but for arbitrary projective-like  $\alpha$ it is not necessarily true that
-$\San = \Powerset(\R)\intersect \Sigma_{n+1}(\JalphaR)$.
-
 For $\alpha$ projective-like and $n\geq 1$, \cite{Mouse_Sets} defines
 
 $$\Aan\defeq\setof{x\in\R}{\exists \xi<\omega_1\, x\in \Dan(\xi)}$$
@@ -1328,9 +1324,7 @@ a hierarchy of mouse-smallness properties called $(\alpha,n)$-\emph{petite}, for
 and $n\in\omega$ was defined. The $\Mladder$ of this paper is equal to the least mouse
 $M$ that is not $(2,1)$-petite.
 
-Theorem 7.16 of \cite{Mouse_Sets} gives a comparison theorem for
-$(\alpha,n)$-petite premice.  Corollary 7.17 of \cite{Mouse_Sets} uses the comparison
-theorem to show that if $M$ is iterable and $(\alpha,n)$-petite, then
+In \cite{Mouse_Sets} we show that if $M$ is iterable and $(\alpha,n)$-petite, then
 $\R\intersect M \subseteq A_{(\alpha,n)}$. Taking $\alpha=2$ and $n=1$, and translating into the language of the current paper, we get that
 $\R\intersect \Mladder \subseteq Q^1_{\omega+1}$, which is Theorem \ref{MRealsAreDefinable} of this paper.
 Below we present a sketch of the proof of this theorem.
@@ -1359,6 +1353,7 @@ and $M$ is fully iterable and $N$ is $n$-iterable, then $M\initseg N$ or $N\init
 
 
 \begin{definition}
+\label{def-pi-one-omega-iterable}
 A premouse $M$ is \emph{$\Pi^1_{\omega}$-iterable} iff $M$ is $n$-iterable for all $n$.
 \end{definition}
 
@@ -1372,6 +1367,7 @@ Then $P$ is $\Pi^1_{\omega}$.
 \end{remarks}
 
 \begin{definition}
+\label{def-ladder-small}
 A premouse $M$ is \emph{ladder-small} iff no initial segment of $M$ is a ladder mouse.
 \end{definition}
 
@@ -1425,7 +1421,7 @@ this paper with those from
 
 \begin{conjecture}
 \label{PetiteIsRight}
-Assume $\AD^{\LofR}$. Suppose that
+Assume there are $\omega$ Woodin cardinals with a measurable cardinal above them all. Suppose that
 $(2,0) \lexleq (\alpha,n) \lexleq (\omega_1^{\omega_1}, 0)$.
 Let $M$ be the least fully iterable mouse that is not $(\alpha, n)$-petite.
 Then $\R\intersect M = \Aan$.
@@ -1467,7 +1463,7 @@ The reader of \cite{Mouse_Sets} should be warned that they will encounter
 material about $(\alpha,n)$-\emph{big} premice
 (i.e. premice which are not $(\alpha,n)$-small) which should essentially
 be ignored as this material was introduced in support of the false conjecture.
-In other words, because it was not know how to prove that $Q_{\omega+1}$
+In other words, because it was not known how to prove that $Q_{\omega+1}$
 was contained in the minimal ladder mouse, \cite{Mouse_Sets} introduced the
 notion of the minimal admissible ladder mouse and proved that
 $Q_{\omega+1}$ was contained in that mouse. But the current paper gives a
@@ -1483,6 +1479,62 @@ In this section we show that the ordinal parameter $\theta$ in Theorem
 \ref{QuasiCorrectness} can be eliminated in the case that $M=\Mladder$.
 
 The ideas and results in this section are due to John Steel.
+
+In this section we will make use of some material from the previous section.
+In particular to understand this section the reader should be familiar with
+the Comparison Theorem for 
+ $\Pi^1_{\omega}$-iterable ladder-small mice.
+ See Definition \ref{def-pi-one-omega-iterable},
+ Definition \ref{def-ladder-small} and Lemma \ref{comparison_lemma}.
+
+To motivate this section, consider the following fact
+
+\begin{fact}
+Assume there is a Woodin cardinal with a measurable cardinal above it. To every $\Sigma^1_3$ formula $\varphi$ we can recursively
+associate a formula $\sigma$ in the language of mice such that for all reals $x$ we have
+\begin{align*}
+\varphi(x) \Iff &\exists \text{ a } \Pi^1_2\text{-iterable, sound, countable } x\text{-mouse } M \text{ projecting to $\omega$ s.t. } \\
+                & M\models\sigma[x].
+\end{align*}               
+\end{fact}
+
+The statement ``$\exists \text{ a } \Pi^1_2\text{-iterable, sound, countable } x\text{-mouse } M$  projecting to $\omega$ s.t. 
+$M\models\sigma[x]$'' is a $\Sigma^1_3$ statement.
+So the above fact gives a canonical representation of all $\Sigma^1_3$ statements in terms of mice.
+
+\begin{proof}[sketch of proof of the fact]
+Let $\sigma$ be the formula such that for all countable, sound $x$-mice $M$ projecting to $\omega$, $M\models\sigma[x]$ iff
+$M$ is not $1$-small but every initial segment of $M$ is $1$-small
+and letting  $\delta$ be the unique Woodin cardinal of $M$
+we have that $1$ forces that after collapsing
+$\delta$ to be countable, $\varphi[x]$ holds.
+
+The first clause of $\sigma(x)$ asserting that $M$ is not $1$-small but every initial segment of $M$ is $1$-small
+can be thought of as the first-order statement ``I am $M_1^{\sharp}(x)$.''
+Any countable, sound $x$-mouse $M$ that projects to $\omega$ such $M\models$``I am $M_1^{\sharp}(x)$'' is called a \emph{putative } $M_1^{\sharp}(x)$.
+If $M$ is a putative $M_1^{\sharp}(x)$ then $M$ is equal to the real $M_1^{\sharp}(x)$ iff $M$ is fully iterable.
+
+If $\varphi(x)$ holds in $V$ then $M_1^{\sharp}(x)\models \sigma[x]$. Conversely, if $M$ is a $\Pi^1_2$-iterable, sound $x$-mouse that projects to $\omega$ such
+that $M\models\sigma[x]$, then we can simply iterate the last extender of $M$ $\omega_1$-times and apply Shoenfield absolutenss to conclude that $\varphi(x)$
+is true in $V$.
+\end{proof}
+
+We would like to have have an analogous result for $\Mladder(x)$. That is, we would like to have the following
+
+\begin{conjecture}
+Assume there are $\omega$ Woodin cardinals with a measurable cardinal above them all. To every $\Sigma^1_{\omega+1}$ formula $\varphi$ we can recursively
+associate a formula $\sigma$ in the language of mice such that for all reals $x$ we have
+\begin{align*}
+\varphi(x) \Iff &\exists \text{ a } \Pi^1_{\omega}\text{-iterable, sound, countable } x\text{-mouse } M \text{ projecting to $\omega$ s.t. } \\
+                & M\models\sigma[x].
+\end{align*}     
+\end{conjecture}
+
+The formula $\sigma$ from the conjecture should assert that $M$ is a ``putative $\Mladder(x)$'' and that $M\models\psi[x]$ where $\psi$ is the
+formula given by theorem \ref{QuasiCorrectness}. The problem with this is that theorem \ref{QuasiCorrectness} includes a non-uniform ordinal
+parameter which prevents us from giving a uniform canonical representation of $\Sigma^1_{\omega+1}$ forumulae in terms of mice.
+
+In this section we will show how to eliminate that ordinal parameter. We will not give a proof of the conjecture here.
 
 \begin{definition}
 If $z\in\R$ then $\Mladder_z$ refers to the $z$-mouse which is like $\Mladder$ but built over $z$.
@@ -1517,6 +1569,13 @@ $S_{n,w}$ is $\Pi^1_{\omega}(w)$.
 For $n\in\omega$ and $w\in\WO$, uniformly, fix $h_{n,w}$ a $\Pi^1_{\omega}(w)$-code for $S_{n,w}$
 and let $T_{n,w}=T^{h_{n,w}}$.
 \end{definition}
+
+\begin{remark}
+By Lemma \ref{comparison_lemma}, either $|w| < (\omega_1)^{\Mladder}$
+in which case every element of $S_{n,w}$ codes the same countable level of $\Mladder$, or else
+$|w| \geq (\omega_1)^{\Mladder}$ and every countable level of $\Mladder$ is an initial segment
+of every $M$ coded by the elements of $S_{n,w}$.
+\end{remark}
 
 \begin{lemma}
 \label{T_n_w_correctly_wellfounded}
@@ -1581,7 +1640,7 @@ is a \emph{ladder stationary tower embedding} (for $\sequence{\delta_n,\gamma_n}
 Let $g$ be $\Col(\omega,\delta)$-generic over $\Mladder$ for some
 $\delta\in\Mladder$.
 $\Mladder[g]$ can be reorganized as $\Mladder_z$ for some $z\in\R$.
-Let $\psi:\Mladder_z\to\Nstar=\Mladder_z[H]$ be a ladder Stationary Tower embedding.
+Let $\psi:\Mladder_z\to\Nstar=\Mladder_z[H]$ be a ladder stationary tower embedding.
 We will capture this setting by saying that
 $\psi:\Mladder[g]\to\Nstar=\Ult(\Mladder[g],H)$ is a ladder stationary tower embedding \emph{above $g$}.
 \end{definition}
