@@ -240,10 +240,22 @@ ladder mouse), and $\Mladder$ projects to $\omega$ and so it is an $\omega$-mous
 in the sense of \cite{Proj_WO_In_Mod}.
 \end{definition}
 
-Let $M$ be a transitive model of a sufficient amount of set theory. To say that $M$ is 
-$\Sigma^1_n$-\emph{correct} means that for all $\Sigma^1_n$ formula $\varphi$ and all
-reals $x\in M$, $M\models\varphi[x]$ iff $\varphi(x)$. We say that $M$ is \emph{projectively correct}
+\begin{definition}
+Let $M$ be a transitive model of a sufficient amount of set theory. 
+\begin{itemize}
+\item $M$ is 
+$\Sigma^1_n$-\emph{correct} iff for all $\Sigma^1_n$ formula $\varphi$ and all
+reals $x\in M$, $M\models\varphi[x]$ iff $\varphi(x)$. 
+\item $M$ is \emph{projectively correct}
 just in case it is $\Sigma^1_n$-correct for all $n\in\omega$.
+\item $M$ is $\PiOneOmega$-\emph{correct} iff for all $\PiOneOmega$ codes $h$
+and all reals $x\in M$, $M \models A^h(x)$ iff $A^h(x)$. Clearly
+$M$ is $\PiOneOmega$-correct iff it is projectively correct.
+\item $M$ is $\SigmaOneOmegaPlusOne$-\emph{correct} iff for all $\PiOneOmega$ codes $h$ for subsets of $\R^2$ and all reals $x\in M$,
+$(\exists y \in \R\intersect M) M\models A^h(x,y)$ iff
+$(\exists y \in \R) A^h(x,y)$.
+\end{itemize}
+\end{definition}
 
 \begin{remarks} \
 \begin{enumerate}
@@ -252,7 +264,7 @@ just in case it is $\Sigma^1_n$-correct for all $n\in\omega$.
 $\ZFC$+$\exists n$ Woodin cardinals.  By \cite{Proj_WO_In_Mod}, $\Mladder$ is projectively correct and so $\PiOneOmega$-correct.
 \item Let $\sequence{\delta_n,\gamma_n}{n\in\omega}$ be a ladder over $\Mladder$.
 For even $n$, $J^{\Mladder}_{\gamma_n}[g]$ is $\Sigma^1_{n+2}$-correct,
-where $g$ is $J^{\Mladder}_{\gamma_n}$-generic over $\Col(\omega,\delta_n)$.
+where $g$ is $\Coll(\delta_n,\omega)$-generic over $J^{\Mladder}_{\gamma_n}$.
 \item Let $\sequence{\delta_n,\gamma_n}{n\in\omega}$ be a ladder over $M$.
 $\delta_n$ is not necessarily fully Woodin in $M$, but $\delta_n$ is Woodin in $M$
 with respect to functions in $J^M_{\gamma_n}$.
@@ -267,7 +279,7 @@ We can now state the main theorem of the paper:
 
 \begin{theorem}
 Assume there exists $\omega$ Woodin cardinals with a measurable cardinal above them all.
-$Q_{\omega+1} = \R \intersect \Mladder$.
+Then $Q_{\omega+1} = \R \intersect \Mladder$.
 \end{theorem}
 
 We divide the above theorem up into its two directions:
@@ -275,13 +287,13 @@ We divide the above theorem up into its two directions:
 \begin{theorem}
 \label{MRealsAreDefinable}
 Assume there exists $\omega$ Woodin cardinals with a measurable cardinal above them all.
-$\R \intersect \Mladder \subseteq Q_{\omega+1}$.
+Then $\R \intersect \Mladder \subseteq Q_{\omega+1}$.
 \end{theorem}
 
 \begin{theorem}
 \label{DefinableRealsAreInM}
 Assume there exists $\omega$ Woodin cardinals with a measurable cardinal above them all.
-$Q_{\omega+1} \subseteq \Mladder$.
+Then $Q_{\omega+1} \subseteq \Mladder$.
 \end{theorem}
 
 Theorem \ref{MRealsAreDefinable} was proven more than 25 years ago in
@@ -304,7 +316,7 @@ $\Mladder$ can still determine whether or not the statement
 $\Sigma^1_3$. $M_1$ is not $\Sigma^1_3$-correct, but $M_1$ can still tell whether
 or not $\Sigma^1_3$ statements are true. Let $A\subset\R^2$ be $\Pi^1_2$ and
 let $x\in M_1$. Then $(\exists y\in\R)\, A(x,y)$ iff
-$$M_1\models 1\force{\Col(\omega,\delta)} (\exists y) A(x,y),$$
+$$M_1\models 1\force{\Coll(\delta,\omega)} (\exists y) A(x,y),$$
 where $\delta$ is the Woodin of $M_1$.
 
 Next we state the
@@ -347,8 +359,8 @@ limit of measurable cardinals'', but $\delta_n$ is also a cardinal of $M$
 and so, by strong-acceptability, $\delta_n$ is a limit of measurable cardinals
 in $M$.)
 So $\Mprime$ is a countable, iterable ladder mouse with
-a ladder whose $\delta_0$ is greater than $\alpha$. Let $g$ be $\Mprime$-generic
-for $\Col(\omega,\alpha$). It suffices to see that $x\in\Mprime[g]$.
+a ladder whose $\delta_0$ is greater than $\alpha$. Let $g$ be $\Coll(\alpha,\omega)$-generic
+over $\Mprime$. It suffices to see that $x\in\Mprime[g]$.
 
 We can rearrange $\Mprime[g]$ as a mouse over $z$, where $z$ is some real coding $g$.
 Let $M$ be this mouse over $z$. $M$ is a countable, iterable ladder-mouse over $z$ and there
@@ -395,7 +407,8 @@ $$T^n_e = \setof{\left(x\restr k,\sequence{\varphi^n_{e,i}(x)}{i<k}\right)}{x\in
 Then $G^n_e=p[T^n_e]$. (This is part of what it means that 
 $\sequence{\varphi^n_{e,i}}{i\in\omega}$ is a scale on $G^n_e$. )
 
-Fix some recursive coding of pairs of integers by integers, $i\to\angles{i_0,i_1}$,
+Fix a recursive bijection between $\omega$ and $\omega\times\omega$, 
+written as $i=\angles{i_0,i_1}$,
 with the property that $i_0,i_1\leq i$ for $i\in\omega$.
 
 Now fix a $\PiOneOmega$ code $h$ and we will define the tree $T^h$.
@@ -596,8 +609,8 @@ of $\alpha$.
 
 Let $\Mprime$ be the $(\alpha+1)$-th iterate of $\Mladder$ by its least
 measurable cardinal. So $\Mprime$ is a countable, iterable ladder mouse with
-a ladder whose $\delta_0$ is greater than $\alpha$. Let $g$ be $\Mprime$-generic
-for $\Col(\omega,\alpha$). It suffices to see that $x\in\Mprime[g]$.
+a ladder whose $\delta_0$ is greater than $\alpha$. Let $g$ be $\Coll(\alpha,\omega)$-generic
+over $\Mprime$. It suffices to see that $x\in\Mprime[g]$.
 
 We can rearrange $\Mprime[g]$ as a mouse over $z$, where $z$ is some real coding $g$.
 Let $M$ be this mouse over $z$. $M$ is a countable, iterable ladder-mouse over $z$ and there
@@ -660,7 +673,7 @@ letting $\sequence{\deltaprime_n,\gammaprime_n}{n\in\omega}$ be the image under 
 of the ladder, we have that $\Mprime$ is a countable, iterable ladder-mouse
 with $\sequence{\deltaprime_n,\gammaprime_n}{n\in\omega}$ a ladder over $\Mprime$
 and for each $n\in\omega$ there is a $g_n$ such that $g_n$
-is $\Col(\omega,\deltaprime_n)$-generic over
+is $\Coll(\deltaprime_n,\omega)$-generic over
 $J^{\Mprime}_{\gammaprime_n}$ and $y\in J^{\Mprime}_{\gammaprime_n}[g_n]$.
 \end{lemma}
 
@@ -672,7 +685,7 @@ Woodin genericity iteration over each of the levels of the ladder sequentially.
 Let $\Gamma = \Sigma^1_n$ for some $n>0$.
 Let $M$ be a countable, transitive model of $\ZFC$ and  $\delta>\omega$ a cardinal of $M$.
 Suppose that whenever $\P\in V^M_{\delta+1}$ is a poset and $g$ is $\P$-generic over $M$, then
-$M[g]$ is $\Gamma$-correct (in $V$). Let $g_1$ and $g_2$ be $\Col(\omega, \delta)$-generic over $M$.
+$M[g]$ is $\Gamma$-correct (in $V$). Let $g_1$ and $g_2$ be $\Coll(\delta,\omega)$-generic over $M$.
 Let $E\subset\R^2$ be a $\Gamma$, thin equivalence relation.
 Then $M[g_1]$ and $M[g_2]$ meet the same $E$-equivalence classes.
 \end{lemma}
@@ -688,7 +701,7 @@ We will use Lemma \ref{hjorthlemma} via the following corollary.
 \label{hjorthcorollary} Fix $n\in\omega$.
 Let $M$ be a countable, transitive model of $\ZFC$ and  $\delta>\omega$ a cardinal of $M$.
 Suppose that whenever $\P\in V^M_{\delta+1}$ is a poset and $g$ is $\P$-generic over $M$, then
-$M[g]$ is $\Sigma^1_{2n+4}$-correct. Let $g_1$ and $g_2$ be $\Col(\omega, \delta)$-generic over $M$.
+$M[g]$ is $\Sigma^1_{2n+4}$-correct. Let $g_1$ and $g_2$ be $\Coll(\delta,\omega)$-generic over $M$.
 
 Let $h$ be a $\PiOneOmega$ code, let $y\in M[g_1]$ and suppose that $y\in \Intersection{i<n} G^i_{h(i)}$. Then there is
 a $\yprime \in M[g_2]$ such that
@@ -771,7 +784,7 @@ $$\left(y,\sequence{\varphi^{n_0}_{h_2(n_0),n_1}(y)}{n\in\omega} \right)\in[T^{h
 Let $\sequence{\delta_n,\gamma_n}{n\in\omega}$ be a ladder over $M$.
 By applying Lemma \ref{generic_over_all_windows} and replacing $M$ with the $\Mprime$ of
 that lemma, we may assume that we have, for each $n$, $g_n$
-$\Col(\omega,\delta_n)$-generic over $J^M_{\gamma_n}$ such that $y\in J^M_{\gamma_n}[g_n]$.
+$\Coll(\delta_n,\omega)$-generic over $J^M_{\gamma_n}$ such that $y\in J^M_{\gamma_n}[g_n]$.
 
 Now we apply Lemma \ref{m_star_existence} to obtain $\pi:M\to\Mstar$ as in
 the lemma.
@@ -825,7 +838,7 @@ so if $\P\in N$ is a poset with $\P\subset V^N_{\delta_{2n+2}}$ and $g$ is $\P$-
 is $\Sigma^1_{2n+4}$-correct.
 
 Since $N$ is countable in $M^*$, there is a $g\in\Mstar$ that is
-$\Col(\omega,\delta_{2n+2})$-generic over $N$. By Corollary \ref{hjorthcorollary}
+$\Coll(\delta_{2n+2},\omega)$-generic over $N$. By Corollary \ref{hjorthcorollary}
 there is a $\yprime\in N[g]$ such that
 $\yprime\restr n = y \restr n$,
 $\yprime \in  \Intersection{i<n} G^i_{h_2(i)}$,
@@ -850,7 +863,7 @@ Since $\delta_0$ is Woodin in $J^M_{\gamma_0}$,
 we can perform the usual genericity iteration on $J^M_{\gamma_0}$
 (see Theorem 7.14 from \cite{OutlineOfInnerModelTheory}), yielding
 $\pibar_0:J^M_{\gamma_0}\to P_1$ such that
-there is a $g$, $\Col(\omega,\pibar_0(\delta_0))$-generic over $P_1$ such that $y\in P_1[g]$.
+there is a $g$, $\Coll(\pibar_0(\delta_0),\omega)$-generic over $P_1$ such that $y\in P_1[g]$.
 
 Since $\delta_0$ a cardinal in $M$, a total extender over $J^M_{\delta_0}$ is total
 over $M$. A similar fact is true about the image of $\delta_0$ under non-dropping
@@ -861,7 +874,7 @@ letting $\sequence{\delta^{(1)}_n,\gamma^{(1)}_n}{n\in\omega}$ be the image unde
 of the ladder of $M$, we have that $\Mprime_1$ is a countable, iterable ladder-mouse
 with $\sequence{\delta^{(1)}_n,\gamma^{(1)}_n}{n\in\omega}$ a ladder over $\Mprime_1$
 and there is a $g_0$ such that $g_0$
-is $\Col(\omega,\delta^{(1)}_0)$-generic over
+is $\Coll(\delta^{(1)}_0,\omega)$-generic over
 $J^{\Mprime_1}_{\gamma^{(1)}_0}$ and $y\in J^{\Mprime_1}_{\gamma^{(1)}_0}[g_0]$.
 
 Now we repeat the argument of the previous two paragraphs using $\Mprime_1$ instead of $M$
@@ -872,7 +885,7 @@ letting $\sequence{\delta^{(2)}_n,\gamma^{(2)}_n}{n\in\omega}$ be the image unde
 of the ladder of $\Mprime_1$, we have that $\Mprime_2$ is a countable, iterable ladder-mouse
 with $\sequence{\delta^{(2)}_n,\gamma^{(2)}_n}{n\in\omega}$ a ladder over $\Mprime_2$
 and for $n=0,1$ there is a $g_n$ such that $g_n$
-is $\Col(\omega,\delta^{(2)}_n)$-generic over
+is $\Coll(\delta^{(2)}_n,\omega)$-generic over
 $J^{\Mprime_2}_{\gamma^{(2)}_n}$ and $y\in J^{\Mprime_2}_{\gamma^{(2)}_n}[g_n]$.
 
 We continue this process yielding $\pi_n:\Mprime_n\to\Mprime_{n+1}$ and
@@ -888,22 +901,22 @@ See also Lemma 3.1 from \cite{Schlict_Thin_Equivalence_Relations}.
 Let $\Gamma = \Sigma^1_n$ for some $n>0$.
 Let $M$ be a countable, transitive model of $\ZFC$ and  $\delta>\omega$ a cardinal of $M$.
 Suppose that whenever $\P\in V^M_{\delta+1}$ is a poset and $g$ is $\P$-generic over $M$, then
-$M[g]$ is $\Gamma$-correct. Let $g_1$ and $g_2$ be $\Col(\omega, \delta)$-generic over $M$.
+$M[g]$ is $\Gamma$-correct. Let $g_1$ and $g_2$ be $\Coll(\delta,\omega)$-generic over $M$.
 Let $E\subset\R^2$ be a $\Gamma$, thin equivalence relation.
 We wish to prove that $M[g_1]$ and $M[g_2]$ meet the same $E$-equivalence classes.
 
-We may assume that $g_1\times g_2$ is $\Col(\omega, \delta)\times \Col(\omega, \delta)$-generic over $M$.
-This is because there is an h such that $h$ is $\Col(\omega, \delta)$-generic over both
+We may assume that $g_1\times g_2$ is $\Coll(\delta,\omega)\times \Coll(\delta,\omega)$-generic over $M$.
+This is because there is an h such that $h$ is $\Coll(\delta,\omega)$-generic over both
 both $M[g_1]$ and $M[g_2]$. If $M[g_1]$ and $M[h]$ meet the same $E$-equivalence classes and
 $M[g_2]$ and $M[h]$ meet the same $E$-equivalence classes, then
 $M[g_1]$ and $M[g_2]$ meet the same $E$-equivalence classes.
 
-So suppose towards a contradiction that $g_1\times g_2$ is $\Col(\omega, \delta)\times \Col(\omega, \delta)$-generic over $M$
+So suppose towards a contradiction that $g_1\times g_2$ is $\Coll(\delta,\omega)\times \Coll(\delta,\omega)$-generic over $M$
 and there is an $x\in\R\intersect M[g_1]$ such that for all $y\in \R\intersect M[g_2]$, $\neg E(x,y)$.
 
 \begin{claim}[Claim 1]
 There is a name for a real $\tau\in M$ such that for all $h_1,h_2$
-with $h_1\times h_2$ $\Col(\omega, \delta)\times \Col(\omega, \delta)$-generic over $M$,
+with $h_1\times h_2$ $\Coll(\delta,\omega)\times \Coll(\delta,\omega)$-generic over $M$,
 $\neg E(\tau^{h_1},\tau^{h_2})$.
 \end{claim}
 \begin{subproof}[proof of Claim 1]
@@ -911,12 +924,12 @@ Let $\tau\in M$ be such that $x=\tau^{g_1}$. By hypothesis $M[g_1\times g_2]$ is
 so $M[g_1\times g_2]\models \neg E(\tau^{g_1},\tau^{g_2})$.
 
 Let $\dot{g}_{\text{left}}$ and $\dot{g}_{\text{right}}$
-be the canonical $\Col(\omega, \delta)\times \Col(\omega, \delta)$-names in $M$ for the left and right component of the generic.
-Let $\check{\tau}$ be the canonical $\Col(\omega, \delta)\times \Col(\omega, \delta)$-name for $\tau\in M$.
-Then $\check{\tau}$, $\dot{g}_{\text{left}}$ and $\dot{g}_{\text{right}}$ are all invariant under automorphisms of $\Col(\omega, \delta)\times \Col(\omega, \delta)$.
-Since $\Col(\omega, \delta)\times \Col(\omega, \delta)$ is homogeneous
-$$1\forcein{\Col(\omega, \delta)\times \Col(\omega, \delta)}{M} \neg E(\check{\tau}^{\dot{g}_{\text{left}}},\check{\tau}^{\dot{g}_{\text{right}}}).$$
-Let $h_1,h_2$ be such that $h_1\times h_2$ is $\Col(\omega, \delta)\times \Col(\omega, \delta)$-generic over $M$.
+be the canonical $\Coll(\delta,\omega)\times \Coll(\delta,\omega)$-names in $M$ for the left and right component of the generic.
+Let $\check{\tau}$ be the canonical $\Coll(\delta,\omega)\times \Coll(\delta,\omega)$-name for $\tau\in M$.
+Then $\check{\tau}$, $\dot{g}_{\text{left}}$ and $\dot{g}_{\text{right}}$ are all invariant under automorphisms of $\Coll(\delta,\omega)\times \Coll(\delta,\omega)$.
+Since $\Coll(\delta,\omega)\times \Coll(\delta,\omega)$ is homogeneous
+$$1\forcein{\Coll(\delta,\omega)\times \Coll(\delta,\omega)}{M} \neg E(\check{\tau}^{\dot{g}_{\text{left}}},\check{\tau}^{\dot{g}_{\text{right}}}).$$
+Let $h_1,h_2$ be such that $h_1\times h_2$ is $\Coll(\delta,\omega)\times \Coll(\delta,\omega)$-generic over $M$.
 Then $M[h\times h_2]\models \neg E(\tau^{h_1},\tau^{h_2})$ and $M[h\times h_2]$ is $\Gamma$-correct so $\neg E(\tau^{h_1},\tau^{h_2})$.
 \end{subproof}
 
@@ -924,13 +937,13 @@ To obtain a contradiction and prove the lemma we will show
 
 \begin{claim}[Claim 2]
 There is a set $H$ such that for all $h_1,h_2\in H$ with $h_1\not= h_2$,
-$h_1\times h_2$ is $\Col(\omega, \delta)\times \Col(\omega, \delta)$-generic over $M$
+$h_1\times h_2$ is $\Coll(\delta,\omega)\times \Coll(\delta,\omega)$-generic over $M$
 and $\setof{\tau^{h}}{h\in H}$ is a perfect set of reals.
 \end{claim}
 \begin{subproof}[proof of Claim 2]
-Let $\sequence{C_n}{n=1,2,\cdots}$ enumerate the dense open subsets of $\Col(\omega, \delta)\times \Col(\omega, \delta)$ in $M$
+Let $\sequence{C_n}{n=1,2,\cdots}$ enumerate the dense open subsets of $\Coll(\delta,\omega)\times \Coll(\delta,\omega)$ in $M$
 and let $D_n=\Intersection{i\leq n} C_n$.
-For $s\in 2^{<\omega}$ we define $p_s\in \Col(\omega, \delta)$ such that
+For $s\in 2^{<\omega}$ we define $p_s\in \Coll(\delta,\omega)$ such that
 \begin{enumerate}
 \item $s\subset t \Implies p_s \subset p_t$
 \item If $|s| = |t| = n$ and $s\not=t$, then $(p_s,p_t) \in D_n$
@@ -945,9 +958,9 @@ $u\not=s$ and $u\not=t$, let $p^i_u=p^{i-1}_u$.
 Then $\setof{p^k_s}{s\in\pre{2}{n}}$ maintains induction hypotheses (1) and (2). For each $s$, choose $p_s$ extending $p^k_s$ to also
 maintain induction hypothesis (3).]
 
-For $x\in 2^{\omega}$ let $h_x$ be the filter on $\Col(\omega, \delta)$ generated by $\setof{p_{x\upharpoonright n}}{n\in\omega}$
+For $x\in 2^{\omega}$ let $h_x$ be the filter on $\Coll(\delta,\omega)$ generated by $\setof{p_{x\upharpoonright n}}{n\in\omega}$
 and let $H=\setof{h_x}{x\in 2^{\omega}}$. If $x,y\in 2^{\omega}$ and $x\not=y$ then $h_x\times h_y$ is
-$\Col(\omega, \delta)\times \Col(\omega, \delta)$-generic over $M$, because for sufficiently large $n$,
+$\Coll(\delta,\omega)\times \Coll(\delta,\omega)$-generic over $M$, because for sufficiently large $n$,
 $x\restr n \not= y\restr n$ so that $(p_{x\upharpoonright n },p_{y\upharpoonright n })\in D_n$, and $p_{x\upharpoonright n }\in h_x$ and
 $p_{y\upharpoonright n }\in h_y$.
 
@@ -1637,7 +1650,7 @@ Let $\pi:\Mladder_z\to\Mstar$ be the stationary tower ultrapower.
 We will capture this setting by saying that  $\pi:\Mladder_z\to\Mstar=\Ult(\Mladder_z,G)$
 is a \emph{ladder stationary tower embedding} (for $\sequence{\delta_n,\gamma_n}{n\in\omega}$.)
 
-Let $g$ be $\Col(\omega,\delta)$-generic over $\Mladder$ for some
+Let $g$ be $\Coll(\delta,\omega)$-generic over $\Mladder$ for some
 $\delta\in\Mladder$.
 $\Mladder[g]$ can be reorganized as $\Mladder_z$ for some $z\in\R$.
 Let $\psi:\Mladder_z\to\Nstar=\Mladder_z[H]$ be a ladder stationary tower embedding.
@@ -1729,7 +1742,7 @@ Let $T,S$ be $\bPiOneOmega$-trees in $\Mstar$.
 Suppose that $T$ is correctly wellfounded and
 $S$ is incorrectly wellfounded. Suppose further that $T$ is $\PiOneOmega(x)$
 and $S$ is $\PiOneOmega(y)$ for $x,y\in\R\intersect\Mladder[g]$,
-where $g$ is $\Col(\omega,\delta)$ generic over $\Mladder$ for some $\delta\in\Mladder$.
+where $g$ is $\Coll(\delta,\omega)$ generic over $\Mladder$ for some $\delta\in\Mladder$.
 Then $\rank(T) < \rank(S)$.
 \end{lemma}
 
@@ -1756,7 +1769,7 @@ of stationary tower extensions and depends only on symmetric collapses.
 \label{applyhjorthcorollary}
 Let $M$ be a countable, transitive model of $\ZFC$ and  $\delta>\omega$ a cardinal of $M$.
 Suppose that whenever $\P\in V^M_{\delta+1}$ is a poset and $g$ is $\P$-generic over $M$, then
-$M[g]$ is projectively-correct. Let $g_1$ and $g_2$ be $\Col(\omega, \delta)$-generic over $M$.
+$M[g]$ is projectively-correct. Let $g_1$ and $g_2$ be $\Coll(\delta,\omega)$-generic over $M$.
 Let $x\in\R\intersect M$.
 
 Let $\varphi$ be a $\Sigma^1_n(x)$ norm for some $n$.
@@ -1825,7 +1838,7 @@ Let $\delta$ be a cardinal of $M$. Then we define
 \item $\bar{T}^{h,x,M,\delta}=\ran(\sigma^{M[g],h,x})$
 \end{itemize}
 where $g$ is any
-$\Col(\omega,\delta)$-generic over $M$.
+$\Coll(\delta,\omega)$-generic over $M$.
 
 The definitions makes sense because by Lemma \ref{applyhjorthcorollary},
 applied to a rank initial segment of $M$,
@@ -1834,12 +1847,12 @@ $\sigma^{M[g]}$ and $\sigma^{M[g],h,x}$ don't depend on the choice of $g$.
 
 $X^{M,\delta}\subset \bdelta^1_{\omega}$, namely
 $X^{M,\delta}=\big\{ \varphi(y)\, \mid \, \varphi$ is a projective norm and $y\in\R\intersect M[g]$ for
-some $g\, \Col(\omega,\delta)$-generic over $M \big\}$.
+some $g\, \Coll(\delta,\omega)$-generic over $M \big\}$.
 
 
 $\bar{T}^{h,x,M,\delta}\subset (T^h(x))^{V}$, namely
 $\bar{T}^{h,x,M,\delta}=\big\{(s,u)\in (T^h(x))^{V} \, \mid \,
-\exists g\, \Col(\omega,\delta)$-generic over $M$ and $\exists y \in \R\intersect M[g]$ s.t.
+\exists g\, \Coll(\delta,\omega)$-generic over $M$ and $\exists y \in \R\intersect M[g]$ s.t.
 $y$ extends $s$ and $(\forall i<\length(u))\, (y,x)\in G^{i}_{h(i)}$ and
 $u(i)=\varphi^{i_0}_{h(i_0),i_1}(y,x) \big\}$.
 
@@ -1869,7 +1882,7 @@ $T^{h,x,\Mladder[g],\infty}$.
 \begin{lemma}
 \label{TStarIsTInfinity}
 Let $\pi:\Mladder\to\Mstar=\Ult(\Mladder,G)$ be a ladder stationary tower embedding.
-Let $g\in\Mstar$ be $\Col(\omega,\delta)$-generic over $\Mladder$ for some cardinal $\delta\in\Mladder$.
+Let $g\in\Mstar$ be $\Coll(\delta,\omega)$-generic over $\Mladder$ for some cardinal $\delta\in\Mladder$.
 Let $h$ be a $\PiOneOmega$ code for a subset
 of $\R^2$ and let $x\in\R\intersect \Mladder[g]$.
 Then $(T^h(x))^{\Mstar} = T^{h,x,\Mladder[g],\infty}$.
@@ -1884,13 +1897,13 @@ $(y,x)\in \Intersection{i<m} G^i_{h(i)}$.
 Let $n$ be even and large enough that $2m+1 < n$, $\delta < \delta_n$ and $g,y,x\in \Ult(J^{\Mladder}_{\gamma_n},G\intersect J^{\Mladder}_{\delta_n})$.
 There is such an $n$ by the proof of Claim 2 in the proof of Lemma \ref{m_star_existence} where we showed that $\Mstar$ is projectively correct.
 
-There is a $k$, $\Col(\omega,\delta_n)$-generic over $J^{\Mladder}_{\gamma_n}$ such that $g,y,x\in J^{\Mladder}_{\gamma_n}[k]$.
+There is a $k$, $\Coll(\delta_n,\omega)$-generic over $J^{\Mladder}_{\gamma_n}$ such that $g,y,x\in J^{\Mladder}_{\gamma_n}[k]$.
 By general forcing theory there is a $k_1$ such that $J^{\Mladder}_{\gamma_n}[k]=J^{\Mladder}_{\gamma_n}[g][k_1]$ with $k_1$
-$\Col(\omega,\delta_n)$-generic over $J^{\Mladder}_{\gamma_n}[g]$.
+$\Coll(\delta_n,\omega)$-generic over $J^{\Mladder}_{\gamma_n}[g]$.
 
 Let $k_2$ be
-$\Col(\omega,\delta_n)$-generic over $\Mladder[g]$. In particular $k_2$ is
-$\Col(\omega,\delta_n)$-generic over $J^{\Mladder}_{\gamma_n}[g]$.
+$\Coll(\delta_n,\omega)$-generic over $\Mladder[g]$. In particular $k_2$ is
+$\Coll(\delta_n,\omega)$-generic over $J^{\Mladder}_{\gamma_n}[g]$.
 
 By Corollary \ref{hjorthcorollary}, applied to $J^{\Mladder}_{\gamma_n}[g]$, and relativized to $x$,
 there is a $y_2\in J^{\Mladder}_{\gamma_n}[g][k_2]$ such that
@@ -1903,9 +1916,9 @@ there is a $y_2\in J^{\Mladder}_{\gamma_n}[g][k_2]$ such that
 Since $y_2\in \Mladder[g][k_2]$,
 we have shown that $\ran(\sigma^{\Mstar,h,x})\subseteq \bar{T}^{h,x,\Mladder[g],\infty}$.
 
-Conversely, suppose that $k$ is $\Col(\omega,\delta)$-generic over $\Mladder[g]$ for some cardinal $\delta$ of $\Mladder[g]$ and
+Conversely, suppose that $k$ is $\Coll(\delta,\omega)$-generic over $\Mladder[g]$ for some cardinal $\delta$ of $\Mladder[g]$ and
 $y\in\R\intersect \Mladder[g][k]$ with $(y,x)\in \Intersection{i<m} G^i_{h(i)}$. Let $k_2\in\Mstar$ be
-$\Col(\omega,\delta)$-generic over $\Mladder[g]$. Then there is a $y_2\in \Mladder[g][k_2]$ such that
+$\Coll(\delta,\omega)$-generic over $\Mladder[g]$. Then there is a $y_2\in \Mladder[g][k_2]$ such that
 \begin{itemize}
 \item $y_2 \restr m = y \restr m$,
 \item $(y_2,x)\in \Intersection{i<m} G^i_{h(i)}$, and
@@ -1926,7 +1939,7 @@ So then we get that $(T^h(x))^{\Mstar} = T^{h,x,\Mladder[g],\infty}$.
 \begin{corollary}
 \label{TInMstarIsTInNstar}
 Let $\pi:\Mladder\to\Mstar=\Ult(\Mladder,G)$ be a ladder stationary tower embedding.
-Let $g\in\Mstar$ be $\Col(\omega,\delta)$-generic over $\Mladder$ for some cardinal $\delta\in\Mladder$.
+Let $g\in\Mstar$ be $\Coll(\delta,\omega)$-generic over $\Mladder$ for some cardinal $\delta\in\Mladder$.
 Let $h$ be a $\PiOneOmega$ code for a subset
 of $\R^2$ and let $x\in\R\intersect \Mladder[g]$.
 
@@ -1943,7 +1956,7 @@ than the rank of an incorrectly wellfounded tree in $\Mstar$.
 
 \begin{proof}[Proof of Lemma \ref{StarCorrectBelowIncorrect}]
 Let $\pi:\Mladder\to\Mstar=\Ult(\Mladder,G)$ be a ladder stationary tower embedding.
-Let $g\in\Mstar$ be $\Col(\omega,\delta)$-generic over $\Mladder$ for some cardinal $\delta\in\Mladder$.
+Let $g\in\Mstar$ be $\Coll(\delta,\omega)$-generic over $\Mladder$ for some cardinal $\delta\in\Mladder$.
 Let $h_1$ and $h_2$ be $\PiOneOmega$ codes for a subsets
 of $\R^2$ and let $x,y\in\R\intersect \Mladder[g]$. Suppose that
 $(T^{h_1})^{\Mstar}(x)$ is correctly wellfounded and $(T^{h_2})^{\Mstar}(y)$ is incorrectly wellfounded.
@@ -1986,7 +1999,7 @@ Let $\Pstar$ be the least initial segment of $\Mstar$ such that
 $\omega_1^{\Mladder}\in\Pstar$ and
 and $\Pstar$ projects to $\omega$.
 Let $w\in\WO\intersect\Mstar$ with $|w|=\ord(\Pstar)$ and with $w\in \Mladder[g]$ for
-some $g$ that is $\Col(\omega,\delta)$-generic over $\Mladder$ for some cardinal $\delta$ of $\Mladder$.
+some $g$ that is $\Coll(\delta,\omega)$-generic over $\Mladder$ for some cardinal $\delta$ of $\Mladder$.
 Let
 $n$ be given by Lemma \ref{taller_mice_are_nonstandard}. Then
 $(n,w)\in \NSat^{\Mstar}$ and
