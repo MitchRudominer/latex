@@ -545,15 +545,19 @@ Let $x\in\R\intersect M$.
 \end{remarks}
 
 \begin{definition}
+\label{correctly-wellfounded}
 Let $M$ be a countable, transitive, projectively correct model of $\ZFC$. 
 Let $h$ be a a $\PiOneOmega$ code and let $x\in \R\intersect M$.
 Let $T=(T^h(x))^M$, so that $T\in M$ and $M\models ``T$ is a $\bPiOneOmega$ tree.''
-Then we say that $T$ is \emph{correctly wellfounded} iff $T$ is wellfounded and
-and $(T^h(x))^V$ is wellfounded. 
-We say that $T$ is \emph{incorrectly wellfounded} iff $T$ is wellfounded and 
-and $(T^h(x))^V$ is illfounded. 
+Then we say that $(T,h,x,M)$ is \emph{correctly wellfounded} iff 
+$(T^h(x))^V$ is wellfounded (and consequently $T = (T^h(x))^M$ is wellfounded.)
+We say that $(T,h,x,M)$ is \emph{incorrectly wellfounded} iff $T$ is wellfounded but $(T^h(x))^V$ is illfounded. 
 
-We also extend this definition to the case where $M$ itself is not a model of all of $\ZFC$ but
+We will write that $(T^h(x))^M$ is correctly or incorrectly wellfounded
+as an abbreviation for the statement that 
+$\left((T^h(x))^M,h,x,M\right)$ is.
+
+We also extend these definition to the case where $M$ itself is not a model of all of $\ZFC$ but
 $M$ has a rank initial segment that is a model of $\ZFC$.
 \end{definition}
 
@@ -564,10 +568,20 @@ $\Mladder$ is able to determine whether or not $T$ is correctly wellfounded.
 \begin{theorem}
 \label{CorrectBelowIncorrect}
 Let $z$ be a real and $M$ a countable, iterable, ladder-mouse over $z$.
-Suppose $M\models ``T_1$ and $T_2$ are $\bPiOneOmega$-trees'' and
-suppose $T_1$ is correctly wellfounded and
-$T_2$ is incorrectly wellfounded. Then $\rank(T_1) < \rank(T_2)$.
+Suppose $T_1 = (T^{h_1}(x_1))^M$ and $T_2 = (T^{h_2}(x_2))^M$ are 
+$\bPiOneOmega$-trees of $M$. Suppose $(T_1,h_1,x_1,M)$ is correctly
+wellfounded and $(T_2,h_2,x_2,M)$ is incorrectly wellfounded. 
+Then $\rank(T_1) < \rank(T_2)$.
 \end{theorem}
+
+\begin{remark}
+Let $M$ be as in the theorem and let $T$ be a $\bPiOneOmega$-tree of $M$.
+It follows from the theorem that we can make sense of saying that
+$T$ is correctly or incorrectly wellfounded without reference to an $h$ or $x$.
+For if $T=(T^{h_1}(x_1))^M = (T^{h_2}(x_2))^M$, by the theorem it is not possible
+for $(T,h_1,x_1,M)$ to be correctly wellfounded and $(T,h_2,x_2,M)$ to be
+incorrectly wellfounded.
+\end{remark}
 
 Now, assuming Theorem \ref{CorrectBelowIncorrect}, we prove Theorem
 \ref{QuasiCorrectness}.
@@ -762,19 +776,13 @@ Now, assuming Lemmas \ref{generic_over_all_windows}, \ref{hjorthlemma} and
 As mentioned at the top of the section, we will assume that the real parameter
 $z=0$ to simplify the notation.
 Let $M$ be a countable, iterable ladder-mouse.
-Suppose $M\models ``T_1$ and $T_2$ are $\bPiOneOmega$-trees'' and
-suppose $T_1$ is correctly wellfounded and
-$T_2$ is incorrectly wellfounded. We want to prove that
-$\rank(T_1) < \rank(T_2)$.
 
-To simplify the notation again, we will ignore the real parameters
-in the
-$\bPiOneOmega$ definitions associated with $T_1$ and $T_2$
-(these are reals in $M$)
-and assume that
-$T_1$ and $T_2$ are lightface $\Pi^1_{\omega}$-trees in $M$.
-Let $h_1$ an $h_2$ be $\Pi^1_{\omega}$
-codes such that $T_1=(T^{h_1})^M$, $T_2=(T^{h_2})^M$.
+Suppose $T_1 = (T^{h_1}(x_1))^M$ and $T_2 = (T^{h_2}(x_2))^M$ are 
+$\bPiOneOmega$-trees of $M$. Suppose $(T_1,h_1,x_1,M)$ is correctly
+wellfounded and $(T_2,h_2,x_2,M)$ is incorrectly wellfounded. 
+We want to prove that $\rank(T_1) < \rank(T_2)$.
+
+To simplify the notation again, we will assume that $x_1=x_2=0$.
 
 By assumption, in $V$, $T^{h_1}$ is wellfounded and $T^{h_2}$ is illfounded. Let
 $y\in p[T^{h_2}] = A^{h_2} = \Intersection{n} G^n_{h_2(n)}$.
@@ -1676,7 +1684,7 @@ countable initial segments.
 
 Let $\Pstar$ be the least initial segment of $\Mstar$ such that
 $\omega_1^{\Mladder}\in\Pstar$ and
-and $\Pstar$ projects to $\omega$. There is such a $\Pstar$ since
+$\Pstar$ projects to $\omega$. There is such a $\Pstar$ since
 $\ord(\Mladder)=\omega_1^{\Mstar}$. Notice that $\Pstar$ is ladder-small and
 $\Pi^1_{\omega}$-iterable since every countable initial segment of $\Mladder$
 has that property and $\Mstar$ is $\Pi^1_{\omega}$-correct.
@@ -1847,7 +1855,7 @@ $\sigma^{M[g]}$ and $\sigma^{M[g],h,x}$ don't depend on the choice of $g$.
 
 $X^{M,\delta}\subset \bdelta^1_{\omega}$, namely
 $X^{M,\delta}=\big\{ \varphi(y)\, \mid \, \varphi$ is a projective norm and $y\in\R\intersect M[g]$ for
-some $g\, \Coll(\delta,\omega)$-generic over $M \big\}$.
+some $g\subset\Coll(\delta,\omega)$ generic over $M \big\}$.
 
 
 $\bar{T}^{h,x,M,\delta}\subset (T^h(x))^{V}$, namely
