@@ -553,12 +553,14 @@ Then we say that $(T,h,x,M)$ is \emph{correctly wellfounded} iff
 $(T^h(x))^V$ is wellfounded (and consequently $T = (T^h(x))^M$ is wellfounded.)
 We say that $(T,h,x,M)$ is \emph{incorrectly wellfounded} iff $T$ is wellfounded but $(T^h(x))^V$ is illfounded. 
 
-We will write that $(T^h(x))^M$ is correctly or incorrectly wellfounded
+We will often write that $(T^h(x))^M$ is correctly or incorrectly wellfounded
 as an abbreviation for the statement that 
 $\left((T^h(x))^M,h,x,M\right)$ is.
 
-We also extend these definition to the case where $M$ itself is not a model of all of $\ZFC$ but
-$M$ has a rank initial segment that is a model of $\ZFC$.
+We also extend these definitions to the case where $M$ itself is not a model of all of $\ZFC$ but
+$M$ has a rank initial segment that is a model of $\ZFC$. Further we extend
+these definitions to the case where $M$ is not wellfounded but has 
+a rank initial segment in its wellfounded part that is a model of $\ZFC$.
 \end{definition}
 
 The key to our proof that $\Mladder$ is quasi-$\SigmaOneOmegaPlusOne$-correct is this:
@@ -1676,6 +1678,42 @@ We will capture this setting by saying that
 $\psi:\Mladder[g]\to\Nstar=\Ult(\Mladder[g],H)$ is a ladder stationary tower embedding \emph{above $g$}.
 \end{definition}
 
+Let $\Mstar$ be as in the above definition and let $T\in\Mstar$ be a 
+$\bPiOneOmega$-tree. In what follows it will be convenient for us to use 
+the terminology
+$T$ is \emph{correctly-wellfound} or \emph{incorrectly-wellfounded}. But
+because $\Mstar$ is not a wellfounded, iterable mouse, 
+Remark \ref{pure-correctly-wellfounded} does not apply to $\Mstar$ and
+so we need to be
+careful about what these terms mean. Notice that
+Definition \ref{correctly-wellfounded} still applies to $\Mstar$.
+
+\begin{definition}
+Let $\Mstar$ be a not-necessarily wellfounded model that has a
+rank initial segment $(V_{\lambda})^{\Mstar}\in\wfp(\Mstar)$ such that
+$(V_{\lambda})^{\Mstar}\models\ZFC$ and  $(V_{\lambda})^{\Mstar}$ is projectively-correct.
+Let $T\in(V_{\lambda})^{\Mstar}$ be such that $\Mstar\models ``T$ is a $\bPiOneOmega$-tree''. Then we will say that $T$ is \emph{correctly wellfounded} iff there
+is a $\PiOneOmega$-code $h$ and a real $x\in(V_{\lambda})^{\Mstar}$
+such that $\left((T^h(x))^{\Mstar},h,x,\Mstar\right)$ is correctly
+wellfounded. This means that $T$ is wellfounded (in $V$ and so in $\Mstar$)
+and $T^h(x)$ is wellfounded in $V$.
+
+We will say that $T$ is \emph{incorrectly wellfounded} iff
+there
+is a $\PiOneOmega$-code $h$ and a real $x\in(V_{\lambda})^{\Mstar}$
+such that $\left((T^h(x))^{\Mstar},h,x,\Mstar\right)$ is incorrectly
+wellfounded. This means that $T$ is wellfounded (in $V$ and so in $\Mstar$)
+and $T^h(x)$ is illfounded in $V$.
+\end{definition}
+
+\begin{remark}
+Since Remark \ref{pure-correctly-wellfounded} does not necessarily apply
+to $\Mstar$, we cannot rule out the possibility that $T$ is both
+correctly and incorrectly wellfounded. By
+Remark \ref{pure-correctly-wellfounded},this cannot happen if $\Mstar$
+is an iterable ladder mouse.
+\end{remark}
+
 Now we turn to a discussion of the proof of Lemma \ref{Nsat_trees_are_cofinal}.
 Let $T\in\Mladder$ be a $\bPiOneOmega$-tree that is correctly wellfounded.
 Let $\pi:\Mladder\to\Mstar=\Ult(M,G)$ be a ladder stationary tower embedding.
@@ -1687,7 +1725,7 @@ Notice that $\Mstar\models\text{``}T_{n,w}$ is wellfounded for all $(n,w)\in \NS
 since $\Mladder$ satisfies that sentence. To find an $(n,w)\in \NSat^{\Mstar}$ such that
 $\Mstar\models\text{``}\rank(T^*) < \rank(T_{n,w})$'', we will look for an
 $(n,w)\in \NSat^{\Mstar}$
-such that $(T_{n,w})^{\Mstar}$ is incorrectly wellfounded.
+such that $(T_{n,w})^{\Mstar}$ is incorrectly wellfounded or illfounded.
 We can accomplish this because Lemma \ref{T_n_w_correctly_wellfounded} is not
 true if we repalce $\Mladder$ with $\Mstar$. That is, $\Mstar$ has non-standard
 countable initial segments.
@@ -1726,7 +1764,7 @@ $\Mladder$ but $\omega_1^{\Mladder}\in P$.
 Let $w\in\WO\intersect\Mstar$ with $|w|=\ord(\Pstar)$ and let
 $n$ be given by Lemma \ref{taller_mice_are_nonstandard}. Then
 $(n,w)\in \NSat^{\Mstar}$ and
-$(T_{n,w})^{\Mstar}$ is incorrectly wellfounded. If we could apply
+$(T_{n,w})^{\Mstar}$ is incorrectly wellfounded or illfounded. If we could apply
 Theorem \ref{CorrectBelowIncorrect} to $\Mstar$ we could now conclude
 that $\rank(T^*) < \rank(T_{n,w})^{\Mstar}$. But the proof of
 Theorem \ref{CorrectBelowIncorrect} does not apply to $\Mstar$ because it is
@@ -1742,17 +1780,6 @@ Now $T^*\in\range(\pi)$ but $T_{n,w}\not\in\range(\pi)$ because $w\not\in\Mladde
 $w$ can be chosen to be generic over $\Mladder$ and it turns out that is enough to see that
 $\rank(T^*)<\rank(T_{n,w})$.
 
-Because $\Mstar$ is not wellfounded, we need to clarify what we mean by correctly and incorrectly wellfounded
-for $\bPiOneOmega$-trees in $\Mstar$.
-Let $h$ be a $\PiOneOmega$ code for
-a subset of $\R^2$, let $x\in\R\intersect\Mstar$ and let  $T=(T^h(x))^{\Mstar}$.
-Recall that $T\in\wfp(\Mstar)$.
-$T$ is correctly wellfounded means that $T$ is wellfounded and $T^h(x)$ is wellfounded.
-$T$ is incorrectly wellfounded means $T$ is wellfounded and $T^h(x)$ is illfounded.
-In both of these cases $\Mstar\models T$ is wellfounded. Because $\Mstar$ is not wellfounded there is also
-the possibility that $\Mstar\models T$ is wellfounded, but $T$ is illfounded. In this case we do not
-call $T$ correctly or incorrectly wellfounded.
-
 \begin{lemma}
 \label{StarCorrectBelowIncorrect}
 Let $\pi:\Mladder\to\Mstar=\Ult(\Mladder,G)$ be a ladder stationary tower embedding.
@@ -1760,15 +1787,17 @@ Let $T,S$ be $\bPiOneOmega$-trees in $\Mstar$.
 Suppose that $T$ is correctly wellfounded and
 $S$ is incorrectly wellfounded. Suppose further that $T$ is $\PiOneOmega(x)$
 and $S$ is $\PiOneOmega(y)$ for $x,y\in\R\intersect\Mladder[g]$,
-where $g$ is $\Coll(\delta,\omega)$ generic over $\Mladder$ for some $\delta\in\Mladder$.
-Then $\rank(T) < \rank(S)$.
+where $g$ is $\Coll(\delta,\omega)$ generic over $\Mladder$ for some $\delta\in\Mladder$, and there are $\PiOneOmega$ codes $h_1, h_2$ such that
+$(T,h_1,x,\Mstar)$ is correctly wellfounded and 
+$(S,h_2,y,\Mstar)$ is incorrectly wellfounded. Then $\rank(T) < \rank(S)$.
 \end{lemma}
 
 Towards a proof of Lemma \ref{StarCorrectBelowIncorrect},
 fix $\PiOneOmega$ codes $h_1, h_2$
 such that $T=(T^{h_1}(x))^{\Mstar}$ and
-$S=(T^{h_2}(y))^{\Mstar}$. Since $T$ is correctly wellfounded
-and $S$ is incorrectly wellfounded, $(T^{h_1}(x))^{\Mladder[g]}$
+$S=(T^{h_2}(y))^{\Mstar}$ and $(T,h_1,x,\Mstar)$ is correctly wellfounded and 
+$(S,h_2,y,\Mstar)$ is incorrectly wellfounded.
+Then $(T^{h_1}(x))^{\Mladder[g]}$
 is correctly wellfounded and
 $(T^{h_2}(y))^{\Mladder[g]}$
 is incorrectly wellfounded, or illfounded.
