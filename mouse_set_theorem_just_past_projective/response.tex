@@ -1,0 +1,185 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,rotating,enumitem}
+%\usepackage[shortlabels]{enumitem}
+
+\input{mathdefs}
+\DeclareMathOperator{\NSat}{NSat}
+\input{theoremstyles}
+
+%\pagestyle{plain}
+
+\begin{document}
+
+\title{Response to Referee Report for: The Mouse Set Theorem Just Past Projective}
+\author{Mitch Rudominer}
+
+\maketitle
+
+We thank the referee for a thorough review of the paper and great feedback. We have addressed all of the comments.
+Below we enumerate responses to each of the comments.
+
+
+\begin{enumerate} [label=\alph*)]
+\item  \emph{The concept of correctly well-founded trees could have been isolated more clearly, and there could have been a discussion on why it is defined as $\exists h,x$ rather than $\forall h,x$.} Thanks, I have cleaned up the definition of Correctly Wellfounded to more clearly explain the role of $h$ and $x$. See Definition 4.10 and Remark 4.12.
+\end{enumerate}
+
+\begin{enumerate} [label=\arabic*)]
+\item \emph{It would be nice to remind the reader what exactly $n$-small means. This is relevant to the 5th paragraph of page 2.}
+ I have inserted ``Recall the definition of $n$-small...''  in the third paragraph of section 1.
+ 
+ \item  \emph{Remarks 2.2, exactly how these things follow from [Ste83]? Are they stated there, what theorems or lemma must the reader look at?}
+ I have now added a proof sketch.
+ 
+ \item \emph{Is Definition 2.3 correct? Does the formula stay the same for all w or it can change?}
+ The definition is correct as stated. This is the standard way of defining a “$Q$” set. See for example definition 2.4 in “Introduction to Q-Theory” \cite{Q_Theory}. However it can be shown that there is a single definition that works for all $w$. 
+ This can be shown using pure descriptive set-theoretic techniques. But also it actually follows from my paper: With the definition as stated, Theorem 3.6 gives us that  $Q_{\omega+1}\subset \Mladder$. But the proof of Theorem 3.5  ($\Mladder\intersect \R \subset Q_{\omega+1}$) actually gives a single definition that works for all $w$. I have now slightly modified the wording in the proof of Theorem 3.6 to make it clear that we do not need to assume that there is a uniform definition that works for all $w$. We only need that for each $w$ there is some definition. Previously my wording made it seem as if we were using a single definition that worked for all $w$ but we in fact do not need this.
+ 
+ \item \emph{Remark 2.4? Is this a lemma or a proposition? Please give references, or give a short outline of the proof.} I have now deleted the Remarks---I don’t need them. Remark (1) concerns the ability to choose a  single uniform definition that works for all 
+ $w$. That was the topic of your previous comment above–-the fact is true but we don’t need to assume it and in fact it follows from my paper. Remark (2) concerns the fact that if a real is $\SigmaOneOmegaPlusOne$ as a singleton, then it is also 
+ $\SigmaOneOmegaPlusOne$ as a subset of $\omega \times \omega$. This is a very easy fact to see and I now use it directly in the proof Theorem 3.6. Remark (3) is a culturally interesting fact that is unrelated to the paper. I have now moved it up to the end of the paragraph (two paragraphs up) but I reference it in terms of $\Delta^1_3$ instead of $\Delta^1_{\omega+1}$ and I refer the reader to \cite{Q_Theory}.
+ 
+ \item  \emph{Def 3.1, it would help to remind the reader what $n$ small is. For example, is there an extender indexed at 
+ $\gamma_n$, if yes the notation you use is confusing. Is $M\vert\vert \gamma$ (i.e. keep the last extender, I think Steel uses 
+ $M\vert\gamma$ for this). Also, is the $J$ in (3) the same as $\cJ$ in (4), or it is some notation not introduced yet?} 
+  Based on your comment (1) above I reminded the reader of the definition of $n$-small. I have now added a paragraph after definition 3.1 reminding the reader of the distinction between $J^M_{\gamma}$ and $\cJ^M_{\gamma}$. 
+  The least mouse that is not $n$-small is active. So, yes, there is an extender indexed at $\gamma_n$.
+
+  \item \emph{Remarks 3.2, why is (1) true? In (2), what does it mean to say that something is projectively correct? Basically, it wouldn’t hurt to say a few more words about the proofs, it is
+all standard, but people do not know these things.} These are now Remarks 3.3 and I have refactored them. Previously (1) read ``Because we are assuming $\AD^{\LofR}$, $\Mladder$ exists.'' For simplicity I have decided to change the official hypothesis of the paper to $\ZFC + $ ``there exists $\omega$ Woodin cardinals with a measurable cardinal above them all.''
+This hypothesis as well as the consequences of it that we need are now described at the end of Section 1 along with references
+to proofs. For (2), I added definition 3.2 defining several notions of correctness.
+
+\item \emph{Theorem 3.3, what is the hypo? just that $\Mladder$ exists? Same for Theorem 3.4 and 3.5.}
+These are now Theorems 3.4, 3.5, 3.6. I added explicit hypotheses. Also I added two additional paragraphs at the end of the introduction discussing the hypotheses of the paper.
+
+\item \emph{Page 5, the paragraph that starts ``if $z$ is a real...'', what does it mean to say that $z$ is an
+additional predicate? Do we start the constructibility order with $z$? One can also explain
+this in terms of the difference between $L$ and $L[z]$.}  I added the sentence 
+``(So this will be a model of the form $J_{\alpha}[\vec{E},z]$.)'' This is now the top of page 7.
+
+\item  \emph{Page 6, shouldn’t you say something about the $\varphi$ sequence being uniform in $(n,e)$? Isn’t this Moskovakis’ Periodicity Theorems? At any rate, a few words would be nice.} I’m sorry I’m having trouble responding to this. Could you point to the exact line you are talking about and say more about what you want me to say a few more words about? I believe you are
+referring to Definition 4.1. As the text is written I do already write ``uniformly in $n$ and $e$''. Moskovakis’s  second Periodicity Theorem does play an indirect role in this paper. I mention in Remark 2.2 (5) that $\Pi^1_{\omega+1}$ is a scaled point class. 
+
+\item \emph{It says $G^n_e = p[T^n_e]$. What is this? a fact? a claim? Truth?}  I  added some more words: This is part of what it means that $\varphi$ is a scale.
+
+\item \emph{Proof of theorem 3.5, the reader might wonder why $\Mladder$ has a measurable cardinal.} OK I added a short explanation in parentheses.
+
+\item \emph{It might be useful to the reader to note that $T^h$ is building a real and proving that it belongs to each $T^n_{h(n)}$}
+ Ok, I added the following sentence: ``Intuitively, one can think of $T^h$ as building a pair $(x, f)$ where $x$ is a real and $f$
+  is a certificate verifying that $x \in p[T^n_{h(n)} ]$ for all $n\in\omega$.''
+
+ \item \emph{Page 7, $\omega$-sequences of what?} I changed the wording to: ``Our coding of pairs of integers by integers induces a mapping from $\omega^\omega$ to $(\omega^\omega) ^\omega$.'' This is now towards the bottom of page 8.
+
+ \item \emph{Proof of Theorem 3.6, the last sentence of the first paragraph, this sounds like an important fact to note somewhere.}
+ I think you are referring to this statement: ``If all wellfounded $\bPiOneOmega$ trees in $M$ are correctly wellfounded
+then $M$ is $\Sigma^1_{\omega+1}$-correct.'' This is now the proof of Theorem 3.7.
+I changed the sentence to read instead
+``If there are no incorrectly wellfounded $\bPiOneOmega$ trees in $M$
+then $M$ is $\Sigma^1_{\omega+1}$-correct.'' This is really what I wanted to say.
+In this form the sentences is really immediate. An incorrectly wellfounded tree is a witness of a 
+$\Sigma^1_{\omega+1}$ statement that is true in $V$ and false in $M$. So if there are no incorrectly wellfounded trees then there are no such statements and so $M$ is $\Sigma^1_{\omega+1}$-correct.
+
+\item \emph{Just after the proof of Theorem 3.6, should be go through Theorem 3.6.}
+Changed, thank you. (But now it is Theorem 3.7 instead of Theorem 3.6.)
+
+\item \emph{ It seems that the equivalence displayed at the end of ``alternative proof of theorem 3.5''
+needs that if $M\models T^h(x) = T^{\hprime}(\xprime)$ then $T^h(x) = T^{\hprime}(\xprime)$
+which seems to hold as $M$ is
+projectively correct. If I am correct, please make a note of this.} This is now the
+alternate proof of Theorem 3.6. I expanded the explanation there into the Claim 
+at the bottom of page 11, with a proof.
+
+\item \emph{lemma 5.2, what does $\Gamma$-correct mean?}
+You are right. I don’t know how to make sense of $\Gamma$-correct for an arbitrary pointclass $\Gamma$. I changed the text to restrict the statement of the Lemma to 
+$\Gamma = \Sigma^1_n$ and added a note that the Lemma can be generalized to other pointclasses $\Gamma$ for which we can make sense of the notion of $\Gamma$-correct.
+
+\item \emph{the proof of Cor 5.3, the fact that $E$ is projective uses the Harrington-Kechris thingy, right?} It is prima facie projective because if $\varphi$ is a projective norm then 
+``$\varphi(x) = \varphi(y)$'' is projetive by definition.
+
+\item \emph{sketch of the proof of Lemma 5.1, $\gamma_0$ is not a cardinal, you probably meant $\delta_0$.} Thank you. Changed.
+
+\item \emph{Claim 1 on Page 18, can you remind the reader what ``$x$ captures $D$'' means?}
+OK, I have now added Definitions 5.6 - 5.10 (defining captures, end-extends, and semi-proper) and Lemmas 5.11 and 5.12 (reminding the reader of some facts from Stationary Tower forcing that we heavily rely on.)
+
+\item \emph{I don’t see that $D = D_j$
+in the proof of Claim 1 on page 19. Presumably, the least not
+captured dense set for $x_j$ could have smaller. Shouldn’t more bookkeeping be used in
+this argument? Clearly the claim is correct, there are countably many conditions and
+countably many steps, so we can of course do it.} Thank you for catching this. I have 
+substantively reorganized the proof of Lemma 5.5. Now what we do is define a function $\pi$
+from $\omega$ to 
+$\omega \times \omega$ and we define $x_{t+1}$ so that if $\pi(t)=(i,j)$
+ then $x_{t+1}$ captures the the $j$th dense set from $x_i$. This argument is now on page 22.
+
+ \item \emph{Page 20, second paragraph from below. What does it mean to say that there is a comparison theorem for some type of mice? There is a comparison theorem for all mice. Do
+you mean assuming some weak form of iterability?}
+I really just meant the statement that I have restated as Lemma 6.8 later on this same page. I have just removed the sentence that you found confusing.
+
+\item \emph{It is unclear why eliminating the ordinal parameter $\theta$ is important or useful. Can you give some info on this?}
+OK, I have now added some new material to the top of section 7 giving the motivation.
+
+\item \emph{The last section of the paper is unreadable, perhaps consider giving the definition of $n$-iterability or what consequences it might have. You don’t have to produce all the theorem
+or arguments about $n$-iterability, but a quick review would do a lot of good.}
+ I think it was not clear that I was expecting the reader to know some of the material from Section 6 in order to read Section 7. I added a note to this effect at the top of Section 7. You specifically call out the definition of $n$-iterability. That definition and its important properties are given in Section 6, but actually this is not used directly in Section 7. It is the notions of ladder-small and $\Pi^1_{\omega}$ iterability from Section 6 that are used in Section 7.
+
+ \item \emph{ The definition of $S_{n,w}$, is it true that the reals in it all code the same mouse? if so, please make a comment.}
+ What you are saying is true if $|w| < (\omega_1)^{\Mladder}$. I have added Remark 7.5 to this effect.
+
+ \item \emph{Stationary Tower, once in capitals then in lower cases.}
+  Thanks. Changed to lower-case everywhere.
+
+
+\item \emph{What does above $g$ mean?} It’s defined in the last sentence of Definition 7.9.
+
+\item \emph{Please explain the first line of the first paragraph of page 24, recall that correct wellfoundedness is defined for any real parameter, so I suppose there is a lot of correctness
+used in this argument. probably it is better to just isolate a lemma summarizing the
+bottom paragraph on page 12. There are many such spots in the paper that could have
+been isolated and stated more clearly}
+ 
+ I think the sentence you are referring to is now near the top of page 29 and reads ``By Lemma 7.6, all of the $\NSat$ trees of $\Mladder$
+are correctly wellfounded.'' I think this was confusing because it was not clear what I meant by saying that a tree is correctly wellfounded without reference to the $\PiOneOmega$ code and real parameter used to define the tree. To correct this problem I have now added in parentheses  ``(See Remark 4.12 for what it means to say that a tree is correctly or incorrectly wellfounded without reference to a a $\PiOneOmega$-code or real parameter.)'' With this clarification, I think that confusion goes away. 
+Let $T$ be an $\NSat$ tree of $\Mladder$. By definition this means that 
+$T = T^{\Mladder}_{(n,w)}$ for $(n,w) \in \NSat^{\Mladder}$. Lemma 7.6 says that 
+$T^V_{(n,w)}$ is wellfounded which means that 
+$T^{\Mladder}_{(n,w)}$ is correctly wellfounded.
+
+\item \emph{Page 25, the top paragraph, there are two ”and”s.} Thanks. Fixed.
+
+\item \emph{Page 25, the last paragraph, I feel this should have been done much earlier than here.
+Also, this is not too clear. For some $x$ or for all $x$, or are these equivalent? in general,
+it will be nice to talk about the dependence or independence of the concept of correctly
+well-founded on the parameters involved.}
+OK, I added Definition 7.10 and the paragraph above it, and Remark 7.11.
+
+\item  \emph{In the definition of $X^{M,\delta}$, 
+$g \subseteq \Coll$...,the way it is written looks somewhat strange.} Thanks. Fixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+
+
+\bibliographystyle{amsalpha}
+\bibliography{math}
+
+\end{document}
