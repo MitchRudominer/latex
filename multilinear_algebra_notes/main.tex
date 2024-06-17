@@ -1,0 +1,84 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Multilinear Algebra Notes}
+\author{Mitch Rudominer}
+
+\maketitle
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Covariant and Contravariant Tensors}
+
+Let $V$ and $W$ be finite-dimensional vector spaces, 
+$\dim(V)=n$, $\dim(W) = m$. Let $\pi:V\map W$ be linear.
+
+\begin{definition}
+$V^*$, $W^*$ are the dual-spaces of $V$ and $W$ respectively.
+$\pi^*:W^*\map V^*$ is the \emph{adjoint} of $\pi$ defined by
+$\pi^*(\varphi) \cdot v = \varphi \cdot \pi(v)$.
+\end{definition}
+
+\begin{definition}
+Suppose $\cB = \singleton{v_1,\cdots,v_n}$ is a basis for $V$ and
+$\cC=\singleton{w_1,\cdots,w_m}$ is a basis for $W$.
+Then $M^{\pi}_{\cB,\cC}$ is the $n\times m$ matrix of of $\pi$ in
+the two bases:
+
+ For any matrix $A$ we write $A=(a^i_j)$ to mean that $a^i_j$ is the
+ element of $a$ in row $i$, column $j$. 
+
+ Let $M^{\pi}_{\cB,\cC}=A=(a^i_j)$.
+Then $a^i_j$ is defined by
+$$\pi(c^jv_j) = a^i_j c^j w_i$$
+for $1\leq i \leq n$, $1\leq j \leq m$.
+
+Here and in the sequel we are using \emph{index notation} from physics.
+
+\end{definition}
+
+\begin{lemma}
+Suppose $\cB = \singleton{v_1,\cdots,v_n}$ is a basis for $V$ and
+$\cC=\singleton{w_1,\cdots,w_m}$ is a basis for $W$. Let
+$\hat{\cB} = \singleton{v^1,\cdots,v^n}$ and
+$\hat{\cC} = \singleton{w^1,\cdots,w^m}$ be the corresponding
+dual bases. So $v^i \cdot v_j = \delta_{ij}$ and $w^i \cdot w_j = \delta_{ij}$
+where $\delta_{ij}$ is the Kronecker delta.
+
+Let $A = M^{\pi}_{\cB,\cC} =(a^i_j)$.
+
+Then $M^{\pi^*}_{\hat{\cC},\hat{\cB}}  = \transpose{A}$.
+
+But we must be careful with the notation here!
+
+Because we write vectors as column vectors and multiply them by matrices on the left
+and we write co-vectors as row-vectors and multiply them by matrices on the right, it
+is actually $A$ itself and not $\transpose{A}$ that we will use to represent
+$M^{\pi^*}_{\hat{\cC},\hat{\cB}}$.
+
+
+In index notation, we write the components of vectors using upper indices and the components
+of covectors using lower indices. So when representing $\pi$, $A$ acts as
+$c^j \to a^i_jc^j$ but when representing $\pi^*$, $A$ acts as $d_k \to a^k_j d_k$.
+\end{lemma}
+\begin{proof}
+Let $v=c^j v_j$ and let $\varphi = d_k w^k$. Then $\pi^*(\varphi)\cdot v = \varphi \cdot \pi(v)
+= d_k w^k \cdot a^i_j c^j w_i = d_k a^k_j c ^ j$. Therefore $\pi^*(\varphi) = d_k a^k_j v^j$.
+\end{proof}
+
+
+\bibliographystyle{amsalpha}
+
+\bibliography{math}
+
+\end{document}
