@@ -26,6 +26,40 @@ $\dim(V)=n$, $\dim(W) = m$. Let $\pi:V\map W$ be linear.
 Let $\cB = \singleton{v_1,\cdots,v_n}$ be a basis for $V$ and
 $\cC=\singleton{w_1,\cdots,w_m}$ a basis for $W$.
 
+We will use \emph{index notation} from physics in which an expression
+like $a^i_j b^j$ means either the $m$-tuple 
+$\sequence{\sum_{j=1}^n(a^i_j b^j)}{i=1\cdots m}$
+or the number $\sum_{j=1}^n(a^i_j b^j)$ depending on the context. 
+And $n$ and $m$ are also derived from the context.
+
+The letter $\delta$ with two indices, upper or lower, will always mean the Kronecker delta. So for example $\delta^i_j$ equals 1 if $i=j$ and equals 0 if $i\neq j$. 
+As above ``$\delta^i_j$" might refer to a single number or a 2-dimensional array
+of numbers indexed by $i$ an $j$, depending on the context. In the case that
+$\delta^i_j$ refers to a square matrix, then, it is the identity matrix.
+
+
+\begin{definition}
+ For any matrix $A$ we write $A=(a^i_j)$ to mean that $a^i_j$ is the
+ element of $a$ in row $i$, column $j$. 
+\end{definition}
+
+
+\begin{definition}
+$M^{\pi}_{\cB,\cC}$ is the $m\times n$ matrix of $\pi$ 
+relative to the two bases:
+
+ Letting $M^{\pi}_{\cB,\cC}=A=(a^i_j)$,
+$a^i_j$ is defined by
+$$\pi(c^jv_j) = a^i_j c^j w_i$$
+for $1\leq i \leq m$, $1\leq j \leq n$.
+
+In particular we have
+$$\pi(v_j) = a^i_j  w_i$$
+for $1\leq i \leq m$, $1\leq j \leq n$,
+so that $a^i_j$ is the $i$-th component in the $\cC$-representation of the
+image under $\pi$ of $v_j$.
+\end{definition}
+
 \begin{definition}
 $V^*$, $W^*$ are the dual-spaces of $V$ and $W$ respectively.
 $\pi^*:W^*\map V^*$ is the \emph{adjoint} of $\pi$ defined by
@@ -35,28 +69,6 @@ $\pi^*(\varphi) \cdot v = \varphi \cdot \pi(v)$.
 Note that above and going forward, if
 $\varphi$ is a covector and $v$ is a vector we write $\varphi(v)$
 as $\varphi \cdot v$.
-
-\begin{definition}
- For any matrix $A$ we write $A=(a^i_j)$ to mean that $a^i_j$ is the
- element of $a$ in row $i$, column $j$. 
-\end{definition}
-
-
-We will use \emph{index notation} from physics in which an expression
-like $a^i_j b^j$ means $\sum_j(a^i_j b^j)$.
-
-The letter $\delta$ with two indices, upper or lower, will always mean the Kronecker delta. So for example $\delta^i_j$ equals 1 if $i=j$ and equals 0 if $i\neq j$. 
-
-\begin{definition}
-$M^{\pi}_{\cB,\cC}$ is the $n\times m$ matrix of $\pi$ in
-the two bases:
-
-
- Letting $M^{\pi}_{\cB,\cC}=A=(a^i_j)$,
-$a^i_j$ is defined by
-$$\pi(c^jv_j) = a^i_j c^j w_i$$
-for $1\leq i \leq n$, $1\leq j \leq m$.
-\end{definition}
 
 Let
 $\hat{\cB} = \singleton{v^1,\cdots,v^n}$ and
@@ -86,6 +98,16 @@ Let $v=c^j v_j$ and let $\varphi = d_k w^k$. Then $\pi^*(\varphi)\cdot v = \varp
 = d_k w^k \cdot a^i_j c^j w_i = d_k a^k_j c ^ j$. Therefore $\pi^*(\varphi) = d_k a^k_j v^j$.
 \end{proof}
 
+\begin{remarks}
+The above results are summarized here:
+\begin{enumerate}
+\item $v_j \mapsto a^i_j w_i$ (single vector) defines $\pi$ on  $\cB$ and $\cC$.
+\item $c^j \mapsto a^i_j c ^j$ ($n$-tuple of numbers) ($\cB$ - $\cC$)-matrix of $\pi$.
+\item $w^i \mapsto a^i_j v^j$ (single covector) defines $\pi^*$ on $\hat{\cC}$ and $\hat{\cB}$.
+\item $d_i \mapsto a^i_j d_i$ ($m$-tuple of numbers) ($\hat{\cC}$ - $\hat{\cB}$)-matrix of $\pi^*$.
+\end{enumerate}
+\end{remarks}
+
 \begin{corollary}
 Suppose $n=m$ and $\pi$ is a linear isomorphism. Then
 $(\pi^*)^{-1}:V^* \map W^*$ is defined
@@ -109,16 +131,6 @@ So the above corollary can be stated like this:
 If $\pi(c^j v_j) = a^i_j c^j w_i$, then
 $(\pi^*)^{-1} (d_i v^i) = \atwiddle^i_j d_i w^j$.
 
-\begin{proof}
-Let $\varphi = d_i v^i$ and let $v=c^k v_k$.
-Then 
-
-$$\atwiddle^i_j d_i w^j \cdot a^l_k c^k w_l = 
-\atwiddle^i_j d_i  a^j_k c^k =
-\delta^i_k d_i c^k =
-d_i c^i = \varphi \cdot v = (\pi^*)^{-1}(\varphi) \cdot \pi(v)$$
-
-\end{proof}
 
 \begin{corollary}
 Suppose that not only is $\pi$ a linear isomorphism but that it preserves
