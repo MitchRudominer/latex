@@ -20,17 +20,29 @@
 
 \section{Covariant and Contravariant Tensors}
 
+We study covariant and contravariant tensors and explain the meanings of those terms.
+
+\subsection{Index Notation}
+
 Let $V$ and $W$ be finite-dimensional vector spaces, 
 $\dim(V)=n$, $\dim(W) = m$. Let $\pi:V\map W$ be linear.
 
 Let $\cB = \singleton{v_1,\cdots,v_n}$ be a basis for $V$ and
 $\cC=\singleton{w_1,\cdots,w_m}$ a basis for $W$.
 
-We will use \emph{index notation} from physics in which an expression
+We will use \emph{index notation} or \emph{Einstein notation}
+from physics in which variables representing an indexed set of numbers or other objects will
+be decorated with indices that may be either upper (superscript) or lower (subscript) and
+an expression
 like $a^i_j b^j$ means either the $m$-tuple 
 $\sequence{\sum_{j=1}^n(a^i_j b^j)}{i=1\cdots m}$
 or the number $\sum_{j=1}^n(a^i_j b^j)$ depending on the context. 
 And $n$ and $m$ are also derived from the context.
+
+\begin{itemize}
+\item Paired upper and lower variables are bound and indicate summation over an implicit range of indices
+\item Unpaired variables are free and indicate either a single index or an implicit range of indices
+\end{itemize}
 
 The letter $\delta$ with two indices, upper or lower, will always mean the Kronecker delta. So for example $\delta^i_j$ equals 1 if $i=j$ and equals 0 if $i\neq j$. 
 As above ``$\delta^i_j$" might refer to a single number or a 2-dimensional array
@@ -40,8 +52,28 @@ $\delta^i_j$ refers to a square matrix, then, it is the identity matrix.
 
 \begin{definition}
  For any matrix $A$ we write $A=(a^i_j)$ to mean that $a^i_j$ is the
- element of $a$ in row $i$, column $j$. 
+ element of $A$ in row $i$, column $j$. 
 \end{definition}
+
+\begin{remark}
+ So the upper index is the row and the lower index is the column. Commensurate with this
+ when an $n$-tuple of numbers or objects is written with an upper index like $a^i$ we
+ will think of it as a \emph{column} vector and when written with a lower index like $a_j$
+ we will think of it as a \emph{row} vector.
+
+Different types of one-dimensional arrays of objects will be written with either upper or
+lower indices. We have seen two examples already above and we will see more below. We
+summarize some of them here.
+\begin{itemize}
+\item Basis vectors are indexed with lower indices like $v_i$ and $w_i$. 
+\item The $n$-tuple of components of a single vector in a given basis will be written using upper indices like $a^i$.
+Therefore we are thinking of each vector as a column and the list of all basis vectors as a row.
+\item When a vector space is fixed by the context then we will think of the elements of its dual space as \emph{covectors}.
+Basis covectors are indexed with upper indices like $v^i$ and $w^i$.
+\item The $n$-tuple of components of a single covector in a given basis will be written using lower indices like $a_i$.
+Therefore we are thinking of each covector as a row and the list of all basis covectors as a column.
+\end{itemize}
+\end{remark}
 
 
 \begin{definition}
@@ -56,8 +88,7 @@ for $1\leq i \leq m$, $1\leq j \leq n$.
 In particular we have
 $$\pi(v_j) = a^i_j  w_i$$
 for $1\leq i \leq m$, $1\leq j \leq n$,
-so that $a^i_j$ is the $i$-th component in the $\cC$-representation of the
-image under $\pi$ of $v_j$.
+so that $a^i_j$ is the $i$-th component in the $\cC$-representation of $\pi(v_j)$.
 \end{definition}
 
 \begin{definition}
@@ -98,15 +129,6 @@ Let $v=c^j v_j$ and let $\varphi = d_k w^k$. Then $\pi^*(\varphi)\cdot v = \varp
 = d_k w^k \cdot a^i_j c^j w_i = d_k a^k_j c ^ j$. Therefore $\pi^*(\varphi) = d_k a^k_j v^j$.
 \end{proof}
 
-\begin{remarks}
-The above results are summarized here:
-\begin{enumerate}
-\item $v_j \mapsto a^i_j w_i$ (single vector) defines $\pi$ on  $\cB$ and $\cC$.
-\item $c^j \mapsto a^i_j c ^j$ ($n$-tuple of numbers) ($\cB$ - $\cC$)-matrix of $\pi$.
-\item $w^i \mapsto a^i_j v^j$ (single covector) defines $\pi^*$ on $\hat{\cC}$ and $\hat{\cB}$.
-\item $d_i \mapsto a^i_j d_i$ ($m$-tuple of numbers) ($\hat{\cC}$ - $\hat{\cB}$)-matrix of $\pi^*$.
-\end{enumerate}
-\end{remarks}
 
 \begin{corollary}
 Suppose $n=m$ and $\pi$ is a linear isomorphism. Then
@@ -118,10 +140,8 @@ Again, because we write covectors as row vectors (equivalently we write the comp
 
 \end{corollary}
 
-From now on assume $n=m$ and $\pi$ is a linear isomorphism. 
-
 We will sometimes use the following notation:
-If $A =(a^i_j)$ we will write $(\atwiddle^i_j)$ to implicitly
+If $A =(a^i_j)$ is an invertable square matrix, we will write $(\atwiddle^i_j)$ to implicitly
 mean $A^{-1} = (\atwiddle^i_j)$.
 
 Thus we have $a^i_j \atwiddle^j_k = \delta^i_k$.
@@ -129,12 +149,26 @@ Thus we have $a^i_j \atwiddle^j_k = \delta^i_k$.
 So the above corollary can be stated like this:
 
 If $\pi(c^j v_j) = a^i_j c^j w_i$, then
-$(\pi^*)^{-1} (d_i v^i) = \atwiddle^i_j d_i w^j$.
+$(\pi^*)^{-1} (c_i v^i) = \atwiddle^i_j c_i w^j$.
+
+\begin{remarks}
+The above results are summarized here:
+\begin{enumerate}
+\item $v_j \mapsto a^i_j w_i$ (single vector) defines $\pi$ on  $\cB$ and $\cC$.
+\item $c^j \mapsto a^i_j c ^j$ ($n$-tuple of numbers) ($\cB$ - $\cC$)-matrix of $\pi$.
+\item $w^i \mapsto a^i_j v^j$ (single covector) defines $\pi^*$ on $\hat{\cC}$ and $\hat{\cB}$.
+\item $d_i \mapsto a^i_j d_i$ ($m$-tuple of numbers) ($\hat{\cC}$ - $\hat{\cB}$)-matrix of $\pi^*$.
+\item $c_i \mapsto \atwiddle^i_j c_i$ ($n=m$-tuple of numbers) ($\hat{\cB}$ - $\hat{\cC}$)-matrix of $(\pi^*)^{-1}$.
+\end{enumerate}
+\end{remarks}
+
 
 
 \begin{corollary}
 Suppose that not only is $\pi$ a linear isomorphism but that it preserves
-the inner products induced by the two bases.
+the inner products induced by the two bases. For example we might have
+started with $V$ and $W$ being inner product spaces and $\cB$ and $\cC$
+being orthonormal bases.
 
 Letting $A = M^{\pi}_{\cB,\cC}$ we have that
 $M^{(\pi^*)^{-1}}_{\cB,\cC} = A$.
@@ -144,17 +178,195 @@ $\pi$ preserves the inner product iff $\transpose{A} = A^{-1}$.
 \end{proof}
 
 \begin{note}
-So the dual map in the dual bases has the same matrix as the
+So when $\pi$ preserves inner product then
+the dual map in the dual bases has the same matrix as the
 regular map in the regular bases.
 Awkwardly, because we represent covectors using row vectors we would
-need to use $\transpose{A}$ instead of $A$ to represent the dual map.
+need to use $\transpose{A}$ instead of $A$ to represent the dual map
+and then we would need to introduce another letter for the
+components of $\transpose{A}$.
+To avoid this awkwardness we might stop making the distinction between
+the spaces and their duals, using the natural isomorphisms given by
+the inner products, and identify $(\pi^*)^{-1}$ with $\pi$.
 
-Another way to look at it is this: Let $v,w\in\R^n$. Then
+
+In this case if $v,w \in V$, $v=(c^i)$, $w=(e^i)$ in the basis $\cB$,
+then 
+$c_i e^i$ is interpretted as the dot product computation of the inner product $v \cdot w $,
+so that implicitly we are defining $c_i = c^i$.
+
+The following computation is related to the above corrolary: Let $v,w\in\R^n$. Then
 $$\transpose{(Av)}Aw = \transpose{v}\transpose{A}Aw = \transpose{v}w$$
 since $\transpose{A}A = I$.
+
+It is akward to try to write the above computation using index notation. One is
+tempted to write $a^j_i$ to mean the transpose of $a^i_j$, but this is a bad
+idea because the choice of dummy variables should not have significance.
+
 \end{note}
 
+\subsection{Change of Basis}
 
+We now specialize the above discussion to the case of a \emph{change of basis.}
+
+Let $\pi: V \map V$ be a linear automorphism. Let $\cB^{\prime} = \singleton{u_1,\cdots,u_n}$
+where $u_i = \pi(v_i)$. We will call $\cB$ the \emph{old basis} and $\cB^{\prime}$ the
+\emph{new basis.}
+
+Let $\id:V\map V$ be the identity function.
+
+\begin{definition}
+We temporarily introduce the following terminology.
+
+\begin{itemize}
+\item $M^{\id}_{\cB,\cB^{\prime}}$ is the \emph{forward-translation matrix}.
+\item $M^{\id}_{\cB^{\prime},\cB}$ is the \emph{backwards-translation matrix}.
+\item $M^{\pi}_{\cB,\cB}$ is the \emph{change-of-basis matrix}.
+\end{itemize}
+\end{definition}
+
+\begin{lemma}
+$M^{\pi}_{\cB,\cB} = M^{\id}_{\cB^{\prime},\cB}$. That is, the change-of-basis
+matrix is also the backwards-translation matrix.
+\end{lemma}
+\begin{proof}
+Clearly $M^{\pi}_{\cB,\cB^{\prime}} = \mathrm{I}$.
+Since $\pi = \pi \circ \id$ we have
+$$M^{\pi}_{\cB,\cB} = M^{\pi}_{\cB,\cB^{\prime}} \times M^{\id}_{\cB^{\prime},\cB} 
+= \mathrm{I} \times M^{\id}_{\cB^{\prime},\cB} =  M^{\id}_{\cB^{\prime},\cB}.$$
+\end{proof}
+
+\begin{corollary}
+$M^{\id}_{\cB,\cB^{\prime}} = \left(M^{\pi}_{\cB,\cB}\right)^{-1}$. That is, the forward-translation matrix
+is the inverse of the change-of-basis matrix.
+\end{corollary}
+\begin{proof}
+Clearly $M^{\id}_{\cB,\cB^{\prime}} = \left(M^{\id}_{\cB^{\prime},\cB}\right)^{-1}$.
+\end{proof}
+
+Let $(\pi^*)^{-1}: V^* \map V^*$ be the dual change-of-basis transformation. 
+Let $\hat{\cB}^{\prime} = \singleton{u^1,\cdots,u^n}$
+where $u^i = (\pi^*)^{-1}(v^i)$. We will call $\hat{\cB}$ the \emph{old dual basis} and $\hat{\cB}^{\prime}$ the
+\emph{new dual basis.}
+
+\begin{remarks}
+\label{main-remarks}
+The the results of this and the previous subsection are summarized here.
+Let $A = (a^i_j) = M^{\pi}_{\cB,\cB}$ be the change-of-basis matrix. Let $v = c^i v_i \in V$.
+\begin{enumerate}
+\item $u_j = a^i_j v_i$ is $\pi$, the change-of-basis transformation. [$\transpose{A}$]
+\item $d^i = a^i_j c^j$ gives $\pi$ in old coordinates. [$A$]
+\item $c^i = a^i_j e^j$ is the backward-translation from new coordinates to old. [$A$]
+\item $e^i = \atwiddle^i_j c^j$ is the forward-translation from old coordinates to new. [$A^{-1}$]
+
+\item $u^i = \atwiddle^i_j v^j$ is $(\pi^*)^{-1}$, the dual change-of-basis transformation. $[A^{-1}$]
+\item $d_j = \atwiddle^i_j c_i$ gives $(\pi^*)^{-1}$ in old coordinates [$(\transpose{A})^{-1}$]
+\item $e_j = a^i_j c_i$ is the forward-dual-translation. [$\transpose{A}$]
+\end{enumerate}
+\end{remarks}
+
+\begin{remark}
+We will use the above remarks to explain the origin of the terminology \emph{covariant} and \emph{contravariant}.
+\begin{itemize}
+\item In general, objects whose components are indexed with lower indices are called \emph{covariant} and
+objects whose components are indexed with upper indices are called \emph{contravariant.}
+\item The origin of this terminology seems to be items (1), (4), and (7) above. 
+\item Comparing item (1) and item (7)
+we can say that ``the components of covectors transform in the same way as the basis vectors" so that
+covectors ``co-vary with the change of basis". 
+\item Comparing item (1) and item (4), people sometimes say that
+``the components of vectors transform in the opposite way as the basis vectors" so that vectors are ``contra-variant."
+\item The above bullet is of course imprecise as it is hard to see why $A^{-1}$ is the ``opposite" of  $\transpose{A}$.
+A more precise opposite is comparing item (2) and item (4). It is easy to see why 
+$A^{-1}$ is the ``opposite" of $A$.
+\item For example,
+if the basis vectors rotate counter-clockwise by 45 degrees, then the coordinates of $v$ rotate clockwise by 45 degrees.
+If the basis vectors are doubled in length, then the coordinates of $v$ are cut in half.
+\item Notice that the translation matrix for co-vectors is the inverse transpose of the translation matrix
+for vectors.
+\item It follows that if the change of basis is orthogonal, then the translation matrix for
+vectors and covectors is the same. For example if the basis vectors are rotated 45 degrees counter-clockwise then
+then the coordinates of a dual vector, just like the coordinates of a vector, are rotated 45 degrees clockwise.
+\item So focusing on orthogonal transformations is not a good way to motivate the terms
+covariant and contravaraint.
+\item But consider instead symmetric transformations where $\transpose{A} = A$. For example consider
+the change of basis in $\R^2$ in which the first basis vector is multiplied by 3 and the second
+basis vector is multiplied by 5. Consider what happens to the coordinates of vectors and covectors.
+For vectors: the first coordinate is divided by 3 and the second coordinate is divided by 5.
+For covectors: the first coordinate is multiplied by 3 and the second coordinate is multiplied by 5.
+This example helps motivate the terms covariant and contravariant.
+\end{itemize}
+\end{remark}
+
+\subsection{The Chain Rule}
+Let $U_1$ and $U_2$ be two open subsets of $\R^n$. Let $F:U_1 \to U_2$ be a diffeomorphism.
+We write $(y^1,\cdots y^n) = F(x^1, \cdots, x^n)$.
+We will think of this as the change-of-variable transformation between two different coordinate patches
+on a manifold $M$. Fix a point $p\in M$ in the intersection of the domain of the two patches. Let 
+$p_1 \in U_1$ and $p_2 = F(p_1) \in U_2$ be the corresponding points in $U_1$ and $U_2$.
+We will focus on the derivative $DF$ at $p_1$. 
+We will think of $DF:\R^n\map\R^n$ as the change-of-basis transformation for
+$T_p(M)$, the tangent space at $p$. In this section we demonstrate that the
+chain rule for partial derivatives yields the same results as the previous section.
+
+Let $f$ be a smooth function on $M$. We will use the same name $f$ for the corresponding functions on 
+$U_1$ and $U_2$.
+
+The chain rule gives: 
+$$\frac{\partial f}{\partial y^j} = \frac{\partial f}{\partial x^i}\frac{\partial x^i}{\partial y^j}.$$
+
+Here we are extending the index notation to expressions involving derivatives and considering indices in the numerator as upper indices and indices in the denominator as lower indices.
+
+Since the above is true for arbitrary $f$ we conclude that
+
+\begin{equation}
+\label{chain-rule-1}
+\partial y_j = \frac{\partial x^i}{\partial y^j} \partial x_i.
+\end{equation}
+
+Here we are writing $\partial y_j$ as an abbreviation for $\frac{\partial}{\partial y^j}$,
+and $\partial x_i$ as an abbreviation for $\frac{\partial}{\partial x^i}$.
+$\singleton{\partial x_i}$ and $\singleton{\partial y_i}$ are the old and new basis
+vectors for $T_p(M)$. We are extending the index notation to these abbreviations
+and considering the indices on $\partial x_i$ and $\partial y_j$ as lower indices (which
+is consistent with them being the indices of basis vectors.)
+
+Notice then that equation \ref{chain-rule-1} corresponds to item (1) in Remarks \ref{main-remarks}:
+
+\begin{itemize}
+\item $u_j = a^i_j v_i$ is $\pi$, the change-of-basis transformation. [$\transpose{A}$].
+\end{itemize}
+
+Thus we using $A = (a^i_j)$ where $a^i_j = \frac{\partial x^i}{\partial y_j}$.
+
+Notice that $DF = (\frac{\partial y^i}{\partial x^j}) = A^{-1}$.
+
+By (4) from Remarks \ref{main-remarks}:
+\begin{itemize}
+\item $e^i = \atwiddle^i_j c^j$ is the forward-translation from old coordinates to new. [$A^{-1}$]
+\end{itemize}
+
+we have that if $v = c^j \partial x_j$ is a vector in $T_p(M)$ then
+$v = e^i \partial y_i$ where $e^i = \frac{\partial y^i}{\partial x^j} c^j$.
+
+\begin{remarks}
+The the results of this subsection are summarized here. The items are numbered in parallel with
+the corresponding items in Remarks \ref{main-remarks}.
+\begin{enumerate}
+\item $\partial y_j = \frac{\partial x^i}{\partial y^j} \partial x_i$, the change-of-basis transformation for tangent vectors
+\item -- omitted --
+\item $c^i = \frac{\partial x^i}{\partial y^j} e^j$ is the backward-translation from new tangent vector coordinates to old.
+\item $e^i = \frac{\partial y^i}{\partial x^j} c^j$ is the forward-translation from old tangent coordinates to new.
+
+\item $\deriv y^i = \frac{\partial y^i}{\partial x^j} \deriv x^j$ is the dual change-of-basis transformation for one forms. 
+\item -- omitted --
+\item $e_j = \frac{\partial x^i}{\partial y^j} c_i$ is the forward-translation from old one form coordinates
+to new.
+\end{enumerate}
+\end{remarks}
+
+
+ 
 \bibliographystyle{amsalpha}
 
 \bibliography{math}
