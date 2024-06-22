@@ -22,14 +22,13 @@
 
 We study covariant and contravariant tensors and explain the meanings of those terms.
 
-\subsection{Index Notation}
-
 Let $V$ and $W$ be finite-dimensional vector spaces, 
 $\dim(V)=n$, $\dim(W) = m$. Let $\pi:V\map W$ be linear.
 
 Let $\cB = \singleton{v_1,\cdots,v_n}$ be a basis for $V$ and
 $\cC=\singleton{w_1,\cdots,w_m}$ a basis for $W$.
 
+\subsection{Index Notation}
 We will use \emph{index notation} or \emph{Einstein notation}
 from physics in which variables representing an indexed set of numbers or other objects will
 be decorated with indices that may be either upper (superscript) or lower (subscript) and
@@ -75,21 +74,37 @@ Therefore we are thinking of each covector as a row and the list of all basis co
 \end{itemize}
 \end{remark}
 
+We now want to define the matrix of a linear transformation relative to two bases.
+Since we want this definition to apply to several different transformations we temporarily
+move away from our fixed transformation $\pi$ and we temporarily choose to \emph{not} use index notation.
 
 \begin{definition}
+Let $X$ and $Y$ be finite-dimensional vector spaces, 
+$\dim(X)=n$, $\dim(Y) = m$. Let $\sigma:X\map Y$ be linear.
+Let $\cE = \singleton{x_1,\cdots,x_n}$ be a basis for $X$ and
+$\cF=\singleton{y_1,\cdots,y_m}$ a basis for $Y$.
+Then $M^{\sigma}_{\cE,\cF}$ is the $m\times n$ matrix of $\sigma$ 
+relative to the two bases:
+Letting $M^{\sigma}_{\cE,\cF}=A=(a^i_j)$,
+$a^i_j$ is defined by the following condition:
+If $x\in X$ with $x=\sum_{j=1}^n c^j x_j$, and if $y=\sigma(x) = \sum_{i=1}^m d^i y_i$, then
+for $i = 1 \cdots m$, $$d^i = \sum_{j=1}^n a^i_j c^j.$$
+\end{definition}
+
+Now we rephrase the above definition for the case of our fixed transformation $\pi$, using index notation.
+
 $M^{\pi}_{\cB,\cC}$ is the $m\times n$ matrix of $\pi$ 
 relative to the two bases:
 
  Letting $M^{\pi}_{\cB,\cC}=A=(a^i_j)$,
-$a^i_j$ is defined by
+$a^i_j$ is defined byf
 $$\pi(c^jv_j) = a^i_j c^j w_i$$
 for $1\leq i \leq m$, $1\leq j \leq n$.
 
 In particular we have
 $$\pi(v_j) = a^i_j  w_i$$
-for $1\leq i \leq m$, $1\leq j \leq n$,
+for $1\leq j \leq n$,
 so that $a^i_j$ is the $i$-th component in the $\cC$-representation of $\pi(v_j)$.
-\end{definition}
 
 \begin{definition}
 $V^*$, $W^*$ are the dual-spaces of $V$ and $W$ respectively.
@@ -106,6 +121,16 @@ $\hat{\cB} = \singleton{v^1,\cdots,v^n}$ and
 $\hat{\cC} = \singleton{w^1,\cdots,w^m}$ be the corresponding
 dual bases for $V^*$ and $W^*$ respectively. 
 So $v^i \cdot v_j = \delta^i_j$ and $w^i \cdot w_j = \delta^i_j$.
+
+\begin{remark}
+Once a basis for a vector space has been fixed,
+we can name vectors using $n$-tuples of numbers and this implicitly refers to the vector
+with those coordinates in the fixed basis. Along with our convention on the meaning
+of unbound indices this means that the expression $c^i$ can refer to the vector $c^i v_i$
+and the expression $c_i$ can refer to the covector $c_i v^i$. As a reminder in some
+contexts $c_i$ and $c^i$ might refer to a single number if we are thinking of $i$ as a fixed
+index.
+\end{remark}
 
 \begin{lemma}
 Let $A = M^{\pi}_{\cB,\cC} =(a^i_j)$.
@@ -178,36 +203,36 @@ $\pi$ preserves the inner product iff $\transpose{A} = A^{-1}$.
 \end{proof}
 
 \begin{note}
-So when $\pi$ preserves inner product then
+So when $\pi$ preserves the inner product then
 the dual map in the dual bases has the same matrix as the
 regular map in the regular bases.
 Awkwardly, because we represent covectors using row vectors we would
-need to use $\transpose{A}$ instead of $A$ to represent the dual map
-and then we would need to introduce another letter for the
-components of $\transpose{A}$.
+need to use $\transpose{A}$ instead of $A$ to represent the dual map.
+But then in order to use index notation in which a covector is written like $c_i$
+we would need to introduce another letter for the
+components of $\transpose{A}$. (One is
+tempted to write $a^j_i$ to mean the transpose of $a^i_j$, but this is a bad
+idea because the choice of dummy variables should not have significance.)
+
 To avoid this awkwardness we might stop making the distinction between
-the spaces and their duals, using the natural isomorphisms given by
+$V$ and $V^*$, using the natural isomorphisms given by
 the inner products, and identify $(\pi^*)^{-1}$ with $\pi$.
 
 
 In this case if $v,w \in V$, $v=(c^i)$, $w=(e^i)$ in the basis $\cB$,
 then 
-$c_i e^i$ is interpretted as the dot product computation of the inner product $v \cdot w $,
-so that implicitly we are defining $c_i = c^i$.
+$c_i e^i$ is interpretted as the dot product computation of the inner product $v \cdot w $.
 
-The following computation is related to the above corrolary: Let $v,w\in\R^n$. Then
+It is less awkward to capture the situation using standard matrix notation instead of index notation:
+ Let $v,w\in\R^n$. Then
 $$\transpose{(Av)}Aw = \transpose{v}\transpose{A}Aw = \transpose{v}w$$
 since $\transpose{A}A = I$.
-
-It is akward to try to write the above computation using index notation. One is
-tempted to write $a^j_i$ to mean the transpose of $a^i_j$, but this is a bad
-idea because the choice of dummy variables should not have significance.
-
 \end{note}
 
 \subsection{Change of Basis}
 
 We now specialize the above discussion to the case of a \emph{change of basis.}
+So switch to assuming $W=V$ (and so $m=n$.) Also switch to assuming that $\cC = \cB$.
 
 Let $\pi: V \map V$ be a linear automorphism. Let $\cB^{\prime} = \singleton{u_1,\cdots,u_n}$
 where $u_i = \pi(v_i)$. We will call $\cB$ the \emph{old basis} and $\cB^{\prime}$ the
@@ -251,17 +276,18 @@ where $u^i = (\pi^*)^{-1}(v^i)$. We will call $\hat{\cB}$ the \emph{old dual bas
 
 \begin{remarks}
 \label{main-remarks}
-The the results of this and the previous subsection are summarized here.
-Let $A = (a^i_j) = M^{\pi}_{\cB,\cB}$ be the change-of-basis matrix. Let $v = c^i v_i \in V$.
+The results of this and the previous subsection are summarized here.
+Let $A = (a^i_j) = M^{\pi}_{\cB,\cB}$ be the change-of-basis matrix. Let $v = c^i v_i = e^i u_i\in V$.
+Let $\varphi = c_i v^i = e_i u^i \in V^*$. Let $\pi(v) = d^i v_i$. Then
 \begin{enumerate}
-\item $u_j = a^i_j v_i$ is $\pi$, the change-of-basis transformation. [$\transpose{A}$]
-\item $d^i = a^i_j c^j$ gives $\pi$ in old coordinates. [$A$]
-\item $c^i = a^i_j e^j$ is the backward-translation from new coordinates to old. [$A$]
-\item $e^i = \atwiddle^i_j c^j$ is the forward-translation from old coordinates to new. [$A^{-1}$]
-
-\item $u^i = \atwiddle^i_j v^j$ is $(\pi^*)^{-1}$, the dual change-of-basis transformation. $[A^{-1}$]
-\item $d_j = \atwiddle^i_j c_i$ gives $(\pi^*)^{-1}$ in old coordinates [$(\transpose{A})^{-1}$]
-\item $e_j = a^i_j c_i$ is the forward-dual-translation. [$\transpose{A}$]
+\item $u_j = a^i_j v_i$ new basis as a linear combination of the old [$\transpose{A}$]
+\item $d^i = a^i_j c^j$ change of basis transformation in old coordinates. [$A$]
+\item $c^i = a^i_j e^j$ backward-translation: new coordinates to old. [$A$]
+\item $e^i = \atwiddle^i_j c^j$ forward-translation: old coordinates to new. [$A^{-1}$]
+\item $u^i = \atwiddle^i_j v^j$ new dual basis as linear comb. of old $[A^{-1}$]
+\item $d_j = \atwiddle^i_j c_i$ dual change of basis in old coordinates [$(\transpose{A})^{-1}$]
+\item $c_j = \atwiddle^i_j e_i$ backward-dual-translation [$(\transpose{A})^{-1}$]
+\item $e_j = a^i_j c_i$ forward-dual-translation. [$\transpose{A}$]
 \end{enumerate}
 \end{remarks}
 
@@ -270,8 +296,8 @@ We will use the above remarks to explain the origin of the terminology \emph{cov
 \begin{itemize}
 \item In general, objects whose components are indexed with lower indices are called \emph{covariant} and
 objects whose components are indexed with upper indices are called \emph{contravariant.}
-\item The origin of this terminology seems to be items (1), (4), and (7) above. 
-\item Comparing item (1) and item (7)
+\item The origin of this terminology seems to be items (1), (4), and (8) above. 
+\item Comparing item (1) and item (8)
 we can say that ``the components of covectors transform in the same way as the basis vectors" so that
 covectors ``co-vary with the change of basis". 
 \item Comparing item (1) and item (4), people sometimes say that
@@ -305,7 +331,7 @@ We will think of this as the change-of-variable transformation between two diffe
 on a manifold $M$. Fix a point $p\in M$ in the intersection of the domain of the two patches. Let 
 $p_1 \in U_1$ and $p_2 = F(p_1) \in U_2$ be the corresponding points in $U_1$ and $U_2$.
 We will focus on the derivative $DF$ at $p_1$. 
-We will think of $DF:\R^n\map\R^n$ as the change-of-basis transformation for
+We will consider how $DF:\R^n\map\R^n$ relates to the change-of-basis transformation for
 $T_p(M)$, the tangent space at $p$. In this section we demonstrate that the
 chain rule for partial derivatives yields the same results as the previous section.
 
@@ -334,36 +360,51 @@ is consistent with them being the indices of basis vectors.)
 Notice then that equation \ref{chain-rule-1} corresponds to item (1) in Remarks \ref{main-remarks}:
 
 \begin{itemize}
-\item $u_j = a^i_j v_i$ is $\pi$, the change-of-basis transformation. [$\transpose{A}$].
+\item $u_j = a^i_j v_i$ new basis as a linear combination of the old [$\transpose{A}$].
 \end{itemize}
 
 Thus we using $A = (a^i_j)$ where $a^i_j = \frac{\partial x^i}{\partial y_j}$.
 
-Notice that $DF = (\frac{\partial y^i}{\partial x^j}) = A^{-1}$.
+Notice that the Jacobian matrix $DF = (\frac{\partial y^i}{\partial x^j}) = A^{-1}$.
 
 By (4) from Remarks \ref{main-remarks}:
 \begin{itemize}
-\item $e^i = \atwiddle^i_j c^j$ is the forward-translation from old coordinates to new. [$A^{-1}$]
+\item $e^i = \atwiddle^i_j c^j$ forward-translation: old coordinates to new. [$A^{-1}$]
 \end{itemize}
 
-we have that if $v = c^j \partial x_j$ is a vector in $T_p(M)$ then
+we conclude that if $v = c^j \partial x_j$ is a vector in $T_p(M)$ then
 $v = e^i \partial y_i$ where $e^i = \frac{\partial y^i}{\partial x^j} c^j$.
+
+You might be surprised that the Jacobian is the forward translation matrix $A^{-1}$ instead of the matrix of
+the transformation, $A$. The explanation is that while $DF:T_{p_1}(U_1) \map T_{p_2}(U_2)$ may be thought of as an "active"
+transformation, since $U_1$ and $U_2$ are different open sets, 
+the lift of $DF$ to $T_p(M)$ is a "passive" transformation, i.e. it is the identity map expressed in the old an new bases.
+
+We just gave an alternative proof using the chain rule for item (1) from Remarks \ref{main-remarks}.
+We will do the same for each of the other items below.
 
 \begin{remarks}
 The the results of this subsection are summarized here. The items are numbered in parallel with
 the corresponding items in Remarks \ref{main-remarks}.
 \begin{enumerate}
-\item $\partial y_j = \frac{\partial x^i}{\partial y^j} \partial x_i$, the change-of-basis transformation for tangent vectors
+\item $\partial y_j = \frac{\partial x^i}{\partial y^j} \partial x_i$, new tangent vector basis as a linear combination of the old
 \item -- omitted --
-\item $c^i = \frac{\partial x^i}{\partial y^j} e^j$ is the backward-translation from new tangent vector coordinates to old.
-\item $e^i = \frac{\partial y^i}{\partial x^j} c^j$ is the forward-translation from old tangent coordinates to new.
-
-\item $\deriv y^i = \frac{\partial y^i}{\partial x^j} \deriv x^j$ is the dual change-of-basis transformation for one forms. 
+\item $c^i = \frac{\partial x^i}{\partial y^j} e^j$ backward-coordinate-translation for tangent vectors
+\item $e^i = \frac{\partial y^i}{\partial x^j} c^j$ forward-coordinate-translation for tangent vectors
+\item $\deriv y^i = \frac{\partial y^i}{\partial x^j} \deriv x^j$ new one-form basis as a linear combination of old
 \item -- omitted --
-\item $e_j = \frac{\partial x^i}{\partial y^j} c_i$ is the forward-translation from old one form coordinates
-to new.
+\item $c_j = \frac{\partial y^i}{\partial x^j} e_i$ backward-coordinate-translation for one forms
+\item $e_j = \frac{\partial x^i}{\partial y^j} c_i$ forward-coordinate-translation for one forms
 \end{enumerate}
 \end{remarks}
+
+\begin{proof}
+\begin{enumerate}
+\item Done above.
+\item -- omitted --
+\item
+\end{enumerate}
+\end{proof}
 
 
  
