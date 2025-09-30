@@ -1,0 +1,94 @@
+\documentclass[oneside,12pt]{amsart}
+
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+
+\input{mathdefs}
+\input{theoremstyles}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Notes On Quaternions}
+\author{Mitch Rudominer}
+
+\maketitle
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Quaternions}
+In these notes we will study the Quaternions and the double covering $\pi:SU(2)\to SO(3)$.
+
+The \emph{Quaternions} is an algebra obtained from $\R^4$ by adding an associative multiplication operation. There are different ways to define the multiplcation. We give several natural definitions and show they are equivalent.
+
+Let $Q_1 \subset M(2; \C)$ be defined by 
+$$
+Q_1 = \Bigsetof{ \begin{pmatrix}
+\alpha & \beta \\
+-\betabar & \alphabar
+\end{pmatrix} 
+}{\alpha,\beta \in \C}.
+$$
+
+\begin{note}
+$\setof{A\in\Q_1}{\det(A) = 1} = SO(2).$
+\end{note}
+
+
+\begin{lemma} $Q_1$  is a sub-algebra of $M(2; \C)$.
+\end{lemma}
+\begin{proof}
+Because conjugation is linear, $Q_1$ is closed under addition and scalar multiplication.
+To see that $Q_1$ is closed under multiplication we compute 
+
+$$
+\begin{pmatrix}
+\alpha & \beta \\
+-\betabar & \alphabar
+\end{pmatrix}
+\times
+\begin{pmatrix}
+\gamma & \delta \\
+-\deltabar & \gammabar
+\end{pmatrix} 
+= 
+\begin{pmatrix}
+\alpha\gamma - \beta\deltabar & \alpha\delta + \beta\gammabar \\
+-\betabar\gamma -\alphabar\deltabar & -\betabar\delta + \alphabar\gammabar
+\end{pmatrix} .
+$$
+\end{proof}
+
+\begin{lemma}  $Q_1$ is a division algebra.
+\end{lemma}
+\begin{proof}
+Let $A\in Q_1$, $A\not=0$. We need to show that $A$ is invertible and $A^{-1}\in Q_1$.
+
+$\det(A) = |\alpha|^2 + |\beta|^2 \not = 0$ so $A$ is invertible.
+
+$$A^{-1} = \det(A)^{-1} \begin{pmatrix}
+\alphabar & -\beta \\
+\betabar & \alpha
+\end{pmatrix} \in Q_1.$$
+
+\end{proof}
+
+
+For $\alpha,\beta \in \C$ let 
+$$Q(\alpha\beta) = \begin{pmatrix}
+\alpha & \beta \\
+-\bar{\beta} & \bar{\alpha}
+\end{pmatrix}.$$
+
+For $x,y\in\R$ let $\alpha(x,y) = x + iy\in\C$.
+
+For $x,y,z,w\in\R$ let $Q(x,y,z,w) = Q(\alpha(x,y), \alpha(z,w))$.
+
+
+\bibliographystyle{amsalpha}
+
+\bibliography{math}
+
+\end{document}
