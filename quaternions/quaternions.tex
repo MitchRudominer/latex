@@ -17,11 +17,12 @@
 \tableofcontents
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In these notes we will study the quaternions and their relationship to the double covering $\pi:\SU(2)\to \SO(3)$.
 
 \section{Quaternions}
-In these notes we will study the Quaternions and the double covering $\pi:SU(2)\to SO(3)$.
+\emph{The quaternions} is an algebra obtained from $\R^4$ by adding an associative multiplication operation. There are several natural ways to define the multiplcation. We give three and show they are equivalent.
 
-The \emph{Quaternions} is an algebra obtained from $\R^4$ by adding an associative multiplication operation. There are different ways to define the multiplcation. We give several natural definitions and show they are equivalent.
+\subsection{The Quaternions as a Matrix Algebra}
 
 Let $Q_1 \subset M(2; \C)$ be defined by 
 $$
@@ -33,17 +34,18 @@ Q_1 = \Bigsetof{ \begin{pmatrix}
 $$
 
 \begin{note}
-$\setof{A\in\Q_1}{\det(A) = 1} = SO(2).$
+$\setof{A\in\Q_1}{\det(A) = 1} = \SO(2).$
 \end{note}
 
 
-\begin{lemma} $Q_1$  is a sub-algebra of $M(2; \C)$.
+\begin{lemma} $Q_1$  is a real sub-algebra of $M(2; \C)$.
 \end{lemma}
 \begin{proof}
-Because conjugation is linear, $Q_1$ is closed under addition and scalar multiplication.
+Because conjugation is linear over $\R$, $Q_1$ is closed under addition and real scalar multiplication.
 To see that $Q_1$ is closed under multiplication we compute 
 
-$$
+\begin{equation}
+\label{eq:matrixmult}
 \begin{pmatrix}
 \alpha & \beta \\
 -\betabar & \alphabar
@@ -58,15 +60,16 @@ $$
 \alpha\gamma - \beta\deltabar & \alpha\delta + \beta\gammabar \\
 -\betabar\gamma -\alphabar\deltabar & -\betabar\delta + \alphabar\gammabar
 \end{pmatrix} .
-$$
+\end{equation}
 \end{proof}
 
-\begin{lemma}  $Q_1$ is a division algebra.
+\begin{lemma}  $Q_1$ is a real division algebra.
 \end{lemma}
 \begin{proof}
 Let $A\in Q_1$, $A\not=0$. We need to show that $A$ is invertible and $A^{-1}\in Q_1$.
 
 $\det(A) = |\alpha|^2 + |\beta|^2 \not = 0$ so $A$ is invertible.
+Also $\det(A)\in\R$ so
 
 $$A^{-1} = \det(A)^{-1} \begin{pmatrix}
 \alphabar & -\beta \\
@@ -77,7 +80,7 @@ $$A^{-1} = \det(A)^{-1} \begin{pmatrix}
 
 
 For $\alpha,\beta \in \C$ let 
-$$Q(\alpha\beta) = \begin{pmatrix}
+$$Q(\alpha,\beta) = \begin{pmatrix}
 \alpha & \beta \\
 -\bar{\beta} & \bar{\alpha}
 \end{pmatrix}.$$
@@ -85,6 +88,146 @@ $$Q(\alpha\beta) = \begin{pmatrix}
 For $x,y\in\R$ let $\alpha(x,y) = x + iy\in\C$.
 
 For $x,y,z,w\in\R$ let $Q(x,y,z,w) = Q(\alpha(x,y), \alpha(z,w))$.
+
+For $v\in\R^4$ let $Q(v) = Q(v^0, v^1, v^2, v^3)$.
+
+This last $Q$ is clearly a bijection from $\R^4$ to the matrix algebra $Q_1$ defined above. We
+define quaternionic multiplication on $\R^4$ using this mapping:
+$$vw = Q^{-1}(Q(v)Q(w)).$$
+
+Also we define quaternionic inverses using this mapping:
+For $v\not=0$
+$$v^{-1} = Q^{-1}(Q(v)^{-1}).$$
+
+With this multiplication and inverse, $\R^4$ becomes a real division algebra we call the quaternions.
+
+\subsection{The Quaternions in terms of vector operations}
+
+We can write an element of $\R^4$ as
+$\begin{pmatrix}
+c\\
+\vec{v}
+\end{pmatrix}$ with $c\in \R$ and $\vec{v}\in\R^3$. When
+we do this we call $c$ the \emph{real} part of the quaternion and $\vec{v}$ the \emph{pure} part. A \emph{pure} quaternion is one
+in which the real part is zero.
+
+\begin{lemma}
+\label{lemma:in_terms_of_vector_products}
+With quaternionic multiplication as defined in the previous subsection and the vector notation of the current subsection we have
+$$
+\begin{pmatrix}
+c\\
+\vec{v}
+\end{pmatrix}
+\begin{pmatrix}
+d\\
+\vec{w}
+\end{pmatrix}
+=
+\begin{pmatrix}
+cd - v \cdot w \\
+c\vec{w} + d\vec{v} + v\times w
+\end{pmatrix}.
+$$
+\end{lemma}
+\begin{proof}
+Let $\alpha = c + iv_0$, $\beta = v_1 + i v_2$,
+$\gamma = d + iw_0$, $\delta = w_1 + iw_2$.
+
+Let 
+
+$$
+\begin{pmatrix}
+e\\
+\vec{u}
+\end{pmatrix}
+=
+\begin{pmatrix}
+c\\
+\vec{v}
+\end{pmatrix}
+\begin{pmatrix}
+d\\
+\vec{w}
+\end{pmatrix}.
+$$
+
+By equation \ref{eq:matrixmult} we have that
+\begin{itemize}
+\item $e=\re(\alpha\gamma - \beta\deltabar) = (cd -v_0 w_0) - (v_1 w_1 + v_2 w_2)$
+\item $u_0 = \im(\alpha\gamma - \beta\deltabar) = (c w_0 + d v_0) - (- v_1 w2 + w_1 v_2)$
+\item $u_1 = \re(\alpha\delta + \beta\gammabar) = (c w_1 - v_0 w_2) + (d v_1 + v_2 w_0)$
+\item $u_2 = \im(\alpha\delta + \beta\gammabar) = (c w_2 + v_0 w_1) + (-v_1 w_0 + d v_2)$
+\end{itemize}
+
+So
+
+$$
+\begin{pmatrix}
+e\\
+\vec{u}
+\end{pmatrix}
+=
+\begin{pmatrix}
+cd - v \cdot w \\
+c w_0 + d v_0 + ( v_1 w2 -  v_2 w_1) \\
+c w_1 + d v_1 + (v_2 w_0 - v_0 w_2))\\
+c w_2 + d v_2 + (v_0 w_1 - v_1 w_0)
+\end{pmatrix}
+=
+\begin{pmatrix}
+cd - v \cdot w \\
+c\vec{w} + d\vec{v} + v\times w
+\end{pmatrix}.
+$$
+
+\end{proof}
+
+\subsection{The Quaternions in terms of canonical basis elements}
+
+We define four standard basis quaternions:
+$$
+1 = \begin{pmatrix}1\\0\\0\\0\end{pmatrix},\text{  }
+i =  \begin{pmatrix}0\\1\\0\\0\end{pmatrix},\text{  }
+j =  \begin{pmatrix}0\\0\\1\\0\end{pmatrix},\text{  }
+k =  \begin{pmatrix}0\\0\\0\\1\end{pmatrix},\text{.}
+$$
+
+\begin{note}
+Let $\vec{i}$, $\vec{j}$, $\vec{k}$ be the standard basis vectors of three-dimensional vector calculus.
+Then
+$i = \begin{pmatrix}0\\\vec{i}\end{pmatrix}$, 
+$j = \begin{pmatrix}0\\\vec{j}\end{pmatrix}$, 
+$k = \begin{pmatrix}0\\\vec{k}\end{pmatrix}$.
+\end{note}
+
+\begin{note}
+$i,j,k$ form a basis for the three dimensional space of \emph{pure} quaternions which is isomorphic to $\R^3$ via
+the mapping $i\mapsto \vec{i}$, $j\mapsto\vec{j}$, $k\mapsto\vec{k}$.
+\end{note}
+
+\begin{lemma} We record the following basic equations about the basis elements.
+\begin{enumerate}
+\item $1$ is the multiplicative identity in the quaternions.
+\item $i^2=j^2=k^2 = -1$.
+\item $ij = -ji = k$.
+\item $jk = -kj = i$.
+\item $ki = -ik = j$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(1) $Q(1)$ is the identity matrix.
+
+(2) $$Q(i^2) = \begin{pmatrix}i & 0 \\ 0 & -i\end{pmatrix}^2 = \begin{pmatrix}-1 & 0 \\ 0 & -1\end{pmatrix}.$$
+
+$$Q(j^2) = \begin{pmatrix}0 & 1 \\ -1 & 0\end{pmatrix}^2 = \begin{pmatrix}-1 & 0 \\ 0 & -1\end{pmatrix}.$$
+
+$$Q(k^2) = \begin{pmatrix}0 & i \\ i & 0\end{pmatrix}^2 = \begin{pmatrix}-1 & 0 \\ 0 & -1\end{pmatrix}.$$
+
+(3),(4),(5) follow from Lemma \ref{lemma:in_terms_of_vector_products} because the identities are true when we
+ replace $i,j,k$ with $\vec{i},\vec{j},\vec{k}$, and replace quaternionic multiplication with the vector cross product.
+
+\end{proof}
 
 
 \bibliographystyle{amsalpha}
