@@ -41,7 +41,7 @@ $\setof{A\in\Q_1}{\det(A) = 1} = \SO(2).$
 \begin{lemma} $Q_1$  is a real sub-algebra of $M(2; \C)$.
 \end{lemma}
 \begin{proof}
-Because conjugation is linear over $\R$, $Q_1$ is closed under addition and real scalar multiplication.
+Because complex conjugation is linear over $\R$, $Q_1$ is closed under addition and real scalar multiplication.
 To see that $Q_1$ is closed under multiplication we compute 
 
 \begin{equation}
@@ -91,7 +91,10 @@ For $x,y,z,w\in\R$ let $Q(x,y,z,w) = Q(\alpha(x,y), \alpha(z,w))$.
 
 For $v\in\R^4$ let $Q(v) = Q(v^0, v^1, v^2, v^3)$.
 
-This last $Q$ is clearly a bijection from $\R^4$ to the matrix algebra $Q_1$ defined above. We
+This last $Q$ is clearly a bijection from $\R^4$ to the matrix algebra $Q_1$ defined above. 
+
+\begin{definition}
+We
 define quaternionic multiplication on $\R^4$ using this mapping:
 $$vw = Q^{-1}(Q(v)Q(w)).$$
 
@@ -99,7 +102,19 @@ Also we define quaternionic inverses using this mapping:
 For $v\not=0$
 $$v^{-1} = Q^{-1}(Q(v)^{-1}).$$
 
-With this multiplication and inverse, $\R^4$ becomes a real division algebra we call the quaternions.
+With this multiplication and inverse, $\R^4$ becomes a real associative division algebra we call the quaternions.
+We use the symbol $\H$ to refer to the quaternions.
+
+For $q\in\H$ let $|q|$ denote the Euclidean norm of $q$ as an element of $\R^4$.
+\end{definition}
+
+\begin{lemma}
+For all $q_1,q_2 \in \H$, $|q_1 q_2| = |q_1| |q_2|$.
+\end{lemma}
+\begin{proof}
+This is because $|q| = \sqrt{\det(Q(q))}$ and for $A,B\in M(2; \C)$,
+$\det(AB) = \det(A)\det(B)$.
+\end{proof}
 
 \subsection{The Quaternions in terms of vector operations}
 
@@ -108,8 +123,13 @@ $\begin{pmatrix}
 c\\
 \vec{v}
 \end{pmatrix}$ with $c\in \R$ and $\vec{v}\in\R^3$. When
-we do this we call $c$ the \emph{real} part of the quaternion and $\vec{v}$ the \emph{pure} part. A \emph{pure} quaternion is one
-in which the real part is zero.
+we do this we call $c$ the \emph{real} or \emph{scalar}
+part of the quaternion and $\vec{v}$ the \emph{pure} part. 
+
+\begin{definition}
+A \emph{pure} quaternion is one in which the real part is zero.
+A \emph{scalar} quaternion is one in which the pure part is zero.
+\end{definition}
 
 \begin{lemma}
 \label{lemma:in_terms_of_vector_products}
@@ -125,8 +145,8 @@ d\\
 \end{pmatrix}
 =
 \begin{pmatrix}
-cd - v \cdot w \\
-c\vec{w} + d\vec{v} + v\times w
+cd - \vec{v} \cdot \vec{w} \\
+c\vec{w} + d\vec{v} + \vec{v}\times \vec{w}
 \end{pmatrix}.
 $$
 \end{lemma}
@@ -169,19 +189,65 @@ e\\
 \end{pmatrix}
 =
 \begin{pmatrix}
-cd - v \cdot w \\
+cd - \vec{v} \cdot \vec{w} \\
 c w_0 + d v_0 + ( v_1 w2 -  v_2 w_1) \\
 c w_1 + d v_1 + (v_2 w_0 - v_0 w_2))\\
 c w_2 + d v_2 + (v_0 w_1 - v_1 w_0)
 \end{pmatrix}
 =
 \begin{pmatrix}
-cd - v \cdot w \\
-c\vec{w} + d\vec{v} + v\times w
+cd - \vec{v} \cdot \vec{w} \\
+c\vec{w} + d\vec{v} + \vec{v}\times \vec{w}
 \end{pmatrix}.
 $$
-
 \end{proof}
+
+\begin{note}
+We could have made Lemma \ref{lemma:in_terms_of_vector_products} the definition of quaternion
+multiplication. But then we would have needed to prove that it is associative and
+a division algebra.
+\end{note}
+
+\begin{lemma}
+Let $q\in\H$, $q\not=\vec{0}$.
+Write $q=\begin{pmatrix}c\\ \vec{v}\end{pmatrix}$. Then
+$$q^{-1} = \frac{1}{|q|^2}\begin{pmatrix}c\\ -\vec{v}\end{pmatrix}.$$
+\end{lemma}
+\begin{proof}
+$|q|^2 = c^2 + |\vec{v}|^2 \not= 0$ since $q\not=\vec{0}$.
+By 
+Lemma \ref{lemma:in_terms_of_vector_products}
+$$\begin{pmatrix}c\\ \vec{v}\end{pmatrix}\begin{pmatrix}c\\ -\vec{v}\end{pmatrix}=
+\begin{pmatrix}|q|^2\\ \vec{0}\end{pmatrix}.$$
+\end{proof}
+
+\begin{lemma}
+\label{lemma:commute_criterion}
+Let $q_1, q_2 \in \H$. Then $q_1 q_2 = q_2 q_1$ iff 
+the pure parts of $q_1$ and $q_2$ are colinear.
+\end{lemma}
+\begin{proof}
+Let $\vec{v}$ and $\vec{w}$ be the pure parts of $q_1$ and $q_2$ respectively.
+By Lemma \ref{lemma:in_terms_of_vector_products}, $q_1$ and $q_2$ commute
+iff $v_1 \times v_2$ = $v_2 \times v_1$ and this is so iff
+$v_1 \times v_2 = 0$ iff $v_1$ and $v_2$ are colinear.
+\end{proof}
+
+\begin{lemma}
+Let $c$ be a real number and $q\in\H$.
+Then $cq = \begin{pmatrix}c\\ \vec{0}\end{pmatrix} q$. That is,
+scalar multiplication by $c$ is the same as quaternionic
+multiplication by the scalar quaternion with scalar part $c$.
+\end{lemma}
+\begin{proof}
+Immediate.
+\end{proof}
+
+\begin{corollary}
+\label{corollary:scalars_commute}
+A scalar quaternion commutes with all quaternions.
+Also real scalar multiplication commutes with quaternionic multiplication.
+\end{corollary}
 
 \subsection{The Quaternions in terms of canonical basis elements}
 
@@ -202,11 +268,15 @@ $k = \begin{pmatrix}0\\\vec{k}\end{pmatrix}$.
 \end{note}
 
 \begin{note}
-$i,j,k$ form a basis for the three dimensional space of \emph{pure} quaternions which is isomorphic to $\R^3$ via
+$i,j,k$ form a basis for the three dimensional real vector
+space of \emph{pure} quaternions which is isomorphic to $\R^3$ via
 the mapping $i\mapsto \vec{i}$, $j\mapsto\vec{j}$, $k\mapsto\vec{k}$.
+Thus the use of the letters $i,j,k$ in the subject of quaternions and
+their use in the subject of three-dimensional vector calculus is consistent.
 \end{note}
 
 \begin{lemma} We record the following basic equations about the basis elements.
+\label{lemma:basic_equations}
 \begin{enumerate}
 \item $1$ is the multiplicative identity in the quaternions.
 \item $i^2=j^2=k^2 = -1$.
@@ -218,7 +288,10 @@ the mapping $i\mapsto \vec{i}$, $j\mapsto\vec{j}$, $k\mapsto\vec{k}$.
 \begin{proof}
 (1) $Q(1)$ is the identity matrix.
 
-(2) $$Q(i^2) = \begin{pmatrix}i & 0 \\ 0 & -i\end{pmatrix}^2 = \begin{pmatrix}-1 & 0 \\ 0 & -1\end{pmatrix}.$$
+(2) Note that in the equation below we use the letter $i$ to mean two different things
+on the left and right side of the equation.
+
+$$Q(i^2) = \begin{pmatrix}i & 0 \\ 0 & -i\end{pmatrix}^2 = \begin{pmatrix}-1 & 0 \\ 0 & -1\end{pmatrix}.$$
 
 $$Q(j^2) = \begin{pmatrix}0 & 1 \\ -1 & 0\end{pmatrix}^2 = \begin{pmatrix}-1 & 0 \\ 0 & -1\end{pmatrix}.$$
 
@@ -226,8 +299,29 @@ $$Q(k^2) = \begin{pmatrix}0 & i \\ i & 0\end{pmatrix}^2 = \begin{pmatrix}-1 & 0 
 
 (3),(4),(5) follow from Lemma \ref{lemma:in_terms_of_vector_products} because the identities are true when we
  replace $i,j,k$ with $\vec{i},\vec{j},\vec{k}$, and replace quaternionic multiplication with the vector cross product.
+ \end{proof}
 
-\end{proof}
+ \begin{lemma}
+ Quaternionic multiplication as we have defined it earlier is the unique, distributive binary operation on $\R^4$ such that Lemma \ref{lemma:basic_equations}
+ and Corrolarry \ref{corollary:scalars_commute} hold.
+ \end{lemma}
+ \begin{proof}
+ A distributive, binary operation on $\R^4$ is the same thing as a
+ bilinear transformation from $\R^4 \times \R^4$ to $\R^4$ and such a transformation
+ is completely determined by its values on all ordered pairs from a fixed basis.
+ \end{proof}
+
+\begin{remark}
+\label{remark:complex_in_quaternions}
+Let
+$C = \setof{q = x + y i \in \H}{x,y\in \R}$. Then
+all scalars are in $C$ and $C$ is closed under addition and multiplication, so $C$ is a sub-algebra of $\H$ and it is
+easy to see that $C$ is isomorphic to the complex numbers.
+In particular note that the use of the letter $i$ in vector calculus
+is consistent with the use of $i$ as the imaginary unit for complex numbers.
+\end{remark}
+
+
 
 
 \bibliographystyle{amsalpha}
