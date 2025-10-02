@@ -102,9 +102,56 @@ Also we define quaternionic inverses using this mapping:
 For $v\not=0$
 $$v^{-1} = Q^{-1}(Q(v)^{-1}).$$
 
-With this multiplication and inverse, $\R^4$ becomes a real associative division algebra we call the quaternions.
+With this multiplication and inverse, in addition to the
+standard vector space structure,
+$\R^4$ becomes a real associative division algebra we call the quaternions.
 We use the symbol $\H$ to refer to the quaternions.
+\end{definition}
 
+\begin{definition}
+$0,1\in\H$ are defined by
+$$0=\begin{pmatrix}0\\0\\0\\0\end{pmatrix}\text{   }
+1=\begin{pmatrix}1\\0\\0\\0\end{pmatrix}.$$
+
+Since $Q(0)$ is the zero matrix and $Q(1)$ is the identity matrix,
+$0$ is the zero element of $\H$ and $1$ is the identity element
+of $\H$.
+
+We can tell from context that the symbols 0 and 1 refer to
+quaternions instead of numbers.
+\end{definition}
+
+\begin{definition}
+A \emph{scalar} quaternion is a $q\in\H$ of the form
+$q=\begin{pmatrix}c\\0\\0\\0\end{pmatrix}$ for $c\in\R$,
+and in this case we say that $c$ is the \emph{scalar part}
+of $q$.
+Equivalently $q$ is a scalar quaternion iff $Q(q)$ is
+a scalar matrix. $0,1\in\H$ are examples of scalar quaternions.
+\end{definition}
+
+\begin{lemma}
+Let $c\in\R$ and $q\in\H$.
+Then $cq = \begin{pmatrix}c\\0\\0\\0\end{pmatrix} q$. That is,
+scalar multiplication by $c$ is the same as quaternionic
+multiplication by the scalar quaternion with scalar part $c$.
+\end{lemma}
+\begin{proof}
+This is true becuase the analogous fact is true about scalar matrices.
+\end{proof}
+
+\begin{lemma}
+\label{corollary:scalars_commute}
+A scalar quaternion commutes with all quaternions.
+Also real scalar multiplication commutes with quaternionic multiplication.
+\end{lemma}
+\begin{proof}
+This is true because the analogous fact is true about
+scalar matrices and matrix multiplication.
+\end{proof}
+
+
+\begin{definition}
 For $q\in\H$ let $|q|$ denote the Euclidean norm of $q$ as an element of $\R^4$.
 \end{definition}
 
@@ -129,6 +176,7 @@ part of the quaternion and $\vec{v}$ the \emph{pure} part.
 \begin{definition}
 A \emph{pure} quaternion is one in which the real part is zero.
 A \emph{scalar} quaternion is one in which the pure part is zero.
+(This is a restatement of the definition from the previous subsection.)
 \end{definition}
 
 \begin{lemma}
@@ -209,16 +257,17 @@ a division algebra.
 \end{note}
 
 \begin{lemma}
-Let $q\in\H$, $q\not=\vec{0}$.
+Let $q\in\H$, $q\not=0$.
 Write $q=\begin{pmatrix}c\\ \vec{v}\end{pmatrix}$. Then
 $$q^{-1} = \frac{1}{|q|^2}\begin{pmatrix}c\\ -\vec{v}\end{pmatrix}.$$
 \end{lemma}
 \begin{proof}
-$|q|^2 = c^2 + |\vec{v}|^2 \not= 0$ since $q\not=\vec{0}$.
+$|q|^2 = c^2 + |\vec{v}|^2 \not= 0$ since $q\not=0$.
 By 
 Lemma \ref{lemma:in_terms_of_vector_products}
 $$\begin{pmatrix}c\\ \vec{v}\end{pmatrix}\begin{pmatrix}c\\ -\vec{v}\end{pmatrix}=
-\begin{pmatrix}|q|^2\\ \vec{0}\end{pmatrix}.$$
+\begin{pmatrix}|q|^2\\ \vec{0}\end{pmatrix}$$
+which equals $|q|^2$ times the identity quaternion.
 \end{proof}
 
 \begin{lemma}
@@ -232,22 +281,6 @@ By Lemma \ref{lemma:in_terms_of_vector_products}, $q_1$ and $q_2$ commute
 iff $v_1 \times v_2$ = $v_2 \times v_1$ and this is so iff
 $v_1 \times v_2 = 0$ iff $v_1$ and $v_2$ are colinear.
 \end{proof}
-
-\begin{lemma}
-Let $c$ be a real number and $q\in\H$.
-Then $cq = \begin{pmatrix}c\\ \vec{0}\end{pmatrix} q$. That is,
-scalar multiplication by $c$ is the same as quaternionic
-multiplication by the scalar quaternion with scalar part $c$.
-\end{lemma}
-\begin{proof}
-Immediate.
-\end{proof}
-
-\begin{corollary}
-\label{corollary:scalars_commute}
-A scalar quaternion commutes with all quaternions.
-Also real scalar multiplication commutes with quaternionic multiplication.
-\end{corollary}
 
 \subsection{The Quaternions in terms of canonical basis elements}
 
@@ -286,7 +319,8 @@ their use in the subject of three-dimensional vector calculus is consistent.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-(1) $Q(1)$ is the identity matrix.
+(1) $Q(1)$ is the identity matrix. We have already seen this
+earlier in these notes.
 
 (2) Note that in the equation below we use the letter $i$ to mean two different things
 on the left and right side of the equation.
