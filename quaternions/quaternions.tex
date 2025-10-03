@@ -24,9 +24,9 @@ In these notes we will study the quaternions and their relationship to the doubl
 
 \subsection{The Quaternions as a Matrix Algebra}
 
-Let $Q_1 \subset M(2; \C)$ be defined by 
+Let $\H_M \subset M(2; \C)$ be defined by 
 $$
-Q_1 = \Bigsetof{ \begin{pmatrix}
+\H_M = \Bigsetof{ \begin{pmatrix}
 \alpha & \beta \\
 -\betabar & \alphabar
 \end{pmatrix} 
@@ -34,15 +34,15 @@ Q_1 = \Bigsetof{ \begin{pmatrix}
 $$
 
 \begin{note}
-$\setof{A\in\Q_1}{\det(A) = 1} = \SO(2).$
+$\setof{A\in \H_M}{\det(A) = 1} = \SO(2).$
 \end{note}
 
 
-\begin{lemma} $Q_1$  is a real sub-algebra of $M(2; \C)$.
+\begin{lemma} $\H_M$  is a real sub-algebra of $M(2; \C)$.
 \end{lemma}
 \begin{proof}
-Because complex conjugation is linear over $\R$, $Q_1$ is closed under addition and real scalar multiplication.
-To see that $Q_1$ is closed under multiplication we compute 
+Because complex conjugation is linear over $\R$, $\H_M$ is closed under addition and real scalar multiplication.
+To see that $\H_M$ is closed under multiplication we compute 
 
 \begin{equation}
 \label{eq:matrixmult}
@@ -63,10 +63,10 @@ To see that $Q_1$ is closed under multiplication we compute
 \end{equation}
 \end{proof}
 
-\begin{lemma}  $Q_1$ is a real division algebra.
+\begin{lemma}  $\H_M$ is a real division algebra.
 \end{lemma}
 \begin{proof}
-Let $A\in Q_1$, $A\not=0$. We need to show that $A$ is invertible and $A^{-1}\in Q_1$.
+Let $A\in \H_M$, $A\not=0$. We need to show that $A$ is invertible and $A^{-1}\in \H_M$.
 
 $\det(A) = |\alpha|^2 + |\beta|^2 \not = 0$ so $A$ is invertible.
 Also $\det(A)\in\R$ so
@@ -74,7 +74,7 @@ Also $\det(A)\in\R$ so
 $$A^{-1} = \det(A)^{-1} \begin{pmatrix}
 \alphabar & -\beta \\
 \betabar & \alpha
-\end{pmatrix} \in Q_1.$$
+\end{pmatrix} \in \H_M.$$
 
 \end{proof}
 
@@ -91,22 +91,24 @@ For $x,y,z,w\in\R$ let $Q(x,y,z,w) = Q(\alpha(x,y), \alpha(z,w))$.
 
 For $v\in\R^4$ let $Q(v) = Q(v^0, v^1, v^2, v^3)$.
 
-This last $Q$ is clearly a bijection from $\R^4$ to the matrix algebra $Q_1$ defined above. 
+This last $Q$ is clearly a bijection from $\R^4$ to the matrix algebra $\H_M$ defined above. 
 
 \begin{definition}
 We
-define quaternionic multiplication on $\R^4$ using this mapping:
+define quaternionic multiplication on $\R^4$ using this mapping.
+For $v,w\in\R^4$, define
 $$vw = Q^{-1}(Q(v)Q(w)).$$
 
-Also we define quaternionic inverses using this mapping:
-For $v\not=0$
-$$v^{-1} = Q^{-1}(Q(v)^{-1}).$$
-
-With this multiplication and inverse, in addition to the
+With this multiplication, in addition to the
 standard vector space structure,
-$\R^4$ becomes a real associative division algebra we call the quaternions.
+$\R^4$ becomes a real associative algebra we call the quaternions.
 We use the symbol $\H$ to refer to the quaternions.
 \end{definition}
+
+\begin{remark}
+$Q:\H\to \H_M$ is an algebra isomorphism. This is trivial
+as we defined multiplication in $\H$ so as to make this so.
+\end{remark}
 
 \begin{definition}
 $0,1\in\H$ are defined by
@@ -117,8 +119,16 @@ Since $Q(0)$ is the zero matrix and $Q(1)$ is the identity matrix,
 $0$ is the zero element of $\H$ and $1$ is the identity element
 of $\H$.
 
-We can tell from context that the symbols 0 and 1 refer to
+We can tell from context when the symbols 0 and 1 refer to
 quaternions instead of numbers.
+\end{definition}
+
+\begin{definition}
+We define quaternionic inverses using the mapping $Q$.
+For $v\in\H$, $v\not=0$,
+$$v^{-1} = Q^{-1}(Q(v)^{-1}).$$
+
+With this inverse $\H$ is a division algebra.
 \end{definition}
 
 \begin{definition}
@@ -256,6 +266,26 @@ multiplication. But then we would have needed to prove that it is associative an
 a division algebra.
 \end{note}
 
+\begin{corollary}
+\label{corollary:pure_mult}
+Multiplication of pure quaternions is given by the vector dot and cross products:
+$$
+\begin{pmatrix}
+0\\
+\vec{v}
+\end{pmatrix}
+\begin{pmatrix}
+0\\
+\vec{w}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\vec{v} \cdot \vec{w} \\
+\vec{v}\times \vec{w}
+\end{pmatrix}.
+$$
+\end{corollary}
+
 \begin{lemma}
 Let $q\in\H$, $q\not=0$.
 Write $q=\begin{pmatrix}c\\ \vec{v}\end{pmatrix}$. Then
@@ -293,19 +323,22 @@ k =  \begin{pmatrix}0\\0\\0\\1\end{pmatrix},\text{.}
 $$
 
 \begin{note}
+We have already defined the quaternion 1 in an earlier subsection.
+As with 1, we are overloading the symbol $i$ to refer to a quaternion in addition
+to a complex number. One can tell from context which object $i$ refers to.
+\end{note}
+
+\begin{remark}
 Let $\vec{i}$, $\vec{j}$, $\vec{k}$ be the standard basis vectors of three-dimensional vector calculus.
 Then
 $i = \begin{pmatrix}0\\\vec{i}\end{pmatrix}$, 
 $j = \begin{pmatrix}0\\\vec{j}\end{pmatrix}$, 
 $k = \begin{pmatrix}0\\\vec{k}\end{pmatrix}$.
-\end{note}
+\end{remark}
 
 \begin{note}
-$i,j,k$ form a basis for the three dimensional real vector
-space of \emph{pure} quaternions which is isomorphic to $\R^3$ via
-the mapping $i\mapsto \vec{i}$, $j\mapsto\vec{j}$, $k\mapsto\vec{k}$.
-Thus the use of the letters $i,j,k$ in the subject of quaternions and
-their use in the subject of three-dimensional vector calculus is consistent.
+So in addition to $i$ as a complex number and $i$ as a quaternion we also have $\vec{i}$
+as a vector in $\R^3$. We remark below that all three objects are connected.
 \end{note}
 
 \begin{lemma} We record the following basic equations about the basis elements.
@@ -317,6 +350,7 @@ their use in the subject of three-dimensional vector calculus is consistent.
 \item $jk = -kj = i$.
 \item $ki = -ik = j$.
 \end{enumerate}
+Here $-1$ is a scalar quaternion.
 \end{lemma}
 \begin{proof}
 (1) $Q(1)$ is the identity matrix. We have already seen this
@@ -325,37 +359,44 @@ earlier in these notes.
 (2) Note that in the equation below we use the letter $i$ to mean two different things
 on the left and right side of the equation.
 
-$$Q(i^2) = \begin{pmatrix}i & 0 \\ 0 & -i\end{pmatrix}^2 = \begin{pmatrix}-1 & 0 \\ 0 & -1\end{pmatrix}.$$
+$$Q(i^2) = \begin{pmatrix}i & 0 \\ 0 & -i\end{pmatrix}^2 = \begin{pmatrix}-1 & 0 \\ 0 & -1\end{pmatrix} = Q(-1).$$
 
-$$Q(j^2) = \begin{pmatrix}0 & 1 \\ -1 & 0\end{pmatrix}^2 = \begin{pmatrix}-1 & 0 \\ 0 & -1\end{pmatrix}.$$
+$$Q(j^2) = \begin{pmatrix}0 & 1 \\ -1 & 0\end{pmatrix}^2 = \begin{pmatrix}-1 & 0 \\ 0 & -1\end{pmatrix} = Q(-1).$$
 
-$$Q(k^2) = \begin{pmatrix}0 & i \\ i & 0\end{pmatrix}^2 = \begin{pmatrix}-1 & 0 \\ 0 & -1\end{pmatrix}.$$
+$$Q(k^2) = \begin{pmatrix}0 & i \\ i & 0\end{pmatrix}^2 = \begin{pmatrix}-1 & 0 \\ 0 & -1\end{pmatrix} = Q(-1).$$
 
 (3),(4),(5) follow from Lemma \ref{lemma:in_terms_of_vector_products} because the identities are true when we
  replace $i,j,k$ with $\vec{i},\vec{j},\vec{k}$, and replace quaternionic multiplication with the vector cross product.
  \end{proof}
 
  \begin{lemma}
- Quaternionic multiplication as we have defined it earlier is the unique, distributive binary operation on $\R^4$ such that Lemma \ref{lemma:basic_equations}
- and Corrolarry \ref{corollary:scalars_commute} hold.
+ Quaternionic multiplication as we have defined it earlier is the unique multiplication on $\R^4$ 
+that distributes over addition, commutes with scalar multiplication,
+ and satisfies the equations in Lemma \ref{lemma:basic_equations}. Thus we could have defined the quaternions
+ using the equations in Lemma \ref{lemma:basic_equations}.
  \end{lemma}
  \begin{proof}
- A distributive, binary operation on $\R^4$ is the same thing as a
- bilinear transformation from $\R^4 \times \R^4$ to $\R^4$ and such a transformation
+ A binary operation on $\R^4$ that distributes over addition and commutes with scalar multiplication
+ is the same thing as a bilinear transformation from $\R^4 \times \R^4$ to $\R^4$ and such a transformation
  is completely determined by its values on all ordered pairs from a fixed basis.
  \end{proof}
 
-\begin{remark}
-\label{remark:complex_in_quaternions}
-Let
-$C = \setof{q = x + y i \in \H}{x,y\in \R}$. Then
-all scalars are in $C$ and $C$ is closed under addition and multiplication, so $C$ is a sub-algebra of $\H$ and it is
-easy to see that $C$ is isomorphic to the complex numbers.
-In particular note that the use of the letter $i$ in vector calculus
-is consistent with the use of $i$ as the imaginary unit for complex numbers.
-\end{remark}
-
-
+ \begin{remarks} All of $\R$, $\R^3$ and $\C$ naturally embed into $\H$ and going forward we will often
+ tacitly conflate all of these with their images in $\H$.
+ \begin{enumerate}
+ \item We will identify $\R$ with the scalar quaternions via the identification $x\mapsto x 1$ where $x$ is a
+ real number and $1$ is the unit quaternion.
+ \item Define the \emph{complex} quaternions to be the two-dimensional subspace of $\H$ spanned by 1 and $i$.
+ It is easy to see that the complex quaternions are a sub-algebra of $\H$.
+ We will identify $\C$ with this sub-algebra by identifying the number 1 with the quaternion 1 and the
+ number $i$ with the quaternion $i$.
+ \item We will identify $\R^3$ with the pure quaternions by identifying $\vec{i}$ with the quaternion $i$,
+ $\vec{j}$ with the quaternion $j$, and $\vec{k}$ with the quaternion $k$.
+ \item It is pleasing that these identifications unify all three uses of the letter $i$. In particular it is
+ not obvious to the student who first encounters vector calculus that the vector $\vec{i}$ has anything
+ to do with the imaginary unit $i$.
+ \end{enumerate}
+ \end{remarks}
 
 
 \bibliographystyle{amsalpha}
