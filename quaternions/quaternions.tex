@@ -24,6 +24,7 @@ In these notes we will study the quaternions and their relationship to the doubl
 
 \subsection{The Quaternions as a Matrix Algebra}
 
+\begin{definition}
 Let $\H_M \subset M(2; \C)$ be defined by 
 $$
 \H_M = \Bigsetof{ \begin{pmatrix}
@@ -32,6 +33,22 @@ $$
 \end{pmatrix} 
 }{\alpha,\beta \in \C}.
 $$
+\end{definition}
+
+\begin{lemma}
+\label{lemma:det_of_A}
+Let
+$$A= \begin{pmatrix}
+\alpha & \beta \\
+-\betabar & \alphabar
+\end{pmatrix}
+\in\H_M.$$
+Then $\det(A) = |\alpha|^2 + |\beta|^2$ and $\det(A)>=0$ and $\det(A)=0$ iff $A=0$.
+\end{lemma} 
+\begin{proof}
+Immediate.
+\end{proof}
+
 
 \begin{note}
 $\setof{A\in \H_M}{\det(A) = 1} = \SO(2).$
@@ -67,6 +84,10 @@ To see that $\H_M$ is closed under multiplication we compute
 \end{lemma}
 \begin{proof}
 Let $A\in \H_M$, $A\not=0$. We need to show that $A$ is invertible and $A^{-1}\in \H_M$.
+Write $A = \begin{pmatrix}
+\alpha & \beta \\
+-\betabar & \alphabar
+\end{pmatrix}$. Then
 
 $\det(A) = |\alpha|^2 + |\beta|^2 \not = 0$ so $A$ is invertible.
 Also $\det(A)\in\R$ so
@@ -76,6 +97,43 @@ $$A^{-1} = \det(A)^{-1} \begin{pmatrix}
 \betabar & \alpha
 \end{pmatrix} \in \H_M.$$
 
+\end{proof}
+
+\begin{lemma}
+$H_M$ is closed under Hermitian adjoint.
+\end{lemma}
+\begin{proof}
+\begin{equation}
+\label{eq:quaternion_matrix_adjoint}
+\begin{pmatrix}
+\alpha & \beta \\
+-\betabar & \alphabar
+\end{pmatrix}^{*}=
+\begin{pmatrix}
+\alphabar & -\beta \\
+\betabar & \alpha
+\end{pmatrix}\in \H_M.
+\end{equation}
+\end{proof}
+
+\begin{lemma}
+\label{lemma:a_times_a_star}
+For $A\in \H_M$, $AA^* = \det(A) I$.
+\end{lemma}
+\begin{proof}
+Let $A= \begin{pmatrix}\alpha & \beta \\-\betabar & \alphabar\end{pmatrix}$.
+Let $d=\det(A) = |\alpha|^2+|\beta|^2$. then
+$$
+AA^* = \begin{pmatrix}
+\alpha & \beta \\
+-\betabar & \alphabar
+\end{pmatrix}
+\begin{pmatrix}
+\alphabar & -\beta \\
+\betabar & \alpha
+\end{pmatrix}
+=\begin{pmatrix}d & 0\\ 0 & d\end{pmatrix}.
+$$
 \end{proof}
 
 
@@ -160,18 +218,64 @@ This is true because the analogous fact is true about
 scalar matrices and matrix multiplication.
 \end{proof}
 
+\begin{remark}
+If $c\in \R$ and $1$ represents the unit quaternion, then $c 1$ is the scalar quaternion
+with scalar part $c$. We will henceforth simplify this and write $c 1$ as $c$.
+Thus we are identifying the real numbers and the scalar quaternions. One can tell from
+context which kind of object a symbol refers to.
+\end{remark}
+
 
 \begin{definition}
-For $q\in\H$ let $|q|$ denote the Euclidean norm of $q$ as an element of $\R^4$.
+For $q\in\H$ let $|q|$ denote the Euclidean norm of $q$ in $\R^4$.
 \end{definition}
+
+\begin{lemma}
+\label{lemma:norm_is_determinant}
+For $q\in\H$, $|q|^2 = \det(Q(q))$.
+\end{lemma}
+\begin{proof}
+By Lemma \ref{lemma:det_of_A},
+$\det(Q(q)) = |q^0 + iq^1|^2 + |q^2 + iq^3|^2 = |q|^2$.
+\end{proof}
 
 \begin{lemma}
 For all $q_1,q_2 \in \H$, $|q_1 q_2| = |q_1| |q_2|$.
 \end{lemma}
 \begin{proof}
-This is because $|q| = \sqrt{\det(Q(q))}$ and for $A,B\in M(2; \C)$,
-$\det(AB) = \det(A)\det(B)$.
+$|q_1 q_2|^2 = \det(Q(q_1 q_2)) = \det(Q(q_1) Q(q_2)) = \det(Q(q_1))\det(Q(q_2)) = |q_1|^2 |q_2|^2.$
+The result follows since norms are non-negative.
 \end{proof}
+
+\begin{definition}
+For $q\in\H$ we define its \emph{conjugate} to be $\bar{q} = Q^{-1}(Q(q)^{*})$.
+That is, the conjugate of $q$ corresponds to the Hermitian adjoint of $Q(q)$.
+\end{definition}
+
+\begin{corollary}
+\label{corollary:q_times_qbar}
+ For $q\in\H$,  $q \qbar = |q|^2 $. (We are using our convention of conflating a real number with its scalar quaternion.)
+ \end{corollary}
+ \begin{proof}  $Q(q \qbar) = Q(q) Q(q)^* = \det(Q(q))^2 I$ (by Lemma \ref{lemma:a_times_a_star})
+ $= |q|^2 I$ (by Lemma \ref{lemma:norm_is_determinant}) $ = Q(|q|^2 1)$.
+ \end{proof}
+
+ \begin{corollary}
+ \label{corollary:q_inverse_by_qbar}
+ For $q\in\H$, 
+ $$q^{-1} = \frac{1}{|q|^2} \qbar.$$
+ \end{corollary}
+ \begin{proof}
+ By Corollary \ref{corollary:q_times_qbar}
+ $$\frac{1}{|q|^2} q \qbar = 1.$$ 
+ \end{proof}
+
+ \begin{lemma}
+ For $q\in\H$, $\bar{\qbar} = q$.
+ \end{lemma}
+ \begin{proof}
+ Immediate because for $A$ a matrix $(A^{*})^{*} = A$.
+ \end{proof}
 
 \subsection{The Quaternions in terms of vector operations}
 
@@ -287,20 +391,6 @@ $$
 \end{corollary}
 
 \begin{lemma}
-Let $q\in\H$, $q\not=0$.
-Write $q=\begin{pmatrix}c\\ \vec{v}\end{pmatrix}$. Then
-$$q^{-1} = \frac{1}{|q|^2}\begin{pmatrix}c\\ -\vec{v}\end{pmatrix}.$$
-\end{lemma}
-\begin{proof}
-$|q|^2 = c^2 + |\vec{v}|^2 \not= 0$ since $q\not=0$.
-By 
-Lemma \ref{lemma:in_terms_of_vector_products}
-$$\begin{pmatrix}c\\ \vec{v}\end{pmatrix}\begin{pmatrix}c\\ -\vec{v}\end{pmatrix}=
-\begin{pmatrix}|q|^2\\ \vec{0}\end{pmatrix}$$
-which equals $|q|^2$ times the identity quaternion.
-\end{proof}
-
-\begin{lemma}
 \label{lemma:commute_criterion}
 Let $q_1, q_2 \in \H$. Then $q_1 q_2 = q_2 q_1$ iff 
 the pure parts of $q_1$ and $q_2$ are colinear.
@@ -311,6 +401,36 @@ By Lemma \ref{lemma:in_terms_of_vector_products}, $q_1$ and $q_2$ commute
 iff $v_1 \times v_2$ = $v_2 \times v_1$ and this is so iff
 $v_1 \times v_2 = 0$ iff $v_1$ and $v_2$ are colinear.
 \end{proof}
+
+\begin{lemma}
+\label{lemma:qbar_for_vectors}
+ For $q\in\H$, with $q=\begin{pmatrix}c \\ \vec{v}\end{pmatrix}$,
+ $$\qbar = \begin{pmatrix}c \\ -\vec{v}\end{pmatrix}.$$
+ \end{lemma}
+ \begin{proof}
+ Write $q=\begin{pmatrix}x \\ y \\ z \\ w\end{pmatrix}$.
+ Let $\alpha = x + iy$, $\beta=z+iw$.
+ Then $\alphabar = x - iy$ and $-\beta = -z - iw$.
+ By equation \ref{eq:quaternion_matrix_adjoint},
+ $$
+ \qbar=Q^{-1}(Q(\alpha,\beta)^*)=Q^{-1}(Q(\alphabar,-\beta))=
+ \begin{pmatrix}
+ x \\ -y \\ -z \\ -w
+ \end{pmatrix}.
+ $$
+ \end{proof}
+
+ \begin{lemma}
+Let $q\in\H$, $q\not=0$.
+Write $q=\begin{pmatrix}c\\ \vec{v}\end{pmatrix}$. Then
+$$q^{-1} = \frac{1}{|q|^2}\begin{pmatrix}c\\ -\vec{v}\end{pmatrix}.$$
+\end{lemma}
+\begin{proof}
+By Corollary \ref{corollary:q_inverse_by_qbar}, 
+$$q^{-1} = \frac{1}{|q|^2}\qbar$$ so this lemma
+follws from Lemma \ref{lemma:qbar_for_vectors}.
+\end{proof}
+
 
 \subsection{The Quaternions in terms of canonical basis elements}
 
@@ -381,10 +501,10 @@ that distributes over addition, commutes with scalar multiplication,
  is completely determined by its values on all ordered pairs from a fixed basis.
  \end{proof}
 
- \begin{remarks} All of $\R$, $\R^3$ and $\C$ naturally embed into $\H$ and going forward we will often
+ \begin{remarks} $\R$, $\R^3$ and $\C$ all naturally embed into $\H$ and going forward we will often
  tacitly conflate all of these with their images in $\H$.
  \begin{enumerate}
- \item We will identify $\R$ with the scalar quaternions via the identification $x\mapsto x 1$ where $x$ is a
+ \item As previously mentioned, we will identify $\R$ with the scalar quaternions via the identification $x\mapsto x 1$ where $x$ is a
  real number and $1$ is the unit quaternion.
  \item Define the \emph{complex} quaternions to be the two-dimensional subspace of $\H$ spanned by 1 and $i$.
  It is easy to see that the complex quaternions are a sub-algebra of $\H$.
@@ -397,7 +517,6 @@ that distributes over addition, commutes with scalar multiplication,
  to do with the imaginary unit $i$.
  \end{enumerate}
  \end{remarks}
-
 
 \bibliographystyle{amsalpha}
 
