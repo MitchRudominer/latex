@@ -51,7 +51,7 @@ Immediate.
 
 
 \begin{note}
-$\setof{A\in \H_M}{\det(A) = 1} = \SO(2).$
+$\setof{A\in \H_M}{\det(A) = 1} = \SU(2).$
 \end{note}
 
 
@@ -517,6 +517,89 @@ that distributes over addition, commutes with scalar multiplication,
  to do with the imaginary unit $i$.
  \end{enumerate}
  \end{remarks}
+
+ \section{Lie Group and Lie Algebra Structures for the Quaternions}
+
+ Because $\H$ and $\H_M$ are associative algebras, they naturally have a commutator bracket
+ making them into Lie algebras. For $\H_M$ this is the usual matrix commutator and so
+ $\H_M$ is a Lie subalgebra of $M(2; \C)$. We have that $Q:\H\map\H_M$ is a Lie algebra isomorphism.
+
+\begin{lemma}
+\label{lemma:bracket_in_terms_of_vector_products}
+The Lie bracket on $\H$ may be computed as
+$$
+\left[
+\begin{pmatrix}
+c\\
+\vec{v}
+\end{pmatrix},
+\begin{pmatrix}
+d\\
+\vec{w}
+\end{pmatrix}
+\right]
+=
+\begin{pmatrix}
+0 \\
+2\vec{v}\times \vec{w}
+\end{pmatrix}.
+$$
+\end{lemma}
+\begin{proof}
+Using Lemma \ref{lemma:in_terms_of_vector_products} we compute
+$$
+\begin{pmatrix}
+cd - \vec{v} \cdot \vec{w} \\
+c\vec{w} + d\vec{v} + \vec{v}\times \vec{w}
+\end{pmatrix}
+-
+\begin{pmatrix}
+dc - \vec{w} \cdot \vec{v} \\
+d\vec{v} + c\vec{w} + \vec{w}\times \vec{v}
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+ \vec{v}\times \vec{w} - (-\vec{v}\times \vec{w})
+\end{pmatrix}
+$$
+\end{proof}
+
+\begin{corollary}
+The pure quaternions are a Lie algebra isomorphic to $(\R^3, \times)$.
+\end{corollary} 
+
+\begin{lemma}
+$\H -\singleton{0}$ is a four-dimensional Lie group.
+\end{lemma}
+\begin{proof}
+$M(2; \C)$ is a real vector space and so an 8-dimensional real manifold. 
+
+$\H_M$ is a 4-dimensional vector subspace and so a 4-dimensional embedded submanifold of $M(2; \C)$.
+
+$\H_M- \singleton{0}$ is an open submanifold of $\H_M$ and so a a 4-dimensional embedded submanifold of $M(2; \C)$.
+
+
+$\H_M- \singleton{0}\subset \GL(2,\C)$ so $\H_M- \singleton{0}$ is a 4-dimensional embedded submanifold of $GL(2,\C)$.
+
+
+$\H_M- \singleton{0}$ is also a subgroup of $\GL(2,\C)$ and so it is a Lie subgroup.
+
+$Q:\H\map\H_M$ is a vector space isomorphism and so a diffeomorphism.
+
+So $Q:\H - \singleton{0}\map\H_M- \singleton{0}$ a diffeomorphism.
+
+$Q:\H- \singleton{0}\map\H_M- \singleton{0}$ is also a group isomorphism.
+
+So $\H$ is also a four-dimensional Lie group and $Q$ is a Lie group isomorphism.
+\end{proof}
+
+\begin{corollary}
+The set of unit quaternions is a three-dimensional Lie group, isomorphic to $\SU(2)$.
+\end{corollary}
+\begin{proof}
+$Q$ maps the set of unit quaternions one-to-one and onto $\SU(2)$.
+\end{proof}
 
 \bibliographystyle{amsalpha}
 
