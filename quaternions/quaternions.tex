@@ -579,7 +579,7 @@ $$\left(\H_0,[\cdot]\right) \isomorphic \left(\R^3, \times \right).$$
 $\H_0$ is a three dimensional subspace closed under the the bracket, so it is a Lie
 subalgebra of $\H$.
 Let $\pi:\H_0\map\R^3$ be defined by $\pi(q(\vec{v}))=2\vec{v}$. This is a linear isomorphism
-and we claim that for $v_1,v_2\in\H_0$, $\pi([q_1,q_2]) = \pi(q_1) \times \pi(q_2)$. To see
+and we claim that for $q_1,q_2\in\H_0$, $\pi([q_1,q_2]) = \pi(q_1) \times \pi(q_2)$. To see
 this fix $q_1=q(\vec{v}_1),q_2=q(\vec{v}_2)$. Then
 $\pi([q_1,q_2]) = \pi(q(2 \vec{v}_1\times\vec{v}_2)) = 4 \vec{v}_1\times\vec{v}_2
 = 2\vec{v}_1\times 2\vec{v}_2 = \pi(q_1) \times \pi(q_2)$.
@@ -604,10 +604,10 @@ $\H_M$ is a 4-dimensional vector subspace and so a 4-dimensional embedded subman
 $\H_M- \singleton{0}$ is an open submanifold of $\H_M$ and so a a 4-dimensional embedded submanifold of $M(2; \C)$.
 
 
-$\H_M- \singleton{0}\subset \GL(2,\C)$ so $\H_M- \singleton{0}$ is a 4-dimensional embedded submanifold of $GL(2,\C)$.
+$\H_M- \singleton{0}\subset \GL(2;\C)$ so $\H_M- \singleton{0}$ is a 4-dimensional embedded submanifold of $\GL(2;\C)$.
 
 
-$\H_M- \singleton{0}$ is also a subgroup of $\GL(2,\C)$ and so it is a Lie subgroup.
+$\H_M- \singleton{0}$ is also a subgroup of $\GL(2;\C)$ and so it is a Lie subgroup.
 
 $Q:\H\map\H_M$ is a vector space isomorphism and so a diffeomorphism.
 
@@ -615,16 +615,111 @@ So $Q:\H - \singleton{0}\map\H_M- \singleton{0}$ a diffeomorphism.
 
 $Q:\H- \singleton{0}\map\H_M- \singleton{0}$ is also a group isomorphism.
 
-So $\H$ is also a four-dimensional Lie group and $Q$ is a Lie group isomorphism.
+So $\H - \singleton{0}$ is also a four-dimensional Lie group and $Q:\H-\singleton{0}\map\H_M-\singleton{0}$
+ is a Lie group isomorphism.
 \end{proof}
 
+\begin{definition}
+The \emph{unit quaternions} refers to the set of quaternions with norm 1.
+\end{definition}
+
 \begin{corollary}
-The set of unit quaternions is a three-dimensional Lie group, isomorphic to $\SU(2)$.
+The unit quaternions is naturally a three-dimensional Lie group, isomorphic to $\SU(2)$.
 \end{corollary}
 \begin{proof}
-The proof of Lemma \ref{lemma:quaternion_lie_group} shows that $Q:\H\map\H_M$
+The proof of Lemma \ref{lemma:quaternion_lie_group} shows that $Q:\H-\singleton{0}\map\H_M-\singleton{0}$
 is a Lie group isomorphism and
 $Q$ maps the set of unit quaternions one-to-one and onto $\SU(2)$.
+\end{proof}
+
+\begin{lemma}
+(a) $\H$ with the commutator bracket is the Lie algebra of the Lie group $\H-\singleton{0}$.
+
+
+(b) $\H_0$ with the commutator bracket is the Lie algebra of the Lie group of unit quaternions.
+\end{lemma}
+\begin{proof}
+Let's take as given that $M(2;\C)$ with the commutator bracket is the Lie algebra for
+$\GL(2;\C)$. 
+
+For (a) it suffices to show that if $A\in M(2;\C)$ then $A$ is tangent to $\H_M - {0}$ at the identity
+iff $A\in\H_M$.
+
+
+Let 
+$$
+B(t) = 
+\begin{pmatrix}
+\alpha(t) & \beta(t) \\
+-\betabar(t) & \alphabar(t)
+\end{pmatrix} 
+$$
+be a smooth path in $\H_M - {0}$ with $B(0) = I$.
+Let $A = B^{\prime}(0)$. We want to show that $A\in\H_M$.
+
+We have 
+$$
+B^{\prime}(t) = 
+\begin{pmatrix}
+\alphaprime(t) & \betaprime(t) \\
+-\betabar^{\prime}(t) & \alphabar^{\prime}(t)
+\end{pmatrix} 
+\in\H_M
+$$
+since taking the derivative commutes with complex conjugation and negation.
+
+Conversely let 
+$$
+A = 
+\begin{pmatrix}
+\alpha & \beta \\
+-\betabar & \alphabar
+\end{pmatrix} 
+\in\H_M.
+$$
+Let
+$$
+B(t) = 
+\begin{pmatrix}
+1 + \alpha t & \beta t \\
+-\betabar t & 1 + \alphabar t
+\end{pmatrix} .
+$$
+Then $B(0) = I$, $B(t)\in\H_M - {0}$ (for small $t$), and $B^{\prime} = A$.
+
+For part (b), let $S\subset \H$ be the Lie group of unit quaternions.
+Given part (a), in order to prove part (b) it suffices to show that for $q\in\H$,
+$q$ is tangent to $S$ at 1 iff $q\in\H_0$.
+
+Let $s(t)$ be a path in $S$ with $s(0) = 1$. We want to show that the real part of $q = \sprime(0)$ is zero.
+This is true because the real part of $s(0)$  is 1 and that is the maximum value of the real part of $s(t)$
+for all $t$ since $|s(t)| = 1$ for all $t$.
+
+Conversely let $q\in\H_0$. We want to show that $q$ is tangent to $S$ at 1. 
+If $q=0$ then it is clearly tangent to $S$ so suppose $q\not=0$.
+Let us write the pure part of $q$ as $c\vec{v}$ where $\vec{v}$ is a unit 3 vector and $c$ is a positive real number.
+Let
+$$
+s(t) = 
+\begin{pmatrix}
+\cos(ct) \\ \sin(ct) \vec{v}
+\end{pmatrix}
+.$$
+Then $s(0) = 1$, $s(t)\in S$ for all $t$, and
+$$
+\sprime(t) = 
+\begin{pmatrix}
+-c\sin(ct) \\ c\cos(ct) \vec{v}
+\end{pmatrix}
+$$
+so that 
+$$
+\sprime(0) = 
+\begin{pmatrix}
+0 \\ c\vec{v}
+\end{pmatrix}
+= q.
+$$
 \end{proof}
 
 
