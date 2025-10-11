@@ -619,24 +619,27 @@ So $\H - \singleton{0}$ is also a four-dimensional Lie group and $Q:\H-\singleto
  is a Lie group isomorphism.
 \end{proof}
 
+
 \begin{definition}
-The \emph{unit quaternions} refers to the set of quaternions with norm 1.
+Let $\H_1$ be the space of quaternions with norm 1. Topologically $\H_1$ is $S^3$, the three-sphere in $\R^4$.
 \end{definition}
 
 \begin{corollary}
-The unit quaternions is naturally a three-dimensional Lie group, isomorphic to $\SU(2)$.
+$\H_1$ is a three-dimensional Lie sub-group of $\H-\singleton{0}$, and $\H_1$ isomorphic to $\SU(2)$.
 \end{corollary}
 \begin{proof}
 The proof of Lemma \ref{lemma:quaternion_lie_group} shows that $Q:\H-\singleton{0}\map\H_M-\singleton{0}$
-is a Lie group isomorphism and
-$Q$ maps the set of unit quaternions one-to-one and onto $\SU(2)$.
+is a Lie group isomorphism. The current result follows since
+$Q$ maps $\H_1$ one-to-one and onto $\SU(2)$.
 \end{proof}
 
 \begin{lemma}
-(a) $\H$ with the commutator bracket is the Lie algebra of the Lie group $\H-\singleton{0}$.
+\begin{enumerate}
+\item[(a)] $\H$ with the commutator bracket is the Lie algebra of the Lie group $\H-\singleton{0}$.
 
 
-(b) $\H_0$ with the commutator bracket is the Lie algebra of the Lie group of unit quaternions.
+\item[(b)] $\H_0$ is the Lie algebra of $\H_1$.
+\end{enumerate}
 \end{lemma}
 \begin{proof}
 Let's take as given that $M(2;\C)$ with the commutator bracket is the Lie algebra for
@@ -687,16 +690,15 @@ B(t) =
 $$
 Then $B(0) = I$, $B(t)\in\H_M - {0}$ (for small $t$), and $B^{\prime} = A$.
 
-For part (b), let $S\subset \H$ be the Lie group of unit quaternions.
 Given part (a), in order to prove part (b) it suffices to show that for $q\in\H$,
-$q$ is tangent to $S$ at 1 iff $q\in\H_0$.
+$q$ is tangent to $\H_1$ at 1 iff $q\in\H_0$.
 
-Let $s(t)$ be a path in $S$ with $s(0) = 1$. We want to show that the real part of $q = \sprime(0)$ is zero.
+Let $s(t)$ be a path in $\H_1$ with $s(0) = 1$. We want to show that the real part of $q = \sprime(0)$ is zero.
 This is true because the real part of $s(0)$  is 1 and that is the maximum value of the real part of $s(t)$
 for all $t$ since $|s(t)| = 1$ for all $t$.
 
-Conversely let $q\in\H_0$. We want to show that $q$ is tangent to $S$ at 1. 
-If $q=0$ then it is clearly tangent to $S$ so suppose $q\not=0$.
+Conversely let $q\in\H_0$. We want to show that $q$ is tangent to $\H_1$ at 1. 
+If $q=0$ then it is clearly tangent to $\H_1$ so suppose $q\not=0$.
 Let us write the pure part of $q$ as $c\vec{v}$ where $\vec{v}$ is a unit 3 vector and $c$ is a positive real number.
 Let
 $$
@@ -705,7 +707,7 @@ s(t) =
 \cos(ct) \\ \sin(ct) \vec{v}
 \end{pmatrix}
 .$$
-Then $s(0) = 1$, $s(t)\in S$ for all $t$, and
+Then $s(0) = 1$, $s(t)\in \H_1$ for all $t$, and
 $$
 \sprime(t) = 
 \begin{pmatrix}
@@ -719,6 +721,77 @@ $$
 0 \\ c\vec{v}
 \end{pmatrix}
 = q.
+$$
+\end{proof}
+
+\begin{definition}
+For $q\in\H$, let $L_q:\H\map\H$ be left multiplication by $q$,
+and let $R_q$ be right multiplication by $q$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma:mult_deriv}
+If $q\in\H-\singleton{0}$, then the derivative of $L_q:\H-\singleton{0}\map\H-\singleton{0}$ is
+$L_q:\H\map\H$, and similarly for $R_q$.
+
+If $q\in\H_1$, then the derivative of $L_q:\H_1\map\H_1$ is
+$L_q:\H_0\map q\H_0$, and similarly for $R_q$. 
+\end{lemma}
+\begin{proof}
+This follows from the fact that the analogous facts are true of matrix multiplication.
+\end{proof}
+
+\begin{lemma}
+Let $\exp:\H_0\map\H_1$ be the exponential map, as defined in Lie group theory.
+Then 
+$$\exp
+\begin{pmatrix}
+0 \\ c\vec{v}
+\end{pmatrix}
+ = 
+\begin{pmatrix}
+\cos(c) \\ \sin(c) \vec{v}
+\end{pmatrix}
+$$
+where $\vec{v}$ is a unit vector in $\R^3$ and $c\geq 0$.
+\end{lemma}
+\begin{proof}
+Fix 
+$$q=
+\begin{pmatrix}
+0 \\ c\vec{v}
+\end{pmatrix}
+\in\H_0$$
+with  $\vec{v}$ a unit vector in $\R^3$ and $c\geq 0$.
+
+Let $V_q$ be the left-invariant vector field on $\H_1$ whose value at 1 is $q$.
+
+By Lemma \ref{lemma:mult_deriv}
+for $p\in\H_1$,$T_q(p) = pq$. 
+
+Let
+$$s(t)=
+\begin{pmatrix}
+\cos(ct) \\ \sin(ct) \vec{v}
+\end{pmatrix}
+.
+$$
+Then
+$$V_q(s(t)) = \begin{pmatrix}
+\cos(ct) \\ \sin(ct) \vec{v}
+\end{pmatrix}
+\begin{pmatrix}
+0 \\ c \vec{v}
+\end{pmatrix} =
+\begin{pmatrix}
+-c\sin(ct) \\ c \cos(ct)\vec{v}
+\end{pmatrix} = s^{\prime}(t).
+$$
+Thus $s(t)$ is an integral curve of $V_q$ and
+$$
+s(1)=\begin{pmatrix}
+\cos(c) \\ \sin(c) \vec{v}
+\end{pmatrix}.
 $$
 \end{proof}
 
