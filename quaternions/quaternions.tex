@@ -767,7 +767,7 @@ with  $\vec{v}$ a unit vector in $\R^3$ and $c\geq 0$.
 Let $V_q$ be the left-invariant vector field on $\H_1$ whose value at 1 is $q$.
 
 By Lemma \ref{lemma:mult_deriv}
-for $p\in\H_1$,$T_q(p) = pq$. 
+for $p\in\H_1$,$V_q(p) = pq$. 
 
 Let
 $$s(t)=
@@ -794,6 +794,61 @@ s(1)=\begin{pmatrix}
 \end{pmatrix}.
 $$
 \end{proof}
+
+\begin{remarks} Let's compare $\exp:\H_0 \map \H_1$ to 
+$\exp:\R\map C^1$. Let $v\in\H_0\intersect\H_1$. That is,
+let $v = x i + y j + z k$ with $|v| = 1$. Then we have
+\begin{enumerate}
+\item[(a)] $\exp(\theta i) = \cos(\theta) + \sin(\theta)i$
+\item[(b)] $\exp(\theta v) = \cos(\theta) + \sin(\theta)v$
+\end{enumerate}
+so we can see that (b) is a generalization of (a), since we get (a) by setting $x=1,y=z=0$. 
+
+Of course in (a) we have that $\exp$ is given by the complex exponential function
+$$\exp(z) = e^z = 1 + z + \frac{z^2}{2} + \frac{z^3}{3!} + ...$$
+It turns out that we can say the same for (b). The abstract exponential function $\exp:\H_0 \map \H_1$
+is also given by a concrete exponentional function on the quaternions given by the same power series.
+But we do not pursue this further here as we do not need this result.
+\end{remarks}
+
+\section{Conjugation}
+
+Let $G$ be a group and $g\in G$. Conjugation by $g$ is the map
+$\phi_g:G\map G$ given by $\phi_g(h) = g h g^{-1}$. $\phi_g$ is a group automorphism.
+If $G$ is a Lie group then $\phi_g$ is also a diffeomorphism, so it is a Lig group automorphism
+and so it induces a Lie algebra homomorphism $T_{\phi_g}$.
+
+\begin{lemma}
+Let $G$ be a Lie group and $A$ the associated Lie algebra. Let $\exp:A\map G$ be the exponential map.
+Let $a\in A$, and let $g=\exp(a)$. Then $T_{\phi_g}(a) = a$. 
+\end{lemma}
+
+We illustrate the previous Lemma in the case of the Quaternions by computing the conjugation explicitly.
+\begin{multline*}
+\begin{pmatrix}
+\cos(c) \\ \sin(c)v
+\end{pmatrix}
+\begin{pmatrix}
+0 \\ cv
+\end{pmatrix}
+\begin{pmatrix}
+\cos(c) \\ - \sin(c)v
+\end{pmatrix}
+= 
+\begin{pmatrix}
+-c \sin(c) \\ c \cos(c) v
+\end{pmatrix}
+\begin{pmatrix}
+\cos(c) \\ - \sin(c)v
+\end{pmatrix} = \\
+\begin{pmatrix}
+-c \sin(c) \cos(c) + c \sin(c) \cos(c)\\\left(\sin^2(c) + \cos^2(c)\right) c v
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\ cv
+\end{pmatrix}.
+\end{multline*}
 
 
 \bibliographystyle{amsalpha}
