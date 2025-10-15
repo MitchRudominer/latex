@@ -742,6 +742,7 @@ This follows from the fact that the analogous facts are true of matrix multiplic
 \end{proof}
 
 \begin{lemma}
+\label{lemma:exp_formula}
 Let $\exp:\H_0\map\H_1$ be the exponential map, as defined in Lie group theory.
 Then 
 $$\exp
@@ -795,6 +796,15 @@ s(1)=\begin{pmatrix}
 $$
 \end{proof}
 
+\begin{corollary}
+\label{corollary:exp_commute}
+Let $\exp:\H_0\map\H_1$ be the exponential map. Let $q\in\H_0$. The $q$ and $\exp(q)$ commute.
+\end{corollary}
+\begin{proof}
+By Lemma \ref{lemma:exp_formula}, $q$ and $\exp(q)$ have the same pure part,
+so they commute by Lemma \ref{lemma:commute_criterion}.
+\end{proof}
+
 \begin{remarks} Let's compare $\exp:\H_0 \map \H_1$ to 
 $\exp:\R\map C^1$. Let $v\in\H_0\intersect\H_1$. That is,
 let $v = x i + y j + z k$ with $|v| = 1$. Then we have
@@ -808,22 +818,33 @@ Of course in (a) we have that $\exp$ is given by the complex exponential functio
 $$\exp(z) = e^z = 1 + z + \frac{z^2}{2} + \frac{z^3}{3!} + ...$$
 It turns out that we can say the same for (b). The abstract exponential function $\exp:\H_0 \map \H_1$
 is also given by a concrete exponentional function on the quaternions given by the same power series.
-But we do not pursue this further here as we do not need this result.
+But we do not pursue this further here as we do not need this result. However, do note that
+if we did know that the $\exp$ were given by a power series, that would be another way of
+seeing that $\exp(q)$ commutes with $q$, becuase it is easy to see that $q$ commutes with 
+a power series of $q$.
 \end{remarks}
 
 \section{Conjugation}
 
 Let $G$ be a group and $g\in G$. Conjugation by $g$ is the map
 $\phi_g:G\map G$ given by $\phi_g(h) = g h g^{-1}$. $\phi_g$ is a group automorphism.
-If $G$ is a Lie group then $\phi_g$ is also a diffeomorphism, so it is a Lig group automorphism
-and so it induces a Lie algebra homomorphism $T_{\phi_g}$.
+If $G$ is a Lie group then $\phi_g$ is also a diffeomorphism, so it is a Lig group automorphism.
+Let $\fg$ be the Lie algebra of $G$. Then $\phi_g$ induces a Lie algebra homomorphism 
+$T_{\phi_g}:\fg\to\fg$.  In particular $T_{\phi_g}\in\GL(\fg)$.
+The map $\Ad:G\map\GL(\fg)$ given by $\Ad(g)= T_{\phi_g}$
+is called the \emph{adjoint} representation of $G$.
 
 \begin{lemma}
-Let $G$ be a Lie group and $A$ the associated Lie algebra. Let $\exp:A\map G$ be the exponential map.
-Let $a\in A$, and let $g=\exp(a)$. Then $T_{\phi_g}(a) = a$. 
+Let $G$ be a Lie group and $\fg$ its Lie algebra. Let $\exp:\fg\map G$ be the exponential map.
+Let $A\in \fg$. Then $A$ is a fixed point of $\Ad(\exp(A))$.
+In other words, if $g=\exp(A)$. Then $T_{\phi_g}(A) = A$. 
 \end{lemma}
 
-We illustrate the previous Lemma in the case of the Quaternions by computing the conjugation explicitly.
+We will prove the Lemma below but first note that it is easy to prove in the case
+$G=\H_1, \fg = \H_0$.  Let $q\in\H_0$.
+By Lemma \ref{lemma:mult_deriv}, $\Ad(q)q = \exp(q) q  \exp(q)^{-1}$ and by
+Corollary \ref{corollary:exp_commute} $q$ commutes with $\exp(q)$. It may also be
+enlightening to perform that calculation explicitly:
 \begin{multline*}
 \begin{pmatrix}
 \cos(c) \\ \sin(c)v
