@@ -836,6 +836,18 @@ The map $\Ad:G\map\GL(\fg)$ given by $\Ad(g)= T_{\phi_g}$
 is called the \emph{adjoint} representation of $G$.
 
 \begin{lemma}
+\label{lemma:quat_adjoint}
+Let $\Ad:\H_1\map\GL(\H_0)$ be the adjoint representation of $\H_1$.
+Let $r\in\H_1$ and $q\in\H_0$. 
+Then $\Ad(r)(q) = r q r^{-1}$.
+In particular $r q r^{-1} \in \H_0$.
+\end{lemma}
+\begin{proof}
+This follows immediately from Lemma \ref{lemma:mult_deriv}.
+\end{proof}
+
+
+\begin{lemma}
 \label{lemma:adjoint_exponential_fixes_a}
 Let $G$ be a Lie group and $\fg$ its Lie algebra. Let $\exp:\fg\map G$ be the exponential map.
 Let $A\in \fg$. Then $A$ is a fixed point of $\Ad(\exp(A))$.
@@ -844,7 +856,7 @@ In other words, if $g=\exp(A)$. Then $T_{\phi_g}(A) = A$.
 
 We will prove the lemma below but first note that it is easy to prove in the case
 $G=\H_1, \fg = \H_0$.  Let $q\in\H_0$.
-By Lemma \ref{lemma:mult_deriv}, $\Ad(\exp(q))q = \exp(q) q  \exp(q)^{-1}$ and by
+By Lemma \ref{lemma:quat_adjoint}, $\Ad(\exp(q))q = \exp(q) q  \exp(q)^{-1}$ and by
 Corollary \ref{corollary:exp_commute} $q$ commutes with $\exp(q)$. 
 
 \begin{proof}[Proof of Lemma \ref{lemma:adjoint_exponential_fixes_a}]
@@ -875,12 +887,39 @@ For $q=-1$ define $\theta(q)=\pi$, $v(q)=\vec{i}$.
 \end{definition}
 
 \begin{theorem}
-Let $q\in\H_1$. For $r\in\H_0$, let $\Pi_q(r) =q r q^{-1}.$
-Then $\Pi_q(r)\in \H_0$.
-Consider $\Pi_q$ to be a function from $\R^3$ to $\R^3$
-by identifying $\R^3$ with $\H_0$. Then $\Pi_q$ is rotation by $2\theta(q)$
+Fix $q\in\H_1$. For any $r\in\H_0$, $q r q^{-1}\in\H_0$.
+
+Let $\Pi_q:\R^3\map\R^3$ be given by $r\mapsto q r q^{-1}$,
+where we are identifying $\R^3$ with $\H_0$.
+
+Then $\Pi_q$ is rotation by $2\theta(q)$
 about $\vec{v}(q)$. For $q=1$ and $q=-1$, $\Pi_q$ is the identity.
 \end{theorem}
+\begin{proof}
+The function $r\mapsto q r q^{-1}$ is
+$\Ad(q)$ where $\Ad:\H_1\map\GL(\H_0)$ is the adjoint representation of $\H_1$.
+We already saw that for any $r\in\H_0$, $q r q^{-1}\in\H_0$ in Lemma \ref{lemma:quat_adjoint}.
+Also we already know that $\Ad(q)\in\GL(\H_0)$ so $\Pi_q:\R^3\map\R^3$ is linear.
+Our job is to prove that $\Pi_q$ is the stated rotation.
+
+Note in fact that $\Ad(q)$ is a Lie algebra isomorphism which implies that $\Pi_q$
+preserves cross product which is equivalent to $\det(\Pi_q)=1$. But we don't need to
+use this fact. It will come as a byproduct of showing that $\Pi_q$ is a rotation.
+
+If $q=1$ or $q=-1$ it is clear that for all $r\in\H_0$, $q r q^{-1} = r$. So assume
+that $q\not=1$, $q\not=-1$. Let $\theta=\theta(q)$ and $\vec{v} = \vec{v}(q)$.
+So we want to prove that $\Pi_q$ is a rotation by $2\theta$ about $\vec{v}$.
+
+Let $r_0\in\H_0$ be the pure quaternion whose pure part is $\theta \vec{v}$. To summarize
+$$ 
+q = \begin{pmatrix} \cos(\theta) \\ \sin(\theta) \vec{v} \end{pmatrix};
+\text{   }
+r_0 = \begin{pmatrix} 0 \\ \theta \vec{v} \end{pmatrix}.
+$$
+By Lemma \ref{lemma:exp_formula}, $q=\exp(r_0)$, where $\exp:\H_0\map\H_1$ is the Lie group exponential function. By Lemma \ref{lemma:adjoint_exponential_fixes_a}, $\Ad(q)$ fixes $r_0$, i.e.
+$q r_0 q = r_0$. This implies that $\Pi_q(\vec{v}) = \vec{v}$. So $\vec{v}$ is an eigenvector
+of $\Pi_q$ with eigenvalue 1.
+\end{proof}
 
 
 \bibliographystyle{amsalpha}
