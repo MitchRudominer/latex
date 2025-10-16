@@ -731,10 +731,11 @@ and let $R_q$ be right multiplication by $q$.
 
 \begin{lemma}
 \label{lemma:mult_deriv}
-If $q\in\H-\singleton{0}$, then the derivative of $L_q:\H-\singleton{0}\map\H-\singleton{0}$ is
+If $q\in\H-\singleton{0}$, then the tangent map at the identity
+ of $L_q:\H-\singleton{0}\map\H-\singleton{0}$ is
 $L_q:\H\map\H$, and similarly for $R_q$.
 
-If $q\in\H_1$, then the derivative of $L_q:\H_1\map\H_1$ is
+If $q\in\H_1$, then the tangent map at the indentity of $L_q:\H_1\map\H_1$ is
 $L_q:\H_0\map q\H_0$, and similarly for $R_q$. 
 \end{lemma}
 \begin{proof}
@@ -835,41 +836,51 @@ The map $\Ad:G\map\GL(\fg)$ given by $\Ad(g)= T_{\phi_g}$
 is called the \emph{adjoint} representation of $G$.
 
 \begin{lemma}
+\label{lemma:adjoint_exponential_fixes_a}
 Let $G$ be a Lie group and $\fg$ its Lie algebra. Let $\exp:\fg\map G$ be the exponential map.
 Let $A\in \fg$. Then $A$ is a fixed point of $\Ad(\exp(A))$.
 In other words, if $g=\exp(A)$. Then $T_{\phi_g}(A) = A$. 
 \end{lemma}
 
-We will prove the Lemma below but first note that it is easy to prove in the case
+We will prove the lemma below but first note that it is easy to prove in the case
 $G=\H_1, \fg = \H_0$.  Let $q\in\H_0$.
-By Lemma \ref{lemma:mult_deriv}, $\Ad(q)q = \exp(q) q  \exp(q)^{-1}$ and by
-Corollary \ref{corollary:exp_commute} $q$ commutes with $\exp(q)$. It may also be
-enlightening to perform that calculation explicitly:
-\begin{multline*}
-\begin{pmatrix}
-\cos(c) \\ \sin(c)v
-\end{pmatrix}
-\begin{pmatrix}
-0 \\ cv
-\end{pmatrix}
-\begin{pmatrix}
-\cos(c) \\ - \sin(c)v
-\end{pmatrix}
-= 
-\begin{pmatrix}
--c \sin(c) \\ c \cos(c) v
-\end{pmatrix}
-\begin{pmatrix}
-\cos(c) \\ - \sin(c)v
-\end{pmatrix} = \\
-\begin{pmatrix}
--c \sin(c) \cos(c) + c \sin(c) \cos(c)\\\left(\sin^2(c) + \cos^2(c)\right) c v
-\end{pmatrix}
-=
-\begin{pmatrix}
-0 \\ cv
-\end{pmatrix}.
-\end{multline*}
+By Lemma \ref{lemma:mult_deriv}, $\Ad(\exp(q))q = \exp(q) q  \exp(q)^{-1}$ and by
+Corollary \ref{corollary:exp_commute} $q$ commutes with $\exp(q)$. 
+
+\begin{proof}[Proof of Lemma \ref{lemma:adjoint_exponential_fixes_a}]
+Fix $A\in\fg$. Let $s(t) = \exp(tA)$. Let $\varphi(t) = \exp(A) s(t) \exp(A)^{-1}$.
+Then $A = \frac{d}{dt}\vert_{t=0} s(t)$ and $\Ad(\exp(A)) A = \frac{d}{dt}\vert_{t=0} \varphi(t)$.
+But $s(t)$ is a one-parameter subgroup of $G$ and $\exp(A)=s(1)$ so $\exp(A) s(t) = s(1)s(t) = s(t+1) = s(t)s(1) = s(t)\exp(A)$. Therefore $\varphi(t)=s(t)$.
+\end{proof}
+
+\section{Rotations in $\R^3$}
+\begin{definition}
+Let $q\in\H_1$. Then an \emph{angle-vector} representation of $q$ is
+$$q = \begin{pmatrix} \cos \theta \\ \sin \theta \vec{v} \end{pmatrix}$$
+where $0\leq\theta\leq\pi$ and $\vec{v}\in S^2$, i.e. $\vec{v}\in\R^3$ and $|\vec{v}| = 1$.
+\end{definition}
+
+\begin{remark}
+For all $q\in\H_1$ other than $q=1$ and $q=-1$, $q$ has a unique angle-vector represention.
+For $q=1$, $\theta=0$ but $\vec{v}$ is arbitrary and similarly
+for $q=-1$, $\theta=\pi$ but $\vec{v}$ is arbitrary.
+\end{remark}
+
+\begin{definition}
+For $q\in\H_1, q \not= 1, q\not=-1$ let $\theta(q)$ and $\vec{v}(q)$ be the unique
+$\theta$ and $\vec{v}$ such that
+$$\begin{pmatrix} \cos \theta \\ \sin \theta \vec{v} \end{pmatrix}$$
+is an angle-vector representation of $q$. For $q=1$ define $\theta(q)=0$, $v(q)=\vec{i}$.
+For $q=-1$ define $\theta(q)=\pi$, $v(q)=\vec{i}$.
+\end{definition}
+
+\begin{theorem}
+Let $q\in\H_1$. For $r\in\H_0$, let $\Pi_q(r) =q r q^{-1}.$
+Then $\Pi_q(r)\in \H_0$.
+Consider $\Pi_q$ to be a function from $\R^3$ to $\R^3$
+by identifying $\R^3$ with $\H_0$. Then $\Pi_q$ is rotation by $2\theta(q)$
+about $\vec{v}(q)$. For $q=1$ and $q=-1$, $\Pi_q$ is the identity.
+\end{theorem}
 
 
 \bibliographystyle{amsalpha}
