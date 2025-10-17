@@ -882,8 +882,8 @@ for $q=-1$, $\theta=\pi$ but $\vec{v}$ is arbitrary.
 For $q\in\H_1, q \not= 1, q\not=-1$ let $\theta(q)$ and $\vec{v}(q)$ be the unique
 $\theta$ and $\vec{v}$ such that
 $$\begin{pmatrix} \cos \theta \\ \sin \theta \vec{v} \end{pmatrix}$$
-is an angle-vector representation of $q$. For $q=1$ define $\theta(q)=0$, $v(q)=\vec{i}$.
-For $q=-1$ define $\theta(q)=\pi$, $v(q)=\vec{i}$.
+is an angle-vector representation of $q$. For $q=1$ define $\theta(q)=0$, $\vec{v(}q)=\vec{i}$.
+For $q=-1$ define $\theta(q)=\pi$, $\vec{v}(q)=\vec{i}$.
 \end{definition}
 
 \begin{theorem}
@@ -919,6 +919,50 @@ $$
 By Lemma \ref{lemma:exp_formula}, $q=\exp(r_0)$, where $\exp:\H_0\map\H_1$ is the Lie group exponential function. By Lemma \ref{lemma:adjoint_exponential_fixes_a}, $\Ad(q)$ fixes $r_0$, i.e.
 $q r_0 q = r_0$. This implies that $\Pi_q(\vec{v}) = \vec{v}$. So $\vec{v}$ is an eigenvector
 of $\Pi_q$ with eigenvalue 1.
+
+Let $\vec{v}_1$ be any unit vector orthogonal to $\vec{v}$ and let $\vec{v}_2 = \vec{v} \times \vec{v}_1$.
+Then $\vec{v} = \vec{v}_1\times \vec{v}_2$ and so $\angles{\vec{v}_1,\vec{v}_2, v}$ is a right-handed,
+orthonormal basis for $\R^3$.
+
+Let $\hat{\Pi}_q$ be $\Pi_q$ restricted to the plane spanned by $\singleton{\vec{v}_1,\vec{v}_2}$.
+Since $\Pi_q(\vec{v}) = \vec{v}$, it suffices to show that
+$\hat{\Pi}_q$ is a rotation by $2\theta$ in that plane, oriented via the ordered basis $\angles{\vec{v}_1,\vec{v}_2}$.
+
+Let $r_1,r_2\in\H_0$ be the pure quaternions whose pure parts are $\vec{v}_1,\vec{v}_2$ respectively.
+Since $\vec{v} \cdot \vec{v}_1 = 0$ and
+$\vec{v} \cdot \vec{v}_2 = 0$ and $\vec{v} \times \vec{v}_1 = \vec{v}_2$, 
+and $\vec{v}_2\times\vec{v}=\vec{v}_1$,
+using Lemma \ref{lemma:in_terms_of_vector_products} we comppute
+\begin{align*}
+q  r_1  q^{-1} &=
+\begin{pmatrix}
+\cos(\theta) \\ \sin(\theta) \vec{v}
+\end{pmatrix}
+\begin{pmatrix}
+0 \\ \vec{v}_1
+\end{pmatrix}
+\begin{pmatrix}
+\cos(\theta) \\ -\sin(\theta) \vec{v}
+\end{pmatrix}
+\\
+ &=
+\begin{pmatrix}
+0 \\ \cos(\theta)\vec{v}_1 + \sin(\theta)\vec{v}_2
+\end{pmatrix}
+\begin{pmatrix}
+\cos(\theta) \\ -\sin(\theta) \vec{v}
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+0 \\ \left[\cos^2(\theta) - \sin^2(\theta)\right]\vec{v}_1 + 2\sin(\theta)\cos(\theta)\vec{v}_2
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+0 \\ \cos(2\theta)\vec{v}_1 + \sin(2\theta)\vec{v}_2.
+\end{pmatrix}
+\end{align*}
+
+This says that $$\hat{\Pi}_q(\vec{v}_1) = \cos(2\theta)\vec{v}_1 + \sin(2\theta)\vec{v}_2.$$
 \end{proof}
 
 
