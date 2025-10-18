@@ -421,6 +421,7 @@ $v_1 \times v_2 = 0$ iff $v_1$ and $v_2$ are colinear.
  \end{proof}
 
  \begin{lemma}
+ \label{lemma:q_inverse_calc}
 Let $q\in\H$, $q\not=0$.
 Write $q=\begin{pmatrix}c\\ \vec{v}\end{pmatrix}$. Then
 $$q^{-1} = \frac{1}{|q|^2}\begin{pmatrix}c\\ -\vec{v}\end{pmatrix}.$$
@@ -886,6 +887,68 @@ is an angle-vector representation of $q$. For $q=1$ define $\theta(q)=0$, $\vec{
 For $q=-1$ define $\theta(q)=\pi$, $\vec{v}(q)=\vec{i}$.
 \end{definition}
 
+\begin{lemma}
+\label{lemma:mult_is_rot}
+Suppose $q\in\H_1$ and $r_1\in\H_0\intersect\H_1$ and $q \cdot r_1 = 0$, where the dot refers to the dot product.
+
+So we have
+$$
+q = \begin{pmatrix} \cos \theta \\ \sin \theta \vec{v} \end{pmatrix}\text{; }
+r_1 = \begin{pmatrix} 0 \\ \vec{v}_1 \end{pmatrix}
+$$
+where $\theta=\theta(q), \vec{v} = \vec{v}(q), \vec{v} \cdot \vec{v} = 1,\vec{v}_1 \cdot \vec{v}_1 = 1, \vec{v}_1 \cdot \vec{v} = 0.$
+
+
+Let $\vec{v_2} = \vec{v} \times  \vec{v}_1$, so that $\angles{\vec{v}_1,\vec{v}_2,\vec{v}}$ is a right-handed orthonormal basis for $\R^3$.
+
+Then $q r$ and $r q$ are both in $\H_0\intersect\H_1$ and letting
+$$ q r_1 = \begin{pmatrix} 0 \\ \vec{v}_{\text{left}} \end{pmatrix}$$
+and 
+$$ r_1 q = \begin{pmatrix} 0 \\ \vec{v}_{\text{right}} \end{pmatrix}$$
+we have the $\vec{v}_{\text{left}}$ and $\vec{v}_{\text{right}}$ are both in the plane spanned by $\vec{v}_1,\vec{v}_2$, and
+relative to the ordered, orthonormal basis $\angles{\vec{v}_1,\vec{v}_2}$,
+$\vec{v}_{\text{left}}$ is obtained from $\vec{v}_1$ via a rotation of $\theta$, and $\vec{v}_{\text{right}}$
+is obtained from $\vec{v}_1$ via a rotation of $-\theta$.
+\end{lemma}
+\begin{proof}
+Since $\vec{v} \cdot \vec{v}_1 = 0$ and
+$\vec{v} \times \vec{v}_1 = \vec{v}_2$,
+using Lemma \ref{lemma:in_terms_of_vector_products} we compute
+$$
+q  r_1   =
+\begin{pmatrix}
+\cos(\theta) \\ \sin(\theta) \vec{v}
+\end{pmatrix}
+\begin{pmatrix}
+0 \\ \vec{v}_1
+\end{pmatrix}
+ =
+\begin{pmatrix}
+0 \\ \cos(\theta)\vec{v}_1 + \sin(\theta)\vec{v}_2
+\end{pmatrix}
+$$
+
+$$
+r_1 q  =
+\begin{pmatrix}
+0 \\ \vec{v}_1
+\end{pmatrix}
+\begin{pmatrix}
+\cos(\theta) \\ \sin(\theta) \vec{v}
+\end{pmatrix}
+ =
+\begin{pmatrix}
+0 \\ \cos(\theta)\vec{v}_1 - \sin(\theta)\vec{v}_2
+\end{pmatrix}.
+$$
+So $\vec{v}_{\text{left}} = \cos(\theta)\vec{v}_1 + \sin(\theta)\vec{v}_2$ and
+$\vec{v}_{\text{right}} = \cos(-\theta)\vec{v}_1 + \sin(-\theta)\vec{v}_2$.
+So relative to the ordered basis $\angles{\vec{v}_1,\vec{v}_2}$, $\vec{v}_{\text{left}}$ is obtained
+via a rotation of $\theta$ and $\vec{v}_{\text{right}}$ is obtained via a rotation
+of $-\theta$ applied to $\vec{v}_1$.
+\end{proof}
+
+
 \begin{theorem}
 Fix $q\in\H_1$. For any $r\in\H_0$, $q r q^{-1}\in\H_0$.
 
@@ -920,49 +983,27 @@ By Lemma \ref{lemma:exp_formula}, $q=\exp(r_0)$, where $\exp:\H_0\map\H_1$ is th
 $q r_0 q = r_0$. This implies that $\Pi_q(\vec{v}) = \vec{v}$. So $\vec{v}$ is an eigenvector
 of $\Pi_q$ with eigenvalue 1.
 
-Let $\vec{v}_1$ be any unit vector orthogonal to $\vec{v}$ and let $\vec{v}_2 = \vec{v} \times \vec{v}_1$.
-Then $\vec{v} = \vec{v}_1\times \vec{v}_2$ and so $\angles{\vec{v}_1,\vec{v}_2, v}$ is a right-handed,
-orthonormal basis for $\R^3$.
+Let $S$ be the plane in $\R^3$ which is orthogonal to $\vec{v}$. We orient $S$ by considering
+$\vec{v}$ to be the positive orthogonal direction.
 
-Let $\hat{\Pi}_q$ be $\Pi_q$ restricted to the plane spanned by $\singleton{\vec{v}_1,\vec{v}_2}$.
-Since $\Pi_q(\vec{v}) = \vec{v}$, it suffices to show that
-$\hat{\Pi}_q$ is a rotation by $2\theta$ in that plane, oriented via the ordered basis $\angles{\vec{v}_1,\vec{v}_2}$.
+We want to show that $\Pi_q \restr S$ is a rotation in $S$ of $2\theta$ about the origin, with the given orientation of $S$.
 
-Let $r_1,r_2\in\H_0$ be the pure quaternions whose pure parts are $\vec{v}_1,\vec{v}_2$ respectively.
-Since $\vec{v} \cdot \vec{v}_1 = 0$ and
-$\vec{v} \cdot \vec{v}_2 = 0$ and $\vec{v} \times \vec{v}_1 = \vec{v}_2$, 
-and $\vec{v}_2\times\vec{v}=\vec{v}_1$,
-using Lemma \ref{lemma:in_terms_of_vector_products} we comppute
-\begin{align*}
-q  r_1  q^{-1} &=
-\begin{pmatrix}
-\cos(\theta) \\ \sin(\theta) \vec{v}
-\end{pmatrix}
-\begin{pmatrix}
-0 \\ \vec{v}_1
-\end{pmatrix}
-\begin{pmatrix}
-\cos(\theta) \\ -\sin(\theta) \vec{v}
-\end{pmatrix}
-\\
- &=
-\begin{pmatrix}
-0 \\ \cos(\theta)\vec{v}_1 + \sin(\theta)\vec{v}_2
-\end{pmatrix}
-\begin{pmatrix}
-\cos(\theta) \\ -\sin(\theta) \vec{v}
-\end{pmatrix} \\
-&=
-\begin{pmatrix}
-0 \\ \left[\cos^2(\theta) - \sin^2(\theta)\right]\vec{v}_1 + 2\sin(\theta)\cos(\theta)\vec{v}_2
-\end{pmatrix} \\
-&=
-\begin{pmatrix}
-0 \\ \cos(2\theta)\vec{v}_1 + \sin(2\theta)\vec{v}_2.
-\end{pmatrix}
-\end{align*}
+Let $\vec{v_1}$ be any unit vector in $S$.  
 
-This says that $$\hat{\Pi}_q(\vec{v}_1) = \cos(2\theta)\vec{v}_1 + \sin(2\theta)\vec{v}_2.$$
+Let $r_1\in\H_0\intersect\H_1$ with
+$\vec{v}(r_1)=\vec{v_1}$. So
+$$r_1 = \begin{pmatrix} 0 \\ \vec{v}_1 \end{pmatrix}.$$
+
+Notice that by Lemma \ref{lemma:q_inverse_calc} we have that
+$$q^{-1} = \begin{pmatrix} \cos(\theta) \\ -\sin(\theta) \vec{v} \end{pmatrix}
+= \begin{pmatrix} \cos(-\theta) \\ \sin(-\theta) \vec{v} \end{pmatrix}.$$
+
+
+We want to show that $\Pi_q$ rotates $\vec{v}_1$ by $2\theta$ within $S$.
+Since $\Pi_q(\vec{v}_1)$ is the pure part of $q r_1 q^{-1}$, this follows from 
+Lemma \ref{lemma:mult_is_rot} because from that lemma, left multiplication by $q$
+rotates $r_1$ by $\theta$ within $S$, and right multiplication of $q r_1$ by $q^{-1}$ rotates $q r_1$ within $S$ by
+$-(\theta(q^{-1})) = -(-\theta) = \theta$.
 \end{proof}
 
 
