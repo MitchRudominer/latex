@@ -1,6 +1,6 @@
 \documentclass[oneside,12pt]{amsart}
 
-\usepackage{amsmath,amssymb,latexsym,eucal,amsthm}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,tikzcd}
 
 \input{mathdefs}
 \input{theoremstyles}
@@ -868,23 +868,26 @@ But $s(t)$ is a one-parameter subgroup of $G$ and $\exp(A)=s(1)$ so $\exp(A) s(t
 
 \section{Rotations in $\R^3$}
 \begin{definition}
-Let $q\in\H_1$. Then an \emph{angle-vector} representation of $q$ is
+Let $q\in\H_1$. Then an \emph{angle-vector} representation of $q$ is is a pair $(\theta,\vec{v})$ such that
 $$q = \begin{pmatrix} \cos \theta \\ \sin \theta \vec{v} \end{pmatrix}$$
 where $0\leq\theta\leq\pi$ and $\vec{v}\in S^2$, i.e. $\vec{v}\in\R^3$ and $|\vec{v}| = 1$.
 \end{definition}
 
+We may use imprecise wording and say that 
+$$\begin{pmatrix} \cos \theta \\ \sin \theta \vec{v} \end{pmatrix}$$
+\emph{is} and angle-vector representation of $q$.
+
 \begin{remark}
 For all $q\in\H_1$ other than $q=1$ and $q=-1$, $q$ has a unique angle-vector represention.
-For $q=1$, $\theta=0$ but $\vec{v}$ is arbitrary and similarly
-for $q=-1$, $\theta=\pi$ but $\vec{v}$ is arbitrary.
+In every angle-vector representation of $q=1$, $\theta=0$ but $\vec{v}$ is arbitrary, and similarly
+in every angle-vector representation of $q=-1$, $\theta=\pi$ but $\vec{v}$ is arbitrary.
 \end{remark}
 
 \begin{definition}
 For $q\in\H_1, q \not= 1, q\not=-1$ let $\theta(q)$ and $\vec{v}(q)$ be the unique
-$\theta$ and $\vec{v}$ such that
-$$\begin{pmatrix} \cos \theta \\ \sin \theta \vec{v} \end{pmatrix}$$
-is an angle-vector representation of $q$. For $q=1$ define $\theta(q)=0$, $\vec{v(}q)=\vec{i}$.
-For $q=-1$ define $\theta(q)=\pi$, $\vec{v}(q)=\vec{i}$.
+$\theta$ and $\vec{v}$ such $(\theta,\vec{v})$
+is an angle-vector representation of $q$. Define $\theta(1)=0$, $\vec{v}(1)=\vec{i}$.
+Define $\theta(-1)=\pi$, $\vec{v}(-1)=\vec{i}$.
 \end{definition}
 
 \begin{lemma}
@@ -901,7 +904,7 @@ where $\theta=\theta(q), \vec{v} = \vec{v}(q), \vec{v} \cdot \vec{v} = 1,\vec{v}
 
 Let $\vec{v_2} = \vec{v} \times  \vec{v}_1$, so that $\angles{\vec{v}_1,\vec{v}_2,\vec{v}}$ is a right-handed orthonormal basis for $\R^3$.
 
-Then $q r$ and $r q$ are both in $\H_0\intersect\H_1$ and letting
+Then $q r_1$ and $r_1 q$ are both in $\H_0\intersect\H_1$ and letting
 $$ q r_1 = \begin{pmatrix} 0 \\ \vec{v}_{\text{left}} \end{pmatrix}$$
 and 
 $$ r_1 q = \begin{pmatrix} 0 \\ \vec{v}_{\text{right}} \end{pmatrix}$$
@@ -950,6 +953,7 @@ of $-\theta$ applied to $\vec{v}_1$.
 
 
 \begin{theorem}
+\label{theorem:adjoint_as_rotation}
 Fix $q\in\H_1$. For any $r\in\H_0$, $q r q^{-1}\in\H_0$.
 
 Let $\Pi_q:\R^3\map\R^3$ be given by $r\mapsto q r q^{-1}$,
@@ -1005,6 +1009,23 @@ Lemma \ref{lemma:mult_is_rot} because from that lemma, left multiplication by $q
 rotates $r_1$ by $\theta$ within $S$, and right multiplication of $q r_1$ by $q^{-1}$ rotates $q r_1$ within $S$ by
 $-(\theta(q^{-1})) = -(-\theta) = \theta$.
 \end{proof}
+
+\begin{corollary}
+Let $\Ad:\H_1 \map \GL(\H_0)$ be the Lie group adjoint map. Then $\ker(\Ad) = \singleton{1,-1}$.
+\end{corollary}
+\begin{proof}
+Let $q\in\H_1$. Then $q\in\ker(\Ad)$ iff $\Ad(q)$ is the identity transformation on $\H_0$. By Theorem 
+\ref{theorem:adjoint_as_rotation},
+if we identify $\H_0$ with $\R^3$, then $\Ad(q)$ is rotation by $\theta(q)$ about $\vec{v}(q)$. This
+is the identity iff $q=1$ or $q=-1$.
+\end{proof}
+
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[r, "f"] \arrow[d, "h"'] & B \arrow[d, "g"] \\
+C \arrow[r, "k"'] & D
+\end{tikzcd}
+\end{equation*}
 
 
 \bibliographystyle{amsalpha}
