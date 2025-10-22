@@ -1,6 +1,6 @@
 \documentclass[oneside,12pt]{amsart}
 
-\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,tikzcd}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,tikz-cd}
 
 \input{mathdefs}
 \input{theoremstyles}
@@ -1020,12 +1020,12 @@ if we identify $\H_0$ with $\R^3$, then $\Ad(q)$ is rotation by $\theta(q)$ abou
 is the identity iff $q=1$ or $q=-1$.
 \end{proof}
 
-\begin{equation*}
+$$
 \begin{tikzcd}
-A \arrow[r, "f"] \arrow[d, "h"'] & B \arrow[d, "g"] \\
-C \arrow[r, "k"'] & D
+   GL(2,\C) & \H_M - \singleton{0} \arrow[l, hook] \arrow[d,Leftrightarrow,"Q"'] & \SU(2) \arrow[l, hook] \arrow[r, "\pi"] \arrow[d,Leftrightarrow,"Q"'] & \SO(3) \arrow[d,Leftrightarrow,"f"'] \arrow[r, hook] & \GL(3,\R)  \arrow[d,Leftrightarrow,"g"'] \\
+ & \H - \singleton{0}   &  \H_1 \arrow[l, hook] \arrow[r, "\Ad"] & X  \arrow[r, hook] & \GL(\H_0) 
 \end{tikzcd}
-\end{equation*}
+$$
 
 
 \bibliographystyle{amsalpha}
