@@ -626,6 +626,7 @@ Let $\H_1$ be the space of quaternions with norm 1. Topologically $\H_1$ is $S^3
 \end{definition}
 
 \begin{corollary}
+\label{corollary:h_1_lie_subgroup}
 $\H_1$ is a three-dimensional Lie sub-group of $\H-\singleton{0}$, and $\H_1$ isomorphic to $\SU(2)$.
 \end{corollary}
 \begin{proof}
@@ -635,6 +636,7 @@ $Q$ maps $\H_1$ one-to-one and onto $\SU(2)$.
 \end{proof}
 
 \begin{lemma}
+\label{lemma:h0_lie_algebra_of_h1}
 \begin{enumerate}
 \item[(a)] $\H$ with the commutator bracket is the Lie algebra of the Lie group $\H-\singleton{0}$.
 
@@ -1011,6 +1013,7 @@ $-(\theta(q^{-1})) = -(-\theta) = \theta$.
 \end{proof}
 
 \begin{corollary}
+\label{corollar:ker_adj}
 Let $\Ad:\H_1 \map \GL(\H_0)$ be the Lie group adjoint map. Then $\ker(\Ad) = \singleton{1,-1}$.
 \end{corollary}
 \begin{proof}
@@ -1020,16 +1023,45 @@ if we identify $\H_0$ with $\R^3$, then $\Ad(q)$ is rotation by $\theta(q)$ abou
 is the identity iff $q=1$ or $q=-1$.
 \end{proof}
 
+\section{The Double Cover}
+ 
+ The commutative diagram in the following theorem captures most of the ideas in these notes.
+
+\begin{theorem}
+The following diagram commutes. Furthermore each of the hook arrows are Lie subgroup inclusions,
+the double-shafted arrows are Lie group isomorphisms, $\Ad$ is the Lie group adjoint representation, $X$ is its range, and $\pi$ is a double-covering, where $\pi = f \circ \Ad \circ Q^{-1}$.
+
 $$
 \begin{tikzcd}
-   GL(2,\C) & \H_M - \singleton{0} \arrow[l, hook] \arrow[d,Leftrightarrow,"Q"'] & \SU(2) \arrow[l, hook] \arrow[r, "\pi"] \arrow[d,Leftrightarrow,"Q"'] & \SO(3) \arrow[d,Leftrightarrow,"f"'] \arrow[r, hook] & \GL(3,\R)  \arrow[d,Leftrightarrow,"g"'] \\
+   \GL(2,\C) & \H_M - \singleton{0} \arrow[l, hook] \arrow[d,Leftarrow,"Q"'] & \SU(2) \arrow[l, hook] \arrow[r, "\pi"] \arrow[d,Leftarrow,"Q"'] & \SO(3) \arrow[d,Leftarrow,"f"'] \arrow[r, hook] & \GL(3,\R)  \arrow[d,Leftarrow,"g"'] \\
  & \H - \singleton{0}   &  \H_1 \arrow[l, hook] \arrow[r, "\Ad"] & X  \arrow[r, hook] & \GL(\H_0) 
 \end{tikzcd}
 $$
 
+\end{theorem}
+
+\begin{proof} We discuss each of the arrows in the diagram, from left to right. 
+\begin{enumerate}
+\item $\H_M - \singleton{0}$ is a Lie subgroup of $\GL(2,\C)$ by the proof of Lemma \ref{lemma:quaternion_lie_group}.
+\item $Q$ restricts to an isomrphism from $\H - \singleton{0}$ to $\H_M - \singleton{0}$ by the definitions of $Q$ and $\H$.
+\item  $\H_1$ is a three-dimensional Lie sub-group of $\H-\singleton{0}$, and $Q$ restricts to an isomorphism
+from $\H_1$ to $\SU(2)$, by Corollary \ref{corollary:h_1_lie_subgroup}.
+\item $\H_0$ is the Lie algebra of $H_1$ by Lemma \ref{lemma:h0_lie_algebra_of_h1}, so the adjoint representation of
+$\H_1$ is $\Ad:H_1\map\GL(\H_0)$ by definition.
+\item The trivial isomorphism $g$ is induced by our identification of $\R^3$ with $\H_0$.
+\item We are defining $X$ to be the range of $\Ad$ and we are defining $f$ to be $g\restr X$.
+\item The range of $f$ is $\SO(3)$ by Theorem \ref{theorem:adjoint_as_rotation}
+which tells us that every element in the range of $f \circ \Ad$ is a rotation, and that every rotation is 
+$f(\Ad(q))$ for some $q\in\H_1$.
+\item $\ker(\Ad) = \singleton{1,-1}$ by Corollary \ref{corollar:ker_adj} so $\ker(\pi) = \singleton{I, -I}$.
+\item Adjoint representations are always Lie group homomorphisms, so $\Ad$ and $\pi$ are Lie group homomorphisms.
+
+What's left is to show that $\pi$ is a covering map and that $\SO(3)$ is a Lie subgroup of$\GL(3,\R)$.
+\end{enumerate}
+\end{proof}
+
 
 \bibliographystyle{amsalpha}
-
 \bibliography{math}
 
 \end{document}
