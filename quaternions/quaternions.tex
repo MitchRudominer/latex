@@ -622,7 +622,7 @@ So $\H - \singleton{0}$ is also a four-dimensional Lie group and $Q:\H-\singleto
 
 
 \begin{definition}
-Let $\H_1$ be the space of quaternions with norm 1. Topologically $\H_1$ is $S^3$, the three-sphere in $\R^4$.
+Let $\H_1$ be the space of quaternions with norm 1. Topologically $\H_1$ is $\S^3$, the three-sphere in $\R^4$.
 \end{definition}
 
 \begin{corollary}
@@ -1024,12 +1024,14 @@ is the identity iff $q=1$ or $q=-1$.
 \end{proof}
 
 \section{The Double Cover}
- 
- The commutative diagram in the following theorem captures most of the ideas in these notes.
+
+The commutative diagram in the following theorem captures most of the ideas in these notes.
 
 \begin{theorem}
-The following diagram commutes. Furthermore each of the hook arrows are Lie subgroup inclusions,
-the double-shafted arrows are Lie group isomorphisms, $\Ad$ is the Lie group adjoint representation, $X$ is its range, and $\pi$ is a double-covering, where $\pi = f \circ \Ad \circ Q^{-1}$.
+\label{theorem:main}
+The following diagram commutes, where each of the hook arrows are embedded Lie subgroup inclusions,
+the double-shafted arrows are Lie group isomorphisms, $\Ad$ is the Lie group adjoint representation, $X$ is its range, and
+ $\pi = f \circ \Ad \circ Q^{-1}$. Furthermore $\pi$ is a Lie group double covering map.
 
 $$
 \begin{tikzcd}
@@ -1053,11 +1055,27 @@ $\H_1$ is $\Ad:H_1\map\GL(\H_0)$ by definition.
 \item The range of $f$ is $\SO(3)$ by Theorem \ref{theorem:adjoint_as_rotation}
 which tells us that every element in the range of $f \circ \Ad$ is a rotation, and that every rotation is 
 $f(\Ad(q))$ for some $q\in\H_1$.
+\item $\SO(3)$ is an embedded Lie subgroup of $\GL(3,\R)$ by Example 8.35 of \cite{Lee_Smooth_Book}. So also $X$ is 
+an embedded Lie subgroup of $\GL(\H_0)$
 \item $\ker(\Ad) = \singleton{1,-1}$ by Corollary \ref{corollar:ker_adj} so $\ker(\pi) = \singleton{I, -I}$.
-\item Adjoint representations are always Lie group homomorphisms, so $\Ad$ and $\pi$ are Lie group homomorphisms.
-
-What's left is to show that $\pi$ is a covering map and that $\SO(3)$ is a Lie subgroup of$\GL(3,\R)$.
+\item Adjoint representations are always Lie group homomorphisms, so $\Ad$ is a Lie group homomorphisms when considered
+as a map from $\H_1$ to $\GL(H_0)$.
+\item Since the kernel of $\Ad$ is finite, $\Ad$ is also a Lie group homomorphism when considered as a map from $\H_1$ onto $X$,
+by part (a) of Proposition 9.29 of \cite{Lee_Smooth_Book}. So $\pi$ is a surjective Lee group homomorphism.
+\item $\H_1$ is homeomorhpic to $\S^3$ so $\H_1$ and $\SU(2)$ are topologically connected, by Example 4.16(d) of \cite{Lee_Topology_Book}.
+\item So $X$ and $\SO(3)$ are also topologically connected since they are the continuous images of connected spaces.
+\item So we can apply Proposition 9.30 of \cite{Lee_Smooth_Book} to conclude that $\pi$ is a smooth covering map, and since its kernel
+has cardinality 2, it is a double-covering.
 \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+$\SO(3)$ is homeomorphic to $\R\P^3$, real, projective 3-space.
+\end{corollary}
+\begin{proof}
+$\SU(2)$ is homeomorphic to $\S^3$, and identifying the two spaces, the coset equivalence relation
+corresponding to the group homomorphism $\pi$ from Theorem \ref{theorem:main} identifies each point of $\S^3$ with
+its antipodal point.
 \end{proof}
 
 
