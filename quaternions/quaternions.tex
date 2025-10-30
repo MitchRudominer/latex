@@ -1,6 +1,6 @@
 \documentclass[oneside,12pt]{amsart}
 
-\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,tikz-cd}
+\usepackage{amsmath,amssymb,latexsym,eucal,amsthm,tikz-cd,array,multirow}
 
 \input{mathdefs}
 \input{theoremstyles}
@@ -1077,6 +1077,19 @@ $\SU(2)$ is homeomorphic to $\S^3$, and identifying the two spaces, the coset eq
 corresponding to the group homomorphism $\pi$ from Theorem \ref{theorem:main} identifies each point of $\S^3$ with
 its antipodal point.
 \end{proof}
+
+\begin{tabular}{>{\raggedright\arraybackslash}m{4cm}m{0.8\textwidth}}
+  This path in $\R\P^3$: $\angles{a,b,a}\cdots$ &
+  \includegraphics[width=0.4\textwidth]{RP3} \\[1em]
+  lifts to these two paths in $\S^3$: $\angles{a_1,b_1,a_2}$ and $\angles{a_2,b_2,a_1}$.
+  \includegraphics[width=0.9\textwidth]{S-3} \\
+\end{tabular}
+
+
+
+
+
+
 
 
 \bibliographystyle{amsalpha}
