@@ -1083,8 +1083,8 @@ its antipodal point.
 \subsection{Visualizing the Double Cover}
 
 $\SU(2)$ is homeomorphic to $\S^3$ and $\SO(3)$ is homeomorphic to $\R\P^3$.
-If we identify the spaces, the
- covering map $\pi:\SU(2)\map\SO(3)$ can be seen to be the same as the
+If we identify the homeomorphic spaces, the
+ covering map $\pi:\SU(2)\map\SO(3)$ can be identified with the
  covering map $\pi:\S^3\map\R\P^3$ which identifies antipodal points.
 
  There are ways to visualize $\S^3$ and $\R\P^3$ because they are both homeomorphic
@@ -1094,13 +1094,40 @@ If we identify the spaces, the
  By Example ??? from \cite{Lee_Topology_Book},
   $\R\P^3$ is homeomorphic to the space obtained by starting with
   $\bar{\B^3}$, the closed 3-ball, and identifying antipodal points on
-  its boundary sphere.
+  its boundary sphere. We will describe an explicit homeomorphism from $\SO(3)$
+  to this quotient space model of $\R\P^3$. Let $A\in\SO(3)$. 
+  Then $\Ad^{-1}[f^{-1}(A)] =\singleton{q, -q}$ for some $q\in\H_1$, and by swapping
+  $q$ with $-q$ if necessary we may write
+  $$q=\begin{pmatrix}\cos(\varphi) \\ \sin(\varphi) \vec{v}\end{pmatrix}$$
+ with $0\leq\varphi\leq\pi/2$ and $|\vec{v}|=1$. Let $\theta=2\varphi$ so
+ $0\leq\theta\leq\pi$ and $A$ is the matrix of the rotation by $\theta$ radians about $\vec{v}$.
+ We map $A$ to the point $\sin(\varphi) \vec{v}$ in the quotient space model of $\R\P^3$.
+ Notice that if $\varphi=0$ then $q=1$, $A = I$, and we map $I$ to the center of the ball.
+ If $\varphi=\pi/2$ then $\theta=\pi$ and $A$ is the matrix of the rotation by $\pi$ radians about $\vec{v}$
+ and we map it to the point $\vec{v}$ on the bounary of the ball. In this case since $\cos(\varphi)=0$
+ our initial choice of $q$ vs $-q$ was arbitrary, so we might have instead mapped $A$ to $-\vec{v}$.
+ But that is OK since we are identifying $\vec{v}$ and $\vec{-v}$ in the quotient space model of $\R\P^3$. 
+ This mapping
+ from $A$ to a point in the quotient space of $\R\P^3$ is clearly a homeomorphism.
 
  By Example ??? from \cite{Lee_Topology_Book},
  $\S^3$ is homeomorphic to the space obtained by starting with two
- copies of $\bar{\B^3}$, let's call them $B_{\text{left}}$ and
- $B_{\text{right}}$, and identifying corresponding points on
- their respective boundary spheres.
+ copies of $\bar{\B^3}$  (let's call them $B_{\text{left}}$ and
+ $B_{\text{right}}$) and identifying corresponding points on
+ their respective boundary spheres. We will describe an explicit homeomorphism from $\SO(3)$
+  to this quotient space model of of $\S^3$. Let $A\in\SU(2)$ and let $q=Q^{-1}(A)\in\H_1$. Then
+ $$q=\begin{pmatrix}\cos(\varphi) \\ \sin(\varphi) \vec{v}\end{pmatrix}$$
+ with $0\leq\varphi\leq\pi$ and $|\vec{v}|=1$. If $0\leq\varphi\leq\pi/2$ map
+ $A$ to the point $\sin(\varphi) \vec{v}\in B_\text{right}$, and if $\pi/2\leq\varphi\leq\pi$
+ then map $A$ to the point $\sin(\varphi) \vec{v}\in B_\text{left}$. If $\varphi=0$ then
+ $q=1, A=I$ and we map $I$ the center of $B_\text{right}$. If $\varphi=\pi$ then $q=-1, A = -I$,
+ and we map $-I$ to the center of $B_\text{left}$. If $\varphi=\pi/2$ then we have mapped $A$ to
+ both $\vec{v}\in B_\text{left}$ and $\vec{v}\in B_\text{right}$, but that is ok because we identify
+ these two points in our  quotient space model of $\S^3$. The mapping
+ from $A$ to a point in the quotient space model of $\S^3$ is clearly a homeomorphism.
+
+ Now we describe the induced double cover from the quotient space model of $\S^3$ to the quotient space model of $\R\P^3$.
+
 
 
 \begin{tabular}{>{\raggedright\arraybackslash}m{4cm}m{0.8\textwidth}}
