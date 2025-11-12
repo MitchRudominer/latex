@@ -1083,10 +1083,8 @@ its antipodal point.
 \subsection{Visualizing the Double Cover}
 
 Let $\tau:\SU(2)\map\S^3$ be a homeomorphism and let $\mu:\SO(3)\map\R\P^3$ be a homeomorphism and let
-$\sigma:\SU(2)\map\R\P^3$ be a covering map.
-There are ways to visualize $\S^3$ and $\R\P^3$ because they are both homeomorphic
- to spaces constructed by gluing together subsets of $\R^3$. In this section we will use this
- to visualize the covering map $\pi:\SU(2)\map\SO(3)$. The following diagram commutes:
+$\sigma:\S^3\map\R\P^3$ be a topological covering map.
+The following diagram commutes:
 
 
 $$
@@ -1097,34 +1095,124 @@ $$
 \end{tikzcd}
 $$
 
+It is possible to \emph{visualize} $\S^3$ and $\R\P^3$ because they are both homeomorphic
+ to spaces constructed by gluing together subsets of $\R^3$. In this section we will use this
+ to visualize the covering map $\pi:\SU(2)\map\SO(3)$. 
+
 
 
  By Example ??? from \cite{Lee_Topology_Book},
   $\R\P^3$ is homeomorphic to the quotient space obtained by starting with
   $\bar{\B^3}$, the closed 3-ball, and identifying antipodal points on
-  its boundary sphere. We call this the model space of $\R\P^3$ and below we will consider $\R\P^3$ to
-  be defined as this model space. We will describe an explicit homeomorphism $\mu$ from $\SO(3)$
-  to this model of $\R\P^3$. Let $A\in\SO(3)$. 
-  Then $\Ad^{-1}[f^{-1}(A)] =\singleton{q, -q}$ for some $q\in\H_1$, and by swapping
-  $q$ with $-q$ if necessary we may write
-  $$q=\begin{pmatrix}\cos(\varphi) \\ \sin(\varphi) \vec{v}\end{pmatrix}$$
- with $0\leq\varphi\leq\pi/2$ and $|\vec{v}|=1$. Let $\theta=2\varphi$ so
- $0\leq\theta\leq\pi$ and $A$ is the matrix of the rotation by $\theta$ radians about $\vec{v}$.
- We let  $\mu(A)$ be the point $\sin(\varphi) \vec{v}$ in the model space of $\R\P^3$.
+  its boundary sphere. We will call this the model space of $\R\P^3$.
+  By Example ??? from \cite{Lee_Topology_Book},
+ $\S^3$ is homeomorphic to the quotient space obtained by starting with two
+ copies of $\bar{\B^3}$  and identifying corresponding points on
+ their respective boundary spheres. We call this the model space of $\S^3$.
+ These two model spaces involve three copies of $\bar{\B^3}$ so
+ we give them names so we can distinguish them. Let $B$ be the copy of
+ $\bar{\B^3}$ whose quotient is the model space for $\R\P^3$ and let 
+ $B_{\text{left}}$ and $B_{\text{right}}$ be the copies of  $\bar{\B^3}$ such that
+ the quotient of their disjont union is the model space for $\S^3$. Below
+ we will tacitly identify $\S^3$ and $\R\P^3$ with their respective model
+ spaces and we will give excplicit definitions of $\tau$,  $\mu$  and $\sigma$ 
+ using  $B$, $B_{\text{left}}$ and $B_{\text{right}}$.
 
- Notice that if $\varphi=0$ then $q=1$, $A = I$, and $\mu(I)$ is the center of the ball.
- If $\varphi=\pi/2$ then $\theta=\pi$ and $A$ is the matrix of the rotation by $\pi$ radians about $\vec{v}$
- and $\mu(A)$ is the point $\vec{v}$ on the bounary of the ball. In this case since $\cos(\varphi)=0$
- our initial choice of $q$ vs $-q$ was arbitrary, so we might have instead mapped $A$ to $-\vec{v}$.
- But that is OK since we are identifying $\vec{v}$ and $\vec{-v}$ in the quotient space model of $\R\P^3$. 
+
+Let $q\in\H_1$. Then 
+$$q=\begin{pmatrix}\cos(\varphi) \\ \sin(\varphi) \vec{v}\end{pmatrix}
+\text{ and }
+-q=\begin{pmatrix}-\cos(\varphi) \\ -\sin(\varphi) \vec{v}\end{pmatrix}
+= \begin{pmatrix}\cos(\pi-\varphi) \\ \sin(\pi-\varphi) (-\vec{v})\end{pmatrix}
+$$
+with $0\leq\varphi\leq\pi$ and $|\vec{v}|=1$.
+Let $\varphiprime = \pi-\varphi$.
+If $0\leq\varphi<\frac{\pi}{2}$ 
+then $\frac{\pi}{2} < \varphiprime \leq \pi$ and in this case
+we call $q$ a \emph{right} point and $-q$ a left point.
+If $\frac{\pi}{2} < \varphi \leq \pi$ then $0\leq\varphiprime<\frac{\pi}{2}$ 
+and in this case we call $q$ a left point and $-q$ a right point.
+Otherwise $\varphi =\varphiprime = \frac{\pi}{2}$ and in this case we
+say that $q$ and $-q$ are both boundary points. Notice
+$q$ is a right point iff the real part of $q$ is positive, a
+left point iff the real part of $q$ is negative, and a boundary point
+iff the real part of $q$ is zero. By exchanging $q$ and $-q$ if
+necessary, let us assume that $0\leq\varphi\leq\frac{\pi}{2}$,
+so that $q$ is a right point or a boundary point.
+
+ Let $A=Q(q)\in \SU(2)$ and $X = \pi(A) = \pi(-A) \in  \SO(3)$. 
+
+Define 
+$\tau(A) =\sin(\varphi) \vec{v}\in B_\text{right}$,
+$\tau(-A) =-\sin(\varphi) \vec{v}\in B_\text{left}$,
+ $\mu(B) = \sin(\varphi) \vec{v}\in B$.
+
+
+ Notice that if $q$ is a boundary point then 
+$\tau(A) =\vec{v}$ in the boundary sphere of $B_\text{right}$,
+$\tau(-A) = \vec{-v}$ in the boundary sphere of  $B_\text{left}$,
+ $\mu(B) =\vec{v}$ in the boundary sphere of  $B$.
+Also notice that in this case the choice of which point to
+call $q$ and which point to call $-q$
+ was arbitrary and if we had made the other choice then we would have
+ defined
+$\tau(A) =\vec{v}$ in the boundary sphere of $B_\text{left}$,
+$\tau(-A) = \vec{-v}$ in the boundary sphere of  $B_\text{right}$,
+ $\mu(B) =\vec{-v}$ in the boundary sphere of  $B$.
+
+ This ambiguity is not a problem  for our definition of
+ $\tau:\SU(2)\map\S^3$ because $\vec{v}$ in the boundary sphere of 
+ $B_\text{left}$ and $\vec{v}$ in the boundary sphere of 
+ $B_\text{right}$ map to the same point in the quotent model of $\S^3$,
+ and this ambiguity is not a problem for our definition of
+ $\mu:\SO(3)\map \R\P^3$ because $\vec{v}$ in the boundary sphere of  $B$
+ and $\vec{-v}$ in the boundary sphere of  $B$ map to the same point in
+ the quotient model of $\R\P^3$.
+ 
+
+
+
+   Let $\theta=2\varphi$ so
+ $0\leq\theta\leq\pi$ and $B$ is the matrix of the rotation by $\theta$ radians about $\vec{v}$.
+
+  
+  Notice that $A$ and $B$ represent arbitrary elements of $\SU(2)$ and $\SO(3)$
+  respectively.
+ 
+  
+  
+  Since $\sigma(\tau(A)) = \sigma(\tau(-A)) = \mu(B)$, unwravelling we get that
+  for $p=\sin(\varphi)\vec{v}\in B_\text{right}$, 
+  $\sigma(p)=\sin(\varphi)\vec{v}\in B$, and 
+  for $p=\sin(\varphi)\vec{v}\in B_\text{left}$, 
+  $\sigma(p)=-\sin(\varphi)\vec{v}\in B$.
+   In short, and somewhat informally, $\sigma\restr B_{\text{right}}$ is the identity
+map from the closed ball to itself, and
+ $\sigma\restr B_{\text{left}}$ is the antipodal
+map from the closed ball to itself.
+
+
+ Notice that if $\varphi=0$ then $q=1$, $A = B =I$,
+ $\tau(I)$ is the center of $B_\text{right}$,
+  $\mu(I)$ is the center of $B$.
+  Also $-q=-1$ $-A = -I$, $\tau(-I)$ is the center of $B_\text{left}$.
+
+If $\varphi=\pi/2$ then $\theta=\pi$ and $B$ is the matrix of the rotation by $\pi$ radians about $\vec{v}$.
+$\tau(A)$ is the point $\vec{v}$ on the boudardy sphere of 
+$\mu(B)$ is the point $\vec{v}$ on the bounary of $B$. In this case since $\pi - \varphi = \varphi$, 
+ our initial choice of $q$ vs $-q$ was arbitrary, and if we had made the other choice we would have mapped $A$ to $-\vec{v}$.
+ But that is OK since we are identifying $\vec{v}$ and $\vec{-v}$ in the quotient space model of $\R\P^3$, and this corresponds to the fact that the rotation by $\pi$ radians about $v$ is the same as the rotation by $\pi$ radians about $-v$. 
  The function $\mu$ is clearly a homeomorphism.
 
- By Example ??? from \cite{Lee_Topology_Book},
- $\S^3$ is homeomorphic to the quotient space obtained by starting with two
- copies of $\bar{\B^3}$  (let's call them $B_{\text{left}}$ and
- $B_{\text{right}}$) and identifying corresponding points on
- their respective boundary spheres. We call this the model space of $\S^3$ and below we will consider $\S^3$ to
- be defined as this model space. We will describe an explicit homeomorphism $\tau$ from $\SU(2)$
+  and below we tacitly identify $\S^3$ with this model space. We will use
+ $B_{\text{left}}$ and $B_{\text{right}}$ to refer to the two disjoint copies of $\bar{\B^3}$
+ that are used in this model space. In other words we will say that the model
+ space of $\S^3$ is the quotient space obtained from the space
+ $B_{\text{left}} \union B_{\text{right}}$ by identifying corresponding points
+ on the boundary spheres of $B_{\text{left}}$ and $B_{\text{right}}$.
+
+
+ We will describe an explicit homeomorphism $\tau$ from $\SU(2)$
   to this model space of $\S^3$. Let $A\in\SU(2)$ and let $q=Q^{-1}(A)\in\H_1$. Then
  $$q=\begin{pmatrix}\cos(\varphi) \\ \sin(\varphi) \vec{v}\end{pmatrix}$$
  with $0\leq\varphi\leq\pi$ and $|\vec{v}|=1$. If $0\leq\varphi\leq\pi/2$ let
@@ -1135,7 +1223,66 @@ $$
  be both $\vec{v}\in B_\text{left}$ and $\vec{v}\in B_\text{right}$, but that is ok because we identify
  these two points in our  quotient space model of $\S^3$. The mapping $\tau$ is clearly a homeomorphism.
 
- Now we describe the induced double cover from the quotient space model of $\S^3$ to the quotient space model of $\R\P^3$.
+ The explicit definitions of $\tau$ and $\mu$ induce an explicit definition of
+ $\sigma$ which we now describe as a map from 
+ $B_{\text{left}} \union B_{\text{right}}$ to $B$.
+We consider this to be a way of visualizing the double cover $\pi$.
+
+Let $p\in B_{\text{right}}$. Then there is $\varphi$ and $\vec{v}$ such
+that $0\leq\varphi\leq\frac{\pi}{2}$ and 
+$p$ is the point $\sin(\varphi) \vec{v}$ in $B_{\text{right}}$
+and $p=\tau(Q(q))$ with
+$$q=\begin{pmatrix}\cos(\varphi) \\ \sin(\varphi) \vec{v}\end{pmatrix}.$$
+Then $\sigma(p) = \mu(f(\Ad(q))$ is the point  $\sin(\varphi) \vec{v}$ in $B$.
+In othe words $\sigma(p)$ is the point in $B$ with the same
+coordinates that $p$ has in $B_{\text{right}}$. Informally $\sigma\restr B_{\text{right}}$ is the identity. 
+
+
+
+Let
+$p\in B_{\text{left}}$. Then there is $\varphi$ and $\vec{v}$ such
+that $\frac{\pi}{2}\leq\varphi\leq\pi$ and 
+$p$ is the point $\sin(\varphi) \vec{v}$ in $B_{\text{left}}$
+and $p=\tau(Q(q))$ with
+$$q=\begin{pmatrix}\cos(\varphi) \\ \sin(\varphi) \vec{v}\end{pmatrix}.$$
+Then $\sigma(p) = \mu(f(\Ad(q))$ is the point  $-\sin(\varphi) \vec{v}$ in $B$.
+In other words $\sigma(p)$ is the point in $B$ with the same
+coordinates that $-p$ has in $B_{\text{left}}$. Informally $\sigma\restr B_{\text{left}}$ is the antipodal
+map from the closed ball to itself.
+
+
+Let $p$ be in the boundary sphere of $B_{\text{left}}$ and let $\pprime$ be the
+corresponding point in the boundary sphere of $B_{\text{right}}$. 
+Then $p$ and $\pprime$ are identified in the model space of $\S^3$.
+$\sigma(p)$ and $\sigma(\pprime)$ are antipodal points on the boundary sphere of $B$,
+and so $\sigma(p)$ and $\sigma(\pprime)$ are identified in the model space
+of $\R\P^3$. So $\sigma$ is well-defined as a map from $\S^3$ to $\R\P^3$.
+
+The figure below illustrates our visulaization of the double cover by exhibitting the lift from $\SO(3)$ to $\SU(2)$ of a particular path in $\SO(3)$. Let
+$$ A(\theta) = 
+\begin{pmatrix}
+0 & 0 & 0 \\
+0 & \cos(\theta) & \sin(\theta) \\
+0 & -\sin(\theta) & \cos(\theta)
+\end{pmatrix}
+$$
+for $0\leq\theta\leq 2\pi$. So $A$ is the loop in $\SO(3)$ at the identity
+such tha $A(\theta)$ is the matrix of the rotation by $\theta$ radians
+about the $z$ axis. Let $a$ be the center of $B$ so 
+$a=\mu(A(0)) =\mu(A(2\pi)) = \mu(A(I))$. Let $b=\mu(A(\pi))$ so that $b$ is the point in the model space of $\R\P^3$ represented by the north and south poles of $B$. The
+image under $\mu$ of the path $A(\theta), 0\leq\theta\leq 2\pi$ is the path 
+$\angles{a,b,a}$ in $\R\P^3$, visualized as the path $\angles{a,b,a}$ in $B$ 
+in the figure below.
+
+This loop in $\R\P^3$ lifts to two loops in $\S^3$.
+Let $a_1$ be the center of $B_{\text{right}}$ and
+$a_2$ the center of $B_{\text{left}}$. Let $b_1$ be the point in the model space
+of $\S^3$ represented by the north poles of $B_{\text{left}}$ and $B_{\text{right}}$.
+Let $b_2$ be the point in the model space
+of $\S^3$ represented by the south poles of $B_{\text{left}}$ and $B_{\text{right}}$.
+Then the path $\angles{a,b,a}$ in $\R\P^3$ lifts to the paths
+$\angles{a_1,b_1,a_2}$ and $\angles{a_2,b_2,a_1}$ in $\S^3$, visualized as the
+paths with those labels in $B_{\text{left}}$ and $B_{\text{right}}$.
 
 
 
