@@ -1117,41 +1117,68 @@ It is possible to \emph{visualize} $\S^3$ and $\R\P^3$ because they are both hom
  we will tacitly identify $\S^3$ and $\R\P^3$ with their respective model
  spaces and we will give excplicit definitions of $\tau$,  $\mu$  and $\sigma$ 
  using  $B$, $B_{\text{left}}$ and $B_{\text{right}}$.
+ For any point $p$ in the disjoint union of $B_{\text{left}}$ and  $B_{\text{left}}$ let $[p]\in\S^3$
+be its image under the quotient map. Similarly for any $s\in B$ let $[s]\in \R\P^3$ be its image
+under the quotient map. 
 
 
 For $q\in\H_1$ say that $q$ is \emph{northern} if its real part is positive,
 $q$ is \emph{southern} if its real part is negative, and $q$ is \emph{equatorial}
 if its real part is zero.
 
-Let $A=Q(q)\in \SU(2)$ and $X = \pi(A) = \pi(-A) \in  \SO(3)$. 
-We will define $\tau(A)$ and $\mu(X)$. Let $w\in\bar{\B}$ be the pure part of $q$.
-
-If $q$ is northern, let $\tau(A)$ be $w$ considered as an element of $B_\text{right}$,
-and let $\mu(X)$ be $w$ considered as an element of $B$.
-
-If $q$ is southern, let $\tau(A)$ be $w$ considered as an element of $B_\text{left}$,
-and let $\mu(X)$ be $-w$ considered as an element of $B$.
-
-If $q$ is equitorial then $|w|=1$ so $w$ is in the boundary sphere of the closed ball.
-Let $\tau(A)$ be the element of the model space of $\S^3$ represented by
-$w$ considered both as an element of the boundary sphere of $B_\text{left}$ and that of $B_\text{right}$.
-Let $\mu(X)$ be the element of the model space of $\R\P^3$ represented
-by both $w$ and $-w$ considered as elements in the boundary sphere of $B$.
+Fix $q\in\H_1$ and write $$q=\begin{pmatrix}\cos(\varphi) \\ \sin(\varphi) \vec{v}\end{pmatrix}$$
+with $0\leq\varphi\leq\pi$ and $|\vec{v}|=1$.  
+Note that 
+$$-q=\begin{pmatrix}\cos(\pi-\varphi) \\ \sin(\varphi) [-\vec{v}]\end{pmatrix}.$$
 
 
-Since $\sigma=\tau^{-1}\circ\pi\circ\mu$, the above analysis can be used to help us visualize $\sigma$.
-Write
-$$q=\begin{pmatrix}\cos(\varphi) \\ \sin(\varphi) \vec{v}\end{pmatrix}
-$$
-with $0\leq\varphi\leq\pi$ and $|\vec{v}|=1$.
-We have the following:
+Let $\theta=2\varphi$
+so $0\leq\varphi\leq 2\pi$. Notice that $2(\pi-\varphi) = -\theta + 2\pi$.
+Let $A=\pi(Q(q))=\pi(Q(-q)\in\SO(3)$. Recall that $A$ is the matrix
+of the rotation by $\theta$ radians about the axis $v$ and equivalently the matrix of
+$-\theta$ radians about the axis $-v$ and equivalently the matrix of $2\pi - \theta$ radians
+about the axis $-v$.
+
+
+We now define $\tau(Q(q))$, and $\sigma(\tau(Q(q))) = \mu(\pi(Q(q)))=\sigma(\tau(Q(-q))) = \mu(\pi(Q(-q)))$,
+conditioning on whether $q$ is northern, southern, or equitorial.
+Note that if $q$ is northern then $-q$ is southern, and vice versa. $q$ is equitorial iff $-q$ is.
 \begin{itemize}
-\item $q$ is northern iff $0\leq\varphi<\frac{\pi}{2}$ and then $\tau(Q(q))$ is the point $\sin(\varphi) \vec{v}$  in the interior of $B_{\text{right}}$ and $\sigma(\tau(Q(q)))$ is the point $\sin(\varphi) \vec{v}$ in the interior of $B$.
-\item $q$ is southern iff $\frac{\pi}{2}<\varphi\leq\pi$ and then $\tau(Q(q))$ is the point $\sin(\varphi) \vec{v}$ in the interior of $B_{\text{left}}$ and $\sigma(\tau(Q(q)))$ is the point $-\sin(\varphi) \vec{v}$ in the interior of $B$.
-\item $q$ is equitorial iff $\varphi=\frac{\pi}{2}$ and then $\tau(Q(q))$ is (the image under the quotient map of)
-the two points $\vec{v}$ in the boundary spheres of
-$B_{\text{left}}$ and $B_{\text{right}}$ and $\sigma(\tau(Q(q)))$ is (the image under the quotient map of) the two
-points $\vec{v}$ and $-\vec{v}$ in the boundar sphered of $B$.
+\item $q$ is northern iff $0\leq\varphi<\frac{\pi}{2}$ and $0\leq\theta<\pi$. In this case define:
+  \begin{itemize} 
+  	\item $\tau(Q(q))=[p]$  where $p$ is the point $\sin(\varphi) \vec{v}$  in the interior of $B_{\text{right}}$. 
+  	\item $\sigma(\tau(Q(q)))=[s]$ where $s$ is the point $\sin(\varphi) \vec{v}$ in the interior of $B$.
+  \end{itemize}
+\item $q$ is southern iff $\frac{\pi}{2}<\varphi\leq\pi$ and $\pi < \theta < 2\pi$. In this case define: 
+  \begin{itemize}
+  	\item $\tau(Q(q))=[p]$ where $p$ is the point $\sin(\varphi) \vec{v}$ in the interior of 
+  	$B_{\text{left}}$. 
+  	\item $\sigma(\tau(Q(q)))=[s]$ where $s$ the point $-\sin(\varphi) \vec{v}$ in the interior of $B$.
+   \end{itemize}
+\item $q$ is equitorial iff $\varphi=\frac{\pi}{2}$ and $\theta=\pi$. In this case define:
+  \begin{itemize}
+  	\item $\tau(Q(q))=[p_1]=[p_2]$  where $p_1$ is the point $\vec{v}$ in the boundary sphere of
+$B_{\text{left}}$ and $p_2$ is the point  $\vec{v}$ in the boundary sphere of
+$B_{\text{right}}$. 
+    \item $\sigma(\tau(Q(q)))=[s_1]=[s_2]$ where $s_1$ is the point
+$\vec{v}$ in the boundary sphered of $B$ and $s_2$ is the point $-\vec{v}$ in the boundary sphered of $B$
+  \end{itemize}.
+\end{itemize}
+
+An informal but suggestive way to remember what is happening is the following:
+\begin{itemize}
+\item The interior of $B_{\text{right}}$ represents the northern hemisphere of $S^3$
+\item The origin of $B_{\text{right}}$  represents the north pole of $S^3$.
+\item The interior of $B_{\text{left}}$ represents the southern hemisphere $S^3$.
+\item The origon of $B_{\text{left}}$ represents the spouth pole of $S^3$.
+\item The common boundafy spheres of $B_{\text{left}}$ and $B_{\text{right}}$ represent the equator of $S^3$.
+\item The interior of $B$ represents rotations by less then $\pi$ radians about an axis given by the point in the interior.
+\item The origin of $B$ represents the identity rotation.
+\item The function $\sigma$ restricted to $B_{\text{right}}$ acts like the identity on $\bar{\B}$.
+\item The funciton $\sigma$ restricted to $B_{\text{left}}$ acts like the antipodal map on $\bar{\B}$.
+\item Given a point $s=\sin(\varphi)\vec{v}$ in the interior of $B$, it's two inverse images under the double cover are the points
+$p_1=\sin(\varphi)\vec{v}\inB_{\text{right}}$ and $p_1=-\sin(\varphi)\vec{v}\inB_{\text{left}}$.
+\item Given the antipodal points $s=\vec{v}, -s = -\vec{v}$ in the boundary of $B$ the four
 \end{itemize}
 
 Informally, $\sigma:B_{\text{right}}\map B$ is the identity map on $\bar{\B}$ and
