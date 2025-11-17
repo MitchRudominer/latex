@@ -1138,167 +1138,32 @@ $w$ considered both as an element of the boundary sphere of $B_\text{left}$ and 
 Let $\mu(X)$ be the element of the model space of $\R\P^3$ represented
 by both $w$ and $-w$ considered as elements in the boundary sphere of $B$.
 
-Consider an antipodal pair of points $q, -q \in \H_1$. 
 
-
-First consider the case that one of the pair is northern and the other is
-southern, and without loss of generality let us assume that $q$ is northern
-and $-q$ is southern.
-
-Let $\tau(A)$ be the pure part of $q$
-
-
-
-
-There is $\varphi$ and $\vec{v}$ such that
+Since $\sigma=\tau^{-1}\circ\pi\circ\mu$, the above analysis can be used to help us visualize $\sigma$.
+Write
 $$q=\begin{pmatrix}\cos(\varphi) \\ \sin(\varphi) \vec{v}\end{pmatrix}
 $$
 with $0\leq\varphi\leq\pi$ and $|\vec{v}|=1$.
-If $0\leq\varphi<\frac{\pi}{2}$  then we say $q$ is \emph{northern},
-if $\frac{\pi}{2} < \varphi \leq \pi$ then we say $q$ is \emph{southern},
-and if $\varphi=\frac{\pi}{2}$ then we say that $q$ is \emph{equatorial}.
-Notice $q$ is northern, southern or equitorial as its real part is
-positive, negative or zero respectively. The set of northern, southern and equitorial
-points $q\in\H_1$ comprise the northern and southern hemispheres
-and the equator, respectively, of $\S^3\subset\R^4$.
+We have the following:
+\begin{itemize}
+\item $q$ is northern iff $0\leq\varphi<\frac{\pi}{2}$ and then $\tau(Q(q))$ is the point $\sin(\varphi) \vec{v}$  in the interior of $B_{\text{right}}$ and $\sigma(\tau(Q(q)))$ is the point $\sin(\varphi) \vec{v}$ in the interior of $B$.
+\item $q$ is southern iff $\frac{\pi}{2}<\varphi\leq\pi$ and then $\tau(Q(q))$ is the point $\sin(\varphi) \vec{v}$ in the interior of $B_{\text{left}}$ and $\sigma(\tau(Q(q)))$ is the point $-\sin(\varphi) \vec{v}$ in the interior of $B$.
+\item $q$ is equitorial iff $\varphi=\frac{\pi}{2}$ and then $\tau(Q(q))$ is (the image under the quotient map of)
+the two points $\vec{v}$ in the boundary spheres of
+$B_{\text{left}}$ and $B_{\text{right}}$ and $\sigma(\tau(Q(q)))$ is (the image under the quotient map of) the two
+points $\vec{v}$ and $-\vec{v}$ in the boundar sphered of $B$.
+\end{itemize}
+
+Informally, $\sigma:B_{\text{right}}\map B$ is the identity map on $\bar{\B}$ and
+$\sigma:B_{\text{left}}\map B$ is the antipodal map on $\bar{\B}$.
 
 
-Now consider the antipodal pair $q,-q$. Since
-$$-q=\begin{pmatrix}-\cos(\varphi) \\ -\sin(\varphi) \vec{v}\end{pmatrix}
-= \begin{pmatrix}\cos(\pi-\varphi) \\ \sin(\pi-\varphi) (-\vec{v})\end{pmatrix}
-$$
-either both points are equitorial or one of them is northern and the other southern.
-By relabelling if necessary we may assume that $q$ is not southern and
-$0\leq\varphi\leq\frac{\pi}{2}$.
+For any point $p$ in the disjoint union of $B_{\text{left}}$ and  $B_{\text{left}}$ let $[p]\in\S^3$
+be its image under the quotient map. Similarly for any $q\in B$ let $[q]\in \R\P^3$ be its image
+under the quotient map. For any $q\in B$, $[q]\in \R\P^3$ has two inverse images in $\S^3$ under $\sigma$.
+If $q$ is in the interior of $B$
 
 
- Let $A=Q(q)\in \SU(2)$ and $X = \pi(A) = \pi(-A) \in  \SO(3)$. 
- We will define $\tau(A)$, $\tau(-A)$, and $\mu(B)$.
-
- First take the case that $q$ is northern and $-q$ is southern.
- $$q=\begin{pmatrix}\cos(\varphi) \\ \sin(\varphi) \vec{v}\end{pmatrix}
- \text{ and }
- -q=\begin{pmatrix}\cos(\pi-\varphi) \\ -\sin(\varphi) \vec{v}\end{pmatrix}
- $$
- with $0\leq\varphi < \frac{\pi}{2}$, and $|v| = 1$.
-Define 
-\begin{enumerate}
-\item $\tau(A) =\sin(\varphi) \vec{v}\in B_\text{right}$,
-\item $\tau(-A) =-\sin(\varphi) \vec{v}\in B_\text{left}$,
-\item $\mu(X) = \sin(\varphi) \vec{v}\in B$.
-\end{enumerate}
-
- Next take the case that $q$ and $-q$ are equitorial.
- $$q=\begin{pmatrix}0 \\  \vec{v}\end{pmatrix}
- \text{ and }
- -q=\begin{pmatrix}0 \\ -\vec{v}\end{pmatrix}.
- $$
-
-
- Define 
- \begin{enumerate}
- \item $\tau(A) =\vec{v}$ in the boundary sphere of $B_\text{right}$,
-which is the same as $\tau(A) =\vec{v}$ in the boundary sphere of $B_\text{left}$,
-since we identify these points in the quotient space model of $\S^3$.
-Similarly define
-\item $\tau(-A) = \vec{-v}$ in the boundary sphere of  $B_\text{left}$,
-which is the same as $\tau(-A) =\vec{-v}$ in the boundary sphere of $B_\text{left}$,
-since we identify these points in the quotient space model of $\S^3$.
-\item $\mu(X) = \vec{v}$ in the boundary sphere of $B$ which is the same as
-$\mu(X) = \vec{-v}$ in the boundary sphere of $B$ since we identify antipodal points
-of $B$ in the model space of $\R\P^3$.
-\end{enumerate}
- 
-
-Testing one two three.
-Testing four five six
-Testing seven eight nine.
-
-   Let $\theta=2\varphi$ so
- $0\leq\theta\leq\pi$ and $B$ is the matrix of the rotation by $\theta$ radians about $\vec{v}$.
-
-  
-  Notice that $A$ and $B$ represent arbitrary elements of $\SU(2)$ and $\SO(3)$
-  respectively.
- 
-  
-  
-  Since $\sigma(\tau(A)) = \sigma(\tau(-A)) = \mu(B)$, unwravelling we get that
-  for $p=\sin(\varphi)\vec{v}\in B_\text{right}$, 
-  $\sigma(p)=\sin(\varphi)\vec{v}\in B$, and 
-  for $p=\sin(\varphi)\vec{v}\in B_\text{left}$, 
-  $\sigma(p)=-\sin(\varphi)\vec{v}\in B$.
-   In short, and somewhat informally, $\sigma\restr B_{\text{right}}$ is the identity
-map from the closed ball to itself, and
- $\sigma\restr B_{\text{left}}$ is the antipodal
-map from the closed ball to itself.
-
-
- Notice that if $\varphi=0$ then $q=1$, $A = B =I$,
- $\tau(I)$ is the center of $B_\text{right}$,
-  $\mu(I)$ is the center of $B$.
-  Also $-q=-1$ $-A = -I$, $\tau(-I)$ is the center of $B_\text{left}$.
-
-If $\varphi=\pi/2$ then $\theta=\pi$ and $B$ is the matrix of the rotation by $\pi$ radians about $\vec{v}$.
-$\tau(A)$ is the point $\vec{v}$ on the boudardy sphere of 
-$\mu(B)$ is the point $\vec{v}$ on the bounary of $B$. In this case since $\pi - \varphi = \varphi$, 
- our initial choice of $q$ vs $-q$ was arbitrary, and if we had made the other choice we would have mapped $A$ to $-\vec{v}$.
- But that is OK since we are identifying $\vec{v}$ and $\vec{-v}$ in the quotient space model of $\R\P^3$, and this corresponds to the fact that the rotation by $\pi$ radians about $v$ is the same as the rotation by $\pi$ radians about $-v$. 
- The function $\mu$ is clearly a homeomorphism.
-
-  and below we tacitly identify $\S^3$ with this model space. We will use
- $B_{\text{left}}$ and $B_{\text{right}}$ to refer to the two disjoint copies of $\bar{\B^3}$
- that are used in this model space. In other words we will say that the model
- space of $\S^3$ is the quotient space obtained from the space
- $B_{\text{left}} \union B_{\text{right}}$ by identifying corresponding points
- on the boundary spheres of $B_{\text{left}}$ and $B_{\text{right}}$.
-
-
- We will describe an explicit homeomorphism $\tau$ from $\SU(2)$
-  to this model space of $\S^3$. Let $A\in\SU(2)$ and let $q=Q^{-1}(A)\in\H_1$. Then
- $$q=\begin{pmatrix}\cos(\varphi) \\ \sin(\varphi) \vec{v}\end{pmatrix}$$
- with $0\leq\varphi\leq\pi$ and $|\vec{v}|=1$. If $0\leq\varphi\leq\pi/2$ let
- $\tau(A)$ be the point $\sin(\varphi) \vec{v}\in B_\text{right}$, and if $\pi/2\leq\varphi\leq\pi$
- then let $\tau(A)$ be the point $\sin(\varphi) \vec{v}\in B_\text{left}$. If $\varphi=0$ then
- $q=1, A=I$ and $\tau(I)$ is the center of $B_\text{right}$. If $\varphi=\pi$ then $q=-1, A = -I$,
- and $\tau(-I)$ is the center of $B_\text{left}$. If $\varphi=\pi/2$ then we have defined $\tau(A)$ to
- be both $\vec{v}\in B_\text{left}$ and $\vec{v}\in B_\text{right}$, but that is ok because we identify
- these two points in our  quotient space model of $\S^3$. The mapping $\tau$ is clearly a homeomorphism.
-
- The explicit definitions of $\tau$ and $\mu$ induce an explicit definition of
- $\sigma$ which we now describe as a map from 
- $B_{\text{left}} \union B_{\text{right}}$ to $B$.
-We consider this to be a way of visualizing the double cover $\pi$.
-
-Let $p\in B_{\text{right}}$. Then there is $\varphi$ and $\vec{v}$ such
-that $0\leq\varphi\leq\frac{\pi}{2}$ and 
-$p$ is the point $\sin(\varphi) \vec{v}$ in $B_{\text{right}}$
-and $p=\tau(Q(q))$ with
-$$q=\begin{pmatrix}\cos(\varphi) \\ \sin(\varphi) \vec{v}\end{pmatrix}.$$
-Then $\sigma(p) = \mu(f(\Ad(q))$ is the point  $\sin(\varphi) \vec{v}$ in $B$.
-In othe words $\sigma(p)$ is the point in $B$ with the same
-coordinates that $p$ has in $B_{\text{right}}$. Informally $\sigma\restr B_{\text{right}}$ is the identity. 
-
-
-
-Let
-$p\in B_{\text{left}}$. Then there is $\varphi$ and $\vec{v}$ such
-that $\frac{\pi}{2}\leq\varphi\leq\pi$ and 
-$p$ is the point $\sin(\varphi) \vec{v}$ in $B_{\text{left}}$
-and $p=\tau(Q(q))$ with
-$$q=\begin{pmatrix}\cos(\varphi) \\ \sin(\varphi) \vec{v}\end{pmatrix}.$$
-Then $\sigma(p) = \mu(f(\Ad(q))$ is the point  $-\sin(\varphi) \vec{v}$ in $B$.
-In other words $\sigma(p)$ is the point in $B$ with the same
-coordinates that $-p$ has in $B_{\text{left}}$. Informally $\sigma\restr B_{\text{left}}$ is the antipodal
-map from the closed ball to itself.
-
-
-Let $p$ be in the boundary sphere of $B_{\text{left}}$ and let $\pprime$ be the
-corresponding point in the boundary sphere of $B_{\text{right}}$. 
-Then $p$ and $\pprime$ are identified in the model space of $\S^3$.
-$\sigma(p)$ and $\sigma(\pprime)$ are antipodal points on the boundary sphere of $B$,
-and so $\sigma(p)$ and $\sigma(\pprime)$ are identified in the model space
-of $\R\P^3$. So $\sigma$ is well-defined as a map from $\S^3$ to $\R\P^3$.
 
 The figure below illustrates our visulaization of the double cover by exhibitting the lift from $\SO(3)$ to $\SU(2)$ of a particular path in $\SO(3)$. Let
 $$ A(\theta) = 
