@@ -1133,14 +1133,14 @@ $$-q=\begin{pmatrix}\cos(\pi-\varphi) \\ \sin(\varphi) [-\vec{v}]\end{pmatrix}.$
 
 
 Let $\theta=2\varphi$
-so $0\leq\varphi\leq 2\pi$. Notice that $2(\pi-\varphi) = -\theta + 2\pi$.
+so $0\leq\theta\leq 2\pi$. Notice that $2(\pi-\varphi) = -\theta + 2\pi$.
 Let $A=\pi(Q(q))=\pi(Q(-q)\in\SO(3)$. Recall that $A$ is the matrix
-of the rotation by $\theta$ radians about the axis $v$ and equivalently the matrix of
-$-\theta$ radians about the axis $-v$ and equivalently the matrix of $2\pi - \theta$ radians
+of the rotation by $\theta$ radians about the axis $v$; equivalently the rotatoin of
+$-\theta$ radians about the axis $-v$; equivalently the rotation of $2\pi - \theta$ radians
 about the axis $-v$.
 
 
-We now define $\tau(Q(q))$, and $\sigma(\tau(Q(q))) = \mu(\pi(Q(q)))=\sigma(\tau(Q(-q))) = \mu(\pi(Q(-q)))$,
+We now define $\tau(Q(q))$, and $\sigma(\tau(Q(q))) = \mu(\pi(Q(q)))= \mu(\pi(Q(-q)))$,
 conditioning on whether $q$ is northern, southern, or equitorial.
 Note that if $q$ is northern then $-q$ is southern, and vice versa. $q$ is equitorial iff $-q$ is.
 \begin{itemize}
@@ -1167,17 +1167,20 @@ $\vec{v}$ in the boundary sphered of $B$ and $s_2$ is the point $-\vec{v}$ in th
 
 An informal but suggestive way to remember what is happening is the following:
 \begin{itemize}
-\item The interior of $B_{\text{right}}$ represents the northern hemisphere of $S^3$
-\item The origin of $B_{\text{right}}$  represents the north pole of $S^3$.
-\item The interior of $B_{\text{left}}$ represents the southern hemisphere $S^3$.
-\item The origon of $B_{\text{left}}$ represents the spouth pole of $S^3$.
-\item The common boundafy spheres of $B_{\text{left}}$ and $B_{\text{right}}$ represent the equator of $S^3$.
-\item The interior of $B$ represents rotations by less then $\pi$ radians about an axis given by the point in the interior.
+\item The interior of $B_{\text{right}}$ represents the northern hemisphere of $\S^3$
+\item The origin of $B_{\text{right}}$  represents the north pole of $\S^3$.
+\item The interior of $B_{\text{left}}$ represents the southern hemisphere $\S^3$.
+\item The origin of $B_{\text{left}}$ represents the spouth pole of $\S^3$.
+\item The identified boundary spheres of $B_{\text{left}}$ and $B_{\text{right}}$ represent the equator of $\S^3$.
+\item The point $\sin(\varphi)\vec{v}$ in the interior of $B$ represents 
+the rotation by $\theta=2\varphi$ radians about $v$.
 \item The origin of $B$ represents the identity rotation.
+\item The point $\vec{v}$ on the boundary sphere of $B$ represents the rotation of $\pi$ radians about $v$,
+equivalently the rotation of $\pi$ radians about $-v$.
 \item The function $\sigma$ restricted to $B_{\text{right}}$ acts like the identity on $\bar{\B}$.
 \item The funciton $\sigma$ restricted to $B_{\text{left}}$ acts like the antipodal map on $\bar{\B}$.
 \item Given a point $s=\sin(\varphi)\vec{v}$ in the interior of $B$, it's two inverse images under the double cover are the points
-$p_1=\sin(\varphi)\vec{v}\inB_{\text{right}}$ and $p_1=-\sin(\varphi)\vec{v}\inB_{\text{left}}$.
+$p_1=\sin(\varphi)\vec{v}\in B_{\text{right}}$ and $p_1=-\sin(\varphi)\vec{v}\in B_{\text{left}}$.
 \item Given the antipodal points $s=\vec{v}, -s = -\vec{v}$ in the boundary of $B$ the four
 \end{itemize}
 
