@@ -869,27 +869,28 @@ But $s(t)$ is a one-parameter subgroup of $G$ and $\exp(A)=s(1)$ so $\exp(A) s(t
 \end{proof}
 
 \section{Rotations in $\R^3$}
+\label{section:rotations}
 \begin{definition}
-Let $q\in\H_1$. Then an \emph{angle-vector} representation of $q$ is is a pair $(\theta,\vec{v})$ such that
+Let $q\in\H_1$. Then an \emph{angle-axis} representation of $q$ is is a pair $(\theta,\vec{v})$ such that
 $$q = \begin{pmatrix} \cos \theta \\ \sin \theta \vec{v} \end{pmatrix}$$
-where $0\leq\theta\leq\pi$ and $\vec{v}\in S^2$, i.e. $\vec{v}\in\R^3$ and $|\vec{v}| = 1$.
+where $0\leq\theta\leq\pi$ and $\vec{v}\in \S^2$, i.e. $\vec{v}\in\R^3$ and $|\vec{v}| = 1$.
 \end{definition}
 
 We may use imprecise wording and say that 
 $$\begin{pmatrix} \cos \theta \\ \sin \theta \vec{v} \end{pmatrix}$$
-\emph{is} and angle-vector representation of $q$.
+\emph{is} and angle-axis representation of $q$.
 
 \begin{remark}
-For all $q\in\H_1$ other than $q=1$ and $q=-1$, $q$ has a unique angle-vector represention.
-In every angle-vector representation of $q=1$, $\theta=0$ but $\vec{v}$ is arbitrary, and similarly
-in every angle-vector representation of $q=-1$, $\theta=\pi$ but $\vec{v}$ is arbitrary.
+For all $q\in\H_1$ other than $q=1$ and $q=-1$, $q$ has a unique angle-axis represention.
+In every angle-axis representation of $q=1$, $\theta=0$ but $\vec{v}$ is arbitrary, and similarly
+in every angle-axis representation of $q=-1$, $\theta=\pi$ but $\vec{v}$ is arbitrary.
 \end{remark}
 
 \begin{definition}
-For $q\in\H_1, q \not= 1, q\not=-1$ let $\theta(q)$ and $\vec{v}(q)$ be the unique
+For $q\in\H_1, q \not= 1, q\not=-1$ let $\ang(q)$ and $\axis(q)$ be the unique
 $\theta$ and $\vec{v}$ such $(\theta,\vec{v})$
-is an angle-vector representation of $q$. Define $\theta(1)=0$, $\vec{v}(1)=\vec{i}$.
-Define $\theta(-1)=\pi$, $\vec{v}(-1)=\vec{i}$.
+is an angle-axis representation of $q$. Define $\ang(1)=0$, $\axis(1)=\vec{i}$.
+Define $\ang(-1)=\pi$, $\axis(-1)=\vec{i}$.
 \end{definition}
 
 \begin{lemma}
@@ -901,7 +902,7 @@ $$
 q = \begin{pmatrix} \cos \theta \\ \sin \theta \vec{v} \end{pmatrix}\text{; }
 r_1 = \begin{pmatrix} 0 \\ \vec{v}_1 \end{pmatrix}
 $$
-where $\theta=\theta(q), \vec{v} = \vec{v}(q), \vec{v} \cdot \vec{v} = 1,\vec{v}_1 \cdot \vec{v}_1 = 1, \vec{v}_1 \cdot \vec{v} = 0.$
+where $\theta=\ang(q), \vec{v} = \axis(q), \vec{v} \cdot \vec{v} = 1,\vec{v}_1 \cdot \vec{v}_1 = 1, \vec{v}_1 \cdot \vec{v} = 0.$
 
 
 Let $\vec{v_2} = \vec{v} \times  \vec{v}_1$, so that $\angles{\vec{v}_1,\vec{v}_2,\vec{v}}$ is a right-handed orthonormal basis for $\R^3$.
@@ -961,8 +962,8 @@ Fix $q\in\H_1$. For any $r\in\H_0$, $q r q^{-1}\in\H_0$.
 Let $\Pi_q:\R^3\map\R^3$ be given by $r\mapsto q r q^{-1}$,
 where we are identifying $\R^3$ with $\H_0$.
 
-Then $\Pi_q$ is rotation by $2\theta(q)$
-about $\vec{v}(q)$. For $q=1$ and $q=-1$, $\Pi_q$ is the identity.
+Then $\Pi_q$ is rotation by $2\ang(q)$
+about $\axis(q)$. For $q=1$ and $q=-1$, $\Pi_q$ is the identity.
 \end{theorem}
 \begin{proof}
 The function $r\mapsto q r q^{-1}$ is
@@ -976,7 +977,7 @@ preserves cross product which is equivalent to $\det(\Pi_q)=1$. But we don't nee
 use this fact. It will come as a byproduct of showing that $\Pi_q$ is a rotation.
 
 If $q=1$ or $q=-1$ it is clear that for all $r\in\H_0$, $q r q^{-1} = r$. So assume
-that $q\not=1$, $q\not=-1$. Let $\theta=\theta(q)$ and $\vec{v} = \vec{v}(q)$.
+that $q\not=1$, $q\not=-1$. Let $\theta=\ang(q)$ and $\vec{v} = \axis(q)$.
 So we want to prove that $\Pi_q$ is a rotation by $2\theta$ about $\vec{v}$.
 
 Let $r_0\in\H_0$ be the pure quaternion whose pure part is $\theta \vec{v}$. To summarize
@@ -997,7 +998,7 @@ We want to show that $\Pi_q \restr S$ is a rotation in $S$ of $2\theta$ about th
 Let $\vec{v_1}$ be any unit vector in $S$.  
 
 Let $r_1\in\H_0\intersect\H_1$ with
-$\vec{v}(r_1)=\vec{v_1}$. So
+$\axis(r_1)=\vec{v_1}$. So
 $$r_1 = \begin{pmatrix} 0 \\ \vec{v}_1 \end{pmatrix}.$$
 
 Notice that by Lemma \ref{lemma:q_inverse_calc} we have that
@@ -1009,7 +1010,7 @@ We want to show that $\Pi_q$ rotates $\vec{v}_1$ by $2\theta$ within $S$.
 Since $\Pi_q(\vec{v}_1)$ is the pure part of $q r_1 q^{-1}$, this follows from 
 Lemma \ref{lemma:mult_is_rot} because from that lemma, left multiplication by $q$
 rotates $r_1$ by $\theta$ within $S$, and right multiplication of $q r_1$ by $q^{-1}$ rotates $q r_1$ within $S$ by
-$-(\theta(q^{-1})) = -(-\theta) = \theta$.
+$-(\ang(q^{-1})) = -(-\theta) = \theta$.
 \end{proof}
 
 \begin{corollary}
@@ -1019,7 +1020,7 @@ Let $\Ad:\H_1 \map \GL(\H_0)$ be the Lie group adjoint map. Then $\ker(\Ad) = \s
 \begin{proof}
 Let $q\in\H_1$. Then $q\in\ker(\Ad)$ iff $\Ad(q)$ is the identity transformation on $\H_0$. By Theorem 
 \ref{theorem:adjoint_as_rotation},
-if we identify $\H_0$ with $\R^3$, then $\Ad(q)$ is rotation by $\theta(q)$ about $\vec{v}(q)$. This
+if we identify $\H_0$ with $\R^3$, then $\Ad(q)$ is rotation by $\ang(q)$ about $\axis(q)$. This
 is the identity iff $q=1$ or $q=-1$.
 \end{proof}
 
@@ -1139,6 +1140,11 @@ of the rotation by $\theta$ radians about the axis $v$; equivalently the rotatoi
 $-\theta$ radians about the axis $-v$; equivalently the rotation of $2\pi - \theta$ radians
 about the axis $-v$.
 
+\begin{warning}
+In Section \ref{section:rotations} we were using $\theta$ for $\ang(q)$ and in this
+subsection we have switched to using $\varphi$ for $\ang(q)$ and $\theta$ for $2\varphi$.
+\end{warning}
+
 
 We now define $\tau(Q(q))$, and $\sigma(\tau(Q(q))) = \mu(\pi(Q(q)))= \mu(\pi(Q(-q)))$,
 conditioning on whether $q$ is northern, southern, or equitorial.
@@ -1161,7 +1167,7 @@ Note that if $q$ is northern then $-q$ is southern, and vice versa. $q$ is equit
 $B_{\text{left}}$ and $p_2$ is the point  $\vec{v}$ in the boundary sphere of
 $B_{\text{right}}$. 
     \item $\sigma(\tau(Q(q)))=[s_1]=[s_2]$ where $s_1$ is the point
-$\vec{v}$ in the boundary sphered of $B$ and $s_2$ is the point $-\vec{v}$ in the boundary sphered of $B$
+$\vec{v}$ in the boundary sphere of $B$ and $s_2$ is the point $-\vec{v}$ in the boundary sphered of $B$
   \end{itemize}.
 \end{itemize}
 
@@ -1173,7 +1179,7 @@ An informal but suggestive way to remember what is happening is the following:
 \item The origin of $B_{\text{left}}$ represents the spouth pole of $\S^3$.
 \item The identified boundary spheres of $B_{\text{left}}$ and $B_{\text{right}}$ represent the equator of $\S^3$.
 \item The point $\sin(\varphi)\vec{v}$ in the interior of $B$ represents 
-the rotation by $\theta=2\varphi$ radians about $v$.
+the rotation by $\theta=2\varphi$ radians about $v$, for $0\leq\varphi<\frac{\pi}{2}$, and $0\leq\theta<\pi$.
 \item The origin of $B$ represents the identity rotation.
 \item The point $\vec{v}$ on the boundary sphere of $B$ represents the rotation of $\pi$ radians about $v$,
 equivalently the rotation of $\pi$ radians about $-v$.
