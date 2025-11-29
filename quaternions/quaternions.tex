@@ -1150,18 +1150,18 @@ We now define $\tau(Q(q))$, and $\sigma(\tau(Q(q))) = \mu(\pi(Q(q)))= \mu(\pi(Q(
 conditioning on whether $q$ is northern, southern, or equitorial.
 Note that if $q$ is northern then $-q$ is southern, and vice versa. $q$ is equitorial iff $-q$ is.
 \begin{itemize}
-\item $q$ is northern iff $0\leq\varphi<\frac{\pi}{2}$ and $0\leq\theta<\pi$. In this case define:
+\item $q$ is northern iff $0\leq\varphi<\frac{\pi}{2}$. In this case define:
   \begin{itemize} 
   	\item $\tau(Q(q))=[p]$  where $p$ is the point $\sin(\varphi) \vec{v}$  in the interior of $B_{\text{right}}$. 
   	\item $\sigma(\tau(Q(q)))=[s]$ where $s$ is the point $\sin(\varphi) \vec{v}$ in the interior of $B$.
   \end{itemize}
-\item $q$ is southern iff $\frac{\pi}{2}<\varphi\leq\pi$ and $\pi < \theta < 2\pi$. In this case define: 
+\item $q$ is southern iff $\frac{\pi}{2}<\varphi\leq\pi$. In this case define: 
   \begin{itemize}
   	\item $\tau(Q(q))=[p]$ where $p$ is the point $\sin(\varphi) \vec{v}$ in the interior of 
   	$B_{\text{left}}$. 
   	\item $\sigma(\tau(Q(q)))=[s]$ where $s$ the point $-\sin(\varphi) \vec{v}$ in the interior of $B$.
    \end{itemize}
-\item $q$ is equitorial iff $\varphi=\frac{\pi}{2}$ and $\theta=\pi$. In this case define:
+\item $q$ is equitorial iff $\varphi=\frac{\pi}{2}$. In this case define:
   \begin{itemize}
   	\item $\tau(Q(q))=[p_1]=[p_2]$  where $p_1$ is the point $\vec{v}$ in the boundary sphere of
 $B_{\text{left}}$ and $p_2$ is the point  $\vec{v}$ in the boundary sphere of
@@ -1173,31 +1173,29 @@ $\vec{v}$ in the boundary sphere of $B$ and $s_2$ is the point $-\vec{v}$ in the
 
 An informal but suggestive way to remember what is happening is the following:
 \begin{itemize}
-\item The interior of $B_{\text{right}}$ represents the northern hemisphere of $\S^3$
-\item The origin of $B_{\text{right}}$  represents the north pole of $\S^3$.
-\item The interior of $B_{\text{left}}$ represents the southern hemisphere $\S^3$.
-\item The origin of $B_{\text{left}}$ represents the spouth pole of $\S^3$.
+\item The interior of $B_{\text{right}}$ represents the northern hemisphere of $\S^3$ with the origin
+representing the north pole.
+\item The interior of $B_{\text{left}}$ represents the southern hemisphere of $\S^3$
+with the origin representing the south pole.
 \item The identified boundary spheres of $B_{\text{left}}$ and $B_{\text{right}}$ represent the equator of $\S^3$.
 \item The point $\sin(\varphi)\vec{v}$ in the interior of $B$ represents 
-the rotation by $\theta=2\varphi$ radians about $v$, for $0\leq\varphi<\frac{\pi}{2}$, and $0\leq\theta<\pi$.
-\item The origin of $B$ represents the identity rotation.
-\item The point $\vec{v}$ on the boundary sphere of $B$ represents the rotation of $\pi$ radians about $v$,
-equivalently the rotation of $\pi$ radians about $-v$.
-\item The function $\sigma$ restricted to $B_{\text{right}}$ acts like the identity on $\bar{\B}$.
-\item The funciton $\sigma$ restricted to $B_{\text{left}}$ acts like the antipodal map on $\bar{\B}$.
-\item Given a point $s=\sin(\varphi)\vec{v}$ in the interior of $B$, it's two inverse images under the double cover are the points
-$p_1=\sin(\varphi)\vec{v}\in B_{\text{right}}$ and $p_1=-\sin(\varphi)\vec{v}\in B_{\text{left}}$.
-\item Given the antipodal points $s=\vec{v}, -s = -\vec{v}$ in the boundary of $B$ the four
+the rotation by $\theta=2\varphi$ radians about $\vec{v}$, for $0\leq\varphi<\frac{\pi}{2}$, and $0\leq\theta<\pi$,
+with the origin of $B$ representing the identity rotation.
+\item The points $\vec{v}$ and $-\vec{v}$
+on the boundary sphere of $B$ represent the rotation of $\pi$ radians about $\vec{v}$,
+equivalently the rotation of $\pi$ radians about $-\vec{v}$.
+\item The function $\sigma$ restricted to $B_{\text{right}}$ acts as the identity on $\bar{\B}$.
+\item The funciton $\sigma$ restricted to $B_{\text{left}}$ acts as the antipodal map on $\bar{\B}$.
+\item The point in $\R\P^3$ represented by $\sin(\varphi)\vec{v}$ in the interior of $B$ has two inverse images 
+under $\sigma$, the points in $\S^3$ represented by
+$\sin(\varphi)\vec{v}\in B_{\text{right}}$ and $-\sin(\varphi)\vec{v}\in B_{\text{left}}$.
+\item The point in $\R\P^3$ represented by the pair of  antipodal points $\vec{v}$ and $-\vec{v}$ in the boundary of $B$ has two inverse images under $\sigma$, the point in $\S^3$ represented by
+ $\vec{v}$ in  the boundary sphere of $B_{\text{right}}$ and 
+  $\vec{v}$ in  the boundary sphere of $B_{\text{left}}$, and the
+  point in $\S^3$ represented by
+ $-\vec{v}$ in  the boundary sphere of $B_{\text{right}}$ and
+  $-\vec{v}$ in  the boundary sphere of $B_{\text{left}}$.
 \end{itemize}
-
-Informally, $\sigma:B_{\text{right}}\map B$ is the identity map on $\bar{\B}$ and
-$\sigma:B_{\text{left}}\map B$ is the antipodal map on $\bar{\B}$.
-
-
-For any point $p$ in the disjoint union of $B_{\text{left}}$ and  $B_{\text{left}}$ let $[p]\in\S^3$
-be its image under the quotient map. Similarly for any $q\in B$ let $[q]\in \R\P^3$ be its image
-under the quotient map. For any $q\in B$, $[q]\in \R\P^3$ has two inverse images in $\S^3$ under $\sigma$.
-If $q$ is in the interior of $B$
 
 
 
@@ -1212,7 +1210,7 @@ $$
 for $0\leq\theta\leq 2\pi$. So $A$ is the loop in $\SO(3)$ at the identity
 such tha $A(\theta)$ is the matrix of the rotation by $\theta$ radians
 about the $z$ axis. Let $a$ be the center of $B$ so 
-$a=\mu(A(0)) =\mu(A(2\pi)) = \mu(A(I))$. Let $b=\mu(A(\pi))$ so that $b$ is the point in the model space of $\R\P^3$ represented by the north and south poles of $B$. The
+$a=\mu(A(0)) =\mu(A(2\pi)) = \mu(I)$. Let $b=\mu(A(\pi))$ so that $b$ is the point in the model space of $\R\P^3$ represented by the north and south poles of $B$. The
 image under $\mu$ of the path $A(\theta), 0\leq\theta\leq 2\pi$ is the path 
 $\angles{a,b,a}$ in $\R\P^3$, visualized as the path $\angles{a,b,a}$ in $B$ 
 in the figure below.
