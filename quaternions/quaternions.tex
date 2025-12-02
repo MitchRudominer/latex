@@ -1136,8 +1136,8 @@ $$-q=\begin{pmatrix}\cos(\pi-\varphi) \\ \sin(\varphi) [-\vec{v}]\end{pmatrix}.$
 Let $\theta=2\varphi$
 so $0\leq\theta\leq 2\pi$. Notice that $2(\pi-\varphi) = -\theta + 2\pi$.
 Let $A=\pi(Q(q))=\pi(Q(-q)\in\SO(3)$. Recall that $A$ is the matrix
-of the rotation by $\theta$ radians about the axis $v$; equivalently the rotatoin of
-$-\theta$ radians about the axis $-v$; equivalently the rotation of $2\pi - \theta$ radians
+of the rotation by $\theta$ radians about the axis $\vec{v}$; equivalently the rotatoin of
+$-\theta$ radians about the axis $-\vec{v}$; equivalently the rotation of $2\pi - \theta$ radians
 about the axis $-v$.
 
 \begin{warning}
@@ -1189,10 +1189,10 @@ equivalently the rotation of $\pi$ radians about $-\vec{v}$.
 \item The point in $\R\P^3$ represented by $\sin(\varphi)\vec{v}$ in the interior of $B$ has two inverse images 
 under $\sigma$, the points in $\S^3$ represented by
 $\sin(\varphi)\vec{v}\in B_{\text{right}}$ and $-\sin(\varphi)\vec{v}\in B_{\text{left}}$.
-\item The point in $\R\P^3$ represented by the pair of  antipodal points $\vec{v}$ and $-\vec{v}$ in the boundary of $B$ has two inverse images under $\sigma$, the point in $\S^3$ represented by
- $\vec{v}$ in  the boundary sphere of $B_{\text{right}}$ and 
-  $\vec{v}$ in  the boundary sphere of $B_{\text{left}}$, and the
-  point in $\S^3$ represented by
+\item The point in $\R\P^3$ represented by the pair of  antipodal points $\vec{v}$ and $-\vec{v}$ in the boundary of $B$ has two inverse images under $\sigma$: (1) the point in $\S^3$ represented by
+ the pair $\vec{v}$ in  the boundary sphere of $B_{\text{right}}$ and 
+  $\vec{v}$ in  the boundary sphere of $B_{\text{left}}$, and (2) the
+  point in $\S^3$ represented by the pair
  $-\vec{v}$ in  the boundary sphere of $B_{\text{right}}$ and
   $-\vec{v}$ in  the boundary sphere of $B_{\text{left}}$.
 \end{itemize}
@@ -1203,8 +1203,8 @@ The figure below illustrates our visulaization of the double cover by exhibittin
 $$ A(\theta) = 
 \begin{pmatrix}
 0 & 0 & 0 \\
-0 & \cos(\theta) & \sin(\theta) \\
-0 & -\sin(\theta) & \cos(\theta)
+0 & \cos(\theta) & -\sin(\theta) \\
+0 & \sin(\theta) & \cos(\theta)
 \end{pmatrix}
 $$
 for $0\leq\theta\leq 2\pi$. So $A$ is the loop in $\SO(3)$ at the identity
